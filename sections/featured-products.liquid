@@ -1,0 +1,162 @@
+<div class=" featured-collections productCarousel productCarousel-wrap {{ section.settings.width }}">
+  {% if section.settings.title != blank %}
+    <div class="row">
+      <div class="section-header text-center col-full-width">
+        <h2 style="font-size:{{ section.settings.title_font_size  }}px; padding-bottom:{{ section.settings.title_padding_bottom  }}px;">{{ section.settings.title  }}</h2>
+      </div>
+    </div>
+  {% endif %}
+
+  {%- assign collection = section.settings.product_list -%}
+
+  {% case section.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_count = 'product-grid-2' -%}
+      {%- assign grid_item_width = 'col-wide-6 col-medium-6 col-small-6 col-smallest-6' -%}
+      {%- assign image_size = '530x530' -%}
+    {% when '3' %}
+      {%- assign grid_count = 'product-grid-3' -%}
+      {%- assign grid_item_width = 'col-wide-4 col-medium-4 col-small-6 col-smallest-6' -%}
+      {%- assign image_size = '345x345' -%}
+    {% when '4' %}
+      {%- assign grid_count = 'product-grid-4' -%}
+      {%- assign grid_item_width = 'col-wide-3 col-medium-3 col-small-6 col-smallest-6' -%}
+      {%- assign image_size = '250x250' -%}
+    {% when '6' %}
+      {%- assign grid_count = 'product-grid-6' -%}
+      {%- assign grid_item_width = 'col-wide-2 col-medium-2 col-small-4 col-smallest-6' -%}
+      {%- assign image_size = '250x250' -%}
+  {% endcase %}
+
+  {%- assign product_limit = section.settings.grid -%}
+
+  <div class="owl-carousel product-grid grid grid--uniform grid--view-items row {{ grid_count }}">
+    {% for product in collection %}
+                {% include 'product-grid-item-featured' with grid_item_width %}
+    {% else %}
+
+      {% for i in (1..product_limit) %}
+        <div class="grid__item">
+          <div class="grid-view-item">
+            <a href="#" class="grid-view-item__link">
+              <div class="grid-view-item__image">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="h4 grid-view-item__title">Seeland Field Zip-Off Jacket</div>
+              <div class="grid-view-item__meta">
+                <span class="old-price">£70.00</span>
+                <span class="new-price">£80.00</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Featured product list",
+    "class": "index-section",
+    "settings": [
+       {
+        "type": "color",
+        "id": "color",
+        "label": "Section Color",
+        "default": "#000"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured product"
+      },
+       {
+        "type": "number",
+        "id": "title_font_size",
+        "label": "Title Font Size",
+        "default": 35
+      },
+        {
+        "type": "number",
+        "id": "title_padding_bottom",
+        "label": "Title Padding bottom",
+        "default": 30
+      },
+      {
+        "id": "product_list",
+        "type": "product_list",
+        "label": "Product List"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "label": "section width",
+        "options": [
+          {
+            "value": "productCarousel-new",
+            "label": "Full width"
+          },
+          {
+            "value": "el-container",
+            "label": "container width"
+          }
+        ],
+        "default": "productCarousel-new"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product list",
+        "category": "product"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<style>
+  .productCarousel-new{
+    padding: 50px 100px;
+  }
+  .productCarousel-wrap .item{
+      width:99%;
+  }
+  .productCarousel-wrap .owl-prev {
+      position: absolute;
+      left: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: unset !important;
+      font-size: 50px !important;
+  }
+  .productCarousel-wrap .owl-next {
+      position: absolute;
+      right: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: unset !important;
+      font-size: 50px !important ;
+  }
+  #el-blog-template .owl-carousel .owl-nav.disabled{
+    display:block;
+  }
+    #el-blog-template .productCarousel-new * { 
+    color: {{ section.settings.color }};
+}
+  
+  
+  @media screen and (max-width: 1023px) {
+    
+      .productCarousel-new{
+        padding-bottom:0px;
+      }
+    
+  }
+ 
+
+ 
+</style>

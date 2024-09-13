@@ -1,0 +1,14 @@
+<div class="journal-post-text-section">
+    <div class="row">
+        <div class="{% if block.settings.column_width == 'column-full' %}col-full-width{% else %}col-wide-6 col-medium-6{% endif %}">
+            <div class="content">
+				{% if block.settings.title != blank %}
+				<h2 class="title">{{ block.settings.title }}</h2>
+				{% endif %}
+				{% if block.settings.text != blank %}
+				    {{ block.settings.text }}
+                {% endif %}
+			</div>
+        </div>
+    </div>
+</div>

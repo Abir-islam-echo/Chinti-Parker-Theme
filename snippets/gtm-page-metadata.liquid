@@ -1,0 +1,62 @@
+{% case template.name %}
+    {% when 'index' %}
+        {% assign page_type = 'home' %}
+
+    {% when 'product' %}
+        {% assign page_type = 'product' %}
+
+    {% when 'collection' %}
+        {% assign page_type = 'product' %}
+
+    {% when 'search' %}
+        {% assign page_type = 'search' %}
+
+    {% when 'cart' %}
+        {% assign page_type = 'checkout' %}
+{% endcase %}
+
+{% case shop.permanent_domain %}
+    {% when 'chinti-parker.myshopify.com' %}
+        {% assign page_country = 'uk' %}
+
+    {% when 'chinti-parker-eur.myshopify.com' %}
+        {% assign page_country = 'eu' %}
+
+    {% when 'chinti-parker-usd.myshopify.com' %}
+        {% assign page_country = 'us' %}
+{% endcase %}
+
+{% if content_for_header contains "previewBarInjector.init();" %}
+    {% assign environment = 'dev' %}
+{% elsif content_for_header contains "Shopify.designMode" %}
+    {% assign environment = 'dev' %}
+{% else %}
+    {% assign environment = 'prod' %}
+{% endif %}
+
+<script>
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+    'event': 'pageMetaData',
+    'page': {
+        'type': {{ page_type | default: 'information' | json }},
+        'country': {{ page_country | default: 'uk' | json }},
+        'environment': {{ environment | default: 'prod' | json }},
+        'language': 'en',
+        'fullURL': window.location.href,
+        'fullPath': window.location.href.pathname,
+        'title': document.title
+    },
+    {% if customer %}
+        'user': {
+            'id': '{{ customer.id }}',
+            'hasTransacted': {% if customer.orders_count > 0 %} true {% else %} false {% endif %},
+            'loggedIn': true,
+            'country': {{ customer.default_address.country | default: 'UK' | json }},
+            'city': {{ customer.default_address.city | default: '–' | json }}
+        },
+    {% else %}
+        'user': { 'loggedIn': false },
+    {% endif %}
+});
+</script>

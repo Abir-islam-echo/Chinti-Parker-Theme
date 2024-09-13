@@ -1,0 +1,136 @@
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'bannergrid-three' %}
+    {% include 'cms_bannergrid-three-search' %}
+    
+  {% endcase %}
+{% endfor %}
+
+
+
+{% schema %}
+	{
+		"blocks": [			
+			{
+		        "type": "bannergrid-three",
+		        "name": "Banner Grid - 3",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image1",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image1",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },		        
+		          {
+		            "type": "url",
+		            "id": "link1",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color1",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          },
+		           {
+		            "type": "image_picker",
+		            "id": "image2",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image2",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext2",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },		           
+		          {
+		            "type": "url",
+		            "id": "link2",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color2",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          },
+		           {
+		            "type": "image_picker",
+		            "id": "image3",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image3",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext3",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },		           
+		          {
+		            "type": "url",
+		            "id": "link3",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color3",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          },
+		           {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]
+			}
+		]
+	}
+{% endschema %}

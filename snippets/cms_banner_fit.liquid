@@ -1,0 +1,49 @@
+<div data-section-id="{{ section.id }}" data-section-type="banner-section" class="banner-section fit-guide-section" id="{{block.settings.section-header | replace: " ", "" | downcase}}">
+    <div class="row">
+        <div class="col">
+        
+              
+
+
+<h2>{{block.settings.section-header}}</h2>
+<p>{{block.settings.section-para | strip_html}}</p>
+
+  
+
+
+<ul class="fitImageguide">
+  {% if block.settings.image-1 %}
+                    <li><picture>
+										<source media="(min-width: 768px)" srcset="{{ block.settings.image-1 | img_url: '355x' }}">
+										<source srcset="{{ block.settings.image-1 | img_url: '230x' }}">
+										<img src="{{ block.settings.image-1 | img_url: '355x' }}" alt="{{block.settings.section-header}} - front view" />
+									</picture></li>
+                {% endif %}
+
+ {% if block.settings.image-2 %}
+                    <li><picture>
+										<source media="(min-width: 768px)" srcset="{{ block.settings.image-2 | img_url: '355x' }}">
+										<source srcset="{{ block.settings.image-2 | img_url: '230x' }}">
+										<img src="{{ block.settings.image-2 | img_url: '355x' }}" alt="{{block.settings.section-header}} - side view" />
+									</picture></li>
+                {% endif %}
+
+                 {% if block.settings.image-3 %}
+                    <li><picture>
+										<source media="(min-width: 768px)" srcset="{{ block.settings.image-3 | img_url: '355x' }}">
+										<source srcset="{{ block.settings.image-3 | img_url: '230x' }}">
+										<img src="{{ block.settings.image-3 | img_url: '355x' }}" alt="{{block.settings.section-header}} - back view" />
+									</picture></li>
+                {% endif %}
+
+</ul>
+
+  {% if block.settings.fit-tag != blank %}
+              <a href="/collections/all/{{block.settings.fit-tag}}">View all {{block.settings.section-header}} Sweaters</a>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+{%- capture notification_text -%}notification_text_number_{{ zoneCode | strip }}{%- endcapture -%}{%- capture isNotificationActive -%}{{- section.settings.notification_text | strip -}}{%- endcapture -%}
+{{- isNotificationActive -}}
+{%- if isNotificationActive == true -%}
+    <div id="notificationRibbon" class="owl-carousel owl-theme notification-carousel" data-time="{{ section.settings.notification_time }}">
+    
+  {%- assign limit = section.settings.notification_text_number -%}    
+    {% for block in section.blocks limit:limit %}    
+            <!-- Single Notfication Item -->
+            <p class="item">
+
+                {% if block.settings.notification_link != blank %}<a href="{{block.settings.notification_link}}">{%endif%}
+                {{block.settings.notification_text | escape}}
+                {% if block.settings.notification_link != blank %}</a>{%endif%}
+            </p>
+            <!--// Single Notfication Item -->
+        {% endfor %}
+    </div>
+{%- endif -%}
+

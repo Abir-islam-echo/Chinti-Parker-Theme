@@ -1,0 +1,34 @@
+{% assign parts = link | split: '/' %}
+
+{% if link contains '/collections/' %}
+    {% assign object = collections[parts[2]] %}
+{% elsif link contains '/blogs/' %}
+    {% assign handle = parts[3] | prepend: '/' | prepend: parts[2] %}
+    {% assign object = articles[handle] %}
+{% endif %}
+
+{% if object %}
+    {% if image %}
+        {% assign image_url = image | img_url: '492x732' %}
+    {% else %}
+        {% assign image_url = object.image | img_url: '492x732' %}
+    {% endif %}
+
+    <div class="featured-row__item {% if mobile %}featured-row__item--show-for-mobile{% endif %}">
+        <a href="{{ object.url }}">
+            <div
+                    class="featured-row__item__image {% if mobile_image %}featured-row__item__image--hide-for-mobile{% endif %}"
+                    style="background-image: url({{ image_url }})"
+            >
+                <span class="featured-row__item__title">{{ title | default: object.title }}</span>
+
+                {% if mobile_image %}
+                    <div
+                        class="featured-row__item__image featured-row__item__image--show-for-mobile"
+                        style="background-image: url({{ mobile_image |  img_url: '560x370' }})"
+                    ></div>
+                {% endif %}
+            </div>
+        </a>
+    </div>
+{% endif %}

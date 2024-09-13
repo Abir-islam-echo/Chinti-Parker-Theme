@@ -1,0 +1,122 @@
+wishlist-link .wk-button {
+  --icon-size: 19px;
+  --icon-stroke: black;
+  --icon-stroke-width: 1.4px;
+
+  height: 27px;
+  gap: 7px;
+}
+
+wishlist-link .wk-selected {
+  --icon-fill: transparent;
+}
+
+.meganav--mobile wishlist-link .wk-button {
+  --icon-size: 26px;
+  --icon-stroke-width: 1.75px;
+
+  height: auto;
+}
+
+wishlist-button .wk-floating {
+  z-index: 1;
+}
+
+wishlist-button .wk-button,
+wishlist-button .wk-floating .wk-button {
+  --icon-size: 18px;
+  --icon-stroke: black;
+}
+
+wishlist-button .wk-button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+wishlist-button .wk-button:hover,
+wishlist-button .wk-button:active,
+wishlist-button .wk-button:focus {
+  border: none;
+  color: black;
+}
+
+wishlist-product-card .wk-image {
+  aspect-ratio: 2 / 3;
+}
+
+wishlist-product-card .wk-submit-button {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: Circular Std Book,helvetica,arial,sans-serif;
+  font-size: .6875rem;
+  letter-spacing: .1em;
+}
+
+wishlist-product-card .wk-meta {
+  flex-direction: row;
+  gap: 5px;
+  color: #333;
+  font-family: Circular Std Book,helvetica,arial,sans-serif;
+  font-weight: 400;
+  font-size: .875rem;
+}
+
+wishlist-product-card .wk-product-title {
+  font-size: .875rem;
+}
+
+wishlist-product-card .wk-vendor {}
+
+wishlist-product-card .wk-price {
+  font-size: .875rem;
+}
+
+wishlist-page .wk-page {}
+
+wishlist-page .wk-title {
+  margin: 1em 0; 
+}
+
+wishlist-page .wk-grid {
+  --columns: 1;
+}
+
+wishlist-page .wk-controls .wk-button {
+  font-size: 12px;
+}
+
+@media (min-width: 400px) {
+  wishlist-page .wk-grid {
+    --columns: 2;
+  } 
+}
+
+@media (min-width: 700px) {
+  wishlist-page .wk-grid {
+    --columns: 3;
+  } 
+}
+
+@media (min-width: 900px) {
+  wishlist-page .wk-grid {
+    --columns: 4;
+  } 
+}
+
+wishlist-share .wk-button,
+wishlist-buy-all .wk-button {
+  --icon-size: 14px;
+  --icon-stroke-width: 1.25px;
+  --icon-stroke: none;
+  --icon-fill: rgb(114,114,114);
+
+  color: black;
+  background-color: rgba(0,0,0,0.1);
+  min-height: 30px;
+  padding: 0.25em 1em;
+}
+
+wishlist-share .wk-button:hover,
+wishlist-buy-all .wk-button:hover {
+  border: none;
+}

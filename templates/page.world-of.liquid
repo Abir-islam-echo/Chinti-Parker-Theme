@@ -1,0 +1,195 @@
+<div class="cms-about-template">
+
+{% comment %}
+Re-use the 'rte' class wherever you output content that was added by a merchant using
+the Rich Text Editor ( 'rte' stands for rich text editor ).
+Style all HTML elements in that content the same way across the board.
+Use the 'rte' class in your CSS to help maintain that consistency.
+Example: the h2 element should have the same size and color in:
+- product descriptions
+- collection descriptions
+- 'page' pages' content
+- blog post
+{% endcomment %}
+
+
+{% comment %}
+Include the section set for the page
+{% endcomment %}
+
+</div>
+
+<script src="https://www.junowebdesign.com/wp-content/themes/junowebdesign/js/isotope.min.js"></script>
+<script src="https://www.junowebdesign.com/wp-content/themes/junowebdesign/js/imagesloaded.pkgd.min.js"></script>
+
+<div id="worldOfContainer"></div>
+
+
+<style>
+ .grid-sizer {
+    width: 19.2%;
+    display: block !important;
+}
+
+#socials-news-lists {
+	min-height: 80vh;
+}
+
+.twitter-content {
+	padding: 70px 20px 30px;
+}
+
+
+#socials-news-lists {
+    opacity: 0;
+        -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+
+#socials-news-lists .item img {
+	display: block;
+	width: 100% !important;
+	height: auto;
+}
+
+#socials-news-lists .item {
+    margin-bottom: 1.1% !important;
+}
+
+#socials-news-lists .item {
+    float: left;
+    width: 19%;
+    margin-bottom: 1.25%;
+    position: relative;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.6em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+       -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+#socials-news-lists .item .item-hover {
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease;
+    -moz-transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease;
+}
+#socials-news-lists .item:hover  .item-hover {
+   opacity: 1;
+}
+
+.worldof-contents #world-of-filters {
+    display: inline-block;
+}
+
+.worldof-contents nav li {
+    float: left;
+    margin: 0 10px;
+}
+.worldof-contents nav a {
+    font-size: 13px;
+    font-weight: 400;
+    color: #666;
+    text-transform: uppercase;
+}
+.worldof-contents nav a.active {
+    color: #e38122;
+    }
+
+@media (max-width:768px) {
+#socials-news-lists .grid-sizer, .worldof-contents .item {
+    width: 100% !important;
+}
+}
+
+
+
+</style>
+
+<script>
+
+jQuery(function() {
+
+  
+  
+  jQuery.ajaxSetup({
+    type: "GET",
+    xhrFields: {
+       withCredentials: true
+    },
+    crossDomain: true
+});
+  
+  jQuery( "#worldOfContainer" ).load( "https://www.junowebdesign.com/world-of/ .entry-content", function() {
+    var $container = jQuery('#socials-news-lists').isotope();
+
+            
+           $container.imagesLoaded(function(){
+            worldOfLayout();
+        $container.css('opacity',1);
+            $container.isotope({ filter: '*' });
+            
+});
+   
+
+            // bind filter button click
+            jQuery("#world-of-filters").on( "click", "a", function() {
+                var filterValue = jQuery( this ).attr("data-filter");
+                    $container.isotope({ filter: filterValue });
+                return false;
+            });
+
+            // change is-checked class on buttons
+            jQuery("#world-of-filters").each( function( i, buttonGroup ) {
+                var $buttonGroup = jQuery( buttonGroup );
+                $buttonGroup.on( "click", "a", function() {
+                    $buttonGroup.find(".active").removeClass("active");
+                    jQuery( this ).addClass("active");
+                    return false;
+                });
+            });
+
+      
+
+        
+
+	});
+
+
+
+function worldOfLayout() {
+       var $isotope_container = jQuery('.isotope');
+        $isotope_container.isotope({
+           // update columnWidth to a percentage of container width
+            masonry: { columnWidth: $isotope_container.width() / 5 }
+       
+        });
+}
+   jQuery( window ).resize(function() { 
+worldOfLayout();
+
+
+});
+   });
+  
+  
+  
+ 
+  
+  
+</script>
+
+
+{% include 'gtm-page' %}

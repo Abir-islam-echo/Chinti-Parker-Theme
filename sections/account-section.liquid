@@ -1,0 +1,53 @@
+{% for block in section.blocks %}
+     {% if block.settings.image %}
+          <picture>
+			<source
+                    media="(min-width: 1024px)"
+                    srcset="{{ block.settings.image | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.image | img_url: 'master' }}"
+               >
+			{% if block.settings.mobile_image %}
+                    <source
+                         srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                         data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                    >
+               {% endif %}
+			<img
+                    src="{{ block.settings.image | img_url: '100x' }}"
+                    data-src="{{ block.settings.image | img_url: 'master' }}"
+                    alt=""
+                    class="lazyload"
+               />
+		</picture>
+     {% else %}
+          <div class="placeholder-background">
+              {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+     {% endif %}
+{% endfor %}
+
+{% schema %}
+     {
+          "name": "Background",
+          "class": "col-img",
+          "max_blocks": 1,
+          "blocks": [
+          {
+               "type": "background",
+               "name": "Banner",
+               "settings": [
+                    {
+                         "type": "image_picker",
+                         "id": "image",
+                         "label": "Image"
+                    },
+                    {
+                         "type": "image_picker",
+                         "id": "mobile_image",
+                         "label": "Mobile Image"
+                    }
+               ]
+          }]
+     }
+{% endschema %}

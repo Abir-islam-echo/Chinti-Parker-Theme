@@ -1,0 +1,84 @@
+.kuFilterBox[data-filter="item"] {
+  display: none;
+}
+body .klevuResultsBlock .klevuQuickSearchResults img {
+  object-fit: cover;
+  object-position: top;
+}
+.search-container
+  .menu-section.level-1
+  #klevuSearchingArea
+  div[data-container-id="ku_quick_main_container"]
+  header {
+  flex: 1;
+}
+.search-container
+  .menu-section.level-1
+  #klevuSearchingArea
+  div[data-container-id="ku_quick_main_container"]
+  div[data-content="productList"] {
+  flex: 1;
+}
+.kuFilterBox.klevuFilter[data-filter="klevu_price"] {
+  display: none;
+}
+#new-search-container.search-container
+  .results-wrapper.mobile-results
+  .kuQuickSearchNoRecordFound
+  .kuDividerLine {
+  display: none;
+}
+#new-search-container.search-container
+  .results-wrapper.mobile-results
+  .kuQuickSearchNoRecordFound {
+  background: transparent;
+}
+
+@media only screen and (max-width: 1023px) {
+  #new-search-container .search-footer .section.help-block {
+    padding: 1.75rem 1.313rem 2.125rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #new-search-container.search-container
+    .results-wrapper
+    .mobile-wrapper
+    .section.help-block {
+    padding: 1.75rem 1.25rem 2.125rem;
+  }
+  #new-search-container.search-container
+    .results-wrapper.mobile-results
+    .klevuAutoSuggestionsWrap {
+    padding: 5px 5px 5px 1rem;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1500px) {
+  body .klevuResultsBlock .klevuQuickSearchResults img {
+    object-fit: cover;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+  body .klevuResultsBlock .klevuQuickSearchResults img {
+    object-fit: cover;
+  }
+}
+@media only screen and (min-width: 530px) and (max-width: 767px) {
+  body
+    .search-container
+    .klevuResultsBlock
+    .klevuQuickSearchResults
+    .klevuProductItemTop {
+    width: 18% !important;
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 1023px) {
+  body .product-grid .product-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+  }
+  body .product-grid .product-price {
+    padding-left: 0;
+    padding-top: 10px;
+  }
+}

@@ -1,0 +1,471 @@
+<section class="blogs-details-content">
+  <div class="el-container">
+    <div
+      class="blogs-details-content-wrapper {{ section.settings.grid-swap }}"
+    >
+      <div class="text-content-wrapper">
+        <aside>
+          {% if section.settings['grid-title'] != blank %}
+            <h2 style=" font-size: {{ section.settings.grid-title-font-size }}px;color: {{ section.settings.grid-title-color }} !important;margin-bottom:{{ section.settings.title-margin-bottom }}px;">
+              {{ section.settings['grid-title'] }}
+            </h2>
+          {% endif %}
+          {{ section.settings['grid-content'] }}
+          {% if section.settings['add-button'] %}
+            <div class="button-wrapper">
+              <a
+                href="{{ section.settings.button-link }}"
+                {% if template.suffix == 'refer-a-friend' %}
+                  data-lion-refer
+                {% endif %}
+              >
+                {{- section.settings['button-text'] -}}
+              </a>
+            </div>
+          {% endif %}
+        </aside>
+      </div>
+      <figure class="special">
+        <img src="{{ section.settings.grid-image-picker | img_url : '900x' }}">
+        {% if section.settings['image-caption'] != blank %}
+          <figcaption>{{ section.settings['image-caption'] }}</figcaption>
+        {% endif %}
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+        #loyaltylion .lion-referral-widget .lion-action-button{
+          transition: all .25s;
+          background-color: #000000;
+          color: #ffffff;
+          position: relative;
+          width: 90px;
+        }
+    #loyaltylion .lion-referral-widget .lion-action-button:after {
+      content: '»';
+      position: absolute;
+      opacity: 0;
+      right: -20px;
+      transition: 0.5s;
+      color:#ffffff;
+    }
+
+    #loyaltylion .lion-referral-widget .lion-action-button:hover{
+      padding-top: 10px;
+      padding-bottom:10px;
+      line-height: noremal;
+    /* letter-spacing: unset; */
+      font-size:1.2rem;
+      padding-right: 27px;
+      padding-left: 17px;
+    }
+
+    #loyaltylion .lion-referral-widget .lion-action-button:hover:after {
+      opacity: 1;
+      right: 5px;
+    }
+            #refer-a-friend .lion-referral-widget-modal{
+              background-image: url("{{ section.settings.content-background-image | image_url }}");
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position-x: right;
+              background-position-y: top;
+              overflow:hidden;
+          }
+          #loyaltylion .lion-referral-widget-main__share-link-url {
+          padding: 10px 20px;
+          border: 1px solid #c6c6c6;
+        }
+        #loyaltylion .lion-copy-to-clipboard-button::after{
+          width: 18px;
+          height: 20px
+        }
+          .lion-referral-widget-modal .lion-copy-to-clipboard-button{
+            margin: 0;
+          }
+            }
+            #el-blog-template .el-container,#el-blog-template .productCarousel-new{
+                max-width:1024px;
+                padding: 0 20px;
+                margin:0 auto;
+              }
+             #el-blog-template .productCarousel-new{
+               padding-top: 70px;
+             }
+             .blogs-details-content .grid-left{
+               flex-direction:row ;
+             }
+             .blogs-details-content .grid-right{
+               flex-direction:row-reverse ;
+             }
+             .blogs-details-content {
+               font-size: 18px;
+               line-height: 34px;
+               margin-bottom: 55px;
+             }
+             .blogs-details-content aside *, .blogs-details-content .special figcaption {
+               color: {{ section.settings.text-color }} !important;
+             }
+
+             .blogs-details-content p {
+               margin-bottom: 10px;
+             }
+
+             .blogs-details-content a {
+               color: {{ section.settings.text-color }} !important;
+             }
+
+             .blogs-details-content a:hover {
+               color: #444;
+             }
+
+             .blogs-details-content-wrapper {
+               display: flex;
+               justify-content: center;
+             }
+             .blogs-details-content-wrapper .text-content-wrapper {
+               width: calc(100% - {{ section.settings.image-width }}%);
+               display: flex;
+               justify-content: center;
+               align-items:{{ section.settings.content-alignment }};
+               background-image: url("{{ section.settings.content-background-image | image_url }}");
+               background-size: cover;
+              background-repeat: no-repeat;
+              background-position-x: right;
+              background-position-y: top;
+             }
+            .blogs-details-content-wrapper .text-content-wrapper .button-wrapper{
+              padding-top: 20px;
+            }
+            .blogs-details-content-wrapper .text-content-wrapper .button-wrapper a{
+              background-color: {{ section.settings.button-color }};
+              color: {{ section.settings.button-text-color }} !important;
+              padding: 10px 30px;
+              display: inline-block;
+              border-radius: 8px;
+              /* width: 100%; */
+              box-sizing: border-box;
+              font-weight: 400;
+              font-size: 1.4rem;
+              text-align: center;
+              width: {{ section.settings.button-width }};
+            }
+             .blogs-details-content-wrapper.grid-right .text-content-wrapper {
+               padding-left: 55px;
+             }
+             .blogs-details-content-wrapper.grid-left .text-content-wrapper {
+               padding-right: 55px;
+             }
+             .blogs-details-content-wrapper p, .blogs-details-content-wrapper p *{
+               font-size:20px;
+             }
+
+
+             .blogs-details-content-wrapper figure {
+               display: flex;
+               flex-direction: column;
+               margin: 0;
+               /* flex: 1; */
+               width: {{ section.settings.image-width }}%;
+             }
+
+             .blogs-details-content figcaption {
+               color: black;
+               font-size: 18px;
+             }
+
+             .blogs-details-content .special figcaption {
+               font-size: 18px;
+             }
+
+             .blogs-details-content-wrapper aside {
+               /* flex: 1; */
+               text-align: {{ section.settings.content-horizontal-alignment }};
+             }
+
+             .blogs-details-content img {
+               width: 100%;
+               height: 100%;
+             }
+             #el-blog-template em{
+               padding:0px;
+             }
+             #el-blog-template .custom-content-01 .rte-setting{
+                 margin-top:10px;
+             }
+
+             /* BreakPoint */
+  @media screen and (max-width: 450px){
+    #loyaltylion .lion-referral-widget-needs-auth__button-spacer{
+      margin: 0 5px;
+      font-size: 1em;
+    }
+    #loyaltylion .lion-referral-widget .lion-action-button{
+      font-size:1rem !important;
+    }
+  }
+  @media screen and (min-width: 531px){
+    #loyaltylion .lion-referral-widget--guest{
+    min-width: 330px
+    }
+  }
+             @media screen and (max-width: 768px) {
+                 .blogs-details-content-wrapper .text-content-wrapper .button-wrapper a{
+                   width:100%;
+                 }
+               .blogs-details-content-wrapper figure{
+                 width: 100%;
+               }
+               .blogs-details-content-wrapper .text-content-wrapper{
+                 width: 100%;
+                 padding: 40px 20px !important;
+               }
+
+               #el-blog-template .blogs-details-content h2 {
+                 font-size: 20px !important;
+                 margin-bottom:0px !important;
+               }
+               #el-blog-template .custom__item-inner h4 {
+                 font-size: 20px !important;
+               }
+               #el-blog-template .productCarousel-new h2{
+                 font-size:25px !important;
+               }
+               #el-blog-template .productCarousel-new {
+                 padding-top: 40px;
+                 padding-left: 50px;
+                 padding-right: 50px;
+               }
+               .blogs-details-content {
+                 margin-bottom: 10px;
+               }
+               .blogs-details-content-wrapper p{
+                 font-size:16px;
+                 margin-top:10px;
+               }
+               .blogs-details-content-wrapper p *{
+                 font-size:16px;
+               }
+               .rte-setting.text-content * {
+                 font-size: 16px !important;
+               }
+
+               .blogs-details-content-wrapper {
+                 flex-direction: column !important;
+                 justify-content: center;
+                 /* gap: 10px; */
+               }
+
+               .blogs-details-content-wrapper figure {
+                 order: -1;
+               }
+             }
+</style>
+{% schema %}
+{
+  "name": "Blog  - Two grid",
+  "settings": [
+     {
+          "type":"text",
+          "id":"grid-title",
+          "label":"Heading Title"
+        },
+        {
+          "type":"number",
+          "id":"grid-title-font-size",
+          "label":"Heading Title Font Size",
+          "default": 35
+        },
+        {
+          "type":"number",
+          "id":"title-margin-bottom",
+          "label":"Heading Title Margin Bottom",
+          "default": 20
+        },
+        {
+          "type":"color",
+          "id":"grid-title-color",
+          "label":"Heading Title Color"
+        },
+        {
+          "type":"image_picker",
+          "id":"content-background-image",
+          "label":"Content Background Image"
+        },
+          {
+            "type": "checkbox",
+            "id": "add-button",
+            "label": "Add Button",
+            "default": false
+          },
+    {
+          "type":"text",
+          "id":"button-text",
+          "label":"Button Text",
+          "default": "Type something"
+        },
+             {
+          "type":"color",
+          "id":"button-color",
+          "label":"Button Background",
+          "default": "#000000"
+        },
+            {
+          "type":"color",
+          "id":"button-text-color",
+          "label":"Button Text Color",
+              "default": "#ffffff"
+        },
+        {
+      "type": "url",
+      "id": "button-link",
+      "label": "Button link"
+    },
+    {
+        "type": "select",
+        "id": "button-width",
+        "label": "Button Width",
+        "options": [
+          {
+            "value": "fit-content",
+            "label": "Content"
+          },
+          {
+            "value": "50%",
+            "label": "Half"
+          },
+          {
+            "value": "100%",
+            "label": "Full"
+          }
+        ],
+        "default": "fit-content"
+      },
+
+        {
+          "type":"select",
+          "id":"content-alignment",
+          "label":"Content Alignment",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "flex-start"
+
+        },
+            {
+          "type":"select",
+          "id":"content-horizontal-alignment",
+          "label":"Content Horizontal Alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Left"
+            }
+          ],
+          "default": "start"
+
+        },
+        {
+          "type":"richtext",
+          "id":"grid-content",
+          "label":"Content"
+        },
+         {
+          "type":"color",
+          "id":"text-color",
+          "label":"content color"
+        },
+        {
+          "type":"image_picker",
+          "id":"grid-image-picker",
+          "label":"Image"
+        },
+        {
+          "type": "range",
+          "id": "image-width",
+          "min": 20,
+          "max": 100,
+          "step": 10,
+          "unit": "%",
+          "label": "Image width",
+          "default": 50
+        },
+        {
+          "type":"text",
+          "id":"image-caption",
+          "label":"Image Caption"
+        },
+        {
+          "type":"select",
+          "id":"grid-swap",
+          "label":"Grid Swap",
+          "options": [
+            {
+              "value": "grid-left",
+              "label": "left"
+            },
+            {
+              "value": "grid-right",
+              "label": "right"
+            }
+          ],
+          "default": "grid-left"
+
+        }
+  ],
+  "presets": [
+    {
+      "name": "Blog  - Two grid",
+      "category": "content"
+    }
+]
+}
+{% endschema %}
+
+<script>
+    function waitForElem(waitFor, callback, minElements = 1, isVariable = false, timer = 10000, frequency = 25) {
+    let elements = isVariable ? window[waitFor] : document.querySelectorAll(waitFor);
+    if (timer <= 0) return;
+    (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== "undefined") ? callback(elements) : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
+  }
+    waitForElem("#refer-a-friend #loyaltylion [data-i18n-key='ui.referral_popup.intro_with_offer']",([element])=>{
+      const afterMutation = (element) => {
+        element.innerHTML = `Give a friend 20% off their first purchase and get 20% off voucher`
+      }
+      afterMutation(element);
+      // Select the node that will be observed for mutations
+      const targetNode = document.querySelector("#loyaltylion");
+      const config = { attributes: false, childList: true, subtree: true };
+      const callback = (mutationList, observer) => {
+        observer.disconnect();
+        waitForElem("#refer-a-friend #loyaltylion [data-i18n-key='ui.referral_popup.intro_with_offer']",([element])=>{
+          afterMutation(element);
+        })
+        observer.observe(targetNode, config);
+      };
+      const observer = new MutationObserver(callback);
+      observer.observe(targetNode, config);
+
+    })
+</script>

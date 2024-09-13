@@ -1,0 +1,45 @@
+
+  {% for block in section.blocks %}
+ 
+    {% case block.type %}
+      {% when 'text' %}
+      {% include 'cms_banner-newsletter-text' %}
+    {% endcase %}
+ 
+  {% endfor %}
+
+
+
+
+{% schema %}
+	{
+		"blocks": [			
+			{
+		        "type": "text",
+		        "name": "Sign up text",
+		        "settings": [
+		          {
+		            "type": "text",
+		            "id": "header",
+		            "label": "Heading"
+		          },
+		            {
+		            "type": "text",
+		            "id": "introduction",
+		            "label": "Introduction"
+		          }
+		        
+		        ]
+			}
+			
+		
+		
+			
+		
+		
+		
+		
+		
+		]
+	}
+{% endschema %}

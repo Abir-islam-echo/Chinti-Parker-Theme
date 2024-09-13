@@ -1,0 +1,56 @@
+<div id="mastHeadTop">
+	<div class="wrapper">
+	    <div class="row">
+	    	<div class="col-wide-9">
+	    		{%- assign header_toplinks = section.settings.header_toplinks -%}
+				{% if linklists[header_toplinks].links.size > 0 %}
+				<ul class="top-links">
+					{% for link in linklists[header_toplinks].links %}
+					<li>
+						<a href="{{ link.url }}">{{ link.title }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+	    	</div>
+	    	<div class="col-wide-3">		    		
+	    		{% if shop.customer_accounts_enabled %}
+				<div class="customer">
+					<a class="account" href="/account">Account</a>
+					<div class="dropdown">
+						<div class="content">
+							<h6>Account</h6>
+							<ul>
+							{% if customer %}
+								<li><a href="/account">Account</a></li> 
+								<li>{{ 'Sign Out' | customer_logout_link }}</li> 
+							{% else %} 
+								<li>{{ 'Login' | customer_login_link }}</li> 
+								{% if shop.customer_accounts_optional %} 
+								<li>{{ 'Register' | customer_register_link }}</li> 
+								{% endif %} 
+							{% endif %}
+		          			</ul>	
+	          			</div>
+					</div>
+	          	</div>
+	        	{% endif %}
+	        	<a class="phone" href="tel:0115 941 8122">0115 941 8122</a>
+	    	</div>
+	    </div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "header_toplinks",
+        "label": "Top Links",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}

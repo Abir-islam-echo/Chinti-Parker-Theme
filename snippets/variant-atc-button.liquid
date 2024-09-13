@@ -1,0 +1,480 @@
+{% assign add_to_cart = 'Add to Bag' %}
+{% assign adding_to_cart = 'Adding' %}
+{% assign added_to_cart = 'Added' %}
+{% assign go_to_checkout = 'Go to Checkout' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+{% assign styledWidthProductCount = 0 %}
+
+{%- capture back_in_stock_form -%}
+		{%- render 'back-in-stock-form' | product: product -%}
+{%- endcapture -%}
+
+{% assign shouldShowSizeGuide = 'true' %}
+{% assign thisFit = '' %}
+{% assign thisOverlayTag = '' %}
+
+{% for tag in product.tags %}
+  {% if tag == 'no-size-guide' %}
+    {% assign shouldShowSizeGuide = 'false' %}
+  {% endif %}
+
+  {% if tag contains 'fit-' %}
+    {% assign thisFit = tag | replace: 'fit-', '' %}
+  {% endif %}
+
+  {% if tag contains 'tag-' %}
+    {% assign thisOverlayTag = tag | replace: 'tag-', '' | capitalize %}
+  {% endif %}
+
+  {%- assign giftable = false -%}
+
+  {%- if product.tags contains 'giftable' -%}
+    {%- assign thisOverlayTag = 'gift_me.gift_me' | t -%}
+  {%- endif -%}
+
+  {%- if settings.gift_me_enabled -%}
+    {%- assign giftable = true -%}
+  {%- endif -%}
+
+  {% if tag contains 'staff_price:' and customer.tags contains 'Staff' %}
+    {% assign staff_price = tag | remove: 'staff_price:' | times: 1 %}
+  {% endif %}
+{% endfor %}
+
+<form
+  id="AddToCartForm"
+  action="/cart/add"
+  method="post"
+  enctype="multipart/form-data"
+  data-product='
+    {
+    	"name": {{ product.title | json }},
+    	"brand": {{ product.vendor | json }},
+    	"category": {{ product.type | json }}
+    }
+  '
+>
+  <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
+  <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
+  <input type="hidden" name="properties[_MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+  <div class="variants-add" id="variants-add-wrapper">
+    {% assign hide_default_title = false %}
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      {% assign hide_default_title = true %}
+    {% endif %}
+
+    {% assign show_variants = 'hidden' %}
+    {% if product.available %}
+      {% assign show_variants = '' %}
+    {% endif %}
+    {% comment %}
+      see if there are any variant colour products:
+      get all collections for this product, search those collections for any products that match before the comma
+      jacket - red | jacket - blue | jacket - yellow should all be related
+    {% endcomment %}
+    {% assign productRootName = product.title | replace: '  ', ' ' %}
+    {% assign productRootHandle = product.handle %}
+
+    {% assign markupToOutput = '' %}
+    {% assign FoundAVariant = 'false' %}
+    {% assign handlesFound = '' %}
+
+    {% assign productRootSplit = productRootName | split: ' ' %}
+
+    {% assign productColour = productRootSplit | first %}
+
+    {% assign productRootName = product.title | replace: '  ', ' ' | replace: productColour, '' | strip %}
+
+    {% for collection in product.collections %}
+      {% for innerProduct in collection.products %}
+        {% assign innerProductTitleColour = innerProduct.title | split: ' ' | first %}
+        {% assign innerProductTitleNoColour = innerProduct.title
+          | replace: '  ', ' '
+          | replace: innerProductTitleColour, ''
+          | strip
+        %}
+        {% if innerProductTitleNoColour == productRootName %}
+          {% if innerProduct.handle != productRootHandle %}
+            {% if innerProduct.handle != innerProductHandle %}
+              {% assign foundImage = 'false' %}
+              {% assign FoundAVariant = 'true' %}
+
+              {% unless handlesFound contains innerProduct.handle %}
+                {% assign markupToOutput = markupToOutput
+                  | append: '<li><a  class="image" href="/products/'
+                  | append: innerProduct.handle
+                  | append: '">'
+                  | append: '<span class="tooltip" style="display:none">'
+                  | append: innerProductTitleColour
+                  | append: '</span>'
+                %}
+
+                {% assign thisHex = 'ededed' %}
+                {% if innerProduct.metafields['c-p'].swatch %}
+                  {% assign thisHex = innerProduct.metafields['c-p'].swatch %}
+                {% endif %}
+
+                {% assign markupToOutput = markupToOutput
+                  | append: '<span class="swatchBlock" style="background-color: #'
+                  | append: thisHex
+                  | append: '"></span></a></li>'
+                %}
+              {% endunless %}
+
+              {% assign innerProductHandle = innerProduct.handle %}
+
+              {% assign handlesFound = handlesFound | append: ',' | append: innerProduct.handle %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    {% unless product.handle == 'gift-card' %}
+      {% if FoundAVariant == 'true' %}
+        <div class="selector colour-selector {% unless product.available %}out-of-stock{% endunless %}">
+          <div class="colour">
+            {% assign thisHex = 'ededed' %}
+            {% if product.metafields['c-p'].swatch %}
+              {% assign thisHex = product.metafields['c-p'].swatch %}
+            {% endif %}
+            <label
+              ><span>Select </span>Colour
+              <span class="image">
+                <span class="swatchBlock" style="background-color: #{{thisHex}}"></span>
+              </span>
+            </label>
+            <ul id="colourSwatches">
+              <li class="select" data-size="">
+                <span class="name">Select Colour</span>
+                <a class="close-size" href="#"><i class="fal fa-times"></i></a>
+              </li>
+
+              <li class="active">
+                <span class="image">
+                  <span class="swatchBlock" style="background-color: #{{thisHex}}"></span>
+                </span>
+              </li>
+
+              {{ markupToOutput }}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+    {% endunless %}
+
+    <div id="product-variants" class="{% if hide_default_title %}hidden{% endif %} {{show_variants}}">
+      {% comment %}
+        {% if pages[chart].handle != '' %}
+        	{% if product.options contains 'size' or product.options contains 'option' %}
+
+        	{% endif %}
+        {% endif %}
+      {% endcomment %}
+
+      {% comment %}
+        <!--
+        {% for option in product.options %}
+        	{% if option == "Colour" or option == "Color" %}
+        	<div class="selector">
+        		<div class="colour">
+        			<label>Colour</label>
+        			<ul class="product-option-colour">
+        				{% assign VariantTitle = '' %}
+        				{% assign userVariantColours = '' %}
+        				{% for variant in product.variants %}
+        				{% include 'bold-variant' with variant, hide_action: 'skip'  %}
+        				{% assign imageAlt = variant.image.alt | downcase | strip %}
+        				{% assign variantTitle = variant.title | split: '/' %}
+        					{% assign variantColor = variantTitle[0] | strip %}
+        						{% if variant.available %}
+        							{% if variantColor != VariantTitle  %}
+        								<li data-colour="{{ variantColor | strip | replace: ' ', '-' }}">
+        								{% if imageAlt == 'colour'  %}
+        									<span class="image"><img src="{{variant.image.src | img_url: '20x20', crop: 'center'}}" alt=""></span>
+        								{% endif %}
+        								<span class="name">{{ variantColor }}</span>
+        								</li>
+        								{% assign userVariantColours = userVariantColours | append: ',' | append: variantColor %}
+        							{% endif %}
+        							{% assign VariantTitle = variantColor %}
+        						{% comment %} {% else %}
+        						{% unless userVariantColours contains variantColor %}
+        							<li class="hidden">{{variantColor}}</li>
+        							{% assign userVariantColours = userVariantColours | append: ',' | append: variantColor %}
+        							{% endunless %} {% endcomment %}
+        						{% endif %}
+        					{% endfor %}
+        			</ul>
+        		</div>
+        	</div>
+
+        	<script>
+        	jQuery(document).ready(function() {
+        		jQuery('.product-option-colour li').click(function(e) {
+        			e.preventDefault();
+        			var variantColour = jQuery(this).data('colour');
+        			jQuery(this).addClass('active').parent().find('li').not(this).removeClass('active');
+        			jQuery('.product-photo-container .item a').removeClass('active')
+        			jQuery('.product-photo-container .item').find('a.' + variantColour).addClass('active');
+        			jQuery('.product-option-size').slideUp(200).removeClass('hidden').find('li').removeClass('active');
+        			jQuery('.product-option-size').find('li.' + variantColour).addClass('active');
+        			jQuery('.size label').text(jQuery('.product-option-size li.select .name').text());
+        			jQuery('#product-select-option-0').val(variantColour.replace('-', ' ')).trigger('change');
+        			jQuery('#product-select-option-1').val("").trigger('change');
+        		});
+        	});
+        	</script>
+        	{% endif %}
+        {% endfor %} /-->
+      {% endcomment %}
+
+      {% for option in product.options %}
+        {% if option == 'Size' %}
+          {% if shouldShowSizeGuide == 'true' %}
+            {% if product.variants.size > 1 %}
+              <span class="size-guide__notice">{{ 'products.product.size_guide_notice' | t }}</span>
+              <a
+                href="#"
+                class="size-guide"
+                data-featherlight="#sizeGuideModal"
+                data-featherlight-variant="sizeGuideFeatherLight"
+                >Size Guide</a
+              >
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        {% assign selectClass = '' %}
+        {% if product.variants.size < 2 %}
+          {% assign selectClass = ' hidden' %}
+        {% endif %}
+
+        <div class="selector size-selector {{selectClass}} {% if FoundAVariant != 'true' %}no-colour{%endif%}" data-wair-option-name="{{ option }}">
+          <div class="size">
+            <label data-size="">
+              <span>Select </span>{{ option }}
+              <span class="default">Please Select</span>
+            </label>
+            <ul class="product-option-size{% if product.options.size > 1 %} hidden{% endif %}">
+              <li class="select" data-size="">
+                <span class="name">Select {{ option }}</span>
+                <a class="close-size" href="#"><i class="fal fa-times"></i></a>
+              </li>
+              {% for variant in product.variants %}
+                {% if product.options.size == 1 %}
+                  <li
+                    class="{{ variant.title }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' %} out-of-stock{% endif %} active"
+                    data-size="{{ variant.title }}"
+                    data-wair-option-value="{{ variant.title }}"
+                    data-id="{{ variant.id }}"
+                  >
+                    <span class="name">{{ variant.title }}</span>
+                  </li>
+                {% else %}
+                  {% assign variantTitle = variant.title | split: '/' %}
+                  {% assign variantSize = variantTitle[1] | strip | replace: ' ', '-' %}
+                  {% assign variantColor = variantTitle[0] | strip | replace: ' ', '-' %}
+                  <li
+                    class="{{ variantColor }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' %} out-of-stock{% endif %}"
+                    data-size="{{ variantSize }}"
+                    data-id="{{ variant.id }}"
+                  >
+                    <span class="name">{{ variantSize }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          
+          <p class="error size-error">Please select a size</p>
+        </div>
+
+        <script>
+                                          const pr = {{ product.variants | json }};
+                                          const prp = {{ product.options | json }};
+                                          //console.log(pr,'pr');
+                                          //console.log(prp,'prp');
+          								jQuery(document).ready(function() {
+          									jQuery('.variants-add .colour label').click(function(e) {
+          										if(jQuery(this).hasClass('active')){
+          											jQuery('.variants-add').removeClass('active');
+          										}else{
+          											jQuery('.variants-add').addClass('active');
+          										}
+          										jQuery(this).toggleClass('active').next().slideToggle(200);
+          										jQuery('#product-variants .size label').removeClass('active').next().slideUp(200);
+          									});
+          									jQuery('.variants-add .colour li.select').click(function(e) {
+          										e.preventDefault();
+          										jQuery(this).parent().prev().removeClass('active').next().slideUp(200);
+          										jQuery('.variants-add').removeClass('active');
+          										return;
+          									});
+          									jQuery('#product-variants .size label:not(.shop-the-look-modal-content #product-variants .size label)').click(function(e) {
+          										e.preventDefault();
+          										jQuery('.variants-add .colour label').removeClass('active').next().slideUp(200);
+          										if(jQuery(this).next().hasClass('hidden')){
+          											return;
+          										}else{
+          											if(jQuery(this).hasClass('active')){
+          												jQuery('.variants-add').removeClass('active');
+          											}else{
+          												jQuery('.variants-add').addClass('active');
+          											}
+          											jQuery(this).toggleClass('active').next().slideToggle(200);
+          										}
+          									});
+          									jQuery('#product-variants .product-option-size li').click(function(e) {
+          										e.preventDefault();
+          										if(jQuery(this).hasClass('select')){
+          											e.preventDefault();
+          											jQuery(this).parent().prev().removeClass('active').next().slideUp(200);
+          											jQuery('.variants-add').removeClass('active');
+          											return;
+          										}
+          										if(jQuery(this).hasClass('out-of-stock')){
+          											var variantID = jQuery(this).attr('data-id');
+          										  jQuery(".back-in-stock").removeClass('u-hide');
+          											jQuery("#AddToCart").addClass('u-hide');
+          											jQuery('[data-back-in-stock-variant]').val(variantID);
+          										}
+          										else {
+          											$(".back-in-stock").addClass('u-hide');
+          											$("#AddToCart").removeClass('u-hide');
+          										}
+          										jQuery('#product-variants .product-option-size li').not(this).removeClass('selected');
+          										var variantSize = jQuery(this).attr('data-size');
+          										jQuery(this).parent().slideToggle(200).prev().text(variantSize).toggleClass('active').data('size', variantSize);
+          										jQuery('.variants-add').removeClass('active');
+          										  if(variantSize != ''){
+          											  jQuery('.size-error').hide();
+          												jQuery(this).addClass('selected').parent().prev().addClass('selected');
+          											}else{
+          												jQuery(this).removeClass('selected').parent().prev().removeClass('selected');
+          											}
+          											{% if product.options.size == 1 %}
+          											  jQuery('#product-select-option-0').val(variantSize.replace('-', ' ')).trigger('change');
+          											{% else %}
+          											  jQuery('#product-select-option-1').val(variantSize.replace('-', ' ')).trigger('change');
+          											{% endif %}
+
+          									});
+          									jQuery('#ValidAddtoCart').click(function() {
+          										var variantSize = jQuery('.size label:not(.shop-the-look-modal-wrapper .size label)').data('size');
+          										if(variantSize == ''){
+          											jQuery('.size-error').fadeIn();
+          										}else{
+          											jQuery('.size-error').fadeOut();
+          											jQuery('#AddToCart').click();
+          										}
+          										jQuery('.product-option-size').hide();
+          											jQuery('#product-variants .size label').removeClass('active');
+          									});
+
+
+          {% if product.variants.size < 2 %}
+
+          jQuery('.product-option-size li.active').click();
+
+          {%endif%}
+
+          								});
+        </script>
+      {% endfor %}
+      {% comment %}
+        {% if product.options.size == 1 and product.options.first != 'Title' %}
+        <label>{{product.options.first}}</label>
+        {% endif %}
+      {% endcomment %}
+
+      <select id="product-select" name="id">
+        {% for variant in product.variants %}
+          <option
+            {% if variant == product.selected_or_first_available_variant %}
+              selected
+            {% endif %}
+            value="{{ variant.id }}"
+          >
+            {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <!-- WAIR PDP Placement Script -->
+    {% render 'wair' %}
+
+    <div id="product-add">
+      {% if product.available %}
+        {% comment %}
+          <div class="qty">
+          	<label for="quantity">Quantity</label>
+          	<input min="1" type="number" id="quantity" name="quantity" value="1" />
+          </div>
+        {% endcomment %}
+        <div
+          id="AddToCartWrapper"
+          {% if FoundAVariant != 'true' %}
+            class="no-colour"
+          {% endif %}
+        >
+          <button
+            type="submit"
+            name="add"
+            id="AddToCart"
+            class="btn button"
+            onclick="
+              dataLayer.push({ 'ecommerce': null });dataLayer.push({
+              'event': 'add_to_cart',
+              'ecommerce': {
+                  'currency': '{{ shop.currency }}',
+                  'value': '{{ product.price | times: 0.01}}',
+                  'items': [{
+                  'item_id': '{{ product.id }}',
+                  'item_name': '{{ product.title | remove: "'" | remove: '"' }}',
+                  'item_brand': '{{ product.vendor | remove: "'" | remove: '"' }}',
+                  'item_category': '{{ product.collections[0].title | remove: "'" | remove: '"' }}',
+                  'item_variant': '{{ product.selected_variant.sku }}',
+                  'price': '{{ product.price  | times: 0.01}}'
+                  }]
+                }
+              });
+            "
+          >
+            <span id="AddToCartText">{{ add_to_cart | escape }}</span>
+            <span id="AddingToCartText">{{ adding_to_cart | escape }}</span>
+            <span id="AddedToCartText">{{ added_to_cart | escape }}</span>
+          </button>
+          <span id="ValidAddtoCart">ValidAddtoCart</span>
+        </div>
+        <a href="/cart" id="GoToCheckout" class="btn button button-second">{{ go_to_checkout | escape }}</a>
+
+        <a href="#" id="BackInStock" class="btn button back-in-stock u-hide" data-modal-trigger>
+          <span id="AddToCartText">{{ 'products.product.back_in_stock.email_me' | t }}</span>
+        </a>
+      {% else %}
+        <a href="#" id="BackInStock" class="btn button back-in-stock" data-modal-trigger>
+          <span id="AddToCartText">{{ 'products.product.back_in_stock.email_me' | t }}</span>
+        </a>
+      {% endif %}
+    </div>
+    <div id="ce-widget"></div>
+
+    <script>
+      (function (n,k,o){let w=window,d=document,s='script',i={key:k,opts:o},a='https://ceimpacts.com/widget.js';
+      w['CE-Widget']=n;w[n]=w[n]||function(){w[n].i=w[n].i??i;(w[n].q=w[n].q||[]).push(arguments)};
+      let j=d.createElement(s),p=d.getElementsByTagName(s)[0];j.id=n;j.src=a;j.async=1;p.parentNode.insertBefore(j,p);
+      }('_cew', '75131641db-a999fbcdfe'));
+      _cew('{{ product.id }}', '#ce-widget');
+    </script>
+  </div>
+</form>
+
+<!--
+  <style>
+    #variants-add-wrapper{
+      padding-bottom: 15px;
+    }
+  </style>
+-->

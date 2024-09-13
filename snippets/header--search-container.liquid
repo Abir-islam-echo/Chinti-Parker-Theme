@@ -1,0 +1,519 @@
+{% comment %}
+<div
+    class="search-container dropdown"
+    data-search-container
+>
+    <form action="/search" method="get" class="search-form" role="search">
+        <input
+            name="q"
+            type="search"
+            id="search-field"
+            placeholder="I’m looking for..."
+            value="{{ search.terms | escape }}"
+            autocorrect="off"
+            autocapitalize="off"
+        />
+
+        <input type="hidden" name="type" value="product">
+
+        <button type="submit" id="search-submit">
+            Search
+        </button>
+    </form>
+</div>
+{% endcomment %}
+
+
+
+{% assign searchMenus = dr %}
+
+<div class="overlay_for_klevu"></div>
+<div class="search-container" data-search-container id="new-search-container">
+  <div class="mega-menu menu-section level-0" style="transform: translateX(-33.3vw); opacity: 1; transition:all 0.5s 0s ease-in-out;">
+    <div class="search-box-wrapper">
+      <button class="icon close-button klevu_close_button"></button>
+    </div>
+    <div class="menu-panel search-form-content">
+      <div class="menu-title">
+        <span>Search</span>
+        <button class="icon icon-close"></button>
+      </div>
+      <form class="search-form" action="#">
+        <div class="input-wrapee">
+          <input autofocus type="text" name="q" id="new-ai-search" placeholder="What are you looking for?" class="empty">
+          <a href="/pages/search-results?q=" class="button icon-submit"></a>
+        </div>
+      </form>
+      <div class="results-wrapper mobile-results">
+        <div class="mobile-wrapper">
+          <div class="section help-block"> {% if linklists[searchMenus].links.size > 0 %} <h6>{{ linklists[searchMenus].title }}</h6>
+            <ul> {% for link in linklists[searchMenus].links %} <li class="klevu_list_item">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li> {% endfor %} </ul> {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-footer tablet-search-footer">
+      <div class="pages-wrapper">
+        <div class="tablet-container">
+          <div class="section help-block"> {% if linklists[searchMenus].links.size > 0 %} <h6>{{ linklists[searchMenus].title }}</h6>
+            <ul> {% for link in linklists[searchMenus].links %} <li class="klevu_list_item">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li> {% endfor %} </ul> {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mega-menu menu-section level-1" style="display:none;opacity:0;">
+    <div class="search_result"></div>
+  </div>
+</div>
+
+
+<style>
+  body .mega-menu.level-0 .mobile-wrapper .klevuWrap + .help-block{
+    margin-bottom:400px;
+  }
+   body .mega-menu.level-1 header.custom-hidden{
+     display:none;
+   }
+    body .mega-menu.level-0 .klevuNoResultsProductsBlock, body .mega-menu.level-0 .kuNoResultsPopularSearchesBlock{
+     display: none;
+   }
+   body .mega-menu.level-1 .klevuNoResultsProductsBlock, body .mega-menu.level-1 .kuNoResultsPopularSearchesBlock{
+     display: none;
+   }
+  body .mega-menu.level-1 .kuQuickResultsListContainer ul > li:last-child{
+    margin-bottom:177px;
+  }
+  body .search-container#new-search-container{
+    z-index: 999999;
+  }
+   body.no-scroll{
+    inline-size: 100%;
+    overflow-y: scroll;
+    position: fixed;
+   }
+
+    .overlay_for_klevu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    transition: opacity 0.2s 0.2s, visibility 0 0.4s;
+    visibility: hidden;
+    z-index: 99998;
+
+  }
+
+  .overlay_for_klevu.active {
+    opacity: 1;
+    transition: opacity 0.2s;
+    visibility: visible;
+  }
+
+    .klevu-fluid .klevuWrap{
+    display:none !important;
+  } 
+
+  .search-container .results-wrapper .klevuSuggestionsBlock > div {
+    display: none;
+  }
+
+   body .search-container .results-wrapper.mobile-results .klevuAutoSuggestionsWrap{
+      border-bottom: none;
+   }
+
+   body .search-container .results-wrapper.mobile-results .klevuSuggestionsBlock{
+      background: #f1efe8;
+   }
+
+   body .search-container .results-wrapper.mobile-results .klevuResultsBlock .klevuProductsViewAll{
+    position: fixed;
+    top: unset;
+    bottom: 0 !important;
+    right: unset;
+    width: 100%;
+    height: 100px;
+    padding: 0 15px 30px;
+    background: #f8f7f3; 
+    z-index: 2;
+   }
+ body .search-container .results-wrapper.mobile-results .klevuResultsBlock .klevuProductsViewAll a{
+    display: inline-block; 
+    width: 100%; 
+    min-width: 14.3rem;
+    height: 70px;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    background: #2c2c2c;
+    border: none;
+    border-radius: 0;
+    color: #f8f7f3;
+    cursor: pointer; 
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 2.1rem;
+    outline: none;
+    padding: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    transition: background,color .2s ease;
+    
+ }
+ body .search-container .results-wrapper.mobile-results .klevuResultsBlock .klevuProductsViewAll a::after{
+    content: "";
+    position: fixed;
+    bottom: 100px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(180deg,hsla(0,0%,100%,0),#f8f7f3 70%);
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity .2s ease-in-out;
+ }
+   body .search-container .results-wrapper.mobile-results .klevuSuggestionHeading{
+    display:none;
+   }
+
+   body .search-container .kuQuickResultsListContainer ul li{
+      background: #f1efe8;
+      border-bottom: none;
+   }
+   body .search-container .kuQuickResultsListContainer ul li:nth-child(2n) {
+      background: #f1f1f0;
+   }
+   body .search-container .klevuResultsBlock .klevuQuickSearchResults .klevuProductItemBottom{
+        display: flex;
+        align-items: center;
+        width: 75%;
+   }
+   body .search-container .klevuResultsBlock .klevuQuickSearchResults ul li a.klevuQuickProductInnerBlock{
+       
+        display: flex;
+        width: 100%;
+        padding: 0;
+        cursor: pointer;
+   }
+
+   body .search-container .klevuResultsBlock .klevuQuickSearchResults .klevuProductItemTop{
+      width: 25%;
+      padding: 0;
+   }
+
+    body .klevuResultsBlock .klevuQuickSearchResults img{
+      width: 100%;
+      height: 100%;
+  }
+
+   .search-container .menu-section.level-0 .result-types{
+     margin-top:10px; 
+     margin-bottom: 20px;
+     
+   }
+
+   .search-container .menu-section.level-0 .result-types .result-item {
+    display: inline-block;
+    margin: 0 5px 10px 20px;
+   }
+
+   .search-container .level-0 .result-types .result-button {
+    width: unset
+    padding: 0;
+    background: none;
+    color: #000;
+    cursor: pointer;
+    opacity: .4;
+    text-align: center;
+  }
+
+  .search-container .results-wrapper{
+    position: relative;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    align-self: stretch;
+    overflow-y: scroll;
+  }
+   .search-container .results-wrapper::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  } 
+
+  .search-container .results-wrapper .mobile-wrapper{
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+    .search-container .results-wrapper .mobile-wrapper::-webkit-scrollbar{
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
+    }
+
+  .search-container .level-0 .result-types .result-button span {
+      border-bottom: 1px solid #000;
+      padding-bottom: 1px
+  }
+
+  .search-container .level-0 .result-types .result-item.active .result-button {
+      opacity: 1
+  }
+
+   .search-container .menu-section.level-1 .result-types, .results-wrapper.mobile-results .result-types{
+        display: none;
+   }
+   .search-container .tablet-search-footer .tablet-container{
+    overflow-y: scroll;
+    height:100vh;
+   }
+   .search-container .tablet-search-footer .tablet-container header + .help-block{
+     margin-bottom:450px;  
+   }
+   .search-container .tablet-search-footer .tablet-container .help-block{
+      background-color: #e8e6da;
+   }
+  .search-container .tablet-search-footer .tablet-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  } 
+  
+   .search-container .tablet-search-footer .klevuSuggestionsBlock > div{
+      padding: 0;
+   }
+  .search-container .tablet-search-footer .klevuSuggestionsBlock > div .klevuSuggestionHeading{
+    font-weight: bold;
+  }
+
+  .search-container .menu-section.level-0 .klevuQuickSearchingArea{
+        box-shadow: none;
+        border-radius: unset;
+   }
+  
+   .search-container .menu-section.level-1 .klevuQuickSearchingArea{
+        box-shadow: none;
+        border-radius: unset;
+   }
+   .search-container .menu-section.level-1 .kuQuickSearchNoRecordFound{
+        background: #f8f7f3;
+   }
+   .search-container .menu-section.level-1 .kuDividerLine{
+        display: none;
+   }
+   .search-container .menu-section.level-1 .kuQuickNoResultsMessage{
+        font-weight: bold;
+   }
+   .search-container .menu-section.level-1 #klevuSearchingArea div[data-container-id="ku_quick_main_container"]{
+    display: flex;
+    width: 100%;
+   }
+  .search-container .menu-section.level-1 #klevuSearchingArea div[data-container-id="ku_quick_main_container"] header{
+    width: 50%;
+    order:2;
+    background: #e8e6da;
+  }
+  .search-container .menu-section.level-1 #klevuSearchingArea div[data-container-id="ku_quick_main_container"] div[data-content="productList"]{
+    width: 50%;
+  }
+ 
+  body .search-container .menu-section.level-1 .klevuHeadingText{
+    font-weight: 700;
+  }
+  body .search-container .menu-section.level-1{
+    width:66.66vw !important;
+  }
+  .search-container .menu-section.level-1 .kuQuickResultsListContainer{
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  .search-container .menu-section.level-1 .kuQuickResultsListContainer::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  } 
+  
+  #new-search-container .section.help-block h6{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.8rem;
+    margin-bottom: 1.6rem;
+  }
+  #new-search-container .section.help-block .klevu_list_item{
+      margin-bottom: 0.8rem;
+  }
+  #new-search-container .section.help-block .klevu_list_item:last-child{
+      margin-bottom: 0;
+  }
+  #new-search-container .section.help-block{
+    padding: 1.75rem 2.1875rem 2.125rem;
+  }
+  body #new-search-container .input-wrapee > input {
+    margin: 0;
+    padding-left: 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #979797;
+  }
+  body #new-search-container .input-wrapee > input::placeholder {
+    color: #757575;
+    text-align: left;
+  }
+  body #new-search-container .input-wrapee > input:focus{
+    box-shadow: none;
+  }
+  body #new-search-container .input-wrapee {
+    position: relative;
+  }
+
+  body #new-search-container  .search-box-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+  }
+  body #new-search-container  .search-box-wrapper .close-button {
+    width: 1.6rem;
+    min-width: auto;
+    height: 1.6rem;
+    margin: 0;
+    padding: 0;
+    background: url('https://www.meandem.com/svg-icons/header/close.svg') no-repeat 50%;
+    border: none;
+  }
+  body #new-search-container {
+    position: fixed;
+    top: 135px;
+    background: none;
+    width: auto;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  }
+  body #new-search-container .mega-menu button.icon-close {
+    display: none;
+  }
+  body #new-search-container .mega-menu .menu-title {
+    padding: 3rem 2.1875rem 2.125rem;
+    font-size: 3.2rem;
+    font-weight: 500;
+    line-height: 3.84rem;
+  }
+  body #new-search-container.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+  body #new-search-container.active .mega-menu {
+    transform: translateX(0vw) !important;
+    transition: transform 0.5s 0s ease-in-out;
+  }
+    body #new-search-container .mega-menu {
+    width: 33.33vw;
+    background: #f8f7f3;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+   
+  }
+  #klevu_search_form {
+    position: relative;
+  }
+  .button.icon-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.6rem;
+    padding: 11px;
+    background: url('https://www.meandem.com/svg-icons/nav/arrow-big-right.svg') no-repeat 50%;
+    border: none;
+    border-radius: 0;
+    color: #f8f7f3;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Untitled Sans, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.1rem;
+    outline: none;
+    text-align: center;
+    transition: background, color 0.2s ease;
+  }
+
+   .search-container .tablet-search-footer .pages-wrapper header{
+     padding: 1.75rem 1rem 2rem;
+   }
+
+   .search-container .klevuResultsBlock .klevuQuickSearchResults ul li .klevuQuickProductDescBlock > div{
+    line-height: 2;
+    font-size: 15px;
+   }
+  
+  @media screen and (max-width: 1023px){
+      .search-container .tablet-search-footer .pages-wrapper{
+        display: block;
+      }
+      body .search-container .menu-section.level-1{
+        width:50vw !important;
+      }
+      body #new-search-container.active .mega-menu {
+        width: 50vw;
+      }
+      .search-container .menu-section.level-1 #klevuSearchingArea div[data-container-id="ku_quick_main_container"] header{
+        display: none;
+      }
+      .search-container .menu-section.level-1 #klevuSearchingArea div[data-container-id="ku_quick_main_container"] div[data-content="productList"]{
+        width: 100%;
+      }
+         body .search-container .klevuResultsBlock .klevuQuickSearchResults .klevuQuickImgWrap{
+        height: 160px !important;
+      }
+  }
+  @media screen and (max-width: 767px){
+      .search-container .tablet-search-footer{
+        display: none;
+      }
+       body .search-container .menu-section.level-1{
+        display: none !important;
+      }
+       body .search-container .menu-section.level-0{
+        width: 100vw !important;
+      }
+      body #new-search-container{
+        top:0;
+      }
+         body .search-container .klevuResultsBlock .klevuQuickSearchResults .klevuQuickImgWrap{
+        height: 140px !important;
+      }
+  }
+
+  @media screen and (min-width: 768px){
+     .search-container .menu-section.level-0 .result-types{
+      display: none;
+   }
+   .search-container .results-wrapper.mobile-results{
+      display: none;
+   }
+
+  }
+
+  @media screen and (min-width: 1024px){
+      .search-container .tablet-search-footer .pages-wrapper header{
+          display: none;
+      }
+      body .search-container .menu-section.level-1{
+        width:66.66vw !important;
+      }
+      body .search-container .klevuResultsBlock .klevuQuickSearchResults .klevuQuickImgWrap{
+        height: 190px !important;
+      }
+  } 
+ 
+</style>
+
+

@@ -1,0 +1,45 @@
+
+  {% for block in section.blocks %}
+ 
+    {% case block.type %}
+      {% when 'text' %}
+      {% include 'cms_banner-newsletter-text' %}
+    {% endcase %}
+ 
+  {% endfor %}
+
+
+
+
+{% schema %}
+	{
+		"blocks": [			
+			{
+		        "type": "text",
+		        "name": "Success text",
+		        "settings": [
+		          {
+		            "type": "text",
+		            "id": "header",
+		            "label": "Success Heading"
+		          },
+		            {
+		            "type": "text",
+		            "id": "introduction",
+		            "label": "Success paragraph"
+		          }
+		        
+		        ]
+			}
+			
+		
+		
+			
+		
+		
+		
+		
+		
+		]
+	}
+{% endschema %}

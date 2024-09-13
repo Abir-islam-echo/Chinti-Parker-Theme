@@ -1,0 +1,244 @@
+{%- comment -%}
+  It may be a good idea to provide a theme setting that lets a merchant decide how many products to show per row
+  on collection pages. Or, it may be a good idea to provide a control on the store front which lets a shopper decide
+  whether items be presented in a grid or in a list.
+  That information about the presentation can be passed on to the product-grid-item.liquid snippet via the 'with' argument.
+  Use of the 'with' argument is explained here: http://docs.shopify.com/themes/theme-templates/snippets.
+  The information can then be referred to by accessing the variable which goes by the same name as the snippet,
+  in this case product-grid-item. If the 'with' argument is not used, the snippet variable is set to an empty string.
+  Here, for the sake of teaching, we will use 2 presentation options:
+  - 3 products per row, when passing the value 'three-per-row' to the snippet
+  - 4 products per row, when passing the value 'four-per-row' to the snippet
+{%- endcomment -%}
+{%- comment -%} If no value is passed to the snippet, we will set the snippet variable to a sensible default. {%- endcomment -%}
+{%- comment -%} Check to see if this Snippet was called from the Search Results page (where the object is called 'item' and not 'product') {%- endcomment -%}
+{%- comment -%} This way we can share this snippet for both pages and save duplicating code {%- endcomment -%}
+{%- unless searchItem -%}
+  <div class="item {{ product.handle }}">
+{% endunless %}
+
+{%- assign thisOverlayTag = '' -%}
+{%- for tag in product.tags -%}
+  {%- if tag contains 'tag-' -%}
+    {%- assign thisOverlayTag = tag | replace: 'tag-', '' | capitalize -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign giftable = false -%}
+{%- if settings.gift_me_enabled and product.tags contains 'giftable' -%}
+  {%- assign giftable = true -%}
+  {%- assign thisOverlayTag = 'gift_me.gift_me' | t -%}
+{%- endif -%}
+
+<div class="product-image-wrap">
+  <a
+    href="{{ product.url }}"
+    id="StandardCardNoMediaLink-{{ product.id }}"
+    class="image full-unstyled-link klevuProduct klevuProductClick"
+    data-id="{{ relevant_variant.id }}"
+    aria-labelledby="StandardCardNoMediaLink-{{ product.id }} NoMediaStandardBadge-{{ product.id }}"
+    data-product-link='
+      {
+        "name": {{ product.title | json }},
+        "id": {{ product.selected_or_first_available_variant.sku | json }},
+        "price": {{ product.price | money_without_currency | json }},
+        "brand": {{ product.vendor | json }},
+        "category": {{ product.type | json }},
+        "variant": {{ product.selected_or_first_available_variant.title | json }},
+        "position": 1
+      }
+    '
+  >
+    <picture>
+      <source
+        media="(min-width: 740px)"
+        srcset="{{ product | img_url: '50x75', crop: 'center' }} 1x, {{ product | img_url: '50x75', crop: 'center', scale: 2 }} 2x"
+        data-srcset="{{ product | img_url: '438x657', crop: 'center' }} 1x, {{ product | img_url: '438x657', crop: 'center', scale: 2 }} 2x"
+      >
+      <source
+        srcset="{{ product | img_url: '50x75', crop: 'center' }} 1x, {{ product | img_url: '50x75', crop: 'center', scale: 2 }} 2x"
+        data-srcset="{{ product | img_url: '285x427', crop: 'center' }} 1x, {{ product | img_url: '285x427', crop: 'center', scale: 2 }} 2x"
+      >
+      <img
+        src="{{ product | img_url: '50x75', crop: 'center' }}"
+        data-src="{{ product | img_url: '438x657', crop: 'center' }}"
+        alt="{{ product.featured_image.alt | escape }}"
+
+        class="lazyload"
+      >
+    </picture>
+  </a>
+
+  {%- render 'sca-quick-view' -%}
+
+  {% if klevuTemplate == false %}
+    {%- render 'juno-quick-add' with product as product -%}
+  {% else %}
+    {%- render 'klevu-juno-quick-add' with product as product -%}
+  {% endif %}
+
+  {%- if thisOverlayTag != '' -%}
+    <div class="overlayTag {% if giftable -%}overlayTag--giftable{%- endif -%}">
+      <span>{{ thisOverlayTag }}</span>
+
+      {%- if giftable -%}
+        <img
+          class="gift-icon"
+          src="{{ 'gift-orange.svg' | asset_url }}"
+          alt="Gift Me"
+        >
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<!-- {{ colourSwatchOutput }} -->
+
+<div class="product-caption">
+  <h2 class="product-name">
+    <a
+      href="{{ product.url }}"
+      id="StandardCardNoMediaLink-{{ product.id }}"
+      class="full-unstyled-link klevuProduct klevuProductClick"
+      data-id="{{ relevant_variant.id }}"
+      aria-labelledby="StandardCardNoMediaLink-{{ product.id }} NoMediaStandardBadge-{{ product.id }}"
+    >
+      {{ product.title | escape }}
+    </a>
+  </h2>
+
+  <span class="product-price">
+    {%- assign staff_price = null -%}
+    {%- assign staff_compare_price = null -%}
+
+    {% for tag in product.tags %}
+      {%- if tag contains 'staff_price:' and customer.tags contains 'Staff' -%}
+        {%- assign staff_price = tag | remove: 'staff_price:' | times: 1 -%}
+        {%- if product.compare_at_price > product.price -%}
+          {%- assign staff_compare_price = product.compare_at_price_max -%}
+        {%- else -%}
+          {%- assign staff_compare_price = product.price -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+
+    {%- if staff_price -%}
+      <s class="compare-at-price">
+        {{ staff_compare_price | money | replace: '.00', '' }}
+      </s>
+
+      <span class="on-sale">
+        {{ staff_price | money | replace: '.00', '' }} (
+        {{- staff_compare_price | minus: staff_price | times: 100.0 | divided_by: staff_compare_price | round -}}
+        % off)
+      </span>
+    {%- elsif product.compare_at_price > product.price -%}
+      <s class="compare-at-price">
+        {{ product.compare_at_price | money | replace: '.00', '' }}
+      </s>
+
+      <span class="on-sale">
+        {{ product.price | money | replace: '.00', '' }} (
+        {{-
+          product.compare_at_price_max
+          | minus: product.price
+          | times: 100
+          | divided_by: product.compare_at_price_max
+          | round
+        -}}
+        % off)
+      </span>
+    {%- else -%}
+      {{ product.price | money | replace: '.00', '' }}
+    {%- endif -%}
+  </span>
+  {%- comment -%}
+    All themes by Shopify should support the Product Reviews app out of the box.
+    https://apps.shopify.com/product-reviews
+  {%- endcomment -%}
+  {%- comment -%}
+    <!--
+
+
+
+    /-->
+    <!--
+
+
+
+
+    {%- assign markupToOutput = '' -%}
+    {%- assign FoundAVariant = 'false' -%}
+    {%- assign handlesFound = '' -%}
+    {%- assign productRootSplit = productRootName | split: " " -%}
+    {%- assign productColour = productRootSplit | first -%}
+    {%- assign productRootName = product.title | replace: productColour, "" | strip -%}
+    {%- for thisCollection in product.collections -%}
+    {%- for innerProduct in thisCollection.products -%}
+    {%- if innerProduct.title contains productRootName -%}
+    {%- if innerProduct.handle != productRootHandle -%}
+    {%- if innerProduct.handle != innerProductHandle -%}
+    {%- assign foundImage = 'false'%}
+    {%- assign FoundAVariant = 'true' -%}
+    {%- unless handlesFound contains innerProduct.handle -%}
+    {%- assign markupToOutput = markupToOutput | append: '<li><a class="swatchImage" href="/products/' | append: innerProduct.handle | append: '">'  -%}
+    {%- assign markupToOutput = markupToOutput | append: '<span class="swatchBlock" style="background-color: #' | append: innerProduct.metafields.c-p.swatch | append: '"></span></li>' -%}
+    {%- endunless -%}
+    {%- assign innerProductHandle = innerProduct.handle  -%}
+    {%- assign handlesFound = handlesFound | append: "," | append: innerProduct.handle -%}
+    {%- endif -%}
+    {%- endif -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endfor -%}
+    {%- if FoundAVariant == 'true' -%}
+
+
+    <ul class="colourSwatches">
+    <li class="active">
+    <span class="image">
+    <span class="swatchBlock" style="background-color: #{{product.metafields.c-p.swatch}}"></span>
+    </span>
+    </li>
+    {{markupToOutput}}
+    </ul>
+
+    {%- endif -%}
+
+    /-->
+  {%- endcomment -%}
+</div>
+
+{%- if product.metafields['c-p'].swatch -%}
+  {% if template.name == 'search' %}
+    <span class="otherColours">More Colours Available</span>
+  {% else %}
+    {% if klevuTemplate == false %}
+      {% if template == 'cart' %}
+        {% render 'color-swatch-markup' %}
+      {% else %}
+        {% include 'color-swatch-markup' %}
+      {% endif %}
+    {% else %}
+      {% render 'klevu-color-swatch-markup' %}
+    {% endif %}
+  {% endif %}
+{%- endif -%}
+
+{%- unless searchItem -%}
+  </div>
+{%- endunless -%}
+{%- comment -%}
+  You don't need to use a clearing div. Use whatever it is you use to clear
+  floated elements. The code that follows just just shows you how to use a cycle element.
+  Notice that we named it ( 'clear' ). We need to name it because there's another cycle
+  element in this file ( we called that other one 'last' ). If you have more than one
+  cycle element in a rendered view, you'll need to name all of them.
+  The cycle element is documented here: http://docs.shopify.com/themes/liquid-basics/logic#cycle
+{%- endcomment -%}
+
+{%- comment -%}
+  <!-- Start klevu-pl-collection-product -->
+  {% render 'klevu-pl-collection-product', product: product %}
+  <!-- End klevu-pl-collection-product -->
+{%- endcomment -%}

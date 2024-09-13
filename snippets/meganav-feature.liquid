@@ -1,0 +1,53 @@
+{%- assign handle_content = 'featured_content_' | append: index -%}
+{%- assign handle_image = 'featured_content_image_' | append: index -%}
+{%- assign handle_hide_image_for_mobile = 'featured_content_mobile_image' | append: index -%}
+{%- assign handle_title = 'featured_content_title_' | append: index -%}
+{%- assign handle_show_for_mobile = 'featured_content_mobile_' | append: index -%}
+
+{%- assign link = meganav[handle_content] -%}
+{%- assign hide_image_for_mobile = meganav[handle_hide_image_for_mobile] -%}
+{%- assign title = meganav[handle_title] -%}
+{%- assign show_for_mobile = meganav[handle_show_for_mobile] -%}
+
+{%- if link contains '/collections/' -%}
+    {%- assign object_handle = link | split: '/collections/' | last -%}
+    {%- assign object = collections[object_handle] -%}
+{%- elsif link contains '/blogs/' -%}
+    {%- assign object_handle = link | split: '/blogs/' | last -%}
+    {%- assign object = articles[object_handle] -%}
+{% elsif link contains '/pages/' -%}
+    {%- assign object_handle = link | split: '/pages/' | last -%}
+    {%- assign object = pages[object_handle] -%}
+{%- endif -%}
+
+{% if object %}
+    {%- assign image = meganav[handle_image] | default: object.image -%}
+
+    <div class="
+        meganav-feature
+        {% if show_for_mobile %} meganav-feature--mobile {% endif %}
+    ">
+        <a href="{{ link }}" class="meganav-feature__link">
+            <picture
+                class="
+                    meganav-feature__image
+                    {% if hide_image_for_mobile %} meganav-feature__image--hide-for-mobile {% endif %}
+                "
+            >
+                <img src="{{ image | img_url: '345x511' }}" alt="{{ title }}">
+            </picture>
+
+            <h4 class="meganav-feature__title">{{ title | default: object.title }}</h4>
+
+            {% comment %}
+                {% if show_image_for_mobile %}
+                    <div
+                        class="meganav-feature__image meganav-feature__image--show-for-mobile"
+                        style="background-image: url({{ mobile_image |  img_url: '560x370' }})"
+                    >
+                    </div>
+                {% endif %}
+            {% endcomment %}
+        </a>
+    </div>
+{% endif %}

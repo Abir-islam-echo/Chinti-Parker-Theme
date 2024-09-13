@@ -1,0 +1,140 @@
+
+<div data-section-id="{{ section.id }}" data-section-type="banner-section" class="banner-section banner-hero-section">
+    <div class="row">
+        {% for block in section.blocks %}
+            <div class="col">
+                {% if block.settings.image %}
+                    <picture>
+                        <source
+                            media="(min-width: 1440px)"
+                            srcset="{{ block.settings.image | img_url: '2560x' }} 1x,
+                            {{ block.settings.image | img_url: '5120x' }} 2x,
+                            {{ block.settings.image | img_url: '7680x' }} 3x"
+                        >
+                        >
+                        <source
+                            media="(min-width: 768px)"
+                            srcset="{{ block.settings.image | img_url: '1440x' }} 1x,
+                            {{ block.settings.image | img_url: '2880x' }} 2x,
+                            {{ block.settings.image | img_url: '4320x' }} 3x"
+                        >
+						{% if block.settings.mobile_image %}
+                            <source
+                                srcset="{{ block.settings.mobile_image | img_url: '500x' }} 1x,
+                                {{ block.settings.mobile_image | img_url: '1000x' }} 2x,
+                                {{ block.settings.mobile_image | img_url: '1500x' }} 3x"
+                            >
+                        {% endif %}
+
+                        <img
+                            src="{{ block.settings.mobile_image | img_url: '500x' }} 1x,
+                            {{ block.settings.mobile_image | img_url: '1000x' }} 2x,
+                            {{ block.settings.mobile_image | img_url: '1500x' }} 3x"
+                            alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                        />
+					</picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <a class="link" href="{% if block.settings.link != blank %}{{ block.settings.link }} {% else %}#{% endif %}">
+                <span class="content {{ block.settings.text_color }} {{ block.settings.text_color_mobile }} {{ block.settings.text_align }}">
+                    <span class="title">{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}</span>
+                    <span class="btn">{{block.settings.button_text}}</a>
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "class": "index-section",
+    "max_blocks": 1,
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading..."
+          },
+          {
+                "type": "select",
+                "id": "text_color",
+                "label": "Text color",
+                "options": [
+                    { "value": "text-light", "label": "Light" },
+                    { "value": "text-dark", "label": "Dark" }
+                ],
+                "default": "text-light"
+            },
+            {
+                "type": "select",
+                "id": "text_color_mobile",
+                "label": "Text color Mobile",
+                "options": [
+                    { "value": "text-light-mobile", "label": "Light" },
+                    { "value": "text-dark-mobile", "label": "Dark" }
+                ],
+                "default": "text-light-mobile"
+            },
+			{
+                "type": "select",
+                "id": "text_align",
+                "label": "Banner Text Alignment",
+                "options": [
+                    { "value": "text-left", "label": "Left" },
+                    { "value": "text-right", "label": "Right" }
+                ],
+                "default": "text-left"
+            },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Banner link"
+          },
+             {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text",
+            "default": "Shop Now"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner",
+      "category": "Image",
+      "settings": {
+
+      },
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}

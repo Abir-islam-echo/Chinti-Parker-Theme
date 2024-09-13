@@ -1,0 +1,36 @@
+{%- if section.settings.show_notification == true -%}
+<div id="notificationRibbon">
+<p>
+    {% if section.settings.notification_link != blank %}<a href="{{section.settings.notification_link}}">{%endif%}
+  {{section.settings.notification_text | escape}}
+  {% if section.settings.notification_link != blank %}</a>{%endif%}
+</p>
+</div>
+{%- endif -%}
+	
+
+
+{% schema %}
+{
+"name": "Site Notification Message",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_notification",
+"label": "Show Notification",
+"default": true
+},
+{
+"id": "notification_text",
+"type": "text",
+"label": "Notification Text"
+},
+{
+"id": "notification_link",
+"type": "url",
+"label": "Notification Link"
+}
+
+]
+}
+{% endschema %}

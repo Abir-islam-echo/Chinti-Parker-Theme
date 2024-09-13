@@ -1,0 +1,7 @@
+
+{% if block.settings.content != blank %}
+<dl class="faq-list">
+    	<dt>{{ block.settings.title | escape }}</dt>		               
+     <dd>{{ block.settings.content }}</dd>  
+</dl>
+{% endif %}

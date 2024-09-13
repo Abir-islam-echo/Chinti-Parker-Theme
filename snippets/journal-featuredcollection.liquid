@@ -1,0 +1,34 @@
+<div class="journal-featured-collections featured-collections">
+    {% if block.settings.title != blank %}
+    <h2 class="title-section">
+                {{ block.settings.title | escape }}
+        </h2>
+    {% endif %}
+
+    {%- assign collection = collections[block.settings.collection] -%}
+
+    {%- assign product_limit = block.settings.grid -%}
+    <div class="product-grid owl-carousel">
+        {% for product in collection.products limit: product_limit %}
+            {% include 'product-grid-item' with grid_item_width %}
+        {% else %}
+
+            {% for i in (1..product_limit) %}
+                <div class="grid__item .grid__item--{{section.id}} {{ grid_item_width }}">
+                <div class="grid-view-item">
+                    <a href="#" class="grid-view-item__link">
+                    <div class="grid-view-item__image">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title">Product Title</div>
+                    <div class="grid-view-item__meta">
+                        Product Price
+                    </div>
+                    </a>
+                </div>
+                </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>

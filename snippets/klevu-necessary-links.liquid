@@ -1,0 +1,365 @@
+<script type="text/javascript">
+  {% if template == 'collection'%}
+      var klevu_page_meta = {
+          "pageType": "category",
+          "categoryName": "{{collection.title | escape }}",
+          "categoryUrl": "{{shop.url}}{{collection.url}}",
+      };
+  {% endif %}
+  {% if template == 'product'%}
+      var klevu_price_formatter_test = "{{ '1250001' | money_without_trailing_zeros }}";
+      var klevu_page_meta  = {
+          "pageType": "pdp",
+          "itemName": "{{product.title | escape }}",
+          "itemUrl": "{{shop.url}}{{ product.url}}",
+          "itemId": "{{product.selected_or_first_available_variant.id}}",
+          "itemGroupId": "{{product.id}}",
+          "itemSalePrice": "{{product.price | money_without_currency}}",
+          "itemCurrency": "{{shop.currency}}"
+      };
+  {% endif %}
+  {% if template == 'cart'%}
+      var cartRecords = [];
+      {% for item in cart.items %}
+          cartRecords.push({'itemId': {{item.variant_id}} ,'itemGroupId': {{item.product_id}} });
+      {% endfor %}
+      var klevu_page_meta = {
+          "pageType": "cart",
+          "cartRecords": cartRecords
+      };
+  {% endif %}
+</script>
+<!-- Include JS Library -->
+<script src="https://js.klevu.com/core/v2/klevu.js"></script>
+
+<script src="https://js.klevu.com/recs/v2/klevu-recs.js"></script>
+
+<!-- Include Quick Search Theme -->
+<script src="https://js.klevu.com/theme/default/v2/quick-search.js"></script>
+
+{% if template == 'page.klevu-search-results' %}
+  <script src="https://js.klevu.com/theme/default/v2/search-results-page.js"></script>
+{% endif %}
+
+<!-- Configure Klevu for your store -->
+<script type="text/javascript">
+  klevu.interactive(function () {
+      var options = {
+           powerUp: {
+             recsModule: true
+           },
+           recs: {
+             apiKey: 'klevu-168302364802616326'
+           },
+
+          url : {
+              landing : '/pages/search-results',
+              protocol: 'https:',
+              search: 'https://eucs32v2.ksearchnet.com/cs/v2/search' // your Klevu APIv2 Search URL + endpoint path
+          },
+          search: {
+              minChars: 0,
+              searchBoxSelector: "#new-ai-search", // your search input selector
+              apiKey: "klevu-168302364802616326" // your Klevu JS API Key
+          },
+          analytics: {
+              apiKey: 'klevu-168302364802616326' // your Klevu JS API Key
+          }
+      };
+      klevu(options);
+  });
+</script>
+
+<script type="text/javascript">
+  // Delay powerUp
+  klevu({
+      powerUp: {
+          quick: false
+      }
+  });
+
+  // Define a new custom event, which will fire after SRLP has initialised
+  klevu.coreEvent.build({
+      name: "myQuickSearchOverride",
+      fire: function () {
+          if (klevu.getGlobalSetting("flags.setRemoteConfigQuick.build", false)) {
+              return true;
+          }
+          return false;
+      },
+      maxCount: 150,
+      delay: 100
+  });
+
+  // Listen in to our custom event, to make our overrides
+  klevu.coreEvent.attach("myQuickSearchOverride", {
+      name: "attachToMyQuickSearchOverride",
+      fire: function () {
+          klevu.search.quick.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myklevuQuickPromotionBanner"),
+              "klevuQuickPromotionBanner",
+              true
+              );
+
+          klevu.search.quick.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myklevuQuickTemplateBase"),
+              "klevuQuickTemplateBase",
+              true
+              );
+
+          klevu.search.quick.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myklevuQuickProductBlockTitleHeader"),
+              "klevuQuickProductBlockTitleHeader",
+              true
+              );
+
+          klevu.search.quick.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myklevuQuickAutoSuggestions"),
+              "klevuQuickAutoSuggestions",
+              true
+              );
+
+          klevu.search.quick.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myklevuQuickCategorySuggestions"),
+              "klevuQuickCategorySuggestions",
+              true
+              );
+          klevu.search.quick.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myklevuQuickPageSuggestions"),
+              "klevuQuickPageSuggestions",
+              true
+              );
+
+
+
+          // We're done with our overrides, tell Klevu to power up!
+          klevu({
+              powerUp: {
+                  quick: true
+              }
+          });
+      }
+  });
+</script>
+
+<script type="template/klevu" id="myklevuQuickTemplateBase">
+  <div class="klevu-fluid kuPreventDocumentClick">
+      <div id="klevuSearchingArea" class="klevuQuickSearchingArea">
+          <div ku-container data-container-id="ku_quick_main_container" data-container-role="main">
+              <%= helper.render('customBlockTop',scope) %>
+
+              <header ku-container data-container-id="ku_quick_main_header_container" data-container-role="header">
+                  <section ku-block data-block-id="ku_quick_main_header_sub_panel"></section>
+                  <section ku-block data-block-id="ku_quick_main_header_banner">
+                      <%=helper.render('klevuQuickPromotionBanner',scope,data,"top") %>
+                  </section>
+                  <section ku-block data-block-id="ku_quick_main_header_site_navigation">
+                      <div class="klevuSuggestionsBlock">
+                          <%=helper.render('klevuQuickAutoSuggestions',scope) %>
+                          <%=helper.render('klevuQuickPageSuggestions',scope) %>
+                          <%=helper.render('klevuQuickCategorySuggestions',scope) %>
+                      </div>
+                  </section>
+              </header>
+
+              <% if(data.showQuickFacetedLayoutCharLimitMessage == true) { %>
+                  <% var quickFacetedLayoutMessage = (data.quickFacetedLayoutMinCharsTextValue) ? data.quickFacetedLayoutMinCharsTextValue : ""; %>
+                  <% if(quickFacetedLayoutMessage != "") { %>
+                      <span class="kuFacetedLayoutMinCharText"><%= helper.translate(quickFacetedLayoutMessage) %></span>
+                  <% } %>
+              <% } else { %>
+                  <% if(data.query.productList) { %>
+                      <%=helper.render('klevuQuickTemplateResultsHeadingTitle',scope,data,"productList") %>
+                      <%= helper.render('klevuQuickTemplateTabResults',scope) %>
+                      <%= helper.render('klevuQuickProducts',scope) %>
+                      <%= helper.render('klevuQuickOtherContent',scope) %>
+                  <% } else { %>
+                      <div class="kuSearchPersonalizationsContainer">
+                          <%= helper.render('klevuSearchPersonalizations',scope) %>
+                      </div>
+                  <% } %>
+              <% } %>
+
+              <footer ku-container data-container-id="ku_quick_main_footer_container" data-container-role="footer">
+                  <section ku-block data-block-id="ku_quick_main_footer_sub_panel"></section>
+                  <section ku-block data-block-id="ku_quick_main_footer_banner">
+                      <%=helper.render('klevuQuickPromotionBanner',scope,data,"bottom") %>
+                  </section>
+              </footer>
+              <%= helper.render('customBlockBottom',scope) %>
+
+          </div>
+      </div>
+  </div>
+</script>
+<script
+  type="template/klevu"
+  id="myklevuQuickPromotionBanner"
+>
+  
+         <% var x = true; %>
+         <div class="result-types">
+            <% if(data.query.productList) { %>
+                <% if(data.query.productList.result.length > 0 ){ %>
+                <div class="result-item <%=helper.translate(`${x === true ? "active" : ""}`) %>" data-klevu-attr="productList">
+                    <div class="result-button <%=helper.translate(`${x === true ? "active" : ""}`) %>">
+                        <span><%=helper.translate(`Products (${data.query.productList.meta.totalResultsFound})`)%></span>
+                    </div>
+                </div>
+                <% var x = false; %>
+                <%  } %>       
+            <% } %>
+            <% if(data.query.categoryCompressed) { %>
+                <% if(data.query.categoryCompressed.result.length > 0 ){ %>
+                    <div class="result-item <%=helper.translate(`${x === true ? "active" : ""}`) %>" data-klevu-attr="klevuCategoryArea">
+                        <div class="result-button <%=helper.translate(`${x === true ? "active" : ""}`) %>">
+                            <span><%=helper.translate(`Categories (${data.query.categoryCompressed.meta.totalResultsFound})`) %></span>
+                        </div>
+                    </div>
+                    <% var x = false; %>
+                <% } %>
+            <% } %>
+            <% if(data.query.cmsCompressed) { %>
+                <% if(data.query.cmsCompressed.result.length > 0 ){ %>
+                    <div class="result-item <%=helper.translate(`${x === true ? "active" : ""}`) %>" data-klevu-attr="klevuCmsContentArea">
+                        <div class="result-button <%=helper.translate(`${x === true ? "active" : ""}`) %>">
+                            <span><%=helper.translate(`Pages (${data.query.cmsCompressed.meta.totalResultsFound})`)%></span>
+                        </div>
+                    </div>
+                    <% var x = false; %>
+                <%  } %>
+            <%  } %>
+            <% if(data.suggestions.autosuggestion) { %>
+               <% if(data.suggestions.autosuggestion.length> 0 ) { %>
+                <div class="result-item <%=helper.translate(`${x === true ? "active" : ""}`) %>" data-klevu-attr="klevuAutoSuggestionsArea">
+                    <div class="result-button <%=helper.translate(`${x === true ? "active" : ""}`) %>">
+                        <span><%=helper.translate(`Suggestions (${data.suggestions.autosuggestion.length})`)%></span>
+                    </div>
+                </div>
+                <% var x = false; %>
+               <%  } %>
+            <%  } %>
+        </div>
+
+        <% var hasNoResultFound = klevu.getObjectPath(data,"modules.promotionalBanner.hasNoResultFound"); %>
+        <% if(data.banners && data.banners[dataLocal] && data.banners[dataLocal].length && !hasNoResultFound) { 
+            klevu.each(data.banners[dataLocal], function(index, banner){ %>
+                <div class="klevu-banner-ad kuBannerContainer">
+                    <a 
+                        role="banner"
+                        area-label="Promotion Banner label"
+                        class="kuTrackBannerClick" 
+                        target="_self" 
+                        data-id="<%= banner.bannerRef %>" 
+                        data-name="<%= banner.bannerName %>"
+                        data-image="<%= banner.bannerImg %>"
+                        data-redirect="<%= banner.redirectUrl %>" 
+                        href="<%= banner.redirectUrl %>"
+                        alt="<%= klevu.dom.helpers.getBannerAltTagText(banner) %>"
+                        title="<%= klevu.dom.helpers.getBannerAltTagText(banner) %>"
+                    >
+                        <img src="<%= banner.bannerImg %>" alt="<%= klevu.dom.helpers.getBannerAltTagText(banner) %>" />
+                    </a>
+                </div>
+            <% }); 
+        } %>
+</script>
+<script
+  type="template/klevu"
+  id="myklevuQuickProductBlockTitleHeader"
+>
+   
+        <div class="klevuSuggestionHeading">
+            <span class="klevuHeadingText"><%=helper.translate(`${data.query.productList.meta.totalResultsFound} Products found`)%></span>
+        </div>
+        <div class="klevuProductsViewAll">
+            <% var queryParam = klevu.getSetting(klevu, "settings.url.queryParam"); %>
+            <a href="<%=helper.buildUrl(data.settings.landingUrl, queryParam ,helper.stripHtml(data.settings.term))%>"
+                target="_parent"><%=helper.translate("View All")%></a>
+        </div>
+</script>
+<script
+  type="template/klevu"
+  id="myklevuQuickAutoSuggestions"
+>
+  
+    <% if(data.suggestions.autosuggestion) { %>
+        <% if(data.suggestions.autosuggestion.length> 0 ) { %>
+            <% var queryParam = klevu.getSetting(klevu, "settings.url.queryParam"); %>
+            <div class="klevuAutoSuggestionsWrap klevuAutosuggestions" id="klevuAutoSuggestionsArea">
+                <div class="klevuSuggestionHeading">
+                    <span class="klevuHeadingText"> <%=helper.translate(`${data.suggestions.autosuggestion.length} Suggestions Found`)%></span>
+                </div>
+                <ul>
+                    <% helper.each(data.suggestions.autosuggestion,function(key,suggestion){ %>
+                        <li tabindex="-1"><a target="_self" href="<%=helper.buildUrl(data.settings.landingUrl, queryParam , helper.stripHtml(suggestion.suggest))%>" data-content="<%=helper.stripHtml(suggestion.suggest) %>" class="klevu-track-click"> <%=suggestion.suggest %> </a></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+    <% } %>
+</script>
+<script
+  type="template/klevu"
+  id="myklevuQuickCategorySuggestions"
+>
+  
+    <% if(data.query.categoryCompressed) { %>
+        <% if(data.query.categoryCompressed.result.length > 0 ){ %>
+            <div class="klevuAutoSuggestionsWrap klevuCategorySuggestions" id="klevuCategoryArea">
+                <div class="klevuSuggestionHeading">
+                    <span class="klevuHeadingText"><%=helper.translate(`${data.query.categoryCompressed.meta.totalResultsFound} Categories Found `)%></span>
+                </div>
+                <ul>
+                    <% helper.each(data.query.categoryCompressed.result,function(key,category){ %>
+                        <li tabindex="-1"><a target="_self" href="<%=category.url%>" class="klevu-track-click" data-url="<%=category.url%>" data-name="<%=category.name%>" ><%=category.name%></a></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+    <% } %>
+</script>
+<script
+  type="template/klevu"
+  id="myklevuQuickPageSuggestions"
+>
+  
+    <% if(data.query.cmsCompressed) { %>
+        <% if(data.query.cmsCompressed.result.length > 0 ){ %>
+            <div class="klevuAutoSuggestionsWrap klevuCmsSuggestions" id="klevuCmsContentArea">
+                <div class="klevuSuggestionHeading"><span class="klevuHeadingText"><%=helper.translate(`${data.query.cmsCompressed.meta.totalResultsFound} Pages Found`)%></span></div>
+                <ul>
+                    <% helper.each(data.query.cmsCompressed.result,function(key,cms){ %>
+                        <li tabindex="-1"><a target="_self" href="<%=cms.url%>" class="klevu-track-click" data-url="<%=cms.url%>" data-name="<%=cms.name%>"><%=cms.name%></a></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+    <% } %>
+</script>
+
+<style>
+  .kuFiltersTitleHeading{
+    opacity: 0;
+  }
+</style>
+<script>
+      function waitForElem(waitFor, callback, minElements = 1, isVariable = false, timer = 10000, frequency = 25) {
+      let elements = isVariable ? window[waitFor] : document.querySelectorAll(waitFor);
+      if (timer <= 0) return;
+      (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== "undefined") ? callback(elements) : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
+    }
+
+    waitForElem(".kuFiltersTitleHeading", ([element]) => {
+      element.textContent = "Sort by";
+      element.style.opacity = '1';
+    });
+
+  if(window.innerWidth <= 767){
+    waitForElem(".kuFilters .kuFilterBox .kuFilterHead", (element) => {
+      document.querySelectorAll(".kuFilters .kuFilterBox .kuFilterHead").forEach(item=>{
+          item.click()
+      })
+    });
+  }
+</script>

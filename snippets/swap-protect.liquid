@@ -1,0 +1,105 @@
+{% # theme-check-disable %}
+
+{% comment %}
+  Implimentation Notes:
+  - Initial Implimentation - Jonny (12/07/2024)
+  - Added events to ajax-cart.js.liquid, Ln 66, 73, 79, 117, 129, 135, 176, 183, 198, 261, 420 - Jonny (12/07/2024)
+  - Re-implementation - Jonny (16/07/2024)
+{% endcomment %}
+
+{%liquid 
+  assign swap_protect_product = 'swap-protect'
+  assign swap_protect_forceinsure = 'true'
+  assign swap-protect-showUsp = 'false'
+%}
+
+{% if all_products[swap_protect_product].available != blank %}
+
+  <script type="text/json" data-swap-language="en">
+    {
+      "add":"<input type=\"checkbox\" class=\"swap-toggle toggle-oddmuse\"></input>",
+      "remove":"<input type=\"checkbox\" class=\"swap-toggle toggle-oddmuse\" checked></input>"
+    }
+  </script>
+  
+  
+  <script src="https://cdn.weareshift.agency/insure.js"
+    data-insure-moneyformat="{{ shop.money_format }}"
+    data-insure-producthandle="{{ swap_protect_product }}"
+    data-insure-forceinsure="{{ swap_protect_forceinsure }}"
+    data-insure-limit="500000"
+    data-insure-addremove-inmain="true"
+    data-insure-display-usp="{{ swap-protect-showUsp}}"
+    {% if request.path != routes.cart_url %}
+      data-insure-forcereload="false"
+    {% else %}
+      data-insure-widgetsmall-before=".top-section .buttons-set"
+      data-insure-forcereload="true"
+    {% endif %}
+    
+    defer="defer"
+    data-insure></script>
+  
+  <link rel="stylesheet" href="https://cdn.weareshift.agency/insure.css">
+  
+  <style>
+
+    :root {
+      --swap-widget-gap: 10px;
+      --swap-widget-gap-content: 2px;
+      --swap-togglesize: 2em;
+    }
+
+    {% if request.path != routes.cart_url %}
+      swap-insurewidget {
+        padding-top: 1.375rem;
+      }
+    {% else %}
+      swap-insurewidget {
+        padding-bottom: 1.375rem;
+      }
+      
+      swap-insurewidget p {
+        font-size: 0.8rem;
+      }
+    {% endif %}
+
+    .swap-widget-icon-lock {
+      min-width: 35px;
+      max-width: 35px;
+      height: 35px;
+    }
+
+    .swap-widget-icon-lock img {
+      box-sizing: border-box;
+    }
+
+    /* Hiding the Product */
+    .bag-table tr:has(* a[href*="{{ swap_protect_product }}"]),
+    .ajaxcart__product:has(* a[href*="{{ swap_protect_product }}"]) {
+      display: none;
+    }
+    
+    /* Toggle Support */
+    swap-insurewidget input[type=checkbox] {
+      display:block !important;
+    }
+    
+    .swap-widget-about-title {
+      display:flex;
+      align-items:center;
+    }
+
+    .swap-widget-about-title > span {
+      flex-grow: 1;
+    }
+
+    swap-insurewidget button:hover {
+      color: unset;
+      border: unset;
+      background-color: unset;
+    }
+    
+  </style>
+
+{% endif %}

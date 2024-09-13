@@ -1,0 +1,72 @@
+@font-face {
+    font-family: gotham book;
+    font-display: swap;
+    src: url(https://cdn.shopify.com/s/files/1/0040/7057/2147/files/Gotham_Book_Font.otf?v=1663331829);
+  }
+strong{
+  font-weight:600;
+}
+.el-container * {
+  box-sizing: border-box;
+}
+.el-full-width{
+  padding:0 40px;
+}
+
+
+@media screen and  (min-width:1400px) {
+  .el-container{
+      max-width:1320px;
+      margin:0 auto;
+      padding:0 20px;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width:1400px) {
+  .el-container{
+      max-width:1140px;
+      margin:0 auto;
+      padding:0 20px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width:1200px) {
+  .el-container{
+      max-width:960px;
+      margin:0 auto;
+      padding:0 20px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width:992px) {
+  .el-container{
+      max-width:720px;
+      margin:0 auto;
+      padding:0 20px;
+  }
+}
+@media screen and (min-width: 576px) and (max-width:768px) {
+  .el-container{
+      max-width:540px;
+      margin:0 auto;
+      padding:0 20px;
+  }
+}
+@media screen and  (max-width:576px) {
+  .el-container{
+      max-width:100%;
+      margin:0 auto;
+      padding:0 20px;
+
+  }
+}
+@media screen and  (max-width:768px) {
+  .el-full-width{
+    padding:0 20px;
+  }
+} 
+
+
+/*colour swatch*/
+  
+
+/*colour swatch end*/
+
+

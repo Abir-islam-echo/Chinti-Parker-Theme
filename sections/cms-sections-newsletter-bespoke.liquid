@@ -1,0 +1,45 @@
+
+  {% for block in section.blocks %}
+ 
+    {% case block.type %}
+      {% when 'banner' %}
+      {% include 'cms_banner-newsletter' %}
+    {% endcase %}
+ 
+  {% endfor %}
+
+
+
+
+{% schema %}
+	{
+		"blocks": [			
+			{
+		        "type": "banner",
+		        "name": "Sign up image",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image"
+		          },
+		            {
+		            "type": "image_picker",
+		            "id": "mobile_image",
+		            "label": "Mobile Image"
+		          }
+		        
+		        ]
+			}
+			
+		
+		
+			
+		
+		
+		
+		
+		
+		]
+	}
+{% endschema %}

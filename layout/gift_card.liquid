@@ -1,0 +1,120 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://whale.camera/' crossorigin />
+<script>
+/* >> TriplePixel :: start*/
+window.TriplePixelData={TripleName:"chinti-parker.myshopify.com",ver:"2.12",plat:"SHOPIFY",isHeadless:false},function(W,H,A,L,E,_,B,N){function O(U,T,P,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","text/plain")):H.open("GET",U,!0),H.send(JSON.stringify(P||{})),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):P||(N[B]=R)):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1,P))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1,L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)};try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push({u:location.href,r:document.referrer,t:Date.now(),id:L()}),A.setItem(H+"U",JSON.stringify(E))}catch(e){}var i,m,p;A.getItem('"!nC`')||(_=A,A=N,A[H]||(E=A[H]=function(t,e,a){return void 0===a&&(a=[]),"State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e].concat(a)),W)},E.s="Installed",E._q=[],E.ch=W,B="configSecurityConfModel",N[B]=1,O("https://conf.config-security.com/model",5),i=L(),m=A[atob("c2NyZWVu")],_.setItem("di_pmt_wt",i),p={id:i,action:"profile",avatar:_.getItem("auth-security_rand_salt_"),time:m[atob("d2lkdGg=")]+":"+m[atob("aGVpZ2h0")],host:A.TriplePixelData.TripleName,plat:A.TriplePixelData.plat,url:window.location.href,ref:document.referrer,ver:A.TriplePixelData.ver},O("https://api.config-security.com/event",5,p),O("https://whale.camera/live/dot.txt",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_button }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+    <link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
+    <link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_url }}" color="#ffffff">
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="{{ 'browserconfig.xml' | asset_url }}">
+    <meta name="theme-color" content="#ffffff">
+
+    {% if settings.favicon != blank %}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {% endif %}
+
+    {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency -%}
+    {%- assign formatted_initial_value_stripped = formatted_initial_value | strip_html -%}
+    <title>{{ 'gift_cards.issued.title_html' | t: value: formatted_initial_value_stripped, shop: shop.name }}</title>
+
+    <meta name="description" content="{{ 'gift_cards.issued.subtext' | t }}">
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }} {% if template contains 'customers' %} {{ 'customer_area.js' | shopify_asset_url | script_tag }} {% endif %}
+
+    <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
+    {{ 'option_selection.js' |  shopify_asset_url | script_tag }}
+
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}"></script><![endif]-->
+
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'gift-card.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'gift-card.js' | asset_url }}"></script><![endif]-->
+
+    {{ content_for_header }}
+<!-- GSSTART Coming Soon code start. Do not change -->
+    <script type="text/javascript"> gsProductCSID = "{{ product.id }}"; </script>
+    <script type="text/javascript" src="https://gravity-software.com/js/shopify/pac_shop6224.js?v=11352367bf9727e6f6cab2bc26d0c9b1"></script>
+<!-- Coming Soon code end. Do not change GSEND -->
+  {% include "globale-js" %}
+
+  
+</head>
+
+<body class="template-giftcard">
+    <div id="wrapper">
+       
+        {% section 'header-style-01' %}
+      
+        <div id="offCanvasWrapper">
+            <main class="main-content" id="MainContent">
+                <div class="giftcard">
+                    <div class="row">
+                        {% section 'giftcard-section' %}
+                        <div class="col-main">
+                            {{ content_for_layout }}
+                        </div>
+                    </div>
+                </div>
+            </main>
+            {% section 'footer' %}
+        </div>
+    </div>
+    {{ 'store.js' | asset_url | script_tag }}
+    {{ 'webpack.js' | asset_url | script_tag }}
+    {% assign templateType = template | split:'.' %}
+    {% unless templateType[0] == 'blog' or templateType[0] == 'article' %}
+    {{ 'shop.js' | asset_url | script_tag }}
+    {%endunless%}
+    {{ 'customer.js' | asset_url | script_tag }}
+    {{ 'timber.js' | asset_url | script_tag }}
+    <script src="{{ 'lazysizes.js' | asset_url }}" async></script>
+
+    {% if settings.ajax_cart_method == "drawer" %}
+    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {% include 'ajax-cart-template' %}
+    {{ 'ajax-cart.js' | asset_url | script_tag }}
+    <script>
+        jQuery(document).ready(function() {
+            ajaxCart.init({
+                formSelector: '#AddToCartForm',
+                cartContainer: '#CartContainer',
+                addToCartSelector: '#AddToCart',
+                cartCountSelector: '#CartCount',
+                cartCostSelector: '#CartCost',
+                moneyFormat: {{ shop.money_format | json }}
+            });
+            ajaxCart.load();
+        });
+        jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
+          // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
+        });
+    </script>
+    {% endif %}
+    <script>
+        jQuery('html').removeClass('no-js').addClass('js');
+    </script>
+    {% comment %} {% section 'cookie-message' %} {% endcomment %}
+</body>
+</html>

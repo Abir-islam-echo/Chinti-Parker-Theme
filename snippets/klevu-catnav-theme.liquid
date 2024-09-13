@@ -1,0 +1,8 @@
+{% if template.name == 'collection' %}
+  <!-- Include Category Page Theme -->
+  <script src="https://js.klevu.com/theme/default/v2/catnav-theme.js"></script>
+  <script type="text/javascript">
+    var klevu_pageCategory = "{{ collection.title | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}";
+    sessionStorage.setItem("klevu_pageCategory", klevu_pageCategory);
+  </script>
+{% endif %}

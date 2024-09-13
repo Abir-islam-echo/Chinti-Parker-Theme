@@ -1,0 +1,113 @@
+<div data-section-id="{{ section.id }}" data-section-type="featrued-blog-section" class="featrued-blog-section bannergrid-four-section">
+    <div class="wrapper">
+        {% if section.settings.title != blank %}
+        <h2 class="title-section">
+            {{ section.settings.title | escape }}
+        </h2>
+        {% endif %}
+        <div class="row">
+            <div class="owl-carousel">
+                {%- assign blog = blogs[section.settings.blog] -%}
+                {% for article in blog.articles limit: section.settings.post_limit %}
+                    {% assign article_has_image = false %}
+                    {% if article.image %}
+                        {% assign article_has_image = true %}
+                        {% assign image_src = article.image.src  | img_url: '345x'  %}
+                    {% else %}
+                        {% assign img_tag = '<' | append: 'img' %}
+                        {% if article.content contains img_tag %}
+                            {% assign src = article.content | split: 'src="' %}
+                            {% assign src = src[1] | split: '"' | first %}
+                            {% if src %}
+                                {% assign article_has_image = true %}
+                                {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+
+{% assign imageSrcSplit = image_src | split: "/" | last %}
+{% assign image_src = imageSrcSplit  | file_img_url: '345x'  %}
+
+                            {% else %}
+                                {% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '345x'  %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    <div class="col col-image">
+                        <a class="thumbnail" href="{{ article.url }}">
+                            <picture>
+                            {% if article_has_image %}
+                                <img
+                                  src="{{image_src}}"
+                                  alt=""
+                                >
+                            {% else %}
+                                <img
+                                  src="{{'blogFallBackImage.jpg' | asset_img_url: '345x'}}"
+                                  alt=""
+                                >
+                            {% endif %}
+                            </picture>
+                        </a>
+                        <h4 class="title">
+                            <a href="{{ article.url }}">{{ article.title }}</a>
+                        </h4>
+                        <p>
+                            {{ article.excerpt_or_content | strip_html | truncatewords: 20 }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Blog posts",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog posts"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "select",
+        "id": "post_limit",
+        "label": "Posts",
+        "default": "4",
+        "options": [
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "News",
+          "post_limit": "3"
+        }
+      }
+    ]
+  }
+{% endschema %}

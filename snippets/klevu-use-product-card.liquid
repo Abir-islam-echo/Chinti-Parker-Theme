@@ -1,0 +1,58 @@
+{% comment %}
+  Klevu added for template fetch
+{% endcomment %}
+<script type="text/javascript">
+  /* Assign new templates to Klevu Options */
+  klevu({
+      theme: {
+          setTemplates: {
+              productBlock: {
+                  // impacted scope
+                  scope: "landing,catnav",
+                  // new markup block ID
+                  selector: "#myCustom_klevuLandingTemplateProductBlock",
+                  // template placement name
+                  name: "productBlock"
+              }
+          }
+      }
+  });
+</script>
+<!-- trigger the action after template render -->
+<script
+  type="text/javascript"
+>
+  klevu.afterTemplateRender("landing,catnav", function(data, scope) {
+             //console.log('klevu.afterTemplateRender', data.template.query.productList);
+             try {
+                 /* GET all the product IDs in the response */
+                 var productIds = data.template.query.productList.result;
+                 /* LOOP through the IDs */
+                 klevu.each(productIds, async function(pkey, prod) {
+                         /* FETCH the product template from Shopify API */
+                         var res = await fetch(prod.url + "?view=klevu-template&variant=" + prod.id);
+                         var templateBlock = await res.text();
+                         const parser = new DOMParser();
+                         const htmlDoc = parser.parseFromString(templateBlock, 'text/html'); 
+                   const item = htmlDoc.querySelector("#MainContent .item");
+                         /* INSERT the template markup into the placeholder */
+                         var productCardHolder = document.querySelector(`[data-id='${prod.id}'] div.kuProdWrapHolder`);
+                             productCardHolder.innerHTML = item.innerHTML;
+                         });
+                 }
+                 catch (err) {
+                     /* If we have any issues processing the above code let's log the error */
+                     console.log("Not able to process this product because:" + err, prod);
+                 }
+             });
+</script>
+<!-- productBlock override with placeholder -->
+<script type="template/klevu" id="myCustom_klevuLandingTemplateProductBlock">
+  <li ku-product-block class="klevuProduct klevuProductClick kuTrackRecentView
+  grid__item item" data-id="<%=dataLocal.id%>">
+  <div class="kuProdWrapHolder">
+  <!-- INSERT HERE product.klevu-template.liquid for <%=dataLocal.id%> -->
+  </div>
+  </li>
+</script>
+<!-- adjust for styling as needed -->

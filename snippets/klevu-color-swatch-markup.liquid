@@ -1,0 +1,93 @@
+{% assign productRootName = product.title | replace: '  ', ' ' %}
+{% assign productRootHandle = product.handle %}
+{% assign markupToOutput = '' %}
+{% assign FoundAVariant = 'false' %}
+{% assign handlesFound = '' %}
+{% assign productRootSplit = productRootName | split: ' ' %}
+{% assign productColour = productRootSplit | first %}
+{% assign productRootName = product.title | replace: '  ', ' ' | replace: productColour, '' | strip %}
+
+{% for collection in product.collections %}
+  {% for innerProduct in collection.products %}
+    {% assign innerProductTitleColour = innerProduct.title | split: ' ' | first %}
+    {% assign innerProductTitleNoColour = innerProduct.title
+      | replace: '  ', ' '
+      | replace: innerProductTitleColour, ''
+      | strip
+    %}
+    {% if innerProductTitleNoColour == productRootName %}
+      {% if innerProduct.handle != productRootHandle %}
+        {% if innerProduct.handle != innerProductHandle %}
+          {% assign foundImage = 'false' %}
+          {% assign FoundAVariant = 'true' %}
+          {% unless handlesFound contains innerProduct.handle %}
+            {% assign thisHex = 'ededed' %}
+            {% if innerProduct.metafields['c-p'].swatch %}
+              {% assign thisHex = innerProduct.metafields['c-p'].swatch %}
+            {% endif %}
+            {% assign markupToOutput = markupToOutput
+              | append: '<li><a class="image full-unstyled-link klevuProduct klevuProductClick" id="StandardCardNoMediaLink-'
+              | append: innerProduct.id
+              | append: '" data-id="'
+              | append: innerProduct.selected_or_first_available_variant.id
+              | append: '" aria-labelledby="StandardCardNoMediaLink-'
+              | append: innerProduct.id
+              | append: ' NoMediaStandardBadge-'
+              | append: innerProduct.id
+              | append: '"'
+              | append: ' href="/products/'
+              | append: innerProduct.handle
+              | append: '">'
+              | append: '<span class="tooltip" style="display:none; background-color: #'
+              | append: thisHex
+              | append: '">'
+              | append: innerProductTitleColour
+              | append: '</span>'
+            %}
+            {% assign markupToOutput = markupToOutput
+              | append: '<span class="swatchBlock" style="background-color: #'
+              | append: thisHex
+              | append: '"></span></a></li>'
+            %}
+          {% endunless %}
+          {% assign innerProductHandle = innerProduct.handle %}
+          {% assign handlesFound = handlesFound | append: ',' | append: innerProduct.handle %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% unless product.handle == 'gift-card' %}
+  {% if FoundAVariant == 'true' %}
+    <div class="selector colour-selector {% unless product.available %}out-of-stock{% endunless %}">
+      <div class="colour">
+        {% assign thisHex = 'ededed' %}
+        {% if product.metafields['c-p'].swatch %}
+          {% assign thisHex = product.metafields['c-p'].swatch %}
+        {% endif %}
+        <ul id="colourSwatches">
+          <li class="active">
+            <a
+              class="image full-unstyled-link klevuProduct klevuProductClick"
+              href="{{ product.url }}"
+              class="swatchBlock"
+            >
+              <span class="tooltip" style="display:none">
+                {%- assign currentColour = product.title | split: ' ' | first %}
+                {{ currentColour -}}
+              </span>
+              <span class="swatchBlock" style="background-color: #{{thisHex}}"></span>
+            </a>
+          </li>
+          {{ markupToOutput }}
+          <li class="more-colour">
+            <span class="swatchBlock image">
+              <span class="swatchBlock">+</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+{% endunless %}

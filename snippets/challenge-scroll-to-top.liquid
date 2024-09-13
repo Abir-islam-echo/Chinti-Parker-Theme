@@ -1,0 +1,17 @@
+{% comment %}
+  If a user enters their email address from the footer, sometimes they are
+  redirected to the challenge page. When the new page loads the user is
+  still looking at the footer, and as the footer is very large in CP this 
+  obscures the captcha, hindering progress.
+  This script scrolls to the top of the challenge page after a short delay.
+{% endcomment %}
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 500);
+  });
+</script>

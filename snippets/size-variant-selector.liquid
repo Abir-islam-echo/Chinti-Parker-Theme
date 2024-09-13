@@ -1,0 +1,43 @@
+<div class="variants-add size-variant-selector-snippet" id="variants-add-wrapper">
+  <div class="product-details">
+    {% assign selectClass = '' %}
+    {% if product.variants.size < 2 %}
+      {% assign selectClass = ' hidden' %}
+    {% endif %}
+
+    <div id="product-variants">
+      <div class="selector size-selector {{selectClass}} {% if FoundAVariant != 'true' %}no-colour{%endif%}">
+        <div class="size">
+          <label data-size="">
+            <span>Select Size</span>
+          </label>
+          <ul class="product-option-size{% if product.options.size > 1 %} hidden{% endif %}">
+            {% for variant in product.variants %}
+              {% if product.options.size == 1 %}
+                <li
+                  class="{{ variant.title }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' %} out-of-stock{% endif %} active"
+                  data-size="{{ variant.title }}"
+                  data-id="{{ variant.id }}"
+                  data-inventory="{{ variant.inventory_quantity }}"
+                >
+                  <span class="name">{{ variant.title }}</span>
+                </li>
+              {% else %}
+                {% assign variantTitle = variant.title | split: '/' %}
+                {% assign variantSize = variantTitle[1] | strip | replace: ' ', '-' %}
+                {% assign variantColor = variantTitle[0] | strip | replace: ' ', '-' %}
+                <li
+                  class="{{ variantColor }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' %} out-of-stock{% endif %}"
+                  data-size="{{ variantSize }}"
+                  data-id="{{ variant.id }}"
+                >
+                  <span class="name">{{ variantSize }}</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

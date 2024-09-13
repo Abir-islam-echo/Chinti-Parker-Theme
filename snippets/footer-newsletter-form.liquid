@@ -1,0 +1,98 @@
+{% form 'customer' %}
+    <p class="text-dark newsletter-title">{{ title }}</p>
+
+    <div class="input-group">
+        {{ form.errors | default_errors }}
+        <div>
+            <!-- <input type="hidden" name="contact[tags]" value="newsletter"> -->
+          <input type="hidden" id="shopify_tag" name="contact[tags]" value='newsletter'>
+        </div>
+
+        <div class="email-container">
+            <label class="wrap visibleHide" for="email">
+                {{ 'footer.form.email_label' | t }}
+            </label>
+            <input
+                type="email"
+                name="contact[email]"
+                id="Email"
+                class="email"
+                value=""
+                placeholder="{{ 'footer.form.email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+        </div>
+
+        <div>
+            <p id="signUpFormCheckbox" class="visibleHide">
+                <input type="hidden" name="customer[accepts_marketing]" value="" />
+                <input type="checkbox" name="customer[accepts_marketing]" checked="checked" id="marketing">
+                <label for="marketing">I agree to receive email marketing from Chinti &amp; Parker. See our Privacy Policy for further details</label>
+            </p>
+
+            <button
+                type="submit"
+                class="btn"
+                name="commit"
+                id="Subscribe">
+                {{ 'footer.form.submit_label' | t }}
+            </button>
+        </div>
+    </div>
+{% endform %}
+
+{% comment %} redeye task start {% endcomment %}
+
+{% assign euCountryList_newsletter = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' %}
+{% assign usCountryList_newsletter = 'ca,us' %}
+{% assign ukCountryList_newsletter = 'gb' %}
+{% assign isoCode_newsletter = localization.country.iso_code | downcase %}
+{% assign zoneValue_newsletter = '' %}
+{% assign notify_newsletter = '' %}
+
+{%- if euCountryList_newsletter contains isoCode_newsletter -%}
+        {% assign zoneValue_newsletter = 'EU' %} 
+        {% assign notify_newsletter = 'emailsignupEU' %}
+{% elsif usCountryList_newsletter contains isoCode_newsletter %}
+        {% assign zoneValue_newsletter = 'US' %} 
+        {% assign notify_newsletter = 'emailsignupUS' %}
+{% elsif ukCountryList_newsletter contains isoCode_newsletter %}
+        {% assign zoneValue_newsletter = 'UK' %}
+        {% assign notify_newsletter = 'emailsignupUK' %}
+{% else %}
+        {% assign zoneValue_newsletter = 'UK' %}
+        {% assign notify_newsletter = 'emailsignupUK' %}
+{%- endif -%}
+   
+
+<script>
+    const deleteCookie = (name) => {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    };
+  
+    document.querySelector(`#socialRow #contact_form input[name="contact[email]"]`).addEventListener('input', (e) =>{  
+        document.cookie = `email_address=${e.target.value}; Path=/`;
+    });
+  
+    if(window.location.search === '?customer_posted=true'){
+      let email_value;
+      var cookies = document.cookie.split(';');
+      for(var i=0;i < cookies.length;i++) {
+          var cookie = cookies[i];
+          if(cookie.includes('email_address=')){
+               email_value = cookie.split('=')[1];
+               break;
+          }
+      };
+       if(document.querySelector('.newsletter_tag')){
+        document.querySelector('.newsletter_tag').remove();
+      };
+      
+      if(email_value){
+        const str = `<img src="https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=email-sign-up&newsletter=sign-up&email=${email_value}&emailpermit=1&notify={{ notify_newsletter }}&site={{ zoneValue_newsletter }}" class="newsletter_tag" width="1" height="1" />`;
+        document.body.insertAdjacentHTML('beforeend', str);    
+        deleteCookie("email_address");
+          
+      }    
+    };
+  
+</script>
+{% comment %} redeye task finish {% endcomment %}

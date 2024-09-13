@@ -1,0 +1,31 @@
+{% comment %} <div id="insta-feed"></div> {% endcomment %}
+<div id="feed-6796" class="instafeed-shopify"></div>
+<p class="insta-copyright">{{ section.settings.copyright_text }}</p>
+
+{% schema %}
+{
+  "name": "Insta-Feed",
+  "settings": [
+     {
+       "type": "text",
+       "id":"copyright_text",
+       "label":"Copy right Text"
+      }
+  ],
+  "presets": [
+    {
+        "category": "Insta-Feed",
+        "name":"Insta-Feed"
+    }
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .insta-copyright{
+    text-align:center;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

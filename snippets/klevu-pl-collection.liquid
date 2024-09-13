@@ -1,0 +1,38 @@
+{% comment %}
+    This file is automatically added by the Klevu app
+{% endcomment %}
+<script type="text/javascript">
+	var klevu_cat_name = "{{ collection.title | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}";
+	var klevu_cat_url = {{ shop.url | append:  collection.url | json }};
+</script>
+
+
+<script type="text/javascript">
+  function klevuSendCategoryData(){
+    var klevu_cat_name = "{{ collection.title | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}";
+    var klevu_cat_url = {{ shop.url | append:  collection.url | json }};
+     
+    //storage
+    var category = klevu.dictionary("category");
+    category.setStorage("local");
+    category.mergeFromGlobal();
+    category.addElement("klevu_categoryName", klevu_cat_name);
+    category.addElement("klevu_categoryUrl", klevu_cat_url);
+    category.addElement("klevu_categoryProducts", klevuProducts);
+    category.mergeToGlobal();
+     
+    var klevuCategoryOptions = {
+       klevu_categoryName: klevu_cat_name,
+       klevu_categoryPath: klevu_cat_name,
+       klevu_productIds: klevuProducts.join(",")
+     };
+    
+    
+    klevu.coreEvent.attach("analyticsPowerUpShopifyPL", {
+        name: "attachShopifyPLListingAnalytics",
+        fire: function () {
+            klevu.analyticsUtilShopifyPL.base.sendCatViewAnalyticsRequest(klevuCategoryOptions);
+        }
+    });
+  }
+</script>

@@ -1,0 +1,757 @@
+<script>
+  {% if product.handle contains "swap-protect" %}
+    location.href = "/"
+  {% endif %}
+</script>
+{% assign add_to_cart = 'Add to Bag' %}
+{% assign adding_to_cart = 'Adding' %}
+{% assign added_to_cart = 'Added' %}
+{% assign go_to_checkout = 'Go to Checkout' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+{% for product in product.metafields.product.styled_with.value %}
+  {% assign styledWidthProductCount = forloop.index %}
+{% endfor %}
+{%- capture back_in_stock_form -%}
+		{%- render 'back-in-stock-form' | product: product -%}
+{%- endcapture -%}
+
+{% assign shouldShowSizeGuide = 'true' %}
+{% assign thisFit = '' %}
+{% assign thisOverlayTag = '' %}
+
+{% for tag in product.tags %}
+  {% if tag == 'no-size-guide' %}
+    {% assign shouldShowSizeGuide = 'false' %}
+  {% endif %}
+
+  {% if tag contains 'fit-' %}
+    {% assign thisFit = tag | replace: 'fit-', '' %}
+  {% endif %}
+
+  {% if tag contains 'tag-' %}
+    {% assign thisOverlayTag = tag | replace: 'tag-', '' | capitalize %}
+  {% endif %}
+
+  {%- assign giftable = false -%}
+
+  {%- if product.tags contains 'giftable' -%}
+    {%- assign thisOverlayTag = 'gift_me.gift_me' | t -%}
+  {%- endif -%}
+
+  {%- if settings.gift_me_enabled -%}
+    {%- assign giftable = true -%}
+  {%- endif -%}
+
+  {% if tag contains 'staff_price:' and customer.tags contains 'Staff' %}
+    {% assign staff_price = tag | remove: 'staff_price:' | times: 1 %}
+  {% endif %}
+{% endfor %}
+<div class="product row" itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product | img_url: '1280x1280' }}">
+  <meta itemprop="sku" content="{{product.first_available_variant.sku}}">
+  <meta itemprop="brand" content="{{product.vendor}}">
+
+  <div class="product-photos">
+    {% if styledWidthProductCount > 0 %}
+      {% section 'shop-the-look' %}
+      <style>
+        #GoToCheckout{
+          margin-bottom: .3125rem;
+        }
+      </style>
+    {% endif %}
+    {% if product.images.size == 1 %}
+      <div class="product-photo-container" id="justSingleImage">
+        <picture class="item" data-gallery="{{ product.images[0] | img_url: '1600x1600' }}">
+          <source
+            media="(min-width: 800px)"
+            srcset="{{ product.images[0] | img_url: '1010x1515', crop: 'center' }} 1x, {{ product.images[0] | img_url: '1010x1515',scale: 2, crop: 'center' }} 2x"
+          >
+          <source srcset="{{ product.images[0] | img_url: '600x900', crop: 'center' }} 1x, {{ product.images[0] | img_url: '600x900',scale:2, crop: 'center' }} 2x">
+          <img src="{{ product.images[0] | img_url: '1010x1515', crop: 'center' }}" alt="{{ product.title | escape }}">
+        </picture>
+      </div>
+
+    {% else %}
+      {% comment %}
+        <!--
+        				<div class="product-photo-container">
+        					{% assign imageAltfirst = product.images[0].alt | strip | replace: replace: ' ', '-' %}
+        					<div class="owl-carousel">
+        						{% for image in product.images %}
+        							{% assign imageAlt = image.alt | strip | replace: ' ', '-' %}
+        							{% if imageAltfirst != product.title | strip | replace: replace: ' ', '-' %}
+        								{% unless imageAlt == 'swatch' %}
+        								{% if imageAlt == imageAltfirst and forloop.first == false %}
+        								</div>
+        								<div class="item">
+        								{% endif %}
+
+        								{% if forloop.first == true %}
+        								<div class="item">
+        								{% endif %}
+        								<a class="{{ imageAlt }}{% if imageAlt == imageAltfirst %} active{% endif %}" href="{{ image | img_url: '1280x1280' }}" data-featherlight="{{ image | img_url: '1600x1600' }}"> {% comment %} <img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }}" /> {% endcomment %}
+        									<picture>
+        										<source media="(min-width: 800px)" srcset="{{ image | img_url: '1280x1280' }} 1x, {{ image | img_url: '1280x1280',scale: 2 }} 2x">
+        										<source srcset="{{ image | img_url: '800x' }} 1x, {{ image | img_url: '800x',scale:2 }} 2x">
+        										<img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }} image {{forloop.index}}" />
+        									</picture>
+        								</a>
+        								{% endunless %}
+        								{% if forloop.last == true %}
+        								</div>
+        								{% endif %}
+        							{% else %}
+        								{% unless imageAlt == 'swatch' %}
+        								<a class="{{ imageAlt }} {% if imageAlt == imageAltfirst %}active{% endif %}" href="{{ image | img_url: '1600x1600' }}" data-featherlight-gallery="{{ image | img_url: '1600x1600' }}"> {% comment %} <img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }}" /> {% endcomment %}
+        									<picture>
+        										<source media="(min-width: 800px)" srcset="{{ image | img_url: '1280x1280' }} 1x, {{ image | img_url: '1280x1280',scale: 2 }} 2x">
+        										<source srcset="{{ image | img_url: '800x' }} 1x, {{ image | img_url: '800x',scale:2 }} 2x">
+        										<img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }} image {{forloop.index}}" />
+        									</picture>
+        								</a>
+        								{% endunless %}
+        							{% endif %}
+        						{% endfor %}
+        					</div>
+        				</div>
+        /-->
+      {% endcomment %}
+
+      {% assign thisSwatch = '' %}
+
+      <div class="product-photo-container">
+        <div class="owl-carousel">
+          {% for image in product.images %}
+            {% assign imageAlt = image.alt | strip | replace: ' ', '-' %}
+
+            <div class="item" data-gallery="{{ image | img_url: '1600x1600' }}">
+              <a class="{{ imageAlt }} active" href="{{ image | img_url: '1600x1600' }}">
+                <picture>
+                  <source
+                    media="(min-width: 800px)"
+                    srcset="{{ image | img_url: '640x960', crop: 'center' }} 1x, {{ image | img_url: '640x960',scale: 2, crop: 'center' }} 2x"
+                  >
+                  <source srcset="{{ image | img_url: '390x', crop: 'center' }} 1x, {{ image | img_url: '780x',scale:2, crop: 'center' }} 2x">
+                  <img
+                    src="{{ image | img_url: '640x960', crop: 'center' }}"
+                    alt="{{ product.title | escape }} image {{forloop.index}}"
+                  >
+                </picture>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {%- if thisOverlayTag != '' -%}
+      <div class="overlayTag {% if giftable -%}overlayTag--giftable{%- endif -%}">
+        <span>{{ thisOverlayTag }}</span>
+
+        {%- if giftable -%}
+          <img
+            class="gift-icon"
+            src="{{ 'gift-orange.svg' | asset_url }}"
+            alt="Gift Me"
+          >
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+  <!-- .product-photos -->
+
+  <div class="product-details">
+    <div class="details">
+      {% include 'breadcrumbs' %}
+      <div class="name-price">
+        <h1 itemprop="name">{{ product.title }}</h1>
+
+        {% assign product_vendor_handle = product.vendor | handle %}
+        {% comment %}
+          Do we have a collection that has the same name as our product vendor name?
+          If we do, let's have the vendor link point to it.
+          If not, we will point to the automatic vendor collection.
+        {% endcomment %}
+        {% if collections[product_vendor_handle].handle == product_vendor_handle %}
+          {% assign vendor_url = collections[product_vendor_handle].url %}
+        {% else %}
+          {% assign vendor_url = product.vendor | url_for_vendor %}
+        {% endif %}
+
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          {% if product.available %}
+            <link itemprop="availability" href="http://schema.org/InStock">
+          {% else %}
+            <link itemprop="availability" href="http://schema.org/OutOfStock">
+          {% endif %}
+          <meta itemprop="price" content="{{ product.price | money_without_currency }}">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        </div>
+
+        <div id="product-price" class="delta{% if product.compare_at_price > product.price %} isOnSale{%endif%}">
+          {% comment %}
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+            <meta itemprop="price" content="{{ product.price | money_without_currency }}">
+
+            {% if product.available %}
+            <link itemprop="availability" href="http://schema.org/InStock" />
+            {% else %}
+            <link itemprop="availability" href="http://schema.org/OutOfStock" />
+            {% endif %}
+          {% endcomment %}
+          <p>
+            {% assign variant = product.selected_or_first_available_variant %}
+            {% if product.compare_at_price > product.price %}
+              <s class="product-compare-price">
+                {{ variant.compare_at_price | money_without_currency | replace: '.00', '' }}
+              </s>
+              <span class="product-price on-sale" itemprop="price">
+                {{- variant.price | money_without_currency | replace: '.00', '' }}
+              </span>
+
+            {% else %}
+              <span class="product-price" itemprop="price">
+                {{ variant.price | money_without_currency | replace: '.00', '' }}
+              </span>
+            {% endif %}
+          </p>
+          <p id="USDutiesAndTaxesProduct">{{ settings.chinti_us_delivery_message }}</p>
+        </div>
+      </div>
+      <!--  -->
+      <!-- variant add -->
+      {% render 'variant-atc-button', product: product %}
+      <!-- variant add -->
+      {% if settings.show_klarna_logo %}
+        {% assign US_domain = 'chinti-parker-usd.myshopify.com' %}
+        {% assign UK_domain = 'chinti-parker.myshopify.com' %}
+
+        {% if shop.permanent_domain == UK_domain or shop.permanent_domain == US_domain %}
+          {% if shop.permanent_domain == US_domain %}
+            {% assign klarna_locale = 'en-US' %}
+          {% else %}
+            {% assign klarna_locale = 'en-GB' %}
+          {% endif %}
+
+          {% if localization.country.iso_code == 'GB' %}
+            <div class="klarna-container">
+              <klarna-placement
+                data-key="credit-promotion-small"
+                data-locale="{{ klarna_locale }}"
+                data-purchase-amount="{{ variant.price }}"
+              >
+              </klarna-placement>
+            </div>
+          {% endif %}
+
+          {%- comment -%}
+            To refactor the klarna implementation as per comments on
+            https://bitbucket.org/strawberryweb/chintiandparker-theme/pull-requests/43/cp-245-add-klarna-messaging-for-us-store
+          {%- endcomment -%}
+        {% else %}
+          <div class="klarna-flag-wrapper text-center">
+            {{ 'klarna-logo.png' | asset_img_url: '300x' | img_tag: 'Pay later with Klarna', 'klarna-flag' }}
+          </div>
+        {% endif %}
+      {% endif %}
+      <div id="wishlist-wrapper"></div>
+      <!--  -->
+      <div class="description-variants-add" id="description-variants-add">
+        <div id="product-description" itemprop="description">
+          {% assign productDescriptions = product.description | split: '<h3>' %}
+          {{ productDescriptions[0] }}
+        </div>
+      </div>
+
+      {% section 'pdp-ticker' %}
+      <div id="backorder" class="hidden">
+        <p>
+          {{
+            '%s is back-ordered. We will ship it separately in 10 to 15 days.'
+            | replace: '%s', '<span id="selected-variant"></span>'
+          }}
+        </p>
+      </div>
+
+      <div class="product-collapse">
+        {% if productDescriptions.size > 1 %}
+          {% render 'trustshop' %}
+          {% for thisDescription in productDescriptions %}
+            {% unless forloop.first == true %}
+              {% assign thisContent = thisDescription | split: '</h3>' %}
+              <h3 class="title">{{ thisContent[0] }}</h3>
+              <div class="content">
+                {{ thisContent[1] }}
+              </div>
+            {% endunless %}
+
+            {% if forloop.index0 == 1 and giftable %}
+              <h3 class="title title--with-icon">
+                <span>
+                  {{ 'gift_me.send_as_gift' | t }}
+                  <img
+                    class="icon gift-icon"
+                    src="{{ 'gift.svg' | asset_url }}"
+                    alt="Gift Me"
+                  >
+                </span>
+              </h3>
+              <div class="content">
+                <p>{{ 'gift_me.send_as_gift_description' | t }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        <h3 class="title">Delivery &amp; Returns</h3>
+        <div class="content">
+          {{ pages['product-detail-page-delivery-and-returns-content'].content }}
+        </div>
+      </div>
+      {% if settings.enable_harper_concierge and localization.country.iso_code == 'GB' %}
+        <div class="harper-product--wrapper">
+          {{ settings.harper_product_message }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if styledWidthProductCount > 0 %}
+    <!-- shop the look moal -->
+    <div class="shop-the-look-modal-overlay">
+      <div class="shop-the-look-modal-wrapper">
+        <div class="shop-the-look-modal-content">
+          {% render 'styled-with',
+            product: product,
+            customClass: 'from-shop-the-look',
+            modalHeading: 'section.settings['
+          %}
+          <div class="close-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48">
+              <path d="M37,45c-0.256,0-0.512-0.098-0.707-0.293L24,32.414L11.707,44.707c-0.391,0.391-1.023,0.391-1.414,0l-5-5	C5.105,39.52,5,39.265,5,39v-2c0-0.294,0.129-0.573,0.354-0.763l12.17-10.298L5.293,13.707C5.105,13.52,5,13.265,5,13v-2	c0-0.351,0.184-0.677,0.485-0.857l5-3c0.394-0.235,0.898-0.173,1.222,0.15L24,19.586L36.293,7.293	c0.324-0.324,0.829-0.386,1.222-0.15l5,3C42.816,10.323,43,10.649,43,11v2c0,0.265-0.105,0.52-0.293,0.707L30.476,25.938	l12.17,10.298C42.871,36.427,43,36.706,43,37v2c0,0.265-0.105,0.52-0.293,0.707l-5,5C37.512,44.902,37.256,45,37,45z"></path><polygon fill="#fff" points="42,37 29,24 42,11 37,6 24,19 11,6 6,11 19,24 6,37 11,42 24,29 37,42"></polygon><path d="M37,43c-0.256,0-0.512-0.098-0.707-0.293L24,30.414L11.707,42.707c-0.391,0.391-1.023,0.391-1.414,0l-5-5	c-0.391-0.391-0.391-1.023,0-1.414L17.586,24L5.293,11.707c-0.391-0.391-0.391-1.023,0-1.414l5-5c0.391-0.391,1.023-0.391,1.414,0	L24,17.586L36.293,5.293c0.391-0.391,1.023-0.391,1.414,0l5,5c0.391,0.391,0.391,1.023,0,1.414L30.414,24l12.293,12.293	c0.391,0.391,0.391,1.023,0,1.414l-5,5C37.512,42.902,37.256,43,37,43z M24,28c0.256,0,0.512,0.098,0.707,0.293L37,40.586L40.586,37	L28.293,24.707c-0.391-0.391-0.391-1.023,0-1.414L40.586,11L37,7.414L24.707,19.707c-0.391,0.391-1.023,0.391-1.414,0L11,7.414	L7.414,11l12.293,12.293c0.391,0.391,0.391,1.023,0,1.414L7.414,37L11,40.586l12.293-12.293C23.488,28.098,23.744,28,24,28z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- shop the look moal -->
+  {% endif %}
+  <!-- .product-details -->
+
+  {% comment %}additional content blocks {% endcomment %}
+  {% comment %}global defaults: {% endcomment %}
+  {% assign contentForBlock1 = 'product-content-blocks-global-1' %}
+  {% assign contentForBlock2 = 'product-content-blocks-global-2' %}
+  {% assign contentForBlock3 = 'product-content-blocks-global-3' %}
+  {% assign contentForBlock4 = 'product-content-blocks-global-4' %}
+
+  {% comment %}check for collection specific content: {% endcomment %}
+
+  {% for collection in product.collections %}
+    {% assign collectionContentForBlock1 = 'product-content-blocks-' | append: collection.handle | append: '-1' %}
+    {% assign collectionContentForBlock2 = 'product-content-blocks-' | append: collection.handle | append: '-2' %}
+    {% assign collectionContentForBlock3 = 'product-content-blocks-' | append: collection.handle | append: '-3' %}
+    {% assign collectionContentForBlock4 = 'product-content-blocks-' | append: collection.handle | append: '-4' %}
+
+    {% if pages[collectionContentForBlock1].handle != '' %}
+      {% assign contentForBlock1 = collectionContentForBlock1 %}
+    {% endif %}
+    {% if pages[collectionContentForBlock2].handle != '' %}
+      {% assign contentForBlock2 = collectionContentForBlock2 %}
+    {% endif %}
+    {% if pages[collectionContentForBlock3].handle != '' %}
+      {% assign contentForBlock3 = collectionContentForBlock3 %}
+    {% endif %}
+    {% if pages[collectionContentForBlock4].handle != '' %}
+      {% assign contentForBlock4 = collectionContentForBlock4 %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %}check for product page specific content: {% endcomment %}
+
+  {% assign specificContentForBlock1 = 'product-content-blocks-' | append: product.handle | append: '-1' %}
+  {% assign specificContentForBlock2 = 'product-content-blocks-' | append: product.handle | append: '-2' %}
+  {% assign specificContentForBlock3 = 'product-content-blocks-' | append: product.handle | append: '-3' %}
+  {% assign specificContentForBlock4 = 'product-content-blocks-' | append: product.handle | append: '-4' %}
+
+  {% if pages[specificContentForBlock1].handle != '' %}
+    {% assign contentForBlock1 = specificContentForBlock1 %}
+  {% endif %}
+  {% if pages[specificContentForBlock2].handle != '' %}
+    {% assign contentForBlock2 = specificContentForBlock2 %}
+  {% endif %}
+  {% if pages[specificContentForBlock3].handle != '' %}
+    {% assign contentForBlock3 = specificContentForBlock3 %}
+  {% endif %}
+  {% if pages[specificContentForBlock4].handle != '' %}
+    {% assign contentForBlock4 = specificContentForBlock4 %}
+  {% endif %}
+
+  {%- assign content_for_block_1 = pages[contentForBlock1].content -%}
+  {%- assign content_for_block_2 = pages[contentForBlock2].content -%}
+  {%- assign content_for_block_3 = pages[contentForBlock3].content -%}
+  {%- assign content_for_block_4 = pages[contentForBlock4].content -%}
+
+  {%- if content_for_block_1 != blank
+    or content_for_block_2 != blank
+    or content_for_block_3 != blank
+    or content_for_block_4 != blank
+  -%}
+    <div id="additionalContentBlocks">
+      {%- if content_for_block_1 != blank or content_for_block_2 != blank -%}
+        <div class="row">
+          <div class="item content">{{ content_for_block_1 }}</div>
+          <div class="item img">
+            {{ content_for_block_2 | replace: '<img ', '<img loading="lazy" importance="low" ' }}
+          </div>
+        </div>
+      {%- endif -%}
+      {%- if content_for_block_3 != blank or content_for_block_4 != blank -%}
+        <div class="row">
+          <div class="item content">{{ content_for_block_4 }}</div>
+          <div class="item img">
+            {{ content_for_block_3 | replace: '<img ', '<img loading="lazy" importance="low" ' }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<div id="sizeGuideWrapper">
+  <div id="sizeGuideModal">
+    {% if thisFit != '' %}
+      <div class="row">
+        <h3>Fit Guide - {{ thisFit }}</h3>
+        <div class="sizeGuideImages">
+          {% assign thisFitHandle = thisFit | downcase | replace: ' ', '-' %}
+          {% assign thisFitHandle = 'size-guide-' | append: thisFitHandle %}
+
+          {% assign fitGuideImages = pages.[thisFitHandle].content %}
+
+          {% comment %}
+            just get the images out, so we can ignore <p> and <br> etc.
+          {% endcomment %}
+
+          {% assign fitGuideImagesSrc = fitGuideImages | split: 'src="' %}
+
+          {% for imageSrc in fitGuideImagesSrc %}
+            {% unless forloop.first == true %}
+              {% assign upToTheNextQuote = imageSrc | split: '"' %}
+              <img src="{{upToTheNextQuote[0] | strip_html | strip }}" alt="">
+            {% endunless %}
+          {% endfor %}
+        </div>
+
+        <p>
+          The {{ product.title | replace: ' - ', ' ' }} is a <strong>{{ thisFit }}</strong>.
+        </p>
+        <p>
+          Model is 5ft 10in and wears a UK size 8/Small.<br>
+          Measurements when the garment is flat (size small):
+        </p>
+
+        {% if productDescriptions.size > 1 %}
+          {% for thisDescription in productDescriptions %}
+            {% unless forloop.first == true %}
+              {% assign thisContent = thisDescription | split: '</h3>' %}
+              {% assign thisTitle = thisContent[0]
+                | strip-html
+                | strip
+                | downcase
+                | replace: ' &amp; ', ''
+                | replace: ' & ', ''
+              %}
+
+              {% if thisTitle == 'sizecare' or thisTitle == 'size' %}
+                <div class="sizeCareOutput">{{ thisContent[1] }}</div>
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+
+        {% assign fitLink = thisFit | replace: ' ', '' | downcase | append: 'fit' %}
+
+        <p>
+          Interested in comparing all of our fits? Click
+          <a href="/pages/sweater-fit-guide/#{{fitLink}}" target="_blank">here</a>
+        </p>
+      </div>
+    {% endif %}
+
+    <div class="row" id="fullWidthRow">
+      <h4>Size Guide</h4>
+      <p>{{ pages['size-guide-help-text'].content | strip_html | strip }}</p>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <h4>Size Conversions</h4>
+        {{ pages['size-guide-size-conversions'].content }}
+      </div>
+      <div class="column" id="cmInTable">
+        <h4>Standard Body Measurements</h4>
+        <ul id="cmInToggle">
+          <li class="active" id="cm">CM</li>
+          <li id="in">IN</li>
+        </ul>
+        {{ pages['size-guide-measurements'].content }}
+      </div>
+    </div>
+
+    {% comment %}
+      {{ pages[chart].content }}
+    {% endcomment %}
+  </div>
+</div>
+
+{% comment %}
+  Adding support for product options. See here for details:
+  http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+{% endcomment %}
+
+{% comment %}
+  <!--
+  {% section 'related-products-by-tagged-collection' %}
+  /-->
+{% endcomment %}
+
+{% render 'component--complete-the-look' %}
+
+{% render 'styled-with' %}
+
+{% render 'recently-viewed-display' %}
+
+<div class="klevu-recs" id="k-bf4682ff-0caa-441e-9648-6c44d1124520"></div>
+
+{%-
+  render 'modal'
+  | title: 'NOTIFY WHEN AVAILABLE'
+  | id: 'back-in-stock'
+  | content: back_in_stock_form
+-%}
+
+<script>
+  /*============================================================================
+    Back In Stock Modal Events
+  ==============================================================================*/
+
+  var backInStockButton = document.querySelector('[data-modal-trigger]');
+  var backInStockModal = document.querySelector('[data-back-in-stock-modal]');
+
+  if(backInStockButton && backInStockModal) {
+      backInStockButton.addEventListener('click', function() {
+          backInStockModal.classList.toggle('active');
+      });
+
+      backInStockModal.querySelectorAll('[data-close-modal-trigger]')
+          .forEach(function(el){
+              el.addEventListener('click', function() {
+                  backInStockModal.classList.remove('active');
+              });
+          });
+  }
+
+  /*============================================================================
+    Back In Stock Form
+  ==============================================================================*/
+
+  if(backInStockButton && backInStockModal) {
+      var selectors = {
+          form:'[data-back-in-stock-form]',
+          emailInput:'[data-back-in-stock-email]',
+          errorMessage: '[data-back-in-stock-error]',
+          productInput: '[data-back-in-stock-product]',
+          submitButton: '[data-back-in-stock-submit]',
+          successView: '[data-back-in-stock-success-view]',
+          successMessage: '[data-back-in-stock-success]',
+          variantInput: '[data-back-in-stock-variant]'
+      };
+
+      var form = document.querySelector(selectors.form)
+      var emailInput = document.querySelector(selectors.emailInput);
+      var errorMessageContainer = document.querySelector(selectors.errorMessage);
+      var productInput = document.querySelector(selectors.productInput);
+      var submitButton = document.querySelector(selectors.submitButton);
+      var successMessageContainer = document.querySelector(selectors.successMessage);
+      var successView = document.querySelector(selectors.successView);
+      var variantInput = document.querySelector(selectors.variantInput);
+
+      function onSubmit(event) {
+          event.preventDefault();
+
+          if (!this.emailInput.value || this.emailInput.value.length === 0) {
+              errorMessageContainer.textContent = 'Please enter an email address';
+              return;
+          }
+
+          if (this.variantInput.value && this.productInput.value) {
+              submitButton.disabled = true;
+              errorMessageContainer.textContent = '';
+
+              $.ajax({
+                  url: 'https://a.klaviyo.com/onsite/components/back-in-stock/subscribe',
+                  header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                  method: 'POST',
+                  data: {
+                      a: form.dataset.klaviyoKey,
+                      email: emailInput.value,
+                      g: form.dataset.listId,
+                      variant: variantInput.value,
+                      product: productInput.value,
+                      platform: 'shopify',
+                      subscribe_for_newsletter: false
+                  },
+                  dataType: 'json',
+                  success: function () {
+                      successMessageContainer.textContent = window.theme.backInStock.success;
+                      successView.classList.toggle('u-hide');
+                  },
+                  error: function () {
+                      errorMessageContainer.textContent =  window.theme.backInStock.error;
+                  }
+              })
+          }
+
+      }
+
+      form.addEventListener('submit', function(event) {
+          onSubmit(event);
+      });
+  }
+
+  var selectCallback = function(variant, selector) {
+
+  	if (variant) {
+
+  		// Swap image.
+  		//if (variant.featured_image) {
+  		//  var newImage = variant.featured_image; // New image object.
+  		//  var mainImageDomEl = jQuery('.product-photo-container img')[0]; // DOM element of main image we need to swap.
+  		//  Shopify.Image.switchImage(newImage, mainImageDomEl, switchImage); // Define switchImage (the callback) in your theme's JavaScript file.
+  		//}
+
+
+  		// Selected a valid variant that is available.
+  		if (variant.available) {
+
+  		// Enabling add to cart button.
+  			jQuery('#AddToCart').removeClass('disabled').prop('disabled', false).val({{ add_to_cart | json }});
+
+
+  			// If item is backordered yet can still be ordered, we'll show special message.
+  			if (variant.inventory_management && variant.inventory_quantity <= 0) {
+  				jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
+  				jQuery('#backorder').removeClass("hidden");
+  			} else {
+  				jQuery('#backorder').addClass("hidden");
+  			}
+
+  			var variantSize = jQuery('.size label:not(.shop-the-look-modal-wrapper .size label)').data('size');
+  			if(variantSize == ''){
+  				jQuery('#AddToCart').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+  			}
+
+  		} else {
+  			// Variant is sold out.
+  			jQuery('#backorder').addClass('hidden');
+  			jQuery('#AddToCart').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);
+  		}
+
+  		{% if staff_price %}
+  			variant.compare_at_price = variant.compare_at_price || variant.price;
+  			variant.price = {{ staff_price }};
+  		{% endif %}
+
+  		// Whether the variant is in stock or not, we can update the price and compare at price.
+  		if ( variant.compare_at_price > variant.price ) {
+            jQuery('#product-price,.product-price-sticky').html('<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}").replace(".00", "")+ '</s>&nbsp;<span class="product-price on-sale">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}").replace(".00", "") + '&nbsp;(' + Math.round((variant.compare_at_price - variant.price) * 100 / variant.compare_at_price) + '% off)</span><p id="USDutiesAndTaxesProduct">{{settings.chinti_us_delivery_message}}</p>');
+  		} else {
+  			jQuery('#product-price,.product-price-sticky').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}").replace(".00", "") + '</span><p id="USDutiesAndTaxesProduct">{{settings.chinti_us_delivery_message}}</p>' );
+  		}
+
+  	} else {
+
+  		jQuery('#backorder').addClass('hidden');
+  		jQuery('#AddToCart').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+  	}
+  };
+
+
+
+  jQuery(function($) {
+
+    new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: false });
+
+
+  });
+
+  Shopify.Image.preload({{ product.images | json }}, Math.ceil($('.product-photo-container').width())+"x");
+  Shopify.Image.preload({{ product.images | json }}, '1600x1600');
+
+  // https://help.shopify.com/themes/customization/products/variants/how-to-add-a-pick-an-option-to-drop-downs
+  var productOptions = [];
+    {% for option in product.options %}
+    var optionObj = {};
+    optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";
+    productOptions.push(optionObj);
+    {% endfor %}
+</script>
+
+{% render 'quick-view-ajaxify-cart' %}
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: "{{ localization.country.currency.symbol }}{{ product.price|money_without_currency}}",
+    CompareAtPrice: "{{ localization.country.currency.symbol }}{{ product.compare_at_price_max|money_without_currency}}"
+  };
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+
+{% comment %}{% render 'gtm-product-detail', product: product %}{% endcomment %}
+{% render 'product_infox' %}
+
+{%- assign ukCountryList = 'bf,td,cg,gq,ga,mo,sl,th,tg,sh,sx,st,rw,gm,bi,ug,ci,lr,gh,cm,md,gi,aw,ao,se,ro,pl,hu,dk,cz,bg,uk,bd,gb,al,im,gg,je,nz,hk,jp,kr,kw,qa,tw,ae,dz,ai,ag,ar,am,az,bs,bh,bb,bz,bj,bm,bt,bo,ba,bw,br,vg,bn,kh,cv,ky,cl,cn,co,km,ck,cr,cw,dj,dm,do,ec,eg,sv,et,fk,fo,fj,gf,pf,ge,gi,gl,gd,gt,gn,gw,gy,ht,hn,is,in,id,il,jm,jo,kz,ke,ki,kg,la,lb,ls,li,mg,mw,my,mv,mr,mu,mx,md,mn,ms,ma,mz,na,nr,np,an,nc,ni,ng,nu,mk,no,om,pk,pa,pg,py,pe,ph,re,ws,sa,rs,sc,sg,sb,za,lk,sr,ch,tz,to,tt,tn,tr,tm,tc,tv,uy,uz,vu,ve,vn,vg,wf,zm,zw' -%}
+{% assign isoCode = localization.country.iso_code | downcase %}
+
+<style>
+  .template-product .product-details .klarna-container{
+    border: 1px solid black;
+  }
+  div.product-details #GoToCheckout{
+    margin-bottom: .3125rem;
+  }
+  {% unless ukCountryList contains isoCode %}
+    #vitals-end-section{
+      display: none;
+    }
+  {% endunless %}
+</style>
+
+<script>
+    const timeCount = new Date((new Date().getTime())+(30*60*1000));
+      document.querySelector(".product-details #AddToCartForm #AddToCartWrapper #AddToCart").addEventListener("click",()=>{
+      localStorage.setItem("cartTimer", JSON.stringify(timeCount));
+  })
+</script>

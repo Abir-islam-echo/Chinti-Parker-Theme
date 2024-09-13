@@ -1,0 +1,354 @@
+<div class="style-with-{{ section.id }}">
+  <div class="{{ section.settings.width }}">
+    <div class="row">
+      <div class="content-wrapper">
+        <div class="content">
+          <h2>STYLE WITH</h2>
+          <p>
+            Home to the most notable names in fashion, and the birthplace of chic, residents of Paris dress nothing
+            short of excellent. With a style that’s equal parts elegant and simplistic, Parisians are firm believers
+            that a wardrobe doesn’t need to be overflowing to make an impact. Holding quality above all else, only a few
+            staple pieces are required to curate a look worthy for the Eiffel Tower. With this Chinti & Parker guide,
+            you’ll have everything you need to dress à la mode.
+          </p>
+        </div>
+      </div>
+      <div class="product-wrapper  product-list">
+        <div class="item">
+          {% assign product = section.settings.product %}
+          <div class="product-image-wrap">
+            <a href="{{ product.url }}" class="image">
+              <picture>
+                <source
+                  media="(min-width: 740px)"
+                  srcset="{{ product | img_url: '600x' }} 1x, {{ product | img_url: '1200x' }} 2x"
+                >
+                <source srcset="{{ product | img_url: '300x' }} 1x, {{ product | img_url: '600x' }} 2x">
+                <img
+                  src="{{ product | img_url: 'master' }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                >
+              </picture>
+            </a>
+          </div>
+
+          <div class="product-caption">
+            <h2 class="product-name" itemprop="name">
+              <a href="{{ product.url }}"> {{ product.title }} </a>
+            </h2>
+            <span class="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+              {% if product.available %}
+                <link itemprop="availability" href="http://schema.org/InStock">
+              {% else %}
+                <link itemprop="availability" href="http://schema.org/OutOfStock">
+              {% endif %}
+              {% if product.price_varies %}From{% endif %}
+              {% if product.compare_at_price > product.price %}
+                <s class="compare-at-price">
+                  {{ product.compare_at_price | money | replace: '.00', '' }}
+                </s>
+              {% endif %}
+              {% if product.compare_at_price > product.price %}
+                {% comment %}<s class="compare-at-price">{{ product.compare_at_price | money }} ({{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0'}}% off)</s>{% endcomment %}
+
+                <span class="on-sale">
+                  {{ product.price | money | replace: '.00', '' }} (
+                  {{-
+                    product.compare_at_price_max
+                    | minus: product.price
+                    | times: 100.0
+                    | divided_by: product.compare_at_price_max
+                    | round
+                  -}}
+                  % off)
+                </span>
+                <meta itemprop="price" content="{{ product.compare_at_price | money_without_currency }}">
+              {% else %}
+                {{ product.price | money | replace: '.00', '' }}
+                <meta itemprop="price" content="{{ product.price | money_without_currency }}">
+              {% endif %}
+            </span>
+          </div>
+          {%- if product.metafields['c-p'].swatch -%}
+            {% include 'color-swatch-markup' %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "CMS Style With",
+  "class": "cms-style-with",
+  "settings":[
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Column Width",
+      "options": [
+        {
+          "value": "el-container",
+          "label": "container"
+        },
+        {
+          "value": "el-full-width",
+          "label": "Full width"
+        }
+
+      ],
+      "default": "el-container"
+    },
+    {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin",
+        "default": "40px 0px 40px 0px",
+        "info":"Change margin value according to the necessity.Section margin value will be like this [Top Right Bottom Left]: 40px 0px 40px 0px "
+    },
+    {
+      "type":"header",
+      "content": "Style with Portion"
+    },
+    {
+      "type":"number",
+      "id":"heading-font-size",
+      "label":"Heading font size",
+      "default":32
+    },
+     {
+      "type":"number",
+      "id":"content-font-size",
+      "label":"Content font size",
+      "default":18
+    },
+    {
+      "type":"header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+
+  ]
+ 
+}
+{% endschema %}
+
+{% style %}
+  .style-with-{{ section.id }} {
+    margin: {{section.settings.margin}}
+  }
+  .style-with-{{ section.id }} .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .style-with-{{ section.id }} .row > div{
+    flex:1;
+  }
+  .style-with-{{ section.id }} .content {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .style-with-{{ section.id }} .content h2{
+    font-weight:600;
+    font-size: {{ section.settings.heading-font-size }}px;
+  }
+  .style-with-{{ section.id }} .content p {
+    color: #000;
+    margin: 10px 0;
+    font-size: {{ section.settings.content-font-size }}px;
+  }
+  .style-with-{{ section.id }} .product-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /*colour swatch*/
+
+  .product-list #colourSwatches li:nth-child(-n+3){
+      display:block !important; 
+  }
+  .product-list #colourSwatches {
+    justify-content: flex-start;
+  }
+  .product-list #colourSwatches a {
+    height: 23px !important;
+    width: 23px !important;
+  }
+  .product-list #colourSwatches .swatchBlock {
+    height: 15px !important;
+    width: 15px !important;
+  }
+  .product-list #colourSwatches .more-colour.two-colur-block-mobile{
+    display:none !important;
+  }
+    
+}
+@media screen and (min-width: 768px) and (max-width:992px) {
+ .product-list #colourSwatches a {
+      height: 18px !important;
+      width: 18px !important;
+      display: flex !important;
+      justify-content: center;
+      box-sizing: border-box;
+      align-items: center;
+
+ }
+  .product-list #colourSwatches .swatchBlock {
+    height: 10px !important;
+    width: 10px !important;
+  }
+  .product-list #colourSwatches .more-colour .swatchBlock {
+    font-size: 16px !important;
+  } 
+}
+@media screen and (min-width: 576px) and (max-width:767px) {
+  .product-list #colourSwatches li {
+    width: 14% !important;
+  }
+}
+
+    .style-with-{{ section.id }} .product-grid .item{
+    width:unset;
+    margin:0;
+    float:unset;
+  }
+   .style-with-{{ section.id }} .row > div.product-wrapper{
+        margin-left:20px;
+     }
+  @media (max-width:767px){
+    .style-with-{{ section.id }} .row{
+      flex-direction:column;
+    }
+     .style-with-{{ section.id }} .row > div.content-wrapper{
+        width:100%;
+     }
+    .style-with-{{ section.id }} .row > div.product-wrapper{
+        width:100%;
+     }
+  }
+
+    @media (max-width:480px){
+     .style-with-{{ section.id }} .product-caption {
+    align-items: baseline;
+    }
+
+    .style-with-{{ section.id }} .product-caption h2.product-name{
+     width: calc(100% - 150px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    }
+  }
+  
+  /*colour swatch*/
+  
+    .product-list #colourSwatches{
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .product-list #colourSwatches li{
+      width:8%;
+      display:none;
+    }
+    .product-list #colourSwatches li:nth-child(-n+11){
+      display:block;
+    }
+   .product-list #colourSwatches .more-colour{
+      display:none !important;
+    }
+    .product-list #colourSwatches .more-colour.more-colur-block{
+      display:block !important;
+    }
+    .product-list #colourSwatches li a{
+      border:1px solid white;
+      border-radius:100%;
+      padding:3px;
+      display: block;
+    }
+    .product-list #colourSwatches a{
+       width: 23px;
+      height: 23px;
+      display: flex !important;
+      justify-content: center;
+      box-sizing: border-box;
+      align-items: center;
+    }
+    .product-list #colourSwatches .swatchBlock{
+      height:15px;
+      width:15px;
+    }
+    .product-list #colourSwatches li.active a{
+      border-color: #777;
+    }
+   .product-list #colourSwatches .more-colour .swatchBlock {
+      background: unset;
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      text-align: left;
+      margin-top:1px;
+    }
+   .product-list #colourSwatches a {
+      position: relative;
+      transition: 0.2s ease;
+  }
+   .product-list #colourSwatches .tooltip {
+    background-color: #222233;
+    border-radius: 10px;
+    color: white;
+    padding: 0.4rem;
+    font-size: 12px;
+    display: block !important;
+    width: auto;
+    min-width: 80px;
+    text-align: center;
+    position: absolute;
+    user-select: none;
+    bottom: calc(100% + 0.4rem + 4px + 4px);
+    opacity: 0;
+    transform: scale(0.2);
+    transition: 0.2s ease;
+    margin-bottom: -10px;
+    left: -37px;
+    visibility: hidden;
+  }
+   .product-list #colourSwatches  a:hover .tooltip {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+    
+  }
+{% endstyle %}
+<script>
+    let gridItem=document.querySelectorAll('.product-list .item');
+    gridItem.forEach((item)=>{
+      let swatchItem=item.querySelectorAll('#colourSwatches li');
+      if(swatchItem.length>11){
+        item.querySelector('#colourSwatches .more-colour').classList.add('more-colur-block');
+      }
+      if(swatchItem.length==3){
+        item.querySelector('#colourSwatches .more-colour').classList.add('two-colur-block-mobile');
+      }
+       swatchItem.forEach((item) => {
+        let bg = item.querySelector('.swatchBlock') && item.querySelector('.swatchBlock').style.backgroundColor;
+        if (item.querySelector('.tooltip')) {
+            item.querySelector('.tooltip').style.backgroundColor = bg;
+        	let tempBg=bg.replace('(',' ');
+        	tempBg=tempBg.replace(')',' ');
+        	tempBg=tempBg.replace('rgb',' ');
+        	tempBg=tempBg.split(",");
+        	if(tempBg[0]>200 && tempBg[1]>200 && tempBg[2]>200){
+        		item.querySelector('.tooltip').style.color = '#000';
+        	}
+        }
+      });
+    }); 
+  </script>

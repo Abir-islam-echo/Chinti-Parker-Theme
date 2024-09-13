@@ -1,0 +1,11 @@
+{% unless settings.gtm_code == blank %}
+{% if search.performed %}
+
+<script type="text/javascript">
+  analytics.track('Searched Products', {
+    resultsCount: "{{ search.results_count }}",
+    terms: "{{ search.terms }}"
+  });
+</script>
+{% endif %}
+{% endunless %}

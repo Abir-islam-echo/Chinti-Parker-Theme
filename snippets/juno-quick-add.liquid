@@ -1,0 +1,65 @@
+{%- comment -%}
+JUNO - Quick Buy
+{%- endcomment -%}
+{%- assign variantType = '' -%}
+{%- assign foundColours = '' -%}
+{%- assign foundColourImages = '' -%}
+{%- assign numberOfColours = 0 -%}
+{%- assign foundSizes = '' -%}
+{%- assign numberOfSizes = 0 -%}
+{%- assign variantsWithIds = '' -%}
+{%- for option in product.options -%}
+{%- assign option_index = forloop.index0 -%}
+{%- assign optionUpperCase = option | upcase  -%}
+{%- for variant in product.variants -%}
+{%- if variant.available -%}
+{%- assign thisTitleAndId = variant.title | append: '--' | append: variant.id | append: ',' -%}
+{%- else -%}
+{%- assign thisTitleAndId = variant.title | append: '##OOS##--' | append: variant.id | append: ',' -%}
+{%- endif -%}
+{%- unless variantsWithIds contains thisTitleAndId -%}
+{%- assign variantsWithIds = variantsWithIds | append: thisTitleAndId | append : ',' -%}
+{%- endunless -%}
+{%- endfor -%}
+{%- comment -%}
+<!--
+{%- if numberOfColours == 1 -%}
+<p>1 colour available.</p>
+{%- elsif numberOfColours > 1 -%}
+<p>{{numberOfColours}} colours available.</p>
+{%- endif -%}
+/-->
+{%- endcomment -%}
+{%- endfor -%}
+{%- assign variantsWithIdsArray = variantsWithIds | split: ',' -%}
+<!-- <script>
+  var product = {{ product | json }};
+  console.log('product', product);
+</script> -->
+{%- assign colourSwatchOutput = '<ul class="colourSwatch">' -%}
+{%- assign quickAddOutputs = '' -%}
+{%- assign quickAddOutputs = quickAddOutputs | append: '<div class="quickBuyColourSwatch" id="colourOption-' | append: colourLines | append: '-' | append: product.id | append: '">' -%}
+{%- assign quickAddOutputs = quickAddOutputs | append: '<span class="hoverHint">Quick Add</span><div class="swatchOptionBlocks">' -%}
+{%- for allVariants in variantsWithIdsArray -%}
+{%- assign thisSizeAndId = allVariants | split: '--'  -%}
+{%- assign thisSize = thisSizeAndId[0] | split: ' / '  -%}
+{%- unless thisSize == blank -%}
+{%- assign thisSizeFirst = thisSize[0] | upcase -%}
+{%- assign thisSizeSecond = thisSize[1] | upcase -%}
+{%- if thisSizeFirst contains thisColourUppercase -%}
+{%- assign thisIsolatedSize = thisSizeSecond -%}
+{%- else -%}
+{%- assign thisIsolatedSize = thisSizeFirst -%}
+{%- endif -%}
+{%- assign thisIsolatedSize = thisIsolatedSize | replace: 'DEFAULT TITLE', 'One Size' -%}
+{%- if thisIsolatedSize contains '##OOS##' -%}
+{%assign thisIsolatedSizeCap = thisIsolatedSize | replace: '##OOS##', '' | upcase -%}
+{%- assign quickAddOutputs = quickAddOutputs | append: '<span class="quickBuyOOS">&nbsp;' | append: thisIsolatedSizeCap | append: '&nbsp;</span>' -%}
+{%- else -%}
+{%assign thisIsolatedSizeCap = thisIsolatedSize | upcase -%}
+{%- assign quickAddOutputs = quickAddOutputs | append: '<button class="quickBuy" data-variantid="' | append: thisSizeAndId[1] | append: '">' | append: thisIsolatedSizeCap | append: '</button>' -%}
+{%- endif -%}
+{%- endunless -%}
+{%- endfor -%}
+{%- assign quickAddOutputs = quickAddOutputs | append: '</div></div>' -%}
+{{quickAddOutputs}}

@@ -1,0 +1,73 @@
+{% if customer %}
+    <script type="text/javascript">
+        window.location.href= "/account/"
+    </script>
+{% else %}
+    <div class="account-form login wrapper">
+        <div class="row">
+            {% section 'login-section' %}
+            <div class="col-main">
+                    <div class="section">
+                    {% form 'customer_login' %}
+                    <div id="LoginTitle" class="page-title login">
+                            <h1>
+                                <span class="CustomerLoginTitle">
+                                    {{ 'customer.login.title' | t }}
+                                    <span>View your order history and manage your account preferences.</span>
+                                </span>
+                                <span class="RecoverPasswordTitle">
+                                    {{ 'customer.recover_password.title' | t }}
+                                    <span>{{ 'customer.recover_password.subtext' | t }}</span>
+                                </span>
+                            </h1>
+                    </div>
+                    <div class="form-success hide" id="ResetSuccess">
+                            <p>{{ 'customer.recover_password.success' | t }}</p>
+                    </div>
+                    <div id="CustomerLoginForm">
+                            {{ form.errors | default_errors }}
+                            <input type="email" placeholder="{{ 'customer.login.email' | t }}" name="customer[email]" id="CustomerEmail" class="{% if form.errors contains 'email' %} input--error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
+
+                            {% if form.password_needed %}
+                            <input type="password" placeholder="{{ 'customer.login.password' | t }}" value="" name="customer[password]" id="CustomerPassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+                            {% endif %}
+
+                            <div class="text-center buttons-set">
+                                <input type="submit" class="button " value="{{ 'customer.login.sign_in' | t }}">
+                                {% if form.password_needed %}<a class="button-text" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>{% endif %}          
+                            </div>
+
+                            <div class="box">
+                                <div class="page-title">
+                                    <h2>
+                                        <span>New customer?
+                                                <span>You can create an account when you checkout and pay, or set one up here.</span>
+                                        </span>
+                                    </h2>
+                                </div>
+                                <div class="text-center buttons-set">
+                                    <a class="button button-second" href="/account/register">Create Account</a>
+                                </div>
+                            </div>
+                    </div>
+                    {% endform %}
+                    <div id="RecoverPasswordForm" class="hide">
+                            {% form 'recover_customer_password' %}
+                            {{ form.errors | default_errors }}
+
+                            {% if form.posted_successfully? %}
+                            <span class="hide reset-password-success"></span>
+                            {% endif %}
+                            <input type="email" placeholder="{{ 'customer.recover_password.email' | t }}" value="" name="email" id="RecoverEmail" class="input-full"autocorrect="off" autocapitalize="off">
+                            
+                            <div class="text-center buttons-set">
+                                <input type="submit" class="button" value="{{ 'customer.recover_password.submit' | t }}"/>
+                                <a href="#" id="HideRecoverPasswordLink" class="button-text">{{ 'customer.recover_password.cancel' | t }}</a>
+                            </div>
+                            {% endform %}
+                        </div>
+                    </div>
+            </div>	
+        </div>
+    </div>
+{% endif %}

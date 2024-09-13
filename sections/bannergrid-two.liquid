@@ -1,0 +1,134 @@
+<div data-section-id="{{ section.id }}" data-section-type="bannergrid-two-section" class="bannergrid-two-section">
+
+    {% if section.blocks.size > 0 %}
+        <div class="row" id="bannergrid-{{ section.id }}">
+            {% for block in section.blocks %}
+                <div class="col-wide-6 col-medium-12 col-small-12 col-smallest-12 {{ block.settings.text_color | escape }}">
+                	{% if block.settings.link != blank %}
+						<a href="{{ block.settings.link }}" class="link_full">
+					{% endif %}
+                    {% if block.settings.image %}
+                        <picture>
+                            <source
+                                media="(min-width: 900px)"
+                                srcset="{{ block.settings.image | img_url: '100x' }}"
+                                data-srcset="{{ block.settings.image | img_url: '2048x' }}"
+                            >
+                            <source
+                                media="(min-width: 500px)"
+                                srcset="{{ block.settings.image | img_url: '100x' }}"
+                                data-srcset="{{ block.settings.image | img_url: '900x' }}"
+                            >
+                            {% if block.settings.mobile_image %}
+                                <source
+                                    srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                                    data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                                >
+                            {% endif %}
+                            <img
+                                src="{{ block.settings.image | img_url: '100x' }}"
+                                data-src="{{ block.settings.image | img_url: 'master' }}"
+                                alt=""
+                                class="lazyload"
+                            />
+                        </picture>
+                    {% endif %}
+                    {% if block.settings.link != blank %}
+						</a>
+					{% endif %}
+
+                    {% if block.settings.image == blank %}
+                      <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+
+
+
+                    <div class="text-wrap overlay">
+                    	<div class="text-content">
+							{% unless block.settings.title == blank %}
+							<h2 class="mega-title title"> {{ block.settings.title }} </h2>
+							{% endunless %}
+							{% unless block.settings.subheading == blank %}
+							<p class="mega-subtitle subtitle"> {{ block.settings.subheading | escape }} </p>
+							{% endunless %}
+						</div>
+                    </div>
+
+                    {% if block.settings.link != blank %}
+						<a href="{{ block.settings.link }}" class="link btn-shop-now">Shop Now</a>
+					{% endif %}
+
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+
+{% schema %}
+  {
+    "name": "Banner Grid - Two",
+    "class": "index-section index-section--flush",
+    "max_blocks": 2,
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Banner"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Lorem ipsum dolor sit amet"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Banner link"
+          },
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+              { "value": "text-light", "label": "Light" },
+              { "value": "text-dark", "label": "Dark" }
+            ],
+            "default": "text-light"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner Grid - Two",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}

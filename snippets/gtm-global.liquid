@@ -1,0 +1,59 @@
+{% unless settings.gtm_code == blank %}
+  {% comment %}
+    Defined in Theme Settings > Header
+  {% endcomment %}
+
+  {% comment %}{% render 'gtm-page-metadata' %}{% endcomment %}
+
+  <!-- TR: Commenting out the old GTAG code -->
+  <!-- Google tag (gtag.js) -->
+  <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZTKNFX53B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LZTKNFX53B');
+    </script>
+  -->
+
+  <!-- Liton: GA4 customer details dataLayer -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      {% if customer %}
+        userType: "member",
+        customer: {
+        id: {{ customer.id }},
+        lastOrder: "{{ customer.orders.first.created_at | date: '%B %d, %Y %I:%M%p' }}",
+        orderCount: {{ customer.orders.size }},
+        totalSpent: {% if customer %}{% assign total_spent = 0 %}{% for item in customer.orders %}{% assign total_spent = total_spent | plus: item.total_net_amount %}{% endfor %}{{ total_spent | money_without_currency | remove:"," }}{% else %}""{% endif %},
+        tags: {{- customer.tags | json -}}
+      },
+      {% else %}
+        userType: "visitor",
+        customer: {
+        id: "",
+        lastOrder: "",
+        orderCount: "",
+        totalSpent: "",
+        tags: ""
+      },
+      {% endif %}
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <!--
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-P4Z5D5V');
+    </script>
+  -->
+  <!-- End Google Tag Manager -->
+
+  <!-- End Google Tag Manager (noscript) -->
+{% endunless %}

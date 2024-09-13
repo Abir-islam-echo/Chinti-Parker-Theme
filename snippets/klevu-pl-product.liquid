@@ -1,0 +1,41 @@
+{% comment %}
+    This file is automatically added by the Klevu app
+{% endcomment %}
+<script type="text/javascript">
+    {%- assign current_variant = product.selected_or_first_available_variant -%}
+    var klevuProduct = {
+        klevu_categoryName:"",
+        klevu_categoryPath:"",
+        klevu_productId: {{ product.id }},
+        klevu_productName: "{{ product.title | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}",
+        klevu_productUrl: {{ shop.url | append:  product.url | json }},
+        klevu_productSku: "{{ current_variant.sku | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}",
+        klevu_salePrice: {{ current_variant.price }}/100,
+        send: false
+    };
+    function klevuSendProductData(){
+        var category = klevu.dictionary("category");
+        category.setStorage("local");
+        category.mergeFromGlobal();
+        if(category.getElement("klevu_categoryName") != "klevu_categoryName" || category.getElement("klevu_categoryUrl") != "klevu_categoryUrl"){
+            if(document.referrer && document.referrer.indexOf(category.getElement("klevu_categoryUrl")) != -1){
+                klevuProduct.klevu_categoryName = category.getElement("klevu_categoryName");
+                klevuProduct.klevu_categoryPath = category.getElement("klevu_categoryName");
+                var products = category.getElement("klevu_categoryProducts").split(",");
+                if(typeof products == "object" && products.indexOf("{{ product.id }}") != -1 ){
+                    klevuProduct.klevu_productPosition = products.indexOf("{{ product.id }}");
+                    klevuProduct.send = true;
+                }
+                klevu.coreEvent.attach("analyticsPowerUpShopifyPL", {
+                    name: "attachShopifyPLListingAnalytics",
+                    fire: function () {
+                        if(klevuProduct.send){
+                            delete klevuProduct.send;
+                            klevu.analyticsUtilShopifyPL.base.sendCategoryProductClickTrackingAnalyticsRequest(klevuProduct);
+                        }
+                    }
+                });
+            }
+        }
+    }
+</script>

@@ -1,0 +1,370 @@
+<div class="style-with-size-{{ section.id }}" id="fit-guide-measurements">
+  <div class="{{ section.settings.width }}">
+    <div class="parent-container">
+      {% if section.settings['measurement-text-only'] %}
+        <h2 class="measurement-text">{{ section.settings['measurement-text-only'] | upcase }}</h2>
+      {% endif -%}
+      <div class="image-box-container">
+        <div class="image-box">
+          {% if section.settings['modal-image-src'] %}
+            <img src="{{ section.settings.modal-image-src | img_url: 'master' }}">
+          {% endif -%}
+        </div>
+        <div class="image-content">
+          <div class="image-content-box">
+            {% for block in section.blocks %}
+              {% if block.type == 'modal-text' %}
+                <div class="image-content-item image-content-item-{{ block.id }}">
+                  <div class="quantity">{{ block.settings['pop-up-measurement-step-count'] }}</div>
+                  <div class="title">
+                    <h2>{{ block.settings['pop-up-measurement-name'] | upcase }}</h2>
+                    <P>{{ block.settings['pop-up-measurement-step-title'] }}</P>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="table-container">
+        <div class="table-box-title">
+          {% if section.settings['measurement-text'] %}
+            <h2 class="table-title">{{ section.settings['measurement-text'] }}</h2>
+          {% endif -%}
+        </div>
+        <div class="table-box">
+          <table>
+            <tr>
+              <th></th>
+              <th>XXS-XS</th>
+              <th>XS-S</th>
+              <th>S-M</th>
+              <th>M-L</th>
+              <th>L-LL</th>
+            </tr>
+            {% for block in section.blocks %}
+              {% if block.type == 'text' %}
+                <tr>
+                  {% if block.settings['measurement-name'] %}
+                    {% if block.settings['measurement-name'] contains '/' %}
+                      {% assign textnames = block.settings['measurement-name'] | split: '/' %}
+                      <td>{{ textnames | join: '/<br>' | upcase }}</td>
+                    {% else %}
+                      <td>{{ block.settings['measurement-name'] | upcase }}</td>
+                    {% endif %}
+                  {% endif -%}
+
+                  <td>{{ block.settings['measurement-step-1'] }}</td>
+                  <td>{{ block.settings['measurement-step-2'] }}</td>
+                  <td>{{ block.settings['measurement-step-3'] }}</td>
+                  <td>{{ block.settings['measurement-step-4'] }}</td>
+                  <td>{{ block.settings['measurement-step-5'] }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+      <div class="cross"></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+ {
+  "name": "Body Measurement Section",
+  "settings": [
+     {
+      "type": "select",
+      "id": "width",
+      "label": "Column Width",
+      "options": [
+        {
+          "value": "el-container",
+          "label": "container"
+        },
+        {
+          "value": "el-full-width",
+          "label": "Full width"
+        }
+
+      ],
+      "default": "el-container"
+    },
+    {
+        "type": "text",
+        "id": "measurement-text",
+        "label": "Measurement Text",
+        "default": "International size conversion"
+    },
+        {
+        "type": "text",
+        "id": "margin-for-table-title",
+        "label": "Margin For Table Title",
+        "default": "0px 0px 20px 0px",
+        "info":"Change margin value according to the necessity.Section margin value will be like this [Top Right Bottom Left]: 0px 0px 20px 0px"
+    },
+     {
+        "type": "text",
+        "id": "margin-for-table-section",
+        "label": "Margin For Whole Section",
+        "default": "40px 0px 40px 0px",
+        "info":"Change margin value according to the necessity.Section margin value will be like this [Top Right Bottom Left]: 40px 0px 40px 0px"
+    },
+     {
+      "type": "image_picker",
+      "id": "modal-image-src",
+      "label": "Modal Image"
+    },
+     {
+        "type": "text",
+        "id": "measurement-text-only",
+        "label": "Measurement Text",
+        "default": "how we measure"
+    }
+    ,
+     {
+        "type": "text",
+        "id": "margin-for-measure-text-section",
+        "label": "Margin For Measure Text",
+        "default": "20px 0px 20px 0px",
+        "info":"Change margin value according to the necessity.Section margin value will be like this [Top Right Bottom Left]: 40px 0px 40px 0px"
+    }
+  ],
+   "blocks": [
+    {
+      "type": "text",
+      "name": "create measurement row",
+      "settings": [
+        {
+          "id": "measurement-name",
+          "type": "text",
+          "label": "Measurement Name"
+        },
+        {
+          "id": "measurement-step-1",
+          "type": "text",
+          "label": "Body Measurement Step 1"
+        },
+          {
+          "id": "measurement-step-2",
+          "type": "text",
+          "label": "Body Measurement Step 2"
+        },
+          {
+          "id": "measurement-step-3",
+          "type": "text",
+          "label": "Body Measurement Step 3"
+        },
+          {
+          "id": "measurement-step-4",
+          "type": "text",
+          "label": "Body Measurement Step 4"
+        },
+          {
+          "id": "measurement-step-5",
+          "type": "text",
+          "label": "Body Measurement Step 5"
+        }
+      ]
+    },
+    {
+      "type": "modal-text",
+      "name": "pop up measurement row",
+      "settings": [
+        {
+          "id": "pop-up-measurement-name",
+          "type": "text",
+          "label": "Pop up Measurement Name"
+        },
+        {
+          "id": "pop-up-measurement-step-count",
+          "type": "text",
+          "label": "Pop up Measurement Step Count"
+        },
+          {
+          "id": "pop-up-measurement-step-title",
+          "type": "text",
+          "label": "Pop up Measurement Step Title"
+        },
+        {
+          "type": "color",
+          "id": "color_title_for_pop_up_measurement",
+          "label": "Color For Pop Up Measurement",
+          "default": "#000"
+        }
+      ]
+    }
+      ]
+}
+{% endschema %}
+
+{% style %}
+  .style-with-size-{{ section.id }}{
+    display:none;
+    position: fixed;
+    z-index: 8;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .style-with-size-{{ section.id }} .{{ section.settings.width }}{
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+    width: 80%;
+    height:90vh;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    overflow-y:auto;
+  }
+
+  .style-with-size-{{ section.id }} .cross{
+    content: url('https://api.iconify.design/radix-icons/cross-2.svg?color=red&width=30&height=30');
+    position:absolute;
+    top:10px;
+    right:-10px;
+    cursor:pointer;
+  }
+
+  .style-with-size-{{ section.id }} .parent-container{
+    position:relative;
+  }
+
+  .style-with-size-{{ section.id }} h2.measurement-text{
+    text-align:center;
+    margin: {{section.settings.margin-for-measure-text-section}};
+  }
+
+  .style-with-size-{{ section.id }} .image-box-container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+
+  .style-with-size-{{ section.id }} .image-box-container .image-box{
+    width:50%;
+  }
+  .style-with-size-{{ section.id }} .image-box-container .image-content{
+    width:50%;
+  }
+  .style-with-size-{{ section.id }} .image-box-container .image-content .image-content-item{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom:30px;
+  }
+   .style-with-size-{{ section.id }} .image-box-container .image-content .image-content-item .title{
+     width:calc(100% - 60px);
+   }
+
+   .style-with-size-{{ section.id }} .image-box-container .image-content .image-content-item:last-child{
+     margin-bottom:0;
+   }
+
+  .style-with-size-{{ section.id }} .image-box-container .image-content .image-content-item .quantity{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right:20px;
+    font-weight:700;
+
+  }
+  .style-with-size-{{ section.id }} .table-container{
+    width:70%;
+    margin:0 auto 50px;
+  }
+   .style-with-size-{{ section.id }} .table-container table{
+    border-top:solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+  }
+  .style-with-size-{{ section.id }} .table-measurement-item.active{
+    text-decoration: underline;
+    color:#000;
+  }
+
+  .style-with-size-{{ section.id }} .table-box-title{
+    display:flex;
+    justify-content: space-between;
+  }
+
+   .style-with-size-{{ section.id }} .table-box-title .table-measurement{
+    display:flex;
+  }
+  .style-with-size-{{ section.id }} .table-box-title .table-measurement span{
+    cursor:pointer;
+  }
+  .style-with-size-{{ section.id }} .table-box-title .table-measurement span:first-child{
+    margin-right:10px;
+  }
+
+  .style-with-size-{{ section.id }} .table-measurement-item{
+    color: #777;
+  }
+
+  {% for block in section.blocks %}
+    {% if block.type=="modal-text" %}
+      .image-content-item-{{ block.id }}{
+        color: {{block.settings.color_title_for_pop_up_measurement}};
+      }
+       .image-content-item-{{ block.id }} p{
+        color: {{block.settings.color_title_for_pop_up_measurement}};
+      }
+    .style-with-size-{{ section.id }} .image-box-container .image-content .image-content-item .quantity{
+        border: solid 2px {{block.settings.color_title_for_pop_up_measurement}};
+    }
+    {% endif %}
+
+  {% endfor %}
+
+  @media (max-width:767px){
+      .style-with-size-{{ section.id }} .image-box-container{
+      flex-direction:column;
+      margin-bottom:50px;
+    }
+    .style-with-size-{{ section.id }} .image-box-container .image-box{
+    width:100%;
+  }
+  .style-with-size-{{ section.id }} .image-box-container .image-content{
+    width:80%;
+    margin: 0 0 0 auto;
+  }
+  .style-with-size-{{ section.id }} .table-container{
+    width:100%;
+    margin:0 auto 50px;
+   }
+      .style-with-size-{{ section.id }} .image-box-container .image-content .image-content-item .title p{
+        font-size:12px;
+    }
+  }
+
+   @media (max-width:375px){
+  .style-with-size-{{ section.id }} .image-box-container .image-content{
+    width:100%;
+    margin: 0;
+  }
+  }
+{% endstyle %}
+
+<script>
+  document.querySelector(".style-with-size-{{ section.id }}").addEventListener('click', (e)=>{
+    if(e.target.closest(".style-with-size-{{ section.id }}") && !e.target.closest(".style-with-size-{{ section.id }} > div")){
+      document.querySelector('body').classList.toggle('custom-overflow-hidden');
+      document.querySelector('#fit-guide-measurements').style.display="none";
+    }
+  });
+    document.querySelector(".style-with-size-{{ section.id }} .cross").addEventListener('click', (e)=>{
+    if(e.target.closest(".style-with-size-{{ section.id }} .cross")){
+      document.querySelector('body').classList.toggle('custom-overflow-hidden');
+      document.querySelector('#fit-guide-measurements').style.display="none";
+    }
+  })
+</script>

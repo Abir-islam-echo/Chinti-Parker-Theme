@@ -1,0 +1,30 @@
+{% comment %}
+    @param  products  array
+        An array of products that have been displayed to the user.
+
+    @param  list  string
+        The list or collection that has been displayed to the user. e.g. "search results", "Summer Sale"
+{% endcomment %}
+<script>
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+    'event': 'productImpression',
+    'ecommerce': {
+        'currencyCode': {{ shop.currency | json }},
+        'impressions': [
+            {% for product in products %}
+                {
+                    'name': {{ product.title | json }},
+                    'id': {{ product.sku | json }},
+                    'price': {{ product.price | money_without_currency | json }},
+                    'brand': {{ product.vendor | json }},
+                    'category': {{ product.type | json }},
+                    'variant': {{ product.selected_or_first_available_variant.title | json }},
+                    'list': {{ list | json }},
+                    'position': {{ forloop.index }},
+                },
+            {% endfor %}
+        ]
+    },
+});
+</script>

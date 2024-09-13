@@ -1,0 +1,96 @@
+{% case block.settings.add_border_top %}
+	{% when 'add_border_top_yes' %}
+		{%- assign border_top = 'border-top' -%}
+	{% when 'add_border_top_no' %}
+		{%- assign border_top = '' -%}
+{% endcase %} 
+
+{% case block.settings.add_border_bottom %}
+	{% when 'add_border_bottom_yes' %}
+		{%- assign border_bottom = 'border-bottom' -%}
+	{% when 'add_border_bottom_no' %}
+		{%- assign border_bottom = '' -%}
+{% endcase %}  
+
+<div data-section-id="{{ section.id }}" data-section-type="twocol-2-img-txt-section" class="wrapper cms-content-wrapper cms-column-content twocolumn-2-img-txt-section {{ border_top }} {{ border_bottom }}">
+
+  {% case block.settings.column_order %}
+    {% when 'image-left' %}
+      {%- assign flex_direction = 'row-flex-reverse' -%}
+    {% when 'image-right' %}
+	  {%- assign flex_direction = 'row-flex-row' -%}
+  {% endcase %}
+  
+  {% case block.settings.image_width %}
+    {% when 'image-twothirds' %}
+      {%- assign image_col_width = 'col-wide-8 col-medium-8 col-small-12 col-smallest-12' -%}
+      {%- assign content_col_width = 'col-wide-4 col-medium-4 col-small-12 col-smallest-12' -%}
+    {% when 'image-half' %}
+      {%- assign image_col_width = 'col-wide-6 col-medium-6 col-small-12 col-smallest-12' -%}
+      {%- assign content_col_width = 'col-wide-6 col-medium-6 col-small-12 col-smallest-12' -%}
+    {% when 'image-third' %}
+      {%- assign image_col_width = 'col-wide-4 col-medium-4 col-small-12 col-smallest-12' -%}
+      {%- assign content_col_width = 'col-wide-8 col-medium-8 col-small-12 col-smallest-12' -%}
+    {% when 'image-quarter' %}
+      {%- assign image_col_width = 'col-wide-3 col-medium-3 col-small-12 col-smallest-12' -%}
+      {%- assign content_col_width = 'col-wide-9 col-medium-9 col-small-12 col-smallest-12' -%}
+    {% when 'image-threequarters' %}
+      {%- assign image_col_width = 'col-wide-9 col-medium-9 col-small-12 col-smallest-12' -%}
+      {%- assign content_col_width = 'col-wide-3 col-medium-3 col-small-12 col-smallest-12' -%}
+  {% endcase %}
+
+    	<div class="cms-content__row row row-flex {{ flex_direction }}" id="contentgrid-{{ section.id }}">
+                <div class="{{ image_col_width }}">
+                    {% if block.settings.image1 %}
+						<picture>
+							<source media="(min-width: 900px)" srcset="{{ block.settings.image1 | img_url: '2048x' }}">
+							<source media="(min-width: 500px)" srcset="{{ block.settings.image1 | img_url: '900x' }}">
+							{% if block.settings.mobile_image1 %}<source srcset="{{ block.settings.mobile_image1 | img_url: '500x' }}">{% endif %}
+							<img src="{{ block.settings.image1 | img_url: '2048x' }}" alt="{% if block.settings.alttext1 %}{{ block.settings.alttext1 | escape }}{% endif %}" />
+						</picture>
+                    {% endif %}
+                    {% if block.settings.image1 == blank %}
+                      <div class="placeholder-background">
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.title1 != blank %}
+                      <h2>
+                        {{ block.settings.title1 | escape }}
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.content1 != blank %}
+                      <p>
+                        {{ block.settings.content1 | escape }}
+                      </p>
+                    {% endif %}
+                </div>
+                
+                <div class="{{ content_col_width }}">
+                    {% if block.settings.image2 %}
+						<picture>
+							<source media="(min-width: 900px)" srcset="{{ block.settings.image2 | img_url: '2048x' }}">
+							<source media="(min-width: 500px)" srcset="{{ block.settings.image2 | img_url: '900x' }}">
+							{% if block.settings.mobile_image2 %}<source srcset="{{ block.settings.mobile_image2 | img_url: '500x' }}">{% endif %}
+							<img src="{{ block.settings.image2 | img_url: '2048x' }}" alt="{% if block.settings.alttext2 %}{{ block.settings.alttext2 | escape }}{% endif %}" />
+						</picture>
+                    {% endif %}
+                    {% if block.settings.image2 == blank %}
+                      <div class="placeholder-background">
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.title2 != blank %}
+                      <h2>
+                        {{ block.settings.title2 | escape }}
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.content2 != blank %}
+                      <p>
+                        {{ block.settings.content2 | escape }}
+                      </p>
+                    {% endif %}
+                </div>
+        </div>
+
+</div>

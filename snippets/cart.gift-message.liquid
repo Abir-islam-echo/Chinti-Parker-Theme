@@ -1,0 +1,101 @@
+{%- assign cart_has_gift_message = false -%}
+{%- assign message = cart.attributes.gift_note -%}
+{%- assign messageTo = cart.attributes.gift_note_to -%}
+{%- assign messageFrom = cart.attributes.gift_note_from -%}
+{%- assign max_length = settings.max_gift_message_length | times: 1 -%}
+{%- assign current_length = message | size -%}
+{%- assign initial_remaining = max_length | minus: current_length -%}
+
+<div class="cart-gift-message {% if message -%}active{%- endif -%}" data-gift-message>
+  <label for="add-gift-message" class="click-to-enable"></label>
+
+  <main>
+    <div class="column column--enable">
+      <input
+        type="checkbox"
+        id="add-gift-message"
+        data-enable
+        {% if message -%}
+          checked="checked"
+        {%- endif -%}
+      >
+      <label for="add-gift-message"></label>
+      <div>
+        {%- capture title_strings -%}
+                    { "add": "{{ 'gift_me.title.add' | t }}", "added": "{{ 'gift_me.title.added' | t }}" }
+                {%- endcapture -%}
+        <label for="add-gift-message">
+          <span
+            data-title
+            data-strings="{{- title_strings | escape -}}"
+          >
+            {% if message %}
+              {{ 'gift_me.title.added' | t }}
+            {% else %}
+              {{ 'gift_me.title.add' | t }}
+            {% endif %}
+          </span>
+
+          <img
+            class="gift-icon"
+            src="{{ 'gift.svg' | asset_url }}"
+            alt="Gift"
+          >
+        </label>
+        <p>{{ 'gift_me.prices_info' | t }}</p>
+      </div>
+    </div>
+
+    <div class="column column--input">
+      <div class="input-container">
+        <div class="gift-info to-value">
+          <p>To:</p>
+          <input data-message-to type="text" value="{{- messageTo -}}">
+        </div>
+        <textarea
+          name="gift_message"
+          id="gift_message"
+          data-message-textarea
+          data-dirty="false"
+          maxlength="{{- max_length -}}"
+          placeholder="{{- 'gift_me.default_message' | t -}}"
+        >{{- message -}}</textarea>
+        <div class="gift-info from-value">
+          <p>From:</p>
+          <input data-message-from type="text" value="{{- messageFrom -}}">
+        </div>
+
+        <footer>
+          <div class="counter">
+            <span data-remaining-characters>
+              {{ initial_remaining }}
+            </span>
+
+            {{ 'gift_me.remaining_characters_label' | t -}}
+          </div>
+
+          <div class="controls">
+            <button data-cancel>Cancel</button>
+            <button data-save>
+              {% if message %}
+                Edit
+              {% else %}
+                Save
+              {% endif %}
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="gift-orders-reminder">
+      <img
+        src="{{ 'warning.svg' | asset_url }}"
+        alt="Warning"
+      >
+      {{ 'gift_me.gift_orders_reminder' | t }}
+    </p>
+  </footer>
+</div>

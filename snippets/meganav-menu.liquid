@@ -1,0 +1,27 @@
+<div
+    class="
+        meganav-menu
+        {% if is_submenu %} meganav-menu--submenu {% endif %}
+    "
+    {% if is_submenu %} data-meganav-submenu {% else %} data-meganav-menu {% endif %}
+>
+    {%- if forloop.first or is_submenu -%}
+        <button class="meganav-content__back" data-meganav-item-back>
+            {%- render 'svg--back' -%}
+        </button>
+    {%- endif -%}
+
+    <h3
+        class="meganav-heading"
+        {% unless is_submenu %} data-meganav-links-heading {% endunless %}
+        {% unless subheadings_colour == "rgba(0,0,0,0)" %}
+            style="color: {{ subheadings_colour }}"
+        {% endunless %}
+    >
+        <a href="{{ column.url }}" class="meganav-heading__link">
+            {{ column.title }}
+        </a>
+    </h3>
+   
+    {%- render 'meganav-links' with column.links as links , inner_text_colour:inner_text_colour , sale_colour:sale_colour -%}
+</div>

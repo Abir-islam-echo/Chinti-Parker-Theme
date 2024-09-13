@@ -1,0 +1,230 @@
+<div class="carousel-grid-{{ section.id }} {{ section.settings.width }}">
+  {% if section.settings.title != blank %}
+    <div class="row">
+      <div class="section-header text-center col-full-width">
+        <h2 style="font-size:{{ section.settings.title_font_size  }}px; padding-bottom:{{ section.settings.title_padding_bottom  }}px;">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+    </div>
+  {% endif %}
+  <div class="carousel-grid owl-carousel owl-theme row" style="text-align:{{ section.settings.text-alignment }}">
+   {% for block in section.blocks %}
+        
+
+         {% if block.type == 'image' %}
+         <div class="col col-image">
+                {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}">
+                {% endif %}
+                {% if block.settings.image %}
+
+                    <picture>
+                    <source
+                        media="(min-width: 1024px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: 'master' }}"
+                    >
+                    {% if block.settings.mobile_image %}
+                        <source
+                            srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                            data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                        >
+                    {% endif %}
+                    <img
+                        src="{{ block.settings.image | img_url: '100x' }}"
+                        data-src="{{ block.settings.image | img_url: 'master' }}"
+                        alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                        class="lazyload"
+                    />
+                  </picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+                {% if block.settings.link != blank %}
+                    </a>
+                {% endif %}
+             {% if block.settings.heading != blank %}
+                <h4>{% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}">
+                {% endif %}
+                    {{ block.settings.heading }}
+                {% if block.settings.link != blank %}
+                    </a>
+                {% endif %}
+                </h4>
+               {% endif %}
+           {% if block.settings.content != blank %}
+                <p>
+                  {{ block.settings.content }}
+
+                </p>
+             {% endif %}
+          </div>
+      {% endif %}
+      {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image Carousel Three Grid",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "section width",
+      "options": [
+        {
+          "value": "el-full-width",
+          "label": "Full width"
+        },
+        {
+          "value": "el-container",
+          "label": "container width"
+        }
+      ],
+      "default": "el-full-width"
+    },
+    {
+        "type": "select",
+        "id": "text-alignment",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+
+        ],
+        "default": "center"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Item",
+      "settings": [
+        {
+          "type":"header",
+          "content":"Image Area"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+         {
+          "type":"header",
+          "content":"Content Area"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Item Link"
+        }
+
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Carousel Three Grid",
+      "category": "product"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+
+    .carousel-grid-{{ section.id }} .owl-nav [class*=owl-]{
+      color:#000;
+    }
+    .carousel-grid-{{ section.id }} .owl-nav [class*=owl-]:hover{
+      color:#000;
+    }
+    .carousel-grid-{{ section.id }} .owl-prev {
+        position: absolute;
+        left: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: unset !important;
+        font-size: 50px !important;
+        margin: -35px 0 0 70px !important;
+        padding: 0 !important;
+    }
+    .carousel-grid-{{ section.id }} .owl-next {
+        position: absolute;
+        right: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: unset !important;
+        font-size: 50px !important ;
+        margin: -35px 70px 0 0px !important;
+        padding: 0 !important;
+    }
+    .carousel-grid-{{ section.id }} .col.col-image{
+      padding:10px;
+    }
+    .carousel-grid-{{ section.id }} .col.col-image h4{
+      margin-top:20px;
+      color:#000;
+    }
+    .carousel-grid-{{ section.id }} .col.col-image h4 a{
+      color:#000;
+    }
+    .carousel-grid-{{ section.id }} .owl-theme .owl-nav{
+      margin:0 !important;
+    }
+  
+{% endstyle %}
+
+<script>
+  (function pollForLoadVariation() {
+    if (window.jQuery !== undefined && $.fn.owlCarousel ) {
+		 try {
+            $('.carousel-grid-{{ section.id }} .carousel-grid').owlCarousel({
+              loop: true,
+              dots: false,
+              nav: true,
+              navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+              autoplay: false,
+              responsive:{
+                  0:{
+                      items:1
+                  },
+                  768:{
+                      items:1
+                  },
+                  1000:{
+                      items:3
+                  }
+                }
+          })
+		} catch (error) {
+		  console.log("Initialization error:", error);
+		}
+    } else {
+        setTimeout(pollForLoadVariation, 25);
+    }
+})();
+</script>

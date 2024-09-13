@@ -1,0 +1,17 @@
+{% assign storeView = "GBP" %}
+{% assign storeViewCurrency = "&pound;" %}
+{% assign storeFullCurrencyName = "UK pounds" %}
+{% assign storeViewFullName = "United Kingdom" %}
+
+{% if shop.url contains "eu." %}
+{% assign storeView = "EUR" %}
+{% assign storeViewCurrency = "&euro;" %}
+{% assign storeFullCurrencyName = "Euros" %}
+{% assign storeViewFullName = "Europe" %}
+{%endif%}
+{% if shop.url contains "us." %}
+{% assign storeView = "USD" %}
+{% assign storeViewCurrency = "$" %}
+{% assign storeFullCurrencyName = "US dollars" %}
+{% assign storeViewFullName = "North America" %}
+{%endif%}

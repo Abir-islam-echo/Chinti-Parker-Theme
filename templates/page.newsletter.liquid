@@ -1,0 +1,81 @@
+<div class="cms-page-template">
+
+	{% comment %}
+	Re-use the 'rte' class wherever you output content that was added by a merchant using
+	the Rich Text Editor ( 'rte' stands for rich text editor ).
+	Style all HTML elements in that content the same way across the board.
+	Use the 'rte' class in your CSS to help maintain that consistency.
+	Example: the h2 element should have the same size and color in:
+	- product descriptions
+	- collection descriptions
+	- 'page' pages' content
+	- blog post
+	{% endcomment %}
+
+	<div class="contact-form">
+
+		{% form 'customer' %}
+			{% if form.posted_successfully? %}
+				{% section 'cms-sections-newsletter-text-success' %}
+
+				<div class="banner-section" id="newsletterSuccessBlock">
+					<div class="content text-dark">
+						<a href="/collections/all" class="btn">Shop now</a>
+					</div>
+				</div>
+
+			{% else %}
+
+				{% section 'cms-sections-newsletter-text' %}
+
+				<div class="input-group">
+					{{ form.errors | default_errors }}
+					<div>
+						<input type="hidden" name="contact[tags]" id="page-newsletter" value="newsletter">
+					</div>
+					<div>
+						<label class="wrap visibleHide" for="email">Email</label>
+						<input 
+							type="email" 
+							name="contact[email]" 
+							id="Email" 
+							class="email" 
+							value=""
+							placeholder="Enter your email address here" autocorrect="off" autocapitalize="off">
+					</div>
+					<div>
+						<label class="wrap visibleHide" for="firstname">First Name</label>
+						<input 
+							type="text" 
+							class="firstname" 
+							name="contact[first_name]" 
+							placeholder="First Name (optional)">
+					</div>
+					<div>
+						<p id="signUpFormCheckbox">
+							<input type="hidden" name="customer[accepts_marketing]" value="" />
+							<input type="checkbox" name="customer[accepts_marketing]" checked="checked" id="marketing">
+							<label for="marketing">I agree to receive email marketing from Chinti &amp; Parker. See our Privacy Policy for further details</label>
+						</p>
+					
+						<button 
+							type="submit" 
+							class="btn" 
+							name="commit" 
+							id="Subscribe">Sign up
+						</button>
+					</div>
+
+				</div>
+			{% endif %}
+		{% endform %}
+
+	</div>
+	
+	{% section 'cms-sections-newsletter-bespoke' %}
+
+</div>
+
+{% section 'cms-sections-newsletter' %}
+
+{% include 'gtm-page' %}

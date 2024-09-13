@@ -1,0 +1,74 @@
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when 'featuredcollection' %}
+        {% include 'cms_featuredcollection' %}
+    {% endcase %}
+{% endfor %}
+
+{% schema %}
+{
+     "blocks": [     
+     	{
+		        "type": "featuredcollection",
+		        "name": "Featured Collection",
+		        "settings": [
+			      {
+			        "type": "text",
+			        "id": "title",
+			        "label": "Heading",
+			        "default": "Featured Collection"
+			      },
+			      {
+			        "id": "collection",
+			        "type": "collection",
+			        "label": "Collection"
+			      },
+			      {
+			        "type": "select",
+			        "id": "grid",
+			        "label": "Number of Products",
+			        "default": "3",
+			        "options": [
+			          {
+			            "value": "2",
+			            "label": "2"
+			          },
+			          {
+			            "value": "3",
+			            "label": "3"
+			          },
+			          {
+			            "value": "4",
+			            "label": "4"
+			          },
+			          {
+			            "value": "6",
+			            "label": "6"
+			          }
+			        ]
+			        },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			}
+     ]
+}
+{% endschema %} 

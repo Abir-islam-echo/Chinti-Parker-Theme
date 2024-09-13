@@ -1,0 +1,49 @@
+{%
+    assign emphasised_capture_words = section.settings.emphasised_capture_words
+    | split: ','
+    | trim
+%}
+
+<ul class="meganav-menu__links" data-meganav-links>
+    {% for link in links %}
+        {% if forloop.last %}
+            {% assign lowercase_title = link.title | downcase %}
+
+            {% for word in emphasised_capture_words %}
+                {% assign lowercase_word = word | downcase %}
+                {% if lowercase_title contains lowercase_word %}
+                    {% assign emphasised = true %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <li
+            class="
+                meganav-menu__item
+                {% if emphasised %} meganav-menu__item--emphasised{% endif %}
+            "
+        >
+            <a 
+                {% assign anchor_title=link.title | downcase %}
+                {% if anchor_title=='outlet' %}
+                    style="color:{{ sale_colour }}";
+                {% else %}
+                    style="color:{{inner_text_colour }}";
+                {% endif %}
+                href="{{ link.url }}"
+                class="meganav-menu__link"
+                {% if link.links.size > 0 %} data-meganav-submenu-trigger {% endif %}
+            >
+                {{ link.title }}
+            </a>
+
+            {% if link.links.size > 1 -%}
+                {%-
+                    render 'meganav-menu'
+                    | column: link
+                    | is_submenu: true
+                -%}
+            {%- endif -%}
+        </li>
+    {% endfor %}
+</ul>

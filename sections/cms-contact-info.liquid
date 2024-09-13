@@ -1,0 +1,99 @@
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+
+      {% when 'contactdetails' %}
+      {% include 'cms-page-contact' %}
+
+    {% endcase %}
+  {% endfor %}
+
+
+
+
+{% schema %}
+
+{
+	"max_blocks": 1,
+	"blocks": [
+		{
+			"type": "contactdetails",
+			"name": "Contact Information",
+
+			"settings": [
+				{
+					"type": "text",
+					"id": "opening_text",
+					"label": "Opening text",
+					"default": "Whatever your enquiry, please note that our Customer Care team is available between 9am and 6pm (GMT), Monday to Friday, and that we are closed on UK Bank Holidays*."
+				},
+				{
+					"type": "text",
+					"id": "closing_text",
+					"label": "Closing text",
+					"default": "*Should you contact us outside of these times, we will be in touch as soon as possible."
+				},
+				{
+					"type": "text",
+					"id": "advisor_opening",
+					"label": "Advisor Opening",
+					"default": "If you wish to speak to an advisor, please:"
+				},
+				{
+					"type": "text",
+					"id": "advisor_number",
+					"label": "Advisor Phone",
+					"default": "+44 (0) 207 016 4312"
+				},
+				{
+					"type": "text",
+					"id": "advisor_email",
+					"label": "Advisor Email",
+					"default": "customerservice@chintiandparker.com"
+				},
+				{
+					"type": "text",
+					"id": "press_number",
+					"label": "Press Phone",
+					"default": "+44 (0) 207 016 4306"
+				},
+				{
+					"type": "text",
+					"id": "press_email",
+					"label": "Press Email",
+					"default": "press@chintiandparker.com"
+				},
+				{
+					"type": "text",
+					"id": "care_number",
+					"label": "Care Phone",
+					"default": "+44 (0) 207 016 4312"
+				},
+				{
+					"type": "text",
+					"id": "care_email",
+					"label": "Care Email",
+					"default": "customerservice@chintiandparker.com"
+				},
+				{
+					"type": "text",
+					"id": "wholesale_number",
+					"label": "Wholesale Phone",
+					"default": "+44 (0) 207 016 4309"
+				},
+				{
+					"type": "text",
+					"id": "wholesale_email",
+					"label": "Wholesale Email",
+					"default": "Rachel.Ward@chintiandparker.com"
+				},
+				{
+					"type": "text",
+					"id": "discount_title",
+					"label": "Discount Title"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

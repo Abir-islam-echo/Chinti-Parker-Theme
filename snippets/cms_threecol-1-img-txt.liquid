@@ -1,0 +1,104 @@
+{% case block.settings.add_border_top %}
+	{% when 'add_border_top_yes' %}
+		{%- assign border_top = 'border-top' -%}
+	{% when 'add_border_top_no' %}
+		{%- assign border_top = '' -%}
+{% endcase %} 
+
+{% case block.settings.add_border_bottom %}
+	{% when 'add_border_bottom_yes' %}
+		{%- assign border_bottom = 'border-bottom' -%}
+	{% when 'add_border_bottom_no' %}
+		{%- assign border_bottom = '' -%}
+{% endcase %}  
+
+<div data-section-id="{{ section.id }}" data-section-type="threecol-1-img-txt-section" class="wrapper cms-content-wrapper cms-column-content threecolumn-1-img-txt-section {{ border_top }} {{ border_bottom }}">
+
+  {% case block.settings.column_order %}
+    {% when 'image-left' %}
+      {%- assign flex_direction = 'row-flex-reverse' -%}
+    {% when 'image-right' %}
+	  {%- assign flex_direction = 'row-flex-row' -%}
+  {% endcase %}
+
+    	<div class="cms-content__row row row-flex {{ flex_direction }}" id="contentgrid-{{ section.id }}">
+                <div class="col-wide-4 col-medium-4 col-small-12 col-smallest-12">
+                    {% if block.settings.image1 %}
+						<picture>
+							<source media="(min-width: 900px)" srcset="{{ block.settings.image1 | img_url: '2048x' }}">
+							<source media="(min-width: 500px)" srcset="{{ block.settings.image1 | img_url: '900x' }}">
+							{% if block.settings.mobile_image1 %}<source srcset="{{ block.settings.mobile_image1 | img_url: '500x' }}">{% endif %}
+							<img src="{{ block.settings.image1 | img_url: '2048x' }}" alt="{% if block.settings.alttext1 %}{{ block.settings.alttext1 | escape }}{% endif %}" />
+						</picture>
+                    {% endif %}
+                    {% if block.settings.image1 == blank %}
+                      <div class="placeholder-background">
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.title1 != blank %}
+                      <h2>
+                        {{ block.settings.title1 | escape }}
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.content1 != blank %}
+                      <p>
+                        {{ block.settings.content1 | escape }}
+                      </p>
+                    {% endif %}
+                </div>
+                
+                <div class="col-wide-4 col-medium-4 col-small-12 col-smallest-12">
+                    {% if block.settings.image2 %}
+						<picture>
+							<source media="(min-width: 900px)" srcset="{{ block.settings.image2 | img_url: '2048x' }}">
+							<source media="(min-width: 500px)" srcset="{{ block.settings.image2 | img_url: '900x' }}">
+							{% if block.settings.mobile_image2 %}<source srcset="{{ block.settings.mobile_image2 | img_url: '500x' }}">{% endif %}
+							<img src="{{ block.settings.image2 | img_url: '2048x' }}" alt="{% if block.settings.alttext2 %}{{ block.settings.alttext2 | escape }}{% endif %}" />
+						</picture>
+                    {% endif %}
+                    {% if block.settings.image2 == blank %}
+                      <div class="placeholder-background">
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.title2 != blank %}
+                      <h2>
+                        {{ block.settings.title2 | escape }}
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.content2 != blank %}
+                      <p>
+                        {{ block.settings.content2 | escape }}
+                      </p>
+                    {% endif %}
+                </div>
+                
+                <div class="col-wide-4 col-medium-4 col-small-12 col-smallest-12">
+                    {% if block.settings.image3 %}
+						<picture>
+							<source media="(min-width: 900px)" srcset="{{ block.settings.image3 | img_url: '2048x' }}">
+							<source media="(min-width: 500px)" srcset="{{ block.settings.image3 | img_url: '900x' }}">
+							{% if block.settings.mobile_image3 %}<source srcset="{{ block.settings.mobile_image3 | img_url: '500x' }}">{% endif %}
+							<img src="{{ block.settings.image3 | img_url: '2048x' }}" alt="{% if block.settings.alttext3 %}{{ block.settings.alttext3 | escape }}{% endif %}" />
+						</picture>
+                    {% endif %}
+                    {% if block.settings.image3 == blank %}
+                      <div class="placeholder-background">
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.title3 != blank %}
+                      <h2>
+                        {{ block.settings.title3 | escape }}
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.content3 != blank %}
+                      <p>
+                        {{ block.settings.content3 | escape }}
+                      </p>
+                    {% endif %}
+                </div>
+        </div>
+
+</div>

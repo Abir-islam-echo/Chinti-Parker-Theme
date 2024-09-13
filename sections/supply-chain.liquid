@@ -1,0 +1,603 @@
+<style>
+      #supply-chain-template{
+            background-color: rgb(255, 251, 247);
+      }
+      .two_grid_content_01_image{
+            max-width: 60%;
+            margin: 0 auto;
+      }
+      .two_grid_content_01 .image-wrapper{
+            max-width: 80%;
+            margin: 0 auto;
+      }
+      .supply-chain {
+        text-align: center;
+      }
+      .supply-chain-title {
+        margin: 0px 0 50px;
+        position: relative;
+      }
+      .supply-chain-title img {
+        width: 100%;
+      }
+      .supply-chain-title h1 {
+        z-index: 2;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 45%;
+        left: 50%;
+
+        font-size: {{ section.settings.banner_title_font }}px;
+        background-color: #ffffff;
+        padding: 25px 70px;
+      }
+      .supply-chain-content {
+        line-height: 20px;
+        color: black;
+        margin-bottom: 55px;
+      }
+      .supply-chain-content .hero-description{
+        font-size: {{ section.settings.banner_content_font }}px;
+        color: black;
+      }
+      .supply-chain-content p{
+        color: black;
+      }
+      .supply-chain-content h3 {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 25px;
+      }
+      .supply-chain-content a {
+        color: black;
+      }
+      .supply-chain-content p {
+        margin-bottom: 25px;
+      }
+      .supply-chain-content aside{
+        display:flex;
+        flex-direction:column;
+        justify-content: space-between;
+      }
+      .supply-chain-content q {
+        color: #ff6900;
+        line-height: 30px;
+      }
+      .supply-chain-content q::before,
+      .supply-chain-content q::after {
+        content: "'";
+        margin: 0 -4px;
+      }
+      .supply-chain-content .down-arrow {
+        width: 50px;
+      }
+      .supply-chain-content hr {
+        width: 75%;
+        margin-bottom: 20px;
+        border: 1px solid #ff6900;
+      }
+      .supply-chain-content-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 55px;
+      }
+      .supply-chain-content-wrapper aside {
+        flex: 1;
+      }
+      .supply-chain-content img {
+        width: 100%;
+      }
+      .supply-chain-content-wrapper .image-wrapper {
+        display: grid;
+        gap: 10px;
+        grid-auto-columns: minmax(0, 1fr);
+        grid-auto-flow: column;
+      }
+      /* BreakPoint */
+  
+    
+      @media screen and (max-width: 992px) {
+        
+        .supply-chain-title h1 {
+          font-size: 20px;
+          padding: 20px 60px;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        
+        .supply-chain-title{
+          margin: 0px 0 20px;
+        }
+        .supply-chain-title h1 {
+          padding: 8px 20px;
+          font-size: 20px;
+        }
+        .supply-chain-content {
+          margin-bottom: 20px;
+        }
+        .supply-chain-content-wrapper {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+        }
+        .supply-chain-content p, .supply-chain-content q {
+          font-size: 16px !important;
+          line-height: 24px;
+        }
+        .supply-chain-content h3{
+          font-size: 25px !important;
+          margin-bottom: 20px;
+        }
+        .two_grid_content_01 .image-wrapper {
+          max-width: 100%;
+          margin: 0 auto;
+        }
+      }
+    </style>
+
+<div class="supply-chain">
+    <section class="supply-chain-title">
+      <div class="el-container ">
+        <h1>{{ section.settings.banner_title }}</h1>
+        <img
+          src="{{ section.settings.banner_image | img_url : "1024x" }}"
+          alt="{{ section.settings.banner_title }}"
+        />
+      </div>
+    </section>
+    <section class="supply-chain-content">
+      <div class="el-container">
+        <p class="hero-description">{{ section.settings.banner_content }}</p>
+        <hr />
+      </div>
+    </section>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'text' %}
+        <section class="supply-chain-content" style="margin-top:{{ block.settings.margin_top }}px;border-top:{{ block.settings.border_top }}px solid {{ block.settings.border_color  }};padding-top:{{ block.settings.padding_top }}px;padding-bottom:{{ block.settings.padding_bottom }}px;text-align:{{ block.settings.align_text }};">
+          <div class="el-container">
+            {% if block.settings.title != blank %}
+                <h3 style="font-size:{{ block.settings.title_font_size  }}px">{{ block.settings.title  }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <style>.supply-chain-content a { font-size:{{ block.settings.text_font_size  }}px}</style>
+                <p style="font-size:{{ block.settings.text_font_size  }}px">
+                  {{ block.settings.text }}
+                </p>
+            {% endif %}
+            {% if block.settings.down_arrow != blank %}
+              <img
+                class="down-arrow"
+                src="{{ block.settings.down_arrow | img_url : "900x" }}"
+                alt="down  arrow"
+              />
+            {% endif %}
+          </div>
+        </section>
+  
+      {% when 'two_grid_content' %}
+      
+        <section class="supply-chain-content">
+        <div class="el-container">
+          <div class="supply-chain-content-wrapper">
+            <aside>
+              <div>
+                 {% if block.settings.grid_text_01 != blank %}
+                    <h3 style="font-size:{{ block.settings.title_font_size  }}px">{{ block.settings.grid_text_01  }}</h3>
+                {% endif %}
+                {% if block.settings.grid_content_01 != blank %}
+                    <p style="font-size:{{ block.settings.text_font_size  }}px">
+                      {{ block.settings.grid_content_01 }}
+                    </p>
+                {% endif %}
+              </div>
+              {% if block.settings.grid_image_01 != blank %}
+                <img
+                  src="{{ block.settings.grid_image_01 | img_url : "master" }}"
+                />
+              {% endif %}
+            </aside>
+            <aside>
+              <div>
+                {% if block.settings.grid_text_02 != blank  %}
+                    <h3 style="font-size:{{ block.settings.title_font_size  }}px">{{ block.settings.grid_text_02  }}</h3>
+                {% endif %}
+                {% if block.settings.grid_content_02 != blank %}
+                    <p style="font-size:{{ block.settings.text_font_size  }}px">
+                      {{ block.settings.grid_content_02 }}
+                    </p>
+                {% endif %}
+              </div>
+              {% if block.settings.grid_image_02 != blank %}
+                <img
+                  src="{{ block.settings.grid_image_02 | img_url : "master" }}"
+                />
+              {% endif %}
+            </aside>
+          </div>
+        </div>
+      </section>
+       {% if block.settings.text_quote != blank %}
+            <section class="supply-chain-content">
+            <div class="el-container">
+              <q style="font-size: {{ block.settings.text_quote_font }}px">
+                {{ block.settings.text_quote }}
+              </q>
+            </div>
+          </section>
+       {% endif %}
+      
+     {% when 'two_grid_content_01' %}
+      
+        <section class="supply-chain-content two_grid_content_01">
+        <div class="el-container">
+          <div class="supply-chain-content-wrapper">
+            <aside>
+              <div>
+                 {% if block.settings.grid_text_01 != blank %}
+                    <h3 style="font-size:{{ block.settings.title_font_size  }}px">{{ block.settings.grid_text_01  }}</h3>
+                {% endif %}
+                {% if block.settings.grid_content_01 != blank %}
+                    <p style="font-size:{{ block.settings.text_font_size  }}px">
+                      {{ block.settings.grid_content_01 }}
+                    </p>
+                {% endif %}
+              </div>
+              {% if block.settings.grid_image_01 != blank %}
+                <div class="two_grid_content_01_image">
+                    <img
+                      src="{{ block.settings.grid_image_01 | img_url : "master" }}"
+                    />
+                  </div>
+              {% endif %}
+            </aside>
+            <aside>
+              <div>
+                {% if block.settings.grid_text_02 != blank  %}
+                    <h3 style="font-size:{{ block.settings.title_font_size  }}px">{{ block.settings.grid_text_02  }}</h3>
+                {% endif %}
+                {% if block.settings.grid_content_02 != blank %}
+                    <p style="font-size:{{ block.settings.text_font_size  }}px">
+                      {{ block.settings.grid_content_02 }}
+                    </p>
+                {% endif %}
+              </div>
+              <div class="image-wrapper">
+                {% if block.settings.grid_image_02 != blank %}
+                  <img
+                    src="{{ block.settings.grid_image_02 | img_url : "master" }}"
+                  />
+                {% endif %}
+                {% if block.settings.grid_image_03 != blank %}
+                  <img
+                    src="{{ block.settings.grid_image_03 | img_url : "900x" }}"
+                  />
+                {% endif %}
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+       {% if block.settings.text_quote != blank %}
+            <section class="supply-chain-content">
+            <div class="el-container">
+              <q style="font-size: {{ block.settings.text_quote_font }}px">
+                {{ block.settings.text_quote }}
+              </q>
+            </div>
+          </section>
+       {% endif %}
+  
+    {% endcase  %}
+    
+  {% endfor %}
+
+  </div>
+
+
+{% schema %}
+  {
+    "name": "Supply Chain Section",
+    "settings": [
+      {
+        "type":"header",
+        "content":"Section Hero"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "text",
+        "id": "banner_title",
+        "label": "Banner Title",
+        "default": "Our Supply Chain"
+      },
+      {
+        "type": "number",
+        "id": "banner_title_font",
+        "label": "Banner Title Font Size",
+        "default": 48
+      },
+      {
+        "type": "textarea",
+        "id": "banner_content",
+        "label": "Banner Content",
+        "default": "We believe being able to trace the origin of our materials is key to a garment’s sustainability. We also promise to clearly communicate what our garments are made from and where they have been made. <br><br>When it comes to choosing our suppliers, not only do we ensure that they provide the specialist skills which meet our specific criteria but also that working conditions within the factories are safe and fair.<br> <br>Our factories share our values and are committed to ethical, legal, and sustainable practices. Independent audits and certifications ensure these factories meet the required standards, but we also visit them in person regularly to see for ourselves. Our longstanding relationships with our suppliers mean maximum quality and the fairest prices for our customers."
+      },
+      {
+        "type": "number",
+        "id": "banner_content_font",
+        "label": "Banner Content Font Size",
+        "default": 24
+      }
+    ],
+    "blocks":[
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "number",
+            "id": "title_font_size",
+            "label": "Heading Font Size",
+            "default": 35
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "number",
+            "id": "text_font_size",
+            "label": "text Font Size",
+            "default": 25
+          },
+          {
+            "type": "number",
+            "id": "margin_top",
+            "label": "Margin Top",
+            "default": 30
+          },
+          {
+            "type": "number",
+            "id": "border_top",
+            "label": "Border top",
+            "default": 1
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color"
+          },
+           {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top",
+            "default": 30
+          },
+          {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding Bottom",
+            "default": 30
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {"value": "top-middle", "label": "Top"},
+              {"value": "center", "label": "Middle"},
+              {"value": "bottom-middle", "label": "Bottom"}
+            ]
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Horizontal alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "down_arrow",
+            "label": "Down arrow"
+          }
+        ]
+      },
+      {
+        "type": "two_grid_content",
+        "name": "Two-col image & content",
+        "settings":[
+          {
+            "type":"header",
+            "content": "First Grid"
+          },
+          {
+            "type":"text",
+            "id":"grid_text_01",
+            "label":"Grid Text 01"
+          },
+          {
+            "type":"textarea",
+            "id":"grid_content_01",
+            "label":"Grid Content 01"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid_image_01",
+            "label":"Grid Image 01"
+          },
+          {
+            "type":"header",
+            "content": "Second Grid"
+          },
+          {
+            "type":"text",
+            "id":"grid_text_02",
+            "label":"Grid Text 02"
+          },
+          {
+            "type":"textarea",
+            "id":"grid_content_02",
+            "label":"Grid Content 02"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid_image_02",
+            "label":"Grid Image 02"
+          },
+          {
+            "type":"number",
+            "id":"title_font_size",
+            "label":"Title Font Size"
+          },
+          {
+            "type":"number",
+            "id":"text_font_size",
+            "label":"Content Font Size"
+          },
+          {
+            "type":"textarea",
+            "id":"text_quote",
+            "label":"Text quote"
+          },
+          {
+            "type":"number",
+            "id":"text_quote_font",
+            "label":"Text quote Font Size",
+            "default":24
+          }
+          
+        ]
+      },
+      {
+        "type": "two_grid_content_01",
+        "name": "Two-col 2 image & content",
+        "settings":[
+          {
+            "type":"header",
+            "content": "First Grid"
+          },
+          {
+            "type":"text",
+            "id":"grid_text_01",
+            "label":"Grid Text 01"
+          },
+          {
+            "type":"textarea",
+            "id":"grid_content_01",
+            "label":"Grid Content 01"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid_image_01",
+            "label":"Grid Image 01"
+          },
+          {
+            "type":"header",
+            "content": "Second Grid"
+          },
+          {
+            "type":"text",
+            "id":"grid_text_02",
+            "label":"Grid Text 02"
+          },
+          {
+            "type":"textarea",
+            "id":"grid_content_02",
+            "label":"Grid Content 02"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid_image_02",
+            "label":"Grid Image 02"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid_image_03",
+            "label":"Grid Image 03"
+          },
+          {
+            "type":"number",
+            "id":"title_font_size",
+            "label":"Title Font Size"
+          },
+          {
+            "type":"number",
+            "id":"text_font_size",
+            "label":"Content Font Size"
+          },
+          {
+            "type":"textarea",
+            "id":"text_quote",
+            "label":"Text quote"
+          },
+          {
+            "type":"number",
+            "id":"text_quote_font",
+            "label":"Text quote Font Size",
+            "default":24
+          }
+          
+        ]
+      }
+    ]
+    
+    
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

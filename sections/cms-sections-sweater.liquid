@@ -1,0 +1,1071 @@
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+   
+
+   {% when 'fit' %}
+      {% include 'cms_banner_fit' %}
+
+      {% when 'banner' %}
+      {% include 'cms_banner' %}
+      
+      {% when 'bannergrid-two' %}
+      {% include 'cms_bannergrid-two' %}
+      
+      {% when 'bannergrid-three' %}
+      {% include 'cms_bannergrid-three' %}
+      
+      {% when 'bannergrid-four' %}
+      {% include 'cms_bannergrid-four' %}
+
+            {% when 'bannergrid-video' %}
+      {% include 'cms_bannergrid-video' %}
+      
+      {% when 'twocol-1-img-txt' %}
+      {% include 'cms_twocol-1-img-txt' %}
+
+      {% when 'twocol-2-img-txt' %}
+      {% include 'cms_twocol-2-img-txt' %}
+
+      {% when 'twocol-img-center-txt' %}
+      {% include 'cms_twocol-img-center-txt' %}
+      
+      {% when 'onecol-txt' %}
+      {% include 'cms_onecol-txt' %}
+
+      {% when 'featuredcollection' %}
+      {% include 'cms_featuredcollection' %}
+      
+    {% endcase %}
+  {% endfor %}
+
+
+
+
+{% schema %}
+	{
+		"blocks": [			
+			
+
+	{
+		        "type": "fit",
+		        "name": "Fit Guide",
+		        "settings": [
+
+
+   {
+		            "type": "text",
+		            "id": "section-header",
+		            "label": "Fit Header"
+		          
+		          },
+
+		            {
+		            "type": "textarea",
+		            "id": "section-para",
+		            "label": "Fit introduction"
+		          
+		          },
+		             {
+		            "type": "text",
+		            "id": "fit-tag",
+		            "label": "Fit Tag",
+		            "info": "Enter the tag that products in this fit have, eg. 'fit-classic'"
+		          
+		          },
+
+
+
+		          {
+		            "type": "image_picker",
+		            "id": "image-1",
+		            "label": "Front Image"
+		          },
+		            {
+		            "type": "image_picker",
+		            "id": "image-2",
+		            "label": "Side Image"
+		          },
+		            {
+		            "type": "image_picker",
+		            "id": "image-3",
+		            "label": "Back Image"
+		          }
+		         
+		       
+		        ]
+			},
+
+{
+		        "type": "banner",
+		        "name": "Banner - Full Width",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title",
+		            "label": "Heading",
+		            "default": "Image slide"
+		          },
+		          {
+		            "type": "text",
+		            "id": "subheading",
+		            "label": "Subheading",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "select",
+		            "id": "is_title_h1",
+		            "label": "Wrap title in H1 tag?",
+		            "options": [
+			          { "value": "is_title_h1_yes", "label": "Yes" },
+		              { "value": "is_title_h1_no", "label": "No" }
+		            ],
+		            "default": "is_title_h1_no"
+		          }
+		        ]
+			},
+			{
+		        "type": "bannergrid-two",
+		        "name": "Banner Grid - 2",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image1",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image1",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link1",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image2",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image2",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext2",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link2",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+			{
+		        "type": "bannergrid-three",
+		        "name": "Banner Grid - 3",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image1",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image1",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link1",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color1",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          },
+		           {
+		            "type": "image_picker",
+		            "id": "image2",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image2",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext2",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link2",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color2",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          },
+		           {
+		            "type": "image_picker",
+		            "id": "image3",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image3",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext3",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link3",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_color3",
+		            "label": "Text color",
+		            "options": [
+		              { "value": "text-light", "label": "Light" },
+		              { "value": "text-dark", "label": "Dark" }
+		            ],
+		            "default": "text-light"
+		          }
+		        ]
+			},
+			{
+		        "type": "bannergrid-four",
+		        "name": "Banner Grid - 4",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image1",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image1",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link1",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image2",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image2",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext2",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link2",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image3",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image3",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext3",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link3",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image4",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image4",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext4",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link4",
+		            "label": "Banner link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+
+
+
+
+
+
+
+	{
+		        "type": "bannergrid-video",
+		        "name": "Banner Video",
+		        "settings": [
+		          {
+		            "type": "text",
+		               "id": "video-src",
+            "label": "Video filename"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link1",
+		            "label": "Banner link"
+		          }
+		        ]				
+			},
+
+
+
+
+
+
+
+			{
+		        "type": "twocol-1-img-txt",
+		        "name": "2 Col - 1 Img 1 Text",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image"
+		          },
+							{
+								"type": "checkbox",
+								"id": "image_full_width",
+								"label": "Image Full Width",
+								"default": true
+							},
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content",
+		            "label": "Content",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "select",
+		            "id": "image_width",
+		            "label": "Image Column Width",
+		            "options": [
+			          { "value": "image-twothirds", "label": "Third / Two Thirds" },
+		              { "value": "image-half", "label": "Half / Half" },
+		              { "value": "image-third", "label": "Two Thirds / Third" },
+		              { "value": "image-quarter", "label": "Three Quarters / Quarter" },
+		              { "value": "image-threequarters", "label": "Quarter / Three Quarter" }
+		            ],
+		            "default": "image-half"
+		          },
+		          {
+		            "type": "select",
+		            "id": "column_order",
+		            "label": "Column Order",
+		            "options": [
+		              { "value": "image-left", "label": "Image Left - Content Right" },
+		              { "value": "image-right", "label": "Image Right - Content Left" }
+		            ],
+		            "default": "image-left"
+		          },
+		          {
+		            "type": "select",
+		            "id": "row_width",
+		            "label": "Row Width",
+		            "options": [
+			          { "value": "wrapper-full", "label": "Full" },
+			          { "value": "wrapper-twothirds", "label": "Two Thirds" },
+		              { "value": "wrapper-threequarters", "label": "Three Quarters" },
+		              { "value": "wrapper-half", "label": "Half" }
+		            ],
+		            "default": "wrapper-full"
+		          },
+		          {
+		            "type": "select",
+		            "id": "row_align",
+		            "label": "Row Alignment",
+		            "options": [
+			          { "value": "wrapper-left", "label": "Left" },
+			          { "value": "wrapper-center", "label": "Center" },
+		              { "value": "wrapper-right", "label": "Right" }
+		            ],
+		            "default": "wrapper-center"
+		          },
+		          {
+		            "type": "select",
+		            "id": "vertical_align",
+		            "label": "Vertical Align",
+		            "options": [
+			          { "value": "content-center", "label": "Center aligned" },
+		              { "value": "content-top", "label": "Top aligned" },
+		              { "value": "content-bottom", "label": "Bottom aligned" }
+		            ],
+		            "default": "content-center"
+		          },
+		          {
+		            "type": "select",
+		            "id": "is_title_h1",
+		            "label": "Wrap title in H1 tag?",
+		            "options": [
+			          { "value": "is_title_h1_yes", "label": "Yes" },
+		              { "value": "is_title_h1_no", "label": "No" }
+		            ],
+		            "default": "is_title_h1_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+			{
+		        "type": "twocol-img-center-txt",
+		        "name": "2 Col - Center",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image",
+		            "label": "Mobile Image"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content",
+		            "label": "Content",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "url",
+		            "id": "link",
+		            "label": "Link"
+		          },
+		          {
+		            "type": "select",
+		            "id": "image_width",
+		            "label": "Image Column Width",
+		            "options": [
+			          { "value": "image-twothirds", "label": "Third / Two Thirds" },
+		              { "value": "image-half", "label": "Half / Half" },
+		              { "value": "image-third", "label": "Two Thirds / Third" },
+		              { "value": "image-quarter", "label": "Three Quarters / Quarter" },
+		              { "value": "image-threequarters", "label": "Quarter / Three Quarter" }
+		            ],
+		            "default": "image-half"
+		          },
+		          {
+		            "type": "select",
+		            "id": "column_order",
+		            "label": "Column Order",
+		            "options": [
+		              { "value": "image-left", "label": "Image Left - Content Right" },
+		              { "value": "image-right", "label": "Image Right - Content Left" }
+		            ],
+		            "default": "image-left"
+		          },
+		          {
+		            "type": "select",
+		            "id": "row_width",
+		            "label": "Row Width",
+		            "options": [
+			          { "value": "wrapper-full", "label": "Full" },
+			          { "value": "wrapper-twothirds", "label": "Two Thirds" },
+		              { "value": "wrapper-threequarters", "label": "Three Quarters" },
+		              { "value": "wrapper-half", "label": "Half" }
+		            ],
+		            "default": "wrapper-full"
+		          },
+		          {
+		            "type": "select",
+		            "id": "row_align",
+		            "label": "Row Alignment",
+		            "options": [
+			          { "value": "wrapper-left", "label": "Left" },
+			          { "value": "wrapper-center", "label": "Center" },
+		              { "value": "wrapper-right", "label": "Right" }
+		            ],
+		            "default": "wrapper-center"
+		          },
+		          {
+		            "type": "select",
+		            "id": "vertical_align",
+		            "label": "Vertical Align",
+		            "options": [
+			          { "value": "content-center", "label": "Center aligned" },
+		              { "value": "content-top", "label": "Top aligned" },
+		              { "value": "content-bottom", "label": "Bottom aligned" }
+		            ],
+		            "default": "content-center"
+		          },
+		          {
+		            "type": "select",
+		            "id": "is_title_h1",
+		            "label": "Wrap title in H1 tag?",
+		            "options": [
+			          { "value": "is_title_h1_yes", "label": "Yes" },
+		              { "value": "is_title_h1_no", "label": "No" }
+		            ],
+		            "default": "is_title_h1_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+			{
+		        "type": "twocol-2-img-txt",
+		        "name": "2 Col - 2 Img 2 Text",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image1",
+		            "label": "Image 1"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image1",
+		            "label": "Mobile Image 1"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title1",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content1",
+		            "label": "Content 1",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image2",
+		            "label": "Image 2"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image2",
+		            "label": "Mobile Image 2"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext2",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title2",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content2",
+		            "label": "Content 2",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "select",
+		            "id": "image_width",
+		            "label": "Column Width",
+		            "options": [
+			          { "value": "image-twothirds", "label": "Third / Two Thirds" },
+		              { "value": "image-half", "label": "Half / Half" },
+		              { "value": "image-third", "label": "Two Thirds / Third" },
+		              { "value": "image-quarter", "label": "Three Quarters / Quarter" },
+		              { "value": "image-threequarters", "label": "Quarter / Three Quarter" }
+		            ],
+		            "default": "image-half"
+		          },
+		          {
+		            "type": "select",
+		            "id": "column_order",
+		            "label": "Column Order",
+		            "options": [
+		              { "value": "image-left", "label": "Regular" },
+		              { "value": "image-right", "label": "Reversed" }
+		            ],
+		            "default": "image-left"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+			{
+		        "type": "threecol-1-img-txt",
+		        "name": "3 Col - 3 Img 3 Text",
+		        "settings": [
+		          {
+		            "type": "image_picker",
+		            "id": "image1",
+		            "label": "Image 1"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image1",
+		            "label": "Mobile Image 1"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext1",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title1",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content1",
+		            "label": "Content 1",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image2",
+		            "label": "Image 2"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image2",
+		            "label": "Mobile Image 2"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext2",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title2",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content2",
+		            "label": "Content 2",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "image3",
+		            "label": "Image 3"
+		          },
+		          {
+		            "type": "image_picker",
+		            "id": "mobile_image3",
+		            "label": "Mobile Image 3"
+		          },
+		          {
+		            "type": "text",
+		            "id": "alttext3",
+		            "label": "Alt Text",
+		            "default": "Banner"
+		          },
+		          {
+		            "type": "text",
+		            "id": "title3",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content3",
+		            "label": "Content 3",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "select",
+		            "id": "column_order",
+		            "label": "Column Order",
+		            "options": [
+		              { "value": "image-right", "label": "Regular" },
+		              { "value": "image-left", "label": "Reversed" }
+		            ],
+		            "default": "image-right"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+			{
+		        "type": "onecol-txt",
+		        "name": "1 Col - Text",
+		        "settings": [
+		          {
+		            "type": "text",
+		            "id": "title",
+		            "label": "Content Title",
+		            "default": "Content Title"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content",
+		            "label": "Content",
+		            "default": "Lorem ipsum dolor sit amet"
+		          },
+		          {
+		            "type": "select",
+		            "id": "text_align",
+		            "label": "Text Alignment",
+		            "options": [
+		              { "value": "text-left", "label": "Align Left" },
+		              { "value": "text-center", "label": "Align Center" },
+		              { "value": "text-right", "label": "Align Right" }
+		            ],
+		            "default": "text-center"
+		          },
+		          {
+		            "type": "select",
+		            "id": "is_title_h1",
+		            "label": "Wrap title in H1 tag?",
+		            "options": [
+			          { "value": "is_title_h1_yes", "label": "Yes" },
+		              { "value": "is_title_h1_no", "label": "No" }
+		            ],
+		            "default": "is_title_h1_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			},
+			{
+		        "type": "featuredcollection",
+		        "name": "Featured Collection",
+		        "settings": [
+			      {
+			        "type": "text",
+			        "id": "title",
+			        "label": "Heading",
+			        "default": "Featured Collection"
+			      },
+			      {
+			        "id": "collection",
+			        "type": "collection",
+			        "label": "Collection"
+			      },
+			      {
+			        "type": "select",
+			        "id": "grid",
+			        "label": "Number of Products",
+			        "default": "3",
+			        "options": [
+			          {
+			            "value": "2",
+			            "label": "2"
+			          },
+			          {
+			            "value": "3",
+			            "label": "3"
+			          },
+			          {
+			            "value": "4",
+			            "label": "4"
+			          },
+			          {
+			            "value": "6",
+			            "label": "6"
+			          }
+			        ]
+			        },
+		          {
+		            "type": "select",
+		            "id": "add_border_top",
+		            "label": "Add border top?",
+		            "options": [
+			          { "value": "add_border_top_yes", "label": "Yes" },
+		              { "value": "add_border_top_no", "label": "No" }
+		            ],
+		            "default": "add_border_top_no"
+		          },
+		          {
+		            "type": "select",
+		            "id": "add_border_bottom",
+		            "label": "Add border bottom?",
+		            "options": [
+			          { "value": "add_border_bottom_yes", "label": "Yes" },
+		              { "value": "add_border_bottom_no", "label": "No" }
+		            ],
+		            "default": "add_border_bottom_no"
+		          }
+		        ]				
+			}
+		]
+	}
+{% endschema %}

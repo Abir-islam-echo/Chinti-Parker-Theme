@@ -1,0 +1,62 @@
+{%- assign look_collection_prefix = 'ctl-collection:' -%}
+{%- assign look_group_prefix = 'ctl:' -%}
+{% assign essentials_collection = 'icons-essentials' -%}
+
+{% for tag in product.tags %}
+  {% if tag contains look_collection_prefix %}
+    {% assign look_collection = tag | remove: look_collection_prefix %}
+  {% endif %}
+  {% if tag contains look_group_prefix %}
+    {% assign look_group = tag %}
+  {% endif %}
+{% endfor %}
+
+{% assign current_prod = product.handle %}
+{% assign product_list = "" | split: "," %}
+
+{% assign product_count = 0 %}
+{% for product in collections[look_collection]products %}
+  {% if product.handle != current_prod and product.available %}
+    {% for tag in product.tags %}
+      {% if tag contains look_group %}
+        {% assign product_count = product_count | plus: 1 %}
+        {% assign handle = product.handle | split: ',' %}
+        {% assign product_list  = product_list | concat: handle %}
+      {% endif %}
+      {%- if product_count == 3 -%}
+        {% break %}
+      {%- endif -%}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% assign products_to_add = 3 | minus: product_count %}
+
+{% if look_group and product_count > 0 %}
+  {% if products_to_add > 0 %}
+    {% for product in collections[essentials_collection]products %}
+      {% if product.handle != current_prod and product.available %}
+        {% assign products_to_add = products_to_add | minus: 1 %}
+        {% assign handle = product.handle | split: ',' %}
+        {% assign product_list = product_list | concat: handle %}
+      {% endif %}
+      {%- if products_to_add == 0 -%}
+        {% break %}
+      {%- endif -%}
+    {% endfor %}
+  {% endif %}
+
+  <div id="ctlWrapper">
+    <div class="wrapper">
+      <h2 class="blockHeader">{{ 'products.product.complete_the_look' | t }}</h2>
+      <div class="product-grid clearfix">
+          {%- assign rendered_product_count = 0 -%}
+          {% for i in (0..2) %}
+            {% assign ymal_product = all_products[product_list[i]] %}
+            {% render 'product-grid-item' with ymal_product as product %}
+            {%- assign rendered_product_count = rendered_product_count | plus: 1 -%}
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,139 @@
+<div class="cms-page-template">
+
+{% comment %}
+Re-use the 'rte' class wherever you output content that was added by a merchant using
+the Rich Text Editor ( 'rte' stands for rich text editor ).
+Style all HTML elements in that content the same way across the board.
+Use the 'rte' class in your CSS to help maintain that consistency.
+Example: the h2 element should have the same size and color in:
+- product descriptions
+- collection descriptions
+- 'page' pages' content
+- blog post
+{% endcomment %}
+
+<div class="contact-form">
+
+<div id="successfulSubmit">
+{% section 'cms-sections-newsletter-text-success' %}
+<div class="banner-section" id="newsletterSuccessBlock">
+<div class="content text-dark">
+<a href="/collections/all" class="btn">
+Shop now
+</a>
+</div>
+</div>
+</div>
+
+	
+
+
+
+
+<form name="signup" id="signup" action="https://e-chintiandparker.com/signup.ashx" method="post" autocomplete="off" onsubmit="return validate_signup(this, true)">
+		{% section 'cms-sections-newsletter-text' %}
+	<div class="input-group"><div id="errorMessages"></div>
+<input type="hidden" name="ci_isconsentform" value="true">
+<input type="hidden" name="userid" value="98313">
+<input type="hidden" name="SIG521ea4cccc00d8e39a554e42e075a17eff711f350cbafb269568ece4c2aa35e6" value="">
+{% if shop.url contains "eu." %}
+<input type="hidden" name="addressbookid" value="45155305" />
+{%elsif shop.url contains "us." %}
+<input type="hidden" name="addressbookid" value="45155314" />
+{%else%}
+<input type="hidden" name="addressbookid" value="45155301" />
+{%endif%}
+<input type="hidden" name="ReturnURL" value="">
+<input type="hidden" name="ci_userConsentText" value="I agree to receive email marketing from Chinti & Parker. See our Privacy Policy for further details">
+<input type="hidden" id="ci_consenturl" name="ci_consenturl" value="">
+<input type="hidden" class="text" name="cd_SIGNUP_SOURCE" id="SIGNUP_SOURCE" aria-required="false" value="Newsletter Page signup - {{shop.url}}" />
+<div>
+<label class="wrap visibleHide" for="email">Email</label>
+<input type="text" name="email" id="email" required aria-required="true" placeholder="Enter your email address here">
+</div>
+<div>
+<label class="wrap visibleHide" for="FIRSTNAME">First Name</label>
+<input type="text" class="text" name="cd_FIRSTNAME" id="FIRSTNAME" aria-required="false" placeholder="First name (optional)" />
+</div>
+<div>
+<p id="signUpFormCheckbox">
+<input type="checkbox" name="ci_userConsentCheckBox" id="ci_userConsentCheckBox">
+<label for="ci_userConsentCheckBox">I agree to receive email marketing from Chinti &amp; Parker. See our Privacy Policy for further details</label>
+</p>
+<p>
+<input type="submit" id="btnsubmit" name="btnsubmit" value="Subscribe">
+</p>
+</div>
+</form>
+<script type="text/javascript">
+
+var urlParams = new URLSearchParams(window.location.search);
+if(urlParams) {
+//var wasPosted = urlParams.get('customer_posted');
+var formResult = urlParams.get('result');
+//if(wasPosted == "true") {
+if(formResult == "success") {
+document.getElementById('successfulSubmit').style.display = "block";
+document.getElementById('signup').style.display = "none";
+}
+//}
+}
+
+    var urlInput = document.getElementById("ci_consenturl");
+    if (urlInput != null && urlInput != 'undefined') {
+        urlInput.value = encodeURI(window.location.href);
+    }
+    function checkbox_Clicked(element) {
+        document.getElementById(element.id + "_unchecked").value = !element.checked;
+    }
+    function validate_signup(frm, showAlert) {
+        var emailAddress = frm.email.value;
+        var errorString = '';
+        if (emailAddress == '' || emailAddress.indexOf('@') == -1) {
+            errorString = '<li>Please enter your email address</li>';
+        }
+        var checkBoxValue = frm.ci_userConsentCheckBox.checked;
+        if (checkBoxValue == false && showAlert) {
+            errorString += '<li>You must accept the terms</li>';
+        }
+        var isError = false;
+        if (errorString.length > 0) {
+            isError = true;
+           // if (showAlert) alert(errorString);
+           document.getElementById('errorMessages').innerHTML = '<div class="errors"><ul>'+errorString+'</ul></div>';
+        }
+        return !isError;
+    }
+   
+</script>
+
+		
+			
+</div>
+
+
+
+
+
+				
+					
+
+				
+				
+				
+		
+
+
+ {% section 'cms-sections-newsletter-bespoke' %}
+
+</div>
+
+
+
+
+ {% section 'cms-sections-newsletter' %}
+
+
+
+
+{% include 'gtm-page' %}

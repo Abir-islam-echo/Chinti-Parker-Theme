@@ -1,0 +1,184 @@
+
+    {% if section.blocks.size > 0 %}
+        <div class="homePageSaleBanner">
+            {% for block in section.blocks %}
+                {% case block.type %}
+
+
+{% when 'sale-image' %}
+<div class="leftHalf">
+    <picture>
+        <source
+            media="(min-width: 900px)"
+            srcset="{{ block.settings.sale_image | img_url: '100x100', crop: 'center' }}"
+            data-srcset="{{ block.settings.sale_image | img_url: '960x960', crop: 'center' }}"
+        >
+        <source
+            srcset="{{ block.settings.sale_image | img_url: '100x100', crop: 'center' }}"
+            data-srcset="{{ block.settings.sale_image | img_url: '450x450', crop: 'center' }}"
+        >
+        <img
+            src="{{ block.settings.sale_image | img_url: '100x100', crop: 'center' }}"
+            data-src="{{ block.settings.sale_image | img_url: '960x960', crop: 'center' }}"
+            alt=""
+            class="lazyload"
+        />
+    </picture>
+</div>
+
+
+{% when 'sale-bg-image' %}
+          <div class="rightHalf" style="background-image:url({{block.settings.sale_bg_image | img_url: '960x960', crop: 'center'}})"><div class="rightHalfContent">
+
+
+
+
+{% when 'sale-header' %}
+             <h2 class="{{block.settings.text-colour}}">{{block.settings.sale_header | escape}}</h2>
+
+{% when 'sale-subheader' %}
+             <h3 class="{{block.settings.text-colour}}">{{block.settings.sale_subheader | escape}}</h3>
+
+                    {% when 'sale-category' %}
+
+              <a href="{{block.settings.button_link | escape}}" class="saleButton button {{block.settings.text-colour}}">{{block.settings.button_text | escape}}</a>
+
+               {% endcase %}
+            {% endfor %}
+     </div></div>
+     </div>
+    {% endif %}
+
+
+
+{% schema %}
+  {
+
+    "blocks": [
+      {
+        "type": "sale-header",
+        "name": "Banner Header",
+        "settings": [
+
+
+          {
+            "type": "text",
+            "id": "sale_header",
+            "label": "Header Text",
+            "default": "Sale now on"
+
+          },
+          {
+                "type": "select",
+                "id": "text-colour",
+                "label": "Text colour",
+                "options": [
+                { "value": "dark", "label": "Dark" },
+                  { "value": "light", "label": "Light" }
+                ],
+                "default": "light"
+              }
+        ]
+      },
+         {
+        "type": "sale-subheader",
+        "name": "Banner Subheader",
+        "settings": [
+
+
+          {
+            "type": "text",
+            "id": "sale_subheader",
+            "label": "Subheader Text",
+            "default": "Up to 50% off"
+
+          },
+          {
+                "type": "select",
+                "id": "text-colour",
+                "label": "Text colour",
+                "options": [
+                { "value": "dark", "label": "Dark" },
+                  { "value": "light", "label": "Light" }
+                ],
+                "default": "light"
+              }
+        ]
+      },
+
+
+
+
+     {
+        "type": "sale-image",
+        "name": "Banner image",
+        "settings": [
+
+
+          {
+            "type": "image_picker",
+            "id": "sale_image",
+            "label": "Banner image"
+
+          }
+        ]
+      },
+           {
+        "type": "sale-bg-image",
+        "name": "Background image",
+        "settings": [
+
+
+          {
+            "type": "image_picker",
+            "id": "sale_bg_image",
+            "label": "Background image"
+
+          }
+        ]
+      },
+
+
+
+
+            {
+        "type": "sale-category",
+        "name": "Sale Category",
+        "settings": [
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+
+          },
+
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+
+          },
+          {
+                "type": "select",
+                "id": "text-colour",
+                "label": "Text colour",
+                "options": [
+                { "value": "dark", "label": "Dark" },
+                  { "value": "light", "label": "Light" }
+                ],
+                "default": "light"
+              }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner - Sale",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "sale-header"
+        }
+      ]
+    }]
+  }
+{% endschema %}

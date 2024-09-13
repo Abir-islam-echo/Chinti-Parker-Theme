@@ -1,0 +1,384 @@
+{%- liquid
+  assign productCount = 0
+  for product in product.metafields.product.styled_with.value
+    assign productCount = forloop.index
+  endfor
+-%}
+
+<div class="shop-the-look-section">
+  <div class="content-wrapper">
+    <button>{{ section.settings['look-button-text'] }}</button>
+  </div>
+</div>
+
+<style>
+    /*  */
+    .product .product-photos .overlayTag{
+      display: none;
+  }
+  div#shopify-section-shop-the-look {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+  }
+  div#shopify-section-shop-the-look .shop-the-look-section{
+      margin-bottom: 0;
+  }
+  @media only screen and (max-width: 500px){
+      div#shopify-section-shop-the-look .shop-the-look-section .content-wrapper button{
+        padding: 10px 20px;
+        font-size: 10px;
+      }
+  }
+    /*  */
+
+
+
+    .shop-the-look-modal-overlay *{
+      border-radius: 4px;
+      transition: all .25s;
+    }
+    .shop-the-look-section{
+      margin-bottom: .3125rem;
+    }
+    .shop-the-look-section .content-wrapper button{
+      margin-bottom: 0;
+    }
+
+    {% if section.settings.hide-section %}
+      .shop-the-look-section{
+        display: none;
+      }
+    {% endif %}
+    .shop-the-look-modal-content .items-wrapper{
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    padding-top: 20px;
+    }
+    .shop-the-look-modal-content .items-wrapper .item{
+      flex: 1;
+      max-width: 250px;
+      min-width: 200px;
+      padding: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+    }
+    .shop-the-look-modal-content .items-wrapper .item:hover{
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+    }
+    .shop-the-look-modal-content{
+      position: relative;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size ul li {
+      margin-bottom: 5px;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size ul li:hover {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size ul li span {
+      line-height: 3;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size ul li.active {
+      border: 1px solid #55555591;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size ul li.out-of-stock {
+      pointer-events: none;
+      cursor: no-drop;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size ul{
+      border: none;
+      bottom: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+      top: unset;
+      display: block !important;
+      transform: translateY(50%);
+      visibility: hidden;
+      opacity: 0;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size .product-option-size.active{
+          transform: translateY(-2px);
+      visibility: visible;
+      opacity: 1;
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size:has(.product-option-size.active) label::after{
+      transform: rotate(180deg);
+    }
+    .shop-the-look-modal-content .product-details #product-variants .size label{
+      padding: 0.35rem .75rem .35rem 1.5625rem;
+    }
+    .shop-the-look-modal-content .product-details{
+      padding: 0;
+      padding-top: 0px;
+    width: 100%;
+    padding-top: 12px;
+    }
+    .shop-the-look-modal-content #styledWith .blockheader-wrapper{
+      background-color: #e8e8e882;
+    padding: 5px 0;
+    line-height: 0;
+    max-width: unset;
+    margin-right: -20px;
+    margin-left: -20px;
+    }
+
+    .shop-the-look-modal-content .items-wrapper .item wishlist-button{
+      display: none;
+    }
+    /* .shop-the-look-modal-content .items-wrapper .item #variants-add-wrapper wishlist-button{
+      display: none;
+    } */
+
+    .shop-the-look-modal-content .items-wrapper .item form button[type='submit']{
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+    .shop-the-look-modal-content .items-wrapper .item form{
+      z-index: 10;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .shop-the-look-modal-content .items-wrapper .item form button[value='Sold Out']{
+      background-color: #444;
+      cursor: no-drop;
+    }
+    .shop-the-look-modal-content .items-wrapper .item form .ajaxified-cart-feedback{
+      padding-top: 7px;
+    }
+    .disable-atc{
+      cursor: no-drop;
+      pointer-events: none;
+    }
+    /* .shop-the-look-section{
+      position: absolute;
+      top: 10px;
+        right: 10px;
+      z-index: 5
+    } */
+    .shop-the-look-section .content-wrapper button{
+      background-color: {{ section.settings.look-button-color }};
+      color: {{ section.settings.look-button-text-color }};
+      padding: 1.125rem 1.875rem 1.0625rem;
+      font-weight: bold;
+      transition: all .25s
+    }
+    .shop-the-look-section .content-wrapper button:hover{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .shop-the-look-modal-overlay{
+      display: none;
+      align-ittems: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 999999;
+    }
+    .shop-the-look-modal-wrapper{
+      background: #ffffff;
+      padding: 20px;
+      min-width: 50vw;
+      width: {{ productCount | times: 30 }}vw;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50% , -50%);
+      left: 50%;
+      transition: all .25s;
+    }
+    .shop-the-look-modal-wrapper .close-icon{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 6px;
+      right: 2px;
+      cursor: pointer;
+      padding: 5px;
+    border-radius: 4px;
+      transition: all .25s;
+    }
+      .shop-the-look-modal-wrapper .close-icon:hover{
+            background: #d0d0d0;
+      }
+    .shop-the-look-modal-wrapper .close-icon svg{
+      width: 100%;
+    }
+    .shop-the-look-modal-overlay.is-open{
+      display: flex;
+      backdrop-filter: blur(3px);
+    }
+    .from-shop-the-look#styledWith{
+      display: block;
+      max-width: unset;
+    padding: 0;
+    }
+    .from-shop-the-look#styledWith h2.blockHeader{
+      margin: 0;
+    }
+     /* Hide scrollbar for Chrome, Safari and Opera */
+    .shop-the-look-modal-content .items-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .shop-the-look-modal-content .items-wrapper {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    {% if productCount > 1 %}
+    @media only screen and (max-width: 668px){
+        .shop-the-look-modal-content .items-wrapper{
+          overflow-x: scroll;
+          justify-content: flex-start;
+    }
+    }
+    {% endif %}
+      @media only screen and (max-width: 380px){
+        .shop-the-look-modal-content div.items-wrapper{
+            padding: 10px 30px;
+        }
+        .shop-the-look-modal-content div.items-wrapper div.item{
+                max-width: 250px;
+                min-width: 200px;
+        }
+    }
+    @media only screen and (min-width: 381px) and (max-width: 449px){
+       .shop-the-look-modal-content div.items-wrapper{
+            padding: 30px;
+        }
+    }
+      @media only screen and (max-width: 500px){
+          .shop-the-look-section{
+            top: unset;
+            bottom: 10px;
+
+          }
+          /* .shop-the-look-section .content-wrapper button{
+            padding: 10px 20px;
+            font-size: 10px;
+            margin: 0;
+
+          } */
+    }
+    @media only screen and (max-width: 768px){
+
+      .shop-the-look-modal-wrapper .close-icon{
+        right: 6px;
+    top: 15px;
+      }
+      .shop-the-look-modal-content #styledWith .blockheader-wrapper{
+        padding: 15px 0;
+      }
+      .shop-the-look-modal-wrapper :is(.shop-the-look-modal-content,#styledWith,.product-list,.wrapper,.items-wrapper){
+        height: 100%
+      }
+      .shop-the-look-modal-content .items-wrapper .item{
+        max-width: 300px;
+        min-width: 300px;
+        height: fit-content;
+      }
+      .shop-the-look-modal-content .product-details #product-variants{
+        margin: unset;
+        border: none;
+
+      }
+      .shop-the-look-modal-wrapper{
+        width: 100%;
+        height: 100%;
+        align-content: center;
+      }
+      .shop-the-look-modal-wrapper .selector.size-selector{
+        width: 100%;
+      }
+      .shop-the-look-modal-content .items-wrapper{
+        padding: 50px 30px 10px 30px;
+      }
+    }
+</style>
+
+<script>
+      function waitForElem(waitFor,callback,minElements = 1,isVariable = false,timer = 10000,frequency = 25) {
+        let elements = isVariable ?
+            window[waitFor] :
+            document.querySelectorAll(waitFor);
+        if (timer <= 0) return;
+        (!isVariable && elements.length >= minElements) ||
+        (isVariable && typeof window[waitFor] !== "undefined") ?
+        callback(elements): setTimeout(
+            () =>
+            waitForElem(waitFor,callback,minElements,isVariable,timer - frequency),frequency);
+    }
+      document.body.addEventListener('click',(e)=>{
+        if(e.target == document.querySelector(".shop-the-look-modal-overlay") ||
+           e.target.closest(".shop-the-look-modal-wrapper .close-icon")){
+          document.querySelector(".shop-the-look-modal-overlay").classList.remove("is-open")
+          document.body.style.overflow = 'auto'
+        }
+      })
+      document.querySelector(".shop-the-look-section button").addEventListener("click",()=>{
+        document.querySelector(".shop-the-look-modal-overlay").classList.add("is-open")
+        document.body.style.overflow = 'hidden'
+      })
+  waitForElem(".shop-the-look-modal-content .product-details #product-variants .size ul li",()=>{
+        document.querySelectorAll(".shop-the-look-modal-content .product-details #product-variants .size ul li.active").forEach(item=>{
+        item.addEventListener('click',()=>{
+          const itemId = item.getAttribute("data-id");
+          item.closest(".shop-the-look-modal-content .item").querySelector(".item form input[id='atc-product-id']").value = itemId;
+          item.closest(".shop-the-look-modal-content .item").querySelector(".item form button[type='submit']").classList.remove('disable-atc');
+          item.closest(".shop-the-look-modal-content .item").querySelector(".item form button[type='submit']").textContent = "Add to Cart";
+          item.closest(".shop-the-look-modal-content .item").querySelector(".product-details #product-variants .size .product-option-size").classList.remove('active');
+        })
+      });
+      document.querySelectorAll(".shop-the-look-modal-content .product-details #product-variants .size label").forEach(item=>{
+        item.addEventListener("click",()=>{
+          item.closest(".shop-the-look-modal-content .item").querySelector(".product-details #product-variants .size .product-option-size").classList.toggle('active');
+        })
+      })
+  })
+  waitForElem(".shop-the-look-modal-content #styledWith .blockHeader",([heading])=>{
+    heading.textContent = '{{ section.settings.modal-heading }}'
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Shop The Look Section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide-section",
+      "label": "Hide this section",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "look-button-text",
+      "label": "Button Text",
+      "default": "Shop The Look"
+    },
+    {
+      "type": "text",
+      "id": "modal-heading",
+      "label": "Modal Heading",
+      "default": "Shop The Look"
+    },
+    {
+      "type": "color",
+      "id": "look-button-color",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "look-button-text-color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}

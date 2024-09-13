@@ -1,0 +1,126 @@
+
+
+<div data-section-id="{{ section.id }}" data-section-type="bannergrid-two-section" class="wrapper cms-content-wrapper">
+
+        <div class="row" id="bannergrid-{{ section.id }}">
+                <div class="col-wide-6 col-medium-6 col-small-12 col-smallest-12">
+                  
+                    {% if block.settings.image1 %}
+                        <picture>
+              <source media="(min-width: 900px)" srcset="{{ block.settings.image1 | img_url: '760x' }}">
+              <source media="(min-width: 500px)" srcset="{{ block.settings.image1 | img_url: '420x' }}">
+              
+
+{% if block.settings.mobile_image1 %}
+              <source srcset="{{ block.settings.mobile_image1 | img_url: '500x' }}">
+                {%else%}
+                <source srcset="{{ block.settings.image1 | img_url: '500x' }}">
+{%endif%}
+
+              <img src="{{ block.settings.image1 | img_url: '760x' }}" alt="{% if block.settings.alttext1 %}{{ block.settings.alttext1 | escape }}{% endif %}" />
+            </picture>
+                    {% endif %}
+                    {% if block.settings.image1 == blank %}
+                      <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    <div class="lookbookText">
+                      {% if block.settings.link1-1 != blank %}
+                      {% assign thisProduct = block.settings.link1-1 | replace: '/products/', '' %}
+                 
+                      {% assign thisProductObject = all_products[thisProduct] %}
+                      <h4>{{thisProductObject.title}}</h4>
+                        <a target="_blank" class="buyNow" href="{{ block.settings.link1-1 }}">Shop Now</a>
+                    {% endif %}
+                      {% if block.settings.link1-2 != blank %}
+                          {% assign thisProduct = block.settings.link1-2 | replace: '/products/', '' %}
+                      {% assign thisProductObject = all_products[thisProduct] %}
+                      <h4>{{thisProductObject.title}}</h4>
+                        <a target="_blank" class="buyNow" href="{{ block.settings.link1-2 }}">Shop Now</a>
+                    {% endif %}
+<div class="clearer"></div>
+<h5>Share this:</h5>
+<ul>
+            <li>
+                          <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url }}{{ thisProductObject.url }}" class="fb">
+              <i class="fab fa-facebook"></i>
+                          </a>
+                      </li>
+            <li>
+                          <a target="_blank" href="//twitter.com/share?url={{ shop.url }}{{ thisProductObject.url }}" class="tw">
+                <i class="fab fa-twitter"></i>
+                          </a>
+                        </li>
+            <li>
+                          <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ thisProductObject.url }}&amp;media={{ thisProductObject.featured_image | product_img_url: 'original' }}&amp;description={{ thisProductObject.title | escape }}" class="pin">
+                            <i class="fab fa-pinterest"></i>
+                          </a>
+                        </li>
+          </ul>
+
+
+                  </div>
+                </div>
+                <div class="col-wide-6 col-medium-6 col-small-12 col-smallest-12">
+                  
+                    {% if block.settings.image2 %}
+                        <picture>
+               <source media="(min-width: 900px)" srcset="{{ block.settings.image2 | img_url: '760x' }}">
+                            <source media="(min-width: 500px)" srcset="{{ block.settings.image2 | img_url: '420x' }}">
+                          {% if block.settings.mobile_image2 %}
+              <source srcset="{{ block.settings.mobile_image2 | img_url: '500x' }}">
+                {%else%}
+                <source srcset="{{ block.settings.image2 | img_url: '500x' }}">
+{%endif%}
+              <img src="{{ block.settings.image2 | img_url: '760x' }}" alt="{% if block.settings.alttext2 %}{{ block.settings.alttext2 | escape }}{% endif %}" />
+            </picture>
+                    {% endif %}
+                    {% if block.settings.image2 == blank %}
+                      <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+
+                     <div class="lookbookText">
+                          {% if block.settings.link2-1 != blank %}
+                              {% assign thisProduct = block.settings.link2-1 | replace: '/products/', '' %}
+           {% assign thisProduct = thisProduct | replace: "-", " " %}
+                    
+                      <h4>{{thisProduct}}</h4>
+                        <a target="_blank" class="buyNow" href="{{ block.settings.link2-1 }}">Shop Now</a>
+                    {% endif %}
+                      {% if block.settings.link2-2 != blank %}
+                          {% assign thisProduct = block.settings.link2-2 | replace: '/products/', '' %}
+                       {% assign thisProduct = thisProduct | replace: "-", " " %}
+               
+                      <h4>{{thisProduct}}</h4>
+                        <a target="_blank" class="buyNow" href="{{ block.settings.link2-2 }}">Shop Now</a>
+                    {% endif %}
+<div class="clearer"></div>
+<h5>Share this:</h5>
+<ul>
+            <li>
+                          <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url }}{{ thisProductObject.url }}" class="fb">
+              <i class="fab fa-facebook"></i>
+                          </a>
+                      </li>
+            <li>
+                          <a target="_blank" href="//twitter.com/share?url={{ shop.url }}{{ thisProductObject.url }}" class="tw">
+                <i class="fab fa-twitter"></i>
+                          </a>
+                        </li>
+            <li>
+                          <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ thisProductObject.url }}&amp;media={{ thisProductObject.featured_image | product_img_url: 'original' }}&amp;description={{ thisProductObject.title | escape }}" class="pin">
+                            <i class="fab fa-pinterest"></i>
+                          </a>
+                        </li>
+          </ul>
+
+                </div>
+                </div>
+        </div>
+
+</div>

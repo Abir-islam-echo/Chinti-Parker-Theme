@@ -1,0 +1,82 @@
+{% if template contains 'product' %}
+  <meta property="og:type" content="product" />
+  <meta property="og:title" content="{{ product.title | strip_html | escape }}" />
+  <meta property="product:brand" content="{{ product.vendor }}">
+  {% comment %}
+  <meta property="product:availability" content="{% if product.available %} in stock {% else %} out of stock {% endif %}">
+  {% endcomment %}
+  <meta property="product:condition" content="new">
+
+  {% for image in product.images %}
+  <meta property="og:image" content="http:{{ image | img_url: 'grande' }}" />
+  <meta property="og:image:secure_url" content="https:{{ image | img_url: 'grande' }}" />
+  {% endfor %}
+  <meta property="og:price:amount" content="{{ product.price | money_without_currency }}" />
+  <meta property="og:price:currency" content="{{ shop.currency }}" />
+  
+{% elsif template contains 'article' %}
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ article.title | strip_html | escape }}" />
+  {% assign img_tag = '<' | append: 'img' %}
+  {% if article.content contains img_tag %}
+    {% assign src = article.content | split: 'src="' %}
+    {% assign src = src[1] | split: '"' | first | remove: 'https:' | remove: 'http:' %}
+    {% if src %}
+      <meta property="og:image" content="http:{{ src }}" />
+      <meta property="og:image:secure_url" content="https:{{ src }}" />
+    {% endif %}
+  {% endif %}
+{% else %}
+  {% if settings.use_logo %}
+    <meta property="og:image" content="http:{{ 'logo.svg' | asset_url }}" />
+    <meta property="og:image:secure_url" content="https:{{ 'logo.svg' | asset_url }}" />
+  {% endif %}
+  <meta property="og:title" content="{{ page_title | escape }}" />
+  <meta property="og:type" content="website" />
+{% endif %}
+
+{% if page_description %}
+<meta property="og:description" content="{{ page_description }}" />
+{% endif %}
+<meta property="og:url" content="{{ canonical_url }}" />
+<meta property="og:site_name" content="{{ shop.name }}" />
+
+
+{% if template contains 'product' %}
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Product",
+  "productID":"{{ product.id  }}",
+  "name":"{{ product.title | strip_html | escape }}",
+  "description":"{{ product.description | strip_html | escape }}",
+  "url":"{{ product.url }}",
+   "image":"{{ product.featured_image | img_url: 'grande' }}",
+  "brand":"{{ product.vendor }}",
+  "sku": "{{ product.selected_or_first_available_variant.sku }}",
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "{{ product.price | money_without_currency }}",
+      "priceCurrency": "{{ shop.currency  }}",
+      "itemCondition": "https://schema.org/NewCondition",
+  {% if product.available %}
+      "availability": "in stock"
+  {% else %}
+      "availability": "out of stock"
+  {% endif %}
+
+
+    }
+  ],
+  "additionalProperty": [{
+    "@type": "PropertyValue",
+    "propertyID": "item_group_id",
+    "value": "{{ product.type }}"
+  }]
+}
+</script>
+
+
+{% endif %} 

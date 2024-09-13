@@ -1,0 +1,61 @@
+{% if section.settings.show_cookie_message == true %}
+
+	
+	
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+     "popup": {
+      "background": "{{section.settings.cookie_policy_bg_colour}}",
+      "text": "{{section.settings.cookie_policy_text_colour}}"
+    },
+    "button": {
+      "background": "{{section.settings.cookie_policy_button_colour}}",
+      "text": "{{section.settings.cookie_policy_btntext_colour}}"
+    }
+  },
+  "content": {
+    "message": "{{section.settings.cookie_text}}"
+{% if section.settings.cookie_policy_page != '' %}
+    ,"href": "{{section.settings.cookie_policy_page}}"
+    {%endif%}
+    ,"dismiss": "I Accept"
+  }
+})});
+</script>
+
+
+
+{% endif %}
+
+{% schema %}
+{
+"name": "Cookie Message",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_cookie_message",
+"label": "Show cookie message",
+"default": true
+},
+{
+"id": "cookie_text",
+"type": "text",
+"label": "Cookie Message Text",
+"default": "This website uses cookies to ensure you get the best experience on our website."
+},
+{
+"id": "cookie_policy_page",
+"type": "url",
+"label": "Cookie Policy Page"
+}
+
+]
+}
+{% endschema %}

@@ -1,0 +1,81 @@
+<div class="wrapper">
+	<div class="page-title">
+		<h1>{{ page.title }}</h1>
+	</div>
+</div>
+
+{% form 'contact' %}
+<div class="wrapper" id="requestCatalogue">
+	<div class="contact-center">
+		<div class="cms-content">
+			{{ page.content }}
+		</div>
+		{% if form.posted_successfully? %}
+		<div class="successForm feedback form--success">
+			Thanks for requesting the catalogue, we'll get it out to you as soon as possible.
+		</div>
+		{% endif %}
+
+		{% if form.errors %}
+		<div class="errorForm feedback">
+			<!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+			<p>
+				Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:
+			</p>
+			{% for field in form.errors %}
+			<p>
+				The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.
+			</p>
+			{% endfor %}
+		</div>
+		{% endif %}
+		<div id="formRequest">
+		
+			<div class="col-left">
+				<p>
+					<input placeholder="{{ 'contact.form.email' | t }}" type="email" required id="contactFormEmail" name="contact[email]">
+				</p>
+				<p>
+					<input placeholder="Title" type="text" required id="contactFormTitle" name="contact[title]">
+				</p>
+				<p>
+					<input placeholder="First Name" type="text" required id="contactFormFirstname" name="contact[firstname]">
+				</p>
+				<p>
+					<input placeholder="Surname" type="text" required id="contactFormSurname" name="contact[surname]">
+				</p>
+				<p>
+					<textarea placeholder="Address" required rows="10" id="contactFormMessage" name="contact[address]"></textarea>
+				</p>
+				<p>
+					<input placeholder="{{ 'contact.form.phone' | t }}" type="telephone" required id="contactFormTelephone" name="contact[phone]">
+				</p>
+			</div>
+			<div class="col-right">
+				<p>Please select which catalogue(s) you'd like:</p>
+				<ul id="catalogueRequestOptions">
+					<li>
+						
+						<div class="checkbox">
+							<input type="checkbox" id="ContactFormFishingTackleCatalogue" name="contact[FishingTackleCatalogue]" value="Fishing Tackle Catalogue" />
+							<label for="ContactFormFishingTackleCatalogue"><span>Fishing Tackle Catalogue</span><img src="{{ 'a1.jpg' | asset_url }}" /></label>
+						</div>
+					</li>
+					<li>
+						
+						<div class="checkbox">
+							<input type="checkbox" id="ContactFormCountryClothingCatalogue" name="contact[CountryClothingCatalogue]" value="Country Clothing Catalogue" />
+							<label for="ContactFormCountryClothingCatalogue"><span>Country Clothing Catalogue</span><img src="{{ 'a2.jpg' | asset_url }}" /></label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-left clr-left">
+				<input type="submit" class="button-primary" id="contactFormSubmit" value="Request Catalogue" />
+			</div>
+		</div>
+	</div>
+</div>
+{% endform %}
+
+{% section 'cms-sections-account-and-cms' %}

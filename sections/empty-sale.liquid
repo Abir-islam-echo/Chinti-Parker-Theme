@@ -1,0 +1,116 @@
+
+<div id="saleHasEnded" class="{{section.settings.text-colour}}">
+
+<div id="leftHalf">
+						<picture>
+							<source
+								media="(min-width: 900px)"
+								srcset="{{ section.settings.page_image1 | img_url: '100x100', crop: 'center' }}"
+								data-srcset="{{ section.settings.page_image1 | img_url: '960x960', crop: 'center' }}"
+							>
+							<source
+								srcset="{{ section.settings.page_image1 | img_url: '100x100', crop: 'center' }}"
+								data-srcset="{{ section.settings.page_image1 | img_url: '450x450', crop: 'center' }}"
+							>
+							<img
+								src="{{ section.settings.page_image1 | img_url: '100x100', crop: 'center' }}"
+								data-src="{{ section.settings.page_image1 | img_url: '960x960', crop: 'center' }}"
+								alt=""
+								class="lazyload"
+							/>
+						</picture>
+					</div>
+					<div id="rightHalf" {% if section.settings.page_image2 != blank %}style="background-image:url({{ section.settings.page_image2 | img_url: '960x960', crop: 'center' }})"{%endif%}>
+
+<div id="rightHalfContent">
+  <h1>{{section.settings.page_header | escape}}</h1>
+  <p class="sub">{{section.settings.page_subheader | escape}}</p>
+  {% if section.settings.show_newsletter %}
+<a href="/pages/newsletter-sign-up/" class="primary-button">{{section.settings.signup_text | escape }}</a>
+  <p class="terms">By providing your email address, you are agreeing to receive email marketing from Chinti &amp; Parker. See our <a href="/pages/privacy-cookie-policy/">Privacy Policy</a> for further details.</p>
+  {% endif %}
+</div>
+
+{% if section.settings.show_button %}
+<div class="button-wrapper">
+<a href="section.settings.button_link" class="button">
+	{{section.settings.button_text}}
+</a>
+</div>
+{% endif %}
+
+</div>
+</div>
+
+
+
+{% schema %}
+{
+"name": "Sale's ended information",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_newsletter",
+"label": "Show newsletter link",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_button",
+"label": "Show button",
+"default": true
+},
+
+{
+"id": "button_text",
+"type": "text",
+"label": "Button text",
+"default": "Shop now"
+},
+{
+"id": "button_link",
+"type": "url",
+"label": "Button link"
+},
+
+{
+"id": "signup_text",
+"type": "text",
+"label": "Signup text",
+"default": "Sign up for the latest updates"
+},
+
+
+{
+"id": "page_header",
+"type": "text",
+"label": "Header",
+"default": "Our sale has ended"
+},{
+"id": "page_subheader",
+"type": "text",
+"label": "Subheader",
+"default": "Sign up to our newsletter for sale updates"
+},
+{
+"id": "page_image1",
+"type": "image_picker",
+"label": "Banner image"
+},
+{
+"id": "page_image2",
+"type": "image_picker",
+"label": "Background image"
+},   {
+		            "type": "select",
+		            "id": "text-colour",
+		            "label": "Text colour",
+		            "options": [
+			          { "value": "dark", "label": "Dark" },
+		              { "value": "light", "label": "Light" }
+		            ],
+		            "default": "light"
+		          }
+]
+}
+{% endschema %}

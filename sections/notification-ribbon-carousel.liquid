@@ -1,0 +1,174 @@
+
+
+{%- assign euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' -%}
+{%- assign usCountryList = 'ca,us' -%}
+{% assign isoCode = localization.country.iso_code | downcase %}
+
+
+
+{%- if euCountryList contains isoCode -%}
+    {%- if section.settings.show_notification_eu == true -%}
+        <div id="notificationRibbon" class="owl-carousel owl-theme notification-carousel" data-time="{{ section.settings.notification_time }}">
+            {%- assign limit = section.settings.notification_text_number_eu -%}
+            {% for block in section.blocks limit: limit %}    
+                <!-- Single Notfication Item -->
+                <p class="item">
+                    {% if block.settings.notification_link_eu != blank %}<a href="{{block.settings.notification_link_eu}}">{%endif%}
+                    {{block.settings.notification_text_eu | escape}}
+                    {% if block.settings.notification_link != blank %}</a>{%endif%}
+                </p>
+                <!--// Single Notfication Item -->
+            {% endfor %}
+        </div>
+    {%- endif -%}
+
+  {% elsif usCountryList contains isoCode %}
+    {%- if section.settings.show_notification_us == true -%}
+        <div id="notificationRibbon" class="owl-carousel owl-theme notification-carousel" data-time="{{ section.settings.notification_time }}">
+            {%- assign limit = section.settings.notification_text_number_us -%}
+            {% for block in section.blocks limit: limit %}    
+                <!-- Single Notfication Item -->
+                <p class="item">
+                    {% if block.settings.notification_link_us != blank %}<a href="{{block.settings.notification_link_us}}">{%endif%}
+                    {{block.settings.notification_text_us | escape}}
+                    {% if block.settings.notification_link != blank %}</a>{%endif%}
+                </p>
+                <!--// Single Notfication Item -->
+            {% endfor %}
+        </div>
+    {%- endif -%}
+
+   {% else %}
+      {%- if section.settings.show_notification_uk == true -%}
+        <div id="notificationRibbon" class="owl-carousel owl-theme notification-carousel" data-time="{{ section.settings.notification_time }}">
+        {%- assign limit = section.settings.notification_text_number_uk -%}    
+        {% for block in section.blocks limit:limit %}    
+                <!-- Single Notfication Item -->
+                <p class="item">
+
+                    {% if block.settings.notification_link != blank %}<a href="{{block.settings.notification_link}}">{%endif%}
+                    {{block.settings.notification_text | escape}}
+                    {% if block.settings.notification_link != blank %}</a>{%endif%}
+                </p>
+                <!--// Single Notfication Item -->
+            {% endfor %}
+        </div>
+    {%- endif -%}
+{%- endif -%}
+
+
+{% schema %}
+{
+    "name": "Site Notification Message",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_notification_uk",
+            "label": "Show Notification in-UK",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_notification_us",
+            "label": "Show Notification in-US",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_notification_eu",
+            "label": "Show Notification in-Europe",
+            "default": false
+        },
+        {
+            "id": "notification_time",
+            "info": "Keep the value above 1500",
+            "type": "number",
+            "label": "Notification Slide Speed (MS)",
+            "default":2500
+        },
+       
+        {
+            "id": "notification_text_number_uk",
+            "info": "Keep the value above 2",
+            "type": "number",
+            "label": "Notification Text Number-UK",
+            "default":6
+        },
+        {
+            "id": "notification_text_number_us",
+            "info": "Keep the value above 2",
+            "type": "number",
+            "label": "Notification Text Number-US",
+            "default":3
+        },
+        {
+            "id": "notification_text_number_eu",
+            "info": "Keep the value above 2",
+            "type": "number",
+            "label": "Notification Text Number-Europe",
+            "default":3
+        }
+    ],
+    "blocks":[
+        {
+            "type": "notification-item",
+            "name": " Notification Item",
+            "settings": [
+                {
+                    "id": "notification_text",
+                    "type": "text",
+                    "label": "Notification Text UK Market(Default))"
+                },
+                {
+                    "id": "notification_text_us",
+                    "type": "text",
+                    "label": "Notification Text (US) Market"
+                },
+
+                {
+                    "id": "notification_text_eu",
+                    "type": "text",
+                    "label": "Notification Text (Europe) Market"
+                },
+
+                {
+                    "id": "notification_link",
+                    "type": "url",
+                    "label": "Notification Link"
+                },
+                {
+                    "id": "notification_link_us",
+                    "type": "url",
+                    "label": "Notification Link (US) Market"
+                },
+                {
+                    "id": "notification_link_eu",
+                    "type": "url",
+                    "label": "Notification Link (Europe) Market"
+                }
+
+            ]
+        }
+
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style>
+ #shopify-section-notification-ribbon-carousel .owl-stage{
+    display: flex;
+    align-items: center;
+  }
+  #notificationRibbon .item{
+    display:none;
+  }
+  #shopify-section-notification-ribbon-carousel .item:nth-child(1){
+    display:block;
+  }
+</style>

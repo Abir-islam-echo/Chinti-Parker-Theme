@@ -1,0 +1,24 @@
+<style>
+  .predict-placement {
+    margin: 10px 0px;
+  }
+  @media (max-width: 767px) {
+    .predict-placement {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+  }
+  button#wair-fit-advisor > span,
+  button#wair-fit-advisor > span > span {
+    font-family: "Circular Std Book", helvetica, arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+</style>
+
+<div class="predict-placement"
+  data-predict-product-key="{{product.handle}}"
+  data-predict-product-name="{{ product.title | escape }}"
+  data-predict-product-img="{{ product.selected_or_first_available_variant.featured_image | default: product.featured_image | img_url: 'x600' }}">
+</div>

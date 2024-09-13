@@ -1,0 +1,75 @@
+{%- if section.settings.show_ticker == true -%}
+    <div id="ticker-carousel" class="owl-carousel owl-theme ticker ticker-carousel" style='display:none;'>
+        {% for block in section.blocks %}    
+            <!-- Single ticker Item -->
+            <p class="item">
+                {% if block.settings.ticker_link != blank %}<a href="{{block.settings.ticker_link}}" target="_blank">{%endif%}
+                {{block.settings.ticker_text }}
+                {% if block.settings.ticker_link != blank %}</a>{%endif%}
+            </p>
+            <!--// Single ticker Item -->
+        {% endfor %}
+    </div>
+{%- endif -%}
+
+
+
+{% schema %}
+{
+    "name": "PDP Ticker ",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_ticker",
+            "label": "Show Ticker",
+            "default": true
+        }
+    ],
+    "blocks":[
+        {
+            "type": "ticker-item",
+            "name": " Ticker Item",
+            "settings": [
+                {
+                    "id": "ticker_text",
+                    "type": "text",
+                    "label": "Ticker Text"
+                },
+                {
+                    "id": "ticker_link",
+                    "type": "url",
+                    "label": "Ticker Link"
+                }
+
+            ]
+        }
+
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style>
+  #ticker-carousel {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px 0px;
+}
+#ticker-carousel .item,#ticker-carousel .item a{
+  font-weight: 600;
+  font-size: 10px;
+  color: #000;
+}
+#ticker-carousel .item a{
+  text-decoration: none;
+}
+#ticker-carousel .owl-stage{
+    display: flex;
+    align-items: center;
+  }
+</style>

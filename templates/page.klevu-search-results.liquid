@@ -1,0 +1,673 @@
+<div class="page-width">
+  <div class="klevuLanding"></div>
+</div>
+
+<style>
+        .page-width .klevuLanding .quickBuyColourSwatch .quickBuy.out-of-stock {
+    pointer-events: none;
+    text-decoration: line-through;
+    color: #999;
+  }
+  .page-width .klevuLanding .quickBuySuccess {
+    line-height: 11px;
+    font-size: 11px;
+  }
+  .klevuLanding .product-grid .item .quickBuyColourSwatch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: normal;
+  }
+  .klevuLanding .product-grid .item .quickBuyColourSwatch .quickBuy {
+    flex: 1;
+    padding: 0.75rem 0;
+  }
+        .klevuLanding .product-grid .kuPrice span.kuOrigPrice {
+        font-size: 14px;
+        color: #111;
+        font-weight: normal !important;
+      }
+      .klevuLanding .product-grid .kuPrice span.kuSalePrice .klevu-globalE-prices {
+        font-size: 14px;
+        color: #111;
+        font-weight: normal;
+      }
+      .klevuLanding
+        .product-grid
+        .kuPrice
+        span.kuOrigPrice
+        + span.kuSalePrice
+        .klevu-globalE-prices {
+        font-size: 14px !important;
+        color: #ff005a !important;
+        font-weight: normal !important;
+      }
+      .klevuLanding .productList .product-grid .product-price {
+      padding-top: 7px;
+    }
+    .page-width .klevuLanding div[data-container-id="ku_landing_main_container"]{
+        width: 100%;
+    }
+    .page-width .klevuLanding .kuContainer{
+        max-width: 100%;
+        margin: unset;
+    }
+    .page-width .kuContainer .kuSearchResultsSearchBarContainer{
+        display: none;
+    }
+
+    body .bc-sf-search-suggestion-wrapper {
+        display: none;
+    }
+    body .kuSearchResultsPageContainer .kuResults ul li .kuProdWrap .kuProdAdditional{
+        position: static;
+        background: #fff;
+        padding: unset;
+        margin:unset;
+        z-index: 99;
+        visibility: visible;
+        opacity: 1;
+        border: 1px solid #ececec;
+        border-top: 0;
+    }
+    body .klevuLanding .kuResults .sca-qv-button-wrap{
+        display: none !important;
+    }
+    body .kuSearchResultsPageContainer .kuResults ul li .kuProdWrap .kuProdTop .klevuImgWrap{
+        height: 250px !important;
+    }
+    .kuSearchResultsPageContainer .kuResults ul li .kuProdWrap .kuProdTop .klevuImgWrap a img{
+        width: 100%;
+        margin:0;
+    }
+    .page-width .klevuLanding .kuListViewBtn{
+        display: none;
+    }
+    .page-width .klevuLanding .product-caption .kuPrice .kuSpecialPrice{
+        margin-right: 0;
+    }
+    .page-width .klevuLanding .product-caption .kuPrice {
+        display: flex;
+        justify-content: flex-end;
+        margin-top:0;
+    }
+    .page-width .klevuLanding .product-caption .kuPrice span{
+        font-size: 0.875rem;
+        /* color: #111; */
+    }
+
+    .page-width .klevuLanding .quickBuyColourSwatch .quickBuy.out-of-stock{
+        pointer-events: none;
+        text-decoration: line-through;
+        color: #999;
+    }
+    .page-width .klevuLanding .quickBuySuccess{
+        line-height: 11px;
+        font-size: 11px;
+    }
+  .need_to_hide{
+    display:none !important;
+  }
+
+  .kuFilterBox .kuFilterNames ul li{
+    text-transform: capitalize;
+  }
+</style>
+
+<script type="text/javascript">
+  const maxDuration = 10000;
+  const startTime = Date.now();
+
+  function needToHideFn(){
+    //const needToHide = document.querySelector('.klevuFilterOption[data-name="View All"]')?.closest('li').classList.add('need_to_hide');
+    const needToHide1 = document.querySelector('.klevuFilterOption[data-name="full price"]')?.closest('li').classList.add('need_to_hide');
+  };
+
+  (function pollFor() {
+    if (document.querySelector('.klevuFilterOption[data-name="View All"]')) {
+      if(!document.querySelector('.need_to_hide')){
+        needToHideFn();
+      }
+    } else {
+      const currentTime = Date.now();
+      if (currentTime - startTime < maxDuration) {
+        setTimeout(pollFor, 25);
+      } else {
+        console.log('Maximum duration reached, stopping pollFor');
+      }
+    }
+  })();
+
+  const targetNode = document.querySelector(".klevuLanding");
+  const config = { attributes: false, childList: true, subtree: false };
+
+  const callback = (mutationList, observer) => {
+    for (const mutation of mutationList) {
+      if (mutation.type === "childList") {
+        if(!document.querySelector('.need_to_hide')){
+           needToHideFn();
+        }
+      }
+    }
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(targetNode, config);
+</script>
+
+<script type="text/javascript">
+  // Delay powerUp
+  klevu({
+      powerUp: {
+          landing: false
+      }
+  });
+
+  // Define a new custom event, which will fire after SRLP has initialised
+  klevu.coreEvent.build({
+      name: "myLandingPageOverride",
+      fire: function () {
+          if (klevu.getGlobalSetting("flags.setRemoteConfigLanding.build", false)) {
+              return true;
+          }
+          return false;
+      },
+      maxCount: 150,
+      delay: 100
+  });
+
+  // Listen in to our custom event, to make our overrides
+  klevu.coreEvent.attach("myLandingPageOverride", {
+      name: "attachToMyLandingPageOverride",
+      fire: function () {
+
+          // OVERRIDE DEFAULT KLEVU MARKUP
+          // ASSIGN a new template here for product badge message
+          klevu.search.landing.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#mycustom_klevuLandingTemplateResults"),
+              "results",
+              true
+          );
+
+           klevu.search.landing.getScope().template.setTemplate(
+              klevu.dom.helpers.getHTML("#myCustom_searchResultProductBlock"),
+              "productBlock",
+              true
+          );
+
+          // We're done with our overrides, tell Klevu to power up!
+          klevu({
+              powerUp: {
+                  landing: true
+              }
+          });
+      }
+  });
+</script>
+
+<script type="template/klevu" id="mycustom_klevuLandingTemplateResults">
+  <div class="kuResultsListing">
+      <div class="productList klevuMeta" data-section="productList">
+          <div class="kuResultContent">
+              <div class="kuResultWrap <%=(data.query.productList.filters.length == 0 )?'kuBlockFullwidth':''%>">
+
+                  <div ku-container data-container-id="ku_landing_main_content_container" data-container-role="content">
+                      <section ku-container data-container-id="ku_landing_main_content_left" data-container-position="left" data-container-role="left">
+                          <div ku-block data-block-id="ku_landing_left_facets">
+                              <%=helper.render('filters',scope,data,"productList") %>
+                          </div>
+                          <div ku-block data-block-id="ku_landing_left_call_outs"></div>
+                          <div ku-block data-block-id="ku_landing_left_banner"></div>
+                      </section>
+                      <section ku-container data-container-id="ku_landing_main_content_center" data-container-position="center" data-container-role="center">
+
+                          <header ku-block data-block-id="ku_landing_result_header">
+                              <%=helper.render('klevuLandingTemplateResultsHeadingTitle',scope,data,"productList") %>
+                              <%=helper.render('filtersTop',scope,data,"productList") %>
+                              <%= helper.render('kuFilterTagsTemplate',scope,data,"productList") %>
+                              <% if(helper.hasResults(data,"productList")) { %>
+                                  <%=helper.render('sortBy',scope,data,"productList") %>
+                                  <%=helper.render('limit',scope,data,"productList") %>
+                                  <%=helper.render('kuTemplateLandingResultsViewSwitch',scope,data,"productList") %>
+                                  <%=helper.render('pagination',scope,data,"productList") %>
+                              <% } %>
+                              <div class="kuClearBoth"></div>
+                          </header>
+
+                          <div ku-block data-block-id="ku_landing_result_items"  class="collection-product-grid">
+                              <div class="kuResults">
+                                  <div class="product-grid clearfix">
+                                      <% if(helper.hasResults(data,"productList")) { %>
+
+                                              <% helper.each(data.query.productList.result,function(key,item){ %>
+                                                  <% if(item.typeOfRecord == "KLEVU_PRODUCT") { %>
+                                                      <%=helper.render('productBlock',scope,data,item) %>
+                                                  <% } %>
+                                              <% }); %>
+
+                                      <% } else { %>
+                                          <div class="kuNoRecordsFoundLabelTextContainer">
+                                              <span class="kuNoRecordsFoundLabelText"><%= helper.translate("No records found for your selection") %></span>
+                                          </div>
+                                      <% } %>
+                                      <div class="kuClearBoth"></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div ku-block data-block-id="ku_landing_other_items">
+                              <%=helper.render('klevuLandingTemplateInfiniteScrollDown',scope,data) %>
+                          </div>
+                          <footer ku-block data-block-id="ku_landing_result_footer"></footer>
+                      </section>
+                      <section ku-container data-container-id="ku_landing_main_content_right" data-container-position="right" data-container-role="right">
+                          <div ku-block data-block-id="ku_landing_right_facets"></div>
+                          <div ku-block data-block-id="ku_landing_right_call_outs"></div>
+                          <div ku-block data-block-id="ku_landing_right_banner"></div>
+                      </section>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+      <% if(data.query.contentList) { %>
+          <div class="contentList klevuMeta" data-section="contentList" data-result-view="list">
+              <div class="kuResultContent">
+                  <div class="kuResultWrap <%=(data.query.contentList.filters.length == 0 )?'kuBlockFullwidth':''%>">
+
+                      <div ku-container data-container-id="ku_landing_main_content_container" data-container-role="content">
+                          <section ku-container data-container-id="ku_landing_main_content_left" data-container-position="left" data-container-role="left">
+                              <div ku-block data-block-id="ku_landing_left_facets">
+
+                                  <%=helper.render('filters',scope,data,"contentList") %>
+
+                              </div>
+                              <div ku-block data-block-id="ku_landing_left_call_outs"></div>
+                              <div ku-block data-block-id="ku_landing_left_banner"></div>
+                          </section>
+                          <section ku-container data-container-id="ku_landing_main_content_center" data-container-position="center" data-container-role="center">
+
+                              <header ku-block data-block-id="ku_landing_result_header">
+                                  <%=helper.render('filtersTop',scope,data,"contentList") %>
+                                  <%= helper.render('kuFilterTagsTemplate',scope,data,"contentList") %>
+                                  <% if(helper.hasResults(data,"contentList")) { %>
+                                      <%=helper.render('limit',scope,data,"contentList") %>
+                                      <%=helper.render('pagination',scope,data,"contentList") %>
+                                  <% } %>
+                                  <div class="kuClearBoth"></div>
+                              </header>
+
+                              <div ku-block data-block-id="ku_landing_result_items">
+                                  <div class="kuClearBoth"></div>
+                                  <div class="kuResults">
+                                      <% if(helper.hasResults(data,"contentList")) { %>
+                                          <ul>
+                                              <% helper.each(data.query.contentList.result,function(key,item){ %>
+                                                  <% if(item.typeOfRecord == "KLEVU_CMS") { %>
+                                                      <%=helper.render('contentBlock',scope,data,item) %>
+                                                  <% }%>
+                                              <% }); %>
+                                          </ul>
+                                      <% } else { %>
+                                          <div class="kuNoRecordsFoundLabelTextContainer">
+                                              <span class="kuNoRecordsFoundLabelText"><%= helper.translate("No records found for your selection") %></span>
+                                          </div>
+                                      <% } %>
+                                      <div class="kuClearBoth"></div>
+                                  </div>
+                              </div>
+                              <div ku-block data-block-id="ku_landing_other_items">
+                                  <%=helper.render('klevuLandingTemplateInfiniteScrollDown',scope,data) %>
+                              </div>
+                              <footer ku-block data-block-id="ku_landing_result_footer"></footer>
+                          </section>
+                          <section ku-container data-container-id="ku_landing_main_content_right" data-container-position="right" data-container-role="right">
+                              <div ku-block data-block-id="ku_landing_right_facets"></div>
+                              <div ku-block data-block-id="ku_landing_right_call_outs"></div>
+                              <div ku-block data-block-id="ku_landing_right_banner"></div>
+                          </section>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      <% } %>
+
+  </div>
+</script>
+
+<script type="template/klevu" id="myCustom_searchResultProductBlock">
+  <%
+
+      var updatedProductName = dataLocal.name;
+      if(klevu.search.modules.kmcInputs.base.getSkuOnPageEnableValue()) {
+          if(klevu.dom.helpers.cleanUpSku(dataLocal.sku)) {
+              updatedProductName += klevu.dom.helpers.cleanUpSku(dataLocal.sku);
+          }
+      }
+  %>
+  <div ku-product-block class="klevuProduct item" data-id="<%=dataLocal.id%>">
+      <div class="product-image-wrap">
+          <a data-id="<%=dataLocal.id%>" href="<%=dataLocal.url%>" class="klevuProductClick kuTrackRecentView">
+              <picture>
+                   <img src="<%=dataLocal.image%>" origin="<%=dataLocal.image%>" onerror="klevu.dom.helpers.cleanUpProductImage(this)" alt="<%=updatedProductName%>" class="kuProdImg">
+              </picture>
+          </a>
+          <div class="quickBuyColourSwatch">
+              <span class="hoverHint">Quick Add</span>
+               <% var dataVariants = JSON.parse(dataLocal.additionalDataToReturn); %>
+               <% if(dataVariants.variants.length){ %>
+                  <div class="swatchOptionBlocks">
+                  <% dataVariants.variants.forEach(item=>{ %>
+                      <% if(item.inStock=== 'yes'){ %>
+                          <button class="quickBuy" data-variantid="<%= item.variant_id %>"><%= item.size %></button>
+                      <% }else { %>
+                          <button class="quickBuy out-of-stock" data-variantid="<%= item.variant_id %>"><%= item.size %></button>
+                      <% } %>
+                  <% }) %>
+                  </div>
+              <% } %>
+          </div>
+
+      </div>
+
+      <div class="product-caption">
+          <h2 class="product-name">
+              <a href="<%=dataLocal.url%>" data-id="<%=dataLocal.id%>" class="klevuProductClick kuTrackRecentView" title="<%= updatedProductName %>"><%= updatedProductName %></a>
+          </h2>
+          <span class="product-price">
+              <div class="kuPrice">
+                  <%
+                      var kuTotalVariants = klevu.dom.helpers.cleanUpPriceValue(dataLocal.totalVariants);
+                      var kuStartPrice = klevu.dom.helpers.cleanUpPriceValue(dataLocal.startPrice,dataLocal.currency);
+                      var kuSalePrice = klevu.dom.helpers.cleanUpPriceValue(dataLocal.salePrice,dataLocal.currency);
+                      var kuPrice = klevu.dom.helpers.cleanUpPriceValue(dataLocal.price,dataLocal.currency);
+                  %>
+                  <% if(!Number.isNaN(kuTotalVariants) && !Number.isNaN(kuStartPrice)) { %>
+                      <div class="kuSalePrice kuStartPrice kuClippedOne">
+                          <span class="klevuQuickPriceGreyText"><%=helper.translate("Starting at")%></span>
+                          <span><%=helper.processCurrency(dataLocal.currency,parseFloat(dataLocal.startPrice))%></span>
+                      </div>
+                  <% } else if(!Number.isNaN(kuSalePrice) && !Number.isNaN(kuPrice) && (kuPrice > kuSalePrice)){ %>
+                      <span class="kuOrigPrice kuClippedOne">
+                          <%= helper.processCurrency(dataLocal.currency,parseFloat(dataLocal.price)) %>
+                      </span>
+                      <span class="kuSalePrice kuSpecialPrice kuClippedOne">
+                          <%=helper.processCurrency(dataLocal.currency,parseFloat(dataLocal.salePrice))%>
+                      </span>
+                  <% } else if(!Number.isNaN(kuSalePrice)) { %>
+                      <span class="kuSalePrice kuSpecialPrice">
+                          <%= helper.processCurrency(dataLocal.currency,parseFloat(dataLocal.salePrice)) %>
+                      </span>
+                  <% } else if(!Number.isNaN(kuPrice)) { %>
+                      <span class="kuSalePrice">
+                          <%= helper.processCurrency(dataLocal.currency,parseFloat(dataLocal.price)) %>
+                      </span>
+                  <% } %>
+                  <%=helper.render('searchResultProductVATLabel', scope, data, dataLocal) %>
+              </div>
+          </span>
+      </div>
+  </div>
+</script>
+
+<script type="text/javascript">
+  var juno = {};
+
+  function removeClass(el, className) {
+      if (el.classList) {
+          el.classList.remove(className);
+      } else {
+          el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+      }
+  };
+
+  function hasParent(element, id) {
+      if (element) {
+          do {
+              if (element.id === id) {
+                  return true;
+              }
+              if (element.nodeType === 9) {
+                  // root node
+                  break;
+              }
+          } while ((element = element.parentNode));
+      }
+      return false;
+  };
+
+  juno.checkCloseNavigation = function(e) {
+      if (juno.navigationIsRevealed) {
+          // check it's not the menu icon (or its children) itself as this will trigger independently (and would cause the event to be fired twice)
+          if (e.target.id != 'menuToggle' && !hasParent(e.target, 'menuToggle')) {
+              // check the click isn't within the nav panel:
+              if (!hasParent(e.target, 'navigation')) {
+                  // hide navigation:
+
+                  removeClass(document.documentElement, 'offCanvas');
+                  juno.navigationIsRevealed = false;
+                  e.preventDefault();
+                  $('#navigationBar').removeClass('navigation-revealed');
+              }
+          }
+      }
+  };
+  juno.checkCloseBasketNavigation = function(e) {
+      if (juno.basketIsRevealed) {
+          // check it's not the menu icon itself as this will trigger independently (and would cause the event to be fired twice)
+          if (e.target.id != 'basketToggle') {
+              // check the click isn't within the nav panel:
+              if (!hasParent(e.target, 'cart-container')) {
+                  // hide navigation:
+                  removeClass(document.documentElement, 'offCanvasBasket');
+                  juno.basketIsRevealed = false;
+              }
+          }
+      }
+  };
+  const pollerLitee = (conditions, callback, userOptions) => {
+      /**
+      * Default options
+      */
+      let options = {
+          wait: 50,
+          multiplier: 1.1,
+          timeout: 0,
+      };
+
+      // Overwrite any default options with user supplied options
+      if (userOptions) {
+          options = mergeObjects(options, userOptions);
+      }
+
+      const {
+          multiplier,
+          wait
+      } = options;
+
+      /**
+      * A date object created from the timeout option for easier comparison
+      * @type {Date}
+      */
+      const timeout = options.timeout ? new Date(getNow() + options.timeout) : null;
+
+      /**
+      * Check if the poller has timed out
+      * @returns {boolean}
+      */
+      const isTimedOut = () => timeout && getNow() > timeout;
+
+      /**
+      * Any successful polling conditions are pushed here to keep track of progress
+      * @type {array}
+      */
+      const successfulConditions = [];
+
+      /**
+      * Check if a condition has passed
+      * Conditions are evaluated differently depending on the type
+      * Functions must return true and strings should be CSS selectors present in the DOM
+      * @param {*} condition
+      * @returns {boolean}
+      */
+      const evaluateCondition = (condition) => {
+          if (!condition) {
+              return false;
+          }
+
+          const types = {
+              function: () => condition(),
+              string: () => document.querySelector(condition),
+          };
+
+          const evaluate = types[typeof condition];
+          return evaluate ? evaluate() : true;
+      };
+
+      /**
+      * Check if all the conditions have passed
+      * @returns {boolean}
+      */
+      const allConditionsPassed = () => successfulConditions.length === conditions.length;
+
+      /**
+      * Recursive poll for a condition until it returns true
+      * @param {*} condition
+      * @param {number} waitTime Time before next polling attempt
+      * @param {boolean} skipWait Bypasses the wait period if true
+      */
+      const pollForCondition = (condition, waitTime, skipWait) => {
+          // End recursion if timeout has passed
+          if (timeout && isTimedOut()) {
+              return false;
+          }
+
+          const result = evaluateCondition(condition);
+
+          if (result) {
+              successfulConditions.push(result);
+              if (allConditionsPassed()) {
+                  // Run the callback and pass the results as the first argument
+                  callback(successfulConditions);
+              }
+          } else {
+              setTimeout(
+                  () => {
+                      pollForCondition(condition, waitTime * multiplier);
+                  },
+                  skipWait ? 0 : waitTime
+              );
+          }
+      };
+
+      // Start polling for all conditions
+      for (let i = 0; i < conditions.length; i += 1) {
+          if (typeof conditions[i] != 'string' && typeof conditions[i] != 'function') {
+              throw 'Every item in the poller array should be a function or a string';
+          }
+          pollForCondition(conditions[i], wait, true);
+      }
+  };
+  pollerLitee(['body'], () => {
+
+      document.body.addEventListener('click', (e) => {
+          if (e.target.closest('.quickBuy')) {
+              if (e) {
+                  e.preventDefault();
+              }
+
+              var targetEl = e.target.closest('.quickBuy');
+              var thisQuickButton = targetEl.parentElement.parentElement;
+              var variantId = targetEl.dataset.variantid;
+
+
+              jQuery.get(targetEl.parentElement.parentElement.parentElement.querySelector('a').href + '.json').done(function(data) {
+                  var product = data.product;
+                  var selectedVariants = product.variants.filter(function(variant) {
+                      return variant.id === variantId;
+                  });
+                  if (selectedVariants.length) {
+                      var selectedVariant = selectedVariants[0];
+                      var gtmData = {
+                          name: product.title,
+                          brand: product.vendor,
+                          category: product.product_type,
+                          id: selectedVariant.sku,
+                          price: selectedVariant.price,
+                          variant: selectedVariant.title,
+                          quantity: 1,
+                      };
+
+                      if (window.GTMFunctions && window.GTMFunctions.addToCart) {
+                          window.GTMFunctions.addToCart(gtmData);
+                      }
+                  }
+              });
+
+              jQuery
+                  .post(
+                      '/cart/add.js', {
+                          quantity: 1,
+                          id: targetEl.dataset.variantid,
+                      },
+                      null,
+                      'json'
+                  )
+                  .done(function(data) {
+                      if (data.product_title) {
+
+                          jQuery('<p class="quickBuySuccess">Added to bag</p>').insertBefore(thisQuickButton).delay(2500).fadeOut(3000);
+                          document.documentElement.classList.add('offCanvasBasket');
+                          juno.basketIsRevealed = true;
+                          setTimeout(function() {
+                              document.documentElement.classList.remove('offCanvasBasket');
+                              juno.basketIsRevealed = false;
+                          }, 5000);
+                      }
+
+                      ajaxCart.load();
+                  })
+                  .fail(function(data) {
+                      // error handling
+                      if (data.responseJSON.description) {
+
+                          jQuery('<p class="quickBuyError">' + data.responseJSON.description + '</p>')
+                              .insertBefore(thisQuickButton)
+                              .delay(2500)
+                              .fadeOut(3000);
+                      }
+                  });
+          }
+      });
+
+
+  });
+</script>
+
+{% assign euCountryListSearch = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' %}
+{% assign usCountryListSearch = 'ca,us' %}
+{% assign ukCountryListSearch = 'gb' %}
+{% assign isoCodeSearch = localization.country.iso_code | downcase %}
+{% assign zoneValueSearch = '' %}
+
+{%- if euCountryListSearch contains isoCodeSearch -%}
+  {% assign zoneValueSearch = 'EU' %}
+{% elsif usCountryListSearch contains isoCodeSearch %}
+  {% assign zoneValueSearch = 'US' %}
+{% elsif ukCountryListSearch contains isoCodeSearch %}
+  {% assign zoneValueSearch = 'Uk' %}
+{% else %}
+  {% assign zoneValueSearch = 'UK' %}
+{%- endif -%}
+
+<script>
+    const searchPageUrl =  window.location.href.split('https://')[1];
+    const str= `<img src="https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=search-results&search_success=confirm&search_results_url=${searchPageUrl}&site={{ zoneValueSearch }}" width="1" height="1" class="search_page_tag"/>`;
+    if(document.querySelector('.search_page_tag')){
+      document.querySelector('.search_page_tag').remove();
+    };
+
+    document.body.insertAdjacentHTML('beforeend', str);
+</script>

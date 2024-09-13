@@ -1,0 +1,129 @@
+<script>
+  window.dataLayer = window.dataLayer || [];
+  const priceCalculation = (price) =>{
+    if(parseFloat(price) > 0){
+      return parseFloat(price.slice(0,-2)+'.'+price.slice(-2));
+    }
+    else{
+      return 0.00;
+    }
+  };
+  const filterDataLayer = () => {
+    window.dataLayer = window.dataLayer.filter(element=>{
+      return !element.hasOwnProperty('ecommerce');
+    })
+  }
+  const gtmAddCheckout=(step, option)=> {
+      dataLayer.push({ ecommerce: null });
+      dataLayer.push({
+          'event': 'checkout', /* create a custom event in GTM */
+          'ecommerce': {
+              'currency': '{{ checkout.currency | downcase }}',
+              'value': priceCalculation('{{ checkout.total_price }}'), // order total (price of all products + shipping)
+              'tax': priceCalculation('{{ checkout.tax_price }}'), // tax
+              'shipping':priceCalculation('{{ checkout.shipping_price }}'), // shipping costs
+              'transaction_id': '{{ checkout.transactions[0].id }}', // transaction id
+              'checkout': {
+                  'actionField': {
+                      'step': step,
+                      'option': option
+                  }
+              }
+          }
+      });
+  };
+  const pushIntoDataLayer = (step_number, step_info, payment_method = null) => {
+    payment_method ? gtmAddCheckout(step_number,payment_method) : gtmAddCheckout(step_number,step_info);
+    dataLayer.push({
+        'event': step_info,
+        'ecommerce': {
+            'currency': '{{ checkout.currency| downcase }}',
+            'value': priceCalculation('{{ checkout.total_price }}'),
+            {% for discount_application in checkout.discount_applications %}
+            'coupon': '{{ discount_application.title }}',
+                {% endfor %}
+             ...(payment_method && {'payment_type': payment_method}),
+            'items': [
+                    {% for line_item in checkout.line_items %}
+                      {
+                          'item_name': '{{ line_item.product.title | replace: "'","##@@singleinvertedcomma @@##" }}'.replace("##@@singleinvertedcomma @@##", "'"),
+                          'item_id': '{{ line_item.sku || line_item.product.id }}',
+                          'price': priceCalculation('{{ line_item.final_price }}'),
+                          'item_brand': '{{ line_item.vendor }}',
+                          'quantity': {{ line_item.quantity }},
+                          'item_variant': '{{ line_item.variant.title }}'
+                      },
+                    {% endfor %}
+                    ]
+        }
+    });
+  }
+
+
+  // push into data layer on the first load
+  document.addEventListener("DOMContentLoaded", (event) => {
+      if(Shopify.Checkout.step === 'contact_information') {
+          pushIntoDataLayer(1,'Personal Details');
+       }
+      else if(Shopify.Checkout.step === 'shipping_method') {
+        pushIntoDataLayer(2, 'Delivery');
+      }
+
+      else if(Shopify.Checkout.step === 'payment_method') {
+          var optionInput = document.querySelectorAll('.section--payment-method .input-radio');
+          var paymentOptions = Array.from(optionInput);
+          var selectedPaymentOption = paymentOptions.filter(option => option.checked === true);
+          var initialPaymentOption = selectedPaymentOption[0].labels[0].innerText.trim();
+          pushIntoDataLayer(3, 'add_payment_info', initialPaymentOption);
+          sessionStorage.setItem('checkout_payment_method', initialPaymentOption);
+
+          optionInput.forEach(input => input.addEventListener('change', function(e) {
+            filterDataLayer();
+              var paymentMethod = e.target.labels[0].innerText.trim();
+              pushIntoDataLayer(3, 'add_payment_info', paymentMethod);
+              sessionStorage.setItem('checkout_payment_method', paymentMethod);
+          }))
+      }
+
+      else if(Shopify.Checkout.step === 'thank_you') {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+          'event': 'purchase',
+          'ecommerce': {
+            'transaction_id': '{{ checkout.transactions[0].id }}',
+            'order_id': '{{ checkout.order_id }}',
+            'order_number': '{{ checkout.order_number }}',
+            'checkout_id': '{{ checkout.id }}',
+            'value': priceCalculation('{{ checkout.total_price }}'),
+            'tax': priceCalculation('{{ checkout.tax_price }}'),
+            'shipping':priceCalculation('{{ checkout.shipping_price }}'),
+            'shipping_country': '{{ checkout.shipping_address.country.name }}',
+            'currency': '{{ checkout.currency | downcase }}',
+            {% for discount_application in checkout.discount_applications %}
+               'coupon': '{{ discount_application.title }}',
+            {% endfor %}
+            'items': [
+              {% for line_item in checkout.line_items %}
+                {
+                  'item_id': '{{ line_item.sku || line_item.product.id }}',
+                  'item_name': '{{ line_item.product.title | replace: "'","##@@singleinvertedcomma@@##" }}'.replace("##@@singleinvertedcomma@@##", "'"),
+                  {% for discount_application in checkout.discount_applications %}
+                  'coupon': '{{ discount_application.title }}',
+                  {% endfor %}
+                  'discount': priceCalculation('{{ line_item.total_discounts }}'),
+                  'index': {{ forloop.index }},
+                  'item_brand': '{{ line_item.vendor }}',
+                  'item_category': '{{ line_item.product.type }}',
+                  'item_variant': '{{ line_item.variant.title }}',
+                  'location_id': '{{ shop.address.id }}',
+                  'price': priceCalculation('{{ line_item.final_price }}'),
+                  'quantity': {{ line_item.quantity }}
+                },
+              {% endfor %}
+            ],
+            ...(sessionStorage.getItem('checkout_payment_method') && {'payment_type': sessionStorage.getItem('checkout_payment_method')})
+          }
+        });
+      }
+  });
+</script>

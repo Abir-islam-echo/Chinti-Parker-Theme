@@ -1,0 +1,69 @@
+{% case block.settings.add_border_top %}
+	{% when 'add_border_top_yes' %}
+		{%- assign border_top = 'border-top' -%}
+	{% when 'add_border_top_no' %}
+		{%- assign border_top = '' -%}
+{% endcase %}
+
+{% case block.settings.add_border_bottom %}
+	{% when 'add_border_bottom_yes' %}
+		{%- assign border_bottom = 'border-bottom' -%}
+	{% when 'add_border_bottom_no' %}
+		{%- assign border_bottom = '' -%}
+{% endcase %}
+
+<div class="wrapper featured-collections {{ border_top }} {{ border_bottom }}">
+  {% if block.settings.title != blank %}
+  <h2 class="title-section">
+			{{ block.settings.title | escape }}
+	</h2>
+  {% endif %}
+
+  {%- assign collection = collections[block.settings.collection] -%}
+
+  {% case block.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_count = 'product-grid-2' -%}
+      {%- assign grid_item_width = 'col-wide-6 col-medium-6 col-small-6 col-smallest-6' -%}
+      {%- assign image_size = '530x530' -%}
+    {% when '3' %}
+      {%- assign grid_count = 'product-grid-3' -%}
+      {%- assign grid_item_width = 'col-wide-4 col-medium-4 col-small-6 col-smallest-6' -%}
+      {%- assign image_size = '345x345' -%}
+    {% when '4' %}
+      {%- assign grid_count = 'product-grid-4' -%}
+      {%- assign grid_item_width = 'col-wide-3 col-medium-3 col-small-6 col-smallest-6' -%}
+      {%- assign image_size = '250x250' -%}
+    {% when '6' %}
+      {%- assign grid_count = 'product-grid-6' -%}
+      {%- assign grid_item_width = 'col-wide-2 col-medium-2 col-small-4 col-smallest-6' -%}
+      {%- assign image_size = '250x250' -%}
+  {% endcase %}
+
+  {%- assign product_limit = block.settings.grid -%}
+
+  <div class="product-grid {{ grid_count }}">
+    {% for product in collection.products limit: product_limit %}
+          {% include 'product-grid-item' with grid_item_width %}
+    {% else %}
+
+      {% for i in (1..product_limit) %}
+        <div class="grid__item .grid__item--{{section.id}} {{ grid_item_width }}">
+          <div class="grid-view-item">
+            <a href="#" class="grid-view-item__link">
+              <div class="grid-view-item__image">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="h4 grid-view-item__title">Product Title</div>
+              <div class="grid-view-item__meta">
+                Product Price
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+</div>

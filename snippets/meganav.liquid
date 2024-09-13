@@ -1,0 +1,131 @@
+<div
+  class="meganav {{ classes }}"
+  data-meganav
+  {% if enable_mobile_background_colour %}
+    data-mobile-background-colour="{{ mobile_background_colour }}"
+  {% endif %}
+
+  {% if enable_mobile_item_colours %}
+    data-mobile-item-colour="{{ mobile_item_colour }}"
+  {% endif %}
+
+  {% if enable_mobile_action_colours %}
+    data-mobile-action-colour="{{ mobile_action_colour }}"
+  {% endif %}
+>
+  <ul class="meganav-items">
+    {%- render 'meganav-item' for meganav as item -%}
+  </ul>
+
+  <ul class="meganav-actions">
+    <li class="meganav-actions__action meganav-actions__action--contact">
+      <a
+        href="/pages/contact-us"
+        class="meganav-actions__link contact-link link"
+        title="Contact"
+      >
+        <div class="meganav-actions__icon">
+          {%- render 'svg--contact' -%}
+        </div>
+
+        <span class="sr-only">Contact</span>
+      </a>
+    </li>
+    <li class="meganav-actions__action meganav-actions__action--contact">
+      <a
+        href="tel:+44 (0) 207 0164312"
+        class="meganav-actions__link contact-link link"
+        title="Telephone"
+      >
+        <div class="meganav-actions__icon mobile-telephone-icon">
+          <img
+            style="width:26px;"
+            src="https://cdn.shopify.com/s/files/1/0040/7057/2147/files/telephone.png?v=1707231188"
+          >
+        </div>
+
+        <span class="sr-only">Telephone</span>
+      </a>
+    </li>
+    <li class="meganav-actions__action meganav-actions__action--contact">
+      <a
+        href="/pages/rewards"
+        class="meganav-actions__link contact-link link"
+        title="Rewards"
+      >
+        <div class="meganav-actions__icon mobile-star-icon" style="font-size: 26px;">
+          <i class="fal fa-thin fa-star"></i>
+        </div>
+
+        <span class="sr-only">Rewards</span>
+      </a>
+    </li>
+
+    {%- if shop.customer_accounts_enabled -%}
+      <li class="meganav-actions__action meganav-actions__action--account">
+        <a
+          href="/{% unless customer %}pages/{% endunless %}account"
+          class="meganav-actions__link account-link link"
+          title="Account"
+        >
+          <div class="meganav-actions__icon">
+            {%- render 'svg--account' -%}
+          </div>
+
+          <span class="sr-only">Account</span>
+        </a>
+      </li>
+    {%- endif -%}
+    {% render 'country-switcher', class: 'country-switcher-mobile', width: '40', itemType: 'country-flag' %}
+  </ul>
+
+  <ul class="meganav-social">
+    <li class="meganav-social__item">
+      <a href="{{ settings.facebook_url }}" class="meganav-social__link">
+        <div class="meganav-social__icon">
+          {%- render 'svg--facebook' -%}
+        </div>
+
+        <span class="sr-only">Facebook</span>
+      </a>
+    </li>
+
+    <li class="meganav-social__item">
+      <a href="{{ settings.twitter_url }}" class="meganav-social__link">
+        <div class="meganav-social__icon">
+          {%- render 'svg--twitter' -%}
+        </div>
+
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+
+    <li class="meganav-social__item">
+      <a href="{{ settings.instagram_url }}" class="meganav-social__link">
+        <div class="meganav-social__icon">
+          {%- render 'svg--instagram' -%}
+        </div>
+
+        <span class="sr-only">Instagram</span>
+      </a>
+    </li>
+    <li class="meganav-social__item">
+      <a href="{{ settings.pinterest_url }}" class="meganav-social__link">
+        <div class="meganav-social__icon">
+          <i class="fab fa-pinterest"></i>
+        </div>
+
+        <span class="sr-only">Pinterest</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .mobile-telephone-icon,
+  .mobile-star-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+</style>

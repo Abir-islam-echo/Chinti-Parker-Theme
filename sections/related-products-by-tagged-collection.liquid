@@ -1,0 +1,97 @@
+{% if section.settings.show_related_products == true %}
+
+
+{% comment %}
+look for Related product tag
+{% endcomment %}
+{% assign RelatedProductCollection = '' %}
+
+{% for tag in product.tags %}
+{% assign tagLower = tag | downcase %}
+{% if tagLower contains 'related_'  %}
+{% assign RelatedProductCollection = tag | replace: 'Related_', '' %}
+
+{%endif%}
+{% endfor %}
+
+
+		<div class="product-list" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+		<div class="wrapper">
+
+
+	{% assign heading = section.settings.related_title %}
+
+
+
+{% assign found_a_collection = true %}
+
+			{% if found_a_collection %}
+
+
+
+
+
+
+
+{% assign handlesAlreadyStored = '' %}
+			{% capture related_items %}
+			{% for collection in collections %}
+{% if collection.handle == RelatedProductCollection %}
+				{% for product in collection.products %}
+
+
+									{% include 'product-grid-item' %}
+
+
+				{% endfor %}
+
+				{%endif%}
+				{% endfor %}
+			{% endcapture %}
+
+			{% assign related_items = related_items | trim %}
+
+			{% unless related_items == blank %}
+
+				<div class="related-products">
+
+						{% unless heading == blank %}
+						<h2 class="title-section">
+							{{ heading }}
+						</h2>
+						{% endunless %}
+
+						<div class="product-grid owl-carousel">
+							{{ related_items }}
+						</div>
+				</div>
+
+			{% endunless %}
+
+			{% endif %}
+
+		</div>
+		</div>
+
+
+{% endif %}
+
+{% schema %}
+{
+"name": "Related products",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_related_products",
+"label": "Show related products",
+"default": true
+},
+{
+"id": "related_title",
+"type": "text",
+"label": "Section title",
+"default": "Style with"
+}
+]
+}
+{% endschema %}

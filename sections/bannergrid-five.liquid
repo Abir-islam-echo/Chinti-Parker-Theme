@@ -1,0 +1,322 @@
+<div data-section-id="{{ section.id }}" data-section-type="bannergrid-five-section" class="bannergrid-five-section bannergrid-{{ section.id }}">
+    <div class="{{ section.settings.width }}">
+      <div class="banner-grid">
+        {% if section.settings.title-section %}
+            <h2 class="title-section">
+            {{ section.settings.title-section }}
+            </h2>
+          {% endif %}
+      </div>
+              <div class="bannergrid-five-carousel owl-carousel owl-theme row">
+    {% for block in section.blocks %}
+        
+
+         {% if block.type == 'image' %}
+         <div class="col col-image">
+                {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}">
+                {% endif %}
+                {% if block.settings.image %}
+
+                    <picture>
+                    <source
+                        media="(min-width: 1024px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: 'master' }}"
+                    >
+                    {% if block.settings.mobile_image %}
+                        <source
+                            srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                            data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                        >
+                    {% endif %}
+                    <img
+                        src="{{ block.settings.image | img_url: '100x' }}"
+                        data-src="{{ block.settings.image | img_url: 'master' }}"
+                        alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                        class="lazyload"
+                    />
+                  </picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+                {% if block.settings.link != blank %}
+                    </a>
+                {% endif %}
+             {% if block.settings.heading != blank %}
+                <h4>{% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}">
+                {% endif %}
+                    {{ block.settings.heading }}
+                {% if block.settings.link != blank %}
+                    </a>
+                {% endif %}
+                </h4>
+               {% endif %}
+           {% if block.settings.content != blank %}
+                <p>
+                  {{ block.settings.content }}
+
+                </p>
+             {% endif %}
+          </div>
+      {% endif %}
+      {% endfor %}
+		</div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Banner Grid - Five",
+    "class": "index-section",
+    "settings":[
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Column Width",
+        "options": [
+          {
+            "value": "el-container",
+            "label": "container"
+          },
+          {
+            "value": "el-full-width",
+            "label": "Full width"
+          }
+
+        ],
+        "default": "el-container"
+      },
+       {
+        "type": "text",
+        "id": "title-section",
+        "label": "Title Section ",
+        "default": "Title Section..."
+        },
+       {
+        "type": "select",
+        "id": "text-alignment",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+
+        ],
+        "default": "center"
+        },
+        {
+        "type": "select",
+        "id": "horizontal-alignment",
+        "label": "Horizontal alignment",
+        "options": [
+          {
+            "value": "Start",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "Right"
+          }
+
+        ],
+        "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "margin",
+          "label": "Margin",
+          "default": "40px 0px 40px 0px",
+          "info":"Change margin value according to the necessity.Section margin value will be like this [Top Right Bottom Left]: 40px 0px 40px 0px "
+        }
+    ],
+    "blocks": [
+ 
+      {
+        "type": "image",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading..."
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content",
+            "default": "Lorem ipsum..."
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Banner link"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner Grid - Five",
+      "category": "Image",
+      "blocks": [
+
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+{% style %}
+  .bannergrid-{{ section.id }}{
+    margin: {{ section.settings.margin }};
+  }
+  .bannergrid-{{ section.id }} .title-section{
+    margin-bottom:0px;
+  }
+  .bannergrid-{{ section.id }} .row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: {{ section.settings.text-alignment }};
+    justify-content: {{ section.settings.horizontal-alignment }};
+  }
+  .bannergrid-{{ section.id }} .col{
+    width:auto;
+    margin:0;
+    flex-basis: calc( 20% - 15px );
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+  .bannergrid-{{ section.id }} .row::before,.bannergrid-four-section .row::after{
+    content:none;
+  }
+  .bannergrid-{{ section.id }} .owl-nav [class*=owl-]{
+      color:#000;
+    }
+    .bannergrid-{{ section.id }} .owl-nav [class*=owl-]:hover{
+      color:#000;
+    }
+    .bannergrid-{{ section.id }} .owl-prev {
+        position: absolute;
+        left: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: unset !important;
+        font-size: 50px !important;
+/*         margin: -35px 0 0 70px !important; */
+        padding: 0 !important;
+    }
+    .bannergrid-{{ section.id }} .owl-next {
+        position: absolute;
+        right: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: unset !important;
+        font-size: 50px !important ;
+/*         margin: -35px 70px 0 0px !important; */
+        padding: 0 !important;
+    }
+  
+  @media screen and (max-width: 768px) {
+    .bannergrid-{{ section.id }} .row {
+    gap: 15px;
+    justify-content: space-evenly;
+    }
+    .bannergrid-{{ section.id }} .col{
+      margin:0;
+      flex-basis: calc( 50% - 15px )
+  }
+  }
+{% endstyle %}
+
+<script>
+(function pollForLoadVariation() {
+    if (window.jQuery !== undefined && $.fn.owlCarousel) {
+        try {
+            $(function() {
+                var owl = $('.bannergrid-five-carousel'),
+
+                    owlOptions = {
+                        loop: true,
+                        dots: false,
+                        nav: true,
+                        navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                        autoplay: false,
+                        responsive: {
+                            0: {
+                                items: 2
+                            },
+                            768: {
+                                items: 2
+                            }
+
+                        }
+                    };
+
+                if ($(window).width() < 768) {
+                    var owlActive = owl.owlCarousel(owlOptions);
+                } else {
+                    owl.addClass('off');
+                }
+
+                $(window).resize(function() {
+                    if ($(window).width() < 768) {
+                        if ($('.owl-carousel').hasClass('off')) {
+                            var owlActive = owl.owlCarousel(owlOptions);
+                            owl.removeClass('off');
+                        }
+                    } else {
+                        if (!$('.owl-carousel').hasClass('off')) {
+                            owl.addClass('off').trigger('destroy.owl.carousel');
+                            owl.find('.owl-stage-outer').children(':eq(0)').unwrap();
+                        }
+                    }
+                });
+            });
+        } catch (error) {
+            console.log("Initialization error:", error);
+        }
+    } else {
+        setTimeout(pollForLoadVariation, 25);
+    }
+})();
+</script>
+

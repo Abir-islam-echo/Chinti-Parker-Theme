@@ -1,0 +1,93 @@
+{%- assign ukCountryList = 'uk,bd,gb,al,im,gg,je,au,nz,hk,jp,kr,kw,qa,tw,ae,dz,ai,ag,ar,am,az,bs,bh,bb,bz,bj,bm,bt,bo,ba,bw,br,vg,bn,kh,cv,ky,cl,cn,co,km,ck,cr,cw,dj,dm,do,ec,eg,sv,et,fk,fo,fj,gf,pf,ge,gi,gl,gd,gp,gt,gn,gw,gy,ht,hn,is,in,id,il,jm,jo,kz,ke,ki,kg,la,lb,ls,li,mg,mw,my,mv,mq,mr,mu,mx,md,mc,mn,me,ms,ma,mz,na,nr,np,an,nc,ni,ng,nu,mk,no,om,pk,pa,pg,py,pe,ph,re,ws,sm,sa,rs,sc,sg,sb,za,lk,sr,ch,tz,to,tt,tn,tr,tm,tc,tv,uy,uz,vu,va,ve,vn,vg,wf,zm,zw ' -%}
+{%- assign euCountryList = 'se,no,de,fi,dk,ad,at,by,be,ba,bg,hr,cy,cz,ee,fr,gi,gr,hu,is,ie,it,lv,li,lt,lu,mk,mt,md,mc,nl,pl,pt,ro,ru,sm,rs,sk,si,es,ch,ua,va,me,aw' -%}
+{%- assign usCountryList = 'ca,us' -%}
+{%- assign links = linklists[item.settings.linklist].links -%}
+{% assign isoCode = localization.country.iso_code | downcase %}
+
+{%- capture userSelectedZone -%}
+  {%- if ukCountryList contains isoCode -%}
+    uk
+  {%- elsif euCountryList contains isoCode -%} 
+    eu
+  {%- elsif usCountryList contains isoCode -%}  
+    us
+  {%- endif -%}
+{%- endcapture -%}
+
+{% if item.settings.country_selector == userSelectedZone or item.settings.country_selector == 'all' %}
+<li
+    class="meganav-item"
+    data-meganav-item="meganav-{{ item.id }}"
+>
+    {%- if item.settings.title_url != blank -%}
+        <a
+            href="{{ item.settings.title_url }}"
+            class="meganav-item__title"
+            data-meganav-item-title
+            {% if item.settings.mobile_title_colour %}
+                data-meganav-item-title-colour="{{ item.settings.title_colour }}"
+            {% endif %}
+
+            {% unless item.settings.title_colour == "rgba(0,0,0,0)" %}
+                style="color: {{ item.settings.title_colour }}"
+            {% endunless %}
+        >
+            {{ item.settings.title }}
+        </a>
+    {%- else -%}
+        <span
+            class="meganav-item__title"
+            data-meganav-item-title
+            {% unless item.settings.title_colour == "rgba(0,0,0,0)" %}
+                style="color: {{ item.settings.title_colour }}"
+            {% endunless %}
+        >
+            {{ item.settings.title }}
+        </span>
+    {%- endif -%}
+
+    <div
+        class="meganav-item__content meganav-content {% if forloop.first %} meganav-content--open {% endif %}"
+        {% unless item.settings.background_colour == "rgba(0,0,0,0)" %}
+            style="background-color: {{ item.settings.background_colour }}"
+        {% endunless %}
+        data-meganav-item-content
+        aria-hidden="true"
+    >
+        <div class="meganav-menus" data-meganav-menus>
+            {%-
+                render 'meganav-menu' for links as column
+                | subheadings_colour: item.settings.subheadings_colour
+                | inner_text_colour: item.settings.inner_link_colour
+                | sale_colour: item.settings.sale_colour
+            -%}
+        </div>
+
+        <div
+            class="
+                meganav-featured
+                {% if item.settings.featured_content_mobile %} meganav-featured--mobile {% endif %}
+            "
+        >
+            <h3
+                class="meganav-heading"
+                {% unless subheadings_colour == "rgba(0,0,0,0)" %}
+                    style="color: {{ subheadings_colour }}"
+                {% endunless %}
+            >
+                {{ item.settings.featured_content_heading }}
+            </h3>
+
+            <div class="meganav-featured__list">
+                {%- for i in (1..3) -%}
+                    {%-
+                        render 'meganav-feature'
+                        | meganav: item.settings
+                        | index: i
+                    -%}
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</li>
+{% endif %}

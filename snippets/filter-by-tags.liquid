@@ -1,0 +1,239 @@
+{% comment %}
+  The code below relies on the advanced-tag-loop snippet.
+  The snippet is already included in snippets/breadrumbs.liquid
+  because it is needed there too, but if you remove
+  breadcrumbs you need to include this:
+{% endcomment %}
+  {% include 'advanced-tag-loop' %}
+
+
+
+
+
+
+  {% if collection.all_tags.size > 0 %}
+
+    <div class="collectionFiltersWrapper">
+        <div class="collectionFilters">
+
+
+        {% assign markupToOutput = '' %}
+        {% assign markupActiveToOutput = '' %}
+
+
+
+          {% assign allCollectionTagsString = '' %}
+
+
+{% if collection.all_tags contains 'size-xs' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-xs{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-s' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-s{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-s-m' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-s-m{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-m' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-m{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-m-l' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-m-l{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-l' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-l{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-l-ll' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-l-ll{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-ll' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-ll{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-l-xl' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-l-xl{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-3l' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-3l{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-xl' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-xl{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-6' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-6{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-8' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-8{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-10' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-10{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-12' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-12{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-14' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-14{% endcapture %}
+{% endif %}
+{% if collection.all_tags contains 'size-os' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}size-os{% endcapture %}
+{% endif %}
+
+
+
+{% for tag in collection.all_tags %}
+{% unless tag contains 'size' %}
+{% capture allCollectionTagsString %}{{allCollectionTagsString}}{% unless allCollectionTagsString == ''%},{% endunless %}{{tag}}{% endcapture %}
+{% endunless %}
+
+{% endfor %}
+
+
+
+{% assign allCollectionTags = allCollectionTagsString | split: "," %}
+
+
+
+
+            {% comment %}
+                Loop through tag categories
+            {% endcomment %}
+            {% for cat_item in cat_array %}
+
+
+        {% assign catLower = cat_item | downcase %}
+
+        {% if catLower == 'colour' or catLower == 'fit' or catLower == 'pattern' or catLower == 'size' or catLower == 'type' or catLower == 'material' %}
+        {% assign markupToOutput = markupToOutput | append: '<div class="filter-column">' %}
+        {% assign markupToOutput = markupToOutput | append: '<h2>' | append: cat_item | append: '</h2><ul class="advanced-filters">' %}
+            {% comment %}
+              Loop through collection tags
+            {% endcomment %}
+
+            {% assign this_loop_counter =0 %}
+
+
+
+
+
+            {% for tag in allCollectionTags %}
+
+            {% assign thisFilter = catLower | append: '-' %}
+              {% assign tagLower = tag | downcase %}
+               {% if cat != tagLower and tagLower contains thisFilter and tagLower != 'colour- navy' %}
+                {% comment %}
+                  Strip out tag category prefix and add/remove link for tag filtering
+                {% endcomment %}
+
+                {% assign tagText = tagLower | remove_first: thisFilter  %}
+
+{% unless catLower == 'size' %}
+                {%assign tagText = tagText | capitalize%}
+                {% else %}
+                {%assign tagText = tagText | upcase%}
+                {% endunless %}
+{% if tagText == 'OS' %}
+{% assign tagText = 'One Size' %}
+{% endif %}
+
+                {%assign tagTextCheck = ',' | append: tagText | append: ',' | downcase %}
+
+
+
+                {% assign thisTagHandle = tagLower | handle %}
+                
+                {% if current_tags contains tagLower %}
+                    {% assign tagTextToAdd = tagText  | link_to_remove_tag: tagLower %}
+                    {% assign markupToOutput = markupToOutput | append: '<li class="advanced-filter active-filter" data-group="' | append: cat_item | append: '" data-handle="' | append: thisTagHandle | append: '">' | append: tagTextToAdd | append: '</li>' %}
+
+                    {% assign hasActive = '' %}
+                    {% assign markupActiveToOutput = markupActiveToOutput | append: '<li class="advanced-filter active-filter" data-group="' | append: cat_item | append: '" data-handle="' | append: thisTagHandle | append: '">' | append: tagTextToAdd | append: '</li>' %}
+
+                {% else %}
+                    {% assign tagTextToAdd = tagText  | link_to_add_tag: tagLower %}
+
+
+
+                    {% assign markupToOutput = markupToOutput | append: '<li class="advanced-filter" data-group="' | append: cat_item | append: '" data-handle="' | append: thisTagHandle | append: '">' | append: tagTextToAdd | append: '</li>' %}
+                {% endif %}
+                {% assign this_loop_counter = this_loop_counter | plus: 1 %}
+                {% assign loopCount = this_loop_counter | modulo:8 %}
+
+                 {% comment %}
+ {% if loopCount == 0  %}
+ {% assign markupToOutput = markupToOutput | append: '</ul></div><div class="filter-column"><span class="secondaryColumn">&nbsp;</span><ul class="advanced-filters">' %}
+ {% endif %}
+ {% endcomment %}
+
+
+              {% endif %}
+           {% endfor %}
+          {% assign markupToOutput = markupToOutput | append: '</ul>' %}
+        {% assign markupToOutput = markupToOutput | append: '</div>' %}
+
+
+        {% endif %}
+      {% endfor %}
+
+        {% if hasActive %}
+            {% assign clearAllToAdd = 'Clear All' | link_to: collection.url %}
+            {% assign markupActiveToOutput = markupActiveToOutput | prepend: '<ul class="current">' %}
+            {% assign markupActiveToOutput = markupActiveToOutput | append: '<li class="clear-all"' | append: '">' | append: clearAllToAdd | append: '</li>' %}
+            {% assign markupActiveToOutput = markupActiveToOutput | append: '</ul>' %}
+        {% endif %}
+
+
+
+
+
+    {{markupToOutput}}
+
+
+    </div>
+    {% comment %}
+    {% if cat_array.size > 3 %}
+        <a class="btn-filter-more" href="#">More</a>
+    {% endif %}
+    {% endcomment %}
+
+    {{ markupActiveToOutput }}
+    </div>
+
+    <script>
+    $(function() {
+      var filters = $('.advanced-filter'),
+        el,
+        elGroup,
+        elHandle,
+        activeTagInGroup;
+
+      filters.on('click', function(e) {
+        el = $(this);
+        elGroup = el.data('group');
+        elHandle = el.data('handle');
+        activeTagInGroup = $('.active-filter[data-group="'+ elGroup +'"]');
+        // If the tag clicked is not already active and its group contains an active tag, we will swap tag within the group.
+        if ( !el.hasClass('active-filter')  && activeTagInGroup.size() ) {
+          e.preventDefault();
+          location.href = location.href
+            // swap tag
+            .replace(activeTagInGroup.data('handle'), elHandle)
+            // go back to page 1
+            .replace(/(&page=\d+)|(page=\d+&)|(\?page=\d+$)/, '');
+        }
+      });
+    });
+        $(".toolbar .filter-column h2").click(function (e) {
+            $(this).parent().parent().find('.advanced-filters').not($(this).next()).slideUp(200);
+            $(this).parent().parent().find('h2').not(this).removeClass('active');
+            $(this).toggleClass('active').next().slideToggle(200);
+            e.preventDefault();
+        });
+
+        /*
+        $(".toolbar .btn-filter-more").click(function (e) {
+            $('.toolbar .filter-column').slideToggle(100);
+            e.preventDefault();
+        });
+        */
+    </script>
+
+  {% endif %}

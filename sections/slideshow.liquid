@@ -1,0 +1,372 @@
+<div
+  class="wrapper full-width"
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow-section"
+>
+  {%- assign ukCountryList = 'bf,td,cg,gq,ga,mo,sl,th,tg,sh,sx,st,rw,gm,bi,ug,ci,lr,gh,cm,md,gi,aw,ao,se,ro,pl,hu,dk,cz,bg,uk,bd,gb,al,im,gg,je,nz,hk,jp,kr,kw,qa,tw,ae,dz,ai,ag,ar,am,az,bs,bh,bb,bz,bj,bm,bt,bo,ba,bw,br,vg,bn,kh,cv,ky,cl,cn,co,km,ck,cr,cw,dj,dm,do,ec,eg,sv,et,fk,fo,fj,gf,pf,ge,gi,gl,gd,gt,gn,gw,gy,ht,hn,is,in,id,il,jm,jo,kz,ke,ki,kg,la,lb,ls,li,mg,mw,my,mv,mr,mu,mx,md,mn,ms,ma,mz,na,nr,np,an,nc,ni,ng,nu,mk,no,om,pk,pa,pg,py,pe,ph,re,ws,sa,rs,sc,sg,sb,za,lk,sr,ch,tz,to,tt,tn,tr,tm,tc,tv,uy,uz,vu,ve,vn,vg,wf,zm,zw' -%}
+  {% assign isoCode = localization.country.iso_code | downcase %}
+  {%- if ukCountryList contains isoCode -%}
+    {% if section.blocks.size > 0 %}
+      <div class="slideshow-wrapper row">
+        <div class="slideshow owl-carousel owl-theme" id="Slideshow-{{ section.id }}">
+          {% for block in section.blocks %}
+            <div
+              class="slideshow__slide slideshow__slide--{{ block.id }} {{ block.settings.text_color | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="slideshow__image">
+                {% if block.settings.image %}
+                  {% if forloop.first == true %}
+                    <picture>
+                      <source
+                        media="(min-width: 900px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: '2048x' }}"
+                      >
+                      <source
+                        media="(min-width: 500px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: '900x' }}"
+                      >
+                      <source
+                        srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                      >
+                      <img
+                        src="{{ block.settings.image | img_url: '100x' }}"
+                        data-src="{{ block.settings.image | img_url: 'master' }}"
+                        alt=""
+                        class="lazyload"
+                      >
+                    </picture>
+
+                  {% else %}
+                    {% comment %}
+                      need to lazy load subsequent images: ###########
+                      <img src="" class="owl-lazy" data-src="{{ block.settings.image | img_url: '2048x' }}" alt="" />
+                    {% endcomment %}
+                    <picture>
+                      <source
+                        media="(min-width: 900px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: '2048x' }}"
+                      >
+                      <source
+                        media="(min-width: 500px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: '900x' }}"
+                      >
+                      <source
+                        srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                      >
+                      <img
+                        src="{{ block.settings.image | img_url: '100x' }}"
+                        data-src="{{ block.settings.image | img_url: '2048x' }}"
+                        alt=""
+                        class="lazyload"
+                      >
+                    </picture>
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.image == blank %}
+                  <div class="placeholder-background">
+                    {% capture current %}
+                      {% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+
+              {% if block.settings.link != blank %}
+                {% assign ctaLink = block.settings.link %}
+              {% endif %}
+              <div class="text-wrap overlay" onclick="slideLink('{{ ctaLink }}')">
+                <div class="text-content">
+                  <div class="wrapper" style="text-align: {{ block.settings.content_alignment }};">
+                    <div class="hero-wrapper">
+                      {% unless block.settings.title == blank %}
+                        <h2
+                          class="mega-title title"
+                          style="font-size:{{ block.settings.title_font_size }}px; line-height: {{ block.settings.title_line_height }}px"
+                        >
+                          {{ block.settings.title }}
+                        </h2>
+                      {% endunless %}
+                      {% unless block.settings.subheading == blank %}
+                        <p
+                          class="mega-subtitle subtitle"
+                          style="font-size:{{ block.settings.subheading_font_size  }}px;"
+                        >
+                          {{ block.settings.subheading }}
+                        </p>
+                      {% endunless %}
+                      {% if block.settings.button_text != blank %}
+                        {% if block.settings.link != blank %}
+                          <a
+                            href="{{ block.settings.link }}"
+                            class="cta-action"
+                            style="font-size:{{ block.settings.cta_font_size }}px"
+                          >
+                            {{- block.settings.button_text -}}
+                          </a>
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner For UK",
+  "class": "index-section index-section--flush",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "select",
+          "id": "text_color",
+          "label": "Text color",
+          "options": [
+            {
+              "value": "text-light",
+              "label": "Light"
+            }, {
+              "value": "text-dark",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Image slide"
+        }, {
+          "type": "number",
+          "id": "title_font_size",
+          "label": "Heading font-size",
+          "default": 55
+        }, {
+          "type": "number",
+          "id": "title_line_height",
+          "label": "Heading line height",
+          "default": 55
+        }, {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Lorem ipsum dolor sit amet"
+        }, {
+          "type": "number",
+          "id": "subheading_font_size",
+          "label": "Subheading font-size",
+          "default": 24
+        }, {
+          "type": "text",
+          "id": "button_text",
+          "label": "CTA Button Text"
+        }, {
+          "type": "number",
+          "id": "cta_font_size",
+          "label": "CTA Button Font Size",
+          "default": 55
+        }, {
+          "type": "url",
+          "id": "link",
+          "label": "Slide link"
+        }, {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            }, {
+              "value": "center",
+              "label": "center"
+            }, {
+              "value": "right",
+              "label": "right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner For UK",
+      "category": "Image",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "image"
+        }, {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .slideshow-wrapper h2,
+  .slideshow-wrapper p,
+  .slideshow-wrapper a {
+    font-family: gotham book !important;
+  }
+  .slideshow-wrapper .mega-title {
+    letter-spacing: 1px;
+
+  }
+  .slideshow-wrapper .hero-wrapper {
+    display: inline-block;
+    text-align: center;
+  }
+  .slideshow-wrapper .text-content p {
+    font-size: 24px;
+  }
+  .slideshow-wrapper .text-content .cta-action {
+    color: white;
+    border: 1px solid white;
+    padding: 10px 30px;
+    margin-top: 30px;
+    display: inline-block;
+  }
+  .slideshow-wrapper .text-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 2;
+    top: 0;
+    transform: unset;
+    cursor: pointer;
+  }
+  .slideshow-wrapper .text-wrap .text-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    Padding: 0 100px;
+  }
+  .slideshow-wrapper .owl-prev {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .slideshow-wrapper .owl-prev {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: unset !important;
+    font-size: 50px !important;
+  }
+  .slideshow-wrapper .owl-next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: unset !important;
+    font-size: 50px !important;
+  }
+  .slideshow-wrapper .owl-dot span {
+    margin: 0 !important;
+  }
+  .slideshow-wrapper .owl-dot.active span {
+    background: white !important;
+  }
+  .slideshow-wrapper .slideshow .owl-dots {
+    text-align: center !important;
+  }
+
+
+  @media screen and (max-width: 1023px) {
+    .slideshow-wrapper .mega-title {
+      font-size: 25px !important;
+      line-height: 35px !important;
+    }
+    .slideshow-wrapper .text-content p {
+      font-size: 14px !important;
+    }
+    .slideshow-wrapper .text-wrap .text-content {
+      top: unset;
+      transform: unset;
+      bottom: 50px;
+      padding: 0;
+    }
+    .slideshow-wrapper .text-content .cta-action {
+      font-size: 18px !important;
+      line-height: 24px !important;
+      margin-top: 20px !important;
+    }
+    .slideshow-wrapper .owl-prev {
+      font-size: 25px !important;
+    }
+    .slideshow-wrapper .owl-next {
+      font-size: 25px !important;
+    }
+    .slideshow-wrapper .wrapper {
+      text-align: center !important;
+    }
+    .slideshow-wrapper .slideshow .slideshow__image {
+      min-height: 200px !important;
+    }
+
+  }
+  @media screen and (max-width: 550px) {
+    .slideshow-wrapper .mega-title {
+      font-size: 20px !important;
+      line-height: 24px !important;
+    }
+    .slideshow-wrapper .text-content .cta-action {
+      font-size: 12px !important;
+      line-height: 20px !important;
+    }
+
+  }
+  .slideshow-wrapper .slideshow .slideshow__image {
+    min-height: 450px;
+  }
+  .slideshow-wrapper .text-wrap .text-content {
+    display: none
+  }
+
+  .slideshow-wrapper .slideshow.owl-loaded .text-wrap .text-content {
+    display: block;
+  }
+</style>
+
+<script>
+  function slideLink(link) {
+    window.location.href = link;
+  }
+</script>

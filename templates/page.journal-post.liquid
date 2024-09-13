@@ -1,0 +1,22 @@
+<div class="journal-post-cms">
+	<div class="wrapper">
+		<div class="page-title">
+			<h1>{{ page.title }}</h1>
+		</div>
+		{% section 'cms-sections-journal-post' %}
+		<div class="social-share">
+			<ul>
+				<li><span>Share on</span></li>
+				<li>
+					<a target="_blank" href="//www.facebook.com/sharer.php?u={{shop.url}}{{ page.url }}"><i class="fab fa-facebook"></i></a>
+				</li>
+				<li>
+					<a target="_blank" href="//twitter.com/share?url={{shop.url}}{{ page.url }}"><i class="fab fa-twitter"></i></a>
+				</li>
+				<li>
+					<a target="_blank" href="//pinterest.com/pin/create/button/?url={{shop.url}}{{ page.url }}&amp;media={{ page.image.src | img_url: 'original' }}&amp;description={{ page.title }}"><i class="fab fa-pinterest"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

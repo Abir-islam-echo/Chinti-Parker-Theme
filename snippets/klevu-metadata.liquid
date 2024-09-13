@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    {% if template == 'collection'%}
+        var klevu_page_meta = {
+            "pageType": "category",
+            "categoryName": "{{ collection.title | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}",
+            "categoryUrl": "{{ shop.url }}{{ collection.url }}",
+        };
+    {% endif %}
+    {% if template == 'product'%}
+        var klevu_page_meta  = {
+            "pageType": "pdp",
+            "itemName": "{{ product.title | strip_newlines | replace: "\\", "\\\\" | replace: '"', '\\"' }}",
+            "itemUrl": "{{ shop.url }}{{ product.url }}",
+            "itemId": "{{ product.selected_or_first_available_variant.id }}",
+            "itemGroupId": "{{ product.id }}",
+            "itemSalePrice": "{{ product.price | money_without_currency }}",
+            "itemCurrency": "{{ shop.currency }}"
+        };
+    {% endif %}
+    {% if template == 'cart'%}
+        var cartRecords = [];
+        {% for item in cart.items %}
+            cartRecords.push({'itemId': {{ item.variant_id }} ,'itemGroupId': {{ item.product_id }} });
+        {% endfor %}
+        var klevu_page_meta = {
+            "pageType": "cart",
+            "cartRecords": cartRecords
+        };
+    {% endif %}
+</script>

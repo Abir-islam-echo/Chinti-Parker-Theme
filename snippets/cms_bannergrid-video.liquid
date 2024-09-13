@@ -1,0 +1,85 @@
+<div data-section-id="{{ section.id }}" data-section-type="bannergrid-video-section" class="bannergrid-video-section">
+
+
+        <div class="row">
+          
+                <div class="col-wide-12 col-medium-12 col-small-12 col-smallest-12 {{ block.settings.text_color | escape }}">
+
+
+
+
+
+                	{% if block.settings.link != blank %}
+						<a href="{{ block.settings.link }}" class="link_full">
+					{% endif %}	 
+
+
+
+
+
+                    {% if block.settings.video-src %}
+                    	 
+
+{% assign fullScreenVideo = false %}
+{% assign aspectRatio = 56.25 %}
+
+ {% if block.settings.aspectRatio == "fullscreen" %}
+ {% assign fullScreenVideo = true %}
+ {%else%}
+
+{% if block.settings.aspectRatio contains ":" %}
+  {% assign aspectSplit = block.settings.aspectRatio | split: ':' %}
+
+{%comment%} convert to a Float so the divided_by doesn't round down: {%endcomment%}
+{% assign secondValue =  aspectSplit[1] %}
+{% assign secondValue = secondValue | plus: 0.0 %}
+
+  {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0]  %}
+{% endif %}
+
+
+{% endif %} 
+
+
+<div class="videoWrapper{% if fullScreenVideo%} fullScreen{%endif%}" style="background-image: url({{ block.settings.video-src | append: '.jpg' | asset_url }});{% unless fullScreenVideo %}padding-bottom: {{aspectRatio}}%{%endunless%}">
+  <video preload="auto" autoplay="autoplay" muted="muted" {% if block.settings.shouldLoop == "yes" %}loop="loop" {%endif%}poster="{{ 'video-poster-transp.png' | asset_url }}" playsinline>
+     <source src="{{ block.settings.video-src | append: '.mp4' | asset_url }}" type="video/mp4"></source>
+     <source src="{{ block.settings.video-src | append: '.webm' | asset_url }}" type="video/webm"></source>
+    <source src="{{ block.settings.video-src | append: '.ogv' | asset_url }}" type="video/ogg"></source>
+  </video>
+</div>
+
+
+                    {% endif %}
+
+
+
+                
+                   
+                  
+                    
+                    
+                          {% unless block.settings.title == blank %}
+                    <div class="text-wrap overlay">
+                    	<div class="text-content">
+				
+							<h2 class="mega-title title"> {{ block.settings.title }} </h2>
+						
+							{% unless block.settings.subheading == blank %}
+							<p class="mega-subtitle subtitle"> {{ block.settings.subheading | escape }} </p>
+						  {% endunless %}
+						</div>
+                    </div>
+  {% endunless %}
+
+                        {% if block.settings.link != blank %}
+            </a> 
+          {% endif %}  
+                  
+                    
+                </div>
+    
+        </div>
+  
+
+</div>

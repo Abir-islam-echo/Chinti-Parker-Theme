@@ -1,0 +1,186 @@
+{% if section.settings.show_related_products == true %}
+
+
+{% comment %}
+look for Related product tag
+{% endcomment %}
+{% assign RelatedProductTag = '' %}
+
+{% for tag in product.tags %}
+{% assign tagLower = tag | downcase %}
+{% if tagLower contains 'related_'  %}
+{% assign RelatedProductTag = tag %}
+{%endif%}
+{% endfor %}
+
+
+
+
+		<div class="product-list" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+		<div class="wrapper">
+
+			{% comment %}
+			Number of related items per row,
+			and number of rows.
+			{% endcomment %}
+
+			{% assign number_of_related_products_per_row = section.settings.related_grid_num %}
+			{% assign number_of_rows = section.settings.related_grid_row %}
+
+			{% comment %}
+			Heading.
+			Leave blank if you don't need one.
+			{% endcomment %}
+
+			{% assign heading = section.settings.related_title %}
+
+			{% comment %}
+			Set either or both to true, if you want
+			to limit yourself to items with same vendor, and/or type.
+			{% endcomment %}
+
+			{% assign same_vendor = false %}
+			{% assign same_type = true %}
+
+
+
+
+{% assign found_a_collection = true %}
+
+			{% if found_a_collection %}
+
+			{% assign counter = 0 %}
+			{% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+			{% assign current_product = product %}
+
+			{% case number_of_related_products_per_row %}
+			{% when '1' %}`
+			{% assign col_per_row = '' %}
+			{% when '2' %}
+			{% assign col_per_row = 'col-wide-6 col-medium-6 col-small-6 col-smallest-6' %}
+			{% when '3' %}
+			{% assign col_per_row = 'col-wide-4 col-medium-4 col-small-6 col-smallest-6' %}
+			{% when '4' %}
+			{% assign col_per_row = 'col-wide-3 col-medium-3 col-small-6 col-smallest-6' %}
+			{% when '5' %}
+			{% assign col_per_row = 'col-wide-2 col-medium-2 col-small-4 col-smallest-6' %}
+			{% when '6' %}
+			{% assign col_per_row = 'large--one-sixth medium--one-third small--one-half' %}
+			{% else %}
+			{% assign col_per_row = 'large--one-quarter medium--one-third small--one-half' %}
+			{% endcase %}
+
+
+
+{% assign handlesAlreadyStored = '' %}
+			{% capture related_items %}
+			{% for collection in collections %}
+				{% for product in collection.products %}
+					{% unless product.handle == current_product.handle %}
+
+					{% unless handlesAlreadyStored contains product.handle %}
+								{% if product.tags contains RelatedProductTag %}
+									{% include 'product-grid-item' %}
+								{% assign handlesAlreadyStored = handlesAlreadyStored | append: product.handle | append: '|' %}
+								{% assign counter = counter | plus: 1 %}
+								{% if counter == break_at %}
+									{% break %}
+								{% endif %}
+								{% endif %}
+								{%endunless%}
+
+					{% endunless %}
+				{% endfor %}
+				{% endfor %}
+			{% endcapture %}
+
+			{% assign related_items = related_items | trim %}
+
+			{% unless related_items == blank %}
+
+				<div class="related-products">
+
+						{% unless heading == blank %}
+						<h2 class="title-section">
+							{{ heading }}
+						</h2>
+						{% endunless %}
+
+						<div class="product-grid owl-carousel">
+							{{ related_items }}
+						</div>
+				</div>
+
+			{% endunless %}
+
+			{% endif %}
+
+		</div>
+		</div>
+
+
+{% endif %}
+
+{% schema %}
+{
+"name": "Related products",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_related_products",
+"label": "Show related products",
+"default": true
+},
+{
+"id": "related_title",
+"type": "text",
+"label": "Section title",
+"default": "Style with"
+},
+{
+"type": "select",
+"id": "related_grid_num",
+"label": "Products per row (Desktop)",
+"default": "3",
+"options": [
+{
+"value": "2",
+"label": "2"
+},
+{
+"value": "3",
+"label": "3"
+},
+{
+"value": "4",
+"label": "4"
+},
+{
+"value": "5",
+"label": "5"
+}
+]
+},
+{
+"type": "select",
+"id": "related_grid_row",
+"label": "Number of rows (Desktop)",
+"default": "3",
+"options": [
+{
+"value": "1",
+"label": "1"
+},
+{
+"value": "2",
+"label": "2"
+},
+{
+"value": "3",
+"label": "3"
+}
+]
+}
+]
+}
+{% endschema %}

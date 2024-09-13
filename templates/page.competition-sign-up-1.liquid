@@ -1,0 +1,68 @@
+<div class="cms-page wrapper competition-sign-up-1">
+  <!--
+    <div class="page-title">
+      <h1>{{ page.title }}</h1>
+    </div>
+  -->
+  <div class="cms-content">
+    <div class="klaviyo-form-SfnGiR"></div>
+    {{ page.content }}
+  </div>
+</div>
+
+<style>
+  .cms-page.wrapper.competition-sign-up-1{
+    max-width: 100%;
+    padding: 0;
+    background: rgba(235, 231, 230, 1);
+  }
+  .cms-page.wrapper.competition-sign-up-1 .cms-content p{
+    line-height: normal;
+  }
+    .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form{
+    justify-content: space-between;
+  }
+  .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div{
+    border-radius: 11px;
+  }
+    .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div [data-testid='form-row'] input::placeholder {
+      text-align:start;
+  }
+  .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div [data-testid='form-row'] input::-ms-input-placeholder { /* Edge 12 -18 */
+    text-align:start;
+  }
+  .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div [data-testid='form-row'] button svg{
+    fill: rgb(103 103 103) !important;
+  }
+  .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div [data-testid='form-row'] button[aria-label='Search Countries']{
+    padding-left: 16px !important;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+  }
+  /* .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR .klaviyoform-form>div [data-testid='form-row'] div:has(button[aria-label='Search Countries']){
+    overflow:hidden;
+  } */
+  @media only screen and (min-width: 768px){
+      .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div{
+          width: calc(50% - 15px) !important;
+        }
+      .cms-page.wrapper.competition-sign-up-1 .cms-content{
+          margin: 50px 8%;
+        }
+  }
+  @media only screen and (max-width: 767px){
+       .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div{
+          padding:0 !important;
+         min-width: 100% !important;
+         margin: 0 !important;
+         width: 100% !important;
+        }
+    .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form>div>div:not([data-testid]){
+        height:132vw !important;
+      }
+      .cms-page.wrapper.competition-sign-up-1 .cms-content .klaviyo-form-SfnGiR form.klaviyo-form{
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+      }
+  }
+</style>

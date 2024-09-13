@@ -1,0 +1,91 @@
+{%- assign current_linklist = '' -%}
+
+{% for linklist in linklists %}
+  {% unless linklist.title contains 'Sidebar' %}
+    {% continue %}
+  {% endunless %}
+
+  {% for item in linklist.links %}
+    {% for link in item.links %}
+      {% if link.active %}
+        {% assign current_linklist = item %}
+      {% endif %}
+
+      {% for sublink in link.links %}
+        {% if sublink.current %}
+          {% assign current_linklist != blank = item %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+
+{% if current_linklist == blank %}
+  {% for linklist in linklists %}
+    {% unless linklist.title contains 'Menu' %}
+      {% continue %}
+    {% endunless %}
+
+    {% for item in linklist.links %}
+      {% for link in item.links %}
+        {% if link.active %}
+          {% assign current_linklist = item %}
+        {% endif %}
+
+        {% for sublink in link.links %}
+          <!-- <p>yes</p> -->
+          {% if sublink.current %}
+            {% assign current_linklist != blank = item %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% if current_linklist and template.name == 'collection' %}
+  <div class="sidebar-navigation">
+    <ul>
+      <li>
+        <a href="{{ current_linklist.url }}" class="title">
+          {{ current_linklist.title }}
+        </a>
+
+        <ul>
+          {% for link in current_linklist.links %}
+            {% assign has_open_child = false %}
+            {% for link in link.links %}
+              {% if link.current %}
+                {% assign has_open_child = true %}
+              {% endif %}
+            {% endfor %}
+
+            {% if link.title contains '---' %}
+              <li class="separator">
+                <hr>
+              </li>
+            {% else %}
+              <li class="parent {% if link.current or has_open_child %} parent--current {% endif %}">
+                <a href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+
+                {% if link.links.size > 0 %}
+                  <ul class="children">
+                    {% for link in link.links %}
+                      <li class="child{% if link.current %} child--current{% endif %}">
+                        <a href="{{ link.url }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
+  </div>
+{% endif %}

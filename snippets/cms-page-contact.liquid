@@ -1,0 +1,33 @@
+
+			<p>{{block.settings.opening_text | escape}}</p>
+			<p>
+				{{block.settings.advisor_opening | escape}}<br/>
+				Call: <a href="tel:{{block.settings.advisor_number | replace: ' ', ''}}">{{block.settings.advisor_number}}</a><br/>
+				Email: <a class="email" href="mailto:{{block.settings.advisor_email}}">{{block.settings.advisor_email}}</a>
+			</p>
+			<ul>
+				<li>
+					<h4>Press</h4>
+					<p>
+						<a href="tel:{{block.settings.press_number | replace: ' ', ''}}">{{block.settings.press_number}}</a><br/>
+						<a href="mailto:{{block.settings.press_email}}">{{block.settings.press_email}}</a>
+					</p>
+				</li>
+				<li>
+					<h4>Customer Care</h4>
+					<p>
+						<a href="tel:{{block.settings.care_number | replace: ' ', ''}}">{{block.settings.care_number}}</a><br/>
+						<a href="mailto:{{block.settings.care_email}}">{{block.settings.care_email}}</a>
+					</p>
+				</li>
+
+				<li>
+					<h4>Wholesale</h4>
+					<p>
+						<a href="tel:{{block.settings.wholesale_number | replace: ' ', ''}}">{{block.settings.wholesale_number}}</a><br/>
+						<a href="mailto:{{block.settings.wholesale_email}}">{{block.settings.wholesale_email}}</a>
+					</p>
+				</li>
+			</ul>
+			<p>{{block.settings.closing_text | escape}}</p>
+			<a href="/pages/newsletter-sign-up/">{{ block.settings.discount_title }}</a>

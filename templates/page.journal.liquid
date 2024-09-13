@@ -1,0 +1,166 @@
+<div class="journal-cms">
+
+
+    <div class="journal-content">
+      {% for article in blogs['journal'].articles limit: 8 %}
+        {% assign article_has_image = false %}
+        {% if article.image %}
+          {% assign article_has_image = true %}
+          {% assign image_src = article.image.src  | img_url: '690x500'  %}
+          {% if forloop.first or forloop.index == 8 %}
+            {% assign image_src = article.image.src  | img_url: '1920x'  %}
+          {% endif %}
+        {% else %}
+          {% assign img_tag = '<' | append: 'img' %}
+          {% if article.content contains img_tag %}
+            {% assign src = article.content | split: 'src="' %}
+            {% assign src = src[1] | split: '"' | first %}
+            {% if src %}
+              {% assign article_has_image = true %}
+              {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+            {% else %}
+              {% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '690x500'  %}
+              {% if forloop.first or forloop.index == 8 %}
+                {% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '1920x'  %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+        {% if forloop.first %}
+        <div class="journal-banner-section">
+          <div class="item">
+            <a href="{{ article.url }}">
+              <picture>   
+              {% if article_has_image %}
+                <img src="{{image_src}}" alt="">
+              {% else %}
+                <img src="{{'blogFallBackImage.jpg' | asset_img_url: '345x'}}">
+              {% endif %}
+              </picture>
+            </a>
+            <div class="text-overlay">
+              <div class="content">
+                <h2 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                <p class="subtitle">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+                <a href="{{ article.url }}" class="btn">Find Out More</a> 
+              </div>
+            </div> 
+          </div>
+        </div>
+        {% endif %} 
+        {% if forloop.index == 2 %}
+        <div class="journal-post-2-column">
+          <div class="row">
+            <div class="col-wide-6 journal-banner-section">
+              <div class="item">
+                  <a href="{{ article.url }}">
+                    <picture>   
+                    {% if article_has_image %}
+                      <img src="{{image_src}}" alt="">
+                    {% else %}
+                      <img src="{{'blogFallBackImage.jpg' | asset_img_url: '345x'}}">
+                    {% endif %}
+                    </picture>
+                  </a>
+                <div class="text-overlay">
+                  <div class="content">
+                    <h2 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                    <p class="subtitle">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+                    <a href="{{ article.url }}" class="btn">Find Out More</a> 
+                  </div>
+                </div> 
+              </div>
+            </div>
+        {% endif %} 
+        {% if forloop.index == 4 %}
+            <div class="col-wide-6 journal-list-post">
+              <div class="container">
+                <div class="list-post">
+                  <table>
+        {% endif %}           
+                  {% if forloop.index > 3 and forloop.index <= 8 %}
+                    <tr class="item">
+                      <td class="image" width="345">
+                        <a href="{{ article.url }}">
+                          <picture>   
+                          {% if article_has_image %}
+                            <img src="{{image_src}}" alt="">
+                          {% else %}
+                            <img src="{{'blogFallBackImage.jpg' | asset_img_url: '345x'}}">
+                          {% endif %}
+                          </picture>
+                        </a>
+                      </td>
+                      <td class="content">
+                        <h2 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                        <p class="subtitle">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+                        <a href="{{ article.url }}" class="btn">Find Out More</a> 
+                      </td>
+                    </tr>
+                  {% endif %} 
+        {% if forloop.index == forloop.length %}
+                </table>  
+              </div>
+              <a href="/blogs/journal" class="btn see-all">See All</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endif %} 
+      
+      
+      
+    {% endfor %}
+      
+      {% for article in blogs['journal'].articles limit: 3 %}
+    {% if forloop.index == 3  %}
+      {% if article.image %}
+        {% assign article_has_image = true %}
+    
+        {% assign image_src = article.image.src  | img_url: '1920x'  %}
+    
+      {% else %}
+        {% assign img_tag = '<' | append: 'img' %}
+        {% if article.content contains img_tag %}
+        {% assign src = article.content | split: 'src="' %}
+        {% assign src = src[1] | split: '"' | first %}
+        {% if src %}
+          {% assign article_has_image = true %}
+          {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+        {% else %}
+          {% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '690x500'  %}
+          {% if forloop.first or forloop.index == 8 %}
+          {% assign image_src = 'blogFallBackImage.jpg' | asset_img_url: '1920x'  %}
+          {% endif %}
+        {% endif %}
+        {% endif %}
+      {% endif %}
+      
+      <div class="journal-banner-section">
+        <div class="item">
+        <a href="{{ article.url }}">
+          <picture>   
+          {% if article_has_image %}
+          <img src="{{image_src}}" alt="">
+          {% else %}
+          <img src="{{'blogFallBackImage.jpg' | asset_img_url: '345x'}}">
+          {% endif %}
+          </picture>
+        </a>
+        <div class="text-overlay">
+          <div class="content">
+          <h2 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+          <p class="subtitle">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+          <a href="{{ article.url }}" class="btn">Find Out More</a> 
+          </div>
+        </div> 
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  
+  
+    </div>
+    
+  </div>
+    

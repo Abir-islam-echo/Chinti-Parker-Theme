@@ -1,0 +1,109 @@
+
+
+
+<script>
+
+
+/*
+
+<?php
+$baseUrl = 'https://api.dotmailer.com';
+$apiUsername = 'apiuser-0cc2ccee6758@apiconnector.com';
+$apiPassword = 'df%GHFG32fsd£233';
+
+
+
+
+// get user by email address:
+$url = $baseUrl . "/v2/contacts/john@junowebdesign.com";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt(
+  $ch, CURLOPT_HTTPHEADER, array('Accept: application/json',
+      'Content-Type: application/json')
+);
+curl_setopt($ch, CURLAUTH_BASIC, CURLAUTH_DIGEST);
+curl_setopt(
+  $ch, CURLOPT_USERPWD,
+    $apiUsername . ':' . $apiPassword
+);
+      
+$response = json_decode(curl_exec($ch));
+var_dump($response);
+
+
+
+
+
+// update user:
+$content = [
+    'email' => 'john@junowebdesign.com',
+    'optInType' => 'Double',
+    'dataFields' => [
+        ['key' => 'GENDER',
+         'value' => 'Male']
+    ]
+];
+
+$baseUrl = 'https://api.dotmailer.com';
+$url = $baseUrl . "/v2/contacts/123123123";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt(
+    $ch, CURLOPT_HTTPHEADER, array('Accept: application/json',
+                                   'Content-Type: application/json')
+);
+curl_setopt($ch, CURLAUTH_BASIC, CURLAUTH_DIGEST);
+curl_setopt(
+    $ch, CURLOPT_USERPWD,
+    $apiUsername . ':' . $apiPassword
+);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($content));
+
+$response = json_decode(curl_exec($ch));
+
+
+
+
+?>
+
+*/
+
+
+
+var baseUrl = 'https://api.dotmailer.com';
+var url = baseUrl + "/v2/contacts/john@junowebdesign.com";
+
+
+
+
+jQuery.ajax({
+    url: url,
+    beforeSend: function(xhr) { 
+      xhr.setRequestHeader("Authorization", "Basic " + btoa("apiuser-0cc2ccee6758@apiconnector.com:df%GHFG32fsd£233")); 
+      xhr.setRequestHeader("Access-Control-Allow-Origin", "*"); 
+      xhr.setRequestHeader('Accept', 'application/json');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+    },
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    processData: false,
+     xhrFields: {
+      withCredentials: true
+   },
+    success: function (data) {
+      console.log(JSON.stringify(data));
+    },
+    error: function(){
+      console.log("Cannot get data");
+    }
+});
+
+
+
+
+</script>

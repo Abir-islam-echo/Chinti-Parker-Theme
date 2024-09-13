@@ -1,0 +1,25 @@
+<div id="shopify-section-header" class="shopify-section">
+
+    <div data-section-id="header" data-section-type="header-section">
+        <header id="mastHead">
+
+            <div class="mobile-menu-trigger u-z-highest" data-meganav-mobile-trigger></div>
+
+            {% render 'sidebar-nav' %}
+
+            <div class="logo-meganav-container u-flex">
+                <a href="{{ shop.url }}" id="logo" itemprop="url" class="logo site-header__logo-image u-z-highest">
+                    <img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}">
+                </a>
+
+                {% section 'meganav' %}
+            </div>
+
+
+            {% render 'header--top-links' %}
+
+        </header>
+    </div>
+</div>
+
+{% render 'header--search-container' %}

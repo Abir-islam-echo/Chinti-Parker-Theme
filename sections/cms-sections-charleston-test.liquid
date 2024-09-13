@@ -1,0 +1,241 @@
+
+{% for block in section.blocks %}
+    {% case block.type %}
+
+	{% when 'banner' %}
+    {% include 'journal-post-banner' %}
+
+	{% when 'text' %}
+    {% include 'journal-post-text' %}
+
+	{% when 'bannergrid-two' %}
+    {% include 'journal-post-bannergrid-two' %}
+
+	{% when 'twocol-1-img-txt' %}
+    {% include 'journal-post-twocol-img-text' %}
+
+	{% when 'featuredcollection' %}
+    {% include 'journal-featuredcollection' %}
+
+    {% endcase %}
+{% endfor %}
+
+
+
+
+{% schema %}
+{
+	"blocks":
+	[
+		{
+		    "type": "banner",
+		    "name": "Banner",
+		    "settings":
+			[
+		    	{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+		    	},
+		    	{
+					"type": "image_picker",
+					"id": "mobile_image",
+					"label": "Mobile Image"
+		    	},
+		    	{
+					"type": "url",
+					"id": "link",
+					"label": "Banner Link"
+		    	}
+			]
+		},
+		{
+		    "type": "text",
+		    "name": "Text",
+		    "settings":
+			[
+		    	{
+					"type": "text",
+					"id": "title",
+					"label": "Heading",
+					"default": "Heading"
+		    	},
+		    	{
+					"type": "textarea",
+					"id": "text",
+					"label": "Content",
+					"default": "Lorem ipsum dolor sit amet"
+		    	},
+				{
+					"type": "select",
+					"id": "column_width",
+					"label": "Column Width",
+					"options": [
+						{ "value": "column-full", "label": "Full" },
+						{ "value": "column-haft", "label": "Haft" }
+					],
+					"default": "column-full"
+		    	}
+			]
+		},
+		{
+		    "type": "bannergrid-two",
+		    "name": "Banner Grid - 2",
+		    "settings":
+			[
+		        {
+					"type": "image_picker",
+					"id": "image1",
+					"label": "Image"
+		        },
+		        {
+					"type": "image_picker",
+					"id": "mobile_image1",
+					"label": "Mobile Image"
+		        },
+		        {
+					"type": "text",
+					"id": "alttext1",
+					"label": "Alt Text",
+					"default": "Banner"
+		        },
+		        {
+					"type": "url",
+					"id": "link1",
+					"label": "Banner Link"
+		        },
+		        {
+					"type": "image_picker",
+					"id": "image2",
+					"label": "Image"
+		        },
+		        {
+					"type": "image_picker",
+					"id": "mobile_image2",
+					"label": "Mobile Image"
+		        },
+		        {
+					"type": "text",
+					"id": "alttext2",
+					"label": "Alt Text",
+					"default": "Banner"
+		        },
+		        {
+					"type": "url",
+					"id": "link2",
+					"label": "Banner Link"
+		        }
+		    ]
+		},
+		{
+		    "type": "twocol-1-img-txt",
+		    "name": "2 Col - 1 Img 1 Text",
+		    "settings":
+			[
+		        {
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+		        },
+		        {
+					"type": "image_picker",
+					"id": "mobile_image",
+					"label": "Mobile Image"
+		        },
+		        {
+					"type": "text",
+					"id": "alttext",
+					"label": "Alt Text",
+					"default": "Banner"
+		        },
+		        {
+					"type": "text",
+					"id": "title",
+					"label": "Title",
+					"default": "Content Title"
+		        },
+		        {
+					"type": "textarea",
+					"id": "content",
+					"label": "Content",
+					"default": "Lorem ipsum dolor sit amet"
+		        },
+				{
+					"type": "select",
+					"id": "columns",
+					"label": "Columns",
+					"options": [
+						{ "value": "two-column", "label": "Two Column - 1 Text 1 Image" },
+						{ "value": "one-column", "label": "One Column - Text and Image" }
+					],
+					"default": "two-column"
+		        },
+		        {
+					"type": "select",
+					"id": "column_order",
+					"label": "Column Order",
+					"options": [
+						{ "value": "image-left", "label": "Image Left - Content Right" },
+						{ "value": "image-right", "label": "Image Right - Content Left" }
+					],
+					"default": "image-left"
+		        },
+		        {
+					"type": "select",
+					"id": "vertical_align",
+					"label": "Vertical Align",
+					"options": [
+						{ "value": "content-center", "label": "Center aligned" },
+						{ "value": "content-top", "label": "Top aligned" },
+						{ "value": "content-bottom", "label": "Bottom aligned" }
+					],
+					"default": "content-center"
+		        }
+		    ]
+		},
+		{
+		    "type": "featuredcollection",
+		    "name": "Featured Collection",
+		    "settings":
+			[
+			    {
+					"type": "text",
+					"id": "title",
+					"label": "Heading",
+					"default": "Featured Collection"
+			    },
+			    {
+					"id": "collection",
+					"type": "collection",
+					"label": "Collection"
+			    },
+			    {
+					"type": "select",
+					"id": "grid",
+					"label": "Number of Products",
+					"default": "3",
+					"options":
+					[
+						{
+							"value": "3",
+							"label": "3"
+						},
+						{
+							"value": "6",
+							"label": "6"
+						},
+						{
+							"value": "8",
+							"label": "8"
+						},
+						{
+							"value": "12",
+							"label": "12"
+						}
+					]
+			    }
+		    ]
+		}
+	]
+}
+{% endschema %}

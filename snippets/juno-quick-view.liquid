@@ -1,0 +1,96 @@
+
+{% comment %}
+JUNO - Quick View
+{% endcomment %}
+
+
+<div class="quickViewOverlay"></div>
+<a href="#" class="quickViewLink" data-featherlight="#quickView{{ product.url | within: collection | replace: '/', '-' }}">Quick View</a>
+
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="quickViewForm clearfix" id="quickView{{ product.url | within: collection | replace: '/', '-' }}" itemscope itemtype="http://schema.org/Product">
+  {% if product.images.size > 0 %}
+        <div class="quickViewImage">
+
+
+
+
+    <picture>
+      <source media="(min-width: 740px)" srcset="{{ product | img_url: '600x' }} 1x, {{ product | img_url: '1200x' }} 2x">
+      <source srcset="{{ product | img_url: '300x' }} 1x, {{ product | img_url: '600x' }} 2x">
+      <img src="{{ product | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" itemprop="image" />
+    </picture>
+
+           </div>
+
+        {% endif %}
+<div class="quickViewDetails">
+
+  <h3 itemprop="name">{{ product.title }}</h3>
+  {% if product.metafields.patchworks.colour %}<p class="color">{{ product.metafields.patchworks.colour }}</p>{% endif %}
+  <div class="product-price delta" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+          {% assign variant = product.selected_or_first_available_variant %}
+          <meta itemprop="price" content="{{ variant.price | money_without_currency }}" />
+          {% if product.available %}
+          <link itemprop="availability" href="http://schema.org/InStock" />
+          {% else %}
+          <link itemprop="availability" href="http://schema.org/OutOfStock" />
+          {% endif %}
+          <p>
+
+            {% if product.compare_at_price > product.price %}
+            <span class="product-price on-sale">{{ variant.price | money }}</span>
+            <s class="product-compare-price">{{ variant.compare_at_price | money }}</s>
+            {% else %}
+            <span class="product-price">{{ variant.price | money }}</span>
+            {% endif %}
+
+          </p>
+        </div>
+
+
+
+
+
+    {% assign hide_default_title = false %}
+        {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+        {% endif %}
+{% if product.available %}
+        <div class="{% if hide_default_title %} hidden{% endif %}">
+                  {% if product.options.size == 1 and product.options.first != 'Title' %}
+                  <label>{{product.options.first}}</label>
+                  {% endif %}
+                  <div class="selectWrapper">
+          <select class="product-select" name="id">
+            {% for variant in product.variants %}
+                   {% if variant.inventory_quantity > 0 %}
+            <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+              {{ variant.title }} - {{ variant.price | money_with_currency }}
+              </option>
+
+{% endif %}
+              {% endfor %}
+          </select>
+                  </div>
+        </div>
+
+                    <input class="btn button button-primary" type="submit" name="add" value="Add to bag">
+  {% else %}
+<p class="outOfStock">Sorry, this is out of stock</p>
+   {% endif %}
+<div class="backorder hidden">
+          <p>
+            {{ '%s is back-ordered. We will ship it separately in 10 to 15 days.' | replace: '%s', '<span class="selected-variant"></span>' }}
+          </p>
+        </div>
+<div class="desc">
+<h4>Details:</h4>
+                    <p>{{ product.description | strip_html | truncate: 280 }}</p>
+                  </div>
+
+
+<a href="{{product.url}}" class="viewFullDetails">View full product details</a>
+</div>
+  </form>

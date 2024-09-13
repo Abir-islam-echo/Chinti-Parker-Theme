@@ -1,0 +1,209 @@
+<nav
+    class="meganav{% if section.settings.invert_mobile_item_colours %} meganav--inverted{% endif %}"
+    data-meganav
+    data-mobile-inverted="{{ section.settings.invert_mobile_item_colours }}"
+    {% if section.settings.mobile_background_colour != "rgba(0,0,0,0)" %}
+      data-mobile-background-colour="{{ section.settings.mobile_background_colour }}"
+    {% endif %}
+>
+    {% comment %}
+      Helps prevent the menu closing when moving the mouse
+      from the top navigation to the megamenu dropdown.
+    {% endcomment %}
+    <div class="meganav__hover-helper" data-meganav-hover-helper></div>
+   
+    {% for block in section.blocks %}
+        {% render 'meganav-item' | item: block %}
+    {% endfor %}
+
+    <div class="meganav__mobile-items">
+        <div class="meganav__mobile-items__links">
+            <a href="{{ shop.url }}/pages/contact-us" class="contact-link link" title="Contact"></a>
+
+            {% if shop.customer_accounts_enabled %}
+                <a
+                        href="{{ shop.url }}/{% unless customer %}pages/{% endunless %}account"
+                        class="account-link link"
+                        title="Account"
+                ></a>
+            {% endif %}
+        </div>
+
+        <div class="meganav__mobile-items__social">
+          <a href="{{ settings.facebook_url }}" class="social-icon social-icon--facebook" target="_blank">
+            {% render 'icon-facebook-simple' %}
+          </a>
+
+          <a href="{{ settings.twitter_url }}" class="social-icon social-icon--twitter" target="_blank">
+            {% render 'icon-twitter' %}
+          </a>
+
+          <a href="{{ settings.instagram_url }}" class="social-icon social-icon--instagram" target="_blank">
+            {% render 'icon-instagram' %}
+          </a>
+        </div>
+    </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Meganavs",
+  "blocks": [
+    {
+      "name": "Navigation Item",
+      "type": "nav_item",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "info": "The text to display in the top menu."
+        },
+        {
+          "id": "title_colour",
+          "type": "color",
+          "label": "Title Colour",
+          "info": "The colour of the title text. Select 'None' to keep it black (the default)."
+        },
+        {
+          "id": "subheadings_colour",
+          "type": "color",
+          "label": "Subheadings Colour",
+          "info": "The colour of the subheadings. Select 'None' to keep it black (the default)."
+        },
+        {
+          "id": "linklist",
+          "type": "link_list",
+          "label": "Menu"
+        },
+        {
+          "id": "background_colour",
+          "type": "color",
+          "label": "Background Colour",
+          "info": "The background colour of the menu dropdown. Select 'None' to keep it white (the default)."
+        },
+        {
+          "id": "featured_content_mobile",
+          "type": "checkbox",
+          "label": "Show featured content section on mobile."
+        },
+        {
+          "id": "featured_content_heading",
+          "type": "text",
+          "label": "Featured Content Heading"
+        },
+        {
+          "id": "featured_content_1",
+          "type": "url",
+          "label": "Featured Content 1"
+        },
+        {
+          "id": "featured_content_title_1",
+          "type": "text",
+          "label": "Featured Content Title 1",
+          "info": "If this is left blank, the title will be taken from the collection or article."
+        },
+        {
+          "id": "featured_content_image_1",
+          "type": "image_picker",
+          "label": "Featured Content Image 1",
+          "info": "If this is left blank, the image will be taken from the collection or article."
+        },
+        {
+            "id": "featured_content_mobile_image_1",
+            "type": "image_picker",
+            "label": "Featured Content Mobile Image 1",
+            "info": "Override the selected image for mobile."
+        },
+        {
+          "id": "featured_content_mobile_1",
+          "type": "checkbox",
+          "label": "Show on mobile",
+          "info": "Choose this content to show on mobile. Only one per meganav should be selected."
+        },
+        {
+          "id": "featured_content_2",
+          "type": "url",
+          "label": "Featured Content 2"
+        },
+        {
+          "id": "featured_content_title_2",
+          "type": "text",
+          "label": "Featured Content Title 2",
+          "info": "If this is left blank, the title will be taken from the collection or article."
+        },
+        {
+          "id": "featured_content_image_2",
+          "type": "image_picker",
+          "label": "Featured Content Image 2",
+          "info": "If this is left blank, the image will be taken from the collection or article."
+        },
+        {
+          "id": "featured_content_mobile_image_2",
+          "type": "image_picker",
+          "label": "Featured Content Mobile Image 2",
+          "info": "Override the selected image for mobile."
+        },
+        {
+            "id": "featured_content_mobile_2",
+            "type": "checkbox",
+            "label": "Show on mobile",
+            "info": "Choose this content to show on mobile. Only one per meganav should be selected."
+        },
+        {
+          "id": "featured_content_3",
+          "type": "url",
+          "label": "Featured Content 3"
+        },
+        {
+          "id": "featured_content_title_3",
+          "type": "text",
+          "label": "Featured Content Title 3",
+          "info": "If this is left blank, the title will be taken from the collection or article."
+        },
+        {
+          "id": "featured_content_image_3",
+          "type": "image_picker",
+          "label": "Featured Content Image 3",
+          "info": "If this is left blank, the image will be taken from the collection or article."
+        },
+        {
+            "id": "featured_content_mobile_image_3",
+            "type": "image_picker",
+            "label": "Featured Content Mobile Image 3",
+            "info": "Override the selected image for mobile."
+        },
+        {
+          "id": "featured_content_mobile_3",
+          "type": "checkbox",
+          "label": "Show on mobile",
+          "info": "Choose this content to show on mobile. Only one per meganav should be selected."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "emphasised_capture_words",
+      "type": "text",
+      "label": "Emphasised capture words",
+      "info": "A comma-separated list of words or phrases that, if they appear in the final link in a column, will indicate that it should be separated and underlined.",
+      "default": "all,everything"
+    },
+    {
+      "id": "mobile_background_colour",
+      "type": "color",
+      "label": "Mobile Background Colour",
+      "info": "The background colour of the initial mobile menu",
+      "default": "#ffffff"
+    },
+    {
+      "id": "invert_mobile_item_colours",
+      "type": "checkbox",
+      "label": "Invert Mobile Item Colours",
+      "info": "When selected, the default colour of the nav items on the initial mobile menu will be white instead of black; useful for contrasting with the background colour.",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

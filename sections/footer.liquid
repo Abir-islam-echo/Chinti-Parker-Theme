@@ -1,0 +1,260 @@
+<footer class="site-footer" id="mastFooter">
+  <div class="wrapper" itemscope="" itemtype="http://schema.org/Organization">
+    <meta itemprop="url" content="{{ shop.url }}">
+    <meta itemprop="logo" content="https:{{'apple-touch-icon.png' | asset_url}}">
+
+    <div class="row" id="socialRow">
+      {%- assign footer_linklist_two = section.settings.footer_linklist_two -%}
+      {% if linklists[footer_linklist_two].links.size > 0 %}
+        <ul class="social">
+          {% for link in linklists[footer_linklist_two].links %}
+            <li>
+              <a rel="me" itemprop="sameAs" href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {%
+        render 'footer-newsletter-form'
+        | title: section.settings.footer_newsletter_title
+      %}
+    </div>
+
+    <div class="row">
+      <div class="footer-links">
+        <div class="col col-1">
+          <!-- Customer Service -->
+          {%- assign footer_linklist = section.settings.footer_linklist -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+            <h6>{{ linklists[footer_linklist].title }}</h6>
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="col col-2">
+          <!-- Contact -->
+          <h6>Contact Us</h6>
+          <ul>
+            <p class="customerServiceHeading">{{ 'footer.customer_service.general_heading' | t }}</p>
+
+            <li>
+              <span itemprop="contactPoint" itemscope="" itemtype="http://schema.org/ContactPoint">
+                {% assign shopPhoneNumber = section.settings.service_number %}
+                {% assign splitPhone = shopPhoneNumber | split: '' %}
+                {% if splitPhone[0] == '0' %}
+                  {% assign shopPhoneNumber = shopPhoneNumber | slice: 1, shopPhoneNumber.size %}
+                  {% assign shopPhoneNumber = '+44 (0) ' | append: shopPhoneNumber %}
+                {% endif %}
+
+                {% assign shopPhoneLinkNumber = shopPhoneNumber | replace: ' ', '' | strip %}
+                <meta itemprop="telephone" content="{{shopPhoneLinkNumber}}">
+                <meta itemprop="contactType" content="Customer Service">
+              </span>
+              <a href="tel:{{shopPhoneLinkNumber}}">{{ shopPhoneNumber }}</a>
+            </li>
+            <li>
+              {% assign customerServiceEmail = section.settings.customer_service_email %}
+              <a href="mailto:{{customerServiceEmail}}" target="_blank">Email Us</a>
+            </li>
+
+            <p class="customerServiceHeading">{{ 'footer.customer_service.wholesale_heading' | t }}</p>
+
+            <li>
+              <span itemprop="contactPoint" itemscope="" itemtype="http://schema.org/ContactPoint">
+                {% assign wholesalePhoneNumber = section.settings.wholesale_number %}
+                {% assign splitPhone = wholesalePhoneNumber | split: '' %}
+                {% if splitPhone[0] == '0' %}
+                  {% assign wholesalePhoneNumber = wholesalePhoneNumber | slice: 1, wholesalePhoneNumber.size %}
+                  {% assign wholesalePhoneNumber = '+44 (0) ' | append: wholesalePhoneNumber %}
+                {% endif %}
+
+                {% assign wholesalePhoneLinkNumber = wholesalehoneNumber | replace: ' ', '' | strip %}
+                <meta itemprop="telephone" content="{{wholesalePhoneLinkNumber}}">
+                <meta itemprop="contactType" content="Wholesale Enquiries">
+              </span>
+              <a href="tel:{{wholesalePhoneLinkNumber}}">{{ wholesalePhoneNumber }}</a>
+            </li>
+          </ul>
+          <ul class="footer-store">
+            {% if section.settings['store-address'] != blank %}
+              <p class="customerServiceHeading">Visit Us</p>
+            {% endif %}
+            {% if section.settings['store-address'] != blank %}
+              <li>{{ section.settings['store-address'] }}</li>
+            {% endif %}
+            {% if section.settings['store-address'] != blank %}
+              <li>
+                <a href="tel:{{ section.settings.store-phone }}">{{ section.settings['store-phone'] }}</a>
+              </li>
+            {% endif %}
+          </ul>
+          <div class="">
+            <h6>Store Selector</h6>
+            {%- include 'store-view-setup' -%}
+
+            <ul>
+              <li>
+                <p>
+                  {{ storeViewCurrency }}
+                  {{ storeView }} - {{ storeViewFullName }}
+                </p>
+              </li>
+              <li>
+                <a href="#" data-featherlight="#multiStoreSwitcher" data-featherlight-variant="regionSwitcherModal"
+                  >Change region</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col-3">
+          <!-- Infomation -->
+          {%- assign footer_linklist_three = section.settings.footer_linklist_three -%}
+          {% if linklists[footer_linklist_three].links.size > 0 %}
+            <h6>{{ linklists[footer_linklist_three].title }}</h6>
+            <ul>
+              {% for link in linklists[footer_linklist_three].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+      {% if section.settings.show_payment_icons %}
+        <div class="site-footer__payment-icons">
+          {% render 'payment-icons' %}
+        </div>
+      {% endif %}
+      <div class="footer-copyright">
+        <p class="copyright">Copyright {{ 'now' | date: '%Y' }} &copy; {{ shop.name | link_to: '/' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="multiStoreSwitcherWrapper">
+    <div id="multiStoreSwitcher">
+      <div id="modalHeader"><img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}"></div>
+
+      <div id="formSwitcherBlock">
+        <h6>Select region</h6>
+        <div class="selector">
+          <div class="storeSelectDropdown">
+            <label data-size="">
+              {{- storeViewFullName }} - {{ storeViewCurrency }}
+              {{ storeFullCurrencyName -}}
+            </label>
+            <ul class="product-option-size">
+              <li class="select" data-size="">
+                <span class="name">
+                  {{- storeViewFullName }} - {{ storeViewCurrency }}
+                  {{ storeFullCurrencyName -}}
+                </span>
+              </li>
+              <li
+                class="active"
+                data-value="EUR"
+                data-href="https://www.eu.chintiandparker.com{{request.path}}?storeRedirect=EU"
+              >
+                <span class="name">Europe - &euro; Euros</span>
+              </li>
+              <li
+                class="active"
+                data-value="USD"
+                data-href="https://www.us.chintiandparker.com{{request.path}}?storeRedirect=US"
+              >
+                <span class="name">North America - $ US Dollars</span>
+              </li>
+              <li
+                class="active"
+                data-value="GBP"
+                data-href="https://www.chintiandparker.com{{request.path}}?storeRedirect=UK"
+              >
+                <span class="name">United Kingdom - &pound; UK pounds</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button id="multiStoreSwitcherSubmit" class="button">Select</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+	"name": "Footer",
+	"settings":
+	[
+		{
+			"type": "checkbox",
+			"id": "show_payment_icons",
+			"label": "Show Payment Icons"
+		},
+		{
+			"type": "text",
+			"id": "footer_newsletter_title",
+			"label": "Newsletter button text",
+			"default": "Sign up and get 10% off"
+		},
+		{
+			"type": "link_list",
+			"id": "footer_linklist",
+			"label": "Footer 1"
+		},
+		{
+			"type": "link_list",
+			"id": "footer_linklist_two",
+			"label": "Footer 2"
+		},
+		{
+			"type": "link_list",
+			"id": "footer_linklist_three",
+			"label": "Footer 3"
+		},
+		{
+			"type": "text",
+			"id": "service_number",
+			"label": "Customer Service"
+		},
+		{
+			"type": "text",
+			"id": "wholesale_number",
+			"label": "Wholesale No."
+		},
+		{
+			"type": "text",
+			"id": "customer_service_email",
+			"label": "Email"
+		},
+        {
+			"type": "textarea",
+			"id": "store-address",
+			"label": "Store Address",
+            "default":"336 King's Road, London, SW3 5UR"
+		},
+        {
+			"type": "text",
+			"id": "store-phone",
+			"label": "Store Phone Number",
+            "default":"07770791329"
+		}
+
+
+	]
+}
+{% endschema %}
+<style>
+  .footer-store li {
+  	color: #777;
+  	font-size: 14px;
+  	margin-top: 5px;
+  }
+</style>

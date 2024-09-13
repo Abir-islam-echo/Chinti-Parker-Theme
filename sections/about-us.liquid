@@ -1,0 +1,378 @@
+<div class="about">
+      <section class="about-hero">
+        <div class="el-container">
+          <h1 class="about-hero-title" style="font-size:{{ section.settings.Heading-font-size }}px;color:{{ section.settings.Heading-color }}">{{ section.settings.Heading }}</h1>
+          <div class="about-video">
+             {% if section.settings.video != blank %}
+            <iframe
+              allowfullscreen="1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              title="About Us | CHINTI &amp; PARKER"
+              src="{{ section.settings.video }}"
+              frameborder="0"
+            ></iframe>
+          {% endif %}
+          </div>
+           {% if section.settings.sub-content != blank %}
+          <p class="subtitle" style="font-size:{{ section.settings.sub-content-font-size }}px;">
+            {{ section.settings.sub-content }}
+          </p>
+          {% endif %}
+        </div>
+      </section>
+      <section class="about-content">
+        <div class="el-container">
+          <div class="about-content-wrapper">
+            <div class="about-content-parts">
+              <a
+                class="desktop-element"
+                href="{{ section.settings.grid-image-link }}"
+                target="_top"
+              >
+                <img
+                  src="{{ section.settings.grid-image-picker | img_url : '900x' }}"
+                  aria-label="A+R-1"
+                  alt="A+R-1"
+                />
+              </a>
+
+              <h3>{{ section.settings.grid-left-text-01 }}</h3>
+              <p>
+                {{ section.settings.grid-left-content-01 }}
+              </p>
+             
+            </div>
+            <div class="about-content-parts">
+              <h3>{{ section.settings.grid-right-text-01 }}</h3>
+              <a
+                class="mobile-element"
+                href="{{ section.settings.grid-image-link }}"
+                target="_top"
+              >
+                <img
+                  src="{{ section.settings.grid-image-picker | img_url : '900x' }}"
+                  aria-label="A+R-1"
+                  alt="A+R-1"
+                />
+              </a>
+              <p>
+                {{ section.settings.grid-right-content-01 }}
+              </p>
+              <img
+                class="mobile-element"
+                src="{{ section.settings.mobile-image-picker | img_url : '900x' }}"
+                aria-label="A+R-1"
+                alt="A+R-1"
+              />
+              <div class="desktop-element">
+                <h3>{{ section.settings.grid-right-text-02 }}</h3>
+                <p>
+                 {{ section.settings.grid-right-content-02 }}
+                </p>
+                <a
+                  class="btn"
+                  href="{{ section.settings.button_url }}"
+                  target="_top"
+                >
+                  {{ section.settings.button }}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-element">
+            <h3>{{ section.settings.grid-right-text-02 }}</h3>
+            <p>
+              {{ section.settings.grid-right-content-02 }}
+            </p>
+            
+            <a class="btn" href="{{ section.settings.button_url }}" target="_top">
+              {{ section.settings.button }}
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+<style>
+     
+      .about .about-hero-title {
+        text-align: center;
+        margin: 50px 0;
+      }
+      .about h3 {
+        font-size: {{ section.settings.heading-font-size }}px;
+        font-weight: 400;
+      }
+      .about p {
+        font-size: 13px;
+        letter-spacing: 0.7px;
+        line-height: 15px;
+      }
+      .about-hero {
+        margin-bottom: 30px;
+      }
+      .about-hero .subtitle {
+        text-align: center;
+        line-height: 30px;
+        max-width: 75%;
+        margin: 50px auto;
+        color: {{ section.settings.sub-content-color }}
+      }
+      .about-video {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 30px;
+      }
+      .about-video iframe {
+        display: block;
+        max-width: 800px;
+        width:100%;
+        height: 400px;
+        margin: 0 auto;
+      }
+      .about-content {
+        margin-bottom: 0px;
+      }
+      .about-content-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+      }
+      .about-content-parts {
+        flex: 1;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .about-content h3 {
+        text-transform: uppercase;
+        margin: 30px 0 10px;
+      }
+      .about-content p {
+        margin-bottom: 20px;
+        font-size:{{ section.settings.content-font-size }}px;
+        line-height:30px;
+        color:#000;
+      }
+      .about-content img {
+        margin: 10px 0;
+        width: 90%;
+      }
+      .about-content a {
+        display: block;
+        width: 100%;
+      }
+      .about-content .btn {
+        display: block;
+        width: inherit;
+        padding: 30px 15px;
+        text-align: center;
+        text-transform: uppercase;
+        color: black;
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 30px;
+        text-decoration: none;
+        border: solid black 2px;
+        max-width: 350px;
+        margin: 100px auto;
+        font-weight: 600;
+      }
+      .about .desktop-element {
+        display: block;
+      }
+      .about .mobile-element {
+        display: none;
+      }
+
+      /* BreakPoint */
+   
+      @media screen and (max-width: 768px) {
+        .about .about-hero-title{
+          font-size: 40px !important;
+          margin: 30px 0;
+        }
+        .about-hero .subtitle {
+          max-width: unset;
+          margin: 0;
+          font-size: 16px !important;
+          line-height: 20px;
+        }
+        .about .desktop-element {
+          display: none;
+        }
+        .about .mobile-element {
+          display: block;
+          margin:0;
+        }
+        .about-content {
+          text-align: center;
+        }
+        .about-content-wrapper {
+          flex-direction: column-reverse;
+          gap: 10px;
+        }
+        .about-hero {
+          margin-bottom: 10px;
+        }
+        .about-content-parts {
+          align-items: center;
+        }
+        .about-content .btn {
+          display: block;
+          padding: 20px 10px;
+          font-size:16px;
+          max-width: 280px;
+          margin: 50px auto;
+        }
+        .about-video iframe {
+          width: 100%;
+          height: 250px;
+        }
+        .about h3 {
+          font-size: 25px;
+          margin: 20px 0px;
+        }
+        .about p {
+          font-size: 16px;
+          letter-spacing: 0.7px;
+          line-height: 17px;
+        }
+      }
+
+    </style>    
+
+{% schema %}
+  {
+    "name": "About Us",
+    "settings": [
+       {
+            "type":"text",
+            "id":"Heading",
+            "label":"Heading Title" ,
+            "default":"Our story"
+          },
+          {
+            "type":"number",
+            "id":"Heading-font-size",
+            "label":"Heading Title Font Size",
+            "default": 35
+          },
+          {
+            "type":"color",
+            "id":"Heading-color",
+            "label":"Heading Title Color",
+            "default":"#000"
+          },
+          {
+            "type": "text",
+            "id": "video",
+            "label": "Video URL",
+            "default":"https://www.youtube.com/embed/S5G-DvQyN_U?autoplay=0&amp;mute=0&amp;controls=1&amp;origin=https%3A%2F%2Fwww.chintiandparker.com&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=7"
+          },
+          {
+            "type":"textarea",
+            "id":"sub-content",
+            "label":"Sub Content",
+            "default":"Get to know Chinti & Parker’s founders, Anna and Rachael, as they discuss how they built the brand one cashmere jumper at a time."
+          },
+          {
+            "type":"number",
+            "id":"sub-content-font-size",
+            "label":"Sub Content Font Size",
+            "default":24
+          },
+          {
+            "type":"color",
+            "id":"sub-content-color",
+            "label":"Sub Content color",
+            "default":"#000"
+          },
+          {
+            "type":"header",
+            "content":"Grid Left"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid-image-picker",
+            "label":"Image"
+          },
+          {
+            "type":"image_picker",
+            "id":"mobile-image-picker",
+            "label":"Extra Mobile Image"
+          },
+          {
+            "type":"url",
+            "id":"grid-image-link",
+            "label":"Image Link"
+          },
+          {
+            "type":"text",
+            "id":"grid-left-text-01",
+            "label":"Grid Left Heading 01"
+          },
+          {
+            "type":"richtext",
+            "id":"grid-left-content-01",
+            "label":"Grid Left Content 01"
+          },
+          {
+            "type":"header",
+            "content":"Grid Right"
+          },
+          {
+            "type":"text",
+            "id":"grid-right-text-01",
+            "label":"Grid Right Heading 01"
+          },
+          {
+            "type":"richtext",
+            "id":"grid-right-content-01",
+            "label":"Grid Right Content 01"
+          },
+          {
+            "type":"text",
+            "id":"grid-right-text-02",
+            "label":"Grid Right Heading 02"
+          },
+          {
+            "type":"richtext",
+            "id":"grid-right-content-02",
+            "label":"Grid Right Content 02"
+          },
+          {
+            "type":"text",
+            "id":"button",
+            "label":"Button Label",
+            "default":"Enter chinti & parker"
+          },
+          {
+            "type":"url",
+            "id":"button_url",
+            "label":"Button URL"
+          },
+           {
+            "type":"number",
+            "id":"heading-font-size",
+            "label":"Heading font size",
+            "default":35
+          },
+          {
+            "type":"number",
+            "id":"content-font-size",
+            "label":"Content font size",
+            "default":24
+          }
+         
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

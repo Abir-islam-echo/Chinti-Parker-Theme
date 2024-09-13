@@ -1,0 +1,28 @@
+<div class="top-links u-flex u-items-center u-content-flex-end u-z-highest">
+    <a
+            href="#"
+            id="searchToggle"
+            class="search-trigger link"
+            title="Search"
+            data-search-trigger
+    ></a>
+
+    <a href="{{ shop.url }}/pages/contact-us" class="contact-link link" title="Contact"></a>
+
+    {% if shop.customer_accounts_enabled %}
+        <a
+                href="{{ shop.url }}/{% unless customer %}pages/{% endunless %}account"
+                class="account-link link"
+                title="Account"
+        ></a>
+    {% endif %}
+
+    <div class="miniCart">
+        <a href="{{ shop.url }}/cart" id="basketToggle" class="cart-link link">
+            <span id="CartCount" class="cart-count">{{ cart.item_count }}</span>
+        </a>
+        <div id="cart-container">
+            <div id="CartContainer"></div>
+        </div>
+    </div>
+</div>

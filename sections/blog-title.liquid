@@ -1,0 +1,105 @@
+<style>
+  .blogs-details-title h1 { 
+        text-align: {{ section.settings.alignment }};
+        font-size: {{ section.settings.blog-title-font-size }}px;
+        color: {{ section.settings.title_color }};  
+  }
+  .blogs-details-title {
+        padding: 70px 0 70px;
+  }
+  #el-blog-template{
+    background:{{ section.settings.color }}
+  }
+
+
+  
+   /* BreakPoint */
+  @media screen and (max-width: 992px) {
+        .blogs-details-title h1 {
+          font-size: 45px;
+        }
+    }
+  @media screen and (max-width: 768px) {
+        .blogs-details-title h1 {
+          font-size: 25px;
+        }
+        .blogs-details-title {
+          padding: 20px 0 30px;
+        }
+  }
+   @media screen and (max-width: 576px) {
+        .blogs-details h1 {
+          font-size: {{ section.settings.mobile-font-size }}px;
+        }
+  }
+</style>
+
+
+<section class="blogs-details-title">
+      <div class="el-container">
+        <h1>{{ section.settings.blog-title }} </h1>
+      </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Blog Title",
+    "settings": [
+      {
+        "type":"color",
+        "id": "color",
+        "label":"Page Background"
+      },
+      {
+        "type":"text",
+        "id": "blog-title",
+        "label":"Blog Title",
+        "default": "Blog Title"
+      },
+      {
+        "type":"color",
+        "id": "title_color",
+        "label":"Blog Title Color"
+      },
+      {
+        "type":"number",
+        "id": "blog-title-font-size",
+        "label":"Font Size",
+        "default":60
+      },
+      {
+        "type":"number",
+        "id": "mobile-font-size",
+        "label":"Mobile Font Size",
+        "default":22
+      },
+      {
+        "type":"select",
+        "id": "alignment",
+        "label":"Text Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        	"default": "center"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+{% javascript %}
+{% endjavascript %}

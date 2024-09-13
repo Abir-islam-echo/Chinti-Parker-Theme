@@ -1,0 +1,19 @@
+<div class="page-404" id="page-404">
+    <div class="not-found">
+        <div class="content">
+            <div class="wrapper">
+                <h1>The page you’re looking for isn’t here</h1>
+                <form action="/search" method="get" class="search-form" role="search">
+                    <input name="q" type="search" id="search-field" placeholder="Try searching here..." value="{{ search.terms | escape }}" />
+                    <button class="submit" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-img">
+            {% section 'cms-404-banner' %}
+        </div> 
+    </div> 
+    {% section 'cms-404-sections' %}
+</div>
+
+

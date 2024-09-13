@@ -1,0 +1,204 @@
+section[ku-container][data-container-role="left"][data-container-id="ku_landing_main_content_left"] {
+  width: 20%;
+}
+.kuSearchResultsPageContainer .kuPagination {
+  border-top: 1px solid #333;
+  padding: 18px 5px;
+}
+.kuSearchResultsPageContainer .kuPagination a {
+  padding: 0.125rem 0.6875rem;
+  color: #777;
+  border-right: none;
+}
+.kuSearchResultsPageContainer .kuPagination a.kuCurrent {
+  color: #333;
+  text-decoration: underline;
+}
+div[data-block-id="ku_landing_result_items"] {
+  min-height: calc(100vh - 100px);
+}
+.kuSearchResultsPageContainer .kuPagination {
+  width: 100%;
+  text-align: center;
+}
+.klevuLanding .product-grid .kuPrice span.kuOrigPrice {
+  font-size: 14px;
+  color: #111;
+  font-weight: normal !important;
+}
+.klevuLanding .product-grid .colour #colourSwatches li {
+  padding: 0;
+}
+.klevuLanding .product-grid .kuPrice span.kuSalePrice .klevu-globalE-prices {
+  font-size: 14px;
+  color: #111;
+  font-weight: normal;
+}
+.klevuLanding
+  .product-grid
+  .kuPrice
+  span.kuOrigPrice
+  + span.kuSalePrice
+  .klevu-globalE-prices {
+  font-size: 14px !important;
+  color: #ff005a !important;
+  font-weight: normal !important;
+}
+.klevuLanding .product-grid .overlayTag {
+  font-size: 11px;
+}
+/* .klevuLanding .kuResultsHeadingTitleContainer .navigation-base {
+  font-size: 11px;
+} */
+.klevuLanding .kuDropdown.kuDropSortBy {
+  margin-left: 0;
+}
+div[itemscope].item {
+  display: none;
+}
+.klevuLanding .productList .kuLandingResultsViewSwitchContainer {
+  display: none !important;
+}
+.klevuLanding .productList .product-grid .product-price {
+  padding-top: 3px;
+}
+.klevuLanding .productList .product-grid .product-caption {
+  display: flex;
+  justify-content: space-between;
+}
+.klevuLanding .productList .product-grid .product-price .kuPrice {
+  display: flex;
+}
+.wrapper {
+  max-width: unset;
+  padding: 0 1.75rem;
+}
+.klevuLanding div[data-container-id="ku_landing_main_container"] {
+  width: 100%;
+}
+.klevuLanding .kuContainer {
+  max-width: 100%;
+  margin: unset;
+  padding: 0;
+}
+.kuContainer .kuSearchResultsSearchBarContainer {
+  display: none;
+}
+
+body .bc-sf-search-suggestion-wrapper {
+  display: none;
+}
+body
+  .kuSearchResultsPageContainer
+  .kuResults
+  ul
+  li
+  .kuProdWrap
+  .kuProdAdditional {
+  position: static;
+  background: #fff;
+  padding: unset;
+  margin: unset;
+  z-index: 99;
+  visibility: visible;
+  opacity: 1;
+  border: 1px solid #ececec;
+  border-top: 0;
+}
+body .klevuLanding .kuResults .sca-qv-button-wrap {
+  display: none !important;
+}
+body
+  .kuSearchResultsPageContainer
+  .kuResults
+  ul
+  li
+  .kuProdWrap
+  .kuProdTop
+  .klevuImgWrap {
+  height: 250px !important;
+}
+.kuSearchResultsPageContainer
+  .kuResults
+  ul
+  li
+  .kuProdWrap
+  .kuProdTop
+  .klevuImgWrap
+  a
+  img {
+  width: 100%;
+  margin: 0;
+}
+.page-width .klevuLanding .kuListViewBtn {
+  display: none;
+}
+.page-width .klevuLanding .product-caption .kuPrice .kuSpecialPrice {
+  margin-right: 0;
+}
+.page-width .klevuLanding .product-caption .kuPrice {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
+}
+.page-width .klevuLanding .product-caption .kuPrice span {
+  font-size: 0.875rem;
+  color: #111;
+}
+
+.page-width .klevuLanding .quickBuyColourSwatch .quickBuy.out-of-stock {
+  pointer-events: none;
+  text-decoration: line-through;
+  color: #999;
+}
+.page-width .klevuLanding .quickBuySuccess {
+  line-height: 11px;
+  font-size: 11px;
+}
+.klevuLanding .product-grid .item .quickBuyColourSwatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+.klevuLanding .product-grid .item .quickBuyColourSwatch .quickBuy,
+.klevuLanding .product-grid .item .quickBuyColourSwatch .quickBuyOOS {
+  flex: 1;
+  padding: 0.75rem 0;
+  text-align: center;
+}
+.klevuLanding .breadcrumb a[itemprop="item"] {
+  display: contents;
+  color: #bfbfbf;
+}
+.klevuLanding.kuSearchResultsPageContainer .kuResultsHeadingTitleContainer {
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .klevuLanding .productList .product-grid .product-price {
+    padding-top: 6px;
+  }
+  .klevuLanding .productList .product-grid .product-caption {
+    flex-direction: column;
+    align-items: center;
+  }
+  .wrapper {
+    padding: 0 20px;
+  }
+  .kuSearchResultsPageContainer .kuFilters {
+    padding: 0;
+  }
+  .kuSearchResultsPageContainer .kuFilters .kuFiltersTitleHeading {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 63.99em) and (min-width: 48em) {
+  .klevuLanding .product-grid .item .overlayTag {
+    width: min-content;
+    padding: 3px 8px;
+  }
+  .klevuLanding .product-grid .overlayTag {
+    font-size: 9px;
+  }
+}

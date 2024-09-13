@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="checkout-page {{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <title>
+      {{ shop.name }}
+      -
+      {{ page_title }}
+    </title>
+    {{ content_for_header }}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+    <link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
+    <link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_url }}" color="#ffffff">
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="{{ 'browserconfig.xml' | asset_url }}">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="alternate" href="https://www.chintiandparker.com/" hreflang="en-gb">
+    <link rel="alternate" href="https://www.us.chintiandparker.com/" hreflang="en-us">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-al">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ad">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-am">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-at">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-by">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-be">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ba">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-bg">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ch">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-cy">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-cz">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-de">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-dk">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ee">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-es">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-fo">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-fi">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-fr">
+
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ge">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-gi">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-gr">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-hu">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-hr">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ie">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-is">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-it">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-lt">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-lu">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-lv">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-mc">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-mk">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-mt">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-no">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-nl">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-pl">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-pt">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ro">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ru">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-se">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-si">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-sk">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-sm">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-tr">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-ua">
+    <link rel="alternate" href="https://www.eu.chintiandparker.com/" hreflang="en-va">
+    <link rel="alternate" href="https://www.chintiandparker.com/" hreflang="x-default">
+
+    {{ 'main.min.css' | asset_url | stylesheet_tag }}
+    {{ checkout_scripts }}
+    {% include 'plus_checkout_character_restrictions', enable: settings.plus_enable_character_restrictions %}
+
+    {% comment %}
+        <!-- START Rakuten Marketing Tracking -->
+        <script type="text/javascript" src="//intljs.rmtag.com/117870.ct.js"></script>
+        <!-- END Rakuten Marketing Tracking -->
+      <!-- GSSTART Coming Soon code start. Do not change -->
+      <script type="text/javascript">
+        gsProductCSID = "{{ product.id }}";
+      </script>
+      <script
+        type="text/javascript"
+        src="https://gravity-software.com/js/shopify/pac_shop6224.js?v=11352367bf9727e6f6cab2bc26d0c9b1"
+      ></script>
+      <!-- Coming Soon code end. Do not change GSEND -->
+    {% endcomment %}
+    {%- comment -%}
+      @todo: integrate into scss once JS and CSS have been unminified
+    {%- endcomment -%}
+    <style>
+      .placeholder-line {
+          display: none;
+      }
+
+      .product__description {
+          border-bottom: none;
+      }
+       label[for="checkout_payment_gateway_67668836430"]{
+        margin-left: 70px !important;
+      }
+      label[for="checkout_payment_gateway_67668836430"]::before {
+        content: "";
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        background-image: url(https://cdn.shopify.com/s/files/1/0040/7057/2147/files/klarna.svg?v=1659438660);
+        background-repeat: no-repeat;
+        margin-left: -70px;
+        background-size: 60px;
+        top: 12px;
+      }
+    </style>
+
+    <!-- globale_css_include -->
+    {% comment %}{% include 'globale-css-include' %}{% endcomment %}
+
+    {% comment %}{% include 'booster-common' %}{% endcomment %}
+
+    {% comment %} {% include "globale-checkout-css" %}{% endcomment %}
+    <!-- ABlyft snippet -->
+    {% comment %} <script src="https://cdn.ablyft.com/s/13554045.js"></script>{% endcomment %}
+    <!-- ABlyft snippet -->
+  </head>
+
+  <body>
+    <header id="mastHead">
+      <div class="wrapper">
+        <h1 class="logo">
+          <a href="/"><img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}"></a>
+        </h1>
+      </div>
+    </header>
+    <main class="main-content" id="MainContent">
+      <script>
+        console.log("from checkout....")
+      </script>
+      <div class="wrapper">
+        <div class="sidebar" role="complementary">
+          {{ order_summary_toggle }}
+          {{ content_for_order_summary }}
+        </div>
+        <div class="main" role="main">
+          {{ breadcrumb }}
+          {{ alternative_payment_methods }}
+          {{ content_for_layout }}
+        </div>
+      </div>
+    </main>
+    {{ tracking_code }}
+
+    {% render 'gtm-global' %}
+
+    <!-- GA4 -->
+    {% render 'ga4-datalayer', checkout: checkout %}
+    <!-- GA4 -->
+
+    <script>
+              {% if checkout.attributes.gift_note %}
+                  const deliveryTitle = document.querySelector('#section-delivery-title');
+                  const useDifferentBillingAddress = document.querySelector('#checkout_different_billing_address_true');
+
+                  if (deliveryTitle) {
+                      deliveryTitle.innerText = {{ 'gift_me.recipient_address' | t | json }};
+                  }
+
+                  if (useDifferentBillingAddress) {
+                      useDifferentBillingAddress.click();
+                  }
+              {% endif %}
+
+              //document.getElementById('checkout_email').setAttribute('maxlength', 100);
+              var shippingAddressInput = document.querySelector('.section--shipping-address .checkbox__input');
+              var shippingAddressLabel = document.querySelector('.section--shipping-address .checkbox__label');
+
+              // function gtmAddCheckout(step, option) {
+              //     window.dataLayer = window.dataLayer || [];
+              //     window.dataLayer.push({
+              //         event: 'purchase',
+              //         ecommerce: {
+              //             currencyCode: window.Shopify.Checkout.currency,
+              //             checkout: {
+              //                 actionField: {
+              //                     step: step,
+              //                     option: option
+              //                 }
+              //             },
+              //             products: [products]
+              //         }
+              //     });
+              // };
+
+              //const products = [];
+              {% for line_item in checkout.line_items %}
+                  // var product = {
+                  //     name: {{ line_item.product.title | json }},
+                  //     id: {{ line_item.variant.id | json }},
+                  //     price: {{ line_item.original_price | json }},
+                  //     vendor: {{ line_item.product.vendor | json }},
+                  //     category: {{ line_item.product.type | json }},
+                  //     variant: {{ line_item.variant.title | json }},
+                  //     quantity: {{ line_item.quantity | json }},
+                  //     coupon: {{ line_items.discount_allocations | json }},
+                  // }
+                  // products.push(product);
+              {% endfor %}
+
+
+              // $(document).on('page:load', function() {
+
+              //     if(Shopify.Checkout.step === 'contact_information') {
+              //         gtmAddCheckout(1, 'Personal Details');
+              //     }
+
+              //     if(Shopify.Checkout.step === 'shipping_method') {
+              //         gtmAddCheckout(2, 'Delivery');
+              //     }
+
+              //     if(Shopify.Checkout.step === 'payment_method') {
+              //         var optionInput = document.querySelectorAll('.section--payment-method .input-radio');
+              //         var paymentOptions = Array.from(optionInput);
+              //         var selectedPaymentOption = paymentOptions.filter(option => option.checked === true);
+              //         var initialPaymentOption = selectedPaymentOption[0].labels[0].outerText;
+
+              //         gtmAddCheckout(3, initialPaymentOption);
+
+              //         optionInput.forEach(input => input.addEventListener('change', function(e) {
+              //             var paymentMethod = e.target.labels[0].outerText;
+              //             gtmAddCheckout(3, paymentMethod);
+              //         }))
+              //     }
+              // });
+
+              if(document.getElementById('checkout_shipping_address_zip')){
+                  document.getElementById('checkout_shipping_address_zip').setAttribute('maxlength', 20);
+              }
+              if(document.getElementById('checkout_shipping_address_city')){
+                  document.getElementById('checkout_shipping_address_city').setAttribute('maxlength', 70);
+              }
+              if(document.querySelector('.fieldset-description .checkbox__label')){
+                  document.querySelector('.fieldset-description .checkbox__label').innerHTML = 'Subscribe to our newsletter';
+                  document.querySelector('.fieldset-description .checkbox__input').appendChild(document.querySelector('.fieldset-description .checkbox__label'));
+              }
+              if(document.querySelector('.logged-in-customer-newsletter .checkbox__label')){
+                  document.querySelector('.logged-in-customer-newsletter .checkbox__input').appendChild(document.querySelector('.logged-in-customer-newsletter .checkbox__label'));
+              }
+              if(document.querySelector('.review-block')){
+                  document.querySelector('.review-block__label').innerHTML = '<h2>Shipping Address</h2>';
+                  document.querySelector('.review-block__link .link--small span').innerHTML = 'Edit';
+              }
+              if(document.querySelector('.page--thank-you')){
+                  var header__title = document.querySelector('.os-header__title')?.textContent.replace("!", ",");
+                  var step__title = document.querySelector('.os-step__title').textContent.toLowerCase();
+                  document.querySelector('.os-header__title').innerHTML = header__title + step__title ;
+                  document.querySelector('.os-header__heading').appendChild(document.querySelector('.os-step__description'));
+                  document.querySelector('.main-content .wrapper').insertBefore(document.querySelector('.os-header'), document.querySelector('.main-content .wrapper').firstChild);
+              }
+              if(shippingAddressInput && shippingAddressLabel) {
+                  shippingAddressInput.appendChild(shippingAddressLabel);
+              }
+
+
+      window.Checkout.$( document ).ready(function() {
+
+      if(window.Checkout.$("span[data-shipping-method-label-title]").length>0) {
+
+      window.Checkout.$("span[data-shipping-method-label-title]").each(function( index ) {
+      var thisContent = window.Checkout.$(this).html();
+      var thisContentSplit = thisContent.split("|");
+      var reBuiltContent = thisContentSplit[0]+'<span class="shippingSubtitle">'+thisContentSplit[1]+"</span>";
+      window.Checkout.$(this).html(reBuiltContent)
+      });
+
+      }
+
+      if(window.Checkout.$(".alt-payment-list__item--apple-pay").length > 0) {
+      window.Checkout.$("#MainContent").addClass('hasApplePay');
+      }
+
+
+       USDeliveryMarkup = '<p id="USDutiesAndTaxesCheckout">{{settings.chinti_us_delivery_message}}</p>';
+      {% if shop.url contains "us." %}
+      if(window.Checkout.$(".order-summary__section--total-lines").length > 0) {
+          window.Checkout.$(".order-summary__section--total-lines").after(USDeliveryMarkup);
+      }
+      {% elsif shop.url contains "eu." %}
+          if(window.Checkout.$(".order-summary__section--total-lines").length > 0) {
+              window.Checkout.$(".order-summary__section--total-lines").after(USDeliveryMarkup);
+          }
+
+          if(window.Checkout.$('.section--payment-method').length > 0) {
+              window.Checkout.$('.step__footer__continue-btn .btn__content').text('Order and Pay');
+          }
+      {% else %}
+      var error = document.querySelector('.notice.notice--error:not(.hidden) .notice__text');
+      if (error && error.innerText === 'ZIP code does not match billing address') {
+          error.innerText = 'Post code does not match billing address';
+      }
+      {% endif %}
+
+
+
+
+
+      });
+    </script>
+
+    <!-- globale_js_include -->
+    {% comment %}
+      {% include 'globale-js-include' %}
+      {% include 'globale-order' %}
+    {% endcomment %}
+
+    <!-- Start of Trusted Shops Buyer Protection -->
+    <div id="trustedShopsCheckout" style="display: none;">
+      <span id="tsCheckoutOrderNr">{{ order.order_number }}</span>
+      <span id="tsCheckoutBuyerId">{{ customer.id }}</span>
+      <span id="tsCheckoutBuyerEmail">{{ order.email }}</span>
+      <span id="tsCheckoutOrderAmount">{{ order.total_price | money_without_currency }}</span>
+      <span id="tsCheckoutOrderPaymentType">{{ order.transactions | first | gateway }}</span>
+      <span id="tsCheckoutOrderCurrency">{{ shop.currency }}</span>
+      <!-- for each product in the basket full set of data is required -->
+      {% for line_item in order.line_items %}
+        <span class="tsCheckoutProductItem">
+          <span class="tsCheckoutProductUrl">
+            {{- shop.url -}}
+            {{- line_item.product.url -}}
+          </span>
+          <span class="tsCheckoutProductImageUrl"
+            >http:{{ line_item.product.images | first | image.src | product_img_url: 'large' -}}
+          </span>
+          <span class="tsCheckoutProductName">{{ line_item.product.title }}</span>
+          <span class="tsCheckoutProductSKU">{{ line_item.sku }}</span>
+          <span class="tsCheckoutProductBrand">{{ line_item.product.vendor }}</span>
+        </span>
+      {% endfor %}
+      <!-- product reviews end -->
+    </div>
+    <!-- End of Trusted Shops Buyer Protection -->
+
+    {% comment %}{% include 'booster-discounts' %}{% endcomment %}
+
+    <script>
+
+   //redeye task start
+  
+   const euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re';
+   const usCountryList = 'ca,us';
+   const ukCountryList = 'gb';
+
+    function getCookie(cookieName) {
+      const value = document.cookie.match(`(^|;)\\s*${cookieName}\\s*=([^;]+)`);
+      return value ? value.pop() : null;
+    }
+
+    if(Shopify.Checkout.step === 'contact_information') {
+      let track = document.querySelector("#checkout_buyer_accepts_marketing").checked || false;
+    
+      if(track){
+         console.log('tarck-contactww', track);
+         document.cookie = `isTick=true; Path=/`;
+      }else{
+         document.cookie = `isTick=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      }
+      var checkbox = document.querySelector("#checkout_buyer_accepts_marketing");
+
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+      
+          document.cookie = `isTick=true; Path=/`;
+          track= true;
+        } else {
+       
+          document.cookie = `isTick=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+          track= false;
+        }
+      });
+    }
+   
+    // RedEye integration in thank you page for checkout start triggering.
+    if(Shopify.Checkout.step === 'shipping_method') {
+      const myCookieValue = getCookie('isTick');
+      let helper = myCookieValue;
+    
+      let newsLetter, notify, siteName;
+      const emailCheck = {{customer.email | json}};
+      const countryCode = Shopify.Checkout.shippingAddress.countryCode.toLowerCase();
+  
+      
+      if(euCountryList.includes(countryCode)){
+          newsLetter = 'checkoutEU';
+          notify = 'checkoutEU';
+          siteName = 'EU';
+  
+        }else if(usCountryList.includes(countryCode)){
+            newsLetter = 'checkoutUS';
+            notify = 'checkoutUS';
+            siteName = 'US';
+        }else if(ukCountryList.includes(countryCode)){
+            newsLetter = 'checkoutUK';
+            notify = 'checkoutUK';
+            siteName = 'UK';
+        }else{
+            newsLetter = 'checkoutUK';
+            notify = 'checkoutUK';
+            siteName = 'UK';
+      }
+      if(emailCheck){
+         const mainSource = `https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=checkout-start&member_type=Member&email=${emailCheck}&emailpermit=${helper !== null ? 1: 0 }&notify=${notify}&newsletter=${newsLetter}&site=${siteName}`;
+         const structure = `<img src="${mainSource}" width="1" height="1" class="checkout_start_tag"/>`;
+         if(document.querySelector('.checkout_start_tag')){
+            document.querySelector('.checkout_start_tag').remove();
+         }
+         document.body.insertAdjacentHTML('beforeend', structure);
+      }else{
+        const emailParseFromDom = document.querySelector('.review-block__content').innerText;
+        const mainSource = `https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=checkout-start&member_type=Visitor&email=${emailParseFromDom? emailParseFromDom : ''}&emailpermit=${helper !== null ? 1: 0 }&notify=${notify}&newsletter=${newsLetter}&site=${siteName}`;
+        const structure = `<img src="${mainSource}" width="1" height="1" class="checkout_start_tag"/>`;
+        if(document.querySelector('.checkout_start_tag')){
+          document.querySelector('.checkout_start_tag').remove();
+        }
+        document.body.insertAdjacentHTML('beforeend', structure);
+      }
+      
+    };
+    
+    // RedEye integration in thank you page for Sale Confirm triggering.
+    if(Shopify.Checkout.step === 'thank_you') {
+           let emailPermit, newsLetter, notify, siteName;
+           const customerInfo = Shopify.checkout;
+           const emailCheck = customerInfo.email;
+           const countryCode = customerInfo.shipping_address.country_code.toLowerCase();
+         //  const orderNumber = document.querySelector('.os-order-number').innerText.toLocaleLowerCase().split('order ')[1].toUpperCase();
+        
+           let count = 0;
+           const totalProds = Shopify.checkout.line_items;
+           totalProds.forEach((item)=> count+=item.quantity);
+  
+          
+           if(emailCheck){
+              emailPermit=1;
+              if(euCountryList.includes(countryCode)){
+                  newsLetter = 'registrationEU';
+                  notify = 'registrationEU';
+                  siteName = 'EU';
+  
+              }else if(usCountryList.includes(countryCode)){
+                  newsLetter = 'registrationUS';
+                  notify = 'registrationUS';
+                  siteName = 'US';
+              }else if(ukCountryList.includes(countryCode)){
+                  newsLetter = 'registrationUK';
+                  notify = 'registrationUK';
+                  siteName = 'UK';
+              }else{
+                  newsLetter = 'registrationUK';
+                  notify = 'registrationUK';
+                  siteName = 'UK';
+              }
+           }else{
+              emailPermit=0;
+              newsLetter = '';
+              notify = '';
+              if(euCountryList.includes(countryCode)){
+                  siteName = 'EU';
+              }else if(usCountryList.includes(countryCode)){
+                  siteName = 'US';
+              }else if(ukCountryList.includes(countryCode)){
+                  siteName = 'UK';
+              }
+              else{
+                  siteName = 'UK';
+              }
+           }
+         
+           const mainSource = `https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=sale-confirm&email=${emailCheck}&sale_conf=yes&items=${count}&order_ref={{ checkout.order_number }}&total_val={{ checkout.total_price | money_without_currency | remove:',' }}&site=${siteName}&currency={{ checkout.currency }}`;
+           const structure = `<img src="${mainSource}" width="1" height="1" class="welcome_tag"/>`;
+           if(document.querySelector('.welcome_tag')){
+              document.querySelector('.welcome_tag').remove();
+           }
+           document.body.insertAdjacentHTML('beforeend', structure);
+           
+       };
+  
+    //redeye task finish
+  
+  try {
+     document.querySelectorAll('.product__description__property').length>0 && document.querySelectorAll('.product__description__property').forEach((item)=>{
+        if(item.textContent.includes("MID")){
+            item.style.display="none";
+        }
+    });
+    // Checkout dom update when discount applied. Removing MID codes
+    const targetNode = document.querySelector('.product-table');
+    const config = { attributes: false, childList: true, subtree: false };
+    const callback = function (mutationsList) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList' && mutation.addedNodes && mutation.addedNodes.length > 0) {
+      	document.querySelectorAll('.product__description__property').length>0 && document.querySelectorAll('.product__description__property').forEach((item)=>{
+          if(item.textContent.includes("MID")){
+              item.style.display="none";
+          }
+      });
+      }
+    }
+  };
+    const observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
+  }
+  catch(err) {
+  }
+    </script>
+
+    {% comment %} {% include "globale-checkout-js" %} {% endcomment %}
+  </body>
+</html>

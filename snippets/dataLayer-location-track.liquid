@@ -1,0 +1,26 @@
+{% assign euCountryListForInfo = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' %}
+{% assign usCountryListForInfo = 'ca,us' %}
+{% assign uKCountryListForInfo = 'gb' %}
+{% assign isoCodeForInfo = localization.country.iso_code | downcase %}
+{% assign zoneForInfo = '' %}
+
+{%- if euCountryListForInfo contains isoCodeForInfo -%} 
+{% assign zoneForInfo = 'EU' %}
+{% elsif usCountryListForInfo contains isoCodeForInfo %}
+{% assign zoneForInfo = 'US' %}
+{% elsif uKCountryListForInfo contains isoCodeForInfo %}
+{% assign zoneForInfo = 'UK' %}
+{% else %}
+{% assign zoneForInfo = 'ROW' %}
+{% endif %}
+
+ <script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      "event": "visitor_location",       
+      "location": {        
+        "countryCode": {{ localization.country.iso_code | json }},       
+        "zone": {{ zoneForInfo | json }}        
+      }       
+    });
+</script>

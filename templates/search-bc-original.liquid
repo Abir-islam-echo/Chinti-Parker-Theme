@@ -1,0 +1,235 @@
+{% comment %}
+The search.liquid template is not a required template.
+That search.liquid template is included in the current theme to make it easier for you
+to customize your /search page.
+Whether you are using your own template for the search page or not,
+the {{ content_for_header }} tag in theme.liquid will always output the following on the /search page:
+<link rel="stylesheet" href="//cdn.shopify.com/s/global/search.css" type="text/css" />
+So the /search page is always styled by a globally-hosted stylesheet called search.css.
+You may override and complement that CSS in your theme's stylesheet.
+We are using a div#searchresults below so that the styles defined in search.css get
+applied to the elements on this page; the 'searchresults' id is used in the CSS
+selectors inside search.css.
+{% endcomment %}
+
+{% comment %}If no value is passed to the snippet, we will set the snippet variable to a sensible default.{% endcomment %}
+{% if product-grid-item == blank  %}{% assign product-grid-item = 'three-per-row' %}{% endif %}
+
+{% comment %}
+search.performed is false when accessing the /search page without a 'q' parameter set
+in the URL. A shop-owner can link to the /search page from one of her link lists.
+It is important to show a search form on that page if search.performed is false.
+{% endcomment %}
+
+{% if search.performed == false %}
+<div class="wrapper" id="blankSearchForm">
+	<div class="row">
+		<div class="centered">
+			<div class="col-full-width text-center">
+				<h1>Search our store&hellip;</h1>
+			</div>
+			<form action="/search" method="get" class="search-form" role="search">
+				<input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
+				<input type="submit" class="icon-magnifier" id="search-submit" value="Search" />
+			</form>
+		</div>
+	</div>
+</div>
+{% endif %}
+
+{% if search.performed %}
+
+
+
+{% paginate search.results by 20 %}
+
+{% comment %}
+Common pitfall to avoid: search.results should never be accessed before the opening
+paginate tag. Move the opening and closing paginate tags to the very top and bottom of your
+search.liquid template if you need to.
+If you fail to do the above, the pagination of search results will be broken.
+search.results_count is fine to access in or out of the paginate block.
+{% endcomment %}
+
+{% if search.results_count == 0 %}
+
+
+
+
+
+<div class="wrapper">
+	<div class="row page-title">
+		<h1>Search results for &quot;{{ search.terms | escape }}&quot;</h1>
+		<p>Your search for "{{ search.terms }}" did not yield any results.</p>
+	</div>
+	{% section 'cms-sections-search' %}
+</div>
+
+
+
+
+{% else %}
+<div class="wrapper">
+		<div class="row page-title">
+		<h1>Search results for &quot;{{ search.terms | escape }}&quot;</h1>
+	
+	</div>
+  			<div class="toolbar toolbar-product clearfix">
+		
+			<!--div class="sorter">
+				<label for="sorter">Sort by</label>
+				<div class="selectWrapper">
+					<select id="sorter" class="sort-by right">
+						<option value="manual">Featured</option>
+						<option value="price-ascending">Price: Low to High</option>
+						<option value="price-descending">Price: Hight to Low</option>
+						<option value="title-ascending">A-Z</option>
+						<option value="title-descending">Z-A</option>
+						<option value="created-ascending">Oldest to Newest</option>
+						<option value="created-descending">Newest to Oldest</option>
+						<option value="best-selling">Best Selling</option>
+					</select>
+				</div>
+			</div-->
+			
+			{% comment %}
+			<div class="per-page">
+				<label for="view-per-page">View</label>
+				<div class="selectWrapper">
+					<select id="view-per-page" class="right">
+						<option value="15">15 per page</option>
+						<option value="30">30 per page</option>
+					</select>
+				</div>
+			</div>
+			{% endcomment %}
+	
+		</div>
+				<div class="collection-product-grid">
+				<div class="product-grid clearfix">
+					{% for item in search.results %}
+			<div class="item">
+
+
+
+
+  {% if item.object_type == 'article' %}
+
+
+{% if item.image %}
+{% assign article_has_image = true %}
+{% assign image_src = item | img_url: 'x600',crop: 'center'  %}
+{% else %}
+
+{% assign article_has_image = false %}
+{% assign img_tag = '<' | append: 'img' %}
+{% if item.excerpt_or_content contains img_tag %}
+  {% assign src = item.excerpt_or_content | split: 'src="' %}
+  {% assign src = src[1] | split: '"' | first %}
+  {% if src %}
+    {% assign article_has_image = true %}
+    {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+  {% endif %}
+{% endif %}
+{% endif %}
+
+
+
+
+  <div class="product-image-wrap">
+<a href="{{ item.url }}" title="{{ item.title | escape }}">
+<div class="imageThumb"{% if article_has_image %} style="background-image:url({{image_src}})"{% endif %}></div>
+</a>
+						</div>
+ <div class="product-caption">
+      <h2 class="product-name" itemprop="name">
+      <a href="{{ item.url | within: collection }}">
+        {{ item.title }}
+      </a>
+      </h2>
+  </div>
+
+ {% elsif item.object_type == 'page' %}
+{% if item.image %}
+
+{% assign article_has_image = true %}
+{% assign image_src = item | img_url: '600x600',crop: 'center'  %}
+{% else %}
+
+{% assign article_has_image = false %}
+{% assign img_tag = '<' | append: 'img' %}
+
+
+
+{% if item.content contains img_tag %}
+  {% assign src = item.content | split: 'src="' %}
+  {% assign src = src[1] | split: '"' | first %}
+  
+  {% if src %}
+  
+    {% assign article_has_image = true %}
+    {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+  
+  {% endif %}
+{% endif %}
+{% endif %}
+
+
+
+
+  <div class="product-image-wrap">
+
+ <a href="{{ item.url }}" title="{{ item.title | escape }}">
+							
+							
+								<div class="imageThumb"{% if article_has_image %} style="background-image:url({{image_src}})"{% endif %}></div>
+
+							 </a>
+
+							
+						</div>
+ <div class="product-caption">
+      <h2 class="product-name" itemprop="name">
+      <a href="{{ item.url | within: collection }}">
+        {{ item.title }}
+      </a>
+      </h2>
+  </div>
+{% else %}
+   {% comment %}
+      'item' is a product.
+      All product object properties can be accessed.
+    {% endcomment %}
+
+{% comment %} Create a copy of the 'item' object and pass it in for the standard Collection item template to save duplicating code: {% endcomment %}
+{% assign searchItem = item %}
+{% include 'product-grid-item' with searchItem %}
+
+
+{% endif %}
+
+</div>
+			
+					
+					{% endfor %}
+				</div>
+			</div>
+
+{% endif %}
+		
+		{% if paginate.pages > 1 %}
+		<div class="collection-pagination">
+	
+			<div class="toolbar-container">
+				{{ paginate | default_pagination }}
+			</div>
+	
+		</div>
+		{% endif %}
+		
+ </div>
+
+{% endpaginate %}
+
+{% endif %}
+

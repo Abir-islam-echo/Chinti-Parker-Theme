@@ -1,0 +1,340 @@
+
+    <div data-section-id="{{ section.id }}" data-section-type="banner-twocolumns-section" class="banner-section banner-twocolumns-section">
+    {% for block in section.blocks %}
+        <div class="row {{ block.settings.image_width }} {{ block.settings.column_hide }}">
+            <div class="col col-left">
+	            {%unless block.settings.link1 == blank %}
+	            	<a class="link content-left" href="{{ block.settings.link1 }}">
+	            {% else %}
+	            	<span class="link content-left">
+	            {%endunless%}
+				{%unless block.settings.heading1 == blank %}
+		                <span class="content {{ block.settings.text_color1 }} {{ block.settings.text_color_mobile1 }} {{ block.settings.text_align_left }}">
+		                    <span class="title">{% if block.settings.heading1 %}{{ block.settings.heading1 | escape }}{% endif %}</span>
+		                    {%unless block.settings.link1 == blank %}<span class="btn">{{block.settings.link_text1}}</a>{%endunless%}
+		                </span>
+	            {%endunless%}
+	            {%unless block.settings.link1 == blank %}
+	            	</a>
+	            {% else %}
+	            	</span>
+	            {%endunless%}
+
+
+
+
+{% if block.settings.video-src1 != blank %}
+
+{% assign aspectRatio = 56.25 %}
+{% if block.settings.aspectRatio1 contains ":" %}
+  {% assign aspectSplit = block.settings.aspectRatio1 | split: ':' %}
+
+{%comment%} convert to a Float so the divided_by doesn't round down: {%endcomment%}
+{% assign secondValue =  aspectSplit[1] %}
+{% assign secondValue = secondValue | plus: 0.0 %}
+
+  {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0]  %}
+{% endif %}
+
+<div class="videoWrapper" style="background-image: url({{ block.settings.video-src1 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%">
+  <video preload="auto" autoplay="autoplay" muted="muted" loop="loop" poster="{{ 'video-poster-transp.png' | file_url  }}" playsinline>
+     <source src="{{ block.settings.video-src1 | append: '.mp4' | file_url  }}" type="video/mp4"></source>
+     <source src="{{ block.settings.video-src1 | append: '.webm' | file_url  }}" type="video/webm"></source>
+    <source src="{{ block.settings.video-src1 | append: '.ogv' | file_url  }}" type="video/ogg"></source>
+  </video>
+</div>
+{% else %}
+
+
+
+                {% if block.settings.image1 %}
+                    <picture>
+						<source
+                media="(min-width: 768px)"
+                srcset="{{ block.settings.image1 | img_url: '100x' }}"
+                data-srcset="{{ block.settings.image1 | img_url: 'master' }}"
+            >
+						{% if block.settings.mobile_image1 %}
+                <source
+                    srcset="{{ block.settings.mobile_image1 | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.mobile_image1 | img_url: '500x' }}"
+                >
+            {% endif %}
+						<img
+                src="{{ block.settings.image1 | img_url: '100x' }}"
+                data-src="{{ block.settings.image1 | img_url: 'master' }}"
+                alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                class="lazyload"
+            />
+					</picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+                {% endif %}
+            </div>
+            <div class="col col-right">
+
+	            {%unless block.settings.link2 == blank %}
+	            	<a class="link content-right" href="{{ block.settings.link2 }}">
+	            {% else %}
+	            	<span class="link content-right">
+	            {%endunless%}
+				{%unless block.settings.heading2 == blank %}
+		                <span class="content {{ block.settings.text_color2 }} {{ block.settings.text_color_mobile2 }} {{ block.settings.text_align_right }}">
+		                    <span class="title">{% if block.settings.heading2 %}{{ block.settings.heading2 | escape }}{% endif %}</span>
+		                    {%unless block.settings.link2 == blank %}<span class="btn">{{block.settings.link_text2}}</a>{%endunless%}
+		                </span>
+	            {%endunless%}
+	            {%unless block.settings.link2 == blank %}
+	              	</a>
+	            {% else %}
+	              	</span>
+	            {%endunless%}
+
+{% if block.settings.video-src2 != blank %}
+
+{% assign aspectRatio = 56.25 %}
+{% if block.settings.aspectRatio2 contains ":" %}
+  {% assign aspectSplit = block.settings.aspectRatio2 | split: ':' %}
+
+{%comment%} convert to a Float so the divided_by doesn't round down: {%endcomment%}
+{% assign secondValue =  aspectSplit[1] %}
+{% assign secondValue = secondValue | plus: 0.0 %}
+
+  {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0]  %}
+{% endif %}
+
+<div class="videoWrapper" style="background-image: url({{ block.settings.video-src2 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%">
+  <video preload="auto" autoplay="autoplay" muted="muted" loop="loop" poster="{{ 'video-poster-transp.png' | file_url  }}" playsinline>
+     <source src="{{ block.settings.video-src2 | append: '.mp4' | file_url  }}" type="video/mp4"></source>
+     <source src="{{ block.settings.video-src2 | append: '.webm' | file_url  }}" type="video/webm"></source>
+    <source src="{{ block.settings.video-src2 | append: '.ogv' | file_url  }}" type="video/ogg"></source>
+  </video>
+</div>
+{% else %}
+
+
+
+
+				{% if block.settings.image2 %}
+                    <picture>
+						<source
+                media="(min-width: 768px)"
+                srcset="{{ block.settings.image2 | img_url: '100x' }}"
+                data-srcset="{{ block.settings.image2 | img_url: 'master' }}"
+            >
+						{% if block.settings.mobile_image2 %}
+                <source
+                    srcset="{{ block.settings.mobile_image2 | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.mobile_image2 | img_url: '500x' }}"
+                >
+            {% endif %}
+						<img
+                src="{{ block.settings.image2 | img_url: '100x' }}"
+                data-src="{{ block.settings.image2 | img_url: 'master' }}"
+                alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                class="lazyload"
+            />
+					</picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+                {% endif %}
+            </div>
+
+
+
+
+        </div>
+        {% endfor %}
+    </div>
+
+{% schema %}
+{
+    "name": "Banner - Two Columns",
+    "class": "index-section",
+    "max_blocks": 1,
+    "blocks": [{
+		"type": "bannergrid-twocolumns",
+		"name": "Banner - Two Columns",
+		"settings": [
+			{
+			  "type": "image_picker",
+			  "id": "image1",
+			  "label": "Image Left"
+			},
+			{
+			  "type": "image_picker",
+			  "id": "mobile_image1",
+			  "label": "Mobile Image Left"
+			},
+			 {
+            "type": "text",
+            "id": "video-src1",
+            "label": "Video filename Left",
+            "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+          },
+             {
+            "type": "text",
+            "id": "aspectRatio1",
+            "label": "Video Aspect Ratio",
+            "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+            "default": "690:750"
+          },
+			{
+			  "type": "image_picker",
+			  "id": "image2",
+			  "label": "Image Right"
+			},
+			{
+			  "type": "image_picker",
+			  "id": "mobile_image2",
+			  "label": "Mobile Image Right"
+			},
+			 {
+            "type": "text",
+            "id": "video-src2",
+            "label": "Video filename Right",
+            "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+          },
+             {
+            "type": "text",
+            "id": "aspectRatio2",
+            "label": "Video Aspect Ratio",
+            "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+            "default": "690:750"
+          },
+			{
+			  "type": "text",
+			  "id": "heading1",
+			  "label": "Left Banner Heading",
+			  "default": "Heading"
+			},
+            {
+                "type": "select",
+                "id": "text_color1",
+                "label": "Left Banner Text Color",
+                "options": [
+                    { "value": "text-light", "label": "Light" },
+                    { "value": "text-dark", "label": "Dark" }
+                ],
+                "default": "text-light"
+            },
+			{
+                "type": "select",
+                "id": "text_color_mobile1",
+                "label": "Left Banner Text Color on Mobile",
+                "options": [
+                    { "value": "text-light-mobile", "label": "Light" },
+                    { "value": "text-dark-mobile", "label": "Dark" }
+                ],
+                "default": "text-light-mobile"
+            },
+			{
+                "type": "select",
+                "id": "text_align_left",
+                "label": "Left Banner Text Alignment",
+                "options": [
+                    { "value": "text-left", "label": "Left" },
+                    { "value": "text-right", "label": "Right" }
+                ],
+                "default": "text-left"
+            },
+			{
+			  "type": "text",
+			  "id": "heading2",
+			  "label": "Right Banner Heading",
+			  "default": "Heading"
+			},
+            {
+                "type": "select",
+                "id": "text_color2",
+                "label": "Right Banner Text Color",
+                "options": [
+                    { "value": "text-light", "label": "Light" },
+                    { "value": "text-dark", "label": "Dark" }
+                ],
+                "default": "text-light"
+            },
+			{
+                "type": "select",
+                "id": "text_color_mobile2",
+                "label": "Right Banner Text Color on Mobile",
+                "options": [
+                    { "value": "text-light-mobile", "label": "Light" },
+                    { "value": "text-dark-mobile", "label": "Dark" }
+                ],
+                "default": "text-light-mobile"
+            },
+			{
+                "type": "select",
+                "id": "text_align_right",
+                "label": "Right Banner Text Alignment",
+                "options": [
+                    { "value": "text-left", "label": "Left" },
+                    { "value": "text-right", "label": "Right" }
+                ],
+                "default": "text-left"
+            },
+			{
+			  "type": "url",
+			  "id": "link1",
+			  "label": "Left Banner Link"
+			},
+			{
+			  "type": "text",
+			  "id": "link_text1",
+			  "label": "Left Banner Link Text",
+			  "default": "Shop Now"
+			},
+			{
+			  "type": "url",
+			  "id": "link2",
+			  "label": "Right Banner Link"
+			},
+			{
+			  "type": "text",
+			  "id": "link_text2",
+			  "label": "Right Banner Link Text",
+			  "default": "Shop Now"
+			},
+            {
+				"type": "select",
+			    "id": "image_width",
+			    "label": "Column Width",
+			    "options": [
+			      { "value": "image-half", "label": "Half" },
+			      { "value": "image-third-left", "label": "Third Left" },
+                  { "value": "image-third-right", "label": "Third Right" }
+			    ],
+			    "default": "image-half"
+            },
+            {
+			    "type": "select",
+			    "id": "column_hide",
+			    "label": "Mobile Display Setting",
+			    "options": [
+			      { "value": "hide-left", "label": "Show only right banner on mobile" },
+			      { "value": "hide-right", "label": "Show only left banner on mobile" },
+			      { "value": "show-both", "label": "Show both banners on mobile" }
+			    ],
+			    "default": "hide-left"
+			}
+
+		]
+	}],
+	"presets": [{
+        "name": "Banner - Two Column",
+        "category": "Image",
+        "blocks": [{
+            "type": "bannergrid-twocolumns"
+        }]
+	}]
+}
+{% endschema %}

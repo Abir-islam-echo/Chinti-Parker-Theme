@@ -1,0 +1,40 @@
+{%- comment -%}v1.0
+Wishl favorites wishlist button and list container. No need to edit this snippet.
+Any changes may be overwritten later by the Wishl app.
+
+To have add buttons show for each product in a grid, such as collection, related products,
+or home featured products, include wishl snippet in grid loop with atomic set to true:
+
+Example (inside liquid tag)
+  - include 'wishl-wishlist', wishl_adder: 'atomic'
+
+Example with button text:
+  - include 'wishl-wishlist', wishl_adder: 'atomic_with_text'
+
+Example for related products, passing in specific product variable (good to use in a loop):
+  - include 'wishl-wishlist', wishl_adder: 'atomic', product: product_from_loop
+
+To have an add button in a quick view:
+  - include 'wishl-wishlist', wishl_adder: 'quickview'
+
+If quick view snippet includes a form snippet:
+  - include 'product-form', wishl_adder: 'quickview'
+{%- endcomment -%}
+
+  {%- capture variantsPrices -%}
+    {%- for variant in product.variants -%},[{{ variant.id }},{{ variant.price }}]{%- endfor -%}
+  {%- endcapture -%}
+  {%- capture variantsSoldOut -%}
+    {%- for variant in product.variants -%}
+      {%- unless variant.available -%},{{ variant.id }}{%- endunless -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign variantsSoldOut = variantsSoldOut | slice: 1, 9999999 %}
+  {%- capture adderData -%}
+    data-variants-prices="[{{ variantsPrices | slice: 1, 9999999 }}]"
+    {% if variantsSoldOut != blank %} data-variants-sold-out="[{{ variantsSoldOut }}]"{%- endif -%}
+    {% if wishl_adder %} data-adder="{{ wishl_adder }}"{%- endif -%}
+    {% if wishl_adder contains 'atomic' %} data-variant-id="{{product.selected_or_first_available_variant.id}}"{%- endif -%}
+    {% unless shop.customer_accounts_enabled %} data-no-dropdown="true"{%- endunless -%}
+  {%- endcapture -%}
+<div class="wishl-add-wrapper" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}" {{ adderData | strip }}></div>

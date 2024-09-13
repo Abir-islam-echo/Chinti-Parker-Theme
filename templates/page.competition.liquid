@@ -1,0 +1,72 @@
+{% section 'cms-sections-2' %}
+
+<div class="wrapper">
+	<div class="page-title">
+		<h1>{{ page.title }}</h1>
+	</div>
+</div>
+
+{% form 'contact' %}
+<div class="wrapper">
+	<div class="cms-content-center">
+		{% if form.posted_successfully? %}
+		<div class="successForm feedback form--success">
+			{{ 'contact.form.post_success' | t }}
+		</div>
+		{% endif %}
+
+		{% if form.errors %}
+		<div class="errorForm feedback">
+			<!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+			<p>
+				Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:
+			</p>
+			{% for field in form.errors %}
+			<p>
+				The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.
+			</p>
+			{% endfor %}
+		</div>
+		{% endif %}
+		<div id="formCompetition">
+			<div class="col-left cms-content">
+				{{ page.content }}
+			</div>
+			<div class="col-right cms-content">
+				<h4>Enter Competition</h4>
+				<p>
+					<input placeholder="First Name" type="email" required id="contactFormFirstname" name="contact[firstname]">
+				</p>
+				<p>
+					<input placeholder="Surname" type="email" required id="contactFormSurname" name="contact[surname]">
+				</p>
+				<p>
+					<input placeholder="{{ 'contact.form.email' | t }}" type="email" required id="contactFormEmail" name="contact[email]">
+				</p>
+				<p>
+					<input placeholder="{{ 'contact.form.phone' | t }}" type="telephone" id="contactFormTelephone" name="contact[phone]">
+				</p>
+				<p>
+					<label>Since 1605, November 5th has become known as what?</label>
+					<input type="radio" id="ContactFormApril" name="contact[date]" value="April Fools Day" /> April Fools Day<br>
+					<input type="radio" id="contactFormTuesday" name="contact[date]" value="Shrove Tuesday" /> Shrove Tuesday<br> 
+					<input type="radio" id="ContactFormNight" name="contact[date]" value="Bonfire Night" /> Bonfire Night<br>
+				</p>
+				<p class="checkbox">
+					<input type="checkbox" id="ContactFormNewsletter" name="contact[ContactFormNewsletter]" />
+					<label for="ContactFormNewsletter">Sign up to our newsletter</label>
+				</p>
+				<br />
+				<p>
+					<input type="submit" class="button-primary" id="contactFormSubmit" value="Enter competition" />
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endform %}
+
+{% section 'cms-sections-account-and-cms' %}
+
+
+{% include 'gtm-page' %}

@@ -1,0 +1,87 @@
+
+<div class="item">
+
+
+
+
+                   {% if block.settings.image %}
+                        <a href="#" class="pressClippingLink">
+                    {% endif %}
+                    {% if block.settings.preview_image %}
+						<picture>
+			
+                            <source media="(min-width: 500px)" srcset="{{ block.settings.preview_image | img_url: '700x' }}">
+							<source srcset="{{ block.settings.preview_image | img_url: '500x' }}">
+							<img src="{{ block.settings.preview_image | img_url: '700x' }}" alt="{% if block.settings.title %}{{ block.settings.title | escape }}{% endif %}" />
+						</picture>
+                        {% else %}
+<picture>
+                      <source media="(min-width: 500px)" srcset="{{ block.settings.image | img_url: '700x' }}">
+                            <source srcset="{{ block.settings.image | img_url: '500x' }}">
+                            <img src="{{ block.settings.image | img_url: '700x' }}" alt="{% if block.settings.title %}{{ block.settings.title | escape }}{% endif %}" />
+                        </picture>
+
+                    {% endif %}
+                 
+                   {% if block.settings.image %}
+                        </a>
+                    {% endif %}
+
+
+           {% if block.settings.title %}         
+<div class="product-caption">
+      <h2 class="product-name"><span class="productName">
+        {{block.settings.title}}</span>
+      </h2>
+  </div>
+{% endif %}
+
+
+
+
+
+
+<div class="pressLightBoxFull">
+    {% if block.settings.image %}
+                        
+                        <picture>
+                             <source media="(min-width: 1200px)" srcset="{{ block.settings.image | img_url: '1600x' }}">
+                            <source media="(min-width: 900px)" srcset="{{ block.settings.image | img_url: '1200x' }}">
+                            <source media="(min-width: 500px)" srcset="{{ block.settings.image | img_url: '900x' }}">
+                            <source srcset="{{ block.settings.image | img_url: '500x' }}">
+                            <img src="{{ block.settings.image | img_url: '1600x' }}" alt="{% if block.settings.title %}{{ block.settings.title | escape }}{% endif %}" />
+                        </picture>
+                    
+<div class="pressText">
+ {% if block.settings.product_link %}
+<h4>{{block.settings.title}}</h4>
+   {% endif %}                 
+ {% if block.settings.product_link %}
+<a href="{{block.settings.product_link}}">
+
+{% assign productHandle = block.settings.product_link | split: "products/" %}
+{% assign thisProduct = all_products[productHandle[1]] %}
+
+{{thisProduct.title}}
+    {% if thisProduct.compare_at_price > thisProduct.price %}
+                            <span class="product-price on-sale"> {{ thisProduct.price | money_with_currency }} </span>
+                            <s class="product-compare-price"> {{ thisProduct.compare_at_price | money_with_currency }} </s>
+                            {% else %}
+                            <span class="product-price"> {{ thisProduct.price | money_with_currency }} </span>
+                            {% endif %}
+<span class="pressBuyNow">Buy Now</span>
+</a>
+   {% endif %}
+</div>
+
+                    {% endif %}
+</div>
+
+</div>
+
+
+
+
+
+
+

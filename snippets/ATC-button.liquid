@@ -1,0 +1,20 @@
+{% if product.selected_or_first_available_variant.available %}
+  <form action="/cart/add" method="post" enctype="multipart/form-data">
+    <input
+      type="hidden"
+      name="id"
+      id="atc-product-id"
+      value="{{ product.selected_or_first_available_variant.id }}"
+    >
+    <input type="hidden" name="properties[MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
+    <input type="hidden" name="properties[MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
+    <input type="hidden" name="properties[MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+    <input type="hidden" name="properties[MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+    <input type="hidden" name="quantity" value="1">
+    <button type="submit" name="add" class="disable-atc">Please select a size &#8593;</button>
+  </form>
+{% else %}
+  <a href="#" id="BackInStock" class="btn button back-in-stock" data-modal-trigger>
+    <span id="AddToCartText">{{ 'products.product.back_in_stock.email_me' | t }}</span>
+  </a>
+{% endif %}

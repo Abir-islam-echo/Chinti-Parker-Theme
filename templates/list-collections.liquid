@@ -1,0 +1,21 @@
+{% comment %}
+<!-- Alternatively, if not using a snippet, use the code below.
+To use the code below, get rid of the above 'include', and get rid of the comment tags, and you're in business. -->
+{{ content_for_index }}
+
+{% paginate collections by 6 %}
+  <h1>Collections</h1>
+  <div class="wrapper">
+    <ul class="grid row clearfix">
+    {% for collection in collections %}
+      {% include 'collection-grid-item' with 'col-wide-4 col-medium-4 col-small-6 col-smallest-6 centered' %}
+    {% endfor %}
+    </ul>
+  </div>
+  {% if paginate.pages > 1 %}
+  <div id="pagination">
+    {{ paginate | default_pagination }}
+  </div>
+  {% endif %}
+{% endpaginate %}
+{% endcomment %}

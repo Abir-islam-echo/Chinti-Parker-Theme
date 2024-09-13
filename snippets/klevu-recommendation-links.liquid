@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    {% if template == 'collection'%}
+        var klevu_page_meta = {
+            "pageType": "category",
+            "categoryName": "{{collection.title | escape }}",
+            "categoryUrl": "{{shop.url}}{{collection.url}}",
+        };
+    {% endif %}
+    {% if template == 'product'%}
+        var klevu_page_meta  = {
+            "pageType": "pdp",
+            "itemName": "{{product.title | escape }}",
+            "itemUrl": "{{shop.url}}{{ product.url}}",
+            "itemId": "{{product.selected_or_first_available_variant.id}}",
+            "itemGroupId": "{{product.id}}",
+            "itemSalePrice": "{{product.price | money_without_currency}}",
+            "itemCurrency": "{{shop.currency}}"
+        };
+    {% endif %}
+    {% if template == 'cart'%}
+        var cartRecords = [];
+        {% for item in cart.items %}
+            cartRecords.push({'itemId': {{item.variant_id}} ,'itemGroupId': {{item.product_id}} });
+        {% endfor %}
+        var klevu_page_meta = {
+            "pageType": "cart",
+            "cartRecords": cartRecords
+        };
+    {% endif %}
+</script>
+<script src="https://js.klevu.com/core/v2/klevu.js" defer></script>
+<script src="https://js.klevu.com/recs/v2/klevu-recs.js" defer></script>
+<script type="text/javascript">
+    klevu.interactive(function () {
+        var options = {
+            powerUp: {
+                recsModule: true
+            },
+            recs: {
+                apiKey: 'klevu-168302364802616326'
+            },
+            analytics: {
+                apiKey: 'klevu-168302364802616326'
+            }
+        };
+        klevu(options);
+    });
+</script>

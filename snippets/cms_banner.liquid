@@ -1,0 +1,50 @@
+<div data-section-id="{{ section.id }}" data-section-type="banner-section" class="banner-section">
+    <div class="row">
+        <div class="col">
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">
+            {% endif %}
+                {% if block.settings.image %}
+                    <picture>
+										<source media="(min-width: 768px)" srcset="{{ block.settings.image | img_url: 'master' }}">
+										{% if block.settings.mobile_image %}<source srcset="{{ block.settings.mobile_image | img_url: 'master' }}">{% endif %}
+										<img src="{{ block.settings.image | img_url: 'master' }}" alt="{% if block.settings.alttext %}{{ block.settings.alttext | escape }}{% endif %}" />
+									</picture>
+                {% endif %}
+                {% if block.settings.image == blank %}
+                  <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+                
+	            <div class="banner__text-wrap{% if block.settings.title != blank or block.settings.subheading != blank %} banner__overlay{% endif %}">
+	              <div class="banner__text-content">
+	                <div class="page-width">
+	                  {% unless block.settings.title == blank %}
+		            	{% if block.settings.is_title_h1 == 'is_title_h1_yes' %}
+		                    <h1 class="h1 mega-title banner__title{% if settings.link != blank %} banner__title--has-link{% endif %} {{ block.settings.text_color | escape }}">
+		                      {{ block.settings.title | escape }}
+		                    </h1>
+		                {% else %}
+		                    <h2 class="h1 mega-title banner__title{% if settings.link != blank %} banner__title--has-link{% endif %} {{ block.settings.text_color | escape }}">
+		                      {{ block.settings.title | escape }}
+		                    </h2>
+		                {% endif %}
+	                  {% endunless %}
+	                  {% unless block.settings.subheading == blank %}
+	                    <span class="mega-subtitle banner__subtitle {{ block.settings.text_color | escape }}">
+	                      {{ block.settings.subheading | escape }}
+	                    </span>
+	                  {% endunless %}
+	                </div>
+	              </div>
+	            </div>
+                
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>

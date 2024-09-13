@@ -1,0 +1,385 @@
+<div data-section-id="{{ section.id }}" data-section-type="banner-twocolumns-section" class="banner-section banner-twocolumns-section banner-three-columns-section-01" style="margin-top:{{ section.settings.margin_top }}px">
+  <div class="row {{ block.settings.image_width }} {{ block.settings.column_hide }}" style="gap:{{ section.settings.grid-gap }}px;">
+    {% for block in section.blocks %}
+     <div class="col col-left">
+        {%unless block.settings.link1 == blank %}
+          <a class="link content-left" href="{{ block.settings.link1 }}">
+        {% else %}
+          <span class="link content-left">
+        {%endunless%}
+        {%unless block.settings.heading1 == blank %}
+          <span class="content {{ block.settings.text_color1 }} {{ block.settings.text_color_mobile1 }}" style="justify-content:{{ block.settings.left_banner_conent_alignment }};align-items:{{ block.settings.left_banner_content_alignment_horizontal }}">
+          <span class="title" style="font-size:{{ block.settings.font_size_left }}px">{% if block.settings.heading1 %}{{ block.settings.heading1  }}{% endif %}
+        {% if block.settings.paragraph1 != blank %}
+          <span class="paragraph" style="font-size:{{ block.settings.paragraph_font_size_left  }}px;">{{ block.settings.paragraph1  }}</span>
+        {% endif %}
+        {%unless block.settings.link1 == blank %}
+          <span class='cta-wrap'>
+          <span class="btn" style="font-size:{{block.settings.font_size_left_cta}}px">{{block.settings.link_text1}}
+        </span></a>
+        {%endunless%}
+        </span>
+        </span>
+        {%endunless%}
+        {%unless block.settings.link1 == blank %}
+          </a>
+        {% else %}
+          </span>
+        {%endunless%}
+        {% if block.settings.video-src1 != blank %}
+        {% assign aspectRatio = 56.25 %}
+        {% if block.settings.aspectRatio1 contains ":" %}
+        {% assign aspectSplit = block.settings.aspectRatio1 | split: ':' %}
+        {%comment%} convert to a Float so the divided_by doesn't round down: {%endcomment%}
+        {% assign secondValue =  aspectSplit[1] %}
+        {% assign secondValue = secondValue | plus: 0.0 %}
+        {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0]  %}
+        {% endif %}
+        <div class="videoWrapper" style="background-image: url({{ block.settings.video-src1 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%">
+           <video preload="auto" autoplay="autoplay" muted="muted" loop="loop" poster="{{ 'video-poster-transp.png' | file_url  }}" playsinline>
+              <source src="{{ block.settings.video-src1 | append: '.mp4' | file_url  }}" type="video/mp4">
+              </source>
+              <source src="{{ block.settings.video-src1 | append: '.webm' | file_url  }}" type="video/webm">
+              </source>
+              <source src="{{ block.settings.video-src1 | append: '.ogv' | file_url  }}" type="video/ogg">
+              </source>
+           </video>
+        </div>
+        {% else %}
+        {% if block.settings.image1 %}
+        <picture>
+           <source
+              media="(min-width: 768px)"
+              srcset="{{ block.settings.image1 | img_url: '100x' }}"
+              data-srcset="{{ block.settings.image1 | img_url: 'master' }}"
+              >
+           {% if block.settings.mobile_image1 %}
+           <source
+              srcset="{{ block.settings.mobile_image1 | img_url: '100x' }}"
+              data-srcset="{{ block.settings.mobile_image1 | img_url: '500x' }}"
+              >
+           {% endif %}
+           <img
+              src="{{ block.settings.image1 | img_url: '100x' }}"
+              data-src="{{ block.settings.image1 | img_url: 'master' }}"
+              alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+              class="lazyload"
+              />
+        </picture>
+        {% else %}
+        <div class="placeholder-background">
+           {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+           {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+        {% endif %}
+        {% endif %}  
+     </div>
+    {% endfor %}
+  </div>
+</div>
+  
+  {% schema %}
+  {
+    "name": "Banner - Three Column 01",
+    "class": "index-section",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "number",
+        "id": "margin_top",
+        "label": "Section Margin Top",
+        "default": 10,
+        "info": "E.g 10px. the default unit is px. "
+      },
+      {
+        "type": "number",
+        "id": "grid-gap",
+        "label": "Grid Gap",
+        "default": 0
+       }
+      
+    ],
+    "blocks": [
+      {
+        "type": "bannergrid-threecolumns",
+        "name": "Banner - Columns",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image "
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image1",
+            "label": "Mobile Image "
+          },
+          {
+            "type": "text",
+            "id": "video-src1",
+            "label": "Video filename ",
+            "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+          },
+          {
+            "type": "text",
+            "id": "aspectRatio1",
+            "label": "Video Aspect Ratio",
+            "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+            "default": "690:750"
+          },
+          {
+            "type": "text",
+            "id": "heading1",
+            "label": " Banner Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "number",
+            "id": "font_size_left",
+            "label": " Banner Heading font size",
+            "default": 60
+          },
+          {
+            "type": "textarea",
+            "id": "paragraph1",
+            "label": "Banner Paragraph"
+          },
+          {
+            "type": "number",
+            "id": "paragraph_font_size_left",
+            "label": " Banner Paragraph font size",
+            "default": 18
+          },
+          {
+            "type": "select",
+            "id": "text_color1",
+            "label": " Banner Text Color",
+            "options": [
+              {
+                "value": "text-light",
+                "label": "Light"
+              },
+              {
+                "value": "text-dark",
+                "label": "Dark"
+              }
+            ],
+            "default": "text-light"
+          },
+          {
+            "type": "select",
+            "id": "text_color_mobile1",
+            "label": " Banner Text Color on Mobile",
+            "options": [
+              {
+                "value": "text-light-mobile",
+                "label": "Light"
+              },
+              {
+                "value": "text-dark-mobile",
+                "label": "Dark"
+              }
+            ],
+            "default": "text-light-mobile"
+          },
+          {
+            "type": "select",
+            "id": "left_banner_conent_alignment",
+            "label": " Banner Text Alignment",
+            "options": [
+              {
+                "value": "flex-start",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ],
+            "default": "end"
+          },
+          {
+            "type": "select",
+            "id": "left_banner_content_alignment_horizontal",
+            "label": " Banner Text Alignment horizontal",
+            "options": [
+              {
+                "value": "flex-start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "end",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          },
+
+          {
+            "type": "url",
+            "id": "link1",
+            "label": "Banner Link"
+          },
+          {
+            "type": "text",
+            "id": "link_text1",
+            "label": " Banner Link Text",
+            "default": "Shop Now"
+          },
+          {
+            "type": "number",
+            "id": "font_size_left_cta",
+            "label": " Banner Link Size",
+            "default": 25
+          }
+          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner - Three Column 01",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "bannergrid-threecolumns"
+          },
+          {
+            "type": "bannergrid-threecolumns"
+          },
+          {
+            "type": "bannergrid-threecolumns"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  <style>
+    .banner-three-columns-section-01 .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding-bottom:50px;
+      text-align: center;
+    }
+    .banner-three-columns-section-01 .col-left .content {
+  /*     background: #00000075; */
+    }
+    .banner-three-columns-section-01 .col-right .content {
+  /*     background: #00000075; */
+     
+    }
+    .banner-three-columns-section-01 .content .title {
+      font-family: gotham Book;
+       display: flex;
+      flex-direction: column;
+    }
+    .banner-three-columns-section-01 .content .btn {
+      font-size: 25px;
+      border: 1px solid white;
+      padding: 15px 30px;
+      line-height: 20px;
+  }
+    .banner-three-columns-section-01 .content .cta-wrap{
+      text-align: center;
+      padding-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .banner-three-columns-section-01 .content .btn:hover {
+      border:1px solid white;
+      color:white;
+    }
+    .banner-three-columns-section-01 .content .btn{
+      text-transform:unset;
+    }
+  
+    .banner-three-columns-section-01 .row{
+      display:flex;
+    }
+    .banner-three-columns-section-01 .row::before,.banner-three-columns-section-01 .row::after{ 
+      content:none !important;
+    }
+    .banner-three-columns-section-01 .row .col{
+      width:unset !important;
+      float: unset !important; 
+      flex:1;
+      
+    } 
+    .banner-three-columns-section-01 .content .paragraph{
+        padding-top:10px;
+      }
+  
+  @media screen and (max-width: 1200px) {
+      
+     
+      .banner-three-columns-section-01 .content .title{
+        font-size:20px !important;
+      }
+      .banner-three-columns-section-01 .content .btn {
+        font-size:20px !important;
+        padding:10px 15px !important;
+      }
+      .banner-three-columns-section-01 .content .cta-wrap {
+        padding-top: 20px;
+      }
+    
+  }
+    @media screen and (max-width: 768px) {
+       .banner-three-columns-section-01 .content  {
+      -webkit-justify-content: flex-end !important;
+        justify-content:flex-end !important;
+        align-items:center !important;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-left:2.375rem;
+        padding-right: 2.375rem;
+      }
+      .banner-three-columns-section-01 .row {
+        flex-direction: column;
+      }
+      .banner-three-columns-section-01 .content .paragraph{
+        font-size:16px !important;
+      }
+    }
+  
+   @media screen and (max-width: 400px) {
+    .banner-three-columns-section-01 .content .title{
+        font-size:20px !important;
+      }
+     .banner-three-columns-section-01 .content .btn {
+        font-size:16px !important;
+        padding:8px 15px !important;
+      }
+      .banner-three-columns-section-01 .content  {
+        padding-left:1.375rem;
+        padding-right: 1.375rem;
+      }
+     
+   }
+  
+  
+  
+  /* only use for twp grid item start  */ 
+  @media screen and (min-width: 1024px) {
+    
+        #shopify-section-template--14649148899406__166359139362e8c906 .col{
+          width: calc(50% - 7.5px);
+        }
+        #shopify-section-template--14649148899406__166359139362e8c906 .col-left{
+          margin-right:15px;
+        }
+  }
+    /* only use for twp grid item end  */   
+  </style>
+  

@@ -1,0 +1,125 @@
+{% comment %} POP UP NEWSLETTER {% endcomment %}
+<div class="featherlight-content">
+    <button class="featherlight-close-icon featherlight-close" aria-label="Close"></button>
+    <div class="row">
+        <div class="form">
+            {% form 'customer' %}
+
+                {% if form.posted_successfully? %}
+
+                    {% if section.settings.title_success != blank %}
+                        <h2>{{ section.settings.title_success }}</h2>
+                    {% endif %}
+                    {% if section.settings.subtitle_success != blank %}
+                        <p>{{ section.settings.subtitle_success }}</p>
+                    {% endif %}
+                    <div class="action"><a href="/collections/all" class="btn">Shop now</a></div>
+
+                {% else %}
+
+                    {% if section.settings.title != blank %}
+                    <h3>
+                      {{ section.settings.title }}
+                    </h3>
+                    {% endif %}
+                    {% if section.settings.subtitle != blank %}
+                    <p>{{ section.settings.subtitle }}</p>
+                    {% endif %}
+
+                    <div class="input-group">
+                        {{ form.errors | default_errors }}
+                        <div>
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                        </div>
+                        <div>
+                            <label class="wrap visibleHide" for="email">Email</label>
+                            <input
+                                type="email"
+                                name="contact[email]"
+                                id="Email"
+                                class="email"
+                                value=""
+                                placeholder="Enter your email address here" autocorrect="off" autocapitalize="off">
+                        </div>
+                        <div>
+                            <label class="wrap visibleHide" for="firstname">First Name</label>
+                            <input
+                                type="text"
+                                class="firstname"
+                                name="contact[first_name]"
+                                placeholder="First Name (optional)">
+                        </div>
+                        <div>
+                            <p id="signUpFormCheckbox">
+                                <input type="hidden" name="customer[accepts_marketing]" value="" />
+                                <input type="checkbox" name="customer[accepts_marketing]" checked="checked" id="marketing">
+                                <label for="marketing">I agree to receive email marketing from Chinti &amp; Parker. See our Privacy Policy for further details</label>
+                            </p>
+
+                            <button
+                                type="submit"
+                                class="btn"
+                                name="commit"
+                                id="Subscribe">Sign up
+                            </button>
+                        </div>
+
+                    </div>
+                {% endif %}
+            {% endform %}
+        </div>
+        <div class="banner">
+            {% if section.settings.image %}
+                <picture>
+					<img
+                        src="{{ section.settings.image | img_url: 'master' }}"
+                        alt="{% if section.settings.heading %}{{ section.settings.title | escape }}{% endif %}"
+                    />
+				</picture>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Newsletter Popup",
+    "class": "featherlight",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtext",
+        "default": "A short sentence describing what someone will receive by subscribing"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title_success",
+        "label": "Heading Success",
+        "default": "Thank You for signing up to our newsletter!"
+      },
+      {
+        "type": "text",
+        "id": "subtitle_success",
+        "label": "Subtext Success",
+        "default": "You will receive an email to confirm your subscription and receive 10% off your first order."
+      }
+    ],
+    "presets": [{
+      "name": "Newsletter signup",
+      "category": "Promotional"
+    }]
+  }
+{% endschema %}

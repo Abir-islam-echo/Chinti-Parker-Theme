@@ -1,0 +1,379 @@
+<header class="page-header">
+    
+    <div class="page-header__menu">
+        <button
+            class="page-header__icon meganav-trigger"
+            data-meganav-trigger
+        >
+            {%- render 'svg--menu' -%}
+        </button>
+
+        {%-
+            render 'meganav'
+            | meganav: section.blocks
+            | classes: 'meganav--desktop'
+            | enable_mobile_background_colour: section.settings.enable_mobile_background_colour
+            | mobile_background_colour: section.settings.mobile_background_colour
+            | enable_mobile_item_colours: section.settings.enable_mobile_item_colours
+            | mobile_item_colour: section.settings.mobile_item_colour
+            | enable_mobile_action_colours: section.settings.enable_mobile_action_colours
+            | mobile_action_colour: section.settings.mobile_action_colour
+        -%}
+    </div>
+     <div class="page-header__logo">
+          <a href="{{ shop.url }}">
+              {%- render 'svg--logo' -%}
+          </a>
+      </div>
+    
+
+    <div class="page-header__actions">
+        {%- render 'header-actions' -%}
+    </div>
+</header>
+
+
+{% assign dr = section.settings.linklist_for_search %}
+{% render 'header--search-container' | dr: dr %}
+
+{% schema %}
+{
+    "name": "Meganav",
+    "blocks": [
+        {
+            "name": "Navigation Item",
+            "type": "nav_item",
+            "settings": [
+                {
+                    "id": "title",
+                    "type": "text",
+                    "label": "Title",
+                    "info": "The text to display in the top menu."
+                },
+                {
+                    "id": "title_url",
+                    "type": "url",
+                    "label": "URL",
+                    "info": "Optional. Only applies to desktop navigation."
+                },
+                {
+                    "id": "title_colour",
+                    "type": "color",
+                    "label": "Title Colour",
+                    "info": "The colour of the title text. Select 'None' to keep it black (the default)."
+                },
+                {
+                    "id": "inner_link_colour",
+                    "type": "color",
+                    "label": "Menu Item Colour",
+                    "info": "The colour of the Inner nav menu. Select 'None' to keep it black (the default).",
+                    "default": "#000"
+                },
+                {
+                    "id": "sale_colour",
+                    "type": "color",
+                    "label": "Sale Item Colour",
+                    "info": "The colour of the Sale menu. Select 'None' to keep it red (the default).",
+                    "default": "#FF0000"
+                },
+                {
+                    "id": "mobile_title_colour",
+                    "type": "checkbox",
+                    "label": "Enable Title Colour on Mobile",
+                    "info": "Selecting this will enable the title colour on mobile navigation."
+                },
+                {
+                    "id": "subheadings_colour",
+                    "type": "color",
+                    "label": "Subheadings Colour",
+                    "info": "The colour of the subheadings. Select 'None' to keep it black (the default)."
+                },
+                {
+                    "id": "linklist",
+                    "type": "link_list",
+                    "label": "Menu"
+                },
+                {
+                  "type": "select",
+                  "id": "country_selector",
+                  "label": " Select Store For this Menu",
+                  "options": [
+                    {
+                      "value": "all",
+                      "label": "All"
+                    },
+                    {
+                      "value": "uk",
+                      "label": "UK"
+                    }, {
+                      "value": "us",
+                      "label": "US"
+                    }, {
+                      "value": "eu",
+                      "label": "EU"
+                    }
+                  ],
+                  "default": "all"
+                },
+                {
+                    "id": "background_colour",
+                    "type": "color",
+                    "label": "Background Colour",
+                    "info": "The background colour of the menu dropdown. Select 'None' to keep it white (the default)."
+                },
+                {
+                    "id": "featured_content_mobile",
+                    "type": "checkbox",
+                    "label": "Show featured content section on mobile."
+                },
+                {
+                    "id": "featured_content_heading",
+                    "type": "text",
+                    "label": "Featured Content Heading"
+                },
+                {
+                    "id": "featured_content_1",
+                    "type": "url",
+                    "label": "Featured Content 1"
+                },
+                {
+                    "id": "featured_content_title_1",
+                    "type": "text",
+                    "label": "Featured Content Title 1",
+                    "info": "If this is left blank, the title will be taken from the collection or article."
+                },
+                {
+                    "id": "featured_content_image_1",
+                    "type": "image_picker",
+                    "label": "Featured Content Image 1",
+                    "info": "If this is left blank, the image will be taken from the collection or article."
+                },
+                {
+                    "id": "featured_content_mobile_image_1",
+                    "type": "image_picker",
+                    "label": "Featured Content Mobile Image 1",
+                    "info": "Override the selected image for mobile."
+                },
+                {
+                    "id": "featured_content_mobile_1",
+                    "type": "checkbox",
+                    "label": "Show on mobile",
+                    "info": "Choose this content to show on mobile. Only one per meganav should be selected."
+                },
+                {
+                    "id": "featured_content_2",
+                    "type": "url",
+                    "label": "Featured Content 2"
+                },
+                {
+                    "id": "featured_content_title_2",
+                    "type": "text",
+                    "label": "Featured Content Title 2",
+                    "info": "If this is left blank, the title will be taken from the collection or article."
+                },
+                {
+                    "id": "featured_content_image_2",
+                    "type": "image_picker",
+                    "label": "Featured Content Image 2",
+                    "info": "If this is left blank, the image will be taken from the collection or article."
+                },
+                {
+                    "id": "featured_content_mobile_image_2",
+                    "type": "image_picker",
+                    "label": "Featured Content Mobile Image 2",
+                    "info": "Override the selected image for mobile."
+                },
+                {
+                    "id": "featured_content_mobile_2",
+                    "type": "checkbox",
+                    "label": "Show on mobile",
+                    "info": "Choose this content to show on mobile. Only one per meganav should be selected."
+                },
+                {
+                    "id": "featured_content_3",
+                    "type": "url",
+                    "label": "Featured Content 3"
+                },
+                {
+                    "id": "featured_content_title_3",
+                    "type": "text",
+                    "label": "Featured Content Title 3",
+                    "info": "If this is left blank, the title will be taken from the collection or article."
+                },
+                {
+                    "id": "featured_content_image_3",
+                    "type": "image_picker",
+                    "label": "Featured Content Image 3",
+                    "info": "If this is left blank, the image will be taken from the collection or article."
+                },
+                {
+                    "id": "featured_content_mobile_image_3",
+                    "type": "image_picker",
+                    "label": "Featured Content Mobile Image 3",
+                    "info": "Override the selected image for mobile."
+                },
+                {
+                    "id": "featured_content_mobile_3",
+                    "type": "checkbox",
+                    "label": "Show on mobile",
+                    "info": "Choose this content to show on mobile. Only one per meganav should be selected."
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "id": "emphasised_capture_words",
+            "type": "text",
+            "label": "Emphasised capture words",
+            "info": "A comma-separated list of words or phrases that, if they appear in the final link in a column, will indicate that it should be separated and underlined.",
+            "default": "all,everything"
+        },
+        {
+            "id": "enable_mobile_background_colour",
+            "type": "checkbox",
+            "label": "Enable mobile background colour"
+        },
+        {
+            "id": "mobile_background_colour",
+            "type": "color",
+            "label": "Mobile Background Colour",
+            "info": "The background colour of the initial mobile menu",
+            "default": "#ffffff"
+        },
+        {
+            "id": "enable_mobile_item_colours",
+            "type": "checkbox",
+            "label": "Enable Mobile Item Colours",
+            "info": "When selected, will enable to ability to choose text colours for mobile nav.",
+            "default": false
+        },
+        {
+            "id": "mobile_item_colour",
+            "type": "color",
+            "label": "Mobile Items Colour",
+            "info": "The item colour of the initial mobile menu.",
+            "default": "#ffffff"
+        },
+        {
+            "id": "enable_mobile_action_colours",
+            "type": "checkbox",
+            "label": "Enable Mobile Action Colours",
+            "info": "When selected, will enable to ability to choose action colours for mobile nav.",
+            "default": false
+        },
+        {
+            "id": "mobile_action_colour",
+            "type": "color",
+            "label": "Mobile Action Colour",
+            "info": "The action colour of the initial mobile menu.",
+            "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Search Menu"
+        }, {
+          "type": "link_list",
+          "id": "linklist_for_search",
+          "label": "Search menu"
+        }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+ 
+  .meganav-content {
+      transition: unset !important;
+  }
+  .meganav--mobile .meganav-menu__links:not([aria-hidden=false]) {
+    display: block !important; 
+  }
+  .meganav-trigger, .meganav-trigger:hover, .meganav-trigger:active, .meganav-trigger:focus{
+    margin:0 !important;  
+  }
+  .meganav--mobile .meganav-featured .meganav-heading , .meganav--mobile .meganav-featured .meganav-feature__title {
+    text-align: center;
+  }
+
+
+  @media screen and (max-width: 979px) and (min-width: 400px) {
+    .page-header__logo img, .page-header__logo svg {
+        width: 230.4px;
+        max-width:unset !important;
+      }
+     .mega-hide-title{
+        display:none; 
+      }
+  }
+  
+  @media screen and (min-width: 980px) {
+      .page-header{
+        position:relative;
+      }
+      .page-header__logo{
+        text-align:center !important;
+      }
+      .page-header__logo a{
+        display:inline-block;
+      }
+      
+    .page-header__menu,.page-header__logo , .page-header__actions{
+        order:unset !important;
+        flex:1 !important; 
+      }
+      .page-header__logo {
+        flex:1 !important;
+      }
+      .page-header__menu{
+        padding-left: unset !important;
+        padding-right: unset !important; 
+      }
+      
+      .page-header__logo img, .page-header__logo svg {
+        max-width: unset !important;
+        margin: 0 auto !important;
+        width: 230.4px;
+        max-width:unset !important;
+      }
+      .meganav-item__title {
+        font-size: 0.9rem !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important; 
+    }
+      .header-actions {
+        justify-content: end;
+    }
+      .meganav-items {
+        padding-left: unset !important;
+        padding-right: unset !important;
+    }
+      .meganav--desktop {
+        display: block;
+        margin-left: unset !important;
+        margin-right: auto;
+    }
+    li.meganav-item:nth-child(1) a {
+        padding-left: 0 !important;
+    } 
+     li.meganav-item:last-child  {
+        padding-right:0px !important;
+    }
+    
+    
+  }
+  @media screen and (min-width: 1200px){
+     .page-header__logo img, .page-header__logo svg {
+        height: 28.8px;
+      }
+     .header-actions__action:not(:first-child) {
+        margin-left: 1.05rem !important;
+      }
+    .meganav-item__title {
+        font-size: 0.9rem !important;
+        padding-left: 10px !important;
+        padding-right: 15px !important;
+    }
+  }
+
+{% endstylesheet %}

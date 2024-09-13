@@ -1,0 +1,32 @@
+<div
+    class="modal"
+    id="{{ id | default: title | handleize }}"
+    data-back-in-stock-modal
+>
+    <div class="modal__overlay" data-close-modal-trigger></div>
+    <div
+        class="modal__container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="back-in-stock-title"
+    >
+        <header class="modal__header">
+            <h2 id="back-in-stock-title" class="modal__title">
+                {{ title }}
+            </h2>
+
+            <button class="modal__close" data-close-modal-trigger>
+                <span class="u-visually-hidden">
+                    Close Modal
+                </span>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 198.4 198.4">
+                    <path d="M136.7 53l8.7 8.8-83.6 83.6-8.7-8.7z"></path>
+                    <path d="M61.7 53l83.6 83.7-8.7 8.7L53 61.8z"></path>
+                </svg>
+            </button>
+        </header>
+        <div class="modal__content">
+            {{- content -}}
+        </div>
+    </div>
+</div>

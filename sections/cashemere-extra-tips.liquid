@@ -1,0 +1,190 @@
+<section class="el-container">
+  <div class="extra-tips-section">
+    <div class="extra-tips-heading">
+      <h1 class="extra-tips-title">{{ section.settings.heading }}</h1>
+    </div>
+    <div class="extra-tips-grid-wrapper">
+      <div class="extra-tips-left">
+          <div class="extra-tips-inner-wrap">
+            <div class="extra-tips-block">
+              <div class="extra-tips-block-content">
+                <h2>{{ section.settings.heading_1 }}</h2>
+                <p>{{ section.settings.content_1 }}</p>
+                <div class="extra-tips-image">
+                  <img src="{{ section.settings.content_1_image | img_url : '900x' }}" alt="">
+                </div>
+              </div>
+              <div class="extra-tips-block-content">
+                <h2>{{ section.settings.heading_2 }}</h2>
+                <p>{{ section.settings.content_2 }}</p>
+                <div class="extra-tips-image">
+                  <img src="{{ section.settings.content_2_image | img_url : '900x' }}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="extra-tips-right">
+          <div class="extra-tips-inner-wrap">
+            <div class="extra-tips-block">
+              <div class="extra-tips-block-content">
+                <h2>{{ section.settings.heading_3 }}</h2>
+                <p>{{ section.settings.content_3 }}</p>
+                <div class="extra-tips-image">
+                  <img src="{{ section.settings.content_3_image | img_url : '900x' }}" alt="">
+                </div>
+              </div>
+              <div class="extra-tips-block-content">
+                <h2>{{ section.settings.heading_4 }}</h2>
+                <p>{{ section.settings.content_4 }}</p>
+                <div class="extra-tips-image">
+                  <img src="{{ section.settings.content_4_image | img_url : '900x' }}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "cashemere extra tips",
+    "settings": [
+       {
+       "type": "text",
+        "id":"heading",
+       "label":"Heading"
+      },
+      {
+         "type": "header",
+         "content":"Extra Tips Left"
+      },
+      {
+       "type": "text",
+        "id":"heading_1",
+       "label":"Inner Heading First"
+      },
+       {
+       "type": "richtext",
+        "id":"content_1",
+       "label":"Inner Content First "
+      },
+       {
+       "type": "image_picker",
+        "id":"content_1_image",
+       "label":"Inner Content First Image"
+      },
+      {
+       "type": "text",
+        "id":"heading_2",
+       "label":"Inner Heading Second"
+      },
+       {
+       "type": "richtext",
+        "id":"content_2",
+       "label":"Inner Content Second "
+      },
+       {
+       "type": "image_picker",
+        "id":"content_2_image",
+       "label":"Inner Content Second Image"
+      },
+    
+      {
+         "type": "header",
+         "content":"Extra Tips Right"
+      },
+      {
+       "type": "text",
+        "id":"heading_3",
+       "label":"Inner Heading First"
+      },
+       {
+       "type": "richtext",
+        "id":"content_3",
+       "label":"Inner Content First "
+      },
+       {
+       "type": "image_picker",
+        "id":"content_3_image",
+       "label":"Inner Content First Image"
+      },
+      {
+       "type": "text",
+        "id":"heading_4",
+       "label":"Inner Heading Second"
+      },
+       {
+       "type": "richtext",
+        "id":"content_4",
+       "label":"Inner Content Second "
+      },
+       {
+       "type": "image_picker",
+        "id":"content_4_image",
+       "label":"Inner Content Second Image"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+  
+ .extra-tips-section *{
+   box-sizing:border-box;
+ } 
+.extra-tips-section { 
+    border-top: 3px solid black;
+    padding-top: 30px;
+    margin-top: 30px !important;
+}
+.extra-tips-section h1.extra-tips-title {
+    font-size: 35px;
+}
+.extra-tips-section .extra-tips-grid-wrapper {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between; 
+    gap:40px;
+}
+.extra-tips-section .extra-tips-block-content h2 {
+    font-size: 25px ;
+    padding-bottom: 20px; 
+    color:#000;
+}
+.extra-tips-section .extra-tips-block-content p, .extra-tips-section .extra-tips-block-content a {
+    font-size:20px ;
+    color:#000; 
+}
+ 
+.extra-tips-section .extra-tips-image {
+    padding: 20px 0px;
+}
+.custom-content-01 .rte-setting p {
+    color:#000; 
+}  
+
+@media screen and (max-width: 768px) {
+  
+  .extra-tips-section .extra-tips-grid-wrapper {
+    gap: 0px !important; 
+    flex-direction: column;
+  }
+  .extra-tips-section .extra-tips-block-content p {
+    font-size: 16px !important; 
+  }
+  
+
+  
+}
+
+
+  
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,193 @@
+<link rel="preconnect" href="//pwaify.com">
+<script>
+
+getJSON = function(url, successHandler, errorHandler) {
+    var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    xhr.withCredentials = true;
+    xhr.open('get', url, true);
+    xhr.onreadystatechange = function() {
+        var status, data
+        if (xhr.readyState == 4) {
+            status = xhr.status;
+            var wasParsedOk = true;
+            if (status == 200) {
+                try {
+                    data = JSON.parse(xhr.responseText);
+                } catch (e) {
+                    // JSON parse error:
+                    wasParsedOk = false;
+                    errorHandler && errorHandler(status);
+                }
+                if (wasParsedOk) {
+                    successHandler && successHandler(data);
+                }
+            } else {
+                errorHandler && errorHandler(status);
+            }
+        }
+    };
+    xhr.send();
+};
+
+
+
+
+var thisStore = '{{shop.url}}';
+var thisRequestPath = '{{request.path}}';
+if(thisRequestPath.indexOf('undefined') !== -1) {
+  thisRequestPath = '/';
+}
+
+  var allStores = {
+      'UK' : 'https://www.chintiandparker.com',
+      'US' : 'https://www.us.chintiandparker.com',
+      'EU' : 'https://www.eu.chintiandparker.com'
+    };
+
+    {% if shop.url contains "-dev-" %}
+  var allStores = {
+      'UK' : 'https://chinti-parker-dev-site.myshopify.com',
+      'US' : 'https://www.us.chintiandparker.com',
+      'EU' : 'https://chinti-parker-eu-dev-store.myshopify.com'
+    };
+    {% endif %}
+
+
+
+var countryMappings = {
+      'US' : { 'Name':'USA', 'Store':'US' },
+      'GB' : { 'Name':'United Kingdom', 'Store':'UK' },
+      'FI' : { 'Name':'Finland', 'Store':'EU' },
+      'DK' : { 'Name':'Denmark', 'Store':'EU' },
+      'SE' : { 'Name':'Sweden', 'Store':'EU' },
+      'NO' : { 'Name':'Norway', 'Store':'EU' },
+      'AL' : { 'Name':'Albania', 'Store':'EU' },
+      'AD' : { 'Name':'Andorra', 'Store':'EU' },
+      'AT' : { 'Name':'Austria', 'Store':'EU' },
+      'BY' : { 'Name':'Belarus', 'Store':'EU' },
+      'BE' : { 'Name':'Belgium', 'Store':'EU' },
+      'BA' : { 'Name':'Bosnia and Herzegovina', 'Store':'EU' },
+      'BG' : { 'Name':'Bulgaria', 'Store':'EU' },
+      'HR' : { 'Name':'Croatia', 'Store':'EU' },
+      'CY' : { 'Name':'Cyprus', 'Store':'EU' },
+      'CZ' : { 'Name':'Czech Republic', 'Store':'EU' },
+      'EE' : { 'Name':'Estonia', 'Store':'EU' },
+      'FO' : { 'Name':'Faroe Islands', 'Store':'EU' },
+      'FR' : { 'Name':'France', 'Store':'EU' },
+      'DE' : { 'Name':'Germany', 'Store':'EU' },
+      'GI' : { 'Name':'Gibraltar', 'Store':'EU' },
+      'GR' : { 'Name':'Greece', 'Store':'EU' },
+      'HU' : { 'Name':'Hungary', 'Store':'EU' },
+      'IS' : { 'Name':'Iceland', 'Store':'EU' },
+      'IE' : { 'Name':'Ireland', 'Store':'EU' },
+      'IT' : { 'Name':'Italy', 'Store':'EU' },
+      'LV' : { 'Name':'Latvia', 'Store':'EU' },
+      'LI' : { 'Name':'Liechtenstein', 'Store':'EU' },
+      'LT' : { 'Name':'Lithuania', 'Store':'EU' },
+      'LU' : { 'Name':'Luxembourg', 'Store':'EU' },
+      'MK' : { 'Name':'Macedonia', 'Store':'EU' },
+      'MT' : { 'Name':'Malta', 'Store':'EU' },
+      'MD' : { 'Name':'Moldova', 'Store':'EU' },
+      'MC' : { 'Name':'Monaco', 'Store':'EU' },
+      'NL' : { 'Name':'Netherlands', 'Store':'EU' },
+      'PL' : { 'Name':'Poland', 'Store':'EU' },
+      'PT' : { 'Name':'Portugal', 'Store':'EU' },
+      'RO' : { 'Name':'Romania', 'Store':'EU' },
+      'RU' : { 'Name':'Russia', 'Store':'EU' },
+      'SM' : { 'Name':'San Marino', 'Store':'EU' },
+      'RS' : { 'Name':'Serbia', 'Store':'EU' },
+      'SK' : { 'Name':'Slovakia', 'Store':'EU' },
+      'SI' : { 'Name':'Slovenia', 'Store':'EU' },
+      'ES' : { 'Name':'Spain', 'Store':'EU' },
+      'CH' : { 'Name':'Switzerland', 'Store':'EU' },
+      'UA' : { 'Name':'Ukraine', 'Store':'EU' },
+      'VA' : { 'Name':'Vatican city', 'Store':'EU' },
+      'IM' : { 'Name':'Isle of Man', 'Store':'UK' },
+      'ME' : { 'Name':'Montenegro', 'Store':'EU' },
+      'CA' : { 'Name':'Canada', 'Store':'US' },
+      'GG' : { 'Name':'Guernsey', 'Store':'UK' },
+      'JE' : { 'Name':'Jersey', 'Store':'UK' },
+      'AU' : { 'Name':'Australia', 'Store':'UK' },
+      'NZ' : { 'Name':'New Zealand', 'Store':'UK' }
+    };
+
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function processCountryCode(whichCode) {
+  {% unless content_for_header contains 'designMode' %}
+var whichStore = allStores[(countryMappings[whichCode].Store)];
+if(typeof whichStore !== "undefined") {
+  if(whichStore != thisStore) {
+  {% unless content_for_header contains 'designMode' %}
+    window.location.href = whichStore+thisRequestPath+'?storeRedirect='+countryMappings[whichCode].Store;
+    {% endunless %}
+  }
+}
+{% endunless %}
+}
+
+var hasRedirected = window.location.search.indexOf('storeRedirect');
+
+
+
+
+if(hasRedirected !== -1) {
+ // deleteCookie('geoIPHeaderMessage');
+  var storeCode = window.location.search.replace('?storeRedirect=','');
+  // has already been redirected (automatically, or by the user) - create cookie on this domain:
+  createCookie('geoIPCookie',storeCode,31);
+} else {
+  var geoIPCheck = readCookie('geoIPCookie');
+  if (!geoIPCheck) {
+    // no cookie set - do IP check:
+    getJSON("https://www.pwaify.com/GeoIP/index.php", function(data) {
+   if(data.isACrawler == "false") {
+    processCountryCode(data.countryCode);
+    createCookie('geoIPCookie',countryMappings[data.countryCode].Store,31);
+  }
+    }, function(status) {
+    // error
+    });
+  } else {
+    // check the cookie and make sure it's the correct site:
+    
+
+    var correctStore = allStores[geoIPCheck];
+  
+{% unless content_for_header contains 'designMode' %}
+  
+    if(typeof correctStore !== "undefined") {
+    if(correctStore != thisStore) {
+  //deleteCookie('geoIPHeaderMessage');
+  {% unless content_for_header contains 'designMode' %}
+    window.location.href = correctStore+thisRequestPath+'?storeRedirect='+geoIPCheck;
+    {% endunless %}
+    }
+  }
+
+{% endunless %}
+
+  }
+}
+
+
+</script>

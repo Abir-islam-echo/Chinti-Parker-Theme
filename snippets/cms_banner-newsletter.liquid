@@ -1,0 +1,12 @@
+
+{% if block.settings.image %}
+
+	<picture>
+		<source media="(min-width: 768px)" srcset="{{ block.settings.image | img_url: 'master' }}">
+		{% if block.settings.mobile_image %}
+			<source srcset="{{ block.settings.mobile_image | img_url: 'master' }}">
+		{% endif %}
+		<img src="{{ block.settings.image | img_url: 'master' }}" alt="" />
+	</picture>
+
+{%endif%}

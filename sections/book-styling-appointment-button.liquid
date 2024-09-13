@@ -1,0 +1,216 @@
+<div class="book-appointment-button book-appointment-button-{{ section.id }}">
+  <div class="button-wrapper">
+    <button>{{ section.settings['btn-text'] }}</button>
+  </div>
+  <div class="modal-wrapper">
+    <div class="modal-content">
+      <div class="close-btn" title="close">
+        <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 384 512">
+          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+        </svg>
+      </div>
+      <div class="threes custom-loader">
+        <div class="three three-1"></div>
+        <div class="three three-2"></div>
+        <div class="three three-3"></div>
+      </div>
+      <!--  -->
+      <iframe
+        id="widgetIframe"
+        src="https://ds.distancesales.com/chat/?brand=webChintiandparkerProd"
+        frameborder="0"
+        title="DS Chat"
+      ></iframe>
+
+      <script type="text/javascript">
+        window.addEventListener('touchstart', {});
+        // Add event listener for messages being massed from the iframe
+        var eventMethod = window.addEventListener ? "addEventListener" :
+            "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" :
+            "message";
+        eventer(messageEvent, function (e) {
+            // Check that message being passed is the documentHeight
+            if (typeof e.data === 'string') {
+                if (e.data.indexOf('documentHeight') > -1) {
+                    document.querySelector(".custom-loader").style.display="none";
+                    var height = e.data.split('documentHeight:')[1];
+                    console.log('height', height);
+                    document.getElementById('widgetIframe').style.width = width;
+                    document.getElementById('widgetIframe').style.height = height;
+                }
+            }
+        }, false);
+      </script>
+
+      <!--  -->
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name":"book-appointment-button",
+  "settings":[
+    {
+      "type": "text",
+      "id": "btn-text",
+      "label": "Button Text",
+      "default": "button text"
+    }
+  ],
+  "presets":[
+    {
+      "name":"book-appointment-button"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* */
+   .book-appointment-button h1 {
+       height: 35px;
+  }
+   .book-appointment-button img {
+       height: calc(100vh - 90px);
+       width: 100%;
+  }
+   .book-appointment-button #widgetIframe {
+       max-width: 500px;
+       width: 95%;
+       transform: translate(-50%,-50%);
+       border-radius: 10px;
+       position: fixed;
+       height: 550px;
+       top: 50%;
+       left: 50%;
+      /* margin-top: -100px;
+       */
+      /* margin-left: -250px;
+       */
+  }
+  /* */
+  /* loader */
+   .custom-loader.threes {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       width: 5rem;
+       height: 5rem;
+       position: absolute;
+       top: 40%;
+       right: 50%;
+       transform: translate(50%,50%);
+  }
+   .custom-loader.threes .three {
+       display: inline-flex;
+       width: 30%;
+       height: 30%;
+       border-radius: 100%;
+       background-color: white;
+       animation: three 1.5s infinite ease-in-out both;
+  }
+   .custom-loader.threes .three-1 {
+       animation-delay: -320ms;
+  }
+   .custom-loader.threes .three-2 {
+       animation-delay: -160ms;
+  }
+   @keyframes three {
+       0%, 80%, 100% {
+           transform: scale(0);
+      }
+       40% {
+           transform: scale(1);
+      }
+  }
+  /* loader */
+   body.scroll-off{
+       overflow: hidden;
+  }
+   .el-container .about-content-parts > div.desktop-element,div.el-container > div.mobile-element{
+       display: none;
+  }
+   .book-appointment-button{
+       display: flex;
+       align-items:center;
+       justify-content:center;
+       font-family: Arial, Helvetica, sans-serif;
+  }
+   .book-appointment-button .button-wrapper button{
+       display: block;
+       background-color: #FFF;
+       width: inherit;
+       padding: 30px 15px;
+       text-align: center;
+       text-transform: uppercase;
+       color: black;
+       font-size: 20px;
+       letter-spacing: 1px;
+       line-height: 30px;
+       text-decoration: none;
+       border: solid black 2px;
+       width: 350px;
+       margin: 100px auto;
+       font-weight: 600;
+       margin: 0;
+  }
+   .book-appointment-button .modal-wrapper{
+       display: none;
+       position: fixed;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       overflow: hidden;
+       z-index: 9999;
+       background-color: #a5a5a5;
+       background-color: rgba(31,31,31,.4);
+  }
+   .book-appointment-button.active .modal-wrapper{
+       display: flex;
+       align-items:center;
+       justify-content: center
+  }
+   .book-appointment-button .modal-wrapper .modal-content{
+       position: relative;
+  }
+   .book-appointment-button .modal-wrapper .close-btn{
+       background: #ffffff;
+       position: absolute;
+       position: absolute;
+       top: -274px;
+       right: -310px;
+       border-radius: 10%;
+       width: 40px;
+       height: 40px;
+       display: flex;
+       align-items: center;
+       z-index: 333;
+       justify-content: center;
+       cursor: pointer;
+       transition: all .25s;
+  }
+   .book-appointment-button .modal-wrapper .close-btn:hover{
+       background: #d7d7d7;
+  }
+   #stylist-appointment img.mobile-element{
+       display: none
+  }
+   @media screen and (max-width: 768px){
+       .book-appointment-button .button-wrapper button{
+           padding: 20px 10px;
+           font-size: 16px;
+           width: 280px;
+      }
+       .book-appointment-button .modal-wrapper .close-btn{
+           top: -325px;
+           transform: translateX(50%);
+           right: 0;
+      }
+  }
+</style>
+
+{{ 'book-styling-appointment-button.js' | asset_url | script_tag }}

@@ -1,0 +1,48 @@
+{% comment %}
+  A loop to catch and filter out the different tag categories.
+  This is mainly for advanced tagging, but will also help us strip
+  out any tag categories from our tags (E.g. remove BRAND_ from BRAND_tag)
+{% endcomment %}
+{% if template.name == 'collection' and collection.all_tags.size > 0 %}
+  {% assign categories = '' %}
+  {% assign hasType = 'false' %}
+
+{% assign sizeCategory = '' %}
+
+  {% for tag in collection.all_tags %}
+     {% assign downCaseTag = tag | downcase %}
+
+    {% if downCaseTag contains 'size-' %}
+      {% capture sizeCategory %}{% unless sizeCategory == blank  %}{{ sizeCategory }}|{% endunless %}Size{% endcapture %}
+    {% endif %}
+        {% if downCaseTag contains 'colour-' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}Colour{% endcapture %}
+    {% endif %}
+        {% if downCaseTag contains 'fit-' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}Fit{% endcapture %}
+    {% endif %}
+        {% if downCaseTag contains 'pattern-' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}Pattern{% endcapture %}
+    {% endif %}
+        {% if downCaseTag contains 'type-' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}Type{% endcapture %}
+    {% endif %}
+    {% if downCaseTag contains 'material-' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}Material{% endcapture %}
+    {% endif %}
+
+
+
+  {% endfor %}
+
+{% unless sizeCategory == ''  %}
+{% unless categories == blank  %}
+{% assign categories = sizeCategory | append: '|' | append: categories %}
+{% else %}
+{% assign categories = sizeCategory %}
+{% endunless %}
+{% endunless %}
+
+
+  {% assign cat_array = categories | split: '|' | uniq %}
+{% endif %}

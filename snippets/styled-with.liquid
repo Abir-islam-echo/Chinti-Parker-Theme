@@ -1,0 +1,133 @@
+{%- if product.metafields.product.styled_with -%}
+  <div id="styledWith" class="active {{ customClass }}">
+    <div class="product-list">
+      <div class="wrapper">
+        <div class="blockheader-wrapper">
+          <h2 class="blockHeader">
+            {% if modalHeading %}{{ modalHeading }}{% else %}Styled With & Recommended{% endif %}
+          </h2>
+        </div>
+        {% if customClass != 'from-shop-the-look' -%}
+          {%- assign itemsClass = 'product-grid clearfix' -%}
+        {%- else -%}
+          {%- assign itemsClass = 'items-wrapper' -%}
+        {%- endif %}
+        <div class="{{ itemsClass }}">
+          {% for styled_product in product.metafields.product.styled_with.value %}
+            <div class="item" id="item-{{ forloop.index }}">
+              <div class="product-image-wrap">
+                <a class="image" href="{{ styled_product.url }}">
+                  <img
+                    src="{{ styled_product.featured_image | img_url: 'master' }}"
+                    loading="lazy"
+                    importance="low"
+                    alt="Blue Cotton-Cashmere Dress"
+                  >
+                </a>
+              </div>
+              <div class="product-caption">
+                <h2 class="product-name">
+                  <a href="{{ styled_product.url }}">{{ styled_product.title }}</a>
+                </h2>
+                {% if styled_product.compare_at_price > 0 %}
+                  <span class="product-price"
+                    ><s
+                      ><span class="money">
+                        {{ styled_product.compare_at_price | money }}
+                      </span></s
+                    ></span
+                  >
+                {% endif %}
+                <span class="product-price {% if styled_product.compare_at_price>0 %}on-sale  on-sale-margin{% endif %}"
+                  ><span class="money">{{ styled_product.price | money }}</span></span
+                >
+              </div>
+              {% comment %}{% render 'variant-atc-button', product: product %}{% endcomment %}
+              {% render 'size-variant-selector', product: styled_product %}
+              {% render 'ATC-button', product: styled_product %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<style>
+      #styledWith {
+        display: none;
+          width: 100%;
+          max-width: 94.25em;
+          padding: 0 1.25em;
+          margin: 0 auto;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+      }
+      #styledWith .blockheader-wrapper{
+        max-width:76em;
+        margin: 0 auto;
+      }
+      #styledWith h2.blockHeader {
+          text-align: center;
+          font-family: Circular Std Book,helvetica,arial,sans-serif;
+          font-size: 25px;
+          font-size: 1.5625rem;
+          margin: 64px auto;
+          margin: 4rem auto;
+          color: #111;
+          position:relative;
+      }
+      #styledWith h2.blockHeader::after{
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          max-width: 87em;
+          margin: 0 auto;
+  /*         background: #333; */
+          left: 0;
+          bottom: -20px;
+
+      }
+      #styledWith .wrapper {
+          padding: 0;
+      }
+      #styledWith .product-grid .item:nth-child(3n) {
+          display: none;
+      }
+     #styledWith .product-price.on-sale.on-sale-margin{
+         margin-right: 10px;
+     }
+    @media only screen  and (min-width: 80em) {
+        #styledWith .product-grid .item:nth-child(3n) {
+            display: block !important;
+        }
+    }
+    @media only screen and (max-width: 63.99em) and (min-width: 48em){
+        #styledWith .product-grid .item {
+            width: 49%;
+        }
+        #styledWith .product-grid .item:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+    @media screen and (max-width: 768px) {
+      #styledWith .blockheader-wrapper {
+          max-width: 76em;
+          margin: 0 0.625em;
+      }
+      #styledWith .product-grid .item:nth-child(3n) {
+          display: none;
+      }
+      #styledWith .product-grid .item, #styledWith .product-grid .zooomyshopthelookcol {
+          width: 49%;
+          margin-right: 2%;
+          padding: 0;
+      }
+      #styledWith .product-grid .item:nth-child(2n) {
+          margin:0;
+      }
+
+    }
+</style>

@@ -1,0 +1,169 @@
+<script type="text/javascript">
+      klevu.interactive(function () {
+          var options = {
+              url: {
+                  protocolFull: klevu.settings.url.protocol + "//",
+                  analytics: klevu.settings.url.protocol + "//stats.klevu.com/analytics/",
+                  analyticsCat: klevu.settings.url.protocol + "//stats.ksearchnet.com/analytics/"
+              },
+              powerup: {analytics:true},
+              analytics: {
+                  apiKey: 'klevu-168302364802616326'
+              }
+          };
+          klevu(options);
+      });
+      klevu.extend({
+          analyticsUtilShopifyPL: {
+              base: {
+                  /**
+                   * Function to get cat view term option object
+                   * @param {*} dataObj 
+                   */
+                  getCategoryViewOptions: function (dataObj) {
+                      var analyticsCategoryOptions = {
+                          klevu_categoryName: "unknown",
+                          klevu_src: "unknown",
+                          klevu_categoryPath: "unknown",
+                          klevu_productIds: "unknown",
+                          klevu_pageStartsFrom: "unknown"
+                      };
+                      if (!dataObj) {
+                          return analyticsCategoryOptions;
+                      }
+                      if (dataObj.categoryName) {
+                          analyticsCategoryOptions.klevu_categoryName = dataObj.categoryName;
+                      }
+                      if (dataObj.categoryPath) {
+                          analyticsCategoryOptions.klevu_categoryPath = dataObj.categoryPath;
+                      }
+                      if (dataObj.productIds) {
+                          analyticsCategoryOptions.klevu_productIds = dataObj.productIds;
+                      }
+                      if (dataObj.src) {
+                          analyticsCategoryOptions.klevu_src = dataObj.src;
+                      }
+                      if (dataObj.pageStartsFrom) {
+                          analyticsCategoryOptions.klevu_pageStartsFrom = dataObj.pageStartsFrom;
+                      }
+                      return analyticsCategoryOptions;
+                  },
+                  /**
+                   * Function to send cat view analytics request
+                   * @param {*} termOptions 
+                   */
+                  sendCatViewAnalyticsRequest: function (termOptions) {
+                      if (!termOptions) {
+                          termOptions = this.getCategoryViewOptions({
+                              categoryName: "",
+                              src: "",
+                              categoryPath: "",
+                              productIds: "",
+                              pageStartsFrom: ""
+                          });
+                      }
+                      klevu.analyticsEvents.catview(termOptions);
+                  },
+                  /**
+                   * Function to get cat product tracking click object
+                   * @param {*} dataObj 
+                   */
+                  getCategoryProductClickTrackingOption: function (dataObj) {
+                      var analyticsCategoryClickOptions = {
+                          klevu_categoryName: "unknown",
+                          klevu_src: "unknown",
+                          klevu_categoryPath: "unknown",
+                          klevu_productId: "unknown",
+                          klevu_productName: "unknown",
+                          klevu_productUrl: "unknown",
+                          klevu_productSku: "unknown",
+                          klevu_salePrice: "unknown",
+                          klevu_productRatings: "unknown",
+                          klevu_productPosition: "unknown"
+                      };
+                      if (!dataObj) {
+                          return analyticsCategoryClickOptions;
+                      }
+                      if (dataObj.categoryName) {
+                          analyticsCategoryClickOptions.klevu_categoryName = dataObj.categoryName;
+                      }
+                      if (dataObj.categoryPath) {
+                          analyticsCategoryClickOptions.klevu_categoryPath = dataObj.categoryPath;
+                      }
+                      if (dataObj.productId) {
+                          analyticsCategoryClickOptions.klevu_productId = dataObj.productId;
+                      }
+                      if (dataObj.productName) {
+                          analyticsCategoryClickOptions.klevu_productName = dataObj.productName;
+                      }
+                      if (dataObj.productSku) {
+                          analyticsCategoryClickOptions.klevu_productSku = dataObj.productSku;
+                      }
+                      if (dataObj.salePrice) {
+                          analyticsCategoryClickOptions.klevu_salePrice = dataObj.salePrice;
+                      }
+                      if (dataObj.productRatings) {
+                          analyticsCategoryClickOptions.klevu_productRatings = dataObj.productRatings;
+                      }
+                      if (dataObj.productPosition) {
+                          analyticsCategoryClickOptions.klevu_productPosition = dataObj.productPosition;
+                      }
+                      if (dataObj.src) {
+                          analyticsCategoryClickOptions.klevu_src = dataObj.src;
+                      }
+                      return analyticsCategoryClickOptions;
+                  },
+                  /**
+                   * Function to send cat product click tracking analytics request
+                   * @param {*} termOptions 
+                   */
+                  sendCategoryProductClickTrackingAnalyticsRequest: function (termOptions) {
+                      if (!termOptions) {
+                          termOptions = this.getCategoryProductClickTrackingOption({
+                              categoryName: "",
+                              src: "",
+                              categoryPath: "",
+                              productId: "",
+                              productName: "",
+                              productUrl: "",
+                              productSku: "",
+                              salePrice: "",
+                              productRatings: "",
+                              productPosition: ""
+                          });
+                      }
+                      klevu.analyticsEvents.catclick(termOptions);
+                  },
+              },
+              build: true
+          }
+      });
+  /**
+   * Analytics event for shopify preserve layout
+   */
+  klevu.coreEvent.build({
+      name: "analyticsPowerUpShopifyPL",
+      fire: function () {
+          if (
+              !klevu.getSetting(klevu.settings, "settings.powerup.analytics", false) ||
+              !klevu.analytics ||
+              !klevu.analytics.build ||
+			  !klevu.analyticsUtilShopifyPL ||
+              !klevu.analyticsUtilShopifyPL.build
+          ) {
+              return false;
+          }
+          return true;
+      },
+      maxCount: 500,
+      delay: 30
+  });
+  klevu.interactive(function(){
+    if (typeof klevuSendProductData == 'function') { 
+      klevuSendProductData(); 
+    }
+    if (typeof klevuSendCategoryData == 'function') { 
+      klevuSendCategoryData(); 
+    }
+  });
+</script>

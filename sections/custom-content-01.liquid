@@ -1,0 +1,1014 @@
+<div class="custom-content custom-content-01">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h4 class="h2" >{{ section.settings.title  }}</h4>
+    </div>
+  {% endif %}
+
+  <div class="el-container">
+    {% for block in section.blocks %}
+      {% case block.settings.width %}
+        {% when '25%' %}
+          <style>
+            .custom__item--{{block.id}} .custom__image {
+              max-height: 250px;
+            }
+          </style>
+          {%- assign block_width = 'small--one-half medium-up--one-quarter' -%}
+          {%- assign image_size = '250x250' -%}
+        {% when '33%' %}
+          <style>
+            .custom__item--{{block.id}} .custom__image {
+              max-height: 345px;
+            }
+          </style>
+          {%- assign block_width = 'small--one-half medium-up--one-third' -%}
+          {%- assign image_size = '345x345' -%}
+        {% when '50%' %}
+          <style>
+            .custom__item--{{block.id}} .custom__image {
+              max-height: 530px;
+            }
+          </style>
+          {%- assign block_width = 'small--one-half medium-up--one-half' -%}
+          {%- assign image_size = '530x530' -%}
+        {% when '66%' %}
+          <style>
+            .custom__item--{{block.id}} .custom__image {
+              max-height: 720px;
+            }
+          </style>
+          {%- assign block_width = 'medium-up--two-thirds' -%}
+          {%- assign image_size = '720x720' -%}
+        {% when '75%' %}
+          <style>
+            .custom__item--{{block.id}} .custom__image {
+              max-height: 810px;
+            }
+          </style>
+          {%- assign block_width = 'medium-up--three-quarters' -%}
+          {%- assign image_size = '810x810' -%}
+        {% when '100%' %}
+          <style>
+            .custom__item--{{block.id}} .custom__image {
+              max-height: 1090px;
+            }
+          </style>
+          {%- assign block_width = 'one-whole' -%}
+          {%- assign image_size = '1090x1090' -%}
+      {% endcase %}
+      <div class="custom__item custom__item--{{block.id}} {{ block_width }} {% if block.settings.alignment %}align--{{ block.settings.alignment }}{% endif %}" {{ block.shopify_attributes }}>
+        <div class="custom__item-inner custom__item-inner--{{ block.type }}">
+          {% case block.type %}
+            {% when 'image' %}
+              {% if block.settings.image != blank %}
+                <div style="text-align:{{ block.settings.image_alignment }}">
+                  {%- assign image_alt = block.settings.image.alt -%}
+                  {{ block.settings.image | img_url: image_size, scale: 2, crop: 'top' | img_tag: image_alt, 'custom__image' }}
+                </div>
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            {% when 'text' %}
+              <div class="medium-up--text-{{ block.settings.align_text }}" style="margin-top:{{ block.settings.margin_top }}px;border-top:{{ block.settings.border_top }}px solid {{ block.settings.border_color  }};padding-top:{{ block.settings.padding_top }}px;padding-bottom:{{ block.settings.padding_bottom }}px;text-align:{{ block.settings.align_text }};">
+                {% if block.settings.title != blank %}
+                  <h4 class="h3"style="font-size:{{ block.settings.title_font_size  }}px;color:{{ block.settings.title_color  }};font-weight:{{ block.settings.title_font_weight  }}">{{ block.settings.title  }}</h4>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <style>.custom-content-01 .text-content p,.custom-content-01 .text-content em, .custom-content-01 .text-content a{font-size:{{ block.settings.text_font_size  }}px;color:{{ block.settings.content_color  }};}</style>
+                  <div class="rte-setting text-content">{{ block.settings.text }}</div>
+                {% endif %}
+              </div>
+            {% when 'video' %}
+              <div class="video-wrapper">
+                {% if block.settings.video_url == blank %}
+                  <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="520" frameborder="0" allowfullscreen style="width:100%"></iframe>
+                {% else %}
+                  {% if block.settings.video_url.type == "youtube" %}
+                    <iframe src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="520" frameborder="0" allowfullscreen style="width:100%"></iframe>
+                  {% endif %}
+                  {% if block.settings.video_url.type == "vimeo" %}
+                    <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?byline=0&portrait=0&badge=0" width="850" height="520" frameborder="0" allowfullscreen style="width:100%"></iframe>
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% when 'product' %}
+              {%- assign product = all_products[block.settings.product] -%}
+              {% if product.title.size > 0 %}
+                {% include 'product-card-grid', grid_image_width: image_size %}
+              {% else %}
+                {% comment %}
+                  No product yet. Show onboarding one.
+                {% endcomment %}
+                <div class="grid-view-item">
+                  <a class="grid-view-item__link" href="#">
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta">
+                      {{ 1999 | money }}
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+            {% when 'collection' %}
+              {%- assign collection = collections[block.settings.collection] -%}
+              {% include 'collection-grid-item', collection_image_size: image_size %}
+            {% when 'html' %}
+              {% if block.settings.code != blank %}
+                {{ block.settings.code }}
+              {% endif %}
+            {% when 'image_overlay' %}
+            <div class='image_overlay_wrap' style="background-image:url({{ block.settings.overlay_image | img_url : '900x' }}); text-align:{{ block.settings.align_text }}">
+              <div class='image_overlay_content_section' style="padding-top:{{ block.settings.padding }}px;padding-bottom:{{ block.settings.padding }}px;">
+                  <h1 class="image_overlay_title" style="font-size:{{ block.settings.title_font_size }}px; color:{{ block.settings.title_color }}">{{ block.settings.title }}</h1>
+                  {% if  block.settings.text  != blank %}
+                  <style>.custom-content-01 .image_overlay_content_section p{font-size:{{ block.settings.text_font_size }}px; color:{{ block.settings.text_color }} }</style>
+                  <p class="image_overlay_content">{{ block.settings.text }}</p>
+                  {% endif %}
+              </div>
+            </div>
+             {% when 'quotes' %}
+            <section class="brand-content">
+                <div class="el-container">
+                  <div class="brand-content-wrapper {{ block.settings.swap }}" style="padding:{{ block.settings.padding }}px 0px; text-align:{{ block.settings.align_text }}">
+                    <aside>
+                      {% if  block.settings.title  != blank %}
+                          <h3 style="font-size:{{ block.settings.title_font_size }}px;color:{{ block.settings.title_color }};">{{ block.settings.title }}</h3>
+                      {% endif %}
+                      {% if  block.settings.text  != blank %}
+                          <p style="font-size:{{ block.settings.text_font_size }}px;color:{{ block.settings.text_color }};">{{ block.settings.text }}</p>
+                      {% endif %}
+                    </aside>
+                    <aside class="brand-content-qoute">
+                    {% if  block.settings.quotes-text  != blank %}
+                        <div style="font-size:{{ block.settings.quotes_font_size }}px;color:{{ block.settings.quotes_text_color }};">"</div>
+                        <q style="font-size:{{ block.settings.quotes_font_size }}px;color:{{ block.settings.quotes_text_color }};">{{ block.settings.quotes-text }}</q>
+                        <div style="font-size:{{ block.settings.quotes_font_size }}px;color:{{ block.settings.quotes_text_color }};">"</div>
+                    {% endif %}
+                    </aside>
+                  </div>
+                </div>
+              </section>
+            {% when 'cta' %}
+            <section class="Cta-content" style="padding:{{ block.settings.padding-top }}px 0px {{ block.settings.padding-bottom }}px 0px ; text-align:{{ block.settings.align_text }}">
+                <div class="el-container">
+                  <div class="cta-wrapper">
+                    <a href="{{ block.settings.url }}" style="color:{{ block.settings.title_color }};font-size:{{ block.settings.title_font_size }}px;background:{{ block.settings.cta_bg }};border:{{ block.settings.cta_border }}px solid {{ block.settings.cta_border_color }};display:inline-block;">
+                    {{ block.settings.title }}</a>
+                  </div>
+                </div>
+            </section>
+          {% endcase %}
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Custom content-01",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Custom content"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Heading color",
+            "default": "#000"
+          },
+          {
+            "type": "number", 
+            "id": "title_font_size",
+            "label": "Heading Font Size",
+            "default": 35
+          },
+          {
+            "type": "number", 
+            "id": "title_font_weight",
+            "label": "Heading Font Weight",
+            "default": 400
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "color",
+            "id": "content_color",
+            "label": "Content color",
+            "default": "#000"
+          },
+          {
+            "type": "number",
+            "id": "text_font_size",
+            "label": "text Font Size",
+            "default": 25
+          },
+          {
+            "type": "number",
+            "id": "margin_top",
+            "label": "Margin Top",
+            "default": 30
+          },
+          {
+            "type": "number",
+            "id": "border_top",
+            "label": "Border top",
+            "default": 1
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color"
+          },
+           {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top",
+            "default": 30
+          },
+          {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding Bottom",
+            "default": 30
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {"value": "top-middle", "label": "Top"},
+              {"value": "center", "label": "Middle"},
+              {"value": "bottom-middle", "label": "Bottom"}
+            ]
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Horizontal alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+            ]
+          }
+        ]
+      },
+      {
+        "type": "image_overlay",
+        "name": "Image overlay text",
+        "settings": [
+          {
+            "type": "number",
+            "id": "padding",
+            "label": "Section Padding"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Heading Color",
+            "default": "#FFF"
+          },
+          {
+            "type": "number",
+            "id": "title_font_size",
+            "label": "Heading Font Size",
+            "default": 35
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "number",
+            "id": "text_font_size",
+            "label": "Text Font Size",
+            "default": 35
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#FFF"
+          },
+          {
+            "type": "image_picker",
+            "id": "overlay_image",
+            "label": "Background image"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Horizontal alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quotes",
+        "name": "Quotes",
+        "settings": [
+          {
+            "type": "number",
+            "id": "padding",
+            "label": "Section Padding"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Heading Color",
+            "default": "#FFF"
+          },
+          {
+            "type": "number",
+            "id": "title_font_size",
+            "label": "Heading Font Size",
+            "default": 35
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "number",
+            "id": "text_font_size",
+            "label": "Text Font Size",
+            "default": 35
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#FFF"
+          },
+          {
+            "type": "textarea",
+            "id": "quotes-text",
+            "label": "Quotes"
+          },
+          {
+            "type": "number",
+            "id": "quotes_font_size",
+            "label": "Quotes Font Size",
+            "default": 35
+          },
+          {
+            "type": "color",
+            "id": "quotes_text_color",
+            "label": "Quotes Text Color",
+            "default": "#ff6900"
+          },
+
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Horizontal alignment",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+            ],
+            "default":"center"
+            
+          },
+          {
+            "type": "select",
+            "id": "swap",
+            "label": "Swap",
+            "options": [
+              {"value": "qutotes-left", "label": "Left"},
+              {"value": "qutotes-right", "label": "Right"}
+            ],
+            "default": "qutotes-left"
+            
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "name": "CTA",
+        "settings": [
+          {
+            "type": "number",
+            "id": "padding-top",
+            "label": "Section Padding Top"
+          },
+          {
+            "type": "number",
+            "id": "padding-bottom",
+            "label": "Section Padding Bottom"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "CTA Label",
+            "default": "Shop Now"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "CTA Url"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "CTA Color",
+            "default": "#FFF"
+          },
+          {
+            "type": "number",
+            "id": "title_font_size",
+            "label": "CTA Font Size",
+            "default": 32
+          },
+           {
+            "type": "color",
+            "id": "cta_bg",
+            "label": "CTA Background color"
+          },
+           {
+            "type": "color",
+            "id": "cta_border_color",
+            "label": "CTA Border color"
+          },
+          {
+            "type": "number",
+            "id": "cta_border",
+            "label": "CTA Border",
+            "default": 1
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Horizontal alignment",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+            ],
+            "default":"center"
+            
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "top-left",
+                "label": "Top left"
+              },
+              {
+                "value": "top-middle",
+                "label": "Top middle"
+              },
+              {
+                "value": "top-right",
+                "label": "Top right"
+              },
+              {
+                "value": "middle-left",
+                "label": "Middle left"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "middle-right",
+                "label": "Middle right"
+              },
+              {
+                "value": "bottom-left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom middle"
+              },
+              {
+                "value": "bottom-right",
+                "label": "Bottom right"
+              }
+            ]
+          },
+            {
+            "type": "select",
+            "id": "image_alignment",
+            "label": "Image alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "middle"
+              },
+              {
+                "value": "right",
+                "label": "middle"
+              }
+            
+            ]
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "video_url",
+            "id": "video_url",
+            "label": "YouTube or Vimeo link",
+            "accept": ["youtube", "vimeo"]
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "options": [
+              {
+                "value": "top-middle",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom"
+              }
+            ],
+            "default": "center"
+          }
+        ]
+      },
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "top-left",
+                "label": "Top left"
+              },
+              {
+                "value": "top-middle",
+                "label": "Top middle"
+              },
+              {
+                "value": "top-right",
+                "label": "Top right"
+              },
+              {
+                "value": "middle-left",
+                "label": "Middle left"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "middle-right",
+                "label": "Middle right"
+              },
+              {
+                "value": "bottom-left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom middle"
+              },
+              {
+                "value": "bottom-right",
+                "label": "Bottom right"
+              }
+            ]
+          }
+        
+        ]
+      },
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "html",
+            "id": "code",
+            "label": "HTML"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom content-01",
+        "category": "Advanced layout",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .custom-content-01 .rte-setting{
+    margin-top:20px;
+  }
+  .custom-content-01 .image_overlay_wrap {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+  .custom-content-01 .image_overlay_content_section {
+    padding: 60px 25px;
+    margin-bottom: 30px;
+  }
+  /*Quotes*/
+  .brand-content {
+    margin-bottom: 40px;
+  }
+  .brand-content h3 {
+    margin-bottom: 15px;
+  }
+  .brand-content-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+
+    align-items: center;
+    text-align: center;
+  }
+  .qutotes-left{
+    flex-direction: row;
+  }
+  .qutotes-right{
+    flex-direction: row-reverse;
+  }
+  .brand-content aside {
+    flex: 1;
+    padding: 10px 40px;
+  }
+  .brand-content-qoute {
+    color: #ff6900;
+  }
+  .brand-content-qoute div {
+    font-size: 50px;
+    line-height: 60px;
+  }
+  .brand-content-qoute div:first-child {
+    text-align: left;
+    margin-bottom: -7%;
+  }
+  .brand-content-qoute div:last-child {
+    text-align: right;
+  }
+  .brand-content-qoute q {
+    font-size: 25px;
+    line-height: 35px;
+    padding: 0 30px;
+  }
+  .brand-content-qoute q::before,
+  .brand-content-qoute q::after {
+    content: "";
+  }
+  .Cta-content .cta-wrapper a {
+    padding: 15px 45px;
+  }
+  
+@media screen and (max-width: 768px) {
+  
+    .custom-content-01 .text-content p, .custom-content-01 .text-content a {
+        font-size: 16px !important;
+    }
+    .custom__item-inner h4{
+      font-size: 25px !important;
+    }
+    .custom-content-01 .image_overlay_content_section {
+      padding: 30px 20px !important; 
+    }
+    .custom-content-01 .image_overlay_content_section .image_overlay_title {
+      font-size: 25px !important;  
+    }
+    .brand-content-wrapper{
+      flex-direction: column;
+    }
+    .brand-content h3{
+      font-size:25px !important;
+    }
+    .brand-content p {
+      font-size:16px !important;
+    }
+    .brand-content aside {
+      padding: 10px 0px 0px 0px;
+    }
+    .brand-content-qoute q,.brand-content-qoute div{
+      font-size:25px !important;
+      line-height: 30px;
+    }
+    .brand-content-wrapper{
+      padding-bottom: 0 !important;
+    }
+    .Cta-content{
+      padding: 30px 0px !important;
+    }
+    .Cta-content .cta-wrapper a {
+      padding: 15px 45px;
+      font-size:16px !important;
+    }
+    .custom-content-01 .video-wrapper iframe{
+      height:210px !important;
+    }
+  
+}
+  
+  
+</style>
+

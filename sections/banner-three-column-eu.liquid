@@ -1,0 +1,925 @@
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="banner-twocolumns-section"
+  class="banner-section banner-twocolumns-section banner-twocolumns-section-01"
+  style="margin-top:{{ section.settings.margin_top }}px"
+>
+  {%- assign euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' -%}
+  {% assign isoCode = localization.country.iso_code | downcase %}
+  {%- if euCountryList contains isoCode -%}
+    {% for block in section.blocks %}
+      <div
+        class="row {{ block.settings.image_width }} {{ block.settings.column_hide }}"
+        style="gap:{{ section.settings.grid-gap }}px;"
+        why="ohh"
+      >
+        <div class="col col-left">
+          {% unless block.settings.link1 == blank %}
+            <a class="link content-left" href="{{ block.settings.link1 }}">
+          {% else %}
+            <span class="link content-left">
+          {% endunless %}
+          {% unless block.settings.heading1 == blank %}
+            <span
+              class="content {{ block.settings.text_color1 }} {{ block.settings.text_color_mobile1 }}"
+              style="justify-content:{{ block.settings.left_banner_conent_alignment }};align-items:{{ block.settings.left_banner_content_alignment_horizontal }}"
+            >
+              <span class="title" style="font-size:{{ block.settings.font_size_left }}px">
+                {%- if block.settings.heading1 %}{{ block.settings.heading1 }}{% endif %}
+                {% if block.settings.paragraph1 != blank %}
+                  <span class="paragraph" style="font-size:{{ block.settings.paragraph_font_size_left  }}px;">
+                    {{- block.settings.paragraph1 -}}
+                  </span>
+                {% endif %}
+                {% unless block.settings.link1 == blank %}
+                  <span class="cta-wrap">
+                    <span class="btn" style="font-size:{{block.settings.font_size_left_cta}}px">
+                      {{- block.settings.link_text1 -}}
+                    </span>
+                  </span>
+                {% endunless %}
+              </span>
+            </span>
+          {% endunless %}
+          {% unless block.settings.link1 == blank %}
+            </a>
+          {% else %}
+            </span>
+          {% endunless %}
+
+          {% if block.settings['video-src1'] != blank %}
+            {% assign aspectRatio = 56.25 %}
+            {% if block.settings.aspectRatio1 contains ':' %}
+              {% assign aspectSplit = block.settings.aspectRatio1 | split: ':' %}
+
+              {% comment %} convert to a Float so the divided_by doesn't round down: {% endcomment %}
+              {% assign secondValue = aspectSplit[1] %}
+              {% assign secondValue = secondValue | plus: 0.0 %}
+
+              {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0] %}
+            {% endif %}
+
+            <div
+              class="videoWrapper"
+              style="background-image: url({{ block.settings.video-src1 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%"
+            >
+              <video
+                preload="auto"
+                autoplay="autoplay"
+                muted="muted"
+                loop="loop"
+                poster="{{ 'video-poster-transp.png' | file_url  }}"
+                playsinline
+              >
+                <source src="{{ block.settings.video-src1 | append: '.mp4' | file_url  }}" type="video/mp4">
+                <source src="{{ block.settings.video-src1 | append: '.webm' | file_url  }}" type="video/webm">
+                <source src="{{ block.settings.video-src1 | append: '.ogv' | file_url  }}" type="video/ogg">
+              </video>
+            </div>
+          {% else %}
+            {% if block.settings.image1 %}
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcset="{{ block.settings.image1 | img_url: '100x' }}"
+                  data-srcset="{{ block.settings.image1 | img_url: 'master' }}"
+                >
+                {% if block.settings.mobile_image1 %}
+                  <source
+                    srcset="{{ block.settings.mobile_image1 | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.mobile_image1 | img_url: '500x' }}"
+                  >
+                {% endif %}
+                <img
+                  src="{{ block.settings.image1 | img_url: '100x' }}"
+                  data-src="{{ block.settings.image1 | img_url: 'master' }}"
+                  alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                  class="lazyload"
+                >
+              </picture>
+            {% else %}
+              <div class="placeholder-background">
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        <div class="col col-middle">
+          {% unless block.settings.link3 == blank %}
+            <a class="link content-left" href="{{ block.settings.link3 }}">
+          {% else %}
+            <span class="link content-left">
+          {% endunless %}
+          {% unless block.settings.heading3 == blank %}
+            <span
+              class="content {{ block.settings.text_color3 }} {{ block.settings.text_color_mobile3 }}"
+              style="justify-content:{{ block.settings.middle_banner_conent_alignment }};align-items:{{ block.settings.middle_banner_content_alignment_horizontal }}"
+            >
+              <span class="title" style="font-size:{{ block.settings.font_size_middle }}px">
+                {%- if block.settings.heading3 %}{{ block.settings.heading3 }}{% endif %}
+                {% if block.settings.paragraph3 != blank %}
+                  <span class="paragraph" style="font-size:{{ block.settings.paragraph_font_size_middle  }}px;">
+                    {{- block.settings.paragraph3 -}}
+                  </span>
+                {% endif %}
+                {% unless block.settings.link3 == blank %}
+                  <span class="cta-wrap">
+                    <span class="btn" style="font-size:{{block.settings.font_size_middle_cta}}px">
+                      {{- block.settings.link_text3 -}}
+                    </span>
+                  </span>
+                {% endunless %}
+              </span>
+            </span>
+          {% endunless %}
+          {% unless block.settings.link3 == blank %}
+            </a>
+          {% else %}
+            </span>
+          {% endunless %}
+
+          {% if block.settings['video-src3'] != blank %}
+            {% assign aspectRatio = 56.25 %}
+            {% if block.settings.aspectRatio3 contains ':' %}
+              {% assign aspectSplit = block.settings.aspectRatio3 | split: ':' %}
+
+              {% comment %} convert to a Float so the divided_by doesn't round down: {% endcomment %}
+              {% assign secondValue = aspectSplit[1] %}
+              {% assign secondValue = secondValue | plus: 0.0 %}
+
+              {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0] %}
+            {% endif %}
+
+            <div
+              class="videoWrapper"
+              style="background-image: url({{ block.settings.video-src3 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%"
+            >
+              <video
+                preload="auto"
+                autoplay="autoplay"
+                muted="muted"
+                loop="loop"
+                poster="{{ 'video-poster-transp.png' | file_url  }}"
+                playsinline
+              >
+                <source src="{{ block.settings.video-src3 | append: '.mp4' | file_url  }}" type="video/mp4">
+                <source src="{{ block.settings.video-src3 | append: '.webm' | file_url  }}" type="video/webm">
+                <source src="{{ block.settings.video-src3 | append: '.ogv' | file_url  }}" type="video/ogg">
+              </video>
+            </div>
+          {% else %}
+            {% if block.settings.image1 %}
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcset="{{ block.settings.image3 | img_url: '100x' }}"
+                  data-srcset="{{ block.settings.image3 | img_url: 'master' }}"
+                >
+                {% if block.settings.mobile_image1 %}
+                  <source
+                    srcset="{{ block.settings.mobile_image3 | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.mobile_image3 | img_url: '500x' }}"
+                  >
+                {% endif %}
+                <img
+                  src="{{ block.settings.image3 | img_url: '100x' }}"
+                  data-src="{{ block.settings.image3 | img_url: 'master' }}"
+                  alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                  class="lazyload"
+                >
+              </picture>
+            {% else %}
+              <div class="placeholder-background">
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        <div class="col col-right">
+          {% unless block.settings.link2 == blank %}
+            <a class="link content-right" href="{{ block.settings.link2 }}">
+          {% else %}
+            <span class="link content-right">
+          {% endunless %}
+          {% unless block.settings.heading2 == blank %}
+            <span
+              class="content {{ block.settings.text_color2 }} {{ block.settings.text_color_mobile2 }}"
+              style="justify-content:{{ block.settings.right_banner_conent_alignment }};align-items:{{ block.settings.right_banner_content_alignment_horizontal }}"
+            >
+              <span class="title" style="font-size:{{ block.settings.font_size_right }}px">
+                {%- if block.settings.heading2 %}{{ block.settings.heading2 }}{% endif %}
+                {% if block.settings.paragraph2 != blank %}
+                  <span class="paragraph" style="font-size:{{ block.settings.paragraph_font_size_right }}px;">
+                    {{- block.settings.paragraph2 -}}
+                  </span>
+                {% endif %}
+                {% unless block.settings.link2 == blank %}
+                  <span class="cta-wrap">
+                    <span class="btn" style="font-size:{{block.settings.font_size_right_cta}}px">
+                      {{- block.settings.link_text2 }}
+                    </span></span
+                  >
+                {% endunless %}
+              </span>
+            </span>
+          {% endunless %}
+          {% unless block.settings.link2 == blank %}
+            </a>
+          {% else %}
+            </span>
+          {% endunless %}
+
+          {% if block.settings['video-src2'] != blank %}
+            {% assign aspectRatio = 56.25 %}
+            {% if block.settings.aspectRatio2 contains ':' %}
+              {% assign aspectSplit = block.settings.aspectRatio2 | split: ':' %}
+
+              {% comment %} convert to a Float so the divided_by doesn't round down: {% endcomment %}
+              {% assign secondValue = aspectSplit[1] %}
+              {% assign secondValue = secondValue | plus: 0.0 %}
+
+              {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0] %}
+            {% endif %}
+
+            <div
+              class="videoWrapper"
+              style="background-image: url({{ block.settings.video-src2 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%"
+            >
+              <video
+                preload="auto"
+                autoplay="autoplay"
+                muted="muted"
+                loop="loop"
+                poster="{{ 'video-poster-transp.png' | file_url  }}"
+                playsinline
+              >
+                <source src="{{ block.settings.video-src2 | append: '.mp4' | file_url  }}" type="video/mp4">
+                <source src="{{ block.settings.video-src2 | append: '.webm' | file_url  }}" type="video/webm">
+                <source src="{{ block.settings.video-src2 | append: '.ogv' | file_url  }}" type="video/ogg">
+              </video>
+            </div>
+          {% else %}
+            {% if block.settings.image2 %}
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcset="{{ block.settings.image2 | img_url: '100x' }}"
+                  data-srcset="{{ block.settings.image2 | img_url: 'master' }}"
+                >
+                {% if block.settings.mobile_image2 %}
+                  <source
+                    srcset="{{ block.settings.mobile_image2 | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.mobile_image2 | img_url: '500x' }}"
+                  >
+                {% endif %}
+                <img
+                  src="{{ block.settings.image2 | img_url: '100x' }}"
+                  data-src="{{ block.settings.image2 | img_url: 'master' }}"
+                  alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                  class="lazyload"
+                >
+              </picture>
+            {% else %}
+              <div class="placeholder-background">
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Banner - Three Column EU",
+  "class": "index-section",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "number",
+      "id": "margin_top",
+      "label": "Section Margin Top",
+      "default": 10,
+      "info": "E.g 10px. the default unit is px. "
+    },
+    {
+      "type": "number",
+      "id": "grid-gap",
+      "label": "Grid Gap",
+      "default": 0
+     }
+
+  ],
+  "blocks": [
+    {
+      "type": "bannergrid-threecolumns",
+      "name": "Banner - Three Columns",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image Left"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image1",
+          "label": "Mobile Image Left"
+        },
+        {
+          "type": "text",
+          "id": "video-src1",
+          "label": "Video filename Left",
+          "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+        },
+        {
+          "type": "text",
+          "id": "aspectRatio1",
+          "label": "Video Aspect Ratio",
+          "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+          "default": "690:750"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image Middle"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image3",
+          "label": "Mobile Image Middle"
+        },
+        {
+          "type": "text",
+          "id": "video-src3",
+          "label": "Video filename Middle",
+          "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+        },
+        {
+          "type": "text",
+          "id": "aspectRatio3",
+          "label": "Video Aspect Ratio",
+          "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+          "default": "690:750"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image Right"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image2",
+          "label": "Mobile Image Right"
+        },
+        {
+          "type": "text",
+          "id": "video-src2",
+          "label": "Video filename Right",
+          "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+        },
+        {
+          "type": "text",
+          "id": "aspectRatio2",
+          "label": "Video Aspect Ratio",
+          "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+          "default": "690:750"
+        },
+        {
+          "type": "text",
+          "id": "heading1",
+          "label": "Left Banner Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "number",
+          "id": "font_size_left",
+          "label": "Left Banner Heading font size",
+          "default": 60
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph1",
+          "label": "Left Banner Paragraph"
+        },
+        {
+          "type": "number",
+          "id": "paragraph_font_size_left",
+          "label": "Left Banner Paragraph font size (screen size > 1024 )"
+        },
+          {
+          "type": "number",
+          "id": "paragraph_font_size_left_tablet",
+          "label": "Left Banner Paragraph font size ( 769 =< screen size =< 1024)"
+        },
+          {
+          "type": "number",
+          "id": "paragraph_font_size_left__mobile",
+          "label": "Left Banner Paragraph font size (screen size <= 768)"
+        },
+        {
+          "type": "select",
+          "id": "text_color1",
+          "label": "Left Banner Text Color",
+          "options": [
+            {
+              "value": "text-light",
+              "label": "Light"
+            },
+            {
+              "value": "text-dark",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light"
+        },
+        {
+          "type": "select",
+          "id": "text_color_mobile1",
+          "label": "Left Banner Text Color on Mobile",
+          "options": [
+            {
+              "value": "text-light-mobile",
+              "label": "Light"
+            },
+            {
+              "value": "text-dark-mobile",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light-mobile"
+        },
+        {
+          "type": "select",
+          "id": "left_banner_conent_alignment",
+          "label": "Left Banner Text Alignment",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "end"
+        },
+        {
+          "type": "select",
+          "id": "left_banner_content_alignment_horizontal",
+          "label": "Left Banner Text Alignment horizontal",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Right"
+            }
+          ],
+          "default": "end"
+        },
+        {
+          "type": "text",
+          "id": "heading3",
+          "label": "Middle Banner Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "number",
+          "id": "font_size_middle",
+          "label": "Middle Banner Heading font size",
+          "default": 60
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph3",
+          "label": "Middle Banner Paragraph"
+        },
+        {
+          "type": "number",
+          "id": "paragraph_font_size_middle",
+          "label": "Middle Banner Paragraph font size",
+          "default": 18
+        },
+        {
+          "type": "select",
+          "id": "text_color3",
+          "label": "Middle Banner Text Color",
+          "options": [
+            {
+              "value": "text-light",
+              "label": "Light"
+            },
+            {
+              "value": "text-dark",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light"
+        },
+        {
+          "type": "select",
+          "id": "text_color_mobile3",
+          "label": "Middle Banner Text Color on Mobile",
+          "options": [
+            {
+              "value": "text-light-mobile",
+              "label": "Light"
+            },
+            {
+              "value": "text-dark-mobile",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light-mobile"
+        },
+        {
+          "type": "select",
+          "id": "middle_banner_conent_alignment",
+          "label": "Middle Banner Text Alignment",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "end"
+        },
+        {
+          "type": "select",
+          "id": "middle_banner_content_alignment_horizontal",
+          "label": "Middle Banner Text Alignment horizontal",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Right"
+            }
+          ],
+          "default": "end"
+        },
+        {
+          "type": "text",
+          "id": "heading2",
+          "label": "Right Banner Heading",
+          "default": "Heading"
+        },
+         {
+          "type": "number",
+          "id": "font_size_right",
+          "label": "Right Banner Heading font size",
+          "default": 60
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph2",
+          "label": "Right Banner Paragraph"
+        },
+        {
+          "type": "number",
+          "id": "paragraph_font_size_right",
+          "label": "Right Banner Paragraph font size",
+          "default": 18
+        },
+        {
+          "type": "select",
+          "id": "text_color2",
+          "label": "Right Banner Text Color",
+          "options": [
+            {
+              "value": "text-light",
+              "label": "Light"
+            },
+            {
+              "value": "text-dark",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light"
+        },
+        {
+          "type": "select",
+          "id": "text_color_mobile2",
+          "label": "Right Banner Text Color on Mobile",
+          "options": [
+            {
+              "value": "text-light-mobile",
+              "label": "Light"
+            },
+            {
+              "value": "text-dark-mobile",
+              "label": "Dark"
+            }
+          ],
+          "default": "text-light-mobile"
+        },
+        {
+          "type": "select",
+          "id": "right_banner_conent_alignment",
+          "label": "Right Banner Text Alignment Vertical",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "end"
+        },
+         {
+          "type": "select",
+          "id": "right_banner_content_alignment_horizontal",
+          "label": "Right Banner Text Alignment horizontal",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Right"
+            }
+          ],
+          "default": "end"
+        },
+        {
+          "type": "url",
+          "id": "link1",
+          "label": "Left Banner Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text1",
+          "label": "Left Banner Link Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "number",
+          "id": "font_size_left_cta",
+          "label": "Left Banner Link Size",
+          "default": 25
+        },
+        {
+          "type": "url",
+          "id": "link3",
+          "label": "Middle Banner Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text3",
+          "label": "Middle Banner Link Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "number",
+          "id": "font_size_middle_cta",
+          "label": "Middle Banner Link Size",
+          "default": 25
+        },
+        {
+          "type": "url",
+          "id": "link2",
+          "label": "Right Banner Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text2",
+          "label": "Right Banner Link Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "number",
+          "id": "font_size_right_cta",
+          "label": "Right Banner Link Size",
+          "default": 25
+        },
+        {
+          "type": "select",
+          "id": "image_width",
+          "label": "Column Width",
+          "options": [
+            {
+              "value": "image-half",
+              "label": "Half"
+            },
+            {
+              "value": "image-third-left",
+              "label": "Third Left"
+            },
+            {
+              "value": "image-third-right",
+              "label": "Third Right"
+            }
+          ],
+          "default": "image-half"
+        },
+        {
+          "type": "select",
+          "id": "column_hide",
+          "label": "Mobile Display Setting",
+          "options": [
+            {
+              "value": "hide-left",
+              "label": "Show only right banner on mobile"
+            },
+            {
+              "value": "hide-right",
+              "label": "Show only left banner on mobile"
+            },
+            {
+              "value": "show-both",
+              "label": "Show both banners on mobile"
+            }
+          ],
+          "default": "hide-left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner - Three Column EU",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "bannergrid-threecolumns"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<style>
+    #black-friday-hub .banner-twocolumns-section .hide-left .col-left,#black-friday-hub .banner-twocolumns-section .hide-left .content-left{
+    display:block;
+  }
+    .banner-twocolumns-section-01 .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding-bottom:50px;
+      text-align: center;
+    }
+    .banner-twocolumns-section-01 .col-left .content {
+  /*     background: #00000075; */
+    }
+    .banner-twocolumns-section-01 .col-right .content {
+  /*     background: #00000075; */
+
+    }
+    .banner-twocolumns-section-01 .content .title {
+      font-family: gotham Book;
+       display: flex;
+      flex-direction: column;
+    }
+    .banner-twocolumns-section-01 .content .btn {
+      font-size: 25px;
+      border: 1px solid white;
+      padding: 15px 30px;
+      line-height: 20px;
+  }
+    .banner-twocolumns-section-01 .content .cta-wrap{
+      text-align: center;
+      padding-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .banner-twocolumns-section-01 .content .btn:hover {
+      border:1px solid white;
+      color:white;
+    }
+    .banner-twocolumns-section-01 .content .btn{
+      text-transform:unset;
+    }
+
+    .banner-twocolumns-section-01 .row{
+      display:flex;
+    }
+    .banner-twocolumns-section-01 .row::before,.banner-twocolumns-section-01 .row::after{
+      content:none !important;
+    }
+    .banner-twocolumns-section-01 .row .col{
+      width:unset !important;
+      float: unset !important;
+      flex:1;
+
+    }
+    .banner-twocolumns-section-01 .content .paragraph{
+        padding-top:10px;
+      }
+
+  @media screen and (max-width: 1200px) {
+
+
+      .banner-twocolumns-section-01 .content .title{
+        font-size:20px !important;
+      }
+      .banner-twocolumns-section-01 .content .btn {
+        font-size:20px !important;
+        padding:10px 15px !important;
+      }
+      .banner-twocolumns-section-01 .content .cta-wrap {
+        padding-top: 20px;
+      }
+
+  }
+       {% for block in section.blocks %}
+           {% if block.settings.paragraph_font_size_left_tablet != blank %}
+      @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    	 body .banner-twocolumns-section-01 .content .paragraph{
+            font-size: {{ block.settings.paragraph_font_size_left_tablet  }}px !important;
+      }
+    }
+          {% endif %}
+       {% endfor %}
+    @media screen and (max-width: 768px) {
+       .banner-twocolumns-section-01 .content  {
+      -webkit-justify-content: flex-end !important;
+        justify-content:flex-end !important;
+        align-items:center !important;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-left:2.375rem;
+        padding-right: 2.375rem;
+      }
+      .banner-twocolumns-section-01 .row {
+        flex-direction: column;
+      }
+      .banner-twocolumns-section-01 .content .paragraph{
+        font-size:16px !important;
+      }
+    }
+
+   @media screen and (max-width: 400px) {
+    .banner-twocolumns-section-01 .content .title{
+        font-size:20px !important;
+      }
+     .banner-twocolumns-section-01 .content .btn {
+        font-size:16px !important;
+        padding:8px 15px !important;
+      }
+      .banner-twocolumns-section-01 .content  {
+        padding-left:1.375rem;
+        padding-right: 1.375rem;
+      }
+
+   }
+
+
+
+  /* only use for twp grid item start  */
+  @media screen and (min-width: 1024px) {
+
+        #shopify-section-template--14649148899406__166359139362e8c906 .col{
+          width: calc(50% - 7.5px);
+        }
+        #shopify-section-template--14649148899406__166359139362e8c906 .col-left{
+          margin-right:15px;
+        }
+  }
+    /* only use for twp grid item end  */
+</style>

@@ -1,0 +1,264 @@
+<div class="fit-guide-block-{{ section.id }}">
+  <div class="{{ section.settings.width }}">
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="fit-gide-item {% if block.settings.swap %}swap{% endif %}" id="{{ block.settings.id }}">
+          <div class="fit-guide-item-image item">
+            {% if block.settings.image %}
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="{{ block.settings.image | img_url: '100x' }}"
+                  data-srcset="{{ block.settings.image | img_url: 'master' }}"
+                >
+                {% if block.settings.mobile_image %}
+                  <source
+                    srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                    data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                  >
+                {% endif %}
+                <img
+                  src="{{ block.settings.image | img_url: '100x' }}"
+                  data-src="{{ block.settings.image | img_url: 'master' }}"
+                  alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                  class="lazyload"
+                >
+              </picture>
+            {% else %}
+              <div class="placeholder-background">
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="fit-guide-item-content-wrap item">
+            <div class="fit-guide-item-content">
+              {% if block.settings.heading != blank %}
+                <h3>{{ block.settings.heading }}</h3>
+              {% endif %}
+              {% if block.settings.content != blank %}
+                <p>{{ block.settings.content }}</p>
+              {% endif %}
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">{{ block.settings.additional_info }}</a>
+              {% endif %}
+            </div>
+            <div class="fit-guide-item-video">
+              {% if block.settings['video-src1'] != blank %}
+                {% assign aspectRatio = 56.25 %}
+                {% if block.settings.aspectRatio1 contains ':' %}
+                  {% assign aspectSplit = block.settings.aspectRatio1 | split: ':' %}
+                  {% comment %} convert to a Float so the divided_by doesn't round down: {% endcomment %}
+                  {% assign secondValue = aspectSplit[1] %}
+                  {% assign secondValue = secondValue | plus: 0.0 %}
+                  {% assign aspectRatio = secondValue | times: 100 | divided_by: aspectSplit[0] %}
+                {% endif %}
+                <div
+                  class="videoWrapper"
+                  style="background-image: url({{ block.settings.video-src1 | append: '.jpg' | file_url  }});padding-bottom: {{aspectRatio}}%"
+                >
+                  <video
+                    controls
+                  >
+                    <source src="{{ block.settings.video-src1 | append: '.mp4' | file_url  }}" type="video/mp4">
+                    <source src="{{ block.settings.video-src1 | append: '.webm' | file_url  }}" type="video/webm">
+                    <source src="{{ block.settings.video-src1 | append: '.ogv' | file_url  }}" type="video/ogg">
+                  </video>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "CMS Fit Guide",
+  "class": "cms-fit-guide",
+  "settings":[
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Column Width",
+      "options": [
+        {
+          "value": "el-container",
+          "label": "container"
+        },
+        {
+          "value": "el-full-width",
+          "label": "Full width"
+        }
+
+      ],
+      "default": "el-container"
+    },
+     {
+      "type": "select",
+      "id": "text-alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+
+      ],
+      "default": "center"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin",
+        "default": "40px 0px 40px 0px",
+        "info":"Change margin value according to the necessity.Section margin value will be like this [Top Right Bottom Left]: 40px 0px 40px 0px "
+      }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Item",
+      "settings": [
+        {
+          "type":"header",
+          "content":"Image Area"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+         {
+          "type":"header",
+          "content":"Content Area"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading..."
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "Lorem ipsum..."
+        },
+          {
+          "type": "text",
+          "id": "additional_info",
+          "label": "Additional Information Text",
+          "default": "SHOP NOW"
+        },        
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Additional Information Link"
+        },
+        {
+          "type": "text",
+          "id": "video-src1",
+          "label": "Video filename Left",
+          "info": "If this is set, a video will be used instead. Upload a .mp4, .webm, .ogv and .jpg into the Files folder (Settings > Files) all with this name. So if one of your assets is 'my-video.mp4', then just enter 'my-video' here."
+        },
+        {
+          "type": "text",
+          "id": "aspectRatio1",
+          "label": "Video Aspect Ratio",
+          "info": "Eg. '16:9' or '4:3' - or enter 'fullscreen' to fill the screen",
+          "default": "690:750"
+        },
+        {
+          "type":"header",
+          "content":"Column Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "swap",
+          "label": "Swap Column",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "id",
+          "label": "Column Id"
+        }
+      
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .fit-guide-block-{{ section.id }} .fit-gide-item{
+    display:flex;
+    padding:20px 0px;
+  }
+  .fit-guide-block-{{ section.id }} .fit-gide-item .item{
+    flex:1;
+    align-self:center;
+  }
+  .fit-guide-block-{{ section.id }} h3{
+    font-size:25px;
+    margin-bottom:10px;
+  }
+  .fit-guide-block-{{ section.id }} p, .fit-guide-block-{{ section.id }} a{
+    font-size:18px;
+    color:#000;
+    margin-bottom:10px;
+  }
+  .fit-guide-block-{{ section.id }} a{
+    font-weight:bold;
+  }
+  .fit-guide-block-{{ section.id }} video{
+    margin-top:20px;
+  }
+  .fit-guide-block-{{ section.id }} .fit-gide-item.swap{
+    flex-direction: row-reverse;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .fit-guide-block-{{ section.id }} .fit-gide-item , .fit-guide-block-{{ section.id }} .fit-gide-item.swap{
+      flex-direction: column-reverse;
+    }
+    .fit-guide-block-{{ section.id }} .fit-guide-item-content-wrap{
+      display:flex;
+      flex-direction: column-reverse;
+    }
+    .fit-guide-block-{{ section.id }} .fit-guide-item-video {
+      margin-bottom: 40px;
+    }
+    .fit-guide-block-{{ section.id }} .fit-guide-item-content {
+      text-align: center;
+    }
+    .fit-guide-block-{{ section.id }} .fit-gide-item:not(:last-child) .fit-guide-item-image {
+      border-bottom: 2px solid #D8693E;
+    }
+    .fit-guide-block-{{ section.id }} p, .fit-guide-block-{{ section.id }} a{
+      font-size:16px;
+    }
+    #fit-guide .videoWrapper.fullScreen{
+      height:100%;
+    }
+  }
+{% endstyle %}

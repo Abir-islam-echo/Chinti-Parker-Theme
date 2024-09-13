@@ -1,0 +1,599 @@
+<footer class="site-footer" id="mastFooter">
+  <div class="wrapper" itemscope="" itemtype="http://schema.org/Organization">
+    <meta itemprop="url" content="{{ shop.url }}">
+    <meta itemprop="logo" content="https:{{'apple-touch-icon.png' | asset_url}}">
+
+    <div class="row footer-content-wrapper">
+      <div class="left-row row-col">
+        <div class="top">
+          <div class="footer-links">
+            <div class="footer-link-list">
+              <!-- Customer Service -->
+              {%- assign footer_linklist = section.settings.footer_linklist -%}
+              {% if linklists[footer_linklist].links.size > 0 %}
+                <h6>{{ linklists[footer_linklist].title }}</h6>
+                <ul>
+                  {% for link in linklists[footer_linklist].links %}
+                    <li>
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+            <div class="footer-link-list">
+              <!-- Infomation -->
+              {%- assign footer_linklist_three = section.settings.footer_linklist_three -%}
+              {% if linklists[footer_linklist_three].links.size > 0 %}
+                <h6>{{ linklists[footer_linklist_three].title }}</h6>
+                <ul>
+                  {% for link in linklists[footer_linklist_three].links %}
+                    <li>
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="bottom-left">
+            <div class="contact-us">
+              <!-- Contact -->
+              <h6>Contact Us</h6>
+              <ul class="contact-us-list">
+                <li>
+                  <p class="customerServiceHeading">{{ 'footer.customer_service.general_heading' | t }}:</p>
+                  <span itemprop="contactPoint" itemscope="" itemtype="http://schema.org/ContactPoint">
+                    {% assign shopPhoneNumber = section.settings.service_number %}
+                    {% assign splitPhone = shopPhoneNumber | split: '' %}
+                    {% if splitPhone[0] == '0' %}
+                      {% assign shopPhoneNumber = shopPhoneNumber | slice: 1, shopPhoneNumber.size %}
+                      {% assign shopPhoneNumber = '+44 (0) ' | append: shopPhoneNumber %}
+                    {% endif %}
+
+                    {% assign shopPhoneLinkNumber = shopPhoneNumber | replace: ' ', '' | strip %}
+                    <meta itemprop="telephone" content="{{shopPhoneLinkNumber}}">
+                    <meta itemprop="contactType" content="Customer Service">
+                  </span>
+                  <a href="tel:{{shopPhoneLinkNumber}}">{{ shopPhoneNumber }}</a>
+                </li>
+
+                <li>
+                  <p class="customerServiceHeading">Store Contact:</p>
+                  <span itemprop="contactPoint" itemscope="" itemtype="http://schema.org/ContactPoint">
+                    {% assign storeContact = section.settings['store-contact'] %}
+                    {% assign splitPhone = storeContact | split: '' %}
+                    {% if splitPhone[0] == '0' %}
+                      {% assign storeContact = storeContact | slice: 1, storeContact.size %}
+                      {% assign storeContact = '+44 (0) ' | append: storeContact %}
+                    {% endif %}
+                    <meta itemprop="telephone" content="{{storeContact}}">
+                    <meta itemprop="contactType" content="Wholesale Enquiries">
+                  </span>
+                  <a href="tel:{{storeContact}}">{{ storeContact }}</a>
+                </li>
+                <li>
+                  {% assign customerServiceEmail = section.settings.customer_service_email %}
+                  <p>Email us:</p>
+                  <a href="mailto:{{customerServiceEmail}}" target="_blank">{{ customerServiceEmail }}</a>
+                </li>
+                <li>
+                  <p>Visit Us:</p>
+                  <p>{{ section.settings['store-address'] }}</p>
+                </li>
+              </ul>
+              <div class="store-selector-wrapper">
+                <h6>Store Selector</h6>
+                {%- include 'store-view-setup' -%}
+
+                <ul>
+                  <li>
+                    <p>
+                      {{ localization.country.currency.symbol }}
+                      {{ localization.country.iso_code }} - {{ localization.country.name }}
+                    </p>
+                  </li>
+                  <li>
+                    {% render 'country-switcher', buttonText: 'Change region', itemType: 'country-name' -%}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-right">
+            <div class="" id="socialRow">
+              {%- assign footer_linklist_two = section.settings.footer_linklist_two -%}
+              {% if linklists[footer_linklist_two].links.size > 0 %}
+                <ul class="social">
+                  {% for link in linklists[footer_linklist_two].links %}
+                    <li>
+                      <a rel="me" itemprop="sameAs" href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-row row-col">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'content' %}
+              <div class="content content-block-{{ block.id }}">
+                {{ block.settings['content-heading'] }}
+                <!--
+                  <span class="svg-wrapper">
+                    {% assign customArray = '1, 2, 3' | split: ', ' %}
+                    {% for a in customArray %}
+                      <svg
+                        fill="{{ block.settings.text-color }}"
+                        height="8px"
+                        width="8px"
+                        version="1.1"
+                        id="Capa_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 460.775 460.775"
+                        xml:space="preserve"
+                      >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                        <g id="SVGRepo_iconCarrier"> <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55 c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55 c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505 c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55 l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719 c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"/> </g>
+                      </svg>
+                    {% endfor %}
+                  </span>
+                -->
+                <a href="{{ block.settings.content-link }}">{{ block.settings['button-text'] }}</a>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+    {% if section.settings.show_payment_icons %}
+      <div class="site-footer__payment-icons">
+        {% render 'payment-icons' %}
+      </div>
+    {% endif %}
+    <div class="footer-copyright">
+      <p class="copyright">Copyright {{ 'now' | date: '%Y' }} &copy; {{ shop.name | link_to: '/' }}</p>
+    </div>
+  </div>
+
+  <!--
+    <div id="multiStoreSwitcherWrapper">
+      <div id="multiStoreSwitcher">
+        <div id="modalHeader"><img src="{{ 'logo.svg' | asset_url }}" alt="{{ shop.name }}"></div>
+
+        <div id="formSwitcherBlock">
+          <h6>Select region</h6>
+          <div class="selector">
+            <div class="storeSelectDropdown">
+              <label data-size="">
+                {{- storeViewFullName }} - {{ storeViewCurrency }}
+                {{ storeFullCurrencyName -}}
+              </label>
+              <ul class="product-option-size">
+                <li class="select" data-size="">
+                  <span class="name">
+                    {{- storeViewFullName }} - {{ storeViewCurrency }}
+                    {{ storeFullCurrencyName -}}
+                  </span>
+                </li>
+                <li
+                  class="active"
+                  data-value="EUR"
+                  data-href="https://www.eu.chintiandparker.com{{request.path}}?storeRedirect=EU"
+                >
+                  <span class="name">Europe - &euro; Euros</span>
+                </li>
+                <li
+                  class="active"
+                  data-value="USD"
+                  data-href="https://www.us.chintiandparker.com{{request.path}}?storeRedirect=US"
+                >
+                  <span class="name">North America - $ US Dollars</span>
+                </li>
+                <li
+                  class="active"
+                  data-value="GBP"
+                  data-href="https://www.chintiandparker.com{{request.path}}?storeRedirect=UK"
+                >
+                  <span class="name">United Kingdom - &pound; UK pounds</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button id="multiStoreSwitcherSubmit" class="button">Select</button>
+        </div>
+      </div>
+    </div>
+  -->
+</footer>
+
+{% schema %}
+{
+	"name": "Footer",
+	"settings":
+	[
+		{
+			"type": "checkbox",
+			"id": "show_payment_icons",
+			"label": "Show Payment Icons"
+		},
+
+      {
+        "type": "color",
+        "id": "footer-background",
+        "label": "Footer Background",
+        "default": "#ffffff"
+      },
+		{
+			"type": "link_list",
+			"id": "footer_linklist",
+			"label": "Footer 1"
+		},
+		{
+			"type": "link_list",
+			"id": "footer_linklist_two",
+			"label": "Footer 2"
+		},
+		{
+			"type": "link_list",
+			"id": "footer_linklist_three",
+			"label": "Footer 3"
+		},
+		{
+			"type": "text",
+			"id": "service_number",
+			"label": "Customer Service"
+		},
+		{
+			"type": "text",
+			"id": "store-contact",
+			"label": "Store Contact"
+		},
+		{
+			"type": "text",
+			"id": "customer_service_email",
+			"label": "Email"
+		},
+        {
+			"type": "textarea",
+			"id": "store-address",
+			"label": "Store Address",
+            "default":"336 King's Road, London, SW3 5UR"
+		},
+        {
+			"type": "text",
+			"id": "store-phone",
+			"label": "Store Phone Number",
+            "default":"07770791329"
+		},
+      {
+        "type": "color",
+        "id": "copyright-background",
+        "label": "Copyright Background",
+        "default": "#ffffff"
+      }
+
+
+	],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content",
+      "settings":[
+        {
+          "type": "richtext",
+          "id": "content-heading",
+          "label": "Heading"
+        },
+        {
+          "type": "url",
+          "id": "content-link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "button-text",
+          "label": "Button Text"
+
+        },
+                {
+          "type": "color",
+          "id": "text-color",
+          "label": "Text Color"
+        },
+        {
+          "type": "color",
+          "id": "background-color",
+          "label": "Background Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "background-image",
+          "label": "Background Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<style>
+        .footer-store li {
+        	color: #777;
+        	font-size: 14px;
+        	margin-top: 5px;
+        }
+      footer#mastFooter {
+      text-align: start;
+    }
+      footer#mastFooter .footer-content-wrapper{
+      background-color: {{ section.settings.footer-background }};
+    }
+      footer#mastFooter * {
+      box-sizing: border-box;
+    }
+      footer#mastFooter .payment-icons .payment-icon {
+      display: flex;
+    }
+      footer#mastFooter .site-footer__payment-icons {
+      margin: 0;
+        padding: 10px 0;
+    }
+        footer#mastFooter .wrapper{
+          padding: 0;
+          max-width: 100%;
+        }
+        footer#mastFooter .row {
+          display: flex;
+
+        }
+        footer#mastFooter .row .row-col{
+          width: 50%;
+        }
+        footer#mastFooter .row .left-row{
+          padding: 2em;
+        }
+        footer#mastFooter .row .left-row :is(.top , .bottom){
+          padding: 2em 0;
+        }
+        footer#mastFooter .row .left-row .top .footer-links{
+          border: none;
+          display: flex;
+          gap: 24%;
+          justify-content: flex-start;
+          padding: 0;
+          padding-bottom: 10px;
+        }
+    footer#mastFooter .row .left-row .top .footer-links a{
+      color: #313131;
+      transition: all .25s;
+    }
+    footer#mastFooter .row .left-row .top .footer-links a:hover{
+      color: #646464;
+    }
+        footer#mastFooter .row .left-row .top .footer-links .footer-link-list :is(p,a,h6){
+          font-size: 16px;
+          margin: 0;
+        }
+        footer#mastFooter .row .left-row .top .footer-links::before{
+          content: none;
+        }
+        footer#mastFooter .row .left-row .bottom{
+          border-top: 1px solid #bbbab8;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+        footer#mastFooter .row .left-row .bottom .bottom-right #socialRow{
+           border: none;
+          padding: 0;
+        }
+        footer#mastFooter .row .left-row .bottom .bottom-right #socialRow .social{
+           display: flex;
+          width: fit-content;
+      }
+        footer#mastFooter .row .left-row .bottom .bottom-left .contact-us ul li{
+           display: flex;
+          align-items: center;
+          gap: 3px;
+      }
+    footer#mastFooter .row .left-row .bottom .bottom-left .contact-us ul li :is(p, a){
+      font-size: 15px;
+    }
+        footer#mastFooter .row .left-row .bottom .bottom-left .contact-us ul li:not(:last-child){
+           margin-bottom: 5px;
+      }
+        footer#mastFooter .row .left-row .bottom .bottom-left .contact-us h6{
+           margin-bottom: 5px;
+          font-size: 16px;
+          text-transform: uppercase;
+      }
+  footer#mastFooter .row .left-row .bottom .bottom-left .contact-us .contact-us-list{
+    padding-bottom: 15px
+  }
+        footer#mastFooter .row .left-row .bottom .bottom-left .customerServiceHeading{
+           font-weight: 400;
+      }
+        footer#mastFooter .row .left-row .bottom .bottom-left .contact-us ul li p{
+           margin: 0
+      }
+      footer#mastFooter :is(.copyright,.site-footer__payment-icons){
+        text-align: center;
+      }
+      footer#mastFooter .footer-copyright{
+        background-color: {{ section.settings.copyright-background }};
+        padding: 30px 0;
+        margin: 0;
+      }
+    footer#mastFooter .row .right-row{
+      display: flex;
+      flex-direction: column;
+    }
+    footer#mastFooter .row .right-row .content{
+      flex: 1;
+    padding: 50px;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-end;
+      gap: 14px;
+       background-repeat: no-repeat;
+    background-size: cover;
+      background-position: center;
+    }
+    footer#mastFooter .row .right-row .content h2{
+      font-size: 48px;
+      line-height: normal;
+    }
+    footer#mastFooter .row .right-row .content a{
+      position: relative;
+      width: fit-content;
+      font-size: 16px;
+    }
+    footer#mastFooter .contact-us li a:after{
+      background-color: #333;
+    }
+    footer#mastFooter .contact-us li a{
+      position: relative;
+    }
+    footer#mastFooter .contact-us li a:hover{
+      opacity: 0.8;
+    }
+    footer#mastFooter .row .right-row .content a:after, footer#mastFooter .contact-us li a:after{
+      bottom: 2px;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      -webkit-transform-origin: bottom left;
+      transform-origin: bottom left;
+      -webkit-transition: -webkit-transform .25s ease-out;
+      transition: -webkit-transform .25s ease-out;
+      transition: transform .25s ease-out;
+      transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+      width: 100%;
+    }
+    footer#mastFooter .row .right-row .content a:hover:after, footer#mastFooter .contact-us li a:hover:after{
+          -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: bottom right;
+      transform-origin: bottom right;
+    }
+    footer#mastFooter .row .right-row .content a:hover{
+      opacity: 0.8;
+    }
+    footer#mastFooter .row .right-row .content .svg-wrapper{
+      display: flex;
+      gap: 30px;
+    }
+            {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'content' %}
+              footer#mastFooter .row .right-row .content.content-block-{{ block.id }}{
+                {% if block.settings.background-image %}
+                background-image: url("{{ block.settings.background-image | img_url: "master" }}");
+                  {% endif %}
+                {% if block.settings.background-color %}
+                background-color: {{ block.settings.background-color }};
+                {% endif %}
+              }
+              footer#mastFooter .row .right-row .content.content-block-{{ block.id }} a{
+                border-color: {{ block.settings.text-color }};
+              }
+              footer#mastFooter .row .right-row .content.content-block-{{ block.id }} *{
+                color: {{ block.settings.text-color }};
+              }
+              footer#mastFooter .row .right-row .content.content-block-{{ block.id }} a:after{
+                background-color: {{ block.settings.text-color }};
+              }
+
+        {% endcase %}
+        {% endfor %}
+
+    @media only screen and (max-width: 500px){
+          footer#mastFooter .row .right-row .content h2{
+        font-size: 30px;
+      }
+      footer#mastFooter .row .left-row .bottom{
+        flex-direction: column;
+        align-items: flex-start;
+  }
+      footer#mastFooter .row .left-row .bottom .bottom-right div#socialRow ul.social{
+        padding: 15px 0;
+      }
+    }
+    @media only screen and (max-width: 1024px){
+      footer#mastFooter .footer-content-wrapper{
+        flex-direction: column;
+      }
+      footer#mastFooter .footer-content-wrapper .row-col{
+        width: 100%;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row{
+        padding : 24px 18px;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top{
+        padding: 0
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links{
+        flex-direction: column;
+        padding-bottom: 0;
+      }
+      footer#mastFooter .row .right-row .content{
+        padding: 50px 18px;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list h6{
+        padding: 10px 0;
+        margin: 0px;
+        cursor: pointer;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list h6:after{
+        content: "";
+        background-image: url("https://cdn.shopify.com/s/files/1/0040/7057/2147/files/down-arrow-5-svgrepo-com_4.svg?v=1717588155");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        float: right;
+        padding: 9px;
+        background-position: center;
+        height: 14px;
+        width: 6px;
+        transition: all .25s ease-in-out;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list.active h6:after{
+        transform: rotate(180deg);
+        transition: all .25s ease-in-out;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list.active  ul{
+        max-height: 800px;
+        transition: all .4s ease-in-out;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list{
+        border-top: 1px solid #bbbab8;
+      }
+      footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list ul{
+        max-height: 0px;
+        transition: all .4s cubic-bezier(0,1,0,1);
+        overflow: hidden;
+      }
+      footer#mastFooter div.footer-copyright{
+        border: none;
+      }
+      footer#mastFooter .row .left-row .bottom .bottom-right #socialRow .social{
+        padding: 0;
+      }
+    }
+</style>
+
+<script>
+  document.querySelectorAll("footer#mastFooter .footer-content-wrapper .left-row .top .footer-links .footer-link-list h6").forEach(button=>{
+    button.addEventListener('click',()=>{
+      button.closest(".footer-link-list").classList.toggle("active");
+    })
+  })
+</script>

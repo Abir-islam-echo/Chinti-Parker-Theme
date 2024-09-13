@@ -1,0 +1,205 @@
+{%- assign euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' -%}
+{%- assign usCountryList = 'ca,us' -%}
+{%- assign ukCountryList = 'bf,td,cg,gq,ga,mo,sl,th,tg,sh,sx,st,rw,gm,bi,ug,ci,lr,gh,cm,md,gi,aw,ao,se,ro,pl,hu,dk,cz,bg,uk,bd,gb,al,im,gg,je,nz,hk,jp,kr,kw,qa,tw,ae,dz,ai,ag,ar,am,az,bs,bh,bb,bz,bj,bm,bt,bo,ba,bw,br,vg,bn,kh,cv,ky,cl,cn,co,km,ck,cr,cw,dj,dm,do,ec,eg,sv,et,fk,fo,fj,gf,pf,ge,gi,gl,gd,gt,gn,gw,gy,ht,hn,is,in,id,il,jm,jo,kz,ke,ki,kg,la,lb,ls,li,mg,mw,my,mv,mr,mu,mx,md,mn,ms,ma,mz,na,nr,np,an,nc,ni,ng,nu,mk,no,om,pk,pa,pg,py,pe,ph,re,ws,sa,rs,sc,sg,sb,za,lk,sr,ch,tz,to,tt,tn,tr,tm,tc,tv,uy,uz,vu,ve,vn,vg,wf,zm,zw' -%}
+{% assign isoCode = localization.country.iso_code | downcase %}
+
+<div class="skinny-banner">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'content-for-uk' %}
+        {%- if ukCountryList contains isoCode -%}
+          <div class="banner-content-uk">
+            <div class="text-wrapper">
+              {{ block.settings['uk-text-content'] }}
+            </div>
+          </div>
+        {% endif %}
+      {% when 'content-for-eu' %}
+        {%- if euCountryList contains isoCode -%}
+          <div class="banner-content-eu">
+            <div class="text-wrapper">
+              {{ block.settings['eu-text-content'] }}
+            </div>
+          </div>
+        {% endif %}
+      {% when 'content-for-us' %}
+        {%- if usCountryList contains isoCode -%}
+          <div class="banner-content-us">
+            <div class="text-wrapper">
+              {{ block.settings['us-text-content'] }}
+            </div>
+          </div>
+        {% endif %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Skinny Banner",
+  "settings": [
+    {
+      "type": "number",
+      "id": "top-margin",
+      "label": "Top margin",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "bottom-margin",
+      "label": "Bottom margin",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "background-color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+       "type": "text_alignment",
+       "id": "text-alignment",
+       "label": "Text alignment",
+       "default": "center"
+    },
+    {
+      "type": "number",
+      "id": "top-padding",
+      "label": "Top padding",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "bottom-padding",
+      "label": "Bottom padding",
+      "default": 20
+    }
+  ],
+  "blocks":[
+    {
+      "type":"content-for-uk",
+      "name":"Content for UK",
+      "settings":[
+        {
+          "type": "richtext",
+          "id": "uk-text-content",
+          "label": "Text Content",
+          "default":"<p>sample text</p>"
+        },
+        {
+          "type": "number",
+          "id": "uk-font-size",
+          "label": "Font size",
+          "default": 20
+        },
+        {
+          "type": "color",
+          "id": "uk-font-color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "type":"content-for-eu",
+      "name":"Content for EU",
+      "settings":[
+        {
+          "type": "richtext",
+          "id": "eu-text-content",
+          "label": "Text Content",
+          "default":"<p>sample text</p>"
+        },
+        {
+          "type": "number",
+          "id": "eu-font-size",
+          "label": "Font size",
+          "default": 20
+        },
+        {
+          "type": "color",
+          "id": "eu-font-color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "type":"content-for-us",
+      "name":"Content for US",
+      "settings":[
+        {
+          "type": "richtext",
+          "id": "us-text-content",
+          "label": "Text Content",
+          "default":"<p>sample text</p>"
+        },
+        {
+          "type": "number",
+          "id": "us-font-size",
+          "label": "Font size",
+          "default": 20
+        },
+        {
+          "type": "color",
+          "id": "us-font-color",
+          "label": "Text color",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ],
+  "presets":[
+    {
+      "name":"Skinny Banner"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .skinny-banner{
+    margin-top:{{ section.settings.top-margin }}px;
+    margin-bottom:{{ section.settings.bottom-margin }}px;
+    background: {{ section.settings.background-color }};
+    box-sizing: border-box;
+    padding-top:{{ section.settings.top-padding }}px;
+    padding-bottom:{{ section.settings.bottom-padding }}px;
+    min-height: 20px;
+  }
+    .skinny-banner a{
+      text-decoration:none;
+    }
+    .skinny-banner .text-wrapper{
+      text-align: {{ section.settings.text-alignment }};
+      padding: 0 15px;
+    }
+    {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'content-for-uk' %}
+      .banner-content-uk .text-wrapper p{
+        font-size:{{ block.settings.uk-font-size }}px;
+        color:{{ block.settings.uk-font-color }};
+      }
+      .banner-content-uk .text-wrapper a{
+        color:{{ block.settings.uk-font-color }};
+      }
+      {% when 'content-for-eu' %}
+      .banner-content-eu .text-wrapper p{
+        font-size:{{ block.settings.eu-font-size }}px;
+        color:{{ block.settings.eu-font-color }};
+      }
+      .banner-content-eu .text-wrapper a{
+        color:{{ block.settings.eu-font-color }};
+      }
+      {% when 'content-for-us' %}
+      .banner-content-us .text-wrapper p{
+        font-size:{{ block.settings.us-font-size }}px;
+        color:{{ block.settings.us-font-color }};
+      }
+      .banner-content-us .text-wrapper a{
+        color:{{ block.settings.us-font-color }};
+      }
+    {% endcase %}
+    {% endfor %}
+</style>

@@ -1,0 +1,93 @@
+<div class="journal-post-twocol-imag-text-section">
+    {% case block.settings.vertical_align %}
+        {% when 'content-center' %}
+        {%- assign flex_valign = 'row-flex-aligncenter' -%}
+        {% when 'content-top' %}
+        {%- assign flex_valign = 'row-flex-aligntop' -%}
+        {% when 'content-bottom' %}
+        {%- assign flex_valign = 'row-flex-alignbottom' -%}
+    {% endcase %}
+    {% if block.settings.columns == 'two-column' %}
+    {% case block.settings.column_order %}
+        {% when 'image-left' %}
+        {%- assign flex_direction = 'row-flex-row' -%}
+
+        {% when 'image-right' %}
+        {%- assign flex_direction = 'row-flex-reverse' -%}
+    {% endcase %}
+    <div class="row row-flex {{ flex_direction }} {{ flex_valign }}">     
+         <div class="col-wide-6 col-medium-6 col-image">
+            {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="image">
+            {% endif %}	
+                {% if block.settings.image != blank %}
+                    <picture>
+                        <source media="(min-width: 024px)" srcset="{{ block.settings.image | img_url: 'master' }}">
+                        {% if block.settings.mobile_image %}<source srcset="{{ block.settings.mobile_image | img_url: '500x' }}">{% endif %}
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alttext }}" />
+                    </picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+            {% if block.settings.link != blank %}
+            </a> 
+            {% endif %}	
+            {% if block.settings.alttext != blank %}
+            <h4 class="alt">{% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}{{ block.settings.alttext }}{% if block.settings.link != blank %}</a>{% endif %}</h4>
+            {% endif %}	
+        </div>
+        <div class="col-wide-6 col-medium-6 col-text">
+            <div class="content">
+                {% if block.settings.title != blank %}
+                <h2 class="title">{{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.content != blank %}
+                    {{ block.settings.content}}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if block.settings.columns == 'one-column' %}
+    {% case block.settings.column_order %}
+        {% when 'image-left' %}
+        {%- assign flex_direction = 'image-left' -%}
+
+        {% when 'image-right' %}
+        {%- assign flex_direction = 'image-right' -%}
+    {% endcase %}
+    <div class="row">     
+        <div class="col-text">
+            <div class="content">
+                {% if block.settings.title != blank %}
+                <h2 class="title">{{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="image {{ flex_direction }}">
+                {% endif %}	
+                    {% if block.settings.image != blank %}
+                        <picture class="image {{ flex_direction }}">
+                            <source media="(min-width: 024px)" srcset="{{ block.settings.image | img_url: 'master' }}">
+                            {% if block.settings.mobile_image %}<source srcset="{{ block.settings.mobile_image | img_url: '500x' }}">{% endif %}
+                            <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alttext }}" />
+                        </picture>
+                    {% else %}
+                        <div class="placeholder-background">
+                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
+                    {% endif %}
+                {% if block.settings.link != blank %}
+                </a> 
+                {% endif %}	
+                {% if block.settings.content != blank %}
+                    {{ block.settings.content}}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,81 @@
+<div class="gap" style="margin:{{ section.settings.margin_top }}px 0 {{ section.settings.margin_bottom }}px 0px;"></div>
+
+{% schema %}
+  {
+    "name": "Section Gap",
+    "settings": [
+      {
+        "type":"number",
+        "id":"margin_top",
+        "label":"Margin Top",
+        "default":0
+      },
+      {
+        "type":"number",
+        "id":"margin_bottom",
+        "label":"Margin Bottom",
+        "default":0
+      },
+       {
+        "type":"number",
+        "id":"margin_top_mobile",
+        "label":"Margin Top Mobile",
+        "default":0
+      },
+      {
+        "type":"number",
+        "id":"margin_bottom_mobile",
+        "label":"Margin Bottom Mobile",
+        "default":0
+      }
+    ],
+    "presets": [
+      {
+        "name": "Section Gap",
+        "category": "gap"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+  @media screen and (max-width: 768px) {
+    .gap{
+      margin:30px 0 30px 0px !important;
+    }
+  }
+{% endstylesheet %}
+
+{% if page.template_suffix=='sustainability-hub' %}
+  <style>
+    div#shopify-section-template--14693747720270__16648756830a1eb878 .content{
+      margin-left:20%;
+    }
+    div#shopify-section-template--14693747720270__16648854078175f784 .video-wrapper{
+        position: relative;
+        padding-bottom: 56.2%;
+    }
+    div#shopify-section-template--14693747720270__16648854078175f784 iframe{
+        width: 80% !important;
+        height: 80%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+      @media screen and (max-width: 768px) {
+        div#shopify-section-template--14693747720270__banner-01 .content{
+          -webkit-justify-content: center !important;
+          justify-content: center !important;
+          background: #00000030;
+        }
+      
+        div#shopify-section-template--14693747720270__16648756830a1eb878 .content{
+          margin-left:0;
+        }
+        div#shopify-section-template--14693747720270__16648854078175f784 iframe {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+  </style>
+{% endif %}

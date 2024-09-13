@@ -1,0 +1,46 @@
+<div class="text-center">
+    <h3 class="get-in-touch">Get In Touch</h3>
+    <p class="text-dark">For any queries related to your home appointment, get in touch with our concierge team.</p>
+</div>
+
+<section class="contact-methods">
+    <article>
+        <img src="{{ 'icon-email.png' | asset_url }}" alt="Email Harper">
+        {{ section.settings.concierge_email }}
+    </article>
+    <article>
+        <img src="{{ 'icon-telephone.png' | asset_url }}" alt="Telephone Harper">
+        {{ section.settings.concierge_telephone }}
+    </article>
+    <article>
+        <img src="{{ 'icon-whatsapp.png' | asset_url }}" alt="WhatsApp Harper">
+        {{ section.settings.concierge_whatsapp }}
+    </article>
+</section>
+
+
+{% schema %}
+{
+  "name": "Concierge Contacts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "concierge_email",
+      "label": "Concierge Email",
+      "default": "service@harperconcierge.com"
+    },
+    {
+      "type": "text",
+      "id": "concierge_telephone",
+      "label": "Concierge Telephone",
+      "default": "+44 (0) 333 939 8123"
+    },
+    {
+      "type": "text",
+      "id": "concierge_whatsapp",
+      "label": "Concierge WhatsApp",
+      "default": "+44 (0) 7539 227 126"
+    }
+  ]
+}
+{% endschema %}

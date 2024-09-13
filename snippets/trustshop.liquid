@@ -1,0 +1,65 @@
+{% if settings.trustshops_enabled %}
+  <h3 class="title title--with-left-icon">
+    <span>
+      <img
+        class="icon trustmark-icon"
+        src="https://widgets.trustedshops.com/assets/images/trustmark_120x120.png"
+        alt="Trustmark"
+      />
+      Buyer Protection
+    </span>
+  </h3>
+  <div class="content" id="widget">
+      <h4 class="title title--with-left-icon">
+        <span>
+          <a href="https://www.trustedshops.eu/buyerrating/info_XAEE6B3BEE8052FEF4807DCD3BBCEC701.html" target="_blank">
+            <img
+              class="icon trustmark-icon"
+              src="https://widgets.trustedshops.com/assets/images/trustmark_120x120.png"
+              alt="Trustmark"
+            />
+          </a>
+          This shop is certified... what does that mean?
+        </span>
+      </h4>
+      <p>With online shopping, you have no personal contact with the vendor and you can't touch the product or try it. To enable you to make orders without any worries despite this, the Trusted Shops trustmark shows you which online shop has earned your trust and offers an outstanding service.</p>
+      <p>You can find all the requirements for awarding the trustmark in the <a href="https://www.trustedshops.eu/tsdocument/TS_QUALITY_CRITERIA_EUO_en.pdf" target="_blank">quality criteria</a>.</p>
+      <h4 class="title title--with-left-icon">
+        <span>
+          <a href="https://www.trustedshops.eu/buyerrating/info_XAEE6B3BEE8052FEF4807DCD3BBCEC701.html" target="_blank">
+            <img
+              class="icon guarantee-icon"
+              src="https://widgets.trustedshops.com/assets/images/shield-simplified.svg"
+              alt="Guarantee"
+            />
+          </a>
+          Trusted Shops guarantee
+        </span>
+      </h4>
+      <p>You can make purchases securely from any shop with the Trusted Shops trustmark thanks to our money-back guarantee. After you have placed the order, you can insure your current purchase with just one click, as well as automatically insure all future purchases from shops with the Trusted Shops trustmark for up to 2.500 € free of charge. The insurance period is 30 days for each purchase.</p>
+      <p>The Guarantee and Participation Terms apply.</p>
+      <p><a href="https://www.trustedshops.eu/legal-notice-privacy.html" target="_blank" rel="noopener noreferrer">Imprint &amp; Data protection</a></p>
+      <script type="text/javascript">
+        (function () { 
+          var _tsid = 'XAEE6B3BEE8052FEF4807DCD3BBCEC701'; 
+          _tsConfig = { 
+            'yOffset': '0', /* offset from page bottom */
+            'variant': 'reviews', /* default, reviews, custom, custom_reviews */
+            'customElementId': '', /* required for variants custom and custom_reviews */
+            'trustcardDirection': '', /* for custom variants: topRight, topLeft, bottomRight, bottomLeft */
+            'customBadgeWidth': '', /* for custom variants: 40 - 90 (in pixels) */
+            'customBadgeHeight': '', /* for custom variants: 40 - 90 (in pixels) */
+            'disableResponsive': 'false', /* deactivate responsive behaviour */
+            'disableTrustbadge': 'true' /* deactivate trustbadge */
+          };
+          var _ts = document.createElement('script');
+          _ts.type = 'text/javascript'; 
+          _ts.charset = 'utf-8'; 
+          _ts.async = true; 
+          _ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js'; 
+          var __ts = document.getElementsByTagName('script')[0];
+          __ts.parentNode.insertBefore(_ts, __ts);
+        })();
+      </script>
+  </div>
+{% endif %}

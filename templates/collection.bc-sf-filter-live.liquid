@@ -1,0 +1,302 @@
+{% comment %}
+Important notes about pagination:
+- Never access collection.products before the opening paginate tag.
+- Never paginate by more than 50.
+{% endcomment %}
+
+{% assign products_per_page = settings.products_per_row | times: settings.number_of_rows %}
+{% assign numbers = 'zero, one, two, three, four, five, six' | split: ',' %}
+{% assign products_per_row = settings.products_per_row | times: 1 %}
+{% assign products_per_row = numbers[products_per_row] | strip | append: '-per-row' %}
+
+{% paginate collection.products by products_per_page %}
+
+{% comment %}
+Re-use the .rte class wherever you output content that was added by a merchant using
+the Rich Text Editor ( 'rte' stands for rich text editor ).
+Style all HTML elements in that content the same way across the board.
+Use the .rte class in your CSS to help maintain consistency.
+Example: the h2 element should have the same size and color in:
+- product descriptions
+- collection descriptions
+- page content
+- blog post
+{% endcomment %}
+
+
+{% assign collectionImage = 'bg-collection.jpg' | asset_url %}
+{% if collection.image %}{% assign collectionImage = collection.image | img_url %}{% endif %}
+
+
+{% comment %}
+<div class="page-title collection-title" style="background-image: url({{ collectionImage }});">
+{% endcomment %}
+<div class="page-title collection-title">
+    <div class="wrapper">
+        <h1>{{ collection.title }}</h1>
+    </div>
+</div>
+
+
+  {% comment %}
+  get metafields c-p.cms_page_handles, c-p.cms_page_positions for banners
+  {% endcomment %}
+
+
+{% assign thisCollectionsBanners = '' %}
+{% assign thisCollectionsBannerPositions = '' %}
+{% assign collectionBannersUsed = '' %}
+
+
+{% if collection.metafields.c-p.cms_page_handles %}
+{% unless collection.metafields.c-p.cms_page_handles == blank %}
+{% assign thisCollectionsBanners = collection.metafields.c-p.cms_page_handles | split: "," %}
+{% assign thisCollectionsBannerPositions = collection.metafields.c-p.cms_page_positions | split: "," %}
+{% endunless %}
+{% endif %}
+
+
+
+
+<div class="product-list">
+{% render 'sidebar-nav' %}
+
+<div class="wrapper">
+
+
+
+
+  {% comment %}
+  Collection sorting. Needs the JavaScript that is at the bottom of this file.
+  {% endcomment %}
+
+  <div class="toolbar toolbar-product clearfix">
+    {% include 'breadcrumbs' %}
+    <div class="sorter">
+        <label for="sorter">Sort by</label>
+        <div class="selectWrapper">
+          <select id="sorter" class="sort-by right">
+            <option value="manual">Featured</option>
+            <option value="price-ascending">Price: Low to High</option>
+            <option value="price-descending">Price: Hight to Low</option>
+            <option value="title-ascending">A-Z</option>
+            <option value="title-descending">Z-A</option>
+            <option value="created-ascending">Oldest to Newest</option>
+            <option value="created-descending">Newest to Oldest</option>
+            <option value="best-selling">Best Selling</option>
+          </select>
+        </div>
+      </div>
+
+    {% comment %}
+    <div class="per-page">
+      <label for="view-per-page">View</label>
+      <div class="selectWrapper">
+        <select id="view-per-page" class="right">
+          <option value="15">15 per page</option>
+          <option value="30">30 per page</option>
+        </select>
+      </div>
+    </div>
+    {% endcomment %}
+
+  </div>
+
+
+  {% comment %}
+  Listing all tags within the current collection.
+  Shopify uses product tags to manage subcategories inside collections.
+  See 'How do I create subcategories of products?' at
+  http://bit.ly/1j1Dti4 for details.
+  {% endcomment %}
+
+  {% comment %}
+  {% if collection.all_tags.size > 0 %}
+  <ul class="subcategories clearfix clear">
+    <li class="{% unless current_tags %} active{% endunless %}">
+      {{ 'All' | link_to_remove_tag: current_tags.first }}
+    </li>
+    {% for tag in collection.all_tags %}
+    {% if current_tags contains tag %}
+    <li class="active">
+      {{ tag | link_to_remove_tag: tag }}
+    </li>
+    {% else %}
+    <li>
+      {{ tag | link_to_tag: tag }}
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endcomment %}
+  <div class="collection-product-grid">
+    <div class="product-grid clearfix">
+
+
+      {% assign bannerLoopCounter = 1 %}
+      {% for product in collection.products %}
+
+
+
+{% if collection.tags == collection.all_tags %}
+{%comment%}only do this for unfiltered collections...{%endcomment%}
+{% if thisCollectionsBanners.size > 0 %}
+  {% assign outerLoopIndex = forloop.index %}
+  {% for position in thisCollectionsBannerPositions %}
+    {% assign positionAsANumber = position | plus: 0 %}
+    {% if positionAsANumber == bannerLoopCounter%}
+      {% assign whichCMSPage = thisCollectionsBanners[forloop.index0] | strip %}
+      {% if pages[whichCMSPage].handle != '' %}
+        <div class="item">
+        <div class="cmsContent">
+
+
+
+
+
+
+{% assign thisPageContent = pages[whichCMSPage].content | replace: '<video', '<video autoplay muted loop playsinline' %}
+
+          {{thisPageContent}}
+
+
+
+
+
+        </div>
+        </div>
+      {% endif%}
+      {% assign collectionBannersUsed = collectionBannersUsed | append: ',' | append: positionAsANumber %}
+      {% assign bannerLoopCounter = bannerLoopCounter | plus: 1 %}
+    {%endif%}
+  {% endfor %}
+{% endif %}
+{% endif %}
+
+      {% include 'product-grid-item' with products_per_row %}
+      {% assign bannerLoopCounter = bannerLoopCounter | plus: 1 %}
+      {% else %}
+      <p id="noProducts">
+        There are no products in this view.
+      </p>
+
+
+      {% endfor %}
+
+
+{% if collection.tags == collection.all_tags %}
+{%comment%} check for any banners not used: {%endcomment%}
+{% assign collectionBannersUsedArray = collectionBannersUsed | split: ',' %}
+{% for thisBanner in thisCollectionsBannerPositions %}
+
+
+{% assign thisBannerStripped = thisBanner | strip %}
+
+{% unless collectionBannersUsedArray contains thisBannerStripped %}
+{% assign whichCMSPage = thisCollectionsBanners[forloop.index0] | strip %}
+{% if pages[whichCMSPage].handle != '' %}
+<div class="item">
+<div class="cmsContent">
+
+{% assign thisPageContent = pages[whichCMSPage].content | replace: '<video', '<video autoplay muted loop playsinline' %}
+
+          {{thisPageContent}}
+</div>
+</div>
+{%endif%}
+{% endunless %}
+{% endfor %}
+{%endif%}
+
+    </div>
+  </div>
+
+  {% if paginate.pages > 1 %}
+  <div class="collection-pagination">
+
+    <div class="toolbar-container">
+      {{ paginate | default_pagination }}
+    </div>
+
+  </div>
+  {% endif %}
+
+  {% endpaginate %}
+
+
+
+    {% if collection.description.size > 0 %}
+    <div class="collection-description">
+        <div class="content">
+        <h2>{{ collection.title }}</h2>
+            <div class="descriptionWrapper">
+            {% assign descriptionParagraphs = collection.description | split: '</p>' %}
+
+            {% if descriptionParagraphs.size > 1 %}
+
+              {{descriptionParagraphs[0]}}</p>
+              <a href="#" class="read active readMore">Read more</a>
+              <div class="more">
+                {% for para in descriptionParagraphs %}
+                    {% if forloop.first != true %}
+                        {{ para }}</p>
+                    {% endif %}
+                {% endfor %}
+                <a href="#" class="read less">Read less</a>
+              </div>
+             {% else %}
+              {{ collection.description }}
+             {% endif %}
+          </div>
+          </div>
+    </div>
+    {% endif %}
+</div>
+
+{% comment %}
+  JavaScript for collection sorting.
+{% endcomment %}
+<script>
+  jQuery('.sort-by').val('{{ collection.sort_by | default: collection.default_sort_by }}').on('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+      location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+    });
+</script>
+
+
+
+
+<script>
+  /* Product Tag Filters - Good for any number of filters on any type of collection page. */
+  Shopify.queryParams = {};
+  if (location.search.length) {
+      for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+        aKeyValue = aCouples[i].split('=');
+        if (aKeyValue.length > 1) {
+            Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+        }
+      }
+  }
+
+  var collFilters = jQuery('.coll-filter');
+  collFilters.change(function() {
+      var newTags = [];
+      var newURL = '';
+    collFilters.each(function() {
+      if (jQuery(this).val()) {
+          newTags.push(jQuery(this).val());
+      }
+    });
+
+  if (newTags.length) {
+      Shopify.queryParams.constraint = newTags.join('+');
+    }
+    else {
+      delete Shopify.queryParams.constraint;
+    }
+    location.search = jQuery.param(Shopify.queryParams);
+  });
+</script>
+
+{% include 'quick-view-ajaxify-cart' %}

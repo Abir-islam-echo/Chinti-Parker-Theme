@@ -1,0 +1,777 @@
+{% assign add_to_cart = 'Preorder' %}
+{% assign adding_to_cart = 'Adding' %}
+{% assign added_to_cart = 'Added' %}
+{% assign go_to_checkout = 'Go to Checkout' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+
+
+
+{% assign shouldShowSizeGuide = 'true' %}
+{% assign thisFit = '' %}
+{% assign thisOverlayTag = '' %}
+
+{%for tag in product.tags%}
+
+{% if tag == 'no-size-guide' %}
+{% assign shouldShowSizeGuide = 'false' %}
+{% endif %}
+
+{% if tag contains "fit-" %}
+{% assign thisFit = tag | replace: "fit-", "" %}
+{%endif%}
+
+{% if tag contains "tag-" %}
+{% assign thisOverlayTag = tag | replace: "tag-", "" | capitalize %}
+{%endif%}
+
+{%endfor%}
+
+
+
+	<div class="product row" itemscope itemtype="http://schema.org/Product">
+
+		<meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+		<meta itemprop="image" content="{{ product | img_url: '1280x1280' }}" />
+
+
+
+			<div class="product-photos">
+				{% include 'wishl-wishlist' %}
+				{% if product.images.size == 1 %}
+				<div class="product-photo-container" id="justSingleImage">
+
+					<picture class="item" data-gallery="{{ product.images[0] | img_url: '1600x1600' }}">
+						<source media="(min-width: 800px)" srcset="{{ product.images[0] | img_url: '1010x1515', crop: 'center' }} 1x, {{ product.images[0] | img_url: '1010x1515',scale: 2, crop: 'center' }} 2x">
+						<source srcset="{{ product.images[0] | img_url: '600x900', crop: 'center' }} 1x, {{ product.images[0] | img_url: '600x900',scale:2, crop: 'center' }} 2x">
+						<img src="{{ product.images[0] | img_url: '1010x1515', crop: 'center' }}" alt="{{ product.title | escape }}" />
+					</picture>
+				</div>
+
+				{% else %}
+
+
+
+{%comment%}<!--
+				<div class="product-photo-container">
+					{% assign imageAltfirst = product.images[0].alt | strip | replace: replace: ' ', '-' %}
+					<div class="owl-carousel">
+						{% for image in product.images %}
+							{% assign imageAlt = image.alt | strip | replace: ' ', '-' %}
+							{% if imageAltfirst != product.title | strip | replace: replace: ' ', '-' %}
+								{% unless imageAlt == 'swatch' %}
+								{% if imageAlt == imageAltfirst and forloop.first == false %}
+								</div>
+								<div class="item">
+								{% endif %}
+
+								{% if forloop.first == true %}
+								<div class="item">
+								{% endif %}
+								<a class="{{ imageAlt }}{% if imageAlt == imageAltfirst %} active{% endif %}" href="{{ image | img_url: '1280x1280' }}" data-featherlight="{{ image | img_url: '1600x1600' }}"> {% comment %} <img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }}" /> {% endcomment %}
+									<picture>
+										<source media="(min-width: 800px)" srcset="{{ image | img_url: '1280x1280' }} 1x, {{ image | img_url: '1280x1280',scale: 2 }} 2x">
+										<source srcset="{{ image | img_url: '800x' }} 1x, {{ image | img_url: '800x',scale:2 }} 2x">
+										<img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }} image {{forloop.index}}" />
+									</picture>
+								</a>
+								{% endunless %}
+								{% if forloop.last == true %}
+								</div>
+								{% endif %}
+							{% else %}
+								{% unless imageAlt == 'swatch' %}
+								<a class="{{ imageAlt }} {% if imageAlt == imageAltfirst %}active{% endif %}" href="{{ image | img_url: '1600x1600' }}" data-featherlight-gallery="{{ image | img_url: '1600x1600' }}"> {% comment %} <img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }}" /> {% endcomment %}
+									<picture>
+										<source media="(min-width: 800px)" srcset="{{ image | img_url: '1280x1280' }} 1x, {{ image | img_url: '1280x1280',scale: 2 }} 2x">
+										<source srcset="{{ image | img_url: '800x' }} 1x, {{ image | img_url: '800x',scale:2 }} 2x">
+										<img src="{{ image | img_url: '1280x1280' }}" alt="{{ product.title | escape }} image {{forloop.index}}" />
+									</picture>
+								</a>
+								{% endunless %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+/-->{%endcomment%}
+
+
+{%assign thisSwatch = '' %}
+<div class="product-photo-container">
+
+		<div class="owl-carousel">
+						{% for image in product.images %}
+							{% assign imageAlt = image.alt | strip | replace: ' ', '-' %}
+
+							<div class="item" data-gallery="{{ image | img_url: '1600x1600' }}">
+								<a class="{{ imageAlt }} active" href="{{ image | img_url: '1600x1600' }}">
+									<picture>
+										<source media="(min-width: 800px)" srcset="{{ image | img_url: '640x960', crop: 'center' }} 1x, {{ image | img_url: '640x960',scale: 2, crop: 'center' }} 2x">
+										<source srcset="{{ image | img_url: '390x', crop: 'center' }} 1x, {{ image | img_url: '780x',scale:2, crop: 'center' }} 2x">
+										<img src="{{ image | img_url: '640x960', crop: 'center' }}" alt="{{ product.title | escape }} image {{forloop.index}}" />
+									</picture>
+								</a>
+							</div>
+
+							{% endfor %}
+					</div>
+	</div>
+
+
+
+				{% endif %}
+
+{% if thisOverlayTag != '' %}
+<div class="overlayTag">{{thisOverlayTag}}</div>
+{% endif %}
+
+
+			</div><!-- .product-photos -->
+
+			<div class="product-details"><form id="AddToCartForm" action="/cart/add" method="post" enctype="multipart/form-data">
+				<div class="details">
+					{% include 'breadcrumbs' %}
+					<div class="name-price">
+						<h1 itemprop="name">{{ product.title }}</h1>
+
+
+						{% assign product_vendor_handle = product.vendor | handle %}
+						{% comment %}
+						Do we have a collection that has the same name as our product vendor name?
+						If we do, let's have the vendor link point to it.
+						If not, we will point to the automatic vendor collection.
+						{% endcomment %}
+						{% if collections[product_vendor_handle].handle == product_vendor_handle %}
+						{% assign vendor_url = collections[product_vendor_handle].url %}
+						{% else %}
+						{% assign vendor_url = product.vendor | url_for_vendor %}
+						{% endif %}
+
+						<div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="delta">
+							<meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+							{% if product.available %}
+							<link itemprop="availability" href="http://schema.org/InStock" />
+							{% else %}
+							<link itemprop="availability" href="http://schema.org/OutOfStock" />
+							{% endif %}
+							<p>
+								{% assign variant = product.selected_or_first_available_variant %}
+								{% if product.compare_at_price > product.price %}
+								<s class="product-compare-price"> {{ variant.compare_at_price | money_without_currency  | replace: ".00", ""}} </s>
+								<span class="product-price on-sale" itemprop="price"> {{ variant.price | money_without_currency  | replace: ".00", ""}} </span>
+
+								{% else %}
+								<span class="product-price" itemprop="price"> {{ variant.price | money_without_currency  | replace: ".00", ""}} </span>
+								{% endif %}
+							</p>
+						</div>
+					</div>
+					<div class="description-variants-add">
+						<div id="product-description">
+								{% assign productDescriptions = product.description | split: '<h3>' %}
+									{{ productDescriptions[0] }}
+						</div>
+
+						<div class="variants-add">
+						{% assign hide_default_title = false %}
+						{% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+						{% assign hide_default_title = true %}
+						{% endif %}
+
+						{% assign show_variants = 'hidden' %}
+						{% if product.available %}
+						{% assign show_variants = '' %}
+						{% endif %}
+							{% comment %}
+							see if there are any variant colour products:
+							get all collections for this product, search those collections for any products that match before the comma
+							jacket - red | jacket - blue | jacket - yellow should all be related
+							{% endcomment %}
+							{% assign productRootName = product.title | replace: "  ", " " %}
+							{% assign productRootHandle = product.handle %}
+
+
+
+						{% assign markupToOutput = '' %}
+						{% assign FoundAVariant = 'false' %}
+							{% assign handlesFound = '' %}
+
+										{% assign productRootSplit = productRootName | split: " " %}
+
+{% assign productColour = productRootSplit | first %}
+
+										{% assign productRootName = product.title | replace: "  ", " " | replace: productColour, "" | strip %}
+
+
+
+										{% for collection in product.collections %}
+											{% for innerProduct in collection.products %}
+												{% if innerProduct.title contains productRootName %}
+
+													{% if innerProduct.handle != productRootHandle %}
+														{% if innerProduct.handle != innerProductHandle %}
+														{% assign foundImage = 'false'%}
+														{% assign FoundAVariant = 'true' %}
+
+
+
+
+														{% unless handlesFound contains innerProduct.handle %}
+
+{% assign markupToOutput = markupToOutput | append: '<li><a class="image" href="/products/' | append: innerProduct.handle | append: '">'  %}
+
+{% assign thisHex = 'ededed' %}
+{% if innerProduct.metafields.c-p.swatch %}
+{% assign thisHex = innerProduct.metafields.c-p.swatch %}
+{% endif %}
+
+													{% assign markupToOutput = markupToOutput | append: '<span class="swatchBlock" style="background-color: #' | append: thisHex | append: '"></span></a></li>'	%}
+
+															{% endunless %}
+
+
+														{% assign innerProductHandle = innerProduct.handle  %}
+
+{% assign handlesFound = handlesFound | append: "," | append: innerProduct.handle %}
+
+
+
+														{% endif %}
+													{% endif %}
+												{% endif %}
+											{% endfor %}
+										{% endfor %}
+
+
+{% unless product.handle == "gift-card" %}
+{% if FoundAVariant == 'true' %}
+<div class="selector">
+								<div class="colour">
+									<label>Colour</label>
+									<ul id="colourSwatches">
+
+
+										<li class="active">
+											<span class="image">
+												{% assign thisHex = 'ededed' %}
+{% if product.metafields.c-p.swatch %}
+{% assign thisHex = product.metafields.c-p.swatch %}
+{% endif %}
+												<span class="swatchBlock" style="background-color: #{{thisHex}}"></span>
+											</span>
+										</li>
+
+
+{{markupToOutput}}
+
+
+	</ul>
+								</div>
+							</div>
+
+{% endif %}
+{% endunless %}
+
+
+
+
+
+
+
+
+						<div id="product-variants" class="{% if hide_default_title %}hidden{% endif %} {{show_variants}}">
+
+
+
+
+							{% comment %} {% if pages[chart].handle != '' %}
+								{% if product.options contains 'size' or product.options contains 'option' %}
+
+								{% endif %}
+							{% endif %} {% endcomment %}
+
+
+
+
+							{% comment %} <!--
+							{% for option in product.options %}
+								{% if option == "Colour" or option == "Color" %}
+								<div class="selector">
+									<div class="colour">
+										<label>Colour</label>
+										<ul class="product-option-colour">
+											{% assign VariantTitle = '' %}
+											{% assign userVariantColours = '' %}
+											{% for variant in product.variants %}
+											{% assign imageAlt = variant.image.alt | downcase | strip %}
+											{% assign variantTitle = variant.title | split: '/' %}
+												{% assign variantColor = variantTitle[0] | strip %}
+													{% if variant.available %}
+														{% if variantColor != VariantTitle  %}
+															<li data-colour="{{ variantColor | strip | replace: ' ', '-' }}">
+															{% if imageAlt == 'colour'  %}
+																<span class="image"><img src="{{variant.image.src | img_url: '20x20', crop: 'center'}}" alt=""></span>
+															{% endif %}
+															<span class="name">{{ variantColor }}</span>
+															</li>
+															{% assign userVariantColours = userVariantColours | append: ',' | append: variantColor %}
+														{% endif %}
+														{% assign VariantTitle = variantColor %}
+													{% comment %} {% else %}
+													{% unless userVariantColours contains variantColor %}
+														<li class="hidden">{{variantColor}}</li>
+														{% assign userVariantColours = userVariantColours | append: ',' | append: variantColor %}
+														{% endunless %} {% endcomment %}
+													{% endif %}
+												{% endfor %}
+										</ul>
+									</div>
+								</div>
+
+								<script>
+								jQuery(document).ready(function() {
+									jQuery('.product-option-colour li').click(function(e) {
+										e.preventDefault();
+										var variantColour = jQuery(this).data('colour');
+										jQuery(this).addClass('active').parent().find('li').not(this).removeClass('active');
+										jQuery('.product-photo-container .item a').removeClass('active')
+										jQuery('.product-photo-container .item').find('a.' + variantColour).addClass('active');
+										jQuery('.product-option-size').slideUp(200).removeClass('hidden').find('li').removeClass('active');
+										jQuery('.product-option-size').find('li.' + variantColour).addClass('active');
+										jQuery('.size label').text(jQuery('.product-option-size li.select .name').text());
+										jQuery('#product-select-option-0').val(variantColour.replace('-', ' ')).trigger('change');
+										jQuery('#product-select-option-1').val("").trigger('change');
+									});
+								});
+								</script>
+								{% endif %}
+							{% endfor %} /--> {% endcomment %}
+
+
+
+
+
+
+
+
+
+							{% for option in product.options %}
+								{% if option == "Size" %}
+								{% if shouldShowSizeGuide == 'true' %}
+								{% if product.variants.size > 1 %}
+								<a href="#" class="size-guide" data-featherlight="#sizeGuideModal" data-featherlight-variant="sizeGuideFeatherLight">Size Guide</a>
+								{%endif%}
+								{%endif%}
+	{% endif %}
+
+
+{% assign selectClass = '' %}
+{% if product.variants.size < 2 %}
+{% assign selectClass = ' hidden' %}
+{%endif%}
+
+								<div class="selector{{selectClass}}">
+									<div class="size">
+										<label data-size="">Select {{option}}</label>
+										<ul class="product-option-size{% if product.options.size > 1 %} hidden{% endif %}">
+											<li class="select" data-size=""><span class="name">Select {{option}}</span></li>
+											{% for variant in product.variants %}
+												{% if product.options.size == 1 %}
+													<li class="{{ variant.title }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' and variant.inventory_policy != 'continue' %} out-of-stock{% endif %} active" data-size="{{ variant.title }}"><span class="name">{{ variant.title }}</span></li>
+												{% else %}
+													{% assign variantTitle = variant.title | split: '/' %}
+													{% assign variantSize = variantTitle[1] | strip | replace: ' ', '-' %}
+													{% assign variantColor = variantTitle[0] | strip | replace: ' ', '-' %}
+													<li class="{{ variantColor }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' and variant.inventory_policy != 'continue' %} out-of-stock{% endif %}" data-size="{{ variantSize }}"><span class="name">{{ variantSize }}</span></li>
+												{% endif %}
+											{% endfor %}
+										</ul>
+									</div>
+									<p class="error size-error">Please select a size</p>
+								</div>
+
+
+
+
+								<script>
+								jQuery(document).ready(function() {
+									jQuery('#product-variants .size label').click(function(e) {
+										e.preventDefault();
+										if(jQuery(this).next().hasClass('hidden')){
+											return;
+										}else{
+											jQuery(this).toggleClass('active').next().slideToggle(200);
+										}
+									});
+									jQuery('#product-variants .product-option-size li').click(function(e) {
+										e.preventDefault();
+										if(jQuery(this).hasClass('out-of-stock')){
+											return;
+										}else{
+											var variantSize = jQuery(this).attr('data-size');
+											jQuery(this).parent().slideToggle(200).prev().text(variantSize).toggleClass('active').data('size', variantSize);
+											if(variantSize != ''){
+												jQuery('.size-error').hide();
+											}
+											{% if product.options.size == 1 %}
+											jQuery('#product-select-option-0').val(variantSize.replace('-', ' ')).trigger('change');
+											{% else %}
+											jQuery('#product-select-option-1').val(variantSize.replace('-', ' ')).trigger('change');
+											{% endif %}
+										}
+									});
+									jQuery('#ValidAddtoCart').click(function() {
+										var variantSize = jQuery('.size label').data('size');
+										if(variantSize == ''){
+											jQuery('.size-error').fadeIn();
+										}else{
+											jQuery('.size-error').fadeOut();
+											jQuery('#AddToCart').click();
+										}
+										jQuery('.product-option-size').hide();
+											jQuery('#product-variants .size label').removeClass('active');
+									});
+
+
+{% if product.variants.size < 2 %}
+
+jQuery('.product-option-size li.active').click();
+
+{%endif%}
+
+
+
+								});
+
+
+								</script>
+
+
+							{% endfor %}
+									{% comment %} {% if product.options.size == 1 and product.options.first != 'Title' %}
+									<label>{{product.options.first}}</label>
+									{% endif %} {% endcomment %}
+
+									<select id="product-select" name="id">
+										{% for variant in product.variants %}
+
+										<option {% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+											{{ variant.title }}
+											</option>
+
+											{% endfor %}
+									</select>
+
+							</div>
+
+
+
+
+							<div id="product-add">
+								{% if product.available %}
+								{% comment %} <div class="qty">
+									<label for="quantity">Quantity</label>
+									<input min="1" type="number" id="quantity" name="quantity" value="1" />
+								</div> {% endcomment %}
+								<div id="AddToCartWrapper">
+								<button type="submit" name="add" id="AddToCart" class="btn button preOrderButton">
+								<span id="AddToCartText">{{ 'Pre-order' | json | remove: '"' }}</span>
+									<span id="AddingToCartText">Pre-ordering</span>
+									<span id="AddedToCartText">Pre-ordered</span>
+
+								</button><span id="ValidAddtoCart">ValidAddtoCart</span></div>
+								<a href="/cart" id="GoToCheckout" class="btn button button-second">{{ go_to_checkout | escape }}</a>
+								{% else %}
+									<p id="outOfStock">
+										Sorry, this is out of stock
+									</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+
+
+					<div id="backorder" class="hidden">
+						<p>
+							{{ '%s is back-ordered. We will ship it separately in 10 to 15 days.' | replace: '%s', '<span id="selected-variant"></span>' }}
+						</p>
+					</div>
+
+
+					<div class="product-collapse">
+						{% if productDescriptions.size > 1 %}
+						{% for thisDescription in productDescriptions %}
+							{% unless forloop.first == true %}
+							{% assign thisContent = thisDescription | split: '</h3>' %}
+							<h3 class="title">{{thisContent[0]}}</h3>
+							<div class="content">
+								{{thisContent[1]}}
+							</div>
+							{% endunless%}
+						{% endfor %}
+						{%endif%}
+						<h3 class="title">Delivery &amp; Returns</h3>
+						<div class="content">
+							{{pages.product-detail-page-delivery-and-returns-content.content}}
+						</div>
+					</div>
+
+				</div>
+			</form>
+			</div><!-- .product-details -->
+
+				{%comment%}additional content blocks {%endcomment%}
+				{%comment%}global defaults: {%endcomment%}
+				{%assign contentForBlock1 = 'product-content-blocks-global-1'%}
+				{%assign contentForBlock2 = 'product-content-blocks-global-2'%}
+				{%assign contentForBlock3 = 'product-content-blocks-global-3'%}
+				{%assign contentForBlock4 = 'product-content-blocks-global-4'%}
+
+
+				{%comment%}check for collection specific content: {%endcomment%}
+
+				{% for collection in product.collections %}
+				{%assign collectionContentForBlock1 = 'product-content-blocks-' | append: collection.handle | append: '-1' %}
+				{%assign collectionContentForBlock2 = 'product-content-blocks-' | append: collection.handle | append: '-2' %}
+				{%assign collectionContentForBlock3 = 'product-content-blocks-' | append: collection.handle | append: '-3' %}
+				{%assign collectionContentForBlock4 = 'product-content-blocks-' | append: collection.handle | append: '-4' %}
+
+				{% if pages[collectionContentForBlock1].handle != '' %}
+				{%assign contentForBlock1 = collectionContentForBlock1 %}
+				{%endif%}
+				{% if pages[collectionContentForBlock2].handle != '' %}
+				{%assign contentForBlock2 = collectionContentForBlock2 %}
+				{%endif%}
+				{% if pages[collectionContentForBlock3].handle != '' %}
+				{%assign contentForBlock3 = collectionContentForBlock3 %}
+				{%endif%}
+				{% if pages[collectionContentForBlock4].handle != '' %}
+				{%assign contentForBlock4 = collectionContentForBlock4 %}
+				{%endif%}
+
+				{% endfor %}
+
+
+							{%comment%}check for product page specific content: {%endcomment%}
+
+
+				{%assign specificContentForBlock1 = 'product-content-blocks-' | append: product.handle | append: '-1' %}
+				{%assign specificContentForBlock2 = 'product-content-blocks-' | append: product.handle | append: '-2' %}
+				{%assign specificContentForBlock3 = 'product-content-blocks-' | append: product.handle | append: '-3' %}
+				{%assign specificContentForBlock4 = 'product-content-blocks-' | append: product.handle | append: '-4' %}
+
+				{% if pages[specificContentForBlock1].handle != '' %}
+				{%assign contentForBlock1 = specificContentForBlock1 %}
+				{%endif%}
+				{% if pages[specificContentForBlock2].handle != '' %}
+				{%assign contentForBlock2 = specificContentForBlock2 %}
+				{%endif%}
+				{% if pages[specificContentForBlock3].handle != '' %}
+				{%assign contentForBlock3 = specificContentForBlock3 %}
+				{%endif%}
+				{% if pages[specificContentForBlock4].handle != '' %}
+				{%assign contentForBlock4 = specificContentForBlock4 %}
+				{%endif%}
+				<div id="additionalContentBlocks">
+					<div class="row">
+						<div class="item content">{{pages[contentForBlock1].content}}</div>
+						<div class="item img">{{pages[contentForBlock2].content}}</div>
+					</div>
+					<div class="row">
+						<div class="item content">{{pages[contentForBlock4].content}}</div>
+						<div class="item img">{{pages[contentForBlock3].content}}</div>
+					</div>
+				</div>
+	</div>
+
+
+
+
+
+<div id="sizeGuideWrapper">
+<div id="sizeGuideModal">
+
+
+{% if thisFit != '' %}
+<div class="row">
+	<h3>Fit Guide - {{thisFit}}</h3>
+<div class="sizeGuideImages">
+{%assign thisFitHandle = thisFit | downcase | replace: " ", "-"%}
+{% assign thisFitHandle = 'size-guide-' | append: thisFitHandle %}
+
+
+{% assign fitGuideImages = pages.[thisFitHandle].content %}
+
+{%comment%}
+just get the images out, so we can ignore <p> and <br> etc.
+{%endcomment%}
+
+{% assign fitGuideImagesSrc = fitGuideImages | split: 'src="'%}
+
+{%for imageSrc in fitGuideImagesSrc %}
+{% unless forloop.first == true %}
+
+{% assign upToTheNextQuote = imageSrc | split: '"' %}
+<img src="{{upToTheNextQuote[0] | strip_html | strip }}" alt="">
+{%endunless%}
+{%endfor%}
+</div>
+
+
+<p>The {{ product.title | replace: " - ", " " }} is a <strong>{{thisFit}}</strong>.</p>
+<p>Model is 5ft 10in and wears a UK size 8/Small.<br>Measurements when the garment is flat (size small):</p>
+
+
+{% if productDescriptions.size > 1 %}
+						{% for thisDescription in productDescriptions %}
+							{% unless forloop.first == true %}
+
+{% assign thisContent = thisDescription | split: '</h3>' %}
+{% assign thisTitle = thisContent[0] | strip-html | strip | downcase | replace: " &amp; ", "" | replace: " & ", "" %}
+
+{% if thisTitle == "sizecare" or thisTitle == "size" %}
+<div class="sizeCareOutput">{{thisContent[1]}}</div>
+{%endif%}
+
+							{% endunless%}
+							{%endfor%}
+							{%endif%}
+
+{% assign fitLink = thisFit | replace: " ", "" | downcase | append: "fit" %}
+
+<p>Interested in comparing all of our fits? Click <a href="/pages/sweater-fit-guide/#{{fitLink}}" target="_blank">here</a></p>
+</div>
+{% endif %}
+
+
+
+<div class="row" id="fullWidthRow">
+<h4>Size Guide</h4>
+<p>{{pages.size-guide-help-text.content | strip_html | strip}}</p>
+</div>
+
+<div class="row">
+	<div class="column">
+<h4>Size Conversions</h4>
+		{{pages.size-guide-size-conversions.content}}</div>
+<div class="column" id="cmInTable">
+<h4>Standard Body Measurements</h4> <ul id="cmInToggle"><li class="active" id="cm">CM</li><li id="in">IN</li></ul>
+	{{ pages.size-guide-measurements.content }}</div>
+
+</div>
+
+
+{% comment %}
+{{ pages[chart].content }}
+{% endcomment %}
+
+</div>
+</div>
+
+
+
+{% comment %}
+Adding support for product options. See here for details:
+http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+{% endcomment %}
+
+
+{% comment %}
+<!--
+{% section 'related-products-by-tagged-collection' %}
+/-->
+{% endcomment %}
+
+{% include 'component--complete-the-look' %}
+
+{% include 'recently-viewed-display' %}
+
+
+<script>
+
+var selectCallback = function(variant, selector) {
+
+	if (variant) {
+
+		// Swap image.
+		//if (variant.featured_image) {
+		//  var newImage = variant.featured_image; // New image object.
+		//  var mainImageDomEl = jQuery('.product-photo-container img')[0]; // DOM element of main image we need to swap.
+		//  Shopify.Image.switchImage(newImage, mainImageDomEl, switchImage); // Define switchImage (the callback) in your theme's JavaScript file.
+		//}
+
+
+		// Selected a valid variant that is available.
+		if (variant.available) {
+
+		// Enabling add to cart button.
+			jQuery('#AddToCart').removeClass('disabled').prop('disabled', false).val({{ 'Pre-order' | json }});
+
+
+			// If item is backordered yet can still be ordered, we'll show special message.
+			if (variant.inventory_management && variant.inventory_quantity <= 0) {
+				jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
+				jQuery('#backorder').removeClass("hidden");
+			} else {
+				jQuery('#backorder').addClass("hidden");
+			}
+
+			var variantSize = jQuery('.size label').data('size');
+			if(variantSize == ''){
+				jQuery('#AddToCart').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+			}
+
+		} else {
+			// Variant is sold out.
+			jQuery('#backorder').addClass('hidden');
+			jQuery('#AddToCart').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);
+		}
+
+			// Whether the variant is in stock or not, we can update the price and compare at price.
+		if ( variant.compare_at_price > variant.price ) {
+			jQuery('#product-price').html('<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}").replace(".00", "")+ '</s>&nbsp;<span class="product-price on-sale">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}").replace(".00", "") + '&nbsp;('+ {{ variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}} + '% off)</span>');
+		} else {
+			jQuery('#product-price').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}").replace(".00", "") + '</span>' );
+		}
+
+	} else {
+		// variant doesn't exist.
+		// jQuery('#product-price').empty();
+		jQuery('#backorder').addClass('hidden');
+		jQuery('#AddToCart').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+	}
+};
+
+
+
+jQuery(function($) {
+
+  new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: false });
+
+
+
+});
+
+
+
+
+Shopify.Image.preload({{ product.images | json }}, Math.ceil($('.product-photo-container').width())+"x");
+Shopify.Image.preload({{ product.images | json }}, '1600x1600');
+
+// https://help.shopify.com/themes/customization/products/variants/how-to-add-a-pick-an-option-to-drop-downs
+var productOptions = [];
+  {% for option in product.options %}
+  var optionObj = {};
+  optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";
+  productOptions.push(optionObj);
+  {% endfor %}
+</script>
+
+
+
+
+{% include 'gtm-product' %}
+{% include 'quick-view-ajaxify-cart' %}
+
+{% render 'gtm-product-detail', product: product %}
+{% render 'product_infox' %}

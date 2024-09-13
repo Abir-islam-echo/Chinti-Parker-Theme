@@ -1,0 +1,315 @@
+<div class="video-banner video-banner-{{ section.id }}">
+  <div class="video-container">
+    {% if section.settings['add-content'] %}
+      <div class="overlay-content">
+        {% if section.settings['button-text'] %}
+          <a class="video-cta" href="{{ section.settings.button-link }}">{{ section.settings['button-text'] }}</a>
+        {% endif %}
+        {% if section.settings.description %}
+          <div class="description-wrapper">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if section.settings['desktop-video'] %}
+      {% assign video_url = section.settings['desktop-video'].sources[1].url %}
+      <a href="{{ section.settings.button-link }}">
+        <video
+          class="desktop-video"
+          {% if section.settings['video-repeat'] %}
+            loop="loop"
+          {% endif %}
+          preload="auto"
+          autoplay="autoplay"
+          muted="muted"
+          poster="{{ 'video-poster-transp.png' | asset_url }}"
+          playsinline
+        >
+          <source src="{{ video_url }}" type="video/mp4">
+          <source src="{{ video_url }}" type="video/ogg">
+          <source src="{{ video_url }}" type="video/webm">
+        </video>
+      </a>
+    {% else %}
+      <video
+        class="desktop-video"
+        preload="auto"
+        autoplay="autoplay"
+        muted="muted"
+        poster="{{ 'video-poster-transp.png' | asset_url }}"
+        playsinline
+      >
+        <source src="https://cdn.shopify.com/videos/c/o/v/906d5584e1e948b29b1ddb3c7424cdcd.mp4" type="video/mp4">
+      </video>
+    {% endif %}
+    {% if section.settings['mobile-video'] %}
+      {% assign video_url = section.settings['mobile-video'].sources[1].url %}
+      <a href="{{ section.settings.button-link }}">
+        <video
+          class="mobile-video"
+          {% if section.settings['video-repeat'] %}
+            loop="loop"
+          {% endif %}
+          preload="auto"
+          autoplay="autoplay"
+          muted="muted"
+          poster="{{ 'video-poster-transp.png' | asset_url }}"
+          playsinline
+        >
+          <source src="{{ video_url }}" type="video/mp4">
+          <source src="{{ video_url }}" type="video/ogg">
+          <source src="{{ video_url }}" type="video/webm">
+        </video>
+      </a>
+    {% else %}
+      <video
+        class="mobile-video"
+        preload="auto"
+        autoplay="autoplay"
+        muted="muted"
+        poster="{{ 'video-poster-transp.png' | asset_url }}"
+        playsinline
+      >
+        <source src="https://cdn.shopify.com/videos/c/o/v/906d5584e1e948b29b1ddb3c7424cdcd.mp4" type="video/mp4">
+      </video>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video Banner",
+  "settings": [
+    {
+      "type": "video",
+      "label": "Upload Desktop video",
+      "id": "desktop-video"
+    },
+    {
+      "type": "range",
+      "label": "Desktop Container Height",
+      "id": "container-height-desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "vh",
+      "default": 70
+    },
+    {
+      "type": "video",
+      "label": "Upload Mobile video",
+      "id": "mobile-video"
+    },
+        {
+      "type": "range",
+      "label": "Mobile Container Height",
+      "id": "container-height-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "vh",
+      "default": 60
+    },
+    {
+      "type": "checkbox",
+      "id": "video-repeat",
+      "label": "Auto Repeat?",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "container-width",
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Width",
+      "default": 100
+    },
+
+    {
+  "type": "url",
+  "id": "button-link",
+  "label": "Link"
+},
+        {
+      "type": "checkbox",
+      "id": "add-content",
+      "label": "Add Content",
+      "default": false
+    },
+    {
+  "type": "select",
+  "id": "vertical-alignment",
+  "label": "Vertical alignment",
+  "options": [
+    {
+      "value": "top",
+      "label": "Top"
+    },
+    {
+      "value": "middle",
+      "label": "Middle"
+    },
+    {
+      "value": "bottom",
+      "label": "Bottom"
+    }
+  ],
+  "default": "middle"
+},
+    {
+  "type": "select",
+  "id": "horizontal-alignment",
+  "label": "Horizontal alignment",
+  "options": [
+    {
+      "value": "left",
+      "label": "Left"
+    },
+    {
+      "value": "middle",
+      "label": "Middle"
+    },
+    {
+      "value": "right",
+      "label": "Right"
+    }
+  ],
+  "default": "middle"
+},
+    {
+  "type": "text",
+  "id": "button-text",
+  "label": "Button Text",
+  "default": "Quick links"
+},
+    {
+  "type": "color",
+  "id": "button-text-color",
+  "label": "Button Text Color",
+  "default": "#000000"
+},
+    {
+  "type": "color",
+  "id": "button-background",
+  "label": "Button Background",
+  "default": "#ffffff"
+},
+        {
+  "type": "richtext",
+  "id": "description",
+  "label": "Description",
+  "default": "<p>add Description here</p>"
+}
+
+
+  ],
+  "presets": [
+    {
+      "name": "Video Banner"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+    .video-banner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-banner .video-container{
+      width: {{ section.settings.container-width }}%;
+      position: relative;
+    }
+    .video-banner .video-container .overlay-content{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      margin: 0 auto;
+      width: 90%;
+    }
+    .video-banner .video-container .overlay-content .video-cta{
+      color: {{ section.settings.button-text-color }};
+      background: {{ section.settings.button-background }}b2;
+      padding: 15px 40px;
+      border-radius: 4px;
+      font-size: 18px;
+      display: inline-block;
+      text-transform: uppercase;
+      width: fit-content;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+
+    .video-banner .video-container .overlay-content .description-wrapper p{
+      color: #ffffff;
+      font-size: 18px;
+      padding: 10px 0;
+    }
+    .video-banner .video-container video{
+      width: 100%;
+    }
+    .video-banner .video-container video{
+      width: 100%;
+    }
+  .video-banner .video-container .desktop-video{
+    max-height: {{ section.settings.container-height-desktop }}vh;
+    object-fit: cover;
+  }
+  .video-banner .video-container .mobile-video{
+    max-height: {{ section.settings.container-height-mobile }}vh;
+    object-fit: cover;
+  }
+    @media only screen and (max-width: 450px){
+      .video-banner .video-container .desktop-video{
+        display: none;
+      }
+        .video-banner .video-container .overlay-content .video-cta{
+            padding: 10px 20px;
+            font-size: 16px;
+          }
+    }
+    @media only screen and (min-width: 451px){
+      .video-banner .video-container .mobile-video{
+        display: none;
+      }
+      .video-banner .video-container .overlay-content{
+        max-width: 500px;
+        {% if section.settings.horizontal-alignment == 'left' %}
+          left: 10px;
+          text-align: start;
+        {% elsif section.settings.horizontal-alignment == 'middle' %}
+          left: 50%;
+          text-align: center;
+        {% else %}
+          right: 10px;
+          text-align: end;
+          left: unset;
+        {% endif %}
+
+        {% if section.settings.horizontal-alignment == 'middle' and section.settings.vertical-alignment == 'middle' %}
+          transform: translate(-50%, -50%);
+        {% elsif section.settings.horizontal-alignment == 'middle' and section.settings.vertical-alignment != 'middle' %}
+          transform: translateX(-50%);
+        {% elsif section.settings.horizontal-alignment != 'middle' and section.settings.vertical-alignment == 'middle' %}
+          transform: translateY(-50%);
+        {% else %}
+          transform: unset;
+        {% endif %}
+
+
+        {% if section.settings.vertical-alignment == 'top' %}
+          top: 10px;
+        {% elsif section.settings.vertical-alignment == 'middle' %}
+          top: 50%;
+        {% else %}
+          bottom: 10px;
+        {% endif %}
+
+    }
+  }
+</style>

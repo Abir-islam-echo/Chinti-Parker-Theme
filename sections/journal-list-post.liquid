@@ -1,0 +1,225 @@
+<div class="journal-post-2-column">
+	<div class="row">
+		<div class="col-wide-6 journal-banner-section">
+			<div class="item {{ section.settings.text_color | escape }}">
+				{% if section.settings.link != blank %}
+				<a href="{{ section.settings.link }}" class="image">
+				{% endif %}
+					{% if section.settings.image != blank %}
+						<picture>
+							<source
+								media="(min-width: 1024px)"
+								srcset="{{ section.settings.image | img_url: '100x' }}"
+								data-srcset="{{ section.settings.image | img_url: 'master' }}"
+							>
+							{% if section.settings.mobile_image %}
+								<source
+									srcset="{{ section.settings.mobile_image | img_url: '100x' }}"
+									data-srcset="{{ section.settings.mobile_image | img_url: 'master' }}"
+								>
+							{% endif %}
+							<img
+								src="{{ section.settings.image | img_url: '100x' }}"
+								data-src="{{ section.settings.image | img_url: 'master' }}"
+								alt=""
+								class="lazyload"
+							/>
+						</picture>
+					{% else %}
+						<div class="placeholder-background">
+							{% capture current %}{% cycle 1, 2 %}{% endcapture %}
+							{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+						</div>
+					{% endif %}
+				{% if section.settings.link != blank %}
+				</a>
+				{% endif %}
+				<div class="text-overlay {{ section.settings.text_position | escape }}">
+					<div class="content">
+						{% if section.settings.title != blank %}
+						<h2 class="title"> {{ section.settings.title }} </h2>
+						{% endif %}
+						{% if section.settings.subheading != blank %}
+						<p class="subtitle"> {{ section.settings.subheading | escape }} </p>
+						{% endif %}
+						{% if section.settings.link != blank %}
+							<a href="{{ section.settings.link }}" class="btn">{{ section.settings.text_link }}</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-wide-6 journal-list-post">
+			<div class="container">
+				<div class="list-post">
+					{% if section.blocks.size > 0 %}
+					<table>
+						{% for block in section.blocks %}
+						<tr class="item">
+							<td class="image" width="345">
+								{% if block.settings.link != blank %}
+								<a href="{{ block.settings.link }}">
+								{% endif %}
+								{% if block.settings.image != blank %}
+									<picture>
+										<source
+											media="(min-width: 1024px)"
+											srcset="{{ block.settings.image | img_url: '138x100' }}"
+											data-srcset="{{ block.settings.image | img_url: '690x500' }}"
+										>
+										{% if block.settings.mobile_image %}
+											<source
+												srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+												data-srcset="{{ block.settings.mobile_image | img_url: 'master' }}"
+											>
+										{% endif %}
+										<img
+											src="{{ block.settings.image | img_url: '138x100' }}"
+											data-src="{{ block.settings.image | img_url: '690x500' }}"
+											alt=""
+											class="lazyload"
+										/>
+									</picture>
+									{% else %}
+										<div class="placeholder-background">
+											{% capture current %}{% cycle 1, 2 %}{% endcapture %}
+											{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+										</div>
+									{% endif %}
+								{% if block.settings.link != blank %}
+								</a>
+								{% endif %}
+							</td>
+							<td class="content">
+								{% if block.settings.title != blank %}
+								<h2 class="title">{% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}{{ block.settings.title }}{% if block.settings.link != blank %}</a> {% endif %}</h2>
+								{% endif %}
+								{% if block.settings.subheading != blank %}
+								<p class="subtitle"> {{ block.settings.subheading | escape }} </p>
+								{% endif %}
+								{% if block.settings.link != blank %}
+									<a href="{{ block.settings.link }}" class="btn">{{ block.settings.text_link }}</a>
+								{% endif %}
+							</td>
+						</tr>
+						{% endfor %}
+					</table>
+					{% endif %}
+				</div>
+				{% if section.settings.link_see_all != blank %}
+					<a href="{{ section.settings.link_see_all }}" class="btn see-all">See All</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Journal List Post",
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Image"
+		},
+		{
+			"type": "image_picker",
+			"id": "mobile_image",
+			"label": "Mobile Image"
+		},
+		{
+			"type": "url",
+			"id": "link",
+			"label": "Banner Link"
+		},
+		{
+			"type": "text",
+			"id": "text_link",
+			"label": "Text Link",
+			"default": "Find out More"
+		},
+		{
+			"type": "select",
+			"id": "text_color",
+			"label": "Text color",
+			"options": [
+				{ "value": "text-light", "label": "Light" },
+				{ "value": "text-dark", "label": "Dark" }
+			],
+			"default": "text-light"
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Heading",
+			"default": "Image slide"
+		},
+		{
+			"type": "text",
+			"id": "subheading",
+			"label": "Subheading",
+			"default": "Lorem ipsum dolor sit amet"
+		},
+		{
+			"type": "select",
+			"id": "text_position",
+			"label": "Text Position",
+			"options": [
+				{ "value": "top-left", "label": "Top Left" },
+				{ "value": "top-right", "label": "Top Right" },
+				{ "value": "bottom-left", "label": "Bottom Left" },
+				{ "value": "bottom-right", "label": "Bottom Right" }
+			],
+			"default": "top-left"
+		},
+		{
+			"type": "url",
+			"id": "link_see_all",
+			"label": "See All"
+		}
+	],
+	"blocks": [
+		{
+		    "type": "post",
+		    "name": "Post",
+		    "settings":
+			[
+		    	{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+		    	},
+		    	{
+					"type": "image_picker",
+					"id": "mobile_image",
+					"label": "Mobile Image"
+		    	},
+		    	{
+					"type": "url",
+					"id": "link",
+					"label": "Banner Link"
+		    	},
+		    	{
+					"type": "text",
+					"id": "text_link",
+					"label": "Text Link",
+					"default": "Read More"
+		    	},
+		    	{
+					"type": "text",
+					"id": "title",
+					"label": "Heading",
+					"default": "Image slide"
+		    	},
+		    	{
+					"type": "text",
+					"id": "subheading",
+					"label": "Subheading",
+					"default": "Lorem ipsum dolor sit amet"
+		    	}
+			]
+		}
+	]
+}
+{% endschema %}

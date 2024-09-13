@@ -1,0 +1,194 @@
+  <section class="el-container two-grid-content">
+    <div class="grid-wrapper ">
+      {% for block in section.blocks %}
+        <div class="grid-content grid-col {{ block.settings.grid-swap}}" style="text-align:{{ block.settings.align}}">
+          {% if block.settings.grid-title != blank %}
+            <h1 class="grid-content-heading" style="font-size:{{ block.settings.grid-title-font-size}}px">{{ block.settings.grid-title }}</h1>
+          {% endif %}
+        {% if block.settings.grid-content != blank %}
+          <style>.two-grid-content a {font-size:{{ block.settings.grid-content-font-size }}px;}</style>
+          <p class="grid-content-rich-text" style="font-size:{{ block.settings.grid-content-font-size }}px;">{{ block.settings.grid-content }}</p>
+        {% endif %}
+        </div>
+      
+        <div class="grid-image grid-col ">
+          {% if block.settings.grid-image-picker != blank %}
+          <img src="{{ block.settings.grid-image-picker | img_url : '700x' }}" alt="">
+          {% endif %}
+          {% if block.settings.grid-image-caption != blank %}
+            <P style="text-align:center; font-size:{{ block.settings.caption-font-size }}px; margin-top:10px; ">{{ block.settings.grid-image-caption }}</P>
+          {% endif %}
+        
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  
+
+{% schema %}
+  {
+    "name": "Two grid content",
+    "max_blocks":1,
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "type": "step-content",
+       "name": " Step Content",
+        "settings":[
+          {
+            "type":"text",
+            "id":"grid-title",
+            "label":"Heading Title" 
+          },
+          {
+            "type":"number",
+            "id":"grid-title-font-size",
+            "label":"Heading Title Font Size"
+          },
+          {
+            "type":"textarea",
+            "id":"grid-content",
+            "label":"Content"
+          },
+          {
+            "type":"number",
+            "id":"grid-content-font-size",
+            "label":"Content Font Size"
+          },
+          {
+            "type":"image_picker",
+            "id":"grid-image-picker",
+            "label":"Image"
+          },
+          {
+            "type":"text",
+            "id":"grid-image-caption",
+            "label":"Image Caption"
+          },
+          {
+            "type":"number",
+            "id":"caption-font-size",
+            "label":"Image Caption Font Size"
+          },
+          {
+            "type":"select",
+            "id":"grid-swap",
+            "label":"Grid Swap",
+            "options": [
+              {
+                "value": "grid-left",
+                "label": "left" 
+              },
+              {
+                "value": "grid-right",
+                "label": "right"
+              }
+            ],
+            "default": "grid-left"
+
+          },
+          {
+            "type":"select",
+            "id":"align",
+            "label":"Text Alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "left" 
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "left"
+
+          }
+        ]
+      }
+      
+    ],
+     "presets": [
+        {
+            "category": "content",
+            "name":"Two grid content"
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+.two-grid-content .grid-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:40px;
+
+}
+.two-grid-content .grid-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.two-grid-content .grid-content-rich-text{
+  margin-top:30px;
+}
+.grid-wrapper  p{
+    color:#000;  
+}
+.grid-left{
+  order:0;
+}
+.grid-right{
+  order:1;
+}
+
+@media screen and (max-width: 768px) {
+  
+  .two-grid-content .grid-wrapper {
+      flex-direction: column !important;
+      gap: 0 !important;
+  }
+  .two-grid-content .grid-content-heading{
+    font-size: 25px !important;
+  }
+  .two-grid-content .grid-content-rich-text {
+    margin-top: 20px !important; 
+  }
+  .two-grid-content .grid-wrapper p {
+    font-size: 16px !important; 
+  }
+  #shopify-section-template--14660748476494__two-grid-content .grid-image,#shopify-section-template--14660748476494__1663743412b0383a74 .grid-image{
+    order:-1;
+  }
+  .grid-content.grid-col.grid-left {
+    display: flex;
+    order: 1;
+  }
+  .two-grid-content a {
+    font-size:16px !important; 
+  }
+
+
+  
+}
+  /*Brand values page*/
+  div#brnad-values-template {
+    background: rgb(255, 251, 247);
+}
+
+
+  
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

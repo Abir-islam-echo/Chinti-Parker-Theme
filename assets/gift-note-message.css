@@ -1,0 +1,67 @@
+div.cart-gift-message {
+  background: #ffffff;
+  border: 3px solid #494949;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 30px;
+}
+div.cart-gift-message.active {
+  background: #f0f0f0;
+}
+div.cart-gift-message > main input[type="checkbox"] + label:before {
+  border-radius: 4px;
+}
+div.cart-gift-message > main input[type="checkbox"] + label {
+  margin-top: 3px;
+}
+div.cart-gift-message footer {
+  display: none;
+}
+
+div.cart-gift-message #gift_message {
+  min-height: 120px;
+  transition: all 0.3s;
+}
+div.cart-gift-message.active #gift_message {
+  min-height: 180px;
+}
+div.cart-gift-message .input-container {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cart-gift-message
+  > main
+  .column--input
+  .input-container
+  footer
+  .controls
+  button {
+  border-radius: 4px;
+  margin-top: 2px;
+}
+
+.cart-gift-message .gift-info {
+  margin: 0.75rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e7e7e7;
+  width: 35%;
+}
+/* .cart-gift-message .gift-info.to-value {
+  border-bottom: 1px solid gray;
+}
+.cart-gift-message .gift-info.from-value {
+  border-top: 1px solid gray;
+} */
+.cart-gift-message .gift-info input {
+  margin: 0;
+  border: none;
+  padding: 0px 5px;
+  display: flex;
+  line-height: normal;
+}
+.cart-gift-message footer {
+  margin-top: 25px;
+}

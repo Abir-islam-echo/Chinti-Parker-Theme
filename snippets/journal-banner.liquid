@@ -1,0 +1,35 @@
+<div class="journal-banner-section">
+	<div class="item {{ block.settings.text_color | escape }}">
+        {% if block.settings.link != blank %}
+		<a href="{{ block.settings.link }}" class="image">
+        {% endif %}
+			{% if block.settings.image != blank %}
+                <picture>
+                    <source media="(min-width: 1024px)" srcset="{{ block.settings.image | img_url: 'master' }}">
+                    {% if block.settings.mobile_image %}<source srcset="{{ block.settings.mobile_image | img_url: '500x' }}">{% endif %}
+                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="" />
+                </picture>
+			{% else %}
+                <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+			{% endif %}
+		{% if block.settings.link != blank %}
+        </a> 
+        {% endif %}	
+		<div class="text-overlay {{ block.settings.text_position | escape }}">
+			<div class="content">
+				{% if block.settings.title != blank %}
+				<h2 class="title"> {{ block.settings.title }} </h2>
+				{% endif %}
+				{% if block.settings.subheading != blank %}
+				<p class="subtitle"> {{ block.settings.subheading | escape }} </p>
+                {% endif %}
+                {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}" class="btn">{{ block.settings.text_link }}</a> 
+                {% endif %}	
+			</div>
+		</div> 
+	</div>
+</div>

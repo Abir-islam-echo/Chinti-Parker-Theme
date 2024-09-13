@@ -1,0 +1,55 @@
+
+    {% if section.blocks.size > 0 %}
+        
+            {% for block in section.blocks %}
+                
+                {% if block.settings.show_block == 'yes' %}
+                  <div class="instagram-section">
+                      <div class="row">
+                          <script src="//foursixty.com/media/scripts/fs.embed.v2.5.js" data-money-format="£<%= amount %>" data-feed-id="chinti-parker" data-theme="showcase_v2_5" data-page-size="12"></script>
+                          <div class="title"><a target="_blank" href="https://www.instagram.com/chintiandparker/"><i class="fab fa-instagram"></i>chintiandparker</a></div>
+                      </div>
+                  </div>
+                {%endif%}
+            {% endfor %}
+     
+    {% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Banner Grid - Instagram",
+    "class": "index-section index-section--flush",
+    "max_blocks": 1,
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Instagram",
+        "settings": [
+     
+     
+          {
+            "type": "select",
+            "id": "show_block",
+            "label": "Show instagram?",
+            "options": [
+              { "value": "yes", "label": "Yes" },
+              { "value": "no", "label": "Now" }
+            ],
+            "default": "yes"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner Grid - Instagram",
+      "category": "Code",
+      "blocks": [
+        {
+          "type": "text"
+        }
+      ]
+    }]
+  }
+{% endschema %}

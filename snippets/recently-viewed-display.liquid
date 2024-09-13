@@ -1,0 +1,94 @@
+<div id="recentlyViewedWrapper" class="{{ shop.url }}">
+    <div class="product-list">
+        <div class="wrapper">
+            <h2 class="blockHeader">Recently Viewed</h2>
+            <div class="product-grid clearfix">
+                <div class="item" id="recentlyViewedItem0"></div>
+                <div class="item" id="recentlyViewedItem1"></div>
+                <div class="item" id="recentlyViewedItem2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+function outputRecentlyViewedProduct(thisHandle,whichPosition) {
+    var productURL = '/collections/all/products/' + thisHandle + '.json';
+    jQuery.getJSON(productURL, function (data) {
+        if (data) {
+            var thisRecentlyViewedOutput = '<div class="product-image-wrap">';
+            thisRecentlyViewedOutput += '<a class="image" href="/collections/all/products/'+thisHandle+'"><img src="'+data.product.image.src.replace('.jpg','_480x720_crop_center.jpg')+'" loading="lazy" importance="low" alt="'+data.product.title+'"></a>';
+            thisRecentlyViewedOutput += '</div><div class="product-caption"><h2 class="product-name"><a href="/collections/all/products/'+thisHandle+'">'+data.product.title+'</a></h2>';
+
+            var compareAtPrice = data.product.variants[0].compare_at_price;
+            var price = data.product.variants[0].price;
+
+            if (compareAtPrice != 0) {
+                thisRecentlyViewedOutput += '<span class="product-price"><s><span class="money">' + Shopify.formatMoney(compareAtPrice, "{{ shop.money_format }}").replace(".00", "") +'</span></s></span>';
+                thisRecentlyViewedOutput += '<span class="product-price on-sale on-sale-margin">' + Shopify.formatMoney(price, "{{ shop.money_format }}").replace(".00", "") + '</span></span>';
+            } else {
+                thisRecentlyViewedOutput += '<span class="product-price"><span class="money">'+ Shopify.formatMoney(price, "{{ shop.money_format }}").replace(".00", "") + '</span></span>';
+            }
+            thisRecentlyViewedOutput += '</div>';
+            document.getElementById('recentlyViewedItem'+whichPosition).innerHTML = thisRecentlyViewedOutput;
+            document.getElementById('recentlyViewedWrapper').classList.add('active');
+        }
+    });
+
+}
+
+var showRecentlyViewed = function() {
+    // will display 1 less than this number - just in case the current product is in the list:
+    var numberOfItemsToTrack = 4;
+    var thisItemHandle = '{{product.handle}}';
+    var itemsAdded = 0;
+
+    for(var i=0;i<numberOfItemsToTrack;i++) {
+        if(localStorage.getItem('recentlyViewed'+i)) {
+            if(itemsAdded < (numberOfItemsToTrack-1)) {
+                if(thisItemHandle != localStorage.getItem('recentlyViewed'+i)) {
+                    outputRecentlyViewedProduct(localStorage.getItem('recentlyViewed'+i), itemsAdded);
+                    itemsAdded++;
+                }
+            }
+        }
+    }
+
+};
+
+
+
+var trackRecentlyViewed = function() {
+    var numberOfItemsToTrack = 4;
+    var thisItemHandle = '{{product.handle}}';
+    var allRecentItems = [];
+
+    for(var i=0;i<numberOfItemsToTrack;i++) {
+        if(localStorage.getItem('recentlyViewed'+i)) {
+            allRecentItems.push(localStorage.getItem('recentlyViewed'+i));
+        }
+    }
+
+    if(allRecentItems.indexOf(thisItemHandle) == -1) {
+        allRecentItems.push(thisItemHandle);
+        if(allRecentItems.length>numberOfItemsToTrack) {
+            allRecentItems.shift();
+        }
+
+        for(var i=0;i<allRecentItems.length;i++) {
+            localStorage.setItem('recentlyViewed'+i, allRecentItems[i]);
+        }
+    }
+};
+
+
+if ('localStorage' in window) {
+    jQuery(document).ready(function () {
+      showRecentlyViewed();
+      trackRecentlyViewed();
+    });
+};
+
+
+</script>

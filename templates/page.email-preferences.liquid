@@ -1,0 +1,146 @@
+{% if customer %}
+<div class="page-title">
+		<h1>Email preferences</h1>
+	</div>
+
+
+
+
+
+	<div class="wrapper">
+
+
+<div id="allMailLists">
+</div>
+<button id="updateEmailPreferences">Update preferences</button>
+
+
+</div>
+
+
+<script>
+
+
+var dotMailerUserId = -1;
+
+jQuery.ajax({
+    url: 'https://api.juno.is/api/dotmailer/contact/{{customer.email}}',
+    type: 'GET',
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', 'Bearer BQ8lCh1AjKCt5o70OStvOR3YVs6k91N4');
+    },
+    data: {},
+    success: function(data) {
+        if (data) {
+            if (typeof data.addressBooks !== "undefined") {
+                // build lists:
+                var listMarkup = '<ul>';
+                for (var i = 0; i < data.addressBooks.length; i++) {
+                    listMarkup += '<li><input type="checkbox" id="checkList' + data.addressBooks[i].id + '" value="' + data.addressBooks[i].id + '"';
+                    if (data.addressBooks[i].subscribed > 0) {
+                        listMarkup += ' checked';
+                    }
+                    listMarkup += '><label for="checkList' + data.addressBooks[i].id + '">' + data.addressBooks[i].name + '</label></li>';
+                    listMarkup += '</li>';
+                }
+                listMarkup += '</ul>';
+                jQuery('#allMailLists').html(listMarkup);
+            }
+            if (typeof data.contact !== "undefined") {
+                // user found in Dotmailer:
+                dotMailerUserId = data.contact.id;
+            }
+        }
+    },
+    error: function(data) {
+        if (data) {
+            console.log("fail", data);
+        }
+    }
+});
+
+jQuery("#updateEmailPreferences").click(function(e) {
+    if (e) {
+        e.preventDefault();
+    }
+    // check inputs and send response to API - build response Object:
+     var APIresponse = {};
+     APIresponse.contact = {};
+     APIresponse.contact.email = '{{customer.email}}';
+
+
+APIresponse.addressBooks = [];
+var thisAddressBook;
+jQuery('#allMailLists input[type="checkbox"]').each(function( ) {
+thisAddressBook = {"id": jQuery(this).val()};
+  if(jQuery(this).prop('checked')) {
+thisAddressBook.subscribed = 1;
+  } else {
+    thisAddressBook.subscribed = 0;
+  }
+
+thisAddressBook.name = jQuery(this).next().text();
+
+  APIresponse.addressBooks.push(thisAddressBook);
+});
+
+     
+     if(dotMailerUserId != -1) {
+     APIresponse.contact.id = dotMailerUserId;
+
+
+
+ } else {
+
+APIresponse.contact.optInType = "Unknown";
+APIresponse.contact.emailType = "Html";
+
+{% assign customerPostcode = '' %}
+{% if customer.default_address %}
+{% assign customerPostcode = customer.default_address.zip %}
+{% endif %}
+
+APIresponse.contact.dataFields = [{"key":"FIRSTNAME","value":"{{customer.first_name}}"}, {"key":"FULLNAME","value":"{{customer.first_name}} {{customer.last_name}}"}, {"key":"GENDER","value":""}, {"key":"LASTNAME","value":"{{customer.last_name}}"}, {"key":"LASTSUBSCRIBED","value":""}, {"key":"POSTCODE","value":"{{customerPostcode}}"}];
+APIresponse.consent = [{"fields":[{"key":"TEXT","value":"You signed up on the Email Preferences page in your Chinti &amp; Parker account"}, {"key":"DATETIMECONSENTED","value":"{{ 'now' | date: '%Y-%m-%dT%H:%M:%S' }}"}, {"key":"URL", "value":"{{shop.url}}{{request.path}}"},{"key":"IPADDRESS","value":""},{"key":"USERAGENT","value":navigator.userAgent}]}];
+
+}
+
+console.log(APIresponse);
+console.log(JSON.stringify(APIresponse));
+
+jQuery.ajax({
+    url: 'https://api.juno.is/api/dotmailer/contact/update/',
+    type: 'POST',
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', 'Bearer BQ8lCh1AjKCt5o70OStvOR3YVs6k91N4');
+    },
+    data: APIresponse,
+    success: function(data) {
+        console.log("success");
+        if (data) {
+console.log(data);
+        }
+    },
+    error: function(data) {
+        console.log("fail");
+        if (data) {
+            console.log(data);
+        }
+    }
+});
+});
+
+
+
+
+
+
+</script>
+
+
+{%else%}
+     <script type="text/javascript">
+        	window.location.href= "/account/"
+     </script>
+{%endif%}
+		

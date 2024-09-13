@@ -1,0 +1,261 @@
+<div class="newsletter-wrapper {% if section.settings.background_width == 'background-full' %}background-full{% endif %}">
+    <div class="row">
+        <div class="col-wide-6 col-form">
+            <form name="signup" action="https://e-chintiandparker.com/signup.ashx" method="post" autocomplete="off" onsubmit="return validate_signup(this, true)">
+                <div class="contact-form">
+                    <div id="successMessage">
+                        <div class="title">
+                            {% if section.settings.logo %}
+                                <picture>
+                                    <source
+                                        media="(min-width: 1024px)"
+                                        srcset="{{ section.settings.logo | img_url: 'master' }}"
+                                        data-srcset="{{ section.settings.logo | img_url: 'master' }}"
+                                    >
+                                    {% if section.settings.mobile_logo %}
+                                        <source
+                                            srcset="{{ section.settings.mobile_logo | img_url: 'master' }}"
+                                            data-srcset="{{ section.settings.mobile_logo | img_url: 'master' }}"
+                                        >
+                                    {% endif %}
+                                    <img
+                                        class="logo lazy.oad"
+                                        src="{{ section.settings.logo | img_url: 'master' }}"
+                                        data-src="{{ section.settings.logo | img_url: 'master' }}"
+                                        alt=""
+                                    />
+                                </picture>
+
+                            {% endif %}
+                            {% if section.settings.success_title != blank %}
+                                <h1>{{ section.settings.success_title }}</h1>
+                            {% endif %}
+                            {% if section.settings.success_subheading != blank %}
+                                <p>{{ section.settings.success_subheading }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div id="signUpFormContainer">
+                        <div class="title">
+                            {% if section.settings.logo %}
+                                <picture>
+                                    <source
+                                        media="(min-width: 1024px)"
+                                        srcset="{{ section.settings.logo | img_url: 'master' }}"
+                                    >
+                                    {% if section.settings.mobile_logo %}
+                                        <source srcset="{{ section.settings.mobile_logo | img_url: 'master' }}">
+                                    {% endif %}
+                                    <img
+                                        class="logo"
+                                        src="{{ section.settings.logo | img_url: 'master' }}"
+                                        alt=""
+                                    />
+                                </picture>
+                            {% endif %}
+
+                            {% if section.settings.title != blank %}
+                                <h1>{{ section.settings.title }}</h1>
+                            {% endif %}
+
+                            {% if section.settings.subheading != blank %}
+                                <p>{{ section.settings.subheading }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="container">
+                            <input type="hidden" name="userid" value="98313">
+                            <input type="hidden" name="SIG521ea4cccc00d8e39a554e42e075a17eff711f350cbafb269568ece4c2aa35e6" value="">
+                            <input type="hidden" name="addressbookid" value="50465297" />
+                            <input type="hidden" name="ReturnURL" value="">
+                            <input type="hidden" id="ci_consenturl" name="ci_consenturl" value="">
+                            <input type="hidden" class="text" name="cd_SIGNUP_SOURCE" id="SIGNUP_SOURCE" aria-required="false" value="Peanuts Coming Soon - {{shop.url}}" />
+
+                            <div style="position:absolute;opacity:0;">
+                                <input type="hidden" name="addressbook_45155301_unchecked" id="addressbook_45155301_unchecked" value="true" />
+                                <input type="checkbox" name="addressbook_45155301" id="addressbook_45155301" onclick="checkbox_Clicked(this)"/>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="email" name="email" id="email" required aria-required="true" placeholder="Enter your email address" autocorrect="off" autocapitalize="off">
+                                <input type="submit" id="btnsubmit" name="btnsubmit" class="button subscribe" value="Subscribe">
+                            </div>
+
+                            <p>By providing your email address, you are agreeing to receive email marketing from Chinti &amp; Parker.<br />See our <a href="/pages/privacy-cookie-policy">Privacy Policy</a> for further details.</p>
+                        </div>
+
+                        {% if section.settings.hashtag != blank %}
+                            <div class="hashtag">{{ section.settings.hashtag }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        {% if section.settings.background_width == 'background-half' %}
+            <div class="col-wide-6 col-image">
+                {% if section.settings.background_image %}
+                    <picture>
+                        <source
+                            media="(min-width: 1024px)"
+                            srcset="{{ section.settings.background_image | img_url: 'master' }}"
+                            data-srcset="{{ section.settings.background_image | img_url: 'master' }}"
+                        >
+                        {% if section.settings.background_image_mobile %}
+                            <source
+                                srcset="{{ section.settings.background_image_mobile | img_url: 'master' }}"
+                                data-srcset="{{ section.settings.background_image_mobile | img_url: 'master' }}"
+                            >
+                        {% endif %}
+                        <img
+                            src="{{ section.settings.background_image | img_url: 'master' }}"
+                            data-src="{{ section.settings.background_image | img_url: 'master' }}"
+                            alt=""
+                            class="lazyload"
+                        />
+                    </picture>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style type="text/css">
+	{% if section.settings.background_color %}
+	.newsletter-wrapper{
+		background-color: {{ section.settings.background_color }}
+	}
+	{% endif %}
+	@media only screen and (max-width: 63.99em){
+		.newsletter-wrapper{
+			{% if section.settings.background_image_mobile %}
+				background-image: url({{ section.settings.background_image_mobile | img_url: 'master' }});
+			{% endif %}
+		}
+	}
+	@media only screen and (min-width: 64em){
+		.newsletter-wrapper{
+			{% if section.settings.background_width == 'background-full' %}
+				{% if section.settings.background_image %}
+					background-image: url({{ section.settings.background_image | img_url: 'master' }});
+				{% endif %}
+			{% endif %}
+		}
+	}
+	#successMessage {
+		display: none;
+	}
+</style>
+
+
+<script type="text/javascript">
+var urlInput = document.getElementById("ci_consenturl");
+
+if (urlInput != null && urlInput != 'undefined') {
+    urlInput.value = encodeURI(window.location.href);
+}
+
+function checkbox_Clicked(element) {
+    document.getElementById(element.id + "_unchecked").value = !element.checked;
+}
+
+function validate_signup(frm, showAlert) {
+    var emailAddress = frm.email.value;
+    var errorString = '';
+
+    if (emailAddress == '' || emailAddress.indexOf('@') == -1) {
+        errorString = 'Please enter your email address';
+    }
+
+    var isError = false;
+
+    if (errorString.length > 0) {
+        isError = true;
+        if (showAlert) alert(errorString);
+    }
+
+    return !isError;
+}
+
+if(location.search) {
+    if(location.search.indexOf("result=success") !== -1) {
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('signUpFormContainer').style.display = 'none';
+    }
+}
+</script>
+
+{% schema %}
+{
+	"name": "Newsletter",
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "logo",
+			"label": "Logo"
+		},
+			{
+			"type": "image_picker",
+			"id": "mobile_logo",
+			"label": "Mobile Logo"
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Heading",
+			"default": "Coming Soon"
+		},
+		{
+			"type": "text",
+			"id": "subheading",
+			"label": "Subheading",
+			"default": "Sign up and be the first to know when the Peanuts collection arrives"
+		},
+		{
+			"type": "textarea",
+			"id": "hashtag",
+			"label": "Hashtag"
+		},
+		{
+			"type": "select",
+			"id": "background_width",
+			"label": "Background Column Width",
+			"options": [
+				{ "value": "background-half", "label": "Half" },
+				{ "value": "background-full", "label": "Full" }
+			],
+			"default": "background-half"
+		},
+		{
+			"type": "image_picker",
+			"id": "background_image",
+			"label": "Background Image"
+		},
+		{
+			"type": "image_picker",
+			"id": "background_image_mobile",
+			"label": "Mobile Background Image"
+		},
+		{
+			"type": "color",
+			"id": "background_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "text",
+			"id": "success_title",
+			"label": "Success Heading",
+			"default": "Thank You for signing up to our newsletter!"
+		},
+		{
+			"type": "text",
+			"id": "success_subheading",
+			"label": "Success Subheading",
+			"default": "You will receive an email to confirm your subscription and receive 10% off your first order."
+		}
+	],
+	"blocks": [
+
+	]
+}
+{% endschema %}

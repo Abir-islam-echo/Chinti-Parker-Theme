@@ -1,0 +1,446 @@
+{{ 'gift-note-message.css' | asset_url | stylesheet_tag }}
+
+<script class="cartFlagX"></script>
+<div class="shopping-bag wrapper">
+  <form action="/cart" method="post">
+    <div class="page-title title-buttons">
+      {% if cart.item_count > 0 %}
+        <h1>
+          Your Bag ({{ cart.item_count }} Item{% if cart.item_count > 1 %}s{% endif %})
+          <p class="return"><a class="button-text" href="/collections/all">Continue Shopping</a></p>
+        </h1>
+        {% render 'cart-timer' %}
+      {% else %}
+        <h1>Your bag is empty!</h1>
+        <p class="empty">You can continue browsing <a href="/collections/all">here</a>.</p>
+      {% endif %}
+    </div>
+
+    <div class="discountCodeField" id="mobileDiscount">
+      <label for="discount">Discount code</label>
+      <input autocomplete="off" type="text" name="discount" placeholder="Enter your discount code">
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <div class="row">
+        <div class="bag-table order-table">
+          <table>
+            <thead class="hidden">
+              <tr>
+                <th>Item</th>
+                <th>&nbsp;</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-right">Total</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart.items %}
+                {% assign collection_url = item.product.collections.last.url %}
+                {% if collection_url == '/collections/frontpage' or collection_url == blank %}
+                  {% assign collection_url = '/collections/all' %}
+                {% endif %}
+
+                {% if forloop.first %}
+                  {% assign continue_shopping_url = collection_url %}
+                {% endif %}
+
+                <tr>
+                  <td class="image">
+                    <a href="{{ collection_url }}{{ item.url }}">
+                      <picture>
+                        <source media="(min-width: 421px)" srcset="{{ item | img_url: '149x224', crop: 'center' }}">
+                        <source srcset="{{ item | img_url: '420x630', crop: 'center' }}">
+                        <img src="{{ item | img_url: '149x224', crop: 'center' }}" alt="{{ item.title | escape }}">
+                      </picture>
+                    </a>
+                  </td>
+                  <td class="product">
+                    <a class="name" href="{{ collection_url }}{{ item.url }}">
+                      {{ item.title | replace: ' - ', ' ' }}
+                    </a>
+                    {% unless item.variant.barcode == blank -%}
+                      <span>SKU: {{ item.variant.barcode }}</span>
+                    {%- endunless %}
+                    <span>Size: {{ item.variant.title }}</span>
+                  </td>
+                  <td class="qty product">
+                    <div
+                      class="details"
+                      data-product='
+                        {
+                        	"name": {{ item.product.title | json }},
+                        	"id": {{ item.sku | json }},
+                        	"price": {{ item.line_price | money_without_currency | json }},
+                        	"brand": {{ item.vendor | json }},
+                        	"category": {{ item.type | json }},
+                        	"variant": {{ item.variant.title | json }}
+                        }
+                      '
+                    >
+                      <a class="name" href="{{ collection_url }}{{ item.url }}"> {{ item.title }} </a>
+                      {% unless item.variant.barcode == blank -%}
+                        <span>SKU: {{ item.variant.barcode }}</span>
+                      {%- endunless %}
+                      <span>Size: {{ item.variant.title }}</span>
+                      <button class="remove" type="button" data-line="{{ forloop.index }}">Remove</button>
+                      <div class="qty-total">
+                        <div class="bag-qty">
+                          <input
+                            type="number"
+                            name="updates[]"
+                            id="updates_{{ item.id }}"
+                            class="quantity"
+                            value="{{ item.quantity }}"
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      {% if item.product.compare_at_price > item.product.price %}
+                        <s>{{ item.product.compare_at_price | money | replace: '.00', '' }}</s>
+                        <span class="on-sale">
+                          {{- item.line_price | money | replace: '.00', '' }} (
+                          {{-
+                            item.product.compare_at_price_max
+                            | minus: item.product.price
+                            | times: 100.0
+                            | divided_by: item.product.compare_at_price_max
+                            | remove: '.0'
+                          -}}
+                          % off)</span
+                        >
+
+                      {% else %}
+                        {% comment %}
+                          <!--
+                          {{ item.line_price | money | replace: ".00", "" }}
+                          /-->
+                        {% endcomment %}
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td class="total">
+                    <div>
+                      {{ item.line_price | money | replace: '.00', '' }}
+                    </div>
+
+                    {% comment %}
+                      {% if item.product.compare_at_price > item.product.price %}
+                      <div>
+                      	<s>{{ item.product.compare_at_price | money | replace: ".00", "" }}</s>
+                      	<span class="on-sale">{{ item.line_price | money | replace: ".00", "" }}</span>
+                      </div>
+                      {% else %}
+                      <div>
+                      	{{ item.line_price | money  | replace: ".00", ""}}
+                      </div>
+                      {%endif%}
+                    {% endcomment %}
+                  </td>
+                  <td class="remove text-right">
+                    <button
+                      class="remove"
+                      type="button"
+                      data-line="{{ forloop.index }}"
+                      onclick="
+                        dataLayer.push({ 'ecommerce': null });dataLayer.push({
+                        'event': 'remove_from_cart',
+                        'ecommerce': {
+                            'currency': '{{ shop.currency }}',
+                            'value': '{{ item.line_price | money_without_currency }}',
+                            'items': [{
+                            'item_id': '{{ item.product.id }}',
+                            'item_name': '{{ item.product.title | remove: "'" | remove: '"' }}',
+                            'item_brand': '{{ item. product.vendor | remove: "'" | remove: '"' }}',
+                            'item_price': '{{ item.line_price | money_without_currency }}'
+                            }]
+                          }
+                        });
+                      "
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="bottom-section inner-section upsell">
+            {% section 'upsell-product' %}
+          </div>
+        </div>
+
+        {%- if settings.gift_me_enabled -%}
+          {%- render 'cart.gift-message' -%}
+        {%- endif -%}
+
+        <div class="bag-total order-table">
+          <div class="top-section inner-section">
+            <table>
+              <tfoot>
+                <tr>
+                  <td class="key">Subtotal</td>
+                  <td class="value">
+                    <span style="display:none" class="tdf-cart-total-flag"></span>
+                    {{ cart.total_price | money | replace: '.00', '' }}
+                  </td>
+                </tr>
+
+                {% if cart.total_discount > 0 %}
+                  <tr>
+                    <td class="key">Discounts</td>
+                    <td class="value">{{ cart.total_discount | money | replace: '.00', '' }}</td>
+                  </tr>
+                {% endif %}
+
+                <tr>
+                  <td class="key">Total</td>
+                  {% if localization.country.iso_code == 'GB' %}
+                    <td class="value">
+                      {{ cart.total_price | money | replace: '.00', '' }}
+                    </td>
+                  {% else %}
+                    <td class="value">
+                      {{ cart.total_price | money | replace: '.00', '' }}
+                    </td>
+                  {% endif %}
+                </tr>
+              </tfoot>
+            </table>
+            <div class="buttons-set text-center">
+              <div id="hubbox-here"></div>
+              <button class="button" type="submit" name="checkout">Checkout Securely</button>
+              <div class="product-collapse">
+                {% render 'trustshop' %}
+              </div>
+              {% if settings.enable_harper_concierge and localization.country.iso_code == 'GB' %}
+                {%- render 'harper-cart' -%}
+              {% endif %}
+              <a class="button-text" href="/collections/all">Continue Shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </form>
+  <div id="wishlist-reminder"></div>
+</div>
+
+<style>
+  .template-cart .shopping-bag .bag-table.order-table{
+    width: 65%;
+  }
+  .template-cart #wishlist-reminder{
+    padding: 25px 0;
+  }
+  .template-cart #wishlist-reminder .wk-grid{
+    display: grid;
+    grid-gap: 3em 2em;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .template-cart #wishlist-reminder .wk-grid .wk-product-card img{
+    object-fit: cover;
+  }
+  .template-cart #wishlist-reminder .wishlist-heading{
+    display: flex;
+    gap: 15px;
+    align-items: baseline;
+    padding: 25px 0;
+  }
+  .template-cart #wishlist-reminder .wishlist-heading h2{
+    font-size: 30px;
+    font-weight: bold
+  }
+  .template-cart .shopping-bag .row{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .template-cart .shopping-bag .row:before{
+    content: unset;
+  }
+  .template-cart .shopping-bag .row:after{
+    content: unset;
+  }
+  .template-cart .shopping-bag .order-table .inner-section{
+    padding: 20px;
+    border: 1px solid #cacaca;
+    margin-bottom: 20px;
+  }
+  .template-cart .shopping-bag .order-table .inner-section.bottom-section{
+    height: fit-content;
+  }
+   @media only screen and (max-width: 500px){
+       .template-cart #wishlist-reminder .wk-grid{
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+       .template-cart #wishlist-reminder .wishlist-heading h2{
+          font-size: 24px;
+        }
+   }
+   @media only screen and (max-width: 768px){
+       .template-cart #wishlist-reminder .wk-grid{
+          grid-template-columns: repeat(3, 1fr);
+        }
+   }
+  @media only screen and (max-width: 1023px){
+    .template-cart .shopping-bag .bag-table.order-table{
+      width: 100%;
+    }
+    .template-cart .shopping-bag .row{
+      flex-direction: column;
+    }
+    .template-cart .shopping-bag .order-table{
+      max-width: unset;
+    }
+  }
+</style>
+
+{% comment %} redeye task start {% endcomment %}
+
+{% assign euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' %}
+{% assign usCountryList = 'ca,us' %}
+{% assign uKCountryList = 'gb' %}
+{% assign isoCode = localization.country.iso_code | downcase %}
+{% assign zoneValue = '' %}
+
+{%- if euCountryList contains isoCode -%}
+  {% assign zoneValue = 'EU' %}
+{% elsif usCountryList contains isoCode %}
+  {% assign zoneValue = 'US' %}
+{% elsif uKCountryList contains isoCode %}
+  {% assign zoneValue = 'UK' %}
+{% else %}
+  {% assign zoneValue = 'UK' %}
+{%- endif -%}
+
+{% comment %} redeye task finish {% endcomment %}
+
+<script>
+jQuery(document).ready(function () {
+    if (localStorage.getItem('storedDiscount')){
+      var discountStored = localStorage.getItem('storedDiscount');
+      jQuery('input[name="discount"]').val(localStorage.getItem('storedDiscount'));
+    }
+    jQuery('form[action="/cart"]').on('submit', function(){
+
+      var $discountCode = jQuery('input[name="discount"]').val();
+      localStorage.setItem('storedDiscount', $discountCode);
+    });
+});
+
+
+  //redeye task start
+  //redEye Integration for abandont basket event
+  const priceCalcualtion = (price) =>{
+    if(price.slice(-2) == '00'){
+      return (price.slice(0,-2)+'.00');
+    }
+    else{
+      return (price.slice(0,-2)+'.'+price.slice(-2));
+    }
+  }
+  const cartItems = {{ cart | json }};
+  const prodItems = [];
+  cartItems.items.forEach((item,index) => {
+    // console.log(item)
+  	const newItem = {};
+  	newItem['bask_name' + (index + 1)] = item.title;
+  	newItem['bask_image' + (index + 1)] = item.image.split('//')[1];
+  	newItem['bask_url' + (index + 1)] = "www.chintiandparker.com" + item.url;
+  	newItem['bask_size' + (index + 1)] = item.variant_options[0];
+  	newItem['bask_code' + (index + 1)] = item.id;
+  	newItem['bask_each_val' + (index + 1)] = priceCalcualtion(item.price.toString()),
+  	newItem['bask_items' + (index + 1)] = item.quantity;
+  	newItem['bask_val' + (index + 1)] = priceCalcualtion(item.original_line_price.toString());
+  
+  	prodItems.push(newItem);
+  
+  });
+  
+  let mainSource = 'https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=basket-event&bask_event=yes';
+  prodItems.forEach((item) => {
+    for (let key in item) {
+      mainSource += `&${key}=${item[key]}`;
+    }
+  });
+  
+  mainSource += `&bask_total_items=${cartItems.item_count}&bask_total_val=${priceCalcualtion(cartItems.total_price.toString())}&site={{ zoneValue }}&currency=${cartItems.currency}`;
+  let abandonItemsStructure = `<img src="${mainSource}" width="1" height="1" class="abandonItems"/>`;
+  if(document.querySelector('.abandonItems')){
+      document.querySelector('.abandonItems').remove();
+  };
+  
+  document.body.insertAdjacentHTML('beforeend', abandonItemsStructure);
+  //redeye task finish
+</script>
+
+{{ 'gift-note-message.js' | asset_url | script_tag }}
+
+<!-- cart timer -->
+<style>
+  .template-cart .shopping-bag .page-title{
+    padding: 30px 0px;
+  }
+    .template-cart .shopping-bag .expired-cart{
+    height: calc(100vh - 200px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .template-cart .shopping-bag .expired-cart h1 {
+      display: flex;
+      gap: 8px;
+      font-size: 40px;
+      max-width: 40ch;
+      text-align: center;
+      transform: scale(0.94);
+      animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+    }
+
+    @keyframes scale {
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .expired-cart span {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(4px);
+    }
+
+    .expired-cart span:nth-child(1) {
+      animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    }
+
+    .expired-cart span:nth-child(2) {
+      animation: fade-in 0.8s 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    }
+
+    .expired-cart span:nth-child(3) {
+      animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    }
+
+    .expired-cart span:nth-child(4) {
+      animation: fade-in 0.8s 0.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    }
+
+    @keyframes fade-in {
+      100% {
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+    @media only screen and (max-width: 550px) {
+    .template-cart .shopping-bag .expired-cart h1{
+      font-size: 28px;
+    }
+  }
+</style>
+<!-- cart timer -->

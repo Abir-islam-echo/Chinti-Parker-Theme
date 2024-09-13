@@ -1,0 +1,124 @@
+{% comment %}
+      @param  product  ProductDrop
+          The product that has been viewed.
+  <!-- LITON: Commenting out the old product details datalayer -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({
+      'event': 'productDetail',
+      'ecommerce': {
+          'currencyCode': {{ shop.currency | json }},
+          'detail': {
+              'products': [
+                  {
+                      'name': {{ product.title | json }},
+                      'id': {{ product.selected_or_first_available_variant.sku | json }},
+                      'price': {{ product.price | money_without_currency | json }},
+                      'brand': {{ product.vendor | json }},
+                      'category': {{ product.type | json }},
+                      'variant': {{ product.selected_or_first_available_variant.title | json }},
+                      'position': 1,
+                  },
+              ]
+          }
+      },
+  });
+  </script>
+{% endcomment %}
+
+{% comment %} redeye task start {% endcomment %}
+
+{% assign variant = product.selected_or_first_available_variant %}
+{% assign availableProduct = product.available %}
+{% assign isAvailable = '' %}
+{% if availableProduct %}
+  {% assign isAvailable = 'Y' %}
+{% else %}
+  {% assign isAvailable = 'N' %}
+{% endif %}
+
+{% assign euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' %}
+{% assign usCountryList = 'ca,us' %}
+{% assign ukCountryList = 'gb' %}
+{% assign isoCode = localization.country.iso_code | downcase %}
+{% assign zoneValue = '' %}
+
+{%- if euCountryList contains isoCode -%}
+  {% assign zoneValue = 'EU' %}
+{% elsif usCountryList contains isoCode %}
+  {% assign zoneValue = 'US' %}
+{% elsif ukCountryList contains isoCode %}
+  {% assign zoneValue = 'UK' %}
+{% else %}
+  {% assign zoneValue = 'UK' %}
+{%- endif -%}
+
+<!-- price calculation -->
+{% assign productPrice = variant.price | money_without_currency %}
+{% if zoneValue == 'EU' %}
+  {% assign productPrice = productPrice | replace: ',', '.' %}
+{% else %}
+  {% assign productPrice = productPrice | remove: ',' %}
+{% endif %}
+<!-- price calculation -->
+
+<img
+  src="
+                                                                                                                    https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=product-viewed&view_prod_event=view-product-event&view_prod_name={{ product.handle }}&view_prod_image={{ product.images |first | image_url: '' |  split: '//' }}&view_prod_url={{ product.url |  prepend: 'www.chintiandparker.com'  }}&view_prod_val={{ productPrice }}&view_prod_code={% if product.sku %}{{ product.sku }}{% else %}{{ product.id}}{% endif %}&view_prod_instock={{ isAvailable }}&site={{ zoneValue }}
+  "
+  width="1"
+  height="1"
+>
+
+<script
+  type="text/javascript"
+>
+
+  //RedEye integration in product page for out-of-stock triggering.
+  const prod = {{product | json}};
+  const fromField = document.querySelector('form#back-in-stock-content');
+  fromField && fromField.addEventListener('submit', (e)=> {
+    e.preventDefault();
+    if(emailInput.value){
+      RedEyeOutOfStock();
+    }
+  });
+
+  function RedEyeOutOfStock(){
+        const product = {{ product | json }};
+        const siteValue = {{ zoneValue | json }};
+        const image = product.featured_image.split('//')[1];
+        const URL = 'www.chintiandparker.com/products/' + product.handle;
+        const prodTitle = product.title
+        const prodHandle = product.handle.replaceAll('-','%20');
+        const mainStr = `https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=back-in-stock&oos_event=confirm&oos_site=${siteValue}&oos_code={% if product.sku %}{{ product.sku }}{% else %}{{ product.id}}{% endif %}&oos_create={% if product.sku %}{{ product.sku }}{% else %}{{ product.id}}{% endif %}_${emailInput.value}&oos_name=${prodHandle}&oos_image=${image}&oos_url=${URL}&oos_date=45184&email=${emailInput.value}`;
+        const imgStr = `<img src=${mainStr} width="1" height="1" class="out_of_stock_tag"/>`;
+        if(document.querySelector('.out_of_stock_tag')){
+          document.querySelector('.out_of_stock_tag').remove();
+        };
+       document.body.insertAdjacentHTML('beforeend', imgStr);
+    };
+</script>
+
+{% comment %} redeye task finish {% endcomment %}
+
+<script>
+  dataLayer.push({
+    event: 'view_item',
+    ecommerce: {
+      currency: '{{ shop.currency }}',
+      value: '{{ product.price | times: 0.01}}',
+      items: [{
+        item_name: '{{ product.title | replace: "'","##@@singleinvertedcomma@@##" }}'.replace("##@@singleinvertedcomma@@##", "'"),
+        item_id: "{% if product.sku %}{{ product.sku }}{% else %}{{ product.id}}{% endif %}",
+        price: "{{ product.price | money_without_currency | remove:',' }}",
+        item_brand: "{{ product.vendor | remove: "'" | remove: '"' }}",
+        {% for collection in product.collections %}
+        item_category{% unless forloop.index == 1 %}{{ forloop.index }}{% endunless %}: "{{ collection.title }}",
+        {% endfor %}
+        item_variant: "{{ product.selected_or_first_available_variant.title | remove: "'" | remove: '"' }}",
+        quantity: '1'
+      }]
+    }
+  });
+</script>

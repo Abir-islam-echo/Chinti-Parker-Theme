@@ -1,0 +1,83 @@
+
+{% for block in section.blocks %}
+    {% case block.type %}
+      
+	{% when 'banner' %}
+    {% include 'journal-banner' %}
+      
+    {% endcase %}
+{% endfor %}
+
+
+
+
+{% schema %}
+{
+	
+	"blocks": 
+	[	
+		{
+		    "type": "banner",
+		    "name": "Banner",
+		    "settings": 
+			[
+		    	{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+		    	},
+		    	{
+					"type": "image_picker",
+					"id": "mobile_image",
+					"label": "Mobile Image"
+		    	},
+		    	{
+					"type": "url",
+					"id": "link",
+					"label": "Banner Link"
+		    	},
+		    	{
+					"type": "text",
+					"id": "text_link",
+					"label": "Text Link",
+					"default": "Find out More"
+		    	},
+		    	{
+					"type": "select",
+					"id": "text_color",
+					"label": "Text color",
+					"options": [
+						{ "value": "text-light", "label": "Light" },
+						{ "value": "text-dark", "label": "Dark" }
+					],
+					"default": "text-light"
+		    	},
+		    	{
+					"type": "text",
+					"id": "title",
+					"label": "Heading",
+					"default": "Image slide"
+		    	},
+		    	{
+					"type": "text",
+					"id": "subheading",
+					"label": "Subheading",
+					"default": "Lorem ipsum dolor sit amet"
+		    	},
+				{
+					"type": "select",
+					"id": "text_position",
+					"label": "Text Position",
+					"options": [
+						{ "value": "top-left", "label": "Top Left" },
+						{ "value": "top-right", "label": "Top Right" },
+						{ "value": "bottom-left", "label": "Bottom Left" },
+						{ "value": "bottom-right", "label": "Bottom Right" }
+					],
+					"default": "top-left"
+		    	}
+			]
+		}
+	]
+}
+{% endschema %}

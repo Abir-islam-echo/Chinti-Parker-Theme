@@ -1,0 +1,36 @@
+
+{% for block in section.blocks %}
+		{% case block.type %}
+    		{% when 'faq' %}
+    		{% include 'cms_faq' %}
+  	{% endcase %}
+{% endfor %}
+
+
+
+{% schema %}
+{
+		"blocks": [		
+				{		
+		        "type": "faq",
+		        "name": "Frequently Asked Question",
+		        "settings":   [
+		          {
+		            "type": "text",
+		            "id": "title",
+		            "label": "FAQ Question",
+		            "default": "How do I...?"
+		          },
+		          {
+		            "type": "textarea",
+		            "id": "content",
+		            "label": "FAQ Answer",
+		            "default": "We're here to help."
+		          }
+		         
+		         
+		        ]
+				}
+		]
+}
+{% endschema %}

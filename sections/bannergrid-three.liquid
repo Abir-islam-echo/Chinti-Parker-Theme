@@ -1,0 +1,215 @@
+<div data-section-id="{{ section.id }}" data-section-type="bannergrid-three-section" class="bannergrid-three-section">
+    <div class="{{ section.settings.width }}">
+      <div class="banner-grid">
+        {% if section.settings.title-section %}
+            <h2 class="title-section">
+            {{ section.settings.title-section }}
+            </h2>
+          {% endif %}
+      </div>
+              <div class="row">
+    {% for block in section.blocks %}
+        
+
+         {% if block.type == 'image' %}
+         <div class="col col-image">
+                {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}">
+                {% endif %}
+                {% if block.settings.image %}
+
+                    <picture>
+                    <source
+                        media="(min-width: 1024px)"
+                        srcset="{{ block.settings.image | img_url: '100x' }}"
+                        data-srcset="{{ block.settings.image | img_url: 'master' }}"
+                    >
+                    {% if block.settings.mobile_image %}
+                        <source
+                            srcset="{{ block.settings.mobile_image | img_url: '100x' }}"
+                            data-srcset="{{ block.settings.mobile_image | img_url: '500x' }}"
+                        >
+                    {% endif %}
+                    <img
+                        src="{{ block.settings.image | img_url: '100x' }}"
+                        data-src="{{ block.settings.image | img_url: 'master' }}"
+                        alt="{% if block.settings.heading %}{{ block.settings.heading | escape }}{% endif %}"
+                        class="lazyload"
+                    />
+                  </picture>
+                {% else %}
+                    <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                {% endif %}
+                {% if block.settings.link != blank %}
+                    </a>
+                {% endif %}
+                <h4>{% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}">
+                {% endif %}
+                    {{ block.settings.heading }}
+                {% if block.settings.link != blank %}
+                    </a>
+                {% endif %}
+                </h4>
+                <p>
+                  {{ block.settings.content }}
+
+                </p>
+          </div>
+      {% endif %}
+      {% endfor %}
+		</div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Banner Grid - Three",
+    "class": "index-section",
+    "settings":[
+      {
+        "type": "select",
+        "id": "width",
+        "label": "Column Width",
+        "options": [
+          {
+            "value": "el-container",
+            "label": "container"
+          },
+          {
+            "value": "el-full-width",
+            "label": "Full width"
+          }
+
+        ],
+        "default": "el-container"
+      },
+      {
+        "type": "select",
+        "id": "grid_style",
+        "label": "Grid Style",
+        "options": [
+          {
+            "value": "style_01",
+            "label": "style 01"
+          },
+          {
+            "value": "style_02",
+            "label": "style_02"
+          }
+
+        ],
+        "default": "style_01"
+      },
+      {
+        "type": "text",
+        "id": "title-section",
+        "label": "Title Section ",
+        "default": "Title Section..."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading..."
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "Content",
+            "default": "Lorem ipsum..."
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Banner link"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Banner Grid - Three",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+
+      ]
+    }]
+  }
+{% endschema %}
+<style>
+  .bannergrid-three-section {
+    margin-top: 0px;
+  }
+  .bannergrid-three-section .title-section{
+    margin-bottom:0px;
+  }
+  
+  .bannergrid-three-section .row .col:last-child{
+      margin-right:0px;
+    }
+  .bannergrid-three-section .row {
+        display:flex;
+        flex-wrap: wrap;
+      }
+  {% if section.settings.grid_style =="style_01" %}
+    .bannergrid-three-section .row .col{
+      width:auto;
+      margin:0;
+      flex-basis: calc( 33.33% - 30px );
+      margin-right: 30px;
+    }
+   
+    
+  {% elsif section.settings.grid_style =="style_02" %}
+     .bannergrid-three-section .row .col{
+      flex-basis:calc( 25% - 30px );
+       margin-right: 30px;
+    }
+    .bannergrid-three-section .row .col:nth-child(2){
+        flex-basis:calc( 50% - 30px );
+        margin-right: 30px;
+      }
+  {% endif %}
+  
+    @media screen and (max-width: 768px) {
+    .bannergrid-three-section .row {
+      flex-direction:column;
+      gap:20px;
+      flex-wrap: nowrap;
+    }
+    .bannergrid-three-section .row .col{
+      margin:0;
+      flex-basis: 1;
+      }
+  }
+  
+</style>

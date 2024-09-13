@@ -1,0 +1,39 @@
+<div class="contact-us wrapper">
+	<div class="page-title">
+		<h1>{{ page.title }}</h1>
+	</div>
+<div class="row cms-content">
+		<div class="col-wide-6 col-medium-6 info">
+	
+			<h4>Contact Us</h4>
+		 {% section 'cms-contact-info' %}
+		 </div>
+		<div class="col-wide-6 col-medium-6 form">
+			{% form 'contact' %}
+			<h4>Contact Form</h4>
+			{{page.content}}
+			<div class="container">
+				{% if form.posted_successfully? %}
+				<div class="successForm feedback form--success">
+					{{ 'contact.form.post_success' | t }}
+				</div>
+				{% endif %}
+				{% if form.errors %}
+				<div class="errorForm feedback">
+					<!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+					<p>Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+					{% for field in form.errors %}
+					<p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+					{% endfor %}
+				</div>
+				{% endif %}
+				<input placeholder="{{ 'contact.form.name' | t }} *" type="text" required id="contactFormName" name="contact[name]">
+				<input placeholder="{{ 'contact.form.email' | t }} *" type="email" required id="contactFormEmail" name="contact[email]">
+				<input placeholder="Topic" type="telephone" id="contactFormTopic" name="contact[topic]">
+				<textarea placeholder="{{ 'contact.form.message' | t }} *" required rows="6" id="contactFormMessage" name="contact[body]"></textarea>
+				<button class="button" id="contactFormSubmit" type="submit">{{ 'contact.form.submit' | t }}</button>
+			</div>
+			{% endform %}
+		</div>
+	</div>
+</div>

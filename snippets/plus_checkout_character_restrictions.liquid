@@ -1,0 +1,63 @@
+{% if enable %}
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' | script_tag }}
+  {{ 'plus.alphanum.js' | asset_url | script_tag }}
+
+  <script>
+    (function($){
+      'use strict';
+      
+      var addressType = '';
+      var addRestrictions = false;
+      var $addresses = [];
+      
+      $(document).on('page:load page:change', function() {
+        addRestrictions = false;
+        
+        if (Shopify.Checkout.step === 'contact_information') {
+          addressType = 'shipping_address';
+          addRestrictions = true;
+        }
+        
+        if (Shopify.Checkout.step === 'payment_method') {
+          addressType = 'billing_address';
+          addRestrictions = true;
+        }
+        
+        if (addRestrictions) {
+          $addresses = $(
+            '[name="checkout[' + addressType + '][address1]"],'
+            + '[name="checkout[' + addressType + '][address2]"],'
+            + '[name="checkout[' + addressType + '][city]"],'
+            + '[name="checkout[' + addressType + '][zip]"],'
+            + '[name="checkout[' + addressType + '][phone]"],'
+            + '[name="checkout[' + addressType + '][company]"],'
+            + '[name="checkout[' + addressType + '][last_name]"],'
+            + '[name="checkout[' + addressType + '][first_name]"]'
+          );
+          
+          $addresses.alphanum({
+            allow              : '{{ settings.plus_input_allowed_characters }}',
+            allowLatin         : true,
+            allowOtherCharSets : false,
+            maxLength          : {{ settings.plus_input_max_length | plus: 0 }}
+          });
+          
+          {%comment%}
+            These two trigger('change') events are needed to tell the alphanum plugin
+            fire in cases where addresses are preloaded (when a customer is signed in)
+            and when the preloaded address is changed. Without this, the character
+            restriction will have no effect as the content will be loaded in before
+            the js is initialized.
+          {%endcomment%}
+          
+          $addresses.trigger('change');
+          
+          $(document).on('change', '[name="checkout[' + addressType + '][id]"]', function() {
+            $addresses.trigger('change');
+          });
+        }
+      });
+    })(jQuery);
+  </script>
+{% endif %}

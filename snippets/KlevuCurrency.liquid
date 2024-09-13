@@ -1,0 +1,363 @@
+<script>
+
+const klevuPriceUpdate = () => {
+const shopify_klevu_token = "f1b6e6a52bdd336d0dac40d0a819538e";
+const primary_market = "UK";
+const klevuBaseUrl = "https://chinti-parker.myshopify.com"
+klevu.interactive(function () {
+    klevu({
+        powerUp: {
+            landing: false,
+            catnav: false,
+            quick: false,
+        }
+    });
+    // HELPER FUNCTIONS
+    function extractSlug(url) {
+        const path = new URL(url).pathname;
+        const parts = path.split('/');
+        return parts[parts.length - 1];
+    }
+    function generateQueryString(id, handles) {
+        let productQueries = '';
+        for (let i = 0; i < id.length; i++) {
+            productQueries += `
+        product_${id[i]}: productByHandle(handle: "${handles[i]}") {
+            id
+            handle
+            priceRange {
+            ...MinMaxVariantPrice
+            }
+            compareAtPriceRange {
+            ...MinMaxVariantPrice
+            }
+        }`;
+        }
+        return productQueries;
+    }
+    function formatPrice(price, currency, locale = navigator.language) {
+        return new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(price);
+    }
+    function findProductList(data) {
+        return data.find(item => item.id === 'productList');
+    }
+    function wipeElements(elements) {
+        elements.forEach((element) => {
+            if (typeof element === 'string') {
+                element = document.getElementById(element);
+            }
+            if (element) {
+                element.innerHTML = '';
+            }
+        });
+    }
+    function sendRequest(queryString, country, callback) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("X-Shopify-Storefront-Access-Token", shopify_klevu_token);
+        var graphqlPayload = JSON.stringify({
+            query: `query getLocalizedVariant(
+            $country: CountryCode
+            ) @inContext(country: $country) {
+                ${queryString}
+                
+            }
+            fragment Price on MoneyV2 {
+                amount
+                currencyCode
+            }
+            fragment MinMaxVariantPrice on ProductPriceRange {
+                maxVariantPrice {
+                ...Price
+                }
+                minVariantPrice {
+                ...Price
+                }
+            }`,
+            variables: { "country": country }
+        });
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: graphqlPayload,
+            redirect: 'follow'
+        };
+        fetch(klevuBaseUrl + "/api/2023-01/graphql.json", requestOptions)
+            .then(response => response.text())
+            .then(callback)
+            .catch(error => console.log('error', error));
+    }
+    function renderPricesOnFrontend(result, productList, priceSelector, listItemSelector, country, currency) {
+        const priceBeforeDiscountSelector = priceSelector.replace('Sale', 'Orig');
+        const helpers = klevu.search.base.getScope().template.getHelpers();
+        const resultObject = JSON.parse(result);
+        // Loop through all the items from the current Klevu response
+        for (const currentProduct of productList) {
+            const { id: product_id } = currentProduct;
+            // return if the product is excluded from the store and there's no data for it
+            if (resultObject.data[`product_${product_id}`] === null) continue;
+            const compareAtMaxVariantPrice = resultObject.data[`product_${product_id}`].compareAtPriceRange.maxVariantPrice.amount;
+            const { minVariantPrice, maxVariantPrice } = resultObject.data[`product_${product_id}`].priceRange;
+            const { amount: minAmount } = minVariantPrice;
+            const { amount: maxAmount } = maxVariantPrice;
+            //const label = maxAmount !== minAmount ? 'From' : '';
+            // Now, we are selecting the proper elements by ID and grab prices from our POST request
+            const listItem = document.querySelectorAll(`${listItemSelector}[data-id="${product_id}"]`); // our parent element, referring by ID
+            [...listItem].forEach((list) => {
+                const salePriceItem = list.querySelector(priceSelector);
+                const origPriceItem = list.querySelector(priceBeforeDiscountSelector);
+                domChangePrice(salePriceItem, origPriceItem);
+            });
+            function domChangePrice(salePriceItem, origPriceItem) {
+                //const price = helpers.formatPrice(minAmount, currency, country);
+                const price = parseFloat(minAmount) * 100;
+                //const priceBeforeDiscount = helpers.formatPrice(compareAtMaxVariantPrice, currency, country);
+                const priceBeforeDiscount = parseFloat(compareAtMaxVariantPrice) * 100;
+              
+                if (salePriceItem) {
+                    salePriceItem.innerHTML = `<span data-globalE-price="${price}" class="klevu-globalE-prices">${Shopify.formatMoney(price, "{{ shop.money_format }}").replace(".00", "")}</span>`;
+                }
+                if (origPriceItem && parseFloat(compareAtMaxVariantPrice) > parseFloat(minAmount)) {
+                  //origPriceItem.innerHTML = `<span data-globalE-price="${priceBeforeDiscount}" class="klevu-globalE-prices">${priceBeforeDiscount}</span>`;
+                  origPriceItem.innerHTML = `<span data-globalE-price="${priceBeforeDiscount}" class="klevu-globalE-prices">${Shopify.formatMoney(priceBeforeDiscount, "{{ shop.money_format }}").replace(".00", "")}</span>`;
+                }
+            };
+        }
+    }
+    function prependShopifyRoute(url, value) {
+        // Browser-compatible check for Shopify.routes.root
+        const shopifyRoute = (typeof Shopify !== 'undefined' && Shopify.routes && Shopify.routes.root) ? Shopify.routes.root : '';
+        // The klevuBaseUrl potentialy has a trailing slash
+        // Check if klevuBaseUrl exists, is not null, is not an empty string, and has a length greater than 5
+        // Use the replace() method and a regular expression to remove the trailing slash, if present
+        const isValidBaseUrl = typeof klevuBaseUrl !== 'undefined' && klevuBaseUrl !== null && klevuBaseUrl !== '' && klevuBaseUrl.length > 5;
+        const baseUrl = isValidBaseUrl ? klevuBaseUrl.replace(/\/$/, '') : extractOrigin(value.records[0].url);
+        if (url.startsWith(baseUrl)) {
+            let newUrl = url.replace(baseUrl, baseUrl + shopifyRoute);
+            // Remove any double slashes after the shopifyRoute
+            newUrl = newUrl.replace(shopifyRoute + '/', shopifyRoute);
+            return newUrl;
+        }
+        return url;
+    }
+    function extractOrigin(url) {
+        // Extract the origin from the given URL
+        const urlObj = new URL(url);
+        return urlObj.origin;
+    }
+    function isShopifyRouteValid(data, shopifyRoute) {
+        // Browser-compatible check for Shopify.routes.root
+        shopifyRoute = shopifyRoute || (typeof Shopify !== 'undefined' && Shopify.routes && Shopify.routes.root) ? Shopify.routes.root : '';
+        // Check if the request was successful and if shopifyRoute is different from '/' and has a length of at least 2
+        return data.context.isSuccess && shopifyRoute !== '/' && shopifyRoute.length >= 2;
+    }
+    // set helper functions as the global Klevu helpers
+    klevu.search.base.getScope().template.setHelper('extractSlug', extractSlug);
+    klevu.search.base.getScope().template.setHelper('generateQueryString', generateQueryString);
+    klevu.search.base.getScope().template.setHelper('formatPrice', formatPrice);
+    klevu.search.base.getScope().template.setHelper('findProductList', findProductList);
+    klevu.search.base.getScope().template.setHelper('wipeElements', wipeElements);
+    klevu.search.base.getScope().template.setHelper('sendRequest', sendRequest);
+    klevu.search.base.getScope().template.setHelper('renderPricesOnFrontend', renderPricesOnFrontend);
+    klevu.search.base.getScope().template.setHelper('prependShopifyRoute', prependShopifyRoute);
+    klevu.search.base.getScope().template.setHelper('isShopifyRouteValid', isShopifyRouteValid);
+    // HELPER FUNCTIONS END
+});
+// Quick
+klevu.coreEvent.build({
+    name: "setShopifyGlobalEQuickOverride",
+    fire: function () {
+        if (klevu.getSetting(klevu, "settings.flags.setRemoteConfigQuick.build", false)) {
+            return true;
+        }
+        return false;
+    },
+    maxCount: 150,
+    delay: 100
+});
+klevu.coreEvent.attach("setShopifyGlobalEQuickOverride", {
+    name: "attachToShopifyGlobalEQuickOverride",
+    fire: function () {
+        klevu.each(klevu.search.extraSearchBox, function (key, box) {
+            // set helpers to use them in every scope: quick search, landing and category pages
+            const helpers = klevu.search.base.getScope().template.getHelpers();
+            box.getScope().chains.template.events.add({
+                name: "globalEPriceChange",
+                fire: function (data, scope) {
+                    try {
+                        if (typeof Shopify.country !== 'undefined' && typeof primary_market !== 'undefined' && Shopify.country.toLowerCase() !== primary_market.toLowerCase()) {
+                            // hide the prices with the wrong currency:
+                            helpers.wipeElements(document.querySelectorAll('.klevuQuickSalePrice'));
+                            helpers.wipeElements(document.querySelectorAll('.klevuQuickOrigPrice'));
+                            // 1. Let's gather all the IDs of the products we're seeing to the Array "arrayIDs":
+                            const klevuResponse = klevu.getObjectPath(data, "response.current.queryResults");
+                            const productList = typeof helpers.findProductList(klevuResponse) !== 'undefined' ? (helpers.findProductList(klevuResponse)).records : null;
+                            if (!productList) return; // return if there's no data in the response. Useful for initail popup in Quick Search
+                            const arrayIDs = productList.map(element => element.id);
+                            const urlKeys = productList.map(element => helpers.extractSlug(element.url));
+                            const generatedQueryStringForGraphQLrequest = helpers.generateQueryString(arrayIDs, urlKeys);
+                            // 2. Make a request. The GraphQL request code & data is below. Show our data on the Frontend:
+                            helpers.sendRequest(generatedQueryStringForGraphQLrequest, Shopify.country, (result) => {
+                                helpers.renderPricesOnFrontend(result, productList, '.klevuQuickSalePrice', '.kuQuickResultsListContainer .klevuProduct', Shopify.country, Shopify.currency.active);
+                            });
+                        }
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            });
+            box.getScope().chains.template.render.addBefore("renderResponse", {
+                name: "respectRootInProductURLs",
+                fire: function (data, scope) {
+                    if (helpers.isShopifyRouteValid(data)) {
+                        // Iterate through each query result in the response
+                        klevu.each(data.response.current.queryResults, function (key, value) {
+                            // Update each record's URL with the Shopify route
+                            value.records.forEach(record => {
+                                record.url = helpers.prependShopifyRoute(record.url, value);
+                            });
+                        });
+                    }
+                }
+            });
+            // change the Form action according to the Shopify.routes.root
+            box.getScope().chains.template.process.success.add({
+                name: "changeFormAction",
+                fire: function (data, scope) {
+                    // Retrieve the Shopify.routes.root value if available
+                    const shopifyRoute = (typeof Shopify !== 'undefined' && Shopify.routes && Shopify.routes.root) ? Shopify.routes.root : '';
+                    // Get the current form and its action
+                    const currentForm = scope.closest('form');
+                    const currentFormAction = currentForm.action;
+                    const klevuLandingUrl = klevu.settings.url.landing.startsWith('/') ? klevu.settings.url.landing.replace(/^\/+/g, "") : klevu.settings.url.landing;
+                    // Check if shopifyRoute is not empty
+                    if (shopifyRoute) {
+                        // Check if cleanedShopifyRoute is not already present in the currentFormAction
+                        if (!currentFormAction.startsWith(shopifyRoute)) {
+                            const domain = /^(https?:\/\/[^\/]+)\//.exec(currentFormAction);
+                            if (domain && domain[1]) {
+                                currentForm.action = domain[1] + shopifyRoute + klevuLandingUrl
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        klevu({
+            powerUp: {
+                quick: true
+            }
+        });
+    }
+});
+// Landing and Catnav
+klevu.coreEvent.build({
+    name: "setShopifyGlobalELandingOverride",
+    fire: function () {
+        if (klevu.getSetting(klevu, "settings.flags.setRemoteConfigLanding.build") || klevu.getSetting(klevu, "settings.flags.setRemoteConfigCatnav.build")) {
+            if (klevu.getSetting(klevu, "settings.flags.setRemoteConfigLanding.build")) {
+                window.pageType = 'landing';
+                window.setRemoteConfig = 'setRemoteConfigLanding';
+            }
+            if (klevu.getSetting(klevu, "settings.flags.setRemoteConfigCatnav.build")) {
+                window.pageType = 'catnav';
+                window.setRemoteConfig = 'setRemoteConfigCatnav';
+            }
+            return true;
+        }
+        return false;
+    },
+    maxCount: 150,
+    delay: 100
+});
+klevu.coreEvent.attach("setShopifyGlobalELandingOverride", {
+    name: "attachToShopifyGlobalELandingOverride",
+    fire: function () {
+        document.getElementsByTagName('body')[0].classList.add('klevu-page');
+        // set helpers to use them in every scope: quick search, landing and category pages
+        const helpers = klevu.search.base.getScope().template.getHelpers();
+        klevu.search[window.pageType].getScope().chains.template.events.add({
+            name: "globalEPriceChange",
+            fire: function (data, scope) {
+                try {
+                    if (typeof Shopify.country !== 'undefined' && typeof primary_market !== 'undefined' && Shopify.country.toLowerCase() !== primary_market.toLowerCase()) {
+                        // hide the prices with the wrong currency:
+                        helpers.wipeElements([...document.querySelectorAll('.kuSalePrice')]);
+                        helpers.wipeElements([...document.querySelectorAll('.kuOrigPrice')]);
+                        // 1. Let's gather all the IDs of the products we're seeing to the Array "arrayIDs":
+                        const klevuResponse = klevu.getObjectPath(data, "response.current.queryResults");
+                        const productList = typeof helpers.findProductList(klevuResponse) !== 'undefined' ? (helpers.findProductList(klevuResponse)).records : null;
+                        if (!productList) return; // return if there's no data in the response. Useful for initail popup in Quick Search
+                        const arrayIDs = productList.map(element => element.id);
+                        const urlKeys = productList.map(element => helpers.extractSlug(element.url));
+                        const generatedQueryStringForGraphQLrequest = helpers.generateQueryString(arrayIDs, urlKeys);
+                        // 2. Make a request. The GraphQL request code & data is below. Show our data on the Frontend:
+                        helpers.sendRequest(generatedQueryStringForGraphQLrequest, Shopify.country, (result) => {
+                            helpers.renderPricesOnFrontend(result, productList, '.kuSalePrice', '.klevuProduct', Shopify.country, Shopify.currency.active);
+                        });
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
+        klevu.search[window.pageType].getScope().chains.template.render.addBefore("renderResponse", {
+            name: "respectRootInProductURLs",
+            fire: function (data, scope) {
+                if (helpers.isShopifyRouteValid(data)) {
+                    // Iterate through each query result in the response
+                    klevu.each(data.response.current.queryResults, function (key, value) {
+                        // Update each record's URL with the Shopify route
+                        value.records.forEach(record => {
+                            record.url = helpers.prependShopifyRoute(record.url, value);
+                        });
+                    });
+                }
+            }
+        });
+        if (window.pageType === 'landing') { klevu({ powerUp: { landing: true } }) }
+        if (window.pageType === 'catnav') { klevu({ powerUp: { catnav: true } }) }
+    }
+});
+// RECS
+var RECS_BASE = klevu.recs.base;
+RECS_BASE.getScope().chains.search.control.add({
+    name: "bindSearchResultElementEventsCustom",
+    fire: function (data, scope) {
+        var RECS_BOX = scope.recsScope.searchObject;
+        RECS_BOX.getScope().chains.template.events.add({
+            name: "attachObserverFunctionForItemClickAAAAAA",
+            fire: function (data, scope) {
+                try {
+                    // const shopify_klevu_token = "f1b6e6a52bdd336d0dac40d0a819538e";
+                    // const primary_market = "UK";
+                    // const klevuBaseUrl = "https://chinti-parker.myshopify.com"
+                    const helpers = klevu.search.base.getScope().template.getHelpers();
+                    if (typeof Shopify.country !== 'undefined' && typeof primary_market !== 'undefined' && Shopify.country.toLowerCase() !== primary_market.toLowerCase()) {
+                        // hide the prices with the wrong currency:
+                        helpers.wipeElements([...document.querySelectorAll('.klevu-recs.klevuTarget .kuSalePrice')]);
+                        helpers.wipeElements([...document.querySelectorAll('.klevu-recs.klevuTarget .kuOrigPrice')]);
+                        // 1. Let's gather all the IDs of the products we're seeing to the Array "arrayIDs":
+                        const klevuResponse = klevu.getObjectPath(data, "response.current.queryResults");
+                        const productList = klevuResponse[0].records;
+                        if (!productList) return; // return if there's no data in the response. Useful for initail popup in Quick Search
+                        const arrayIDs = productList.map(element => element.id);
+                        const urlKeys = productList.map(element => helpers.extractSlug(element.url));
+                        const generatedQueryStringForGraphQLrequest = helpers.generateQueryString(arrayIDs, urlKeys);
+                        // 2. Make a request. The GraphQL request code & data is below. Show our data on the Frontend:
+                        helpers.sendRequest(generatedQueryStringForGraphQLrequest, Shopify.country, (result) => {
+                            helpers.renderPricesOnFrontend(result, productList, '.kuSalePrice', '.kuRECS-itemWrap', Shopify.country, Shopify.currency.active);
+                        });
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
+    }
+});
+// RECS END
+};
+
+klevuPriceUpdate();
+</script>

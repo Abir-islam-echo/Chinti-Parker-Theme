@@ -1,0 +1,29 @@
+{%- if localization.available_countries.size > 1 -%}
+  {% if itemType == 'country-flag' %}
+    <button class="{{ itemType }} localization-btn ge-btn-open {{ class }}">
+      {{ localization.country | image_url: width: width | image_tag }}
+    </button>
+  {% elsif itemType == 'country-name' %}
+    <a href="#0" class="{{ itemType }} localization-btn ge-btn-open">
+      {{ buttonText }}
+    </a>
+  {% endif %}
+{% endif %}
+
+<style>
+    .localization-btn.ge-btn-open{
+      padding: 0;
+      margin-bottom: 0;
+      border: 0;
+    }
+
+    .localization-btn.ge-btn-open.country-switcher-desktop{
+      height:32px;
+    }
+
+    @media only screen and (max-width: 768px)  {
+      .localization-btn.ge-btn-open.country-switcher-desktop{
+        display: none;
+     }
+  }
+</style>

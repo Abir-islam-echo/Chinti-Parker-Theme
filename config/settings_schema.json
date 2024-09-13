@@ -1,0 +1,640 @@
+[
+  {
+    "name": "Welcome",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http://docs.shopify.com/themes/theme-templates/settings) to learn more about how you can make your theme customizable."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+      },
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Link color"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "base_font_family",
+        "label": "Typeface",
+        "options": [
+          {
+            "value": "'Source Sans Pro', sans-serif",
+            "label": "Source Sans Pro",
+            "group": "Google Fonts"
+          },
+          {
+            "value": "Helvetica, Arial, sans-serif",
+            "label": "Helvetica/Arial",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Impact, Charcoal, Helvetica, Arial, sans-serif",
+            "label": "Impact",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+            "label": "Lucida Grande",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Trebuchet MS, sans-serif",
+            "label": "Trebuchet MS",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Verdana, Helvetica, Arial, sans-serif",
+            "label": "Verdana",
+            "group": "Sans-serif"
+          },
+          {
+            "value": "Garamond, Baskerville, Caslon, serif",
+            "label": "Garamond",
+            "group": "Serif"
+          },
+          {
+            "value": "Georgia, Utopia, 'Times New Roman', Times, serif",
+            "label": "Georgia",
+            "group": "Serif"
+          },
+          {
+            "value": "Palatino, 'Palatino Linotype', 'Book Antiqua', serif",
+            "label": "Palatino",
+            "group": "Serif"
+          },
+          {
+            "value": "'Times New Roman', Times, serif",
+            "label": "Times New Roman",
+            "group": "Serif"
+          },
+          {
+            "value": "'Courier New', Courier, monospace",
+            "label": "Courier New",
+            "group": "Monospace"
+          },
+          {
+            "value": "Monaco, 'Lucida Console', 'DejaVu Sans Mono', monospace",
+            "label": "Monaco/Lucida Console",
+            "group": "Monospace"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "base_font_size",
+        "label": "Base font size",
+        "options": [
+          {
+            "value": "13px",
+            "label": "13px"
+          },
+          {
+            "value": "14px",
+            "label": "14px"
+          },
+          {
+            "value": "15px",
+            "label": "15px"
+          },
+          {
+            "value": "16px",
+            "label": "16px"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_logo",
+        "label": "Use Custom Logo?"
+      },
+      {
+        "type": "image",
+        "id": "logo.png",
+        "label": "Custom Logo",
+        "max-width": 1200,
+        "max-height": 1200
+      },
+      {
+        "type": "paragraph",
+        "content": "Recommend the optimal width and height for your logo here."
+      },
+      {
+        "type": "header",
+        "content": "Google Tag Manager"
+      },
+      {
+        "type": "paragraph",
+        "content": "Just the id required - for example 'GTM-ABCD1EF'. Leave this blank to not use GTM."
+      },
+      {
+        "type": "text",
+        "id": "gtm_code",
+        "label": "GTM Identifier"
+      },
+      {
+        "type": "text",
+        "id": "measurement_id",
+        "label": "GA Measurement ID"
+      },
+      {
+        "type": "header",
+        "content": "Social links"
+      },
+      {
+        "type": "paragraph",
+        "content": "All links, except the email one, must begin with http://, https:// or //. The email must be your email address with no mailto: prefix. Leave the text box blank if you don't want to use the corresponding icon."
+      },
+      {
+        "type": "text",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "twitter_url",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_url",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "text",
+        "id": "googleplus_url",
+        "label": "Google+ URL"
+      },
+      {
+        "type": "text",
+        "id": "flickr_url",
+        "label": "Flickr URL"
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "linkedin_url",
+        "label": "Linkedin URL"
+      },
+      {
+        "type": "text",
+        "id": "vimeo_url",
+        "label": "Vimeo URL"
+      },
+      {
+        "type": "text",
+        "id": "youtube_url",
+        "label": "Youtube URL"
+      },
+      {
+        "type": "text",
+        "id": "tumblr_url",
+        "label": "Tumblr URL"
+      },
+      {
+        "type": "text",
+        "id": "wordpress_url",
+        "label": "Wordpress URL"
+      },
+      {
+        "type": "text",
+        "id": "yelp_url",
+        "label": "Yelp URL"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email"
+      },
+      {
+        "type": "blog",
+        "id": "featured_blog",
+        "label": "Blog feed"
+      },
+      {
+        "type": "select",
+        "id": "social_icons_style",
+        "label": "Social icons style",
+        "options": [
+          {
+            "value": "",
+            "label": "Silhouette"
+          },
+          {
+            "value": "-circle",
+            "label": "Circle"
+          },
+          {
+            "value": "-rounded",
+            "label": "Rounded corners"
+          },
+          {
+            "value": "-square",
+            "label": "Square"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "page",
+        "id": "homepage_page",
+        "label": "Show content of this page"
+      },
+      {
+        "type": "header",
+        "content": "Featured collection"
+      },
+      {
+        "type": "collection",
+        "id": "homepage_collection",
+        "label": "Feature products from this collection"
+      },
+      {
+        "type": "header",
+        "content": "Hero Banner Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile image"
+      }
+    ]
+  },
+  {
+    "name": "Collection pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Grid"
+      },
+      {
+        "type": "select",
+        "id": "products_per_row",
+        "label": "Number of products per row",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          }
+        ],
+        "default": "4"
+      },
+      {
+        "type": "select",
+        "id": "number_of_rows",
+        "label": "Number of rows",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "radio",
+        "id": "collection_sidebar_filters",
+        "label": "Collection product filters",
+        "options": [
+          {
+            "value": "tags",
+            "label": "By tag"
+          },
+          {
+            "value": "groups",
+            "label": "By group"
+          }
+        ],
+        "info": "[Learn how to set up filter groups](https://help.shopify.com/manual/using-themes/themes-by-shopify/supply#product-tips-tips-specific)."
+      }
+    ]
+  },
+  {
+    "name": "Collection page video Card",
+    "settings": [
+      {
+        "type": "number",
+        "id": "block-1-position",
+        "label": "Block 1 Position",
+        "default": 3
+      },
+      {
+        "type": "image_picker",
+        "label": "image-1",
+        "id": "desktop-image"
+      },
+      {
+        "type": "video",
+        "label": "Video-1",
+        "id": "desktop-video"
+      },
+      {
+        "type": "number",
+        "id": "block-2-position",
+        "label": "Block 2 Position",
+        "default": 13
+      },
+      {
+        "type": "image_picker",
+        "label": "image-2",
+        "id": "desktop-image-2"
+      },
+      {
+        "type": "video",
+        "label": "Video-2",
+        "id": "desktop-video-2"
+      },
+      {
+        "type": "number",
+        "id": "block-3-position",
+        "label": "Block 3 Position",
+        "default": 22
+      },
+      {
+        "type": "image_picker",
+        "label": "image-3",
+        "id": "desktop-image-3"
+      },
+      {
+        "type": "video",
+        "label": "Video-3",
+        "id": "desktop-video-3"
+      }
+    ]
+  },
+  {
+    "name": "Character restrictions [Plus]",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Character restrictions"
+      },
+      {
+        "type": "paragraph",
+        "content": "Allow only UTF-8 characters in the shipping and billing addresses on checkout."
+      },
+      {
+        "type": "checkbox",
+        "id": "plus_enable_character_restrictions",
+        "label": "Enable character restrictions",
+        "default": true,
+        "info": "When enabled, only UTF-8 characters will be allowed in the shipping and billing addresses."
+      },
+      {
+        "type": "text",
+        "id": "plus_input_allowed_characters",
+        "label": "Special characters that should be allowed. Only numbers and letters are accepted by default (eg: \"#-&.:{}\")"
+      },
+      {
+        "type": "text",
+        "id": "plus_input_max_length",
+        "label": "The maximum number of characters allowed in a checkout input. Must be a number."
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cart settings"
+      },
+      {
+        "type": "text",
+        "id": "cart_shipping_price",
+        "label": "Shipping price",
+        "default": "495",
+        "info": "Enter value as lowest denomination of currency. E.g. £4.95 would be 495."
+      },
+      {
+        "type": "textarea",
+        "id": "cart_shipping_message",
+        "label": "Extra shipping message"
+      }
+    ]
+  },
+  {
+    "name": "Duties and Taxes message",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Duties and Taxes message"
+      },
+      {
+        "type": "textarea",
+        "id": "chinti_us_delivery_message",
+        "label": "Message text"
+      }
+    ]
+  },
+  {
+    "name": "Facebook",
+    "settings": [
+      {
+        "label": "Domain Verification",
+        "id": "facebook_domain_verification",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "Klarna",
+    "settings": [
+      {
+        "label": "Show Klarna Logo",
+        "id": "show_klarna_logo",
+        "type": "checkbox"
+      }
+    ]
+  },
+  {
+    "name": "TrustShops",
+    "settings": [
+      {
+        "label": "Enabled",
+        "id": "trustshops_enabled",
+        "info": "Enable the TrustShops functionality across the store",
+        "type": "checkbox",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Harper Concierge",
+    "settings": [
+      {
+        "label": "Enable Harper Concierge",
+        "id": "enable_harper_concierge",
+        "type": "checkbox"
+      },
+      {
+        "label": "Product Page Message",
+        "id": "harper_product_message",
+        "type": "html"
+      }
+    ]
+  },
+  {
+    "name": "Klaviyo",
+    "settings": [
+      {
+        "label": "Klaviyo API Key",
+        "id": "klaviyo_api_key",
+        "type": "text",
+        "info": "DO NOT REMOVE"
+      },
+      {
+        "label": "Back In Stock List ID",
+        "id": "back_in_stock_list_id",
+        "type": "text",
+        "info": "DO NOT REMOVE"
+      }
+    ]
+  },
+  {
+    "name": "Global-e",
+    "settings": [
+      {
+        "label": "Enabled",
+        "id": "globale_enabled",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "label": "API Key",
+        "id": "globale_api_key",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "Gift Me",
+    "settings": [
+      {
+        "label": "Enabled",
+        "id": "gift_me_enabled",
+        "info": "Enable the 'Gift Me' functionality across the store",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "label": "Maximum gift message length",
+        "id": "max_gift_message_length",
+        "type": "number",
+        "default": 160
+      }
+    ]
+  }
+]

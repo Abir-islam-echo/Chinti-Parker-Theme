@@ -1,0 +1,26 @@
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when 'banner' %}
+        <img src="{{ block.settings.image | img_url: '960x727', crop: 'center' }}" alt="" />
+    {% endcase %}
+{% endfor %}
+
+{% schema %}
+{
+     "blocks": [     
+     	{
+		        "type": "banner",
+		        "name": "Banner Image",
+		        "settings": [
+			      {
+			        "type": "image_picker",
+			        "id": "image",
+			        "label": "404 Image"
+			
+			      }
+			    
+		        ]				
+			}
+     ]
+}
+{% endschema %} 

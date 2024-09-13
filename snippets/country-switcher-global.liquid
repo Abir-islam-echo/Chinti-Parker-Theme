@@ -1,0 +1,343 @@
+{%- if localization.available_countries.size > 1 -%}
+  <span class="ge-switcher-overlay ge-hidden"></span>
+  <section class="ge-modal ge-hidden">
+    <div class="geFlex">
+      <button class="ge-btnClose">
+        <img src="https://s3.global-e.com/merchantscontent/general/X.png" alt="close-button">
+      </button>
+    </div>
+    {% if template == 'index' %}
+      <h1 class="geTitle">{{ 'localization.country_title' | t }}</h1>
+    {% else %}
+      <p class="geTitle">{{ 'localization.country_title' | t }}</p>
+    {% endif %}
+    <div class="geFormContainer">
+      {%- form 'localization', class: 'localization-form' -%}
+        <label for="country_code" class="localization-label ge-countryLabel">
+          {{- 'localization.country_label' | t }}
+          <div class="localization-form__select">
+            <select
+              class="localization-selector geSelectedCountry"
+              name="country_code"
+              aria-labelledby="CountryLabel"
+            >
+              {%- for country in localization.available_countries -%}
+                <option value="{{ country.iso_code }}">
+                  {{ country.name }} ({{ country.currency.iso_code }}
+                  {{ country.currency.symbol }})
+                </option>
+              {%- endfor -%}
+            </select>
+
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              class="icon icon-caret"
+              viewBox="0 0 10 6"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                fill="currentColor">
+            </svg>
+          </div>
+        </label>
+        <button class="localization-btn localization-button--submit">{{ 'localization.update_country' | t }}</button>
+      {%- endform -%}
+      <button class="ge-btnCancel">{{ 'localization.cancel_btn' | t }}</button>
+    </div>
+  </section>
+  <style>
+    /* PLEASE DON'T REMOVE THE STYLES BELOW  */
+    .ge-hidden {
+      display: none;
+    }
+
+    .ge-switcher-overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      z-index: 233333;
+    }
+
+    .ge-modal {
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.4rem;
+      width: clamp(90dvw, 4dvw, 450px);
+      max-width: 450px;
+      padding: 1.3rem;
+      min-height: 250px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      background-color: white;
+      border: 1px solid #f7f7f7;
+      border-radius: 15px;
+      z-index: 122222222;
+      transform: translate(-50%, -50%);
+    }
+
+    .geFlex {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    /****************************************************/
+
+    #localization_form {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 1rem 0 !important;
+    }
+
+    .ge-modal .geTitle {
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: rgb(0,0,0);
+    }
+
+    .localization-button--submit {
+      cursor: pointer;
+      border: none;
+      font-weight: 400;
+      display: inline-block;
+      padding: 0.8rem 1.4rem;
+      font-family: inherit;
+      background-color: black;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      min-height: 50px;
+    }
+
+    button.ge-btn-open {
+      position: relative;
+      z-index: 9;
+      font-weight: 400;
+      background: transparent;
+      color: black;
+      height: 41px;
+      letter-spacing: 0.06rem;
+      font-family: inherit;
+      border: 1px solid #000;
+      padding: 1rem;
+      width: max-content;
+      cursor: pointer !important;
+    }
+
+    button.ge-btn-open:hover {
+      text-decoration: underline;
+      text-underline-position: under;
+    }
+
+    button.ge-btnClose {
+      transform: translate(5px, -5px);
+      padding: 0.5rem 0.7rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: end;
+    }
+
+    a.ge-btnCancel {
+      cursor: pointer;
+      border: 1px solid #fdfdfd;
+      font-weight: 400;
+      display: inline-block;
+      padding: 0.3rem 1.4rem;
+      font-family: inherit;
+      background-color: transparent;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    a.ge-btnCancel:hover {
+      background: white;
+      color: black;
+    }
+
+    form.localization-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label.ge-countryLabel {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      text-align: start;
+      font-family: inherit;
+      font-size: 0.8rem;
+    }
+
+    .localization-form__select {
+      height: auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      box-shadow: none;
+      margin: 1rem 0;
+      padding-left: 0;
+      text-align: start;
+      position: relative;
+    }
+
+    select.geSelectedCountry {
+      width: 100%;
+      height: 40px;
+      padding: 0.3em 0.5em;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: #000000;
+      box-shadow: none;
+      border: 1px solid #000;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .geSelectedCountry option {
+      color: #000000;
+    }
+
+    button.ge-btnClose img {
+      width: 15px;
+      height: 15px;
+    }
+
+    .localization-form__select .icon-caret {
+      width: 0.6rem;
+      height: 0.6rem;
+      position: absolute;
+      top: 39%;
+      left: 95%;
+      transform: translate(-50%, -50%);
+    }
+    .geLogoContainer {
+      text-align: center;
+      width: 100%;
+    }
+    .geLogoContainer img {
+      max-width: 250px;
+    }
+
+    .geSubtitle {
+      font-size: 0.82rem;
+      text-align: center;
+      margin-top: 1rem;
+      padding: 0;
+      text-transform: uppercase;
+      font-family: inherit;
+      letter-spacing: 0.6px;
+    }
+  </style>
+  <script>
+    // waiting for al of the element on the page to load
+    document.addEventListener('DOMContentLoaded', () => {
+      const geModal = document.querySelector('.ge-modal');
+      const geOverlay = document.querySelector('.ge-switcher-overlay');
+      const geOpenModalBtn = document.querySelectorAll('.ge-btn-open');
+      const geCloseModalBtn = document.querySelector('.ge-btnClose');
+      const geSubmitBtn = document.querySelector('.localization-button--submit');
+      const geForm = document.querySelector('.localization-form');
+      const geCountrySelector = document.querySelector('.geSelectedCountry');
+      const geCancelBtn = document.querySelector('.ge-btnCancel');
+
+      // Help function to add click event, takes 2 argument the element we want to click on and the function to run
+      const addClickEventListener = (elm, func) => {
+        elm.addEventListener('click', func);
+      };
+
+      // Help function - Sorting the dropdown options array alpahbetically
+      const sortSelect = (selElem) => {
+        var tmpAry = new Array();
+        for (var i = 0; i < selElem.options.length; i++) {
+          tmpAry[i] = new Array();
+          tmpAry[i][0] = selElem.options[i].text;
+          tmpAry[i][1] = selElem.options[i].value;
+        }
+        tmpAry.sort();
+        while (selElem.options.length > 0) {
+          selElem.options[0] = null;
+        }
+        for (var i = 0; i < tmpAry.length; i++) {
+          var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+          selElem.options[i] = op;
+        }
+        return;
+      };
+
+      // open modal function
+      const geOpenModal = () => {
+        sortSelect(geCountrySelector);
+        try {
+          let country = Shopify.country;
+          for (let i = 0; i < geCountrySelector.options.length; i++) {
+            if (geCountrySelector.options[i].value == country) {
+              geCountrySelector.options[i].selected = true;
+            }
+          }
+        } catch (e) {
+          console.log(e.message);
+        }
+
+        geModal.classList.remove('ge-hidden');
+        geOverlay.classList.remove('ge-hidden');
+        geModal.style.display = 'flex';
+        geOverlay.style.display = 'block';
+      };
+
+      // close modal function
+      const geCloseModal = () => {
+        geModal.classList.add('ge-hidden');
+        geOverlay.classList.add('ge-hidden');
+        geModal.style.display = 'none';
+        geOverlay.style.display = 'none';
+      };
+
+      // Submitting the form handler function
+      const onFormSubmit = (e) => {
+        e.preventDefault();
+        geForm ? geForm.submit() : null;
+    };
+
+      // Close modal when the Esc key is pressed
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('ge-hidden')) {
+          geCloseModal();
+        }
+      });
+
+      // Adding eventListeners
+      for (let geBtn of geOpenModalBtn) {
+        addClickEventListener(geBtn, geOpenModal);
+      }
+      addClickEventListener(geCloseModalBtn, geCloseModal);
+      addClickEventListener(geOverlay, geCloseModal);
+      addClickEventListener(geCancelBtn, geCloseModal);
+      addClickEventListener(geSubmitBtn, onFormSubmit);
+    });
+  </script>
+{% endif %}

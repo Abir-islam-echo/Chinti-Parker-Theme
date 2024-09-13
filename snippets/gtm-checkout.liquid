@@ -1,0 +1,72 @@
+{% unless settings.gtm_code == blank %}
+
+{% comment %}
+<script type="text/javascript">
+
+// calculate totalDiscount for Completed Order Event
+var discounts = "{{ order.discounts | json }}"
+var totalDiscount = 0;
+
+for (var i = 0; i< discounts.length; i++ ) {
+totalDiscount += discounts[i].savings;
+}
+
+window.analytics.track('Completed Order', {
+orderId: "{{ order_number }}",
+total: "{{ total_price | money_without_currency }}",
+revenue: "{{subtotal_price | money_without_currency }}",
+shipping: "{{shipping_price | money_without_currency }}",
+tax: "{{tax_price | money_without_currency }}",
+discount: totalDiscount,
+products: [
+{% for line_item in line_items %}
+{
+  id: "{{ line_item.product_id }}",
+  sku: "{{ line_item.sku }}",
+  name: "{{ line_item.title }}",
+  price: "{{ line_item.price }}",
+  quantity: "{{ line_item.quantity }}"
+},
+{% endfor %} ]
+});
+
+</script>
+{% endcomment %}
+
+<script>
+  {% if first_time_accessed %}
+    window.dataLayer.push({
+      'page_type': 'purchase',
+      'event': 'purchase', /* create a custom event in GTM */
+      'transaction_id': '{{ order.name || order.order_number }}',
+      'totalValue': {{ total_price | money_without_currency | remove:',' }}, // Includes tax & shipping
+      'subtotalValue': {{ subtotal_price | money_without_currency | remove:',' }},
+      'tax': {{ tax_price | money_without_currency | remove:',' }},
+      'shipping': {{ shipping_price | money_without_currency | remove:',' }},
+      'currency': '{{ shop.currency }}',
+      'payment_type': '{{ order.transactions[0].gateway }}', //optional parameter
+      'ecommerce': {
+        'checkout_currency': '{{ checkout.currency }}', 
+        'value': '{{ checkout.total_price | money_without_currency | remove:',' }}', // order total (price of all products + shipping)
+        'tax': '{{ checkout.tax_price | money_without_currency | remove:',' }}', // tax
+        'shipping':'{{ checkout.shipping_price | money_without_currency | remove:',' }}', // shipping costs
+        'transaction_id': '{{ transactions[0].id }}', // transaction id
+        'items': [
+          {% for line_item in line_items %}
+          {
+            'item_name': '{{ line_item.product.title | replace: "'","##@@singleinvertedcomma@@##" }}'.replace("##@@singleinvertedcomma@@##", "'"), 
+            'item_id': '{{ line_item.sku || line_item.product.id }}',
+            'price': {{ line_item.final_price | money_without_currency | remove:',' }},
+            'item_brand': '{{ line_item.vendor }}',
+            'quantity': {{ line_item.quantity }},
+            'item_variant': '{{ line_item.variant.title }}'
+          },
+          {% endfor %}
+        ]
+      }
+  });
+  {% endif %}
+</script>
+
+
+{% endunless %}

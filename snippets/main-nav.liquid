@@ -1,0 +1,119 @@
+{% assign bannerURL = '' %}
+{% assign bannerImage = '' %}
+
+<nav id="mainMenu">
+	<ul class="nav-primary">
+		{% for link in linklists.main-menu.links %}
+		{% assign child_list_handle = link.title | handle %}
+		{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+		<li class="level0 parent">
+			<a href="{{ link.url }}" class="level0">{{ link.title }}</a>
+
+			<div class="nav-drop">
+				<div class="wrapper">
+              {% if link.handle == 'department' %}
+				<ul>
+					{% for child_link in linklists[child_list_handle].links %}
+					{% assign grand_child_list_handle = child_link.title | handle %}
+					{% if child_link.title == 'Department' %}
+					<li class="level1">
+						<h6>{{ child_link.title | link_to: child_link.url }}</h6>
+					</li>
+					{% else %}
+					
+					<li class="level1">
+						{{ child_link.title | link_to: child_link.url }}
+					</li>
+					
+					{% endif %}
+					
+				
+					
+
+					{% endfor %}
+				</ul>
+				
+
+
+
+					{% if link.type == "collection_link" and link.object.image %}
+					{% assign bannerImage =  link.object.image | img_url: 'small' | img_tag  %}
+					{% endif %}
+					
+					{% if child_link.title == 'banner' %}
+						{% assign bannerURL = child_link.url %}
+					{% endif %}
+		
+					
+					<div class="banner">
+						<div class="content">
+							{% if bannerImage != '' %}
+								{% if bannerURL != '' %}
+								<a href="{{bannerURL}}"> {% endif %}
+				
+								{{ bannerImage }}
+				
+								{% if bannerURL != '' %} </a>
+								{% endif %}
+							{% endif %}
+							<a href="#"><img src="{{ 'nav.jpg' | asset_url }}"  alt=""></a>
+						</div>
+					</div>
+					
+               {% endif %}
+			</div>
+			</div>
+		</li>
+
+      
+    		{% elsif link.handle == 'brands' %}
+		<li class="level0 brands parent">
+			<a href="{{ link.url }}" class="level0">{{ link.title }}</a>
+
+			<div class="nav-drop">
+				<div class="wrapper">
+					<ul>
+
+						{% for product_vendor in shop.vendors %}
+						{% assign its_a_match = false %}
+						{% capture my_collection_handle %} {{ product_vendor | handleize | strip | escape  }} {% endcapture %}
+						{% assign my_collection_handle_stripped = my_collection_handle | strip | escape %}
+
+						{% for collection in collections %}
+						{% if my_collection_handle_stripped == collection.handle %}
+						{% assign its_a_match = true %}
+						{% endif %}
+						{% endfor %}
+
+					
+						{% if its_a_match %}
+						<li class="level1">
+							<a href="/collections/{{ product_vendor | handleize }}">{{ product_vendor }}</a>
+						</li>
+						{% else %}
+						<li class="level1">
+							{{ product_vendor | link_to_vendor }}
+						</li>
+						{% endif %}
+					
+						{% assign loopCount = forloop.index | modulo:16 %}
+						{% if loopCount == 0 %}
+					</ul>
+					<ul>
+						{% endif %}
+						{% endfor %}
+
+					</ul>
+				</div>
+			</div>
+		</li>
+
+      
+		{% else %}
+		<li class="level0">
+			<a href="{{ link.url }}" class="level0">{{ link.title }}</a>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</nav>

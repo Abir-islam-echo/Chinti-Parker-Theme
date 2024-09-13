@@ -1,0 +1,46 @@
+<style type="text/css">
+  div.kuClearLeft,div.kuClearRight,div.kuClearBoth { display: block; }
+</style>
+
+<script type="text/javascript">
+  // console.log('running something');
+    klevu.interactive(function () {
+        var searchBoxSelector = 'input.search-form__input';
+        var searchBoxSelectorDawn = 'input.search-field';
+        if (null !== document.querySelector(searchBoxSelectorDawn)) {
+            searchBoxSelector = searchBoxSelectorDawn;
+        }
+        var options = {
+            url : {
+                landing: '/pages/search-results', // your Shopify Search Results Page
+                search: klevu.settings.url.protocol + '//eucs32v2.ksearchnet.com/cs/v2/search' // your Klevu APIv2 Search URL
+            },
+            search: {
+                minChars: 0,
+                searchBoxSelector: searchBoxSelector +',.kuSearchInput', // your Shopify Search Input
+                apiKey: "klevu-168302364802616326" // your Klevu JS API Key
+            },
+            analytics: {
+                apiKey: 'klevu-168302364802616326' // your Klevu JS API Key
+            }
+        };
+        var documentClickPreventSelectors = [];
+        if (document.querySelector('.modal-overlay')) {
+            documentClickPreventSelectors.push('.modal-overlay');
+        }
+        if (document.querySelector('.modal__toggle-open')) {
+            documentClickPreventSelectors.push('.modal__toggle-open');
+        }
+        if (documentClickPreventSelectors.length > 0) {
+            options.search.documentClickPreventSelector = documentClickPreventSelectors.join(',');
+        }
+        klevu(options);
+    });
+</script>
+
+<script src="https://js.klevu.com/theme/default/v2/quick-search-theme.js"></script>
+
+{% if template == 'page.klevu-search-results' %}
+  <!-- Include Search Results Landing Page Theme -->
+  <script src="https://js.klevu.com/theme/default/v2/landing-page-theme.js"></script>
+{% endif %}

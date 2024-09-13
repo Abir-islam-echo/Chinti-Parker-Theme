@@ -1,0 +1,182 @@
+<div class="customer-reviews-section">
+  <div class="content-wrapper">
+    <div class="heading">
+      <div class="horizontal-line"></div>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="horizontal-line"></div>
+    </div>
+    <div class="slide-content">
+      <div class="slider-wrapper owl-carousel owl-theme">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'review-box' %}
+              <div class="slider-item">
+                <div class="review-content">
+                  <div class="customer-review">
+                    <p>{{ block.settings.review }}</p>
+                  </div>
+                  <div class="customer-name">
+                    <p>{{ block.settings['customer-name'] }}</p>
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  {% assign fontFamily = section.settings.review-font %}
+  {{ fontFamily | font_face }}
+  .customer-reviews-section{
+    width: 100%
+  }
+  .customer-reviews-section .content-wrapper{
+    width: 100%;
+  }
+  .customer-reviews-section .content-wrapper .heading{
+    padding-bottom: 30px;
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+  .customer-reviews-section .content-wrapper .heading .horizontal-line{
+    width: 100px;
+    background: #777;
+    height: 1px;
+  }
+  .customer-reviews-section .content-wrapper .heading h2{
+    font-size: 16px;
+    color: #777
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .slider-item{
+    width: 100%;
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .slider-item .review-content{
+        max-width: 1000px;
+      margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .slider-item .review-content .customer-review{
+    padding-bottom: 30px;
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .owl-nav{
+    margin-top: 25px;
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .owl-nav>div i{
+    font-size: 22px;
+    font-weight: 100;
+  }
+  /* .customer-reviews-section .content-wrapper .slider-wrapper .owl-nav .owl-next{
+    right: 40px;
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .owl-nav .owl-prev{
+    left: 40px;
+  } */
+  .customer-reviews-section .content-wrapper .slider-wrapper .slider-item .review-content .customer-review p{
+     font-size: {{ section.settings.font-size }}px;
+    color: {{ section.settings.text-color }};
+    font-family: {{ fontFamily.family }},{{ fontFamily.fallback_families }} !important;
+
+  }
+  .customer-reviews-section .content-wrapper .slider-wrapper .slider-item .review-content .customer-name p{
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 500px){
+    .customer-reviews-section .content-wrapper .slider-wrapper .slider-item .review-content .customer-review p{
+      font-size: 24px;
+    }
+          .customer-reviews-section .content-wrapper .heading{
+    gap: 5px
+  }
+  .customer-reviews-section .content-wrapper .heading .horizontal-line{
+    width: 55px;
+  }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "heading"
+    },
+    {
+      "type": "color",
+      "id": "text-color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "font_picker",
+      "id": "review-font",
+      "label": "Review Font Style",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "range",
+      "id": "font-size",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Review Font Size",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review-box",
+      "name": "review box",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Customer Review",
+          "default": "add review here"
+        },
+        {
+          "type": "text",
+          "id": "customer-name",
+          "label": "Customer Name",
+          "default": "Type a name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "customer Reviews"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  $(document).ready(function() {
+    $(".customer-reviews-section .slider-wrapper").owlCarousel({
+      loop : true,
+      items : 1,
+      dots: false,
+      autoplay : true,
+      nav: true,
+      navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+      autoplayHoverPause:false,
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn',
+      autoplaySpeed: 2500,
+      navSpeed: 2500,
+      smartSpeed:800
+    });
+
+  });
+</script>
