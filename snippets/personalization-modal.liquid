@@ -1,0 +1,148 @@
+<div class="personalization-modal-wrapper">
+  <div class="personalization-modal">
+    <div class="content-wrapper">
+      <div class="product-image half-width">
+        {{ product | img_url: '800x1000' | img_tag }}
+      </div>
+      <div class="product-customization half-width">
+        <div class="heading">
+          <div class="title">COMPLIMENTARY EMBROIDERY</div>
+          <div class="description">
+            Make your gifts truly unique with our complimentary Embroidery Atelier. Capital letters and special
+            characters aren't accepted. Once personalised, your piece can no longer be returned or exchanged. Delivery
+            times for personalised pieces may be extended.
+          </div>
+        </div>
+        <div class="customization-content">
+          <div class="personalized-text">
+            <label> Personalize your product </label>
+            <input type="text" value="" placeholder="your personalised message">
+          </div>
+          <div class="selection-fields">
+            <div class="single-field">
+              <label>Personalize your product </label>
+              <input type="text" value="" placeholder="your personalised message">
+            </div>
+            <div class="single-field">
+              <label>Personalize your product </label>
+              <input type="text" value="" placeholder="your personalised message">
+            </div>
+          </div>
+          <div class="color-picker">
+            <ul>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="close-modal">X</div>
+    </div>
+  </div>
+</div>
+<style>
+  .personalization-modal-wrapper{
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 12;
+    backdrop-filter: blur(4px);
+  }
+  .personalization-modal-wrapper .personalization-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 90%;
+    width: 80vw;
+    background: lightgreen;
+    border-radius: 4px;
+    top: 50%;
+  }
+
+  .personalization-modal-wrapper .personalization-modal .content-wrapper{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .half-width{
+    flex: 1;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+      #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled){
+      display: none;
+    }
+      #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button + #ValidAddtoCart{
+      display: none;
+    }
+      #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button{
+        border: 1px solid #111;
+        background-color: #111;
+        color: #fff;
+        padding: 18px 30px 17px;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 11px;
+        line-height: 1.1;
+        letter-spacing: .1em;
+        outline: 0;
+        cursor: pointer;
+        margin-bottom: 15px;
+      }
+</style>
+
+<script>
+  console.log("Abir1");
+    const addToCart = (variant_id)=>{
+          let formData = {
+         'items': [{
+          'id': variant_id,
+          'quantity': 1
+          }]
+        };
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          return response.json();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    };
+  const modal_wrapper = document.querySelector(".personalization-modal-wrapper");
+     document.querySelectorAll("#AddToCartForm #variants-add-wrapper #product-variants .selector.size-selector .size .product-option-size li.active").forEach(li=>{
+       li.addEventListener('click',()=>{
+         if(!(document.querySelector("#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button"))){
+           document.querySelector("#AddToCartForm #product-add #AddToCartWrapper #AddToCart").insertAdjacentHTML("afterend",`<div class="fake-atc-button">Add to Bag Abir</div>`)  
+         }
+          document.querySelector("#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button").addEventListener('click',()=>{
+            const selected_id = li.getAttribute("data-id");
+            modal_wrapper.style.display = "block";
+          })
+       })
+     })
+  document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal").addEventListener('click',()=>{
+    modal_wrapper.style.display = "none";
+  })
+</script>

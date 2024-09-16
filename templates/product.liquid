@@ -755,3 +755,7 @@
       localStorage.setItem("cartTimer", JSON.stringify(timeCount));
   })
 </script>
+
+{% if product.metafields.custom.personalization.value == true %}
+  {% render 'personalization-modal', product: product %}
+{% endif %}
