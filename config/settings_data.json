@@ -4636,8 +4636,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_43_7194e74f-4720-4124-8be4-0fb77f10aabe.png",
-              "mobile_image1": "shopify:\/\/shop_images\/SUBANNER_MOBILE_24_e10227f0-7f49-4883-b44a-8d55554421ff.png",
+              "image1": "shopify:\/\/shop_images\/4_16.png",
+              "mobile_image1": "shopify:\/\/shop_images\/4_15_684cd9df-98e0-4c78-9157-c3dfa2f45c23.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4648,7 +4648,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "",
+              "link1": "shopify:\/\/collections\/mr-men-little-miss-meets-chinti",
               "link_text1": "",
               "font_size_left_cta": 25
             }
