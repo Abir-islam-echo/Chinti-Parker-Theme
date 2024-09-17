@@ -6,11 +6,11 @@
       </div>
       <div class="product-customization half-width">
         <div class="heading">
-          <div class="title">COMPLIMENTARY EMBROIDERY</div>
+          <div class="title"><h2>COMPLIMENTARY EMBROIDERY</h2></div>
           <div class="description">
-            Make your gifts truly unique with our complimentary Embroidery Atelier. Capital letters and special
+            <p>Make your gifts truly unique with our complimentary Embroidery Atelier. Capital letters and special
             characters aren't accepted. Once personalised, your piece can no longer be returned or exchanged. Delivery
-            times for personalised pieces may be extended.
+            times for personalised pieces may be extended.</p>
           </div>
         </div>
         <div class="customization-content">
@@ -20,14 +20,30 @@
           </div>
           <div class="selection-fields">
             <div class="single-field">
-              <label>Personalize your product </label>
-              <input type="text" value="" placeholder="your personalised message">
+              <label for="place">Choose Your Placement</label>
+              <select name="place" id="place" class="place-option">
+                <option value="" selected disabled hidden>Choose an option</option>
+                <option value="cuff">Cuff</option>
+                <option value="hem">Hem</option>
+              </select>
             </div>
             <div class="single-field">
-              <label>Personalize your product </label>
-              <input type="text" value="" placeholder="your personalised message">
+              <label for="fonts">Choose Your Font</label>
+              <select name="fonts" id="fonts" class="font-option">
+                <option value="" selected disabled hidden>Choose an option</option>
+                <option value="font 1">Serif 01</option>
+                <option value="font">Block 01</option>
+              </select>
             </div>
           </div>
+          <div class="single-field">
+            <label for="place">Choose Your Placement</label>
+            <select name="place" id="place" class="place-option">
+              <option value="" selected disabled hidden>Choose an option</option>
+              <option value="cuff">Cuff</option>
+              <option value="hem">Hem</option>
+            </select>
+          </div> 
           <div class="color-picker">
             <ul>
               <li></li>
@@ -41,7 +57,12 @@
   </div>
 </div>
 <style>
-  .personalization-modal-wrapper{
+  .personalization-modal-wrapper *{
+    {% comment %} margin: 0;
+    padding: 0; {% endcomment %}
+    box-sizing: border-box;
+  }
+  .personalization-modal-wrapper {
     /* display: none; */
     position: fixed;
     top: 0;
@@ -51,98 +72,148 @@
     z-index: 12;
     backdrop-filter: blur(4px);
   }
-  .personalization-modal-wrapper .personalization-modal{
+  .personalization-modal-wrapper .personalization-modal {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     height: 90%;
     width: 80vw;
-    background: lightgreen;
+    background: #fff;
     border-radius: 4px;
     top: 50%;
   }
 
-  .personalization-modal-wrapper .personalization-modal .content-wrapper{
+  .personalization-modal-wrapper .personalization-modal .content-wrapper {
     display: flex;
     position: relative;
     width: 100%;
-    height: 100%
+    height: 100%;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .half-width{
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization {
+    padding: 40px 20px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
     flex: 1;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal{
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading{
+    padding-bottom: 30px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .title h2 {
+    font-size: 2rem;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .description {
+    padding-top: 20px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .description p {
+    font-size: 13px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .half-width {
+    flex: 1;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal {
     position: absolute;
     top: 20px;
     right: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: all 0.25s;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper img{
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal:hover {
+    background: #ddd;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: top;
   }
-      #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled){
-      display: none;
-    }
-      #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button + #ValidAddtoCart{
-      display: none;
-    }
-      #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button{
-        border: 1px solid #111;
-        background-color: #111;
-        color: #fff;
-        padding: 18px 30px 17px;
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 11px;
-        line-height: 1.1;
-        letter-spacing: .1em;
-        outline: 0;
-        cursor: pointer;
-        margin-bottom: 15px;
-      }
+  #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled) {
+    display: none;
+  }
+  #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button + #ValidAddtoCart {
+    display: none;
+  }
+  #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
+    border: 1px solid #111;
+    background-color: #111;
+    color: #fff;
+    padding: 18px 30px 17px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.1;
+    letter-spacing: 0.1em;
+    outline: 0;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
 </style>
 
 <script>
-  console.log("Abir1");
-    const addToCart = (variant_id)=>{
-          let formData = {
-         'items': [{
-          'id': variant_id,
-          'quantity': 1
-          }]
-        };
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(response => {
-          return response.json();
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+  console.log('Abir1');
+  const modal_wrapper = document.querySelector('.personalization-modal-wrapper');
+  const openModal = () => {
+    modal_wrapper.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  };
+  const closeModal = () => {
+    modal_wrapper.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  };
+  const addToCart = (variant_id) => {
+    let formData = {
+      items: [
+        {
+          id: variant_id,
+          quantity: 1,
+        },
+      ],
     };
-  const modal_wrapper = document.querySelector(".personalization-modal-wrapper");
-     document.querySelectorAll("#AddToCartForm #variants-add-wrapper #product-variants .selector.size-selector .size .product-option-size li.active").forEach(li=>{
-       li.addEventListener('click',()=>{
-         if(!(document.querySelector("#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button"))){
-           document.querySelector("#AddToCartForm #product-add #AddToCartWrapper #AddToCart").insertAdjacentHTML("afterend",`<div class="fake-atc-button">Add to Bag Abir</div>`)  
-         }
-          document.querySelector("#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button").addEventListener('click',()=>{
-            const selected_id = li.getAttribute("data-id");
-            modal_wrapper.style.display = "block";
-          })
-       })
-     })
-  document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal").addEventListener('click',()=>{
-    modal_wrapper.style.display = "none";
-  })
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+  document
+    .querySelectorAll(
+      '#AddToCartForm #variants-add-wrapper #product-variants .selector.size-selector .size .product-option-size li.active'
+    )
+    .forEach((li) => {
+      li.addEventListener('click', () => {
+        const selected_id = li.getAttribute('data-id');
+        if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
+          document
+            .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
+            .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Add to Bag Abir</div>`);
+        }
+        document
+          .querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')
+          .addEventListener('click', () => {
+            openModal();
+          });
+      });
+    });
+  document
+    .querySelector('.personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal')
+    .addEventListener('click', () => {
+      closeModal();
+    });
 </script>
