@@ -3727,6 +3727,17 @@
               "notification_link_eu": "shopify:\/\/collections\/new-season"
             }
           },
+          "notification_item_XzKVKd": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "DISCOVER OUR SETS SHOP - 10% OFF MATCHING BOTTOMS ON SELECTED STYLES",
+              "notification_text_us": "DISCOVER OUR SETS SHOP - 10% OFF MATCHING BOTTOMS ON SELECTED STYLES",
+              "notification_text_eu": "DISCOVER OUR SETS SHOP - 10% OFF MATCHING BOTTOMS ON SELECTED STYLES",
+              "notification_link": "shopify:\/\/collections\/sets-shop",
+              "notification_link_us": "shopify:\/\/collections\/sets-shop",
+              "notification_link_eu": "shopify:\/\/collections\/sets-shop"
+            }
+          },
           "notification_item_JqtxgJ": {
             "type": "notification-item",
             "settings": {
@@ -3785,6 +3796,7 @@
         },
         "block_order": [
           "notification_item_Rwiqyc",
+          "notification_item_XzKVKd",
           "notification_item_JqtxgJ",
           "notification_item_QWCxUV",
           "notification_item_LmDmEy",
