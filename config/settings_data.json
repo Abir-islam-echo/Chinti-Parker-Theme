@@ -3968,7 +3968,7 @@
             "type": "nav_item",
             "settings": {
               "title": "SETS",
-              "title_url": "shopify:\/\/pages\/the-sets-shop",
+              "title_url": "shopify:\/\/collections\/sets-shop",
               "title_colour": "",
               "inner_link_colour": "#000000",
               "sale_colour": "#ff0000",
