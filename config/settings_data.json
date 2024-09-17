@@ -3964,6 +3964,32 @@
               "featured_content_mobile_3": false
             }
           },
+          "358a2953-5cae-477e-a2c8-125889c1c42c": {
+            "type": "nav_item",
+            "settings": {
+              "title": "SETS",
+              "title_url": "shopify:\/\/pages\/the-sets-shop",
+              "title_colour": "",
+              "inner_link_colour": "#000000",
+              "sale_colour": "#ff0000",
+              "mobile_title_colour": false,
+              "subheadings_colour": "",
+              "linklist": "",
+              "country_selector": "all",
+              "background_colour": "",
+              "featured_content_mobile": false,
+              "featured_content_heading": "",
+              "featured_content_1": "",
+              "featured_content_title_1": "",
+              "featured_content_mobile_1": false,
+              "featured_content_2": "",
+              "featured_content_title_2": "",
+              "featured_content_mobile_2": false,
+              "featured_content_3": "",
+              "featured_content_title_3": "",
+              "featured_content_mobile_3": false
+            }
+          },
           "18a3bcf6-cd03-43ae-950a-59388fddbedf": {
             "type": "nav_item",
             "disabled": true,
@@ -4162,38 +4188,6 @@
               "featured_content_mobile_3": false
             }
           },
-          "358a2953-5cae-477e-a2c8-125889c1c42c": {
-            "type": "nav_item",
-            "settings": {
-              "title": "SETS",
-              "title_url": "shopify:\/\/pages\/the-sets-shop",
-              "title_colour": "",
-              "inner_link_colour": "#000000",
-              "sale_colour": "#ff0000",
-              "mobile_title_colour": false,
-              "subheadings_colour": "",
-              "linklist": "menu-sets-new",
-              "country_selector": "all",
-              "background_colour": "",
-              "featured_content_mobile": false,
-              "featured_content_heading": "The Sets Shop",
-              "featured_content_1": "shopify:\/\/collections\/cashmere-sets",
-              "featured_content_title_1": "100% Cashmere Sets",
-              "featured_content_image_1": "shopify:\/\/shop_images\/AW23_ESSENTIALS_KJ220_THE_RELAXED_POLO_SOFT_PINK_P_6cd1ef40-44ea-4493-aec3-7ebafd68c0ff.jpg",
-              "featured_content_mobile_image_1": "shopify:\/\/shop_images\/AW23_ESSENTIALS_KJ220_THE_RELAXED_POLO_SOFT_PINK_P_dbb52b57-30ce-4ab5-aaac-2efb100f9bbc.jpg",
-              "featured_content_mobile_1": false,
-              "featured_content_2": "shopify:\/\/collections\/sets-under-200",
-              "featured_content_title_2": "Sets Under £200",
-              "featured_content_image_2": "shopify:\/\/shop_images\/C_P_M_10.05.23_58815_5.jpg",
-              "featured_content_mobile_image_2": "shopify:\/\/shop_images\/C_P_M_10.05.23_58815_5_63000c5a-54db-4ea4-8455-277f62578c0c.jpg",
-              "featured_content_mobile_2": false,
-              "featured_content_3": "shopify:\/\/collections\/accessories-sets-aw23",
-              "featured_content_title_3": "Accessories Sets",
-              "featured_content_image_3": "shopify:\/\/shop_images\/AW23_AAW2306_STRIPE_SNOOD_MULTI_F.jpg",
-              "featured_content_mobile_image_3": "shopify:\/\/shop_images\/AW23_AAW2306_STRIPE_SNOOD_MULTI_F_c22989e7-bc3f-48af-a4f1-498326e2c7c6.jpg",
-              "featured_content_mobile_3": false
-            }
-          },
           "24f8f2d7-dec5-4ee0-8890-117459b679dd": {
             "type": "nav_item",
             "disabled": true,
@@ -4267,13 +4261,13 @@
           "b9963f88-65f3-4d9d-b6ae-38e385b80b43",
           "cbef035c-9cce-452a-8808-5408775887f7",
           "cd3d9905-4a2e-4bc4-9f69-9ec73fff3792",
+          "358a2953-5cae-477e-a2c8-125889c1c42c",
           "18a3bcf6-cd03-43ae-950a-59388fddbedf",
           "nav_item_PqJMdT",
           "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73",
           "56e3551b-91f0-4dd8-9c33-6072bf66c9a5",
           "732bdafb-6251-44fb-8482-2435c5687c7f",
           "3f8f2863-d1c2-4579-904b-b3370159330a",
-          "358a2953-5cae-477e-a2c8-125889c1c42c",
           "24f8f2d7-dec5-4ee0-8890-117459b679dd",
           "415226ac-7d2b-4b6a-89dd-90944e01722a"
         ],
