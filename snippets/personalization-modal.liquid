@@ -8,9 +8,11 @@
         <div class="heading">
           <div class="title"><h2>COMPLIMENTARY EMBROIDERY</h2></div>
           <div class="description">
-            <p>Make your gifts truly unique with our complimentary Embroidery Atelier. Capital letters and special
-            characters aren't accepted. Once personalised, your piece can no longer be returned or exchanged. Delivery
-            times for personalised pieces may be extended.</p>
+            <p>
+              Make your gifts truly unique with our complimentary Embroidery Atelier. Capital letters and special
+              characters aren't accepted. Once personalised, your piece can no longer be returned or exchanged. Delivery
+              times for personalised pieces may be extended.
+            </p>
           </div>
         </div>
         <div class="customization-content">
@@ -31,28 +33,98 @@
               <label for="fonts">Choose Your Font</label>
               <select name="fonts" id="fonts" class="font-option">
                 <option value="" selected disabled hidden>Choose an option</option>
-                <option value="font 1">Serif 01</option>
-                <option value="font">Block 01</option>
+                <option value="Block">Block</option>
+                <option value="Serif">Serif</option>
+                <option value="Kunstler">Kunstler</option>
+              </select>
+            </div>
+            <div class="single-field">
+              <label for="text-size">Choose Your Font Size</label>
+              <select name="text-size" id="text-size" class="text-size-option">
+                <option value="" selected disabled hidden>Choose an option</option>
+                <option value="samll">Small - 1cm</option>
+                <option value="medium">Medium - 2cm</option>
               </select>
             </div>
           </div>
-          <div class="single-field">
-            <label for="place">Choose Your Placement</label>
-            <select name="place" id="place" class="place-option">
-              <option value="" selected disabled hidden>Choose an option</option>
-              <option value="cuff">Cuff</option>
-              <option value="hem">Hem</option>
-            </select>
-          </div> 
           <div class="color-picker">
+            <label for="place">Pick Your Color</label>
             <ul>
-              <li></li>
-              <li></li>
+              <li class="color-item active">
+                <span class="color color-black" data-color="#000"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-navy" data-color="#000099"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-red" data-color="#B8001F"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-orange" data-color="#FF6600"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-pink" data-color="#FF99CC"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-lightPink" data-color="#FFD1E3"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-white" data-color="#fff"></span>
+              </li>
             </ul>
           </div>
         </div>
+        <div class="ATC-section">
+          <div class="personalized-atc-section">
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <input
+                type="hidden"
+                name="id"
+                id="atc-product-id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+              >
+              <input type="hidden" name="properties[_Monogram]" value="">
+              <input type="hidden" name="properties[_placement]" value="">
+              <input type="hidden" name="properties[_font]" value="">
+              <input type="hidden" name="properties[_size]" value="">
+              <input type="hidden" name="properties[_color]" value="black">
+              <input type="hidden" name="properties[MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
+              <input type="hidden" name="properties[MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
+              <input type="hidden" name="properties[MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" name="add" class="disable-atc">SAVE YOUR PERSONALIZATION</button>
+            </form>
+          </div>
+          <div class="atc-section">
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <input
+                type="hidden"
+                name="id"
+                id="atc-product-id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+              >
+              <input type="hidden" name="properties[MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
+              <input type="hidden" name="properties[MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
+              <input type="hidden" name="properties[MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" name="add" class="">CONTINUE WITHOUT PERSONALIZATION</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="close-modal">X</div>
+      <div class="close-modal">
+        <button class="close-modal-button">
+          <svg
+            width="18"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 53.34 53.34"
+            aria-hidden="true"
+          >
+            <path d="M53.34 7.64L45.7 0 26.67 19.03 7.64 0 0 7.64l19.03 19.03L0 45.7l7.64 7.64 19.03-19.03L45.7 53.34l7.64-7.64-19.03-19.03L53.34 7.64z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -70,7 +142,11 @@
     bottom: 0;
     left: 0;
     z-index: 12;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
+    background: #00000091;
+  }
+  .personalization-modal-wrapper select{
+    cursor: pointer;
   }
   .personalization-modal-wrapper .personalization-modal {
     display: flex;
@@ -95,13 +171,68 @@
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization {
     padding: 40px 20px;
   }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-section .disable-atc {
+    background: #898989;
+  }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    column-gap: 10px;
+    flex-wrap: wrap;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item{
+    padding: 2px;
+    cursor: pointer;
+    display: flex;
+    border-radius: 50%;
+    width: 40px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item.active{
+    border: 1px solid black;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    transition: all .25s;
+    display: inline-block;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color:hover .color{
+    border: 1px solid black;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-black{
+    background: #000;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-navy{
+    background: #000099;
+  }
+
+
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-red{
+    background: #B8001F;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-orange{
+    background: #FF6600;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-pink{
+    background: #FF99CC;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-lightPink{
+    background: #FFD1E3;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-white{
+    background: #fff;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
-    flex: 1;
+    flex: 48%;
+    max-width: 49%;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading{
     padding-bottom: 30px;
@@ -120,14 +251,18 @@
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button {
+    all: unset;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
     border-radius: 3px;
     transition: all 0.25s;
+    display: flex;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal:hover {
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal-button:hover {
     background: #ddd;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper img {
@@ -156,6 +291,18 @@
     cursor: pointer;
     margin-bottom: 15px;
   }
+  .personalization-modal-wrapper .uppercase-text{
+    text-transform: uppercase;
+  }
+  .personalization-modal-wrapper .lowercase-text{
+    text-transform: lowercase;
+  }
+  @media only screen and (max-width: 850px){
+    .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
 </style>
 
 <script>
@@ -168,6 +315,11 @@
   const closeModal = () => {
     modal_wrapper.style.display = 'none';
     document.body.style.overflow = 'auto';
+  };
+  const removeActiveClasses = (items) => {
+    items.forEach((item) => {
+      item.classList.remove('active');
+    });
   };
   const addToCart = (variant_id) => {
     let formData = {
@@ -212,8 +364,19 @@
       });
     });
   document
-    .querySelector('.personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal')
+    .querySelector(
+      '.personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button'
+    )
     .addEventListener('click', () => {
       closeModal();
     });
+  const color_pickers = document.querySelectorAll(
+    '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
+  );
+  color_pickers.forEach((li) => {
+    li.addEventListener('click', () => {
+      removeActiveClasses(color_pickers);
+      li.classList.add('active');
+    });
+  });
 </script>
