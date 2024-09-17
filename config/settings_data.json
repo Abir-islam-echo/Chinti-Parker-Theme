@@ -4032,6 +4032,7 @@
           },
           "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73": {
             "type": "nav_item",
+            "disabled": true,
             "settings": {
               "title": "ABOUT",
               "title_url": "shopify:\/\/pages\/about-us",
@@ -4163,7 +4164,6 @@
           },
           "358a2953-5cae-477e-a2c8-125889c1c42c": {
             "type": "nav_item",
-            "disabled": true,
             "settings": {
               "title": "SETS",
               "title_url": "shopify:\/\/pages\/the-sets-shop",
