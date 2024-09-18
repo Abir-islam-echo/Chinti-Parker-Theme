@@ -2,8 +2,10 @@
   <div class="personalization-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
-        {{ product | img_url: '800x1000' | img_tag }}
+        {{ product.images[1] | img_url: '800x1000' | img_tag }}
+        <div class="customizaed-text-demo"><p style="color: #000">Hello</p></div>
       </div>
+
       <div class="product-customization half-width">
         <div class="heading">
           <div class="title"><h2>COMPLIMENTARY EMBROIDERY</h2></div>
@@ -18,7 +20,7 @@
         <div class="customization-content">
           <div class="personalized-text">
             <label> Personalize your product </label>
-            <input type="text" value="" placeholder="your personalised message">
+            <input maxlength="10" type="text" value="" placeholder="your personalised message">
           </div>
           <div class="selection-fields">
             <div class="single-field">
@@ -27,6 +29,7 @@
                 <option value="" selected disabled hidden>Choose an option</option>
                 <option value="cuff">Cuff</option>
                 <option value="hem">Hem</option>
+                <option value="chest">Chest</option>
               </select>
             </div>
             <div class="single-field">
@@ -51,31 +54,28 @@
             <label for="place">Pick Your Color</label>
             <ul>
               <li class="color-item active">
-                <span class="color color-black" data-color="#000"></span>
+                <span class="color color-black" data-color="black" data-color-code="#000"></span>
               </li>
               <li class="color-item">
-                <span class="color color-navy" data-color="#000099"></span>
+                <span class="color color-navy" data-color="navy" data-color-code="#000099"></span>
               </li>
               <li class="color-item">
-                <span class="color color-red" data-color="#B8001F"></span>
+                <span class="color color-red" data-color="red" data-color-code="#B8001F"></span>
               </li>
               <li class="color-item">
-                <span class="color color-orange" data-color="#FF6600"></span>
+                <span class="color color-orange" data-color="orange" data-color-code="#FF6600"></span>
               </li>
               <li class="color-item">
-                <span class="color color-pink" data-color="#FF99CC"></span>
+                <span class="color color-pink" data-color="pink" data-color-code="#FF99CC"></span>
               </li>
               <li class="color-item">
-                <span class="color color-lightPink" data-color="#FFD1E3"></span>
-              </li>
-              <li class="color-item">
-                <span class="color color-white" data-color="#fff"></span>
+                <span class="color color-white" data-color="white" data-color-code="#fff"></span>
               </li>
             </ul>
           </div>
         </div>
         <div class="ATC-section">
-          <div class="personalized-atc-section">
+          <div class="personalized-atc-form">
             <form action="/cart/add" method="post" enctype="multipart/form-data">
               <input
                 type="hidden"
@@ -83,11 +83,11 @@
                 id="atc-product-id"
                 value="{{ product.selected_or_first_available_variant.id }}"
               >
-              <input type="hidden" name="properties[_Monogram]" value="">
-              <input type="hidden" name="properties[_placement]" value="">
-              <input type="hidden" name="properties[_font]" value="">
-              <input type="hidden" name="properties[_size]" value="">
-              <input type="hidden" name="properties[_color]" value="black">
+              <input type="hidden" name="properties[_monogram]" data-value="monogram" value="">
+              <input type="hidden" name="properties[_placement]" data-value="placement" value="">
+              <input type="hidden" name="properties[_font]" data-value="font" value="">
+              <input type="hidden" name="properties[_size]" data-value="size" value="">
+              <input type="hidden" name="properties[_color]" data-value="color" value="black">
               <input type="hidden" name="properties[MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
               <input type="hidden" name="properties[MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
               <input type="hidden" name="properties[MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
@@ -95,7 +95,7 @@
               <button type="submit" name="add" class="disable-atc">SAVE YOUR PERSONALIZATION</button>
             </form>
           </div>
-          <div class="atc-section">
+          <div class="atc-form">
             <form action="/cart/add" method="post" enctype="multipart/form-data">
               <input
                 type="hidden"
@@ -144,6 +144,9 @@
     z-index: 12;
     backdrop-filter: blur(3px);
     background: #00000091;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
   }
   .personalization-modal-wrapper select{
     cursor: pointer;
@@ -153,13 +156,10 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 90%;
     width: 80vw;
     background: #fff;
     border-radius: 4px;
-    top: 50%;
+    margin: 30px 0;
   }
 
   .personalization-modal-wrapper .personalization-modal .content-wrapper {
@@ -168,10 +168,24 @@
     width: 100%;
     height: 100%;
   }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-image{
+    position: relative;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo{
+    position: absolute;
+    right: 35%;
+    top: 35%;
+  }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization {
     padding: 40px 20px;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-section .disable-atc {
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section{
+    padding: 40px 0 20px 0;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .atc-form button{
+    margin: 0;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form .disable-atc {
     background: #898989;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields {
@@ -179,6 +193,9 @@
     justify-content: space-between;
     column-gap: 10px;
     flex-wrap: wrap;
+  }
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content label {
+    font-weight: bold;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul{
     display: flex;
@@ -192,6 +209,7 @@
     display: flex;
     border-radius: 50%;
     width: 40px;
+    border: 1px solid #ddd;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item.active{
     border: 1px solid black;
@@ -200,11 +218,11 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 1px solid #ddd;
+
     transition: all .25s;
     display: inline-block;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color:hover .color{
+  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item:hover .color{
     border: 1px solid black;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-black{
@@ -223,9 +241,6 @@
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-pink{
     background: #FF99CC;
-  }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-lightPink{
-    background: #FFD1E3;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-white{
     background: #fff;
@@ -303,13 +318,18 @@
       max-width: 100%;
     }
   }
+  @media only screen and (max-width: 900px){
+    .personalization-modal-wrapper .personalization-modal .content-wrapper {
+      flex-direction: column;
+    }
+  }
 </style>
 
 <script>
   console.log('Abir1');
   const modal_wrapper = document.querySelector('.personalization-modal-wrapper');
   const openModal = () => {
-    modal_wrapper.style.display = 'block';
+    modal_wrapper.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   };
   const closeModal = () => {
@@ -377,6 +397,36 @@
     li.addEventListener('click', () => {
       removeActiveClasses(color_pickers);
       li.classList.add('active');
+      const color_name = li.children[0].getAttribute('data-color');
+      const color_code = li.children[0].getAttribute('data-color-code');
+      document.querySelector(
+        ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]'"
+      ).value = color_name;
+      document.querySelector(
+        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+      ).style.color = `${color_code}`;
     });
   });
+  document
+    .querySelector(
+      '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
+    )
+    .addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
+      document.querySelector(
+        ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]'"
+      ).value = e.target.value;
+      document.querySelector(
+        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+      ).textContent = e.target.value;
+    });
+  document
+    .querySelectorAll(
+      '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
+    )
+    .forEach((select) => {
+      select.addEventListener('change', () => {
+        updateFormData(select);
+      });
+    });
 </script>
