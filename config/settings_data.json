@@ -4316,11 +4316,45 @@
       "0e18de53-66e8-4e3f-a5cf-bef847a003b5": {
         "type": "slideshow",
         "blocks": {
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/summer-sale-hp-banner-desktop.webp",
+              "mobile_image": "shopify:\/\/shop_images\/summer-sale-hp-banner-mobile.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify:\/\/collections\/bank-holiday-summer-sale",
+              "content_alignment": "left"
+            }
+          },
+          "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Desktop_Main_Banner_1920_x_900px_6cfcb3e4-33f9-4626-8a1f-8d7ad8f15411.png",
+              "mobile_image": "shopify:\/\/shop_images\/Mobile_main_banner_636_x_700px.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify:\/\/collections\/sets-shop",
+              "content_alignment": "left"
+            }
+          },
           "40532ffb-a186-48c3-a0bb-e0f07d71d4b0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_banner_53.png",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_40.png",
+              "image": "shopify:\/\/shop_images\/homepage_banner_1920_x_600_px_3.png",
+              "mobile_image": "shopify:\/\/shop_images\/8_9.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4349,49 +4383,14 @@
               "link": "shopify:\/\/collections\/100-cashmere",
               "content_alignment": "left"
             }
-          },
-          "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_banner_56.png",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_44.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify:\/\/collections\/autumn-basics",
-              "content_alignment": "left"
-            }
-          },
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/15_4.png",
-              "mobile_image": "shopify:\/\/shop_images\/82_3.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify:\/\/collections\/mr-men-little-miss-meets-chinti",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
-          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
-          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1",
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a"
+          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
+          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
         ],
-        "disabled": true,
         "settings": {
         }
       },
@@ -4434,11 +4433,45 @@
       "7be8beb1-6481-482b-b469-24eb66d66078": {
         "type": "slideshow-eu",
         "blocks": {
+          "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/summer-sale-hp-banner-desktop_812b3894-6f1b-4175-bf4a-a7c264203978.webp",
+              "mobile_image": "shopify:\/\/shop_images\/summer-sale-hp-banner-mobile_2612c0b3-47ed-45d9-a4a7-f6f354d73bbf.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify:\/\/collections\/bank-holiday-summer-sale",
+              "content_alignment": "left"
+            }
+          },
+          "1d527b93-fd40-4525-bfad-755c66a36343": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Desktop_Main_Banner_1920_x_900px_c0b8a192-c284-489f-96f8-08162a2cee0f.png",
+              "mobile_image": "shopify:\/\/shop_images\/Mobile_main_banner_636_x_700px_1be3c887-a034-436a-8665-c5e87f78dd7e.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify:\/\/collections\/sets-shop",
+              "content_alignment": "left"
+            }
+          },
           "df52da60-b7e9-4296-8d76-9de7744c17f4": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_banner_53_36478801-eb72-45f4-94ea-e2e8f3ff2920.png",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_40_b7ac06c7-f3c9-4e8b-8278-bf93da7bd037.png",
+              "image": "shopify:\/\/shop_images\/homepage_banner_1920_x_600_px_3_01ed9f92-01a1-479d-8ec3-d2096b7eb248.png",
+              "mobile_image": "shopify:\/\/shop_images\/8_9_083fcd87-fad1-495d-bd14-015deac8a835.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4467,60 +4500,59 @@
               "link": "shopify:\/\/collections\/100-cashmere",
               "content_alignment": "left"
             }
-          },
-          "1d527b93-fd40-4525-bfad-755c66a36343": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_banner_56.png",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_44.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify:\/\/collections\/autumn-basics",
-              "content_alignment": "left"
-            }
-          },
-          "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/15_4_d2e81f5c-0ac7-4605-9e8c-c9d1fbb7dd2e.png",
-              "mobile_image": "shopify:\/\/shop_images\/82_3_d41d8fca-ef83-4229-a31e-bb1ad162654d.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify:\/\/collections\/mr-men-little-miss-meets-chinti",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
-          "df52da60-b7e9-4296-8d76-9de7744c17f4",
-          "7be8beb1-6481-482b-b469-24eb66d66078-image-1",
+          "83f31fb4-4be8-407d-9c3d-8c77231d3282",
           "1d527b93-fd40-4525-bfad-755c66a36343",
-          "83f31fb4-4be8-407d-9c3d-8c77231d3282"
+          "df52da60-b7e9-4296-8d76-9de7744c17f4",
+          "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
         ],
-        "disabled": true,
         "settings": {
         }
       },
       "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a": {
         "type": "slideshow-us",
         "blocks": {
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/summer-sale-hp-banner-desktop_fd2f5a88-b598-48cf-ba1b-96fd40129fd8.webp",
+              "mobile_image": "shopify:\/\/shop_images\/summer-sale-hp-banner-mobile_168f70f3-9c08-4e39-af3a-01d50c841bc9.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify:\/\/collections\/bank-holiday-summer-sale",
+              "content_alignment": "left"
+            }
+          },
+          "image_hEk7gH": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Desktop_Main_Banner_1920_x_900px_6bb133b2-7233-419d-9845-a3b7fba64b0d.png",
+              "mobile_image": "shopify:\/\/shop_images\/Mobile_main_banner_636_x_700px_3f8c4a16-36f0-4dfd-b604-0a8dcc3db695.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify:\/\/collections\/sets-shop",
+              "content_alignment": "left"
+            }
+          },
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_banner_53_d8e2f344-148b-44b4-8202-2be048469091.png",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_40_8e884458-0873-485f-8956-e1cef59814db.png",
+              "image": "shopify:\/\/shop_images\/homepage_banner_1920_x_600_px_3_719254df-7bb9-4840-a543-1706d864c423.png",
+              "mobile_image": "shopify:\/\/shop_images\/8_9_2102f114-aeb3-48ba-8aba-45cbf852ad80.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4549,49 +4581,14 @@
               "link": "shopify:\/\/collections\/100-cashmere",
               "content_alignment": "left"
             }
-          },
-          "image_hEk7gH": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_banner_56.png",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE_homepage_banner_636_x_700px_44.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify:\/\/collections\/autumn-basics",
-              "content_alignment": "left"
-            }
-          },
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/15_4_d4e11d3c-dbe5-4777-93d1-31f309ed2388.png",
-              "mobile_image": "shopify:\/\/shop_images\/82_3_db95ba6d-9955-4599-a9f7-b109ddced7b8.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify:\/\/collections\/mr-men-little-miss-meets-chinti",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
-          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
-          "fbcccfe6-84f7-4e7c-b303-c90fb1430139",
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
           "image_hEk7gH",
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31"
+          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
+          "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
         ],
-        "disabled": true,
         "settings": {
         }
       },
@@ -4641,8 +4638,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify:\/\/shop_images\/4_16.png",
-              "mobile_image1": "shopify:\/\/shop_images\/4_15_684cd9df-98e0-4c78-9157-c3dfa2f45c23.png",
+              "image1": "shopify:\/\/shop_images\/summer-sale-desktop-sub-banner.webp",
+              "mobile_image1": "shopify:\/\/shop_images\/summer-sale-mobile-sub-banner.webp",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4653,7 +4650,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify:\/\/collections\/mr-men-little-miss-meets-chinti",
+              "link1": "shopify:\/\/collections\/bank-holiday-summer-sale",
               "link_text1": "",
               "font_size_left_cta": 25
             }
@@ -4815,8 +4812,8 @@
           "bannergrid_threecolumns_mpbmJq": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify:\/\/shop_images\/8_5_cced46d1-77cd-4062-bceb-0b515d3ad547.png",
-              "mobile_image1": "shopify:\/\/shop_images\/8_6_1b190045-c58d-4999-a056-abebb74be6ae.png",
+              "image1": "shopify:\/\/shop_images\/Desktop_sub-banner_1b607889-6b4d-4c9d-aee9-08a6268c6593.png",
+              "mobile_image1": "shopify:\/\/shop_images\/Mobile_sub-banner_a13b62ad-d6b9-41ee-81e6-4439c06551ab.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4827,7 +4824,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify:\/\/pages\/cashmere-care",
+              "link1": "shopify:\/\/collections\/sets-shop",
               "link_text1": "",
               "font_size_left_cta": 25
             }
@@ -4874,6 +4871,7 @@
       },
       "video_banner_bj3TTB": {
         "type": "video-banner",
+        "disabled": true,
         "settings": {
           "desktop-video": "shopify:\/\/files\/videos\/FROM_WORK_TO_WEEKEND.mp4",
           "container-height-desktop": 100,
