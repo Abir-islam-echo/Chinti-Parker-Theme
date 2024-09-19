@@ -3,19 +3,18 @@
     <div class="content-wrapper">
       <div class="product-image half-width">
         {{ product.images[1] | img_url: '800x1000' | img_tag }}
-        <div class="customizaed-text-demo"><p style="color: #000; font-size: 14px">Chinti</p></div>
+        <div class="customizaed-text-demo">
+          <p style="color: #000; font-size: 14px; font-family: 'PT Serif', serif;"></p>
+        </div>
       </div>
 
       <div class="product-customization half-width">
         <div class="heading">
-          <div class="title"><h2>PERSONALISATION</h2></div>
+          <div class="title">
+            <h2>{{ section.settings.title }}</h2>
+          </div>
           <div class="description">
-            <p>Make your gifts truly unique with our Monogram Service.</p>
-            <p>Capital letters are accepted. Once personalised, your piece can no longer be returned or exchanged.</p>
-            <p>
-              Delivery times for personalised pieces may be extended to 5-7 working days. If purchased in line with
-              other items the entire order will have an extended delivery time.
-            </p>
+            {{ section.settings.description }}
           </div>
         </div>
         <div class="customization-content">
@@ -37,17 +36,17 @@
               <label for="fonts">Choose Your Font</label>
               <select name="fonts" id="fonts" class="font-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
-                <option for="font" value="Block">Block</option>
-                <option for="font" value="Serif">Serif</option>
-                <option for="font" value="Kunstler">Kunstler</option>
+                <option for="font" value="Block" demo-value="'Ubuntu', sans-serif">Block</option>
+                <option for="font" value="Serif" demo-value="'PT Serif', serif">Serif</option>
+                <option for="font" value="Kunstler" demo-value="">Kunstler</option>
               </select>
             </div>
             <div class="single-field">
               <label for="text-size">Choose Your Size</label>
               <select name="text-size" id="text-size" class="text-size-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
-                <option for="size" value="samll-1cm" data-size="14px">Small - 1cm</option>
-                <option for="size" value="medium-2cm" data-size="16px">Medium - 2cm</option>
+                <option for="size" value="samll-1cm" demo-value="14px">Small - 1cm</option>
+                <option for="size" value="medium-2cm" demo-value="16px">Medium - 2cm</option>
               </select>
             </div>
           </div>
@@ -86,7 +85,11 @@
               >
               <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
               <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
-              <input type="hidden" name="properties[_MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+              <input
+                type="hidden"
+                name="properties[_MID_Address]"
+                value="{{ product.metafields.mid_info.mid_address }}"
+              >
               <input type="hidden" name="properties[_type]" value="personalized">
               <input type="hidden" name="properties[_monogram]" data-value="monogram" value="">
               <input type="hidden" name="properties[_placement]" data-value="placement" value="cuff">
@@ -107,7 +110,11 @@
               >
               <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
               <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
-              <input type="hidden" name="properties[_MID_Address]" value="{{ product.metafields.mid_info.mid_address }}">
+              <input
+                type="hidden"
+                name="properties[_MID_Address]"
+                value="{{ product.metafields.mid_info.mid_address }}"
+              >
               <input type="hidden" name="quantity" value="1">
               <button type="submit" name="add" class="">CONTINUE WITHOUT PERSONALIZATION</button>
             </form>
@@ -131,6 +138,18 @@
   </div>
 </div>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    .pt-serif-bold {
+        font-family: "PT Serif", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+    .ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    }
   .personalization-modal-wrapper *{
     {% comment %} margin: 0;
     padding: 0; {% endcomment %}
@@ -179,9 +198,10 @@
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p{
     line-height: normal;
+    font-weight: 700;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization {
-    padding: 40px 20px;
+    padding: 40px 30px;
   }
   .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section{
     padding: 40px 0 20px 0;
@@ -330,140 +350,168 @@
 </style>
 
 <script>
-  console.log('Abir1');
-  const modal_wrapper = document.querySelector('.personalization-modal-wrapper');
-  const openModal = () => {
-    modal_wrapper.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  };
-  const closeModal = () => {
-    modal_wrapper.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  };
-  const removeColorListActiveClass = (items) => {
-    items.forEach((item) => {
-      item.classList.remove('active');
-    });
-  };
-  const updateFormProperties = (select) => {
-    const selectedItemDestination = select.options[select.options['selectedIndex']].getAttribute('for');
-    const selectedItemValue = select.options[select.options['selectedIndex']].value;
-    const targetElement = document.querySelector(
-      `.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}'`
-    );
-    targetElement.value = selectedItemValue;
-  };
-  const addToCart = (variant_id) => {
-    let formData = {
-      items: [
-        {
-          id: variant_id,
-          quantity: 1,
-        },
-      ],
+    console.log('PDP personalization');
+    const modal_wrapper = document.querySelector('.personalization-modal-wrapper');
+    const openModal = () => {
+      modal_wrapper.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     };
-    fetch(window.Shopify.routes.root + 'cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        return response.json();
+    const closeModal = () => {
+      modal_wrapper.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    };
+    const removeColorListActiveClass = (items) => {
+      items.forEach((item) => {
+        item.classList.remove('active');
+      });
+    };
+    const updateFormProperties = (select) => {
+      const selectedItemDestination = select.options[select.options['selectedIndex']].getAttribute('for');
+      const selectedItemValue = select.options[select.options['selectedIndex']].value;
+      const targetElement = document.querySelector(
+        `.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}'`
+      );
+      targetElement.value = selectedItemValue;
+      if(selectedItemDestination == 'size'){
+        document.querySelector(
+            '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+          ).style.fontSize = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+      }
+      else if(selectedItemDestination == 'font'){
+        document.querySelector(
+            '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+          ).style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+      }
+    };
+    const addToCart = (variant_id) => {
+      let formData = {
+        items: [
+          {
+            id: variant_id,
+            quantity: 1,
+          },
+        ],
+      };
+      fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  };
-  const checkValidation = (value)=>{
-    const personalizedAtcButton = document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
-    if(value.length != 0){
-      personalizedAtcButton.classList.remove("disable-atc");
+        .then((response) => {
+          return response.json();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    };
+    const checkValidation = (value)=>{
+      const personalizedAtcButton = document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
+      if(value.length != 0){
+        personalizedAtcButton.classList.remove("disable-atc");
+      }
+      else{
+        personalizedAtcButton.classList.add("disable-atc");
+      }
     }
-    else{
-      personalizedAtcButton.classList.add("disable-atc");
-    }
-  }
-  {% comment %} event for size selectors {% endcomment %}
-  document
-    .querySelectorAll(
-      '.product-details #AddToCartForm #variants-add-wrapper #product-variants .selector.size-selector .size .product-option-size li.active'
-    )
-    .forEach((li) => {
-      li.addEventListener('click', () => {
-        const selected_variant_id = li.getAttribute('data-id');
-        document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input#atc-product-id").value = selected_variant_id;
-        if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
+    {% comment %} event for size selectors {% endcomment %}
+    document
+      .querySelectorAll(
+        '.product-details #AddToCartForm #variants-add-wrapper #product-variants .selector.size-selector .size .product-option-size li.active'
+      )
+      .forEach((li) => {
+        li.addEventListener('click', () => {
+          const selected_variant_id = li.getAttribute('data-id');
+          document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input#atc-product-id").value = selected_variant_id;
+          if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
+            document
+              .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
+              .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Add to Bag</div>`);
+          }
           document
-            .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
-            .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Add to Bag Abir</div>`);
-        }
-        document
-          .querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')
-          .addEventListener('click', () => {
-            openModal();
-          });
+            .querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')
+            .addEventListener('click', () => {
+              openModal();
+            });
+        });
+      });
+      {% comment %} event for modal close {% endcomment %}
+    document
+      .querySelector(
+        '.personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button'
+      )
+      .addEventListener('click', () => {
+        closeModal();
+      });
+  
+      {% comment %} event for all color swatches {% endcomment %}
+    const color_pickers = document.querySelectorAll(
+      '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
+    );
+    color_pickers.forEach((li) => {
+      li.addEventListener('click', () => {
+        removeColorListActiveClass(color_pickers);
+        li.classList.add('active');
+        const color_name = li.children[0].getAttribute('data-color');
+        const color_code = li.children[0].getAttribute('data-color-code');
+        document.querySelector(
+          ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]'"
+        ).value = color_name;
+        document.querySelector(
+          '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+        ).style.color = `${color_code}`;
       });
     });
-    {% comment %} event for modal close {% endcomment %}
-  document
-    .querySelector(
-      '.personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button'
-    )
-    .addEventListener('click', () => {
-      closeModal();
-    });
-
-    {% comment %} event for all color swatches {% endcomment %}
-  const color_pickers = document.querySelectorAll(
-    '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
-  );
-  color_pickers.forEach((li) => {
-    li.addEventListener('click', () => {
-      removeColorListActiveClass(color_pickers);
-      li.classList.add('active');
-      const color_name = li.children[0].getAttribute('data-color');
-      const color_code = li.children[0].getAttribute('data-color-code');
-      document.querySelector(
-        ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]'"
-      ).value = color_name;
-      document.querySelector(
-        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
-      ).style.color = `${color_code}`;
-    });
-  });
-
-  {% comment %} event for text input {% endcomment %}
-  document
-    .querySelector(
-      '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
-    )
-    .addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
-      checkValidation(e.target.value);
-      document.querySelector(
-        ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]'"
-      ).value = e.target.value;
-      document.querySelector(
-        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
-      ).textContent = e.target.value;
-    });
-    {% comment %} add event for all select items {% endcomment %}
-  document
-    .querySelectorAll(
-      '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
-    )
-    .forEach((select) => {
-      select.addEventListener('change', () => {
-        updateFormProperties(select);
+  
+    {% comment %} event for text input {% endcomment %}
+    document
+      .querySelector(
+        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
+      )
+      .addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
+        checkValidation(e.target.value);
+        document.querySelector(
+          ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]'"
+        ).value = e.target.value;
+        document.querySelector(
+          '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+        ).textContent = e.target.value;
       });
-    });
-
-  {% comment %} add 30 sec timer to the cart page {% endcomment %}
-  const count = new Date((new Date().getTime())+(30*60*1000));
-  document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']").addEventListener("click",()=>{
-  localStorage.setItem("cartTimer", JSON.stringify(count));
-})
+      {% comment %} add event for all select items {% endcomment %}
+    document
+      .querySelectorAll(
+        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
+      )
+      .forEach((select) => {
+        select.addEventListener('change', () => {
+          updateFormProperties(select);
+        });
+      });
+  
+    {% comment %} add 30 sec timer to the cart page {% endcomment %}
+    const count = new Date((new Date().getTime())+(30*60*1000));
+    document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']").addEventListener("click",()=>{
+    localStorage.setItem("cartTimer", JSON.stringify(count));
+  })
 </script>
 {% comment %} products/the-cream-cashmere-boxy-sweater {% endcomment %}
+
+{% schema %}
+{
+  "name": "Personalization",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    }
+  ]
+}
+{% endschema %}

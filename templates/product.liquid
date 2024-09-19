@@ -58,8 +58,8 @@
     {% if styledWidthProductCount > 0 %}
       {% section 'shop-the-look' %}
       <style>
-        #GoToCheckout{
-          margin-bottom: .3125rem;
+        #GoToCheckout {
+          margin-bottom: 0.3125rem;
         }
       </style>
     {% endif %}
@@ -751,12 +751,14 @@
 </style>
 
 <script>
-    const timeCount = new Date((new Date().getTime())+(30*60*1000));
-      document.querySelector(".product-details #AddToCartForm #AddToCartWrapper #AddToCart").addEventListener("click",()=>{
-      localStorage.setItem("cartTimer", JSON.stringify(timeCount));
-  })
+  const timeCount = new Date(new Date().getTime() + 30 * 60 * 1000);
+  document
+    .querySelector('.product-details #AddToCartForm #AddToCartWrapper #AddToCart')
+    .addEventListener('click', () => {
+      localStorage.setItem('cartTimer', JSON.stringify(timeCount));
+    });
 </script>
 
 {% if product.metafields.custom.personalization.value == true %}
-  {% render 'personalization-modal', product: product %}
+  {% section 'personalization-modal-section' %}
 {% endif %}
