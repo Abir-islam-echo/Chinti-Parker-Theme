@@ -1,10 +1,10 @@
-<div class="personalization-modal-wrapper">
+<div class="personalization-modal-wrapper" id="personalization-modal-wrapper">
   <div class="personalization-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
         {{ product.images[1] | img_url: '800x1000' | img_tag }}
         <div class="customizaed-text-demo">
-          <p style="color: #000; font-size: 14px; font-family: 'PT Serif', serif;"></p>
+          <p style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
         </div>
       </div>
 
@@ -24,7 +24,7 @@
           </div>
           <div class="selection-fields">
             <div class="single-field">
-              <label for="place">Choose Your Placement</label>
+              <label for="place">Choose Your Placement</label> 
               <select name="place" id="place" class="place-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
                 <option for="placement" value="cuff">Cuff</option>
@@ -150,12 +150,12 @@
     font-weight: 700;
     font-style: normal;
     }
-  .personalization-modal-wrapper *{
+  #personalization-modal-wrapper *{
     {% comment %} margin: 0;
     padding: 0; {% endcomment %}
     box-sizing: border-box;
   }
-  .personalization-modal-wrapper {
+  #personalization-modal-wrapper {
     display: none;
     position: fixed;
     top: 0;
@@ -166,68 +166,70 @@
     backdrop-filter: blur(3px);
     background: #00000091;
     justify-content: center;
+    align-items: center;
     overflow-y: scroll;
   }
-  .personalization-modal-wrapper select{
+  #personalization-modal-wrapper select{
     cursor: pointer;
   }
-  .personalization-modal-wrapper .personalization-modal {
+  #personalization-modal-wrapper .personalization-modal {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 80vw;
     background: #fff;
-    border-radius: 4px;
-    margin: 30px 0;
+    border-radius: 8px;
+    margin: 20px;
+    max-width: 1200px;
+    overflow: hidden;
   }
 
-  .personalization-modal-wrapper .personalization-modal .content-wrapper {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper {
     display: flex;
     position: relative;
     width: 100%;
     height: 100%;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-image{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image{
     position: relative;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo{
     position: absolute;
     right: 35%;
     top: 35%;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p{
     line-height: normal;
     font-weight: 700;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization {
     padding: 40px 30px;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section{
     padding: 40px 0 20px 0;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .atc-form button{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .atc-form button{
     margin: 0;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit'].disable-atc {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit'].disable-atc {
     background: #898989;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields {
     display: flex;
     justify-content: space-between;
     column-gap: 10px;
     flex-wrap: wrap;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content label {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content label {
     font-weight: bold;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul{
     display: flex;
     gap: 5px;
     align-items: center;
     flex-wrap: wrap;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item{
     padding: 2px;
     cursor: pointer;
     display: flex;
@@ -235,10 +237,10 @@
     width: 40px;
     border: 1px solid #ddd;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item.active{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item.active{
     border: 1px solid black;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color{
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -246,54 +248,54 @@
     transition: all .25s;
     display: inline-block;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item:hover .color{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item:hover .color{
     border: 1px solid black;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-black{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-black{
     background: #000;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-navy{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-navy{
     background: #000099;
   }
 
 
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-red{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-red{
     background: #B8001F;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-orange{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-orange{
     background: #FF6600;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-pink{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-pink{
     background: #FF99CC;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-white{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-white{
     background: #fff;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
     flex: 48%;
     max-width: 49%;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading{
-    padding-bottom: 30px;
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading{
+    padding-bottom: 40px;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .title h2 {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .title h2 {
     font-size: 2rem;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .description {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .description {
     padding-top: 20px;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .description p {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .description p {
     font-size: 13px;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .half-width {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .half-width {
     flex: 1;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal {
     position: absolute;
     top: 10px;
     right: 10px;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button {
     all: unset;
     cursor: pointer;
     padding: 8px;
@@ -301,10 +303,10 @@
     transition: all 0.25s;
     display: flex;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal-button:hover {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal-button:hover {
     background: #ddd;
   }
-  .personalization-modal-wrapper .personalization-modal .content-wrapper img {
+  #personalization-modal-wrapper .personalization-modal .content-wrapper img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -330,35 +332,66 @@
     cursor: pointer;
     margin-bottom: 15px;
   }
-  .personalization-modal-wrapper .uppercase-text{
+  #personalization-modal-wrapper .uppercase-text{
     text-transform: uppercase;
   }
-  .personalization-modal-wrapper .lowercase-text{
+  #personalization-modal-wrapper .lowercase-text{
     text-transform: lowercase;
   }
+  @media only screen and (max-width: 768px){
+    #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
+      margin-bottom: 0;
+      padding: 23px 12px 22px;
+      position: relative;
+      color: #111;
+      line-height: 1.2;
+    }
+    #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button:after {
+      content: "Add";
+      position: absolute;
+      {% comment %} top: 0; {% endcomment %}
+      left: 0;
+      width: 100%;
+      color: #fff;
+    }
+    .product-details #AddToCartForm #variants-add-wrapper.hidden{
+      display: none;
+    }
+  }
   @media only screen and (max-width: 850px){
-    .personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
+    #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
       flex: 100%;
       max-width: 100%;
     }
   }
   @media only screen and (max-width: 900px){
-    .personalization-modal-wrapper .personalization-modal .content-wrapper {
+    #personalization-modal-wrapper .personalization-modal .content-wrapper {
       flex-direction: column;
+    }
+    #personalization-modal-wrapper{
+      align-items: unset;
+    }
+    #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading{
+      text-align: center;
+    }
+    #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading .title h2{
+      font-size: 1.5rem;
     }
   }
 </style>
 
 <script>
     console.log('PDP personalization');
-    const modal_wrapper = document.querySelector('.personalization-modal-wrapper');
+    const modal_wrapper = document.querySelector('#personalization-modal-wrapper');
     const openModal = () => {
       modal_wrapper.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.add("hidden")
     };
     const closeModal = () => {
       modal_wrapper.style.display = 'none';
       document.body.style.overflow = 'auto';
+      document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.remove("hidden");
     };
     const removeColorListActiveClass = (items) => {
       items.forEach((item) => {
@@ -369,17 +402,17 @@
       const selectedItemDestination = select.options[select.options['selectedIndex']].getAttribute('for');
       const selectedItemValue = select.options[select.options['selectedIndex']].value;
       const targetElement = document.querySelector(
-        `.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}'`
+        `#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}'`
       );
       targetElement.value = selectedItemValue;
       if(selectedItemDestination == 'size'){
         document.querySelector(
-            '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+            '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
           ).style.fontSize = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
       else if(selectedItemDestination == 'font'){
         document.querySelector(
-            '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+            '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
           ).style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
     };
@@ -407,7 +440,7 @@
         });
     };
     const checkValidation = (value)=>{
-      const personalizedAtcButton = document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
+      const personalizedAtcButton = document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
       if(value.length != 0){
         personalizedAtcButton.classList.remove("disable-atc");
       }
@@ -423,7 +456,7 @@
       .forEach((li) => {
         li.addEventListener('click', () => {
           const selected_variant_id = li.getAttribute('data-id');
-          document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input#atc-product-id").value = selected_variant_id;
+          document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input#atc-product-id").value = selected_variant_id;
           if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
             document
               .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
@@ -439,7 +472,7 @@
       {% comment %} event for modal close {% endcomment %}
     document
       .querySelector(
-        '.personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button'
+        '#personalization-modal-wrapper .personalization-modal .content-wrapper .close-modal .close-modal-button'
       )
       .addEventListener('click', () => {
         closeModal();
@@ -447,7 +480,7 @@
   
       {% comment %} event for all color swatches {% endcomment %}
     const color_pickers = document.querySelectorAll(
-      '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
+      '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
     );
     color_pickers.forEach((li) => {
       li.addEventListener('click', () => {
@@ -456,10 +489,10 @@
         const color_name = li.children[0].getAttribute('data-color');
         const color_code = li.children[0].getAttribute('data-color-code');
         document.querySelector(
-          ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]'"
+          "#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]'"
         ).value = color_name;
         document.querySelector(
-          '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+          '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
         ).style.color = `${color_code}`;
       });
     });
@@ -467,22 +500,22 @@
     {% comment %} event for text input {% endcomment %}
     document
       .querySelector(
-        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
+        '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
       )
       .addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
         checkValidation(e.target.value);
         document.querySelector(
-          ".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]'"
+          "#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]'"
         ).value = e.target.value;
         document.querySelector(
-          '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
+          '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
         ).textContent = e.target.value;
       });
       {% comment %} add event for all select items {% endcomment %}
     document
       .querySelectorAll(
-        '.personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
+        '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
       )
       .forEach((select) => {
         select.addEventListener('change', () => {
@@ -492,11 +525,10 @@
   
     {% comment %} add 30 sec timer to the cart page {% endcomment %}
     const count = new Date((new Date().getTime())+(30*60*1000));
-    document.querySelector(".personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']").addEventListener("click",()=>{
+    document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']").addEventListener("click",()=>{
     localStorage.setItem("cartTimer", JSON.stringify(count));
   })
 </script>
-{% comment %} products/the-cream-cashmere-boxy-sweater {% endcomment %}
 
 {% schema %}
 {
@@ -515,3 +547,5 @@
   ]
 }
 {% endschema %}
+
+{% comment %} products/the-cream-cashmere-boxy-sweater {% endcomment %}
