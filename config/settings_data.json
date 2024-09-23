@@ -5545,7 +5545,8 @@
         "type": "personalization-modal-section",
         "settings": {
           "title": "PERSONALISATION",
-          "description": "<p>Make your gifts truly unique with our Monogram Service.<br\/><em>Capital letters are accepted. Once personalised, your piece can no longer be returned or exchanged.<\/em><\/p><p><em>Delivery times for personalised pieces may be extended to 5-7 working days. If purchased in line with other items the entire order will have an extended delivery time.<\/em><\/p>"
+          "description": "<p>Make your gifts truly unique with our Monogram Service.<br\/><em>Capital letters are accepted. Once personalised, your piece can no longer be returned or exchanged.<\/em><\/p><p><em>Delivery times for personalised pieces may be extended to 5-7 working days. If purchased in line with other items the entire order will have an extended delivery time.<\/em><\/p>",
+          "personalised-atc-text": "Add your personalisation for £15"
         }
       }
     },
