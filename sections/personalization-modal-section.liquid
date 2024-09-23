@@ -3,7 +3,7 @@
     <div class="content-wrapper">
       <div class="product-image half-width">
         {{ product.images[1] | img_url: '800x1000' | img_tag }}
-        <div class="customizaed-text-demo">
+        <div class="customized-text-demo">
           <p style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
         </div>
       </div>
@@ -24,12 +24,12 @@
           </div>
           <div class="selection-fields">
             <div class="single-field">
-              <label for="place">Choose Your Placement</label> 
+              <label for="place">Choose Your Placement</label>
               <select name="place" id="place" class="place-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
+                <option for="placement" value="chest">Chest</option>
                 <option for="placement" value="cuff">Cuff</option>
                 <option for="placement" value="hem">Hem</option>
-                <option for="placement" value="chest">Chest</option>
               </select>
             </div>
             <div class="single-field">
@@ -38,7 +38,7 @@
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
                 <option for="font" value="Block" demo-value="'Ubuntu', sans-serif">Block</option>
                 <option for="font" value="Serif" demo-value="'PT Serif', serif">Serif</option>
-                <option for="font" value="Kunstler" demo-value="">Kunstler</option>
+                <option for="font" value="Kunstler" demo-value="'Pinyon Script', cursive">Kunstler</option>
               </select>
             </div>
             <div class="single-field">
@@ -91,13 +91,27 @@
                 value="{{ product.metafields.mid_info.mid_address }}"
               >
               <input type="hidden" name="properties[_type]" value="personalized">
-              <input type="hidden" name="properties[_monogram]" data-value="monogram" value="">
-              <input type="hidden" name="properties[_placement]" data-value="placement" value="cuff">
-              <input type="hidden" name="properties[_font]" data-value="font" value="block">
-              <input type="hidden" name="properties[_size]" data-value="size" value="small-1cm">
-              <input type="hidden" name="properties[_color]" data-value="color" value="black">
+              <input type="hidden" name="properties[_monogram]" data-default="" data-value="monogram" value="">
+              <input
+                type="hidden"
+                name="properties[_placement]"
+                data-default="chest"
+                data-value="placement"
+                value="chest"
+              >
+              <input type="hidden" name="properties[_font]" data-default="block" data-value="font" value="block">
+              <input
+                type="hidden"
+                name="properties[_size]"
+                data-default="small-1cm"
+                data-value="size"
+                value="small-1cm"
+              >
+              <input type="hidden" name="properties[_color]" data-default="black" data-value="color" value="black">
               <input type="hidden" name="quantity" value="1">
-              <button type="submit" name="add" class="disable-atc">SAVE YOUR PERSONALIZATION</button>
+              <button type="submit" name="add" class="disable-atc">
+                {{ section.settings['personalised-atc-text'] }}
+              </button>
             </form>
           </div>
           <div class="atc-form">
@@ -140,7 +154,8 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    .pt-serif-bold {
+    @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+    {% comment %} .pt-serif-bold {
         font-family: "PT Serif", serif;
         font-weight: 700;
         font-style: normal;
@@ -150,9 +165,12 @@
     font-weight: 700;
     font-style: normal;
     }
+    .pinyon-script-regular {
+      font-family: "Pinyon Script", cursive;
+      font-weight: 400;
+      font-style: normal;
+    } {% endcomment %}
   #personalization-modal-wrapper *{
-    {% comment %} margin: 0;
-    padding: 0; {% endcomment %}
     box-sizing: border-box;
   }
   #personalization-modal-wrapper {
@@ -166,8 +184,10 @@
     backdrop-filter: blur(3px);
     background: #00000091;
     justify-content: center;
-    align-items: center;
     overflow-y: scroll;
+  }
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .ajaxified-cart-feedback.success{
+    display: none;
   }
   #personalization-modal-wrapper select{
     cursor: pointer;
@@ -193,12 +213,12 @@
   #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image{
     position: relative;
   }
-  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customized-text-demo{
     position: absolute;
     right: 35%;
     top: 35%;
   }
-  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p{
+  #personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customized-text-demo p{
     line-height: normal;
     font-weight: 700;
   }
@@ -368,9 +388,6 @@
     #personalization-modal-wrapper .personalization-modal .content-wrapper {
       flex-direction: column;
     }
-    #personalization-modal-wrapper{
-      align-items: unset;
-    }
     #personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .heading{
       text-align: center;
     }
@@ -383,40 +400,70 @@
 <script>
     console.log('PDP personalization');
     const modal_wrapper = document.querySelector('#personalization-modal-wrapper');
+    const personalizedAtcButton = document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
+    const regularAtcButton = document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section button[type='submit']");
+    const demoText = document.querySelector(
+      '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customized-text-demo p'
+    );
+    const color_pickers = document.querySelectorAll(
+      '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
+    );
+    const allSelectFields = document
+    .querySelectorAll(
+      '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
+    );
+    const textField = document
+    .querySelector(
+      '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
+    )
+    const resetModal = () => {
+      allSelectFields
+      .forEach((select) => {
+        select.options[0].selected = true;
+      });
+      updateColorSwatchesActiveClass(color_pickers, color_pickers[0]);
+      document.querySelectorAll("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-default]").forEach(item=>{
+        item.value = item.dataset['default'];
+      })
+      textField.value = '';
+      demoText.textContent = '';
+      demoText.setAttribute("style", "color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;");
+      checkValidation(textField.value);
+      personalizedAtcButton.textContent = "{{ section.settings.personalised-atc-text }}";
+      regularAtcButton.textContent = "CONTINUE WITHOUT PERSONALIZATION";
+    }
     const openModal = () => {
       modal_wrapper.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-      document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.add("hidden")
+      document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.add("hidden");
     };
     const closeModal = () => {
       modal_wrapper.style.display = 'none';
       document.body.style.overflow = 'auto';
       document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.remove("hidden");
+      resetModal();
     };
-    const removeColorListActiveClass = (items) => {
+    const updateColorSwatchesActiveClass = (items, activeItem) => {
       items.forEach((item) => {
         item.classList.remove('active');
       });
+      activeItem.classList.add('active');
     };
     const updateFormProperties = (select) => {
       const selectedItemDestination = select.options[select.options['selectedIndex']].getAttribute('for');
       const selectedItemValue = select.options[select.options['selectedIndex']].value;
       const targetElement = document.querySelector(
-        `#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}'`
+        `#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}']`
       );
       targetElement.value = selectedItemValue;
       if(selectedItemDestination == 'size'){
-        document.querySelector(
-            '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
-          ).style.fontSize = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+        demoText.style.fontSize = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
       else if(selectedItemDestination == 'font'){
-        document.querySelector(
-            '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
-          ).style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+        demoText.style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
     };
-    const addToCart = (variant_id) => {
+    {% comment %} const addToCart = (variant_id) => {
       let formData = {
         items: [
           {
@@ -438,9 +485,8 @@
         .catch((error) => {
           console.error('Error:', error);
         });
-    };
+    }; {% endcomment %}
     const checkValidation = (value)=>{
-      const personalizedAtcButton = document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
       if(value.length != 0){
         personalizedAtcButton.classList.remove("disable-atc");
       }
@@ -479,44 +525,30 @@
       });
   
       {% comment %} event for all color swatches {% endcomment %}
-    const color_pickers = document.querySelectorAll(
-      '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
-    );
     color_pickers.forEach((li) => {
       li.addEventListener('click', () => {
-        removeColorListActiveClass(color_pickers);
-        li.classList.add('active');
+        updateColorSwatchesActiveClass(color_pickers, li);
         const color_name = li.children[0].getAttribute('data-color');
         const color_code = li.children[0].getAttribute('data-color-code');
         document.querySelector(
-          "#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]'"
+          "#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]']"
         ).value = color_name;
-        document.querySelector(
-          '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
-        ).style.color = `${color_code}`;
+        demoText.style.color = `${color_code}`;
       });
     });
   
     {% comment %} event for text input {% endcomment %}
-    document
-      .querySelector(
-        '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .customization-content .personalized-text input'
-      )
+    textField
       .addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
         checkValidation(e.target.value);
         document.querySelector(
-          "#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]'"
+          "#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]']"
         ).value = e.target.value;
-        document.querySelector(
-          '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-image .customizaed-text-demo p'
-        ).textContent = e.target.value;
+        demoText.textContent = e.target.value;
       });
       {% comment %} add event for all select items {% endcomment %}
-    document
-      .querySelectorAll(
-        '#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization select'
-      )
+    allSelectFields
       .forEach((select) => {
         select.addEventListener('change', () => {
           updateFormProperties(select);
@@ -524,10 +556,16 @@
       });
   
     {% comment %} add 30 sec timer to the cart page {% endcomment %}
-    const count = new Date((new Date().getTime())+(30*60*1000));
-    document.querySelector("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']").addEventListener("click",()=>{
-    localStorage.setItem("cartTimer", JSON.stringify(count));
-  })
+    let count = new Date((new Date().getTime())+(30*60*1000));
+    document.querySelectorAll("#personalization-modal-wrapper .personalization-modal .content-wrapper .product-customization .ATC-section [type='submit']").forEach(button=>{
+      button.addEventListener("click",()=>{
+        localStorage.setItem("cartTimer", JSON.stringify(count));
+        console.log("added")
+        setTimeout(()=>{
+          closeModal();
+        },1200)
+      })
+    })
 </script>
 
 {% schema %}
@@ -543,6 +581,11 @@
       "type": "richtext",
       "id": "description",
       "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "personalised-atc-text",
+      "label": "Personalised Button Text"
     }
   ]
 }
