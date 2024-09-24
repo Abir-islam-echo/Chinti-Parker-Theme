@@ -417,6 +417,11 @@
     .querySelector(
       '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .personalized-text input'
     )
+    const timeOutFunction = (runFunction, timeOut) => {
+      setTimeout(()=>{
+          runFunction();
+      }, timeOut)
+    }
     const resetModal = () => {
       allSelectFields
       .forEach((select) => {
@@ -466,11 +471,11 @@
         demoText.style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
     };
-    {% comment %} const addToCart = (variant_id) => {
+    const addPersonalisationCharge = () => {
       let formData = {
         items: [
           {
-            id: variant_id,
+            id: 53479059259771,
             quantity: 1,
           },
         ],
@@ -488,7 +493,7 @@
         .catch((error) => {
           console.error('Error:', error);
         });
-    }; {% endcomment %}
+    };
     const checkValidation = (value)=>{
       if(value.length != 0){
         personalizedAtcButton.classList.remove("disable-atc");
@@ -557,16 +562,16 @@
           updateFormProperties(select);
         });
       });
-  
-    {% comment %} add 30 sec timer to the cart page {% endcomment %}
+      
+    {% comment %} add 30 sec timer to the cart page and adding extra charge for personalization {% endcomment %}
     let count = new Date((new Date().getTime())+(30*60*1000));
     document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section [type='submit']").forEach(button=>{
       button.addEventListener("click",()=>{
         localStorage.setItem("cartTimer", JSON.stringify(count));
-        console.log("added")
-        setTimeout(()=>{
-          closeModal();
-        },1200)
+        timeOutFunction(closeModal, 1200);
+        if(button.closest(".personalized-atc-form")){
+          timeOutFunction(addPersonalisationCharge, 1200);
+        }
       })
     })
 </script>
