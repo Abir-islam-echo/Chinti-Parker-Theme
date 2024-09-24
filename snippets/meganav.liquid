@@ -65,10 +65,12 @@
     {%- endif -%}
     {% render 'country-switcher', class: 'country-switcher-mobile', width: '40', itemType: 'country-flag' %}
   </ul>
-  <li class="meganav-actions__action loyalty-points-item">
-    <!-- <span>{{ customer.name }}</span> -->
-    <a href="/pages/rewards" class="data-points-div"><span data-lion-points="approved"></span><span>points</span></a>
-  </li>
+  {% if customer %}
+    <li class="meganav-actions__action loyalty-points-item">
+      <!-- <span>{{ customer.name }}</span> -->
+      <a href="/pages/rewards" class="data-points-div"><span data-lion-points="approved"></span><span>points</span></a>
+    </li>
+  {% endif %}
 
   <ul class="meganav-social">
     <li class="meganav-social__item">
