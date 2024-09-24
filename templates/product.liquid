@@ -1,5 +1,5 @@
 <script>
-  {% if product.handle contains "swap-protect" %}
+  {% if product.handle contains "swap-protect" or product.handle contains "personalisation-charge"  %}
     location.href = "/"
   {% endif %}
 </script>
