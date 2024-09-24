@@ -1,8 +1,10 @@
 <ul class="header-actions">
-  <li class="header-actions__action header-actions__action--loyalty-points loyalty-points-item">
-    <!-- <span>{{ customer.name }}</span> -->
-    <a href="/pages/rewards" class="data-points-div"><span data-lion-points="approved"></span><span>points</span></a>
-  </li>
+  {% if customer %}
+    <li class="header-actions__action header-actions__action--loyalty-points loyalty-points-item">
+      <!-- <span>{{ customer.name }}</span> -->
+      <a href="/pages/rewards" class="data-points-div"><span data-lion-points="approved"></span><span>points</span></a>
+    </li>
+  {% endif %}
   <li>
     {% render 'country-switcher', class: 'country-switcher-desktop', width: '32', itemType: 'country-flag' -%}
     {%- render 'country-switcher-global' %}
