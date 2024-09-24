@@ -47,19 +47,6 @@
         <span class="sr-only">Telephone</span>
       </a>
     </li>
-    <li class="meganav-actions__action meganav-actions__action--contact">
-      <a
-        href="/pages/rewards"
-        class="meganav-actions__link contact-link link"
-        title="Rewards"
-      >
-        <div class="meganav-actions__icon mobile-star-icon" style="font-size: 26px;">
-          <i class="fal fa-thin fa-star"></i>
-        </div>
-
-        <span class="sr-only">Rewards</span>
-      </a>
-    </li>
 
     {%- if shop.customer_accounts_enabled -%}
       <li class="meganav-actions__action meganav-actions__action--account">
@@ -78,6 +65,10 @@
     {%- endif -%}
     {% render 'country-switcher', class: 'country-switcher-mobile', width: '40', itemType: 'country-flag' %}
   </ul>
+  <li class="meganav-actions__action loyalty-points-item">
+    <!-- <span>{{ customer.name }}</span> -->
+    <a href="/pages/rewards" class="data-points-div"><span data-lion-points="approved"></span><span>points</span></a>
+  </li>
 
   <ul class="meganav-social">
     <li class="meganav-social__item">
@@ -127,5 +118,10 @@
     display:flex;
     align-items:center;
     justify-content:center;
+  }
+  .meganav-actions__action.loyalty-points-item{
+    margin-right: 0;
+    list-style: none;
+    width: fit-content;
   }
 </style>
