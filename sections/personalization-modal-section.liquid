@@ -1,4 +1,5 @@
 <div class="personalisation-modal-wrapper" id="personalisation-modal-wrapper">
+  ABIR
   <div class="personalisation-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
@@ -352,11 +353,11 @@
     cursor: pointer;
     margin-bottom: 15px;
   }
-  #personalisation-modal-wrapper .uppercase-text{
-    text-transform: uppercase;
-  }
-  #personalisation-modal-wrapper .lowercase-text{
-    text-transform: lowercase;
+
+  #personalisation-modal-wrapper .personalisation-charge{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
   @media only screen and (max-width: 768px){
     #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
@@ -472,7 +473,7 @@
       }
     };
     const addPersonalisationCharge = () => {
-      let formData = {
+      {% comment %} let formData = {
         items: [
           {
             id: 53479059259771,
@@ -492,7 +493,8 @@
         })
         .catch((error) => {
           console.error('Error:', error);
-        });
+        }); {% endcomment %}
+        document.querySelector("#personalisation-charge button").click();
     };
     const checkValidation = (value)=>{
       if(value.length != 0){
@@ -575,7 +577,7 @@
       })
     })
 </script>
-
+{% render 'personalisation-functions', product: product %}
 {% schema %}
 {
   "name": "personalisation",

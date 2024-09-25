@@ -1,4 +1,5 @@
 {{ 'gift-note-message.css' | asset_url | stylesheet_tag }}
+{% assign isPersonalised = false %}
 
 <script class="cartFlagX"></script>
 <div class="shopping-bag wrapper">
@@ -45,8 +46,21 @@
                 {% if forloop.first %}
                   {% assign continue_shopping_url = collection_url %}
                 {% endif %}
-
-                <tr>
+                {% if item.product.metafields.custom.personalization.value == true %}
+                  {% for property in item.properties %}
+                    {% if property[1] == 'personalized' %}
+                      {% assign isPersonalised = true %}
+                      {% assign loadPersonalisedJs = true %}
+                      {% break %}
+                    {% else %}
+                      {% assign isPersonalised = false %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+                <tr
+                  class="{{ item.product.handle }}"
+                  data-personalisation="{{ isPersonalised }}"
+                >
                   <td class="image">
                     <a href="{{ collection_url }}{{ item.url }}">
                       <picture>
@@ -444,3 +458,7 @@ jQuery(document).ready(function () {
   }
 </style>
 <!-- cart timer -->
+
+{% if loadPersonalisedJs %}
+  {% render 'personalisation-functions', product: product %}
+{% endif %}

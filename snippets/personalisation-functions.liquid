@@ -1,0 +1,25 @@
+<script>
+  const extraChargeDiv = `  <div id="personalisation-charge">
+    <form action="/cart/add" method="post" enctype="multipart/form-data">
+      <input
+        type="hidden"
+        name="id"
+        id="personalisation-charge"
+        value="53479059259771"
+      >
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" name="add" class=""></button>
+    </form>
+  </div>`;
+  document.body.insertAdjacentHTML('beforeend', extraChargeDiv);
+{% if template == 'cart' %}
+  if(document.querySelectorAll("tr[data-personalisation='true']")){
+    document.querySelectorAll("tr[data-personalisation='true'] button.js-qty__adjust--plus").forEach(plus=>{
+        plus.addEventListener("click",()=>{
+            localStorage.setItem("buttonClick", "niggi");
+            document.querySelector("tr.personalisation-charge button.js-qty__adjust--plus").click();
+        })
+    })
+  }
+{% endif %}
+</script>
