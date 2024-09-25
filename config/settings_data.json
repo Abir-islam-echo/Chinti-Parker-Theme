@@ -3727,6 +3727,17 @@
               "notification_link_eu": "shopify://collections/new-season"
             }
           },
+          "notification_item_TLqKbw": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
+              "notification_text_us": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
+              "notification_text_eu": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
+              "notification_link": "shopify://collections/bank-holiday-summer-sale",
+              "notification_link_us": "shopify://collections/bank-holiday-summer-sale",
+              "notification_link_eu": "shopify://collections/bank-holiday-summer-sale"
+            }
+          },
           "notification_item_XzKVKd": {
             "type": "notification-item",
             "settings": {
@@ -3796,6 +3807,7 @@
         },
         "block_order": [
           "notification_item_Rwiqyc",
+          "notification_item_TLqKbw",
           "notification_item_XzKVKd",
           "notification_item_JqtxgJ",
           "notification_item_QWCxUV",
@@ -4319,8 +4331,8 @@
           "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile.webp",
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_7d3f74a7-2346-469c-9394-5e9f87b1a93d.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_92b1c90e-d589-47e8-a48d-7cdccf230f01.webp",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4436,8 +4448,8 @@
           "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_812b3894-6f1b-4175-bf4a-a7c264203978.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_2612c0b3-47ed-45d9-a4a7-f6f354d73bbf.webp",
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_5d2f05bf-2c78-4f8c-a143-9683e23fcdf0.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_a81846f6-834c-42f5-9b1b-7e37dbc1276d.webp",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4517,8 +4529,8 @@
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_fd2f5a88-b598-48cf-ba1b-96fd40129fd8.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_168f70f3-9c08-4e39-af3a-01d50c841bc9.webp",
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_82862601-1839-46d2-b2cc-300a7c7cb987.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_68836f3a-59cc-449d-b528-a04f072c5992.webp",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4638,8 +4650,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/summer-sale-desktop-sub-banner.webp",
-              "mobile_image1": "shopify://shop_images/summer-sale-mobile-sub-banner.webp",
+              "image1": "shopify://shop_images/summer-sale-desktop-sub-banner_2e5934c9-a7a6-43aa-885a-9623452dd4e5.webp",
+              "mobile_image1": "shopify://shop_images/summer-sale-mobile-sub-banner_d25573b1-dfea-4383-8aeb-95ecd13423a8.webp",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
