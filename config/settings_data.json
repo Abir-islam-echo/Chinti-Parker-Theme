@@ -3716,6 +3716,17 @@
       "notification-ribbon-carousel": {
         "type": "notification-ribbon-carousel",
         "blocks": {
+          "notification_item_XzKVKd": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "DISCOVER OUR AUTUMN '24 PEANUTS COLLECTION",
+              "notification_text_us": "DISCOVER OUR AUTUMN '24 PEANUTS COLLECTION",
+              "notification_text_eu": "DISCOVER OUR AUTUMN '24 PEANUTS COLLECTION",
+              "notification_link": "shopify://collections/chinti-meets-peanuts-24",
+              "notification_link_us": "shopify://collections/chinti-meets-peanuts-24",
+              "notification_link_eu": "shopify://collections/chinti-meets-peanuts-24"
+            }
+          },
           "notification_item_Rwiqyc": {
             "type": "notification-item",
             "settings": {
@@ -3736,17 +3747,6 @@
               "notification_link": "shopify://collections/bank-holiday-summer-sale",
               "notification_link_us": "shopify://collections/bank-holiday-summer-sale",
               "notification_link_eu": "shopify://collections/bank-holiday-summer-sale"
-            }
-          },
-          "notification_item_XzKVKd": {
-            "type": "notification-item",
-            "settings": {
-              "notification_text": "DISCOVER OUR AUTUMN '24 PEANUT COLLECTION",
-              "notification_text_us": "DISCOVER OUR AUTUMN '24 PEANUT COLLECTION",
-              "notification_text_eu": "DISCOVER OUR AUTUMN '24 PEANUT COLLECTION",
-              "notification_link": "shopify://collections/chinti-meets-peanuts-24",
-              "notification_link_us": "shopify://collections/chinti-meets-peanuts-24",
-              "notification_link_eu": "shopify://collections/chinti-meets-peanuts-24"
             }
           },
           "notification_item_JqtxgJ": {
@@ -3806,9 +3806,9 @@
           }
         },
         "block_order": [
+          "notification_item_XzKVKd",
           "notification_item_Rwiqyc",
           "notification_item_TLqKbw",
-          "notification_item_XzKVKd",
           "notification_item_JqtxgJ",
           "notification_item_QWCxUV",
           "notification_item_LmDmEy",
