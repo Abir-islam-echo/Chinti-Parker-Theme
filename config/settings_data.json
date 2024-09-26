@@ -4328,6 +4328,23 @@
       "0e18de53-66e8-4e3f-a5cf-bef847a003b5": {
         "type": "slideshow",
         "blocks": {
+          "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_4c0d8df3-55ff-49b8-938e-dc788110deba.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
           "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
             "type": "image",
             "settings": {
@@ -4342,23 +4359,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/bank-holiday-summer-sale",
-              "content_alignment": "left"
-            }
-          },
-          "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_6cfcb3e4-33f9-4626-8a1f-8d7ad8f15411.png",
-              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/sets-shop",
               "content_alignment": "left"
             }
           },
@@ -4398,8 +4398,8 @@
           }
         },
         "block_order": [
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
         ],
@@ -4445,6 +4445,23 @@
       "7be8beb1-6481-482b-b469-24eb66d66078": {
         "type": "slideshow-eu",
         "blocks": {
+          "1d527b93-fd40-4525-bfad-755c66a36343": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_75ed78b7-f09c-4b07-867d-03ddf973817d.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_c0dc0055-131f-4d94-926f-9771ec25b9e5.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
           "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
             "type": "image",
             "settings": {
@@ -4459,23 +4476,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/bank-holiday-summer-sale",
-              "content_alignment": "left"
-            }
-          },
-          "1d527b93-fd40-4525-bfad-755c66a36343": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_c0b8a192-c284-489f-96f8-08162a2cee0f.png",
-              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_1be3c887-a034-436a-8665-c5e87f78dd7e.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/sets-shop",
               "content_alignment": "left"
             }
           },
@@ -4515,8 +4515,8 @@
           }
         },
         "block_order": [
-          "83f31fb4-4be8-407d-9c3d-8c77231d3282",
           "1d527b93-fd40-4525-bfad-755c66a36343",
+          "83f31fb4-4be8-407d-9c3d-8c77231d3282",
           "df52da60-b7e9-4296-8d76-9de7744c17f4",
           "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
         ],
@@ -4546,8 +4546,8 @@
           "image_hEk7gH": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_6bb133b2-7233-419d-9845-a3b7fba64b0d.png",
-              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_3f8c4a16-36f0-4dfd-b604-0a8dcc3db695.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_8e90da38-3adf-4332-bcda-4ba86bd00f01.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_d83d2e14-59a9-4c58-a3f4-b4808c561175.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4556,7 +4556,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/sets-shop",
+              "link": "shopify://collections/chinti-meets-peanuts-24",
               "content_alignment": "left"
             }
           },
