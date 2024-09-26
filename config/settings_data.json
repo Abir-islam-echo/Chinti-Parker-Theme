@@ -3741,12 +3741,12 @@
           "notification_item_XzKVKd": {
             "type": "notification-item",
             "settings": {
-              "notification_text": "DISCOVER OUR SETS SHOP - 10% OFF MATCHING BOTTOMS ON SELECTED STYLES",
-              "notification_text_us": "DISCOVER OUR SETS SHOP - 10% OFF MATCHING BOTTOMS ON SELECTED STYLES",
-              "notification_text_eu": "DISCOVER OUR SETS SHOP - 10% OFF MATCHING BOTTOMS ON SELECTED STYLES",
-              "notification_link": "shopify://collections/sets-shop",
-              "notification_link_us": "shopify://collections/sets-shop",
-              "notification_link_eu": "shopify://collections/sets-shop"
+              "notification_text": "DISCOVER OUR AUTUMN '24 PEANUT COLLECTION",
+              "notification_text_us": "DISCOVER OUR AUTUMN '24 PEANUT COLLECTION",
+              "notification_text_eu": "DISCOVER OUR AUTUMN '24 PEANUT COLLECTION",
+              "notification_link": "shopify://collections/chinti-meets-peanuts-24",
+              "notification_link_us": "shopify://collections/chinti-meets-peanuts-24",
+              "notification_link_eu": "shopify://collections/chinti-meets-peanuts-24"
             }
           },
           "notification_item_JqtxgJ": {
@@ -4526,23 +4526,6 @@
       "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a": {
         "type": "slideshow-us",
         "blocks": {
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_82862601-1839-46d2-b2cc-300a7c7cb987.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_68836f3a-59cc-449d-b528-a04f072c5992.webp",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/bank-holiday-summer-sale",
-              "content_alignment": "left"
-            }
-          },
           "image_hEk7gH": {
             "type": "image",
             "settings": {
@@ -4557,6 +4540,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_82862601-1839-46d2-b2cc-300a7c7cb987.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_68836f3a-59cc-449d-b528-a04f072c5992.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/bank-holiday-summer-sale",
               "content_alignment": "left"
             }
           },
@@ -4596,8 +4596,8 @@
           }
         },
         "block_order": [
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
           "image_hEk7gH",
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
           "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
         ],
