@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="customization-content">
-          <div class="personalized-text">
+          <div class="personalised-text">
             <label>Add your monogram</label>
             <input maxlength="6" type="text" value="" placeholder="your personalised message">
           </div>
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="ATC-section">
-          <div class="personalized-atc-form">
+          <div class="personalised-atc-form">
             <form action="/cart/add" method="post" enctype="multipart/form-data">
               <input
                 type="hidden"
@@ -232,7 +232,7 @@
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .atc-form button{
     margin: 0;
   }
-  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit'].disable-atc {
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit'].disable-atc {
     background: #898989;
   }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .selection-fields {
@@ -402,7 +402,7 @@
     console.log('PDP personalisation');
     const modal_wrapper = document.querySelector('#personalisation-modal-wrapper');
     const personalisedButtonText = "{{ section.settings.personalised-atc-text }}"
-    const personalizedAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form button[type='submit']");
+    const personalisedAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit']");
     const regularAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .atc-form button[type='submit']");
     const demoText = document.querySelector(
       '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo p'
@@ -416,7 +416,7 @@
     );
     const textField = document
     .querySelector(
-      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .personalized-text input'
+      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .personalised-text input'
     )
     const timeOutFunction = (runFunction, timeOut) => {
       setTimeout(()=>{
@@ -429,7 +429,7 @@
         select.options[0].selected = true;
       });
       updateColorSwatchesActiveClass(color_pickers, color_pickers[0]);
-      document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-default]").forEach(item=>{
+      document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[data-default]").forEach(item=>{
         item.value = item.dataset['default'];
       })
       textField.value = '';
@@ -437,7 +437,7 @@
       demoText.setAttribute("style", "color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;");
       checkValidation(textField.value);
       setTimeout(()=>{  
-        personalizedAtcButton.textContent = personalisedButtonText;
+        personalisedAtcButton.textContent = personalisedButtonText;
         regularAtcButton.textContent = "continue without personalisation";
       },1500)
     }
@@ -462,7 +462,7 @@
       const selectedItemDestination = select.options[select.options['selectedIndex']].getAttribute('for');
       const selectedItemValue = select.options[select.options['selectedIndex']].value;
       const targetElement = document.querySelector(
-        `#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[data-value='${selectedItemDestination}']`
+        `#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[data-value='${selectedItemDestination}']`
       );
       targetElement.value = selectedItemValue;
       if(selectedItemDestination == 'size'){
@@ -477,10 +477,10 @@
     };
     const checkValidation = (value)=>{
       if(value.length != 0){
-        personalizedAtcButton.classList.remove("disable-atc");
+        personalisedAtcButton.classList.remove("disable-atc");
       }
       else{
-        personalizedAtcButton.classList.add("disable-atc");
+        personalisedAtcButton.classList.add("disable-atc");
       }
     }
     {% comment %} event for size selectors {% endcomment %}
@@ -491,7 +491,7 @@
       .forEach((li) => {
         li.addEventListener('click', () => {
           const selected_variant_id = li.getAttribute('data-id');
-          document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input#atc-product-id").value = selected_variant_id;
+          document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input#atc-product-id").value = selected_variant_id;
           if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
             document
               .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
@@ -520,7 +520,7 @@
         const color_name = li.children[0].getAttribute('data-color');
         const color_code = li.children[0].getAttribute('data-color-code');
         document.querySelector(
-          "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_color]']"
+          "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[name='properties[_color]']"
         ).value = color_name;
         demoText.style.color = `${color_code}`;
       });
@@ -532,7 +532,7 @@
         e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
         checkValidation(e.target.value);
         document.querySelector(
-          "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalized-atc-form input[name='properties[_monogram]']"
+          "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[name='properties[_monogram]']"
         ).value = e.target.value;
         demoText.textContent = e.target.value;
       });
@@ -562,7 +562,7 @@
       button.addEventListener("click",()=>{
         localStorage.setItem("cartTimer", JSON.stringify(count));
         timeOutFunction(closeModal, 1200);
-        if(button.closest(".personalized-atc-form")){
+        if(button.closest(".personalised-atc-form")){
           timeOutFunction(addPersonalisationCharge, 1200);
         }
       })

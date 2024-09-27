@@ -44,7 +44,7 @@ const changeButtonAction = (operation)=>{
   }
 }
   const isPersonalised = (targetElement) =>{
-    const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalized']") || false;
+    const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalised']") || false;
     if(dataIsPersonalised && (targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--minus") || targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--plus"))){
       return `${targetElement.dataset["operation"]}`;
     }
@@ -87,7 +87,7 @@ const changeButtonAction = (operation)=>{
   .pointer-event-none {
     pointer-events: none;
   }
-  span.ajaxcart__product-meta.mid[data-is="personalized"]{
+  span.ajaxcart__product-meta.mid[data-is="personalised"]{
     display: block !important;
   }
 </style>

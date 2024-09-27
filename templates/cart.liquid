@@ -48,7 +48,7 @@
                 {% assign isPersonalised = false %}
                 {% if item.product.metafields.custom.personalization.value == true %}
                   {% for property in item.properties %}
-                    {% if property[1] == 'personalized' %}
+                    {% if property[1] == 'personalised' %}
                       {% assign isPersonalised = true %}
                       {% assign loadPersonalisedJs = true %}
                       {% break %}
