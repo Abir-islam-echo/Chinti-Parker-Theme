@@ -386,6 +386,10 @@
     }
   }
   @media only screen and (max-width: 900px){
+    #personalisation-modal-wrapper .personalisation-modal .product-image{
+      max-width: 420px;
+      margin: auto;
+    }
     #personalisation-modal-wrapper .personalisation-modal .content-wrapper {
       flex-direction: column;
     }
@@ -399,7 +403,6 @@
 </style>
 
 <script>
-    console.log('PDP personalisation');
     const modal_wrapper = document.querySelector('#personalisation-modal-wrapper');
     const personalisedButtonText = "{{ section.settings.personalised-atc-text }}"
     const personalisedAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit']");

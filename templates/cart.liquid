@@ -45,6 +45,7 @@
                 {% if forloop.first %}
                   {% assign continue_shopping_url = collection_url %}
                 {% endif %}
+                {% comment %} personalisation {% endcomment %}
                 {% assign isPersonalised = false %}
                 {% if item.product.metafields.custom.personalization.value == true %}
                   {% for property in item.properties %}
@@ -57,6 +58,7 @@
                     {% endif %}
                   {% endfor %}
                 {% endif %}
+                {% comment %} personalisation {% endcomment %}
                 <tr
                   class="{{ item.product.handle }}"
                   data-personalisation="{{ isPersonalised }}"
@@ -78,9 +80,11 @@
                       <span>SKU: {{ item.variant.barcode }}</span>
                     {%- endunless %}
                       <span class="variant-title">Size: {{ item.variant.title }}</span>
+                      {% comment %} personalisation {% endcomment %}
                     {% if isPersonalised %}
                       <span>Type: Personalised</span>
                     {% endif %}
+                    {% comment %} personalisation {% endcomment %}
                   </td>
                   <td class="qty product">
                     <div
