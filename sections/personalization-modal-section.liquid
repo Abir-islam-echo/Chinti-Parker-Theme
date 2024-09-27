@@ -91,7 +91,7 @@
                 name="properties[_MID_Address]"
                 value="{{ product.metafields.mid_info.mid_address }}"
               >
-              <input type="hidden" name="properties[_type]" value="personalized">
+              <input type="hidden" name="properties[_type]" value="personalised">
               <input type="hidden" name="properties[_monogram]" data-default="" data-value="monogram" value="">
               <input
                 type="hidden"
@@ -543,7 +543,19 @@
           updateFormProperties(select);
         });
       });
-      
+      const extraChargeDiv = `  <div id="personalisation-charge">
+      <form action="/cart/add" method="post" enctype="multipart/form-data">
+        <input
+          type="hidden"
+          name="id"
+          id="personalisation-charge"
+          value="53479059259771"
+        >
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" name="add" class=""></button>
+      </form>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', extraChargeDiv);
     {% comment %} add 30 sec timer to the cart page and adding extra charge for personalization {% endcomment %}
     let count = new Date((new Date().getTime())+(30*60*1000));
     document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section [type='submit']").forEach(button=>{

@@ -1,52 +1,93 @@
 <script>
-  const extraChargeDiv = `  <div id="personalisation-charge">
-    <form action="/cart/add" method="post" enctype="multipart/form-data">
-      <input
-        type="hidden"
-        name="id"
-        id="personalisation-charge"
-        value="53479059259771"
-      >
-      <input type="hidden" name="quantity" value="1">
-      <button type="submit" name="add" class=""></button>
-    </form>
-  </div>`;
-  document.body.insertAdjacentHTML('beforeend', extraChargeDiv);
-{% if template == 'cart' %}
-  const removePersonalisationCharge = (quantity) => {
-    const remainingChargeItem = document.querySelector("tr.personalisation-charge td.remove button.remove").getAttribute("data-total-items")
-    let formData = {
-      "id": "53479059259771",
-      "quantity": (parseInt(remainingChargeItem) - parseInt(quantity))
-    };
-    fetch(window.Shopify.routes.root + 'cart/change.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        return response.json();
+  {% if template == 'cart' %}
+    const removePersonalisationCharge = (quantity) => {
+      const remainingChargeItem = document.querySelector("tr.personalisation-charge td.remove button.remove").getAttribute("data-total-items")
+      
+      let formData = {
+        "id": "53479059259771",
+        "quantity": (parseInt(remainingChargeItem) - parseInt(quantity))
+      };
+      fetch(window.Shopify.routes.root + 'cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
-  };
-  if(document.querySelectorAll("tr[data-personalisation='true']")){
-    document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
-      remove.addEventListener("click",()=>{
-        removePersonalisationCharge(remove.getAttribute("data-total-items"));
+        .then((response) => {
+          return response.json();
         })
+        .catch((error) => {
+          console.error('Error:', error);
+        })
+    };
+    if(document.querySelectorAll("tr[data-personalisation='true']")){
+      document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
+        remove.addEventListener("click",()=>{
+          removePersonalisationCharge(remove.getAttribute("data-total-items"));
+          })
+      })
+    }
+  {% endif %}
+
+{% comment %} cart drawer {% endcomment %}
+const changeButtonAction = (operation)=>{
+  if(operation == 'disable'){
+    document.querySelectorAll(":is(button, a)").forEach(button=>{
+      button.classList.add("pointer-event-none");
     })
   }
-{% endif %}
-
-
-
-document.querySelectorAll("[data-is='personalized']").forEach(item=>{
-  item.closest(".ajaxcart__product").querySelector(".ajaxcart__qty--plus").addEventListener("click",()=>{
-    console.log("clicked");
+  else{
+    document.querySelectorAll(":is(button, a)").forEach(button=>{
+      button.classList.remove("pointer-event-none");
+    })
+  }
+}
+  const isPersonalised = (targetElement) =>{
+    const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalized']") || false;
+    if(dataIsPersonalised && (targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--minus") || targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--plus"))){
+      return `${targetElement.dataset["operation"]}`;
+    }
+    return false;
+  }
+  document.body.addEventListener("click",(e)=>{
+    const updateOperation = isPersonalised(e.target);
+    if(updateOperation){
+      changeButtonAction("disable")
+      setTimeout(()=>{
+        document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
+        changeButtonAction("enable")
+      },2000)
+    }
   })
-})
 </script>
+
+<style>
+  tr.personalisation-charge td.remove {
+    display: none;
+  }
+  tr.personalisation-charge .qty.product .qty-total .js-qty button {
+    display: none;
+  }
+  tr.personalisation-charge .product span {
+    display: none;
+  }
+  tr.personalisation-charge a {
+    pointer-events: none;
+  }
+  tr.personalisation-charge .product span.variant-title {
+    display: none;
+  }
+  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) a {
+    pointer-events: none;
+  }
+  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) .ajaxcart__qty button {
+    display: none;
+  }
+  .pointer-event-none {
+    pointer-events: none;
+  }
+  span.ajaxcart__product-meta.mid[data-is="personalized"]{
+    display: block !important;
+  }
+</style>
