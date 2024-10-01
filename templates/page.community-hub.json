@@ -83,6 +83,34 @@
         "grid-gap": 30
       }
     },
+    "491406f2-6277-411f-b456-83369763acec": {
+      "type": "banner-01",
+      "blocks": {
+        "template--14693747720270__491406f2-6277-411f-b456-83369763acec-16657490959e9016d5-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Cashmere_club_banner_desktop.png",
+            "mobile_image": "shopify://shop_images/3_22.png",
+            "heading": "",
+            "font_size": 32,
+            "font_weight": 100,
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align_vertical": "center",
+            "text_align_horizontal": "center",
+            "link": "shopify://pages/rewards",
+            "button_text": "",
+            "font_size_button": 20
+          }
+        }
+      },
+      "block_order": [
+        "template--14693747720270__491406f2-6277-411f-b456-83369763acec-16657490959e9016d5-0"
+      ],
+      "settings": {
+        "section_margin_top": 30
+      }
+    },
     "banner_three_column_01_fjbGmf": {
       "type": "banner-three-column-01",
       "blocks": {
@@ -194,34 +222,6 @@
       "settings": {
       }
     },
-    "491406f2-6277-411f-b456-83369763acec": {
-      "type": "banner-01",
-      "blocks": {
-        "template--14693747720270__491406f2-6277-411f-b456-83369763acec-16657490959e9016d5-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Cashmere_club_banner_desktop.png",
-            "mobile_image": "shopify://shop_images/3_22.png",
-            "heading": "",
-            "font_size": 32,
-            "font_weight": 100,
-            "text_color": "text-light",
-            "text_color_mobile": "text-light-mobile",
-            "text_align_vertical": "center",
-            "text_align_horizontal": "center",
-            "link": "shopify://pages/rewards",
-            "button_text": "",
-            "font_size_button": 20
-          }
-        }
-      },
-      "block_order": [
-        "template--14693747720270__491406f2-6277-411f-b456-83369763acec-16657490959e9016d5-0"
-      ],
-      "settings": {
-        "section_margin_top": 30
-      }
-    },
     "16648859269892d9e0": {
       "type": "gap",
       "settings": {
@@ -230,14 +230,52 @@
         "margin_top_mobile": 0,
         "margin_bottom_mobile": 0
       }
+    },
+    "customer_reviews_section_xWiYhG": {
+      "type": "customer-reviews-section",
+      "blocks": {
+        "review_box_JKjxRH": {
+          "type": "review-box",
+          "settings": {
+            "review": "I keep coming back to Chinti & Parker for my cashmere items, not least because the brand collaborations like Snoopy and Mr Men just strike a nostalgic chord with me that keep my inner child satisfied, but the fit, feel and quality is just reliable. Loving the Mr Men collab and my cardigan makes a nice change from the jumpers I usually go for. Items I want to take good care of and know that they'll last if I do.",
+            "customer-name": "Jennifer"
+          }
+        },
+        "review_box_Ltzcdp": {
+          "type": "review-box",
+          "settings": {
+            "review": "Very easy and transparent website, delivered fast and quality of jumpers was great. Very nice colours and good shape. Very happy. Paper packaging was great! More companies should follow your example!",
+            "customer-name": "Lydia"
+          }
+        },
+        "review_box_fMMPhA": {
+          "type": "review-box",
+          "settings": {
+            "review": "Fast delivery, the items I bought were exactly as in the photos and of great quality. Fit perfectly.",
+            "customer-name": "Elena"
+          }
+        }
+      },
+      "block_order": [
+        "review_box_JKjxRH",
+        "review_box_Ltzcdp",
+        "review_box_fMMPhA"
+      ],
+      "settings": {
+        "heading": "WHAT OUR CUSTOMERS SAY",
+        "text-color": "#000000",
+        "review-font": "helvetica_n4",
+        "font-size": 24
+      }
     }
   },
   "order": [
     "banner-01",
     "16648748702f1993bc",
+    "491406f2-6277-411f-b456-83369763acec",
     "banner_three_column_01_fjbGmf",
     "banner_twocolumns_p3e7PA",
-    "491406f2-6277-411f-b456-83369763acec",
-    "16648859269892d9e0"
+    "16648859269892d9e0",
+    "customer_reviews_section_xWiYhG"
   ]
 }
