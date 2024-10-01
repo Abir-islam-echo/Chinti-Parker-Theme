@@ -16,11 +16,11 @@
         "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0": {
           "type": "text",
           "settings": {
-            "title": "Spring Collection '24",
+            "title": "AW '24 BASICS",
             "title_color": "#000000",
             "title_font_size": 32,
             "title_font_weight": 900,
-            "text": "<p>Our latest drop of sartorial spirit-lifters for our Spring ’24 collection. Signature stripes take on a graphic mood, new colourways for our 100% cashmere seasonal Essentials have arrived and expect slogan knitwear you’ll love. Explore our new collection with sweaters, t-shirts, track pants and cardigans to kick off spring.</p>",
+            "text": "<p>DROP 2 </p>",
             "content_color": "#000000",
             "text_font_size": 20,
             "margin_top": 0,
@@ -41,13 +41,14 @@
         "title": ""
       }
     },
-    "banner_T4AUzR": {
+    "banner_VGaWdn": {
       "type": "banner",
       "blocks": {
-        "image_VBMag7": {
+        "image_ajtM3g": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/C_P_26.01.2429640_2_ebee5875-37e5-4af1-b96f-cbfcf7075052.jpg",
+            "image": "shopify://shop_images/Chinti_Parker_15.png",
+            "mobile_image": "shopify://shop_images/Chinti_Parker_15_6c879228-dfc3-4c99-8f60-747cfe1d1b2c.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
@@ -58,7 +59,7 @@
         }
       },
       "block_order": [
-        "image_VBMag7"
+        "image_ajtM3g"
       ],
       "settings": {
       }
@@ -69,12 +70,12 @@
         "bannergrid_twocolumns_pCFqH3": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120437.719.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120333.719_0fe5f0f0-d3cc-432c-a40a-2891d1c19f9e.png",
+            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T154411.969_21102a63-809c-44cd-bd1b-3b350712ecf5.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T154411.969_1b7f3451-04b1-4bda-9b1a-bda5adf678f9.png",
             "video-src1": "",
             "aspectRatio1": "4:3",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120525.460.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120525.460_2db77293-2264-45ed-8e51-ead7d5c639c1.png",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238_1ccc7d6b-fa79-41ff-8f49-e62afa7123d7.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -108,11 +109,193 @@
         "grid-gap": 0
       }
     },
+    "banner_two_column_01_AJCQhz": {
+      "type": "banner-two-column-01",
+      "blocks": {
+        "bannergrid_twocolumns_FznUUP": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T155615.037.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T155615.037_04218918-a84f-4b2f-b74a-601ce2a284a6.png",
+            "video-src1": "",
+            "aspectRatio1": "4:3",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238_1ccc7d6b-fa79-41ff-8f49-e62afa7123d7.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 30,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "center",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 30,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "center",
+            "right_banner_content_alignment_horizontal": "center",
+            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "show-both"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_FznUUP"
+      ],
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_T4AUzR": {
+      "type": "banner",
+      "blocks": {
+        "image_VBMag7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Chinti_Parker_16.png",
+            "mobile_image": "shopify://shop_images/Chinti_Parker_16_f31e6b55-d6f8-425e-a3ed-7d6b9aa86cc8.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VBMag7"
+      ],
+      "settings": {
+      }
+    },
+    "banner_two_column_01_YpBbtn": {
+      "type": "banner-two-column-01",
+      "blocks": {
+        "bannergrid_twocolumns_DUdBpK": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T160547.740.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T160547.740_5214d389-5990-4ddf-8612-56e14f17562c.png",
+            "video-src1": "",
+            "aspectRatio1": "4:3",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T160657.590.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T160657.590_860da19d-c3cf-4529-8668-46c56b7e76db.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 30,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "center",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 30,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "center",
+            "right_banner_content_alignment_horizontal": "center",
+            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "show-both"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_DUdBpK"
+      ],
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_cBBCMz": {
+      "type": "banner",
+      "blocks": {
+        "image_9p8mgR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Chinti_Parker_17.png",
+            "mobile_image": "shopify://shop_images/Chinti_Parker_17_4a85529a-40f6-42e4-b5cc-3ba82daf9f0e.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_9p8mgR"
+      ],
+      "settings": {
+      }
+    },
+    "banner_two_column_01_YTR7LB": {
+      "type": "banner-two-column-01",
+      "blocks": {
+        "bannergrid_twocolumns_zQAFbP": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T161046.686.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T161046.686_07627090-ffa2-4239-b710-270c62871681.png",
+            "video-src1": "",
+            "aspectRatio1": "4:3",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T161215.929.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T161215.929_114ec449-d4c7-461e-8141-7614ee7db536.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 30,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "center",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 30,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "center",
+            "right_banner_content_alignment_horizontal": "center",
+            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "show-both"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_zQAFbP"
+      ],
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
     "banner_twocolumns_w7ErV8": {
       "type": "banner-twocolumns",
       "blocks": {
         "bannergrid_twocolumns_mhXcUh": {
           "type": "bannergrid-twocolumns",
+          "disabled": true,
           "settings": {
             "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120636.993.png",
             "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120636.993_03bafa70-e283-4eb8-91a8-397c5fe672d3.png",
@@ -145,11 +328,35 @@
       "settings": {
       }
     },
+    "banner_rwDXiY": {
+      "type": "banner",
+      "blocks": {
+        "image_eBBct9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Chinti_Parker_19.png",
+            "mobile_image": "shopify://shop_images/Chinti_Parker_19_104dae51-2013-4307-bb82-6ff94fac1b72.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_eBBct9"
+      ],
+      "settings": {
+      }
+    },
     "banner_Efb97P": {
       "type": "banner",
       "blocks": {
         "image_miHLX4": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/C_P_26.01.2429934_1.jpg",
             "mobile_image": "shopify://shop_images/C_P_26.01.2429934_1_9b17256c-c16d-4e43-abc8-1734f7fdbba3.jpg",
@@ -165,6 +372,7 @@
       "block_order": [
         "image_miHLX4"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -208,6 +416,7 @@
       "block_order": [
         "bannergrid_twocolumns_jGKaEt"
       ],
+      "disabled": true,
       "settings": {
         "margin_top": 10,
         "grid-gap": 0
@@ -218,6 +427,7 @@
       "blocks": {
         "image_dXDKCj": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_-_2024-03-05T093705.483_a415b3d6-374d-46b0-aadc-5b94006cf293.png",
             "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-05T093705.483.png",
@@ -241,6 +451,7 @@
       "blocks": {
         "image_TJJTz3": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_-_2024-03-05T094846.641.png",
             "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-05T094617.596_4643da91-60c3-4de1-8d30-c0cf54f9779e.png",
@@ -264,6 +475,7 @@
       "blocks": {
         "bannergrid_twocolumns_Ab73xp": {
           "type": "bannergrid-twocolumns",
+          "disabled": true,
           "settings": {
             "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121004.129.png",
             "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121004.129_c577368a-7c62-4f24-aea8-302f929cafd2.png",
@@ -301,6 +513,7 @@
       "blocks": {
         "bannergrid_twocolumns_yNyar6": {
           "type": "bannergrid-twocolumns",
+          "disabled": true,
           "settings": {
             "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121129.495.png",
             "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121129.495_01729315-28d4-4054-827d-8db750539fe6.png",
@@ -338,6 +551,7 @@
       "blocks": {
         "bannergrid_twocolumns_pQxD4U": {
           "type": "bannergrid-twocolumns",
+          "disabled": true,
           "settings": {
             "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121803.075.png",
             "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121803.075_4436f952-9758-46a9-8ea3-ef50b6137bf7.png",
@@ -404,6 +618,7 @@
       "block_order": [
         "bannergrid_twocolumns_jrrBRn"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -412,6 +627,7 @@
       "blocks": {
         "image_VwKmh3": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled_design_-_2024-03-05T095452.596.png",
             "mobile_image": "shopify://shop_images/C_P_26.01.2429588_1_b2b40866-45ab-4191-a3d2-c6ea08b29fca.jpg",
@@ -427,6 +643,7 @@
       "block_order": [
         "image_VwKmh3"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -459,9 +676,15 @@
   },
   "order": [
     "51f50973-641f-4d06-b12b-27b53a8e4c6c",
-    "banner_T4AUzR",
+    "banner_VGaWdn",
     "banner_two_column_01_igN8hR",
+    "banner_two_column_01_AJCQhz",
+    "banner_T4AUzR",
+    "banner_two_column_01_YpBbtn",
+    "banner_cBBCMz",
+    "banner_two_column_01_YTR7LB",
     "banner_twocolumns_w7ErV8",
+    "banner_rwDXiY",
     "banner_Efb97P",
     "banner_two_column_01_aQhPiz",
     "banner_83JMd6",
