@@ -4078,7 +4078,7 @@
               "sale_colour": "#ff0000",
               "mobile_title_colour": false,
               "subheadings_colour": "",
-              "linklist": "menu-summer-new",
+              "linklist": "",
               "country_selector": "all",
               "background_colour": "",
               "featured_content_mobile": false,
@@ -4319,8 +4319,8 @@
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_4c0d8df3-55ff-49b8-938e-dc788110deba.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_1.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4436,8 +4436,8 @@
           "1d527b93-fd40-4525-bfad-755c66a36343": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_75ed78b7-f09c-4b07-867d-03ddf973817d.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_c0dc0055-131f-4d94-926f-9771ec25b9e5.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_1_6946eb47-8c0e-4c83-a1a7-b117b7f8a939.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1_2b4a0cf8-74ed-4f5a-b541-b00c39b6aa65.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4517,8 +4517,8 @@
           "image_hEk7gH": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_8e90da38-3adf-4332-bcda-4ba86bd00f01.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_d83d2e14-59a9-4c58-a3f4-b4808c561175.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_1_783f0a73-5f0b-4308-8f92-4296a571fd91.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1_91a97f6a-a8e5-4a56-8212-51cc934e31f1.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
