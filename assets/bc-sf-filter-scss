@@ -7,11 +7,11 @@ $searchBoxMobileHeight: 50px;
 @font-face {
   font-family: bc-sf-filter-ico;
   font-display: swap;
-  src: url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/302\/assets\/bc-sf-filter-ico.eot?1fx0e3\u0026v=71133625122506434571721142109");
-src: url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/302\/assets\/bc-sf-filter-ico.eot?1fx0e3%23iefix\u0026v=71133625122506434571721142109") format('embedded-opentype'),
-url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/302\/assets\/bc-sf-filter-ico.ttf?1fx0e3\u0026v=149092035153215201481721142110") format('truetype'),
-url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/302\/assets\/bc-sf-filter-ico.woff?1fx0e3\u0026v=152220026089263463831721142110") format('woff'),
-url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/302\/assets\/bc-sf-filter-ico.svg?1fx0e3%23icomoon\u0026v=117370087076797144871721142109") format('svg');
+  src: url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/311\/assets\/bc-sf-filter-ico.eot?1fx0e3\u0026v=71133625122506434571727784481");
+src: url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/311\/assets\/bc-sf-filter-ico.eot?1fx0e3%23iefix\u0026v=71133625122506434571727784481") format('embedded-opentype'),
+url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/311\/assets\/bc-sf-filter-ico.ttf?1fx0e3\u0026v=149092035153215201481727784482") format('truetype'),
+url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/311\/assets\/bc-sf-filter-ico.woff?1fx0e3\u0026v=152220026089263463831727784482") format('woff'),
+url("\/\/www.chintiandparker.com\/cdn\/shop\/t\/311\/assets\/bc-sf-filter-ico.svg?1fx0e3%23icomoon\u0026v=117370087076797144871727784481") format('svg');
 font-weight: 400;
   font-style: normal;
 }

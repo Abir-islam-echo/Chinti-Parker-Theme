@@ -11,8 +11,8 @@ export const createApp = ({ settings, config, locale }) => {
     locale,
     dependencies: [
       "https://cdn.jsdelivr.net/npm/@appmate/wishlist@4.17.6/components/wishlist.css",
-      "//www.chintiandparker.com/cdn/shop/t/302/assets/wishlist-king-custom.css?v=63816522155686180531721142195",
-      "//www.chintiandparker.com/cdn/shop/t/302/assets/wishlist-king-components.js?v=67192780879355402051721142194",
+      "//www.chintiandparker.com/cdn/shop/t/311/assets/wishlist-king-custom.css?v=63816522155686180531727784570",
+      "//www.chintiandparker.com/cdn/shop/t/311/assets/wishlist-king-components.js?v=67192780879355402051727784569",
     ],
   });
 
