@@ -1,0 +1,476 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "wrapper": "div#look-book-template",
+  "sections": {
+    "51f50973-641f-4d06-b12b-27b53a8e4c6c": {
+      "type": "custom-content-01",
+      "blocks": {
+        "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0": {
+          "type": "text",
+          "settings": {
+            "title": "Spring Collection '24",
+            "title_color": "#000000",
+            "title_font_size": 32,
+            "title_font_weight": 900,
+            "text": "<p>Our latest drop of sartorial spirit-lifters for our Spring ’24 collection. Signature stripes take on a graphic mood, new colourways for our 100% cashmere seasonal Essentials have arrived and expect slogan knitwear you’ll love. Explore our new collection with sweaters, t-shirts, track pants and cardigans to kick off spring.</p>",
+            "content_color": "#000000",
+            "text_font_size": 20,
+            "margin_top": 0,
+            "border_top": 0,
+            "border_color": "",
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "width": "50%",
+            "alignment": "center",
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "banner_T4AUzR": {
+      "type": "banner",
+      "blocks": {
+        "image_VBMag7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/C_P_26.01.2429640_2_ebee5875-37e5-4af1-b96f-cbfcf7075052.jpg",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VBMag7"
+      ],
+      "settings": {
+      }
+    },
+    "banner_two_column_01_igN8hR": {
+      "type": "banner-two-column-01",
+      "blocks": {
+        "bannergrid_twocolumns_pCFqH3": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120437.719.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120333.719_0fe5f0f0-d3cc-432c-a40a-2891d1c19f9e.png",
+            "video-src1": "",
+            "aspectRatio1": "4:3",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120525.460.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120525.460_2db77293-2264-45ed-8e51-ead7d5c639c1.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 30,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "center",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 30,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "center",
+            "right_banner_content_alignment_horizontal": "center",
+            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "show-both"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_pCFqH3"
+      ],
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_twocolumns_w7ErV8": {
+      "type": "banner-twocolumns",
+      "blocks": {
+        "bannergrid_twocolumns_mhXcUh": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120636.993.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120636.993_03bafa70-e283-4eb8-91a8-397c5fe672d3.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120658.645.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120658.645_7b85d727-c850-4de5-82cf-20b6ea9f73d1.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "text_align_left": "text-left",
+            "heading2": "",
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "text_align_right": "text-left",
+            "link1": "https://www.chintiandparker.com/products/navy-wool-cashmere-fringe-cardigan",
+            "link_text1": "",
+            "link2": "https://www.chintiandparker.com/products/navy-with-cream-striped-heart-wool-cashmere-sweater",
+            "link_text2": "",
+            "image_width": "image-half",
+            "column_hide": "show-both"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_mhXcUh"
+      ],
+      "settings": {
+      }
+    },
+    "banner_Efb97P": {
+      "type": "banner",
+      "blocks": {
+        "image_miHLX4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/C_P_26.01.2429934_1.jpg",
+            "mobile_image": "shopify://shop_images/C_P_26.01.2429934_1_9b17256c-c16d-4e43-abc8-1734f7fdbba3.jpg",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/cream-wool-cashmere-striped-collar-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_miHLX4"
+      ],
+      "settings": {
+      }
+    },
+    "banner_two_column_01_aQhPiz": {
+      "type": "banner-two-column-01",
+      "blocks": {
+        "bannergrid_twocolumns_jGKaEt": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120754.769.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120754.769_ebbd92ea-4cce-4e8f-ab2b-720685b56a22.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120829.583.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120829.583_25a88ea1-8652-4ffb-84c1-c4b1b107239a.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 60,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "end",
+            "right_banner_content_alignment_horizontal": "end",
+            "link1": "https://www.chintiandparker.com/products/mint-green-wool-cashmere-waistcoat",
+            "link_text1": "Shop Now",
+            "font_size_left_cta": 25,
+            "link2": "https://www.chintiandparker.com/products/pink-lemonade-wool-cashmere-waistcoat",
+            "link_text2": "Shop Now",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_jGKaEt"
+      ],
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_83JMd6": {
+      "type": "banner",
+      "blocks": {
+        "image_dXDKCj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-03-05T093705.483_a415b3d6-374d-46b0-aadc-5b94006cf293.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-05T093705.483.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/powder-blue-wool-cashmere-cropped-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_dXDKCj"
+      ],
+      "settings": {
+      }
+    },
+    "banner_tQq8NF": {
+      "type": "banner",
+      "blocks": {
+        "image_TJJTz3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-03-05T094846.641.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-05T094617.596_4643da91-60c3-4de1-8d30-c0cf54f9779e.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/navy-wool-cashmere-fringe-cardigan",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_TJJTz3"
+      ],
+      "settings": {
+      }
+    },
+    "banner_twocolumns_iffxh6": {
+      "type": "banner-twocolumns",
+      "blocks": {
+        "bannergrid_twocolumns_Ab73xp": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121004.129.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121004.129_c577368a-7c62-4f24-aea8-302f929cafd2.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121046.519.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121046.519_f851c388-3362-4c14-87ab-c25cad7845ed.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "text_align_left": "text-left",
+            "heading2": "",
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "text_align_right": "text-left",
+            "link1": "https://www.chintiandparker.com/products/navy-wool-cashmere-patchwork-jacket",
+            "link_text1": "",
+            "link2": "https://www.chintiandparker.com/products/navy-cotton-cashmere-ditsy-daisy-hoodie",
+            "link_text2": "",
+            "image_width": "image-half",
+            "column_hide": "show-both"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_Ab73xp"
+      ],
+      "settings": {
+      }
+    },
+    "banner_twocolumns_dRAkW9": {
+      "type": "banner-twocolumns",
+      "blocks": {
+        "bannergrid_twocolumns_yNyar6": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121129.495.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121129.495_01729315-28d4-4054-827d-8db750539fe6.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121155.837_17469d3c-01b5-4806-b0e6-1d3a5729f449.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121155.837.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "text_align_left": "text-left",
+            "heading2": "",
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "text_align_right": "text-left",
+            "link1": "https://www.chintiandparker.com/products/cream-cotton-alpaca-peanuts-gang-sweater",
+            "link_text1": "Shop Now",
+            "link2": "https://www.chintiandparker.com/products/multicoloured-stripe-wool-cashmere-snoopy-sweater",
+            "link_text2": "Shop Now",
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_yNyar6"
+      ],
+      "settings": {
+      }
+    },
+    "banner_twocolumns_GmGeNj": {
+      "type": "banner-twocolumns",
+      "blocks": {
+        "bannergrid_twocolumns_pQxD4U": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121803.075.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121803.075_4436f952-9758-46a9-8ea3-ef50b6137bf7.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121839.432.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121839.432_408ab884-0e04-4912-b086-e2add0a2dcf6.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "text_align_left": "text-left",
+            "heading2": "",
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "text_align_right": "text-left",
+            "link1": "https://www.chintiandparker.com/products/multicoloured-stripe-wool-cashmere-snoopy-sweater",
+            "link_text1": "",
+            "link2": "https://www.chintiandparker.com/products/grey-wool-cashmere-woodstock-wide-leg-pants",
+            "link_text2": "",
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_pQxD4U"
+      ],
+      "settings": {
+      }
+    },
+    "banner_twocolumns_p4RhPY": {
+      "type": "banner-twocolumns",
+      "blocks": {
+        "bannergrid_twocolumns_jrrBRn": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121924.916.png",
+            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121924.916_218939a3-656c-49b7-81a7-b22f6b9fbc11.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T122005.458.png",
+            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T122005.458_29faada8-8c72-47e9-b016-2afa9d91a9cf.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "text_align_left": "text-left",
+            "heading2": "",
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "text_align_right": "text-left",
+            "link1": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "link_text1": "",
+            "link2": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link_text2": "",
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_jrrBRn"
+      ],
+      "settings": {
+      }
+    },
+    "banner_mwF9cy": {
+      "type": "banner",
+      "blocks": {
+        "image_VwKmh3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-03-05T095452.596.png",
+            "mobile_image": "shopify://shop_images/C_P_26.01.2429588_1_b2b40866-45ab-4191-a3d2-c6ea08b29fca.jpg",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VwKmh3"
+      ],
+      "settings": {
+      }
+    },
+    "0732d93f-7334-4ae2-8aa1-56d11f73285c": {
+      "type": "custom-content-01",
+      "blocks": {
+        "715a9b1c-8697-40dc-ac0f-3f152829950a": {
+          "type": "cta",
+          "settings": {
+            "padding-top": 50,
+            "padding-bottom": 0,
+            "title": "Shop the Collection",
+            "url": "https://www.chintiandparker.com/collections/spring-24-collection",
+            "title_color": "#000000",
+            "title_font_size": 20,
+            "cta_bg": "",
+            "cta_border_color": "",
+            "cta_border": 2,
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "715a9b1c-8697-40dc-ac0f-3f152829950a"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "51f50973-641f-4d06-b12b-27b53a8e4c6c",
+    "banner_T4AUzR",
+    "banner_two_column_01_igN8hR",
+    "banner_twocolumns_w7ErV8",
+    "banner_Efb97P",
+    "banner_two_column_01_aQhPiz",
+    "banner_83JMd6",
+    "banner_tQq8NF",
+    "banner_twocolumns_iffxh6",
+    "banner_twocolumns_dRAkW9",
+    "banner_twocolumns_GmGeNj",
+    "banner_twocolumns_p4RhPY",
+    "banner_mwF9cy",
+    "0732d93f-7334-4ae2-8aa1-56d11f73285c"
+  ]
+}
