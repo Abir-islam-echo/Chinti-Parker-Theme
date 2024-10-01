@@ -4319,8 +4319,8 @@
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_1.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4436,8 +4436,8 @@
           "1d527b93-fd40-4525-bfad-755c66a36343": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_1_6946eb47-8c0e-4c83-a1a7-b117b7f8a939.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1_2b4a0cf8-74ed-4f5a-b541-b00c39b6aa65.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4517,8 +4517,8 @@
           "image_hEk7gH": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_1_783f0a73-5f0b-4308-8f92-4296a571fd91.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1_91a97f6a-a8e5-4a56-8212-51cc934e31f1.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4598,8 +4598,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Desktop_Sub-banner_3.png",
-              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_2.png",
+              "image1": "shopify://shop_images/Desktop_Sub-banner_56c5c3ae-e981-4bf2-9beb-ca28b2423bbc.png",
+              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_64382753-11b1-4a31-96f1-5ebd352dd84c.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",

@@ -100,8 +100,8 @@
         "31072edc-8b99-4304-b5f7-1b35b200ba74": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/3_53152465-6d15-49c2-9b73-9f4ba0fe3b85.png",
-            "mobile_image": "shopify://shop_images/3_53152465-6d15-49c2-9b73-9f4ba0fe3b85.png",
+            "image": "shopify://shop_images/1_01d1577a-d8f1-41e9-bbda-7d342ceadd75.png",
+            "mobile_image": "shopify://shop_images/1_01d1577a-d8f1-41e9-bbda-7d342ceadd75.png",
             "heading": "",
             "content": "",
             "link": "https://www.chintiandparker.com/products/pink-wool-cashmere-dip-dye-shorts"
@@ -110,8 +110,8 @@
         "784931a9-03b2-4bf8-9ae5-acf003e646c2": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/4_30c730cd-99c1-4892-8eb6-c702906bf507.png",
-            "mobile_image": "shopify://shop_images/4_30c730cd-99c1-4892-8eb6-c702906bf507.png",
+            "image": "shopify://shop_images/8_0a2bf817-85e4-4487-8068-18c381577c49.png",
+            "mobile_image": "shopify://shop_images/8_0a2bf817-85e4-4487-8068-18c381577c49.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -120,8 +120,8 @@
         "9b33da39-f9b3-48db-80af-60c4e147f263": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/5_1644846a-c44d-47aa-a94a-3fd8e0ab11cf.png",
-            "mobile_image": "shopify://shop_images/5_1644846a-c44d-47aa-a94a-3fd8e0ab11cf.png",
+            "image": "shopify://shop_images/7_ca16f138-d551-4577-b51e-f2a6a45f06c5.png",
+            "mobile_image": "shopify://shop_images/7_ca16f138-d551-4577-b51e-f2a6a45f06c5.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -130,8 +130,92 @@
         "0dd3e530-ed8d-455c-b5a5-8c19d468f801": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/6_d92a6517-41c8-4bcb-b6b5-7a38b950a49e.png",
-            "mobile_image": "shopify://shop_images/6_d92a6517-41c8-4bcb-b6b5-7a38b950a49e.png",
+            "image": "shopify://shop_images/3_3f747313-0cfa-4a24-b592-ac2e953e3aee.png",
+            "mobile_image": "shopify://shop_images/3_3f747313-0cfa-4a24-b592-ac2e953e3aee.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "734eafb2-ada5-4511-9b25-4bb7e60978e7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5_fed83774-98a0-4c43-9bef-e26305470bd0.png",
+            "mobile_image": "shopify://shop_images/5_fed83774-98a0-4c43-9bef-e26305470bd0.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "b75c28a8-6731-42f6-94a0-c9213cf2a016": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/6_a9c13d8c-b138-452f-a4e5-ff8ce3d9e091.png",
+            "mobile_image": "shopify://shop_images/6_a9c13d8c-b138-452f-a4e5-ff8ce3d9e091.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "4963ea2d-d495-4459-aada-a23798e4c5f3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2_2f49c906-96d3-4c9a-ab80-7e12fbef7c91.png",
+            "mobile_image": "shopify://shop_images/2_2f49c906-96d3-4c9a-ab80-7e12fbef7c91.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/violet-wool-cashmere-boxy-hoodie"
+          }
+        },
+        "18e87833-96b6-4867-9158-6392de8a1203": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4_17bd53c0-ba40-432e-9552-698fc4f1fe19.png",
+            "mobile_image": "shopify://shop_images/4_17bd53c0-ba40-432e-9552-698fc4f1fe19.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/teal-wool-cashmere-v-neck-sweater"
+          }
+        },
+        "45e9fd67-a0be-47cf-8741-8a647ba52f12": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_BLUE_VIOLET_P_ab82de1e-c2ea-413b-bdc0-06b1dee1b661.jpg",
+            "mobile_image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_BLUE_VIOLET_P.jpg",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "536fa54d-efc9-4545-90b3-ee6df97f41c4": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/AW24_DROP_1_KAW2448_SLIM_FIT_ROLL_NECK_GRAPE_P.jpg",
+            "mobile_image": "shopify://shop_images/AW24_DROP_1_KAW2448_SLIM_FIT_ROLL_NECK_GRAPE_P_2088042b-4dbe-460f-87d4-484f52f5aed5.jpg",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "8cae7a12-0994-453f-8149-c492211206ef": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/AW24_DROP_1_KPS2321_RELAXED_ROLL_NECK__MOSS_GREEN_D.jpg",
+            "mobile_image": "shopify://shop_images/AW24_DROP_1_KPS2321_RELAXED_ROLL_NECK__MOSS_GREEN_D_931093ac-b9d0-4a3b-a7d6-cdc78903a0ca.jpg",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "7d111aa1-b3f4-454b-a4bc-112e79a65f27": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_CREAM_F.jpg",
+            "mobile_image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_CREAM_F_db1f683e-85a0-4f9b-aef2-3ac89bb06545.jpg",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -297,94 +381,6 @@
             "link": "shopify://collections/autumn-basics"
           }
         },
-        "734eafb2-ada5-4511-9b25-4bb7e60978e7": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Chloelovestoshop_22.png",
-            "mobile_image": "shopify://shop_images/Chloelovestoshop_22_d6694eee-d209-4886-b1bd-c2b749ebbb9b.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "b75c28a8-6731-42f6-94a0-c9213cf2a016": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Chloelovestoshop_20.png",
-            "mobile_image": "shopify://shop_images/Chloelovestoshop_20_6e823168-d74f-4ddc-8946-f1d43a3783de.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "4963ea2d-d495-4459-aada-a23798e4c5f3": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Untitled_design_-_2024-03-07T091843.065.png",
-            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-07T091843.065_0782e587-7550-4e9b-bc24-5801f17a306d.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://products/violet-wool-cashmere-boxy-hoodie"
-          }
-        },
-        "18e87833-96b6-4867-9158-6392de8a1203": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Untitled_design_-_2024-03-07T092558.414_b8fda131-7410-439a-a478-f082256431be.png",
-            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-07T092558.414_5a5d9d26-2919-4d5c-912b-307d081a4bff.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://products/teal-wool-cashmere-v-neck-sweater"
-          }
-        },
-        "45e9fd67-a0be-47cf-8741-8a647ba52f12": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_BLUE_VIOLET_P_ab82de1e-c2ea-413b-bdc0-06b1dee1b661.jpg",
-            "mobile_image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_BLUE_VIOLET_P.jpg",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "536fa54d-efc9-4545-90b3-ee6df97f41c4": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/AW24_DROP_1_KAW2448_SLIM_FIT_ROLL_NECK_GRAPE_P.jpg",
-            "mobile_image": "shopify://shop_images/AW24_DROP_1_KAW2448_SLIM_FIT_ROLL_NECK_GRAPE_P_2088042b-4dbe-460f-87d4-484f52f5aed5.jpg",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "8cae7a12-0994-453f-8149-c492211206ef": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/AW24_DROP_1_KPS2321_RELAXED_ROLL_NECK__MOSS_GREEN_D.jpg",
-            "mobile_image": "shopify://shop_images/AW24_DROP_1_KPS2321_RELAXED_ROLL_NECK__MOSS_GREEN_D_931093ac-b9d0-4a3b-a7d6-cdc78903a0ca.jpg",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "7d111aa1-b3f4-454b-a4bc-112e79a65f27": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_CREAM_F.jpg",
-            "mobile_image": "shopify://shop_images/AW24_DROP_1_KPS2323_BOXY_HOODIE_CREAM_F_db1f683e-85a0-4f9b-aef2-3ac89bb06545.jpg",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
         "4987dec0-10a4-4463-8555-78302ae1008d": {
           "type": "image",
           "disabled": true,
@@ -435,6 +431,14 @@
         "784931a9-03b2-4bf8-9ae5-acf003e646c2",
         "9b33da39-f9b3-48db-80af-60c4e147f263",
         "0dd3e530-ed8d-455c-b5a5-8c19d468f801",
+        "734eafb2-ada5-4511-9b25-4bb7e60978e7",
+        "b75c28a8-6731-42f6-94a0-c9213cf2a016",
+        "4963ea2d-d495-4459-aada-a23798e4c5f3",
+        "18e87833-96b6-4867-9158-6392de8a1203",
+        "45e9fd67-a0be-47cf-8741-8a647ba52f12",
+        "536fa54d-efc9-4545-90b3-ee6df97f41c4",
+        "8cae7a12-0994-453f-8149-c492211206ef",
+        "7d111aa1-b3f4-454b-a4bc-112e79a65f27",
         "166479270238728e96-2",
         "172f626e-2740-4173-8000-4e35d9ec3451",
         "166479270238728e96-1",
@@ -451,14 +455,6 @@
         "98dfe231-525c-44da-9342-a3ccdc523780",
         "0731ab4a-6c0b-48a5-98cd-12fd19664893",
         "74e543b4-06c8-43a6-a7d9-a510866d5867",
-        "734eafb2-ada5-4511-9b25-4bb7e60978e7",
-        "b75c28a8-6731-42f6-94a0-c9213cf2a016",
-        "4963ea2d-d495-4459-aada-a23798e4c5f3",
-        "18e87833-96b6-4867-9158-6392de8a1203",
-        "45e9fd67-a0be-47cf-8741-8a647ba52f12",
-        "536fa54d-efc9-4545-90b3-ee6df97f41c4",
-        "8cae7a12-0994-453f-8149-c492211206ef",
-        "7d111aa1-b3f4-454b-a4bc-112e79a65f27",
         "4987dec0-10a4-4463-8555-78302ae1008d",
         "1a31e29b-8f4a-4a90-8548-e7dd93fc2660",
         "6c3665d9-4d53-4f2d-b1db-8628230c6c3b",
