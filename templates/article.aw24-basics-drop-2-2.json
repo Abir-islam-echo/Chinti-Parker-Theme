@@ -53,7 +53,7 @@
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "link": "shopify://collections/autumn-basics",
             "button_text": ""
           }
         }
@@ -90,10 +90,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link1": "shopify://collections/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link2": "shopify://collections/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -135,10 +135,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link1": "shopify://collections/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link2": "shopify://collections/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -166,7 +166,7 @@
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "link": "shopify://collections/autumn-basics",
             "button_text": ""
           }
         }
@@ -203,10 +203,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link1": "shopify://collections/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link2": "shopify://collections/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -234,7 +234,7 @@
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "link": "shopify://collections/autumn-basics",
             "button_text": ""
           }
         }
@@ -271,10 +271,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link1": "shopify://collections/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link2": "shopify://collections/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -340,7 +340,7 @@
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "link": "shopify://collections/autumn-basics",
             "button_text": ""
           }
         }
@@ -656,7 +656,7 @@
             "padding-top": 50,
             "padding-bottom": 0,
             "title": "Shop the Collection",
-            "url": "https://www.chintiandparker.com/collections/spring-24-collection",
+            "url": "shopify://collections/autumn-basics",
             "title_color": "#000000",
             "title_font_size": 20,
             "cta_bg": "",
