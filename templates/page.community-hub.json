@@ -16,15 +16,15 @@
         "3af6fff4-7a05-4dc8-a62a-21294b7789b9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Banner_desktop.png",
-            "mobile_image": "shopify://shop_images/2_26.png",
+            "image": "shopify://shop_images/Community_Hub_02.png",
+            "mobile_image": "shopify://shop_images/Community_Hub_02_779fd0fd-40dd-48e5-8f7b-300227d84d36.png",
             "heading": "",
             "font_size": 48,
             "font_weight": 400,
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align_vertical": "center",
-            "text_align_horizontal": "center",
+            "text_align_horizontal": "flex-start",
             "link": "",
             "button_text": "",
             "font_size_button": 25
