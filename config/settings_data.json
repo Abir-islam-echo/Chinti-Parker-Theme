@@ -4653,8 +4653,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/summer-sale-desktop-sub-banner_2e5934c9-a7a6-43aa-885a-9623452dd4e5.webp",
-              "mobile_image1": "shopify://shop_images/summer-sale-mobile-sub-banner_d25573b1-dfea-4383-8aeb-95ecd13423a8.webp",
+              "image1": "shopify://shop_images/Desktop_sub-banner_27b60d39-e37a-4ff7-8fef-43948ccb1e5c.png",
+              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_1becab65-0aef-47f3-86c9-cd10fb4257a4.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
