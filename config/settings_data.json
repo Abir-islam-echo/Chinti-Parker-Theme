@@ -4345,24 +4345,6 @@
               "content_alignment": "left"
             }
           },
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_7d3f74a7-2346-469c-9394-5e9f87b1a93d.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_92b1c90e-d589-47e8-a48d-7cdccf230f01.webp",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/bank-holiday-summer-sale",
-              "content_alignment": "left"
-            }
-          },
           "40532ffb-a186-48c3-a0bb-e0f07d71d4b0": {
             "type": "image",
             "settings": {
@@ -4377,6 +4359,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/aw24-collection",
+              "content_alignment": "left"
+            }
+          },
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_c0b8a192-c284-489f-96f8-08162a2cee0f.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_1be3c887-a034-436a-8665-c5e87f78dd7e.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/sets-shop",
               "content_alignment": "left"
             }
           },
@@ -4400,8 +4399,8 @@
         },
         "block_order": [
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
         ],
         "settings": {
@@ -4463,24 +4462,6 @@
               "content_alignment": "left"
             }
           },
-          "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_5d2f05bf-2c78-4f8c-a143-9683e23fcdf0.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_a81846f6-834c-42f5-9b1b-7e37dbc1276d.webp",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/bank-holiday-summer-sale",
-              "content_alignment": "left"
-            }
-          },
           "df52da60-b7e9-4296-8d76-9de7744c17f4": {
             "type": "image",
             "settings": {
@@ -4495,6 +4476,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/aw24-collection",
+              "content_alignment": "left"
+            }
+          },
+          "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_c0b8a192-c284-489f-96f8-08162a2cee0f.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_1be3c887-a034-436a-8665-c5e87f78dd7e.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/sets-shop",
               "content_alignment": "left"
             }
           },
@@ -4518,8 +4516,8 @@
         },
         "block_order": [
           "1d527b93-fd40-4525-bfad-755c66a36343",
-          "83f31fb4-4be8-407d-9c3d-8c77231d3282",
           "df52da60-b7e9-4296-8d76-9de7744c17f4",
+          "83f31fb4-4be8-407d-9c3d-8c77231d3282",
           "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
         ],
         "settings": {
@@ -4545,24 +4543,6 @@
               "content_alignment": "left"
             }
           },
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_82862601-1839-46d2-b2cc-300a7c7cb987.webp",
-              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_68836f3a-59cc-449d-b528-a04f072c5992.webp",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/bank-holiday-summer-sale",
-              "content_alignment": "left"
-            }
-          },
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1": {
             "type": "image",
             "settings": {
@@ -4577,6 +4557,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/aw24-collection",
+              "content_alignment": "left"
+            }
+          },
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_c0b8a192-c284-489f-96f8-08162a2cee0f.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_1be3c887-a034-436a-8665-c5e87f78dd7e.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/sets-shop",
               "content_alignment": "left"
             }
           },
@@ -4600,8 +4597,8 @@
         },
         "block_order": [
           "image_hEk7gH",
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
           "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
         ],
         "settings": {
