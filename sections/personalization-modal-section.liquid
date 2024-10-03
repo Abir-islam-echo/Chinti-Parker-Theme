@@ -1,9 +1,11 @@
 <div class="personalisation-modal-wrapper" id="personalisation-modal-wrapper">
-  ABIR
   <div class="personalisation-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
-        {{ product.images[1] | img_url: '800x1000' | img_tag }}
+        {{ section.settings['sample-image'] | img_url: '800x1000' | img_tag }}
+        <div class="image-caption">
+          <p>{{ section.settings['image-caption'] }}</p>
+        </div>
         <div class="customized-text-demo">
           <p style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
         </div>
@@ -20,17 +22,17 @@
         </div>
         <div class="customization-content">
           <div class="personalised-text">
-            <label>Add your monogram</label>
-            <input maxlength="6" type="text" value="" placeholder="your personalised message">
+            <label>Add Your Monogram</label>
+            <input maxlength="6" type="text" value="" placeholder="Your Monogram">
           </div>
           <div class="selection-fields">
             <div class="single-field">
               <label for="place">Choose Your Placement</label>
               <select name="place" id="place" class="place-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
-                <option for="placement" value="chest">Chest</option>
                 <option for="placement" value="cuff">Cuff</option>
                 <option for="placement" value="hem">Hem</option>
+                <option for="placement" value="chest">Chest</option>
               </select>
             </div>
             <div class="single-field">
@@ -96,9 +98,9 @@
               <input
                 type="hidden"
                 name="properties[_placement]"
-                data-default="chest"
+                data-default="cuff"
                 data-value="placement"
-                value="chest"
+                value="cuff"
               >
               <input type="hidden" name="properties[_font]" data-default="block" data-value="font" value="block">
               <input
@@ -219,6 +221,18 @@
     right: 35%;
     top: 35%;
   }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption{
+    position: absolute;
+    bottom: 0;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption p{
+    color: black;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
+  padding: 15px;
+  line-height: normal;
+  }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo p{
     line-height: normal;
     font-weight: 700;
@@ -333,13 +347,13 @@
     object-fit: cover;
     object-position: top;
   }
-  #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled) {
+  {% comment %} #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled) {
     display: none;
-  }
-  #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button + #ValidAddtoCart {
+  } {% endcomment %}
+  {% comment %} #AddToCartForm #product-add .fake-atc-button + #ValidAddtoCart {
     display: none;
-  }
-  #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
+  } {% endcomment %}
+  #AddToCartForm #product-add .fake-atc-button {
     border: 1px solid #111;
     background-color: #111;
     color: #fff;
@@ -360,21 +374,21 @@
     opacity: 0;
   }
   @media only screen and (max-width: 768px){
-    #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
+    {% comment %} #AddToCartForm #product-add .fake-atc-button {
       margin-bottom: 0;
       padding: 23px 12px 22px;
       position: relative;
       color: #111;
       line-height: 1.2;
-    }
-    #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button:after {
+    } {% endcomment %}
+    {% comment %} #AddToCartForm #product-add .fake-atc-button:after {
       content: "Add";
       position: absolute;
       {% comment %} top: 0; {% endcomment %}
       left: 0;
       width: 100%;
       color: #fff;
-    }
+    } {% endcomment %}
     .product-details #AddToCartForm #variants-add-wrapper.hidden{
       display: none;
     }
@@ -495,13 +509,13 @@
         li.addEventListener('click', () => {
           const selected_variant_id = li.getAttribute('data-id');
           document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input#atc-product-id").value = selected_variant_id;
-          if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
+          if (!document.querySelector('#AddToCartForm #product-add .fake-atc-button')) {
             document
-              .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
-              .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Add to Bag</div>`);
+              .querySelector('#AddToCartForm #product-add #AddToCartWrapper')
+              .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Personalise</div>`);
           }
           document
-            .querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')
+            .querySelector('#AddToCartForm #product-add .fake-atc-button')
             .addEventListener('click', () => {
               openModal();
             });
@@ -576,6 +590,16 @@
 {
   "name": "personalisation",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "sample-image",
+      "label": "Sample Image"
+    },
+    {
+      "type": "text",
+      "id": "image-caption",
+      "label": "Image Caption"
+    },
     {
       "type": "text",
       "id": "title",

@@ -759,6 +759,6 @@
     });
 </script>
 
-{% if product.metafields.custom.personalization.value == true %}
+{% if product.tags contains 'PERSONALISATION' %}
   {% section 'personalization-modal-section' %}
 {% endif %}
