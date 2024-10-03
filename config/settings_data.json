@@ -3740,6 +3740,7 @@
           },
           "notification_item_TLqKbw": {
             "type": "notification-item",
+            "disabled": true,
             "settings": {
               "notification_text": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
               "notification_text_us": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
