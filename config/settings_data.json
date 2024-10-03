@@ -3738,6 +3738,17 @@
               "notification_link_eu": "shopify://collections/new-season"
             }
           },
+          "notification_item_TLqKbw": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
+              "notification_text_us": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
+              "notification_text_eu": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
+              "notification_link": "shopify://collections/bank-holiday-summer-sale",
+              "notification_link_us": "shopify://collections/bank-holiday-summer-sale",
+              "notification_link_eu": "shopify://collections/bank-holiday-summer-sale"
+            }
+          },
           "notification_item_JqtxgJ": {
             "type": "notification-item",
             "settings": {
@@ -3797,6 +3808,7 @@
         "block_order": [
           "notification_item_XzKVKd",
           "notification_item_Rwiqyc",
+          "notification_item_TLqKbw",
           "notification_item_JqtxgJ",
           "notification_item_QWCxUV",
           "notification_item_LmDmEy",
@@ -3873,10 +3885,10 @@
               "featured_content_image_2": "shopify://shop_images/Untitled_design_-_2024-09-13T111127.701_2edc52f6-1a86-4ac9-9a46-120222917f8f.png",
               "featured_content_mobile_image_2": "shopify://shop_images/Untitled_design_-_2024-09-13T111127.701_5c4838fd-1776-4774-b19d-33a8bde95d10.png",
               "featured_content_mobile_2": false,
-              "featured_content_3": "shopify://pages/cashmere-club-sign-up-page",
-              "featured_content_title_3": "Join now",
-              "featured_content_image_3": "shopify://shop_images/Spotlight_1.png",
-              "featured_content_mobile_image_3": "shopify://shop_images/Spotlight_1_569c68ad-9d93-43a6-8263-a88e96cb645e.png",
+              "featured_content_3": "shopify://collections/autumn-basics",
+              "featured_content_title_3": "New Basics",
+              "featured_content_image_3": "shopify://shop_images/21_2_9a92551f-c47f-4116-9c2e-e5e2cc4358ff.png",
+              "featured_content_mobile_image_3": "shopify://shop_images/21_2_54d011aa-4431-47df-a6ea-a99cc748d357.png",
               "featured_content_mobile_3": false
             }
           },
@@ -4002,41 +4014,8 @@
               "featured_content_mobile_3": false
             }
           },
-          "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73": {
-            "type": "nav_item",
-            "settings": {
-              "title": "ABOUT",
-              "title_url": "shopify://pages/about-us",
-              "title_colour": "rgba(0,0,0,0)",
-              "inner_link_colour": "#000000",
-              "sale_colour": "#ff0000",
-              "mobile_title_colour": false,
-              "subheadings_colour": "rgba(0,0,0,0)",
-              "linklist": "new-meganav-about",
-              "country_selector": "all",
-              "background_colour": "#fcfaf7",
-              "featured_content_mobile": false,
-              "featured_content_heading": "Learn more about Chinti & Parker",
-              "featured_content_1": "shopify://pages/about-us",
-              "featured_content_title_1": "About Us",
-              "featured_content_image_1": "shopify://shop_images/C_P_C_23.01.23_41334.jpg",
-              "featured_content_mobile_image_1": "shopify://shop_images/C_P_C_23.01.23_41334_7fc3e4e6-c902-492d-aa56-97405d12308f.jpg",
-              "featured_content_mobile_1": false,
-              "featured_content_2": "shopify://blogs/journal/digital-passport-product",
-              "featured_content_title_2": "Digital Product Passport",
-              "featured_content_image_2": "shopify://shop_images/SPOTLIGHT.png",
-              "featured_content_mobile_image_2": "shopify://shop_images/SPOTLIGHT_fecce123-a485-4b63-afdf-2c682e58c36a.png",
-              "featured_content_mobile_2": false,
-              "featured_content_3": "shopify://pages/sustainability-hub",
-              "featured_content_title_3": "Sustainability Hub",
-              "featured_content_image_3": "shopify://shop_images/MicrosoftTeams-image_19.jpg",
-              "featured_content_mobile_image_3": "shopify://shop_images/MicrosoftTeams-image_19.jpg",
-              "featured_content_mobile_3": false
-            }
-          },
           "18a3bcf6-cd03-43ae-950a-59388fddbedf": {
             "type": "nav_item",
-            "disabled": true,
             "settings": {
               "title": "SALE",
               "title_url": "shopify://collections/bank-holiday-summer-sale",
@@ -4078,7 +4057,7 @@
               "sale_colour": "#ff0000",
               "mobile_title_colour": false,
               "subheadings_colour": "",
-              "linklist": "",
+              "linklist": "menu-summer-new",
               "country_selector": "all",
               "background_colour": "",
               "featured_content_mobile": false,
@@ -4097,6 +4076,39 @@
               "featured_content_title_3": "Crochet Edit",
               "featured_content_image_3": "shopify://shop_images/33.png",
               "featured_content_mobile_image_3": "shopify://shop_images/33_3651c74b-1d15-4eae-b4a5-4fe97f554865.png",
+              "featured_content_mobile_3": false
+            }
+          },
+          "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73": {
+            "type": "nav_item",
+            "disabled": true,
+            "settings": {
+              "title": "ABOUT",
+              "title_url": "shopify://pages/about-us",
+              "title_colour": "rgba(0,0,0,0)",
+              "inner_link_colour": "#000000",
+              "sale_colour": "#ff0000",
+              "mobile_title_colour": false,
+              "subheadings_colour": "rgba(0,0,0,0)",
+              "linklist": "new-meganav-about",
+              "country_selector": "all",
+              "background_colour": "#fcfaf7",
+              "featured_content_mobile": false,
+              "featured_content_heading": "Learn more about Chinti & Parker",
+              "featured_content_1": "shopify://pages/about-us",
+              "featured_content_title_1": "About Us",
+              "featured_content_image_1": "shopify://shop_images/C_P_C_23.01.23_41334.jpg",
+              "featured_content_mobile_image_1": "shopify://shop_images/C_P_C_23.01.23_41334_7fc3e4e6-c902-492d-aa56-97405d12308f.jpg",
+              "featured_content_mobile_1": false,
+              "featured_content_2": "shopify://blogs/journal/digital-passport-product",
+              "featured_content_title_2": "Digital Product Passport",
+              "featured_content_image_2": "shopify://shop_images/SPOTLIGHT.png",
+              "featured_content_mobile_image_2": "shopify://shop_images/SPOTLIGHT_fecce123-a485-4b63-afdf-2c682e58c36a.png",
+              "featured_content_mobile_2": false,
+              "featured_content_3": "shopify://pages/sustainability-hub",
+              "featured_content_title_3": "Sustainability Hub",
+              "featured_content_image_3": "shopify://shop_images/MicrosoftTeams-image_19.jpg",
+              "featured_content_mobile_image_3": "shopify://shop_images/MicrosoftTeams-image_19.jpg",
               "featured_content_mobile_3": false
             }
           },
@@ -4273,9 +4285,9 @@
           "cbef035c-9cce-452a-8808-5408775887f7",
           "cd3d9905-4a2e-4bc4-9f69-9ec73fff3792",
           "358a2953-5cae-477e-a2c8-125889c1c42c",
-          "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73",
           "18a3bcf6-cd03-43ae-950a-59388fddbedf",
           "nav_item_PqJMdT",
+          "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73",
           "56e3551b-91f0-4dd8-9c33-6072bf66c9a5",
           "732bdafb-6251-44fb-8482-2435c5687c7f",
           "3f8f2863-d1c2-4579-904b-b3370159330a",
@@ -4319,8 +4331,8 @@
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_4c0d8df3-55ff-49b8-938e-dc788110deba.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4330,6 +4342,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_7d3f74a7-2346-469c-9394-5e9f87b1a93d.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_92b1c90e-d589-47e8-a48d-7cdccf230f01.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/bank-holiday-summer-sale",
               "content_alignment": "left"
             }
           },
@@ -4347,23 +4376,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/aw24-collection",
-              "content_alignment": "left"
-            }
-          },
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/BASICS_HP_DESKTOP_17bfd2c6-34f6-4311-a388-ae229bb06bcd.png",
-              "mobile_image": "shopify://shop_images/MOBILE_BASICS_HP_e2bf25ab-9c01-422b-94d1-3076d82a18d3.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/basics",
               "content_alignment": "left"
             }
           },
@@ -4387,8 +4399,8 @@
         },
         "block_order": [
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
-          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
           "636aecdb-d284-4a9c-914a-b68d6b91b88a",
+          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
         ],
         "settings": {
@@ -4436,8 +4448,8 @@
           "1d527b93-fd40-4525-bfad-755c66a36343": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_75ed78b7-f09c-4b07-867d-03ddf973817d.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_c0dc0055-131f-4d94-926f-9771ec25b9e5.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4447,6 +4459,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
+          "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_5d2f05bf-2c78-4f8c-a143-9683e23fcdf0.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_a81846f6-834c-42f5-9b1b-7e37dbc1276d.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/bank-holiday-summer-sale",
               "content_alignment": "left"
             }
           },
@@ -4464,23 +4493,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/aw24-collection",
-              "content_alignment": "left"
-            }
-          },
-          "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/BASICS_HP_DESKTOP_17bfd2c6-34f6-4311-a388-ae229bb06bcd.png",
-              "mobile_image": "shopify://shop_images/MOBILE_BASICS_HP_e2bf25ab-9c01-422b-94d1-3076d82a18d3.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/basics",
               "content_alignment": "left"
             }
           },
@@ -4504,8 +4516,8 @@
         },
         "block_order": [
           "1d527b93-fd40-4525-bfad-755c66a36343",
-          "df52da60-b7e9-4296-8d76-9de7744c17f4",
           "83f31fb4-4be8-407d-9c3d-8c77231d3282",
+          "df52da60-b7e9-4296-8d76-9de7744c17f4",
           "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
         ],
         "settings": {
@@ -4517,8 +4529,8 @@
           "image_hEk7gH": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_8e90da38-3adf-4332-bcda-4ba86bd00f01.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_d83d2e14-59a9-4c58-a3f4-b4808c561175.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4528,6 +4540,23 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
+          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/summer-sale-hp-banner-desktop_82862601-1839-46d2-b2cc-300a7c7cb987.webp",
+              "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_68836f3a-59cc-449d-b528-a04f072c5992.webp",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/bank-holiday-summer-sale",
               "content_alignment": "left"
             }
           },
@@ -4545,23 +4574,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/aw24-collection",
-              "content_alignment": "left"
-            }
-          },
-          "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/BASICS_HP_DESKTOP_17bfd2c6-34f6-4311-a388-ae229bb06bcd.png",
-              "mobile_image": "shopify://shop_images/MOBILE_BASICS_HP_e2bf25ab-9c01-422b-94d1-3076d82a18d3.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/basics",
               "content_alignment": "left"
             }
           },
@@ -4585,8 +4597,8 @@
         },
         "block_order": [
           "image_hEk7gH",
-          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
+          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
           "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
         ],
         "settings": {
@@ -4598,8 +4610,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Desktop_Sub-banner_3.png",
-              "mobile_image1": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image1": "shopify://shop_images/Desktop_Sub-banner_56c5c3ae-e981-4bf2-9beb-ca28b2423bbc.png",
+              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_64382753-11b1-4a31-96f1-5ebd352dd84c.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4638,8 +4650,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Desktop_sub-banner_1b607889-6b4d-4c9d-aee9-08a6268c6593.png",
-              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_a13b62ad-d6b9-41ee-81e6-4439c06551ab.png",
+              "image1": "shopify://shop_images/summer-sale-desktop-sub-banner_2e5934c9-a7a6-43aa-885a-9623452dd4e5.webp",
+              "mobile_image1": "shopify://shop_images/summer-sale-mobile-sub-banner_d25573b1-dfea-4383-8aeb-95ecd13423a8.webp",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4650,7 +4662,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/sets-shop",
+              "link1": "shopify://collections/bank-holiday-summer-sale",
               "link_text1": "",
               "font_size_left_cta": 25
             }
