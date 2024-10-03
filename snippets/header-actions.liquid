@@ -1,10 +1,4 @@
 <ul class="header-actions">
-  {% if customer %}
-    <li class="header-actions__action header-actions__action--loyalty-points loyalty-points-item">
-      <!-- <span>{{ customer.name }}</span> -->
-      <a href="/pages/rewards" class="data-points-div"><span data-lion-points="approved"></span><span>points</span></a>
-    </li>
-  {% endif %}
   <li>
     {% render 'country-switcher', class: 'country-switcher-desktop', width: '32', itemType: 'country-flag' -%}
     {%- render 'country-switcher-global' %}
@@ -54,6 +48,25 @@
       <span class="sr-only">+44 (0) 207 0164312</span>
     </a>
   </li>
+  <li class="header-actions__action header-actions__action--contact">
+    <a
+      href="/pages/rewards"
+      class="header-actions__link contact-link link"
+      title="Rewards"
+    >
+      <div
+        class="page-header__icon header-actions__icon"
+        style="    font-size: 20px;"
+      >
+        <!--
+          <img width="25px" src="https://cdn.shopify.com/s/files/1/0040/7057/2147/files/goat-image.png?v=1701341098">
+        -->
+        <i class="fal fa-thin fa-star"></i>
+      </div>
+
+      <span class="sr-only">Rewards</span>
+    </a>
+  </li>
 
   {%- if shop.customer_accounts_enabled -%}
     <li class="header-actions__action header-actions__action--account">
@@ -94,31 +107,6 @@
   </li>
 </ul>
 <style>
-  .header-actions{
-    align-items: center;
-  }
-  .loyalty-points-item{
-    /* text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    white-space: nowrap; */
-    margin-right: 1.5rem;
-  }
-  .loyalty-points-item a.data-points-div{
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    border: 1px solid;
-    color: black;
-  }
-  .loyalty-points-item a.data-points-div span[data-lion-points='approved']{
-    line-height: normal;
-  }
   .header-telephone-icon a{
     position:relative;
   }
@@ -153,21 +141,6 @@
   visibility: visible;
   opacity: 1;
   transform: translateY(-60px);
-  }
-  @media only screen and (max-width: 530px){
-    .header-actions__action.header-actions__action--loyalty-points{
-      display: none;
-    }
-  }
-  @media only screen and (max-width: 768px){
-    .header-actions__action.header-actions__action--loyalty-points{
-      margin-right: 0;
-    }
-  }
-  @media only screen and (min-width: 769px) and (max-width: 1200px){
-    .header-actions__action.header-actions__action--loyalty-points{
-      margin-right: 1rem;
-    }
   }
 </style>
 {% comment %} redeye task start {% endcomment %}

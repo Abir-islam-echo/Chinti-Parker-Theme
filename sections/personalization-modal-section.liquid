@@ -1,0 +1,598 @@
+<div class="personalisation-modal-wrapper" id="personalisation-modal-wrapper">
+  ABIR
+  <div class="personalisation-modal">
+    <div class="content-wrapper">
+      <div class="product-image half-width">
+        {{ product.images[1] | img_url: '800x1000' | img_tag }}
+        <div class="customized-text-demo">
+          <p style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
+        </div>
+      </div>
+
+      <div class="product-customization half-width">
+        <div class="heading">
+          <div class="title">
+            <h2>{{ section.settings.title }}</h2>
+          </div>
+          <div class="description">
+            {{ section.settings.description }}
+          </div>
+        </div>
+        <div class="customization-content">
+          <div class="personalised-text">
+            <label>Add your monogram</label>
+            <input maxlength="6" type="text" value="" placeholder="your personalised message">
+          </div>
+          <div class="selection-fields">
+            <div class="single-field">
+              <label for="place">Choose Your Placement</label>
+              <select name="place" id="place" class="place-option">
+                {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
+                <option for="placement" value="chest">Chest</option>
+                <option for="placement" value="cuff">Cuff</option>
+                <option for="placement" value="hem">Hem</option>
+              </select>
+            </div>
+            <div class="single-field">
+              <label for="fonts">Choose Your Font</label>
+              <select name="fonts" id="fonts" class="font-option">
+                {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
+                <option for="font" value="Block" demo-value="'Ubuntu', sans-serif">Block</option>
+                <option for="font" value="Serif" demo-value="'PT Serif', serif">Serif</option>
+                <option for="font" value="Kunstler" demo-value="'Pinyon Script', cursive">Kunstler</option>
+              </select>
+            </div>
+            <div class="single-field">
+              <label for="text-size">Choose Your Size</label>
+              <select name="text-size" id="text-size" class="text-size-option">
+                {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
+                <option for="size" value="samll-1cm" demo-value="14px">Small - 1cm</option>
+                <option for="size" value="medium-2cm" demo-value="16px">Medium - 2cm</option>
+              </select>
+            </div>
+          </div>
+          <div class="color-picker">
+            <label for="place">Choose Your Color</label>
+            <ul>
+              <li class="color-item active">
+                <span class="color color-black" data-color="black" data-color-code="#000"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-navy" data-color="navy" data-color-code="#000099"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-red" data-color="red" data-color-code="#B8001F"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-orange" data-color="orange" data-color-code="#FF6600"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-pink" data-color="pink" data-color-code="#FF99CC"></span>
+              </li>
+              <li class="color-item">
+                <span class="color color-white" data-color="white" data-color-code="#fff"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ATC-section">
+          <div class="personalised-atc-form">
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <input
+                type="hidden"
+                name="id"
+                id="atc-product-id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+              >
+              <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
+              <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
+              <input
+                type="hidden"
+                name="properties[_MID_Address]"
+                value="{{ product.metafields.mid_info.mid_address }}"
+              >
+              <input type="hidden" name="properties[_type]" value="personalised">
+              <input type="hidden" name="properties[_monogram]" data-default="" data-value="monogram" value="">
+              <input
+                type="hidden"
+                name="properties[_placement]"
+                data-default="chest"
+                data-value="placement"
+                value="chest"
+              >
+              <input type="hidden" name="properties[_font]" data-default="block" data-value="font" value="block">
+              <input
+                type="hidden"
+                name="properties[_size]"
+                data-default="small-1cm"
+                data-value="size"
+                value="small-1cm"
+              >
+              <input type="hidden" name="properties[_color]" data-default="black" data-value="color" value="black">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" name="add" class="disable-atc">
+                {{ section.settings['personalised-atc-text'] }}
+              </button>
+            </form>
+          </div>
+          <div class="atc-form">
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <input
+                type="hidden"
+                name="id"
+                id="atc-product-id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+              >
+              <input type="hidden" name="properties[_MID_Name]" value="{{ product.metafields.mid_info.mid_name }}">
+              <input type="hidden" name="properties[_MID_Code]" value="{{ product.metafields.mid_info.mid_code }}">
+              <input
+                type="hidden"
+                name="properties[_MID_Address]"
+                value="{{ product.metafields.mid_info.mid_address }}"
+              >
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" name="add" class="">CONTINUE WITHOUT personalisation</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="close-modal">
+        <button class="close-modal-button">
+          <svg
+            width="18"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 53.34 53.34"
+            aria-hidden="true"
+          >
+            <path d="M53.34 7.64L45.7 0 26.67 19.03 7.64 0 0 7.64l19.03 19.03L0 45.7l7.64 7.64 19.03-19.03L45.7 53.34l7.64-7.64-19.03-19.03L53.34 7.64z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+    {% comment %} .pt-serif-bold {
+        font-family: "PT Serif", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+    .ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    }
+    .pinyon-script-regular {
+      font-family: "Pinyon Script", cursive;
+      font-weight: 400;
+      font-style: normal;
+    } {% endcomment %}
+  #personalisation-modal-wrapper *{
+    box-sizing: border-box;
+  }
+  #personalisation-modal-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 12;
+    backdrop-filter: blur(3px);
+    background: #00000091;
+    justify-content: center;
+    overflow-y: scroll;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .ajaxified-cart-feedback.success{
+    display: none;
+  }
+  #personalisation-modal-wrapper select{
+    cursor: pointer;
+  }
+  #personalisation-modal-wrapper .personalisation-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: #fff;
+    border-radius: 8px;
+    margin: 20px;
+    max-width: 1200px;
+    overflow: hidden;
+  }
+
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image{
+    position: relative;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo{
+    position: absolute;
+    right: 35%;
+    top: 35%;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo p{
+    line-height: normal;
+    font-weight: 700;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization {
+    padding: 40px 30px;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section{
+    padding: 40px 0 20px 0;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .atc-form button{
+    margin: 0;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit'].disable-atc {
+    background: #898989;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .selection-fields {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+    flex-wrap: wrap;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content label {
+    font-weight: bold;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item{
+    padding: 2px;
+    cursor: pointer;
+    display: flex;
+    border-radius: 50%;
+    width: 40px;
+    border: 1px solid #ddd;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item.active{
+    border: 1px solid black;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+    transition: all .25s;
+    display: inline-block;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item:hover .color{
+    border: 1px solid black;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-black{
+    background: #000;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-navy{
+    background: #000099;
+  }
+
+
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-red{
+    background: #B8001F;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-orange{
+    background: #FF6600;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-pink{
+    background: #FF99CC;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item .color-white{
+    background: #fff;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
+    flex: 48%;
+    max-width: 49%;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading{
+    padding-bottom: 40px;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading .title h2 {
+    font-size: 2rem;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading .description {
+    padding-top: 20px;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading .description p {
+    font-size: 13px;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .half-width {
+    flex: 1;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .close-modal .close-modal-button {
+    all: unset;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    transition: all 0.25s;
+    display: flex;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .close-modal-button:hover {
+    background: #ddd;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled) {
+    display: none;
+  }
+  #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button + #ValidAddtoCart {
+    display: none;
+  }
+  #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
+    border: 1px solid #111;
+    background-color: #111;
+    color: #fff;
+    padding: 18px 30px 17px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.1;
+    letter-spacing: 0.1em;
+    outline: 0;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+  #personalisation-modal-wrapper .personalisation-charge{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+  @media only screen and (max-width: 768px){
+    #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button {
+      margin-bottom: 0;
+      padding: 23px 12px 22px;
+      position: relative;
+      color: #111;
+      line-height: 1.2;
+    }
+    #AddToCartForm #product-add #AddToCartWrapper .fake-atc-button:after {
+      content: "Add";
+      position: absolute;
+      {% comment %} top: 0; {% endcomment %}
+      left: 0;
+      width: 100%;
+      color: #fff;
+    }
+    .product-details #AddToCartForm #variants-add-wrapper.hidden{
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 850px){
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .selection-fields .single-field {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (max-width: 900px){
+    #personalisation-modal-wrapper .personalisation-modal .product-image{
+      max-width: 420px;
+      margin: auto;
+    }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper {
+      flex-direction: column;
+    }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading{
+      text-align: center;
+    }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading .title h2{
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+    const modal_wrapper = document.querySelector('#personalisation-modal-wrapper');
+    const personalisedButtonText = "{{ section.settings.personalised-atc-text }}"
+    const personalisedAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit']");
+    const regularAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .atc-form button[type='submit']");
+    const demoText = document.querySelector(
+      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo p'
+    );
+    const color_pickers = document.querySelectorAll(
+      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
+    );
+    const allSelectFields = document
+    .querySelectorAll(
+      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization select'
+    );
+    const textField = document
+    .querySelector(
+      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .personalised-text input'
+    )
+    const timeOutFunction = (runFunction, timeOut) => {
+      setTimeout(()=>{
+          runFunction();
+      }, timeOut)
+    }
+    const resetModal = () => {
+      allSelectFields
+      .forEach((select) => {
+        select.options[0].selected = true;
+      });
+      updateColorSwatchesActiveClass(color_pickers, color_pickers[0]);
+      document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[data-default]").forEach(item=>{
+        item.value = item.dataset['default'];
+      })
+      textField.value = '';
+      demoText.textContent = '';
+      demoText.setAttribute("style", "color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;");
+      checkValidation(textField.value);
+      setTimeout(()=>{  
+        personalisedAtcButton.textContent = personalisedButtonText;
+        regularAtcButton.textContent = "continue without personalisation";
+      },1500)
+    }
+    const openModal = () => {
+      modal_wrapper.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.add("hidden");
+    };
+    const closeModal = () => {
+      modal_wrapper.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      document.querySelector(".product-details #AddToCartForm #variants-add-wrapper").classList.remove("hidden");
+      resetModal();
+    };
+    const updateColorSwatchesActiveClass = (items, activeItem) => {
+      items.forEach((item) => {
+        item.classList.remove('active');
+      });
+      activeItem.classList.add('active');
+    };
+    const updateFormProperties = (select) => {
+      const selectedItemDestination = select.options[select.options['selectedIndex']].getAttribute('for');
+      const selectedItemValue = select.options[select.options['selectedIndex']].value;
+      const targetElement = document.querySelector(
+        `#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[data-value='${selectedItemDestination}']`
+      );
+      targetElement.value = selectedItemValue;
+      if(selectedItemDestination == 'size'){
+        demoText.style.fontSize = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+      }
+      else if(selectedItemDestination == 'font'){
+        demoText.style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+      }
+    };
+    const addPersonalisationCharge = () => {
+        document.querySelector("#personalisation-charge button").click();
+    };
+    const checkValidation = (value)=>{
+      if(value.length != 0){
+        personalisedAtcButton.classList.remove("disable-atc");
+      }
+      else{
+        personalisedAtcButton.classList.add("disable-atc");
+      }
+    }
+    {% comment %} event for size selectors {% endcomment %}
+    document
+      .querySelectorAll(
+        '.product-details #AddToCartForm #variants-add-wrapper #product-variants .selector.size-selector .size .product-option-size li.active'
+      )
+      .forEach((li) => {
+        li.addEventListener('click', () => {
+          const selected_variant_id = li.getAttribute('data-id');
+          document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input#atc-product-id").value = selected_variant_id;
+          if (!document.querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')) {
+            document
+              .querySelector('#AddToCartForm #product-add #AddToCartWrapper #AddToCart')
+              .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Add to Bag</div>`);
+          }
+          document
+            .querySelector('#AddToCartForm #product-add #AddToCartWrapper .fake-atc-button')
+            .addEventListener('click', () => {
+              openModal();
+            });
+        });
+      });
+      {% comment %} event for modal close {% endcomment %}
+    document
+      .querySelector(
+        '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .close-modal .close-modal-button'
+      )
+      .addEventListener('click', () => {
+        closeModal();
+      });
+  
+      {% comment %} event for all color swatches {% endcomment %}
+    color_pickers.forEach((li) => {
+      li.addEventListener('click', () => {
+        updateColorSwatchesActiveClass(color_pickers, li);
+        const color_name = li.children[0].getAttribute('data-color');
+        const color_code = li.children[0].getAttribute('data-color-code');
+        document.querySelector(
+          "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[name='properties[_color]']"
+        ).value = color_name;
+        demoText.style.color = `${color_code}`;
+      });
+    });
+  
+    {% comment %} event for text input {% endcomment %}
+    textField
+      .addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
+        checkValidation(e.target.value);
+        document.querySelector(
+          "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[name='properties[_monogram]']"
+        ).value = e.target.value;
+        demoText.textContent = e.target.value;
+      });
+      {% comment %} add event for all select items {% endcomment %}
+    allSelectFields
+      .forEach((select) => {
+        select.addEventListener('change', () => {
+          updateFormProperties(select);
+        });
+      });
+      const extraChargeDiv = `  <div id="personalisation-charge">
+      <form action="/cart/add" method="post" enctype="multipart/form-data">
+        <input
+          type="hidden"
+          name="id"
+          id="personalisation-charge"
+          value="53479059259771"
+        >
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" name="add" class=""></button>
+      </form>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', extraChargeDiv);
+    {% comment %} add 30 sec timer to the cart page and adding extra charge for personalization {% endcomment %}
+    let count = new Date((new Date().getTime())+(30*60*1000));
+    document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section [type='submit']").forEach(button=>{
+      button.addEventListener("click",()=>{
+        localStorage.setItem("cartTimer", JSON.stringify(count));
+        timeOutFunction(closeModal, 1200);
+        if(button.closest(".personalised-atc-form")){
+          timeOutFunction(addPersonalisationCharge, 1200);
+        }
+      })
+    })
+</script>
+{% render 'personalisation-functions', product: product %}
+{% schema %}
+{
+  "name": "personalisation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "personalised-atc-text",
+      "label": "Personalised Button Text"
+    }
+  ]
+}
+{% endschema %}
+
+{% comment %} products/the-cream-cashmere-boxy-sweater {% endcomment %}

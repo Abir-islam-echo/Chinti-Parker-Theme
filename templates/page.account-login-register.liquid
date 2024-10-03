@@ -1,229 +1,166 @@
 {% if customer %}
-  <script type="text/javascript">
-    window.location.href= "/account/"
-  </script>
+    <script type="text/javascript">
+        window.location.href= "/account/"
+    </script>
 {% else %}
-  <div class="wrapper account-form" id="combinedLoginRegister">
-    <div class="col-main">
-      <div class="section">
-        {% form 'customer_login' %}
-          <div id="LoginTitle" class="page-title login">
-            <h2>
-              <span class="CustomerLoginTitle">
-                {{ 'customer.login.title' | t }}
-                <span
-                  >View your order history, loyalty points and rewards available, and manage your account preferences.</span
-                >
-              </span>
-              <span class="RecoverPasswordTitle">
-                {{ 'customer.recover_password.title' | t }}
-                <span>{{ 'customer.recover_password.subtext' | t }}</span>
-              </span>
-            </h2>
-          </div>
-          <div class="form-success hide" id="ResetSuccess">
-            <p>{{ 'customer.recover_password.success' | t }}</p>
-          </div>
-          <div id="CustomerLoginForm">
-            {{ form.errors | default_errors }}
-            <input
-              type="email"
-              placeholder="{{ 'customer.login.email' | t }}"
-              name="customer[email]"
-              id="CustomerEmail"
-              class="{% if form.errors contains 'email' %} input--error{% endif %}"
-              autocorrect="off"
-              autocapitalize="off"
-              autofocus
-            >
 
-            {% if form.password_needed %}
-              <input
-                type="password"
-                placeholder="{{ 'customer.login.password' | t }}"
-                value=""
-                name="customer[password]"
-                id="CustomerPassword"
-                class="{% if form.errors contains 'password' %} input--error{% endif %}"
-              >
-            {% endif %}
 
-            <div class="text-center buttons-set">
-              <input type="submit" class="button " value="{{ 'customer.login.sign_in' | t }}">
-              {% if form.password_needed -%}
-                <a class="button-text" href="#recover" id="RecoverPassword">
-                  {{- 'customer.login.forgot_password' | t -}}
-                </a>
-              {%- endif %}
-            </div>
-          </div>
-        {% endform %}
-        <div id="RecoverPasswordForm" class="hide">
-          {% form 'recover_customer_password' %}
-            {{ form.errors | default_errors }}
 
-            {% if form.posted_successfully? %}
-              <span class="hide reset-password-success"></span>
-            {% endif %}
-            <input
-              type="email"
-              placeholder="{{ 'customer.recover_password.email' | t }}"
-              value=""
-              name="email"
-              id="RecoverEmail"
-              class="input-full"
-              autocorrect="off"
-              autocapitalize="off"
-            >
 
-            <div class="text-center buttons-set">
-              <input type="submit" class="button" value="{{ 'customer.recover_password.submit' | t }}">
-              <a href="#" id="HideRecoverPasswordLink" class="button-text">
-                {{- 'customer.recover_password.cancel' | t -}}
-              </a>
-            </div>
-          {% endform %}
-        </div>
-      </div>
-    </div>
+<div class="wrapper account-form" id="combinedLoginRegister">
+     
+        
+            <div class="col-main">
+                    <div class="section">
+                    {% form 'customer_login' %}
+                    <div id="LoginTitle" class="page-title login">
+                            <h2>
+                                <span class="CustomerLoginTitle">
+                                    {{ 'customer.login.title' | t }}
+                                    <span>View your order history and manage your account preferences.</span>
+                                </span>
+                                <span class="RecoverPasswordTitle">
+                                    {{ 'customer.recover_password.title' | t }}
+                                    <span>{{ 'customer.recover_password.subtext' | t }}</span>
+                                </span>
+                            </h2>
+                    </div>
+                    <div class="form-success hide" id="ResetSuccess">
+                            <p>{{ 'customer.recover_password.success' | t }}</p>
+                    </div>
+                    <div id="CustomerLoginForm">
+                            {{ form.errors | default_errors }}
+                            <input type="email" placeholder="{{ 'customer.login.email' | t }}" name="customer[email]" id="CustomerEmail" class="{% if form.errors contains 'email' %} input--error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
 
-    <div class="col-main">
-      <div class="section">
-        {% form 'create_customer' %}
-          <div class="page-title">
-            <h2>
-              <span
-                >Create an account
-                <span
-                  >Creating an account is easy, fill in the form below and enjoy the benefits, including access to our
-                  Cashmere Club Loyalty Programme to get rewards and more.</span
-                >
-              </span>
-            </h2>
-          </div>
-          <div class="form">
-            {{ form.errors | default_errors }}
-            <input type="hidden" name="customer[shopify_tags]" id="ShopifyTags" value="UK">
-            <input
-              type="text"
-              placeholder="{{ 'customer.register.first_name' | t }} *"
-              required
-              name="customer[first_name]"
-              id="FirstName"
-              {% if form.first_name %}
-                value="{{ form.first_name }}"
-              {% endif %}
-              autofocus
-            >
-            <input
-              type="text"
-              placeholder="{{ 'customer.register.last_name' | t }}"
-              name="customer[last_name]"
-              id="LastName"
-              {% if form.last_name %}
-                value="{{ form.last_name }}"
-              {% endif %}
-            >
-            <input
-              type="email"
-              placeholder="{{ 'customer.register.email' | t }} *"
-              required
-              name="customer[email]"
-              id="Email"
-              class="{% if form.errors contains 'email' %} input--error{% endif %}"
-              {% if form.email %}
-                value="{{ form.email }}"
-              {% endif %}
-              autocorrect="off"
-              autocapitalize="off"
-            >
-            <input
-              type="password"
-              placeholder="{{ 'customer.register.password' | t }}"
-              name="customer[password]"
-              id="CreatePassword"
-              class="{% if form.errors contains 'password' %} input--error{% endif %}"
-            >
-            <div class="selectWrapper">
-              <select id="CustomerFormGender" name="customer[note][Gender]">
-                <option disabled selected>Gender</option>
-                <option>Female</option>
-                <option>Male</option>
-              </select>
-            </div>
-            <input id="fullRegisterBirthday" value="" name="customer[note][Birthday]" type="hidden">
-            <div class="multiInputWrapper clearfix">
-              <label>Date of Birth</label>
-              <div class="selectWrapper">
-                <select class="accountBirthdaySignup" id="birthdayDay">
-                  <option disabled selected>Day</option>
-                  <option>01</option>
-                  <option>02</option>
-                  <option>03</option>
-                  <option>04</option>
-                  <option>05</option>
-                  <option>06</option>
-                  <option>07</option>
-                  <option>08</option>
-                  <option>09</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                  <option>13</option>
-                  <option>14</option>
-                  <option>15</option>
-                  <option>16</option>
-                  <option>17</option>
-                  <option>18</option>
-                  <option>19</option>
-                  <option>20</option>
-                  <option>21</option>
-                  <option>22</option>
-                  <option>23</option>
-                  <option>24</option>
-                  <option>25</option>
-                  <option>26</option>
-                  <option>27</option>
-                  <option>28</option>
-                  <option>29</option>
-                  <option>30</option>
-                  <option>31</option>
-                </select>
-              </div>
-              <div class="selectWrapper">
-                <select class="accountBirthdaySignup" id="birthdayMonth">
-                  <option disabled selected>Month</option>
-                  <option>01</option>
-                  <option>02</option>
-                  <option>03</option>
-                  <option>04</option>
-                  <option>05</option>
-                  <option>06</option>
-                  <option>07</option>
-                  <option>08</option>
-                  <option>09</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                </select>
-              </div>
-              <div class="inputWrapper">
-                <input class="accountBirthdaySignup" type="text" placeholder="Year" id="birthdayYear">
-              </div>
-            </div>
-            <input type="text" id="CustomerFormMobile" name="customer[note][Mobile]" placeholder="Mobile phone number">
-            <input type="checkbox" id="CustomerSubscriber" name="customer[accepts_marketing]" value="true" checked>
-            <label for="CustomerSubscriber">Join our mailing list</label>
-            <p>
-              By opting in to our mailing list, you are agreeing to receive email marketing from Chinti & Parker. See
-              our <a href="/pages/privacy-cookie-policy">Privacy Policy</a> for further details.
-            </p>
-            <div class="text-center buttons-set">
-              <input type="submit" value="Create account" class="button">
-            </div>
-          </div>
-        {% endform %}
-      </div>
-    </div>
-  </div>
+                            {% if form.password_needed %}
+                            <input type="password" placeholder="{{ 'customer.login.password' | t }}" value="" name="customer[password]" id="CustomerPassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+                            {% endif %}
+
+                            <div class="text-center buttons-set">
+                                <input type="submit" class="button " value="{{ 'customer.login.sign_in' | t }}">
+                                {% if form.password_needed %}<a class="button-text" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>{% endif %}          
+                            </div>
+
+                          
+                    </div>
+                    {% endform %}
+                    <div id="RecoverPasswordForm" class="hide">
+                            {% form 'recover_customer_password' %}
+                            {{ form.errors | default_errors }}
+
+                            {% if form.posted_successfully? %}
+                            <span class="hide reset-password-success"></span>
+                            {% endif %}
+                            <input type="email" placeholder="{{ 'customer.recover_password.email' | t }}" value="" name="email" id="RecoverEmail" class="input-full"autocorrect="off" autocapitalize="off">
+                            
+                            <div class="text-center buttons-set">
+                                <input type="submit" class="button" value="{{ 'customer.recover_password.submit' | t }}"/>
+                                <a href="#" id="HideRecoverPasswordLink" class="button-text">{{ 'customer.recover_password.cancel' | t }}</a>
+                            </div>
+                            {% endform %}
+                        </div>
+                    </div>
+            </div>  
+        
+
+   
+          <div class="col-main">
+               <div class="section">
+               {% form 'create_customer' %}
+                    <div class="page-title">
+                         <h2><span>Create an account
+                                   <span>Creating an account is easy, fill in the form below and enjoy the benefits.</span>
+                                   </span>
+                         </h2>
+                    </div>
+                    <div class="form">
+                         {{ form.errors | default_errors }}
+                         <input type="hidden" name="customer[shopify_tags]" id="ShopifyTags" value="UK" >
+                         <input type="text" placeholder="{{ 'customer.register.first_name' | t }} *" required name="customer[first_name]" id="FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autofocus>
+                         <input type="text" placeholder="{{ 'customer.register.last_name' | t }}" name="customer[last_name]" id="LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+                         <input type="email" placeholder="{{ 'customer.register.email' | t }} *" required name="customer[email]" id="Email" class="{% if form.errors contains 'email' %} input--error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+                         <input type="password" placeholder="{{ 'customer.register.password' | t }}" name="customer[password]" id="CreatePassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+                         <div class="selectWrapper">
+                              <select id="CustomerFormGender" name="customer[note][Gender]">
+                                   <option disabled selected>Gender</option>
+                                   <option>Female</option>
+                                   <option>Male</option>
+                              </select>
+                         </div>
+                         <input id="fullRegisterBirthday" value="" name="customer[note][Birthday]" type="hidden"> 
+                         <div class="multiInputWrapper clearfix">
+                              <label>Date of Birth</label>
+                              <div class="selectWrapper">
+                                   <select class="accountBirthdaySignup" id="birthdayDay">
+                                        <option disabled selected>Day</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                        <option>05</option>
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                        <option>23</option>
+                                        <option>24</option>
+                                        <option>25</option>
+                                        <option>26</option>
+                                        <option>27</option>
+                                        <option>28</option>
+                                        <option>29</option>
+                                        <option>30</option>
+                                        <option>31</option>
+                                   </select>
+                              </div>
+                              <div class="selectWrapper">
+                                   <select class="accountBirthdaySignup" id="birthdayMonth">
+                                        <option disabled selected>Month</option>
+                                        <option>01</option>
+                                        <option>02</option>
+                                        <option>03</option>
+                                        <option>04</option>
+                                        <option>05</option>
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                   </select>
+                              </div>
+                              <div class="inputWrapper">
+                                   <input class="accountBirthdaySignup" type="text" placeholder="Year" id="birthdayYear">
+                              </div>
+                         </div>
+                         <input type="text" id="CustomerFormMobile" name="customer[note][Mobile]" placeholder="Mobile phone number">
+                         <input type="checkbox" id="CustomerSubscriber" name="customer[accepts_marketing]" value="true" checked/>
+                         <label for="CustomerSubscriber">Join our mailing list</label>
+                         <p>By opting in to our mailing list, you are agreeing to receive email marketing from Chinti & Parker. See our <a href="/pages/privacy-cookie-policy">Privacy Policy</a> for further details.</p>
+                    	<div class="text-center buttons-set">
+                              <input type="submit" value="Create account" class="button">
+            	               
+	      	          </div>
+                    </div>
+                 
+               {% endform %}	
+               </div>
+          	
+        
+     </div>
+</div>
 {% endif %}
