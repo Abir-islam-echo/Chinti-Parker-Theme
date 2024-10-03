@@ -4016,6 +4016,7 @@
           },
           "18a3bcf6-cd03-43ae-950a-59388fddbedf": {
             "type": "nav_item",
+            "disabled": true,
             "settings": {
               "title": "SALE",
               "title_url": "shopify://collections/bank-holiday-summer-sale",
@@ -4057,7 +4058,7 @@
               "sale_colour": "#ff0000",
               "mobile_title_colour": false,
               "subheadings_colour": "",
-              "linklist": "menu-summer-new",
+              "linklist": "",
               "country_selector": "all",
               "background_colour": "",
               "featured_content_mobile": false,
@@ -4081,7 +4082,6 @@
           },
           "88d0f8b5-6943-4cf7-97f0-8c560f2c4c73": {
             "type": "nav_item",
-            "disabled": true,
             "settings": {
               "title": "ABOUT",
               "title_url": "shopify://pages/about-us",
@@ -4331,8 +4331,8 @@
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_4c0d8df3-55ff-49b8-938e-dc788110deba.png",
-              "mobile_image": "shopify://shop_images/Mobile_Main_Banner.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
+              "mobile_image": "shopify://shop_images/Desktop_Sub-banner_3.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4347,6 +4347,7 @@
           },
           "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "image": "shopify://shop_images/summer-sale-hp-banner-desktop_7d3f74a7-2346-469c-9394-5e9f87b1a93d.webp",
               "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_92b1c90e-d589-47e8-a48d-7cdccf230f01.webp",
@@ -4464,6 +4465,7 @@
           },
           "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "image": "shopify://shop_images/summer-sale-hp-banner-desktop_5d2f05bf-2c78-4f8c-a143-9683e23fcdf0.webp",
               "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_a81846f6-834c-42f5-9b1b-7e37dbc1276d.webp",
@@ -4545,6 +4547,7 @@
           },
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "image": "shopify://shop_images/summer-sale-hp-banner-desktop_82862601-1839-46d2-b2cc-300a7c7cb987.webp",
               "mobile_image": "shopify://shop_images/summer-sale-hp-banner-mobile_68836f3a-59cc-449d-b528-a04f072c5992.webp",
