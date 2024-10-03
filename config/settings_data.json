@@ -4613,8 +4613,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Desktop_Sub-banner_56c5c3ae-e981-4bf2-9beb-ca28b2423bbc.png",
-              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_64382753-11b1-4a31-96f1-5ebd352dd84c.png",
+              "image1": "shopify://shop_images/Desktop_Sub-banner_3.png",
+              "mobile_image1": "shopify://shop_images/Mobile_Main_Banner_3.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
