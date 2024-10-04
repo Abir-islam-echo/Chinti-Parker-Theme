@@ -191,12 +191,12 @@
         "bannergrid_twocolumns_LBwyFJ": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Meet_the_team.png",
-            "mobile_image1": "shopify://shop_images/Meet_the_team_84ed50de-e57f-4ad8-95af-656b7efb64cf.png",
+            "image1": "shopify://shop_images/meet_the_team_2ef45b96-97ae-4926-84a0-3b46f8e4abfa.png",
+            "mobile_image1": "shopify://shop_images/meet_the_team_490c2804-8a23-4d20-b689-a57ee5354a04.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Contact_us_1.png",
-            "mobile_image2": "shopify://shop_images/Contact_us_1_9255385f-c422-4492-81d8-8b2b8aa519d0.png",
+            "image2": "shopify://shop_images/Contact_us_01.png",
+            "mobile_image2": "shopify://shop_images/Contact_us_01_341bbdae-7a7d-4708-90ca-2b63f23831a2.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
