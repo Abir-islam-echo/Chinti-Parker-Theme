@@ -6,7 +6,7 @@
         <div class="image-caption">
           <p>{{ section.settings['image-caption'] }}</p>
         </div>
-        <div class="customized-text-demo">
+        <div class="customized-text-demo" style="right: 12%; top: 72%; text-align: left;">
           <p style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
         </div>
       </div>
@@ -30,9 +30,9 @@
               <label for="place">Choose Your Placement</label>
               <select name="place" id="place" class="place-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
-                <option for="placement" value="cuff">Cuff</option>
-                <option for="placement" value="hem">Hem</option>
-                <option for="placement" value="chest">Chest</option>
+                <option for="placement" demo-value="right: 12%; top: 72%; text-align: left;" value="cuff">Cuff</option>
+                <option for="placement" demo-value="right: 27%; top: 59%; text-align: right;" value="hem">Hem</option>
+                <option for="placement" demo-value="right: 33%; top: 35%; text-align: center;" value="chest">Chest</option>
               </select>
             </div>
             <div class="single-field">
@@ -213,13 +213,30 @@
     width: 100%;
     height: 100%;
   }
+  #AddToCartForm #product-add .button-custom {
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite !important;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image{
     position: relative;
   }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo{
     position: absolute;
-    right: 35%;
-    top: 35%;
+    width: 60px;
   }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption{
     position: absolute;
@@ -366,6 +383,8 @@
     outline: 0;
     cursor: pointer;
     margin-bottom: 15px;
+    background-image: linear-gradient(to top right, #000, #000, #000, #000, #000, #404040, #000, #000, #000, #000, #000);
+    font-weight: bold;
   }
 
   #personalisation-modal-wrapper .personalisation-charge{
@@ -488,6 +507,9 @@
       else if(selectedItemDestination == 'font'){
         demoText.style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
+      else if(selectedItemDestination == 'placement'){
+        demoText.closest(".customized-text-demo").setAttribute("style", `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`)
+      }
     };
     const addPersonalisationCharge = () => {
         document.querySelector("#personalisation-charge button").click();
@@ -512,7 +534,7 @@
           if (!document.querySelector('#AddToCartForm #product-add .fake-atc-button')) {
             document
               .querySelector('#AddToCartForm #product-add #AddToCartWrapper')
-              .insertAdjacentHTML('afterend', `<div class="fake-atc-button">Personalise</div>`);
+              .insertAdjacentHTML('afterend', `<div class="fake-atc-button button-custom">Personalise</div>`);
           }
           document
             .querySelector('#AddToCartForm #product-add .fake-atc-button')

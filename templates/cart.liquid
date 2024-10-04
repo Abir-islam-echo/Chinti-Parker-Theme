@@ -47,7 +47,7 @@
                 {% endif %}
                 {% comment %} personalisation {% endcomment %}
                 {% assign isPersonalised = false %}
-                {% if item.product.metafields.custom.personalization.value == true %}
+                {% if item.product.tags contains 'PERSONALISATION' %}
                   {% for property in item.properties %}
                     {% if property[1] == 'personalised' %}
                       {% assign isPersonalised = true %}
@@ -79,10 +79,12 @@
                     {% unless item.variant.barcode == blank -%}
                       <span>SKU: {{ item.variant.barcode }}</span>
                     {%- endunless %}
-                      <span class="variant-title">Size: {{ item.variant.title }}</span>
-                      {% comment %} personalisation {% endcomment %}
-                    {% if isPersonalised %}
-                      <span>Type: Personalised</span>
+                    <span class="variant-title">Size: {{ item.variant.title }}</span>
+                    {% comment %} personalisation {% endcomment %}
+                    {% if item.product.tags contains 'PERSONALISATION' %}
+                      {% for property in item.properties %}
+                        <span class="{{ property[0] }}">{{ property[0] | replace: "_", "" }}: {{ property[1] }}</span>
+                      {% endfor %}
                     {% endif %}
                     {% comment %} personalisation {% endcomment %}
                   </td>
