@@ -3716,6 +3716,17 @@
       "notification-ribbon-carousel": {
         "type": "notification-ribbon-carousel",
         "blocks": {
+          "notification_item_JqtxgJ": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
+              "notification_text_us": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
+              "notification_text_eu": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
+              "notification_link": "shopify://collections/new-season",
+              "notification_link_us": "shopify://collections/new-season",
+              "notification_link_eu": "shopify://collections/new-season"
+            }
+          },
           "notification_item_XzKVKd": {
             "type": "notification-item",
             "settings": {
@@ -3736,40 +3747,6 @@
               "notification_link": "shopify://collections/new-season",
               "notification_link_us": "shopify://collections/new-season",
               "notification_link_eu": "shopify://collections/new-season"
-            }
-          },
-          "notification_item_TLqKbw": {
-            "type": "notification-item",
-            "disabled": true,
-            "settings": {
-              "notification_text": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
-              "notification_text_us": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
-              "notification_text_eu": "FINAL SUMMER SALE CALL - SHOP UP TO 70% OFF",
-              "notification_link": "shopify://collections/bank-holiday-summer-sale",
-              "notification_link_us": "shopify://collections/bank-holiday-summer-sale",
-              "notification_link_eu": "shopify://collections/bank-holiday-summer-sale"
-            }
-          },
-          "notification_item_JqtxgJ": {
-            "type": "notification-item",
-            "settings": {
-              "notification_text": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
-              "notification_text_us": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
-              "notification_text_eu": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
-              "notification_link": "shopify://collections/new-season",
-              "notification_link_us": "shopify://collections/new-season",
-              "notification_link_eu": "shopify://collections/new-season"
-            }
-          },
-          "notification_item_QWCxUV": {
-            "type": "notification-item",
-            "settings": {
-              "notification_text": "MR. MEN LITTLE MISS X CHINTI COLLABORATION IS HERE",
-              "notification_text_us": "MR. MEN LITTLE MISS X CHINTI COLLABORATION IS HERE",
-              "notification_text_eu": "MR. MEN LITTLE MISS X CHINTI COLLABORATION IS HERE",
-              "notification_link": "shopify://collections/mr-men-little-miss-meets-chinti",
-              "notification_link_us": "shopify://collections/mr-men-little-miss-meets-chinti",
-              "notification_link_eu": "shopify://collections/mr-men-little-miss-meets-chinti"
             }
           },
           "notification_item_LmDmEy": {
@@ -3807,11 +3784,9 @@
           }
         },
         "block_order": [
+          "notification_item_JqtxgJ",
           "notification_item_XzKVKd",
           "notification_item_Rwiqyc",
-          "notification_item_TLqKbw",
-          "notification_item_JqtxgJ",
-          "notification_item_QWCxUV",
           "notification_item_LmDmEy",
           "c3b1e2c1-1799-4951-80ff-161e47c77ff7",
           "notification_item_JH6RhU"
