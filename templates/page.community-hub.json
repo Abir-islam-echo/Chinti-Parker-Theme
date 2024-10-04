@@ -89,8 +89,8 @@
         "template--14693747720270__491406f2-6277-411f-b456-83369763acec-16657490959e9016d5-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Cashmere_club_banner_desktop.png",
-            "mobile_image": "shopify://shop_images/3_22.png",
+            "image": "shopify://shop_images/cashmere_club_desktop.png",
+            "mobile_image": "shopify://shop_images/Cashmere_Club_mobile.png",
             "heading": "",
             "font_size": 32,
             "font_weight": 100,
