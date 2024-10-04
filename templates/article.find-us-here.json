@@ -131,7 +131,7 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Tom Greyhound, South Korea </p><p>Lane Crawford, Hong Kong </p><p>David Jones, Australia</p><p>Adam Heath, Australia</p><p>  </p><p></p>",
+        "grid-content": "<p>Tom Greyhound, South Korea - in-store </p><p>Lane Crawford, Hong Kong - in-store</p><p>David Jones, Australia - in-store</p><p><a href=\"https://www.adamheath.com.au/search?q=chinti+parker&type=product&options%5Bprefix%5D=last\" target=\"_blank\" title=\"https://www.adamheath.com.au/search?q=chinti+parker&type=product&options%5Bprefix%5D=last\">Adam Heath</a>, Australia- instore and online</p><p>  </p><p></p>",
         "text-color": "#080707",
         "grid-image-picker": "shopify://shop_images/C_P_M_26.06.24_0869_422e5653-b7d2-44b2-ab49-38673cb8e68c.jpg",
         "image-width": 50,
