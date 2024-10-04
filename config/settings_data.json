@@ -3719,9 +3719,9 @@
           "notification_item_JqtxgJ": {
             "type": "notification-item",
             "settings": {
-              "notification_text": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
-              "notification_text_us": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
-              "notification_text_eu": "NEW SEASON: DISCOVER OUR AW '24 BASICS COLLECTION",
+              "notification_text": "NEW SEASON: DISCOVER OUR WINTER '24 BASICS COLLECTION",
+              "notification_text_us": "NEW SEASON: DISCOVER OUR WINTER '24 BASICS COLLECTION",
+              "notification_text_eu": "NEW SEASON: DISCOVER OUR WINTER '24 BASICS COLLECTION",
               "notification_link": "shopify://collections/new-season",
               "notification_link_us": "shopify://collections/new-season",
               "notification_link_eu": "shopify://collections/new-season"
@@ -4583,6 +4583,26 @@
       "35886c16-c230-4eca-89c3-1c811669cd0a": {
         "type": "banner-three-column-01",
         "blocks": {
+          "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
+            "type": "bannergrid-threecolumns",
+            "settings": {
+              "image1": "shopify://shop_images/3_23.png",
+              "mobile_image1": "shopify://shop_images/2_1_5.png",
+              "video-src1": "",
+              "aspectRatio1": "690:750",
+              "heading1": "",
+              "font_size_left": 60,
+              "paragraph1": "",
+              "paragraph_font_size_left": 18,
+              "text_color1": "text-light",
+              "text_color_mobile1": "text-light-mobile",
+              "left_banner_conent_alignment": "end",
+              "left_banner_content_alignment_horizontal": "center",
+              "link1": "shopify://collections/basics",
+              "link_text1": "",
+              "font_size_left_cta": 25
+            }
+          },
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
@@ -4622,32 +4642,12 @@
               "link_text1": "",
               "font_size_left_cta": 25
             }
-          },
-          "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
-            "type": "bannergrid-threecolumns",
-            "settings": {
-              "image1": "shopify://shop_images/Desktop_sub-banner_27b60d39-e37a-4ff7-8fef-43948ccb1e5c.png",
-              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_1becab65-0aef-47f3-86c9-cd10fb4257a4.png",
-              "video-src1": "",
-              "aspectRatio1": "690:750",
-              "heading1": "",
-              "font_size_left": 60,
-              "paragraph1": "",
-              "paragraph_font_size_left": 18,
-              "text_color1": "text-light",
-              "text_color_mobile1": "text-light-mobile",
-              "left_banner_conent_alignment": "end",
-              "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/sets-shop",
-              "link_text1": "",
-              "font_size_left_cta": 25
-            }
           }
         },
         "block_order": [
+          "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3",
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-2",
-          "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-1",
-          "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3"
+          "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-1"
         ],
         "settings": {
           "margin_top": 10,
@@ -4660,8 +4660,8 @@
           "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/2_11_6762a95a-fb0f-4bb6-aaae-6bc081b3e407.png",
-              "mobile_image1": "shopify://shop_images/2_12_c6616cdd-9465-46ca-9af1-21ec27a34a05.png",
+              "image1": "shopify://shop_images/Desktop_sub-banner_0890a227-351b-4ec9-938f-cf9e688d47c2.png",
+              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_d2ff25d9-fda3-4f9a-815b-27ea2ed91dab.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4672,7 +4672,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/autumn-basics",
+              "link1": "shopify://collections/sets-shop",
               "link_text1": "",
               "font_size_left_cta": 25
             }
