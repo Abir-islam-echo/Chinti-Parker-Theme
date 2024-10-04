@@ -45,7 +45,7 @@
         "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0": {
           "type": "text",
           "settings": {
-            "title": "CHINTI&FRIENDS",
+            "title": "Meet the team",
             "title_color": "#000000",
             "title_font_size": 32,
             "title_font_weight": 900,
@@ -100,18 +100,8 @@
         "166479270238728e96-2": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_f21247de-e407-451a-83b3-fa6bf9a1e03c.png",
-            "mobile_image": "shopify://shop_images/annakojic_6539846b-57a5-4f8f-9d04-43bb38f7ab39.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "172f626e-2740-4173-8000-4e35d9ec3451": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/annakojic_1_210b18a5-9b25-42bc-a5e7-328d46383d46.png",
-            "mobile_image": "shopify://shop_images/annakojic_1_3c9d10b8-cf10-4dd4-ae6e-e5b94278d2dd.png",
+            "image": "shopify://shop_images/Valeriya_1.png",
+            "mobile_image": "shopify://shop_images/Valeriya_1_a4dd9f17-11b0-407a-9ad0-7e0f3fd52156.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -120,8 +110,18 @@
         "166479270238728e96-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_2_46ed37eb-16d1-4cbf-a73c-1f5a97ef12c1.png",
-            "mobile_image": "shopify://shop_images/annakojic_2_230e6139-a2e9-4dc8-8b5f-b3a99625c228.png",
+            "image": "shopify://shop_images/Valeriya_2.png",
+            "mobile_image": "shopify://shop_images/Valeriya_2_7f086598-dd48-4a19-aed8-495065405858.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "172f626e-2740-4173-8000-4e35d9ec3451": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_3.png",
+            "mobile_image": "shopify://shop_images/Valeriya_3_4614853f-8962-4098-a31f-099aed79a94d.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -130,8 +130,8 @@
         "786c25af-103b-42c7-b29b-f59170750ac9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_3_aa586857-996b-4546-b9f8-4302f48a1480.png",
-            "mobile_image": "shopify://shop_images/annakojic_3_1b53fe2d-07f9-4db8-91ba-185a7f110a70.png",
+            "image": "shopify://shop_images/Valeriya_4.png",
+            "mobile_image": "shopify://shop_images/Valeriya_4_66f45c77-ef27-4052-b148-6c99cbeb4ed4.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -140,8 +140,8 @@
         "166479270238728e96-3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_4_b6956623-9a2b-49c8-8ab2-25c40882a20a.png",
-            "mobile_image": "shopify://shop_images/annakojic_4_d26eedf0-af51-4b31-9b31-fd1dc44558fb.png",
+            "image": "shopify://shop_images/Valeriya_5.png",
+            "mobile_image": "shopify://shop_images/Valeriya_5_0ae39e80-c873-4d18-bff6-353ba121664b.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -150,8 +150,8 @@
         "166479270238728e96-4": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_5_83083246-ca96-44c3-96d7-c8c068b208eb.png",
-            "mobile_image": "shopify://shop_images/annakojic_5_25c7a3f1-e348-420f-ad9e-ec10512e4b29.png",
+            "image": "shopify://shop_images/Valeriya_6.png",
+            "mobile_image": "shopify://shop_images/Valeriya_6_80ea1650-e225-4b78-8a24-48c8f406b37f.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -160,8 +160,8 @@
         "e1a00210-39ba-4102-80c9-343dee1dbca5": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_6_a96329df-816c-44f5-9ab8-b1c249ff8ba3.png",
-            "mobile_image": "shopify://shop_images/annakojic_6_b491bb1b-821e-4ab8-8304-969a8b2a1c41.png",
+            "image": "shopify://shop_images/Valeriya_7.png",
+            "mobile_image": "shopify://shop_images/Valeriya_7_9fd5d500-52e5-4962-b3d2-7e825297f47a.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -178,11 +178,21 @@
             "link": "shopify://collections/autumn-basics"
           }
         },
+        "8b31b1a3-aa8a-428d-98eb-1bca4a031d78": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_11.png",
+            "mobile_image": "shopify://shop_images/Valeriya_11_972e13e8-0696-43df-ab73-7f636e403c16.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
         "861cc373-f6c0-4efd-893d-ddc5b77d9e97": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_7_8ce1b491-a78b-4de6-a2a5-78d5c0c3e71f.png",
-            "mobile_image": "shopify://shop_images/annakojic_7_3c15d988-8b75-4b9b-a365-ad1168b19e7f.png",
+            "image": "shopify://shop_images/Valeriya_8.png",
+            "mobile_image": "shopify://shop_images/Valeriya_8_90109759-d750-4439-90d0-7e1906bcf4bb.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -191,18 +201,8 @@
         "d65ba1d0-3afb-4f9a-b9fa-70d28cb2cdae": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_8_d15644df-b7f5-4fda-ab11-38bc387ebd99.png",
-            "mobile_image": "shopify://shop_images/annakojic_8_f532406f-d7ff-431d-b662-9236cea706c4.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "8b31b1a3-aa8a-428d-98eb-1bca4a031d78": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/annakojic_9_db1f6b00-bc41-4e93-97c2-2da242e926a5.png",
-            "mobile_image": "shopify://shop_images/annakojic_9_de747bd5-d417-45e7-a0d6-ea74217109c1.png",
+            "image": "shopify://shop_images/Valeriya_9.png",
+            "mobile_image": "shopify://shop_images/Valeriya_9_424e9345-d097-40b7-ba8b-5f8c5fdaf999.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -211,8 +211,8 @@
         "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_10_c1a44751-964e-4053-adb2-b1550c6aed5b.png",
-            "mobile_image": "shopify://shop_images/annakojic_10_010559c3-b016-43e9-ac47-cca00e8fd8bc.png",
+            "image": "shopify://shop_images/Valeriya_10.png",
+            "mobile_image": "shopify://shop_images/Valeriya_10_45469797-e6a5-4c82-9c7e-68593153d8c9.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -221,8 +221,8 @@
         "544d5750-53d2-454b-939f-487bff2b5501": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_11_a6184d59-97cc-4d75-b690-c88f348075c3.png",
-            "mobile_image": "shopify://shop_images/annakojic_11_b69a698e-48b2-4712-ad71-889fdf671aea.png",
+            "image": "shopify://shop_images/Valeriya_12.png",
+            "mobile_image": "shopify://shop_images/Valeriya_12_c2a35235-a525-4e98-9879-ea1fb1be59d4.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -231,8 +231,8 @@
         "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_12_f5131786-5dc3-46be-af5a-8ce4faaddf97.png",
-            "mobile_image": "shopify://shop_images/annakojic_12_b0fc1f85-a3fb-4535-ad73-41fdbbc3b0fb.png",
+            "image": "shopify://shop_images/Valeriya_13.png",
+            "mobile_image": "shopify://shop_images/Valeriya_13_9e05392c-00e9-435e-979c-51f8607b0a63.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -241,8 +241,8 @@
         "98dfe231-525c-44da-9342-a3ccdc523780": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_13_45a3c365-785b-4631-a260-4df648672041.png",
-            "mobile_image": "shopify://shop_images/annakojic_13_0d0c3313-0ff7-44cc-8e58-060209974b83.png",
+            "image": "shopify://shop_images/Valeriya_14.png",
+            "mobile_image": "shopify://shop_images/Valeriya_14_ab4d3ad7-e9d1-40ff-b771-d646799e2629.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -251,8 +251,8 @@
         "0731ab4a-6c0b-48a5-98cd-12fd19664893": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/annakojic_14_4ec25192-3da0-4b75-907e-dad13b44b266.png",
-            "mobile_image": "shopify://shop_images/annakojic_14_eb105bda-2e15-491d-95d6-a93b51a4beee.png",
+            "image": "shopify://shop_images/Valeriya_15.png",
+            "mobile_image": "shopify://shop_images/Valeriya_15_d05ed2c2-c118-409e-99f1-04ff783c8eaf.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -436,16 +436,16 @@
       },
       "block_order": [
         "166479270238728e96-2",
-        "172f626e-2740-4173-8000-4e35d9ec3451",
         "166479270238728e96-1",
+        "172f626e-2740-4173-8000-4e35d9ec3451",
         "786c25af-103b-42c7-b29b-f59170750ac9",
         "166479270238728e96-3",
         "166479270238728e96-4",
         "e1a00210-39ba-4102-80c9-343dee1dbca5",
         "9b33da39-f9b3-48db-80af-60c4e147f263",
+        "8b31b1a3-aa8a-428d-98eb-1bca4a031d78",
         "861cc373-f6c0-4efd-893d-ddc5b77d9e97",
         "d65ba1d0-3afb-4f9a-b9fa-70d28cb2cdae",
-        "8b31b1a3-aa8a-428d-98eb-1bca4a031d78",
         "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc",
         "544d5750-53d2-454b-939f-487bff2b5501",
         "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45",
