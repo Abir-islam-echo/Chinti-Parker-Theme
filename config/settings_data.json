@@ -4657,26 +4657,6 @@
       "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3": {
         "type": "banner-three-column-01",
         "blocks": {
-          "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-2": {
-            "type": "bannergrid-threecolumns",
-            "settings": {
-              "image1": "shopify://shop_images/Desktop_sub-banner_0890a227-351b-4ec9-938f-cf9e688d47c2.png",
-              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_d2ff25d9-fda3-4f9a-815b-27ea2ed91dab.png",
-              "video-src1": "",
-              "aspectRatio1": "690:750",
-              "heading1": "",
-              "font_size_left": 60,
-              "paragraph1": "",
-              "paragraph_font_size_left": 18,
-              "text_color1": "text-light",
-              "text_color_mobile1": "text-light-mobile",
-              "left_banner_conent_alignment": "end",
-              "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/sets-shop",
-              "link_text1": "",
-              "font_size_left_cta": 25
-            }
-          },
           "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
@@ -4693,6 +4673,26 @@
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
               "link1": "shopify://collections/pure-merino",
+              "link_text1": "",
+              "font_size_left_cta": 25
+            }
+          },
+          "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-2": {
+            "type": "bannergrid-threecolumns",
+            "settings": {
+              "image1": "shopify://shop_images/Desktop_sub-banner_0890a227-351b-4ec9-938f-cf9e688d47c2.png",
+              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_d2ff25d9-fda3-4f9a-815b-27ea2ed91dab.png",
+              "video-src1": "",
+              "aspectRatio1": "690:750",
+              "heading1": "",
+              "font_size_left": 60,
+              "paragraph1": "",
+              "paragraph_font_size_left": 18,
+              "text_color1": "text-light",
+              "text_color_mobile1": "text-light-mobile",
+              "left_banner_conent_alignment": "end",
+              "left_banner_content_alignment_horizontal": "center",
+              "link1": "shopify://collections/sets-shop",
               "link_text1": "",
               "font_size_left_cta": 25
             }
@@ -4719,8 +4719,8 @@
           }
         },
         "block_order": [
-          "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-2",
           "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-3",
+          "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-2",
           "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-1"
         ],
         "settings": {
