@@ -1,0 +1,226 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "wrapper": "div#el-blog-template",
+  "sections": {
+    "16647992412a39812d": {
+      "type": "banner-01",
+      "blocks": {
+        "166479924187b5cdb8-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Your_paragraph_text_32.png",
+            "mobile_image": "shopify://shop_images/Your_paragraph_text_32_785b960d-5189-4310-8177-e7c60d300a53.png",
+            "heading": "",
+            "font_size": 60,
+            "font_weight": 400,
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align_vertical": "center",
+            "text_align_horizontal": "center",
+            "link": "",
+            "button_text": "",
+            "font_size_button": 25
+          }
+        }
+      },
+      "block_order": [
+        "166479924187b5cdb8-0"
+      ],
+      "settings": {
+        "section_margin_top": 0
+      }
+    },
+    "blog-title": {
+      "type": "blog-title",
+      "settings": {
+        "color": "",
+        "blog-title": "Our King’s Road Store ",
+        "title_color": "",
+        "blog-title-font-size": 48,
+        "mobile-font-size": 22,
+        "alignment": "center"
+      }
+    },
+    "1664544225dd5b287a": {
+      "type": "custom-content-01",
+      "blocks": {
+        "16645442252b38f10f-0": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Intro",
+            "title_color": "#000000",
+            "title_font_size": 35,
+            "title_font_weight": 400,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "content_color": "#000000",
+            "text_font_size": 25,
+            "margin_top": 30,
+            "border_top": 1,
+            "border_color": "",
+            "padding_top": 30,
+            "padding_bottom": 30,
+            "width": "50%",
+            "alignment": "center",
+            "align_text": "left"
+          }
+        },
+        "71f02c2a-c6d3-4fac-9650-3d6e3c6eb1f2": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "title_color": "#000000",
+            "title_font_size": 0,
+            "title_font_weight": 400,
+            "text": "<p>Nestled in the heart of London’s vibrant Chelsea neighbourhood, our store at invites you to indulge in a world of contemporary fashion that radiates with vibrance, energy, and pure dopamine-inducing fun. </p>",
+            "content_color": "#000000",
+            "text_font_size": 20,
+            "margin_top": 0,
+            "border_top": 0,
+            "border_color": "",
+            "padding_top": 0,
+            "padding_bottom": 50,
+            "width": "50%",
+            "alignment": "top-middle",
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "16645442252b38f10f-0",
+        "71f02c2a-c6d3-4fac-9650-3d6e3c6eb1f2"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "1663868435f0c44a9a": {
+      "type": "blog-two-grid",
+      "settings": {
+        "grid-title": "Find your match",
+        "grid-title-font-size": 25,
+        "title-margin-bottom": 20,
+        "grid-title-color": "#000000",
+        "add-button": false,
+        "button-text": "Type something",
+        "button-color": "#000000",
+        "button-text-color": "#ffffff",
+        "button-link": "",
+        "button-width": "fit-content",
+        "content-alignment": "flex-start",
+        "content-horizontal-alignment": "start",
+        "grid-content": "<p>As you step into our dazzling space, Bright hues and playful décor infuse the air with an infectious enthusiasm, setting the stage for an unforgettable shopping escapade. We showcase a celebration of the contemporary fashion!</p>",
+        "text-color": "#080707",
+        "grid-image-picker": "shopify://shop_images/Image_1_da5336d3-e5e7-4fec-ab7c-c62218e8adc0.jpg",
+        "image-width": 50,
+        "image-caption": "",
+        "grid-swap": "grid-left"
+      }
+    },
+    "f678c79b-ec93-4a64-972c-52d74d35fec3": {
+      "type": "blog-two-grid",
+      "settings": {
+        "grid-title": "All Year-Round Statement Pieces",
+        "grid-title-font-size": 25,
+        "title-margin-bottom": 20,
+        "grid-title-color": "#000000",
+        "add-button": false,
+        "button-text": "Type something",
+        "button-color": "#000000",
+        "button-text-color": "#ffffff",
+        "button-link": "",
+        "button-width": "fit-content",
+        "content-alignment": "flex-start",
+        "content-horizontal-alignment": "start",
+        "grid-content": "<p>Our store's revolves around more than racks of exquisite cashmere & cashmere blends. The atmosphere exudes an undeniable flair, promising an uplifting experience as you peruse through our curated collections. And downstairs, the sample sale beckons, promising thrills and discoveries that’ll send your dopamine levels soaring.</p><p></p><p></p>",
+        "text-color": "#080707",
+        "grid-image-picker": "shopify://shop_images/Image_3_59c5f7d8-a411-41d9-a707-43697264d9f5.jpg",
+        "image-width": 50,
+        "image-caption": "",
+        "grid-swap": "grid-right"
+      }
+    },
+    "471c4318-53de-41ab-822b-cb31dfa225b4": {
+      "type": "blog-two-grid",
+      "settings": {
+        "grid-title": "",
+        "grid-title-font-size": 25,
+        "title-margin-bottom": 20,
+        "grid-title-color": "#000000",
+        "add-button": false,
+        "button-text": "Type something",
+        "button-color": "#000000",
+        "button-text-color": "#ffffff",
+        "button-link": "",
+        "button-width": "fit-content",
+        "content-alignment": "flex-start",
+        "content-horizontal-alignment": "start",
+        "grid-content": "<p>But what truly elevates our space is our amazing staff. Their passion for fashion is palpable, and their commitment to making your visit extraordinary is unmatched. They're not just stylists and assistants; they're your partners in exploring and embracing the latest trends, ensuring you leave feeling empowered and fashionably unstoppable.Our styling service will curate looks tailored to your unique personality and preferences, infusing your wardrobe with a dose of contemporary flair that reflects your individuality.</p><p></p><p></p>",
+        "text-color": "#080707",
+        "grid-image-picker": "shopify://shop_images/CH1846467_Sophie_Ellis-Bextor_X_Save_the_Children_X_Chinti_Parker_Love_Christmas_Jumper_2023.jpg",
+        "image-width": 50,
+        "image-caption": "",
+        "grid-swap": "grid-left"
+      }
+    },
+    "c014454a-2210-48e5-bfb6-7fad9c42f593": {
+      "type": "blog-two-grid",
+      "settings": {
+        "grid-title": "Come visit us!",
+        "grid-title-font-size": 25,
+        "title-margin-bottom": 20,
+        "grid-title-color": "#000000",
+        "add-button": false,
+        "button-text": "Type something",
+        "button-color": "#000000",
+        "button-text-color": "#ffffff",
+        "button-link": "",
+        "button-width": "fit-content",
+        "content-alignment": "flex-start",
+        "content-horizontal-alignment": "start",
+        "grid-content": "<p> 322 King's Rd, London SW3 5UH </p><p>Call: 07562 208415 </p><p></p><p></p><p>Our store also pulses with events that celebrate fashion, creativity, and community. These events are vibrant networks where fashion aficionados converge to share insights, revel in style, and create memorable connections.</p><p>  </p><p></p>",
+        "text-color": "#080707",
+        "grid-image-picker": "shopify://shop_images/Image_2_19671819-fa22-4c44-a9e9-7db3dff4c355.jpg",
+        "image-width": 50,
+        "image-caption": "",
+        "grid-swap": "grid-right"
+      }
+    },
+    "video_banner_KrhdFa": {
+      "type": "video-banner",
+      "settings": {
+        "desktop-video": "shopify://files/videos/copy_A4EAEAC4-BB0C-4E32-9ECF-0D1F035FD4B8.MOV",
+        "container-height-desktop": 70,
+        "container-height-mobile": 60,
+        "video-repeat": true,
+        "container-width": 100,
+        "button-link": "",
+        "add-content": false,
+        "vertical-alignment": "middle",
+        "horizontal-alignment": "middle",
+        "button-text": "Quick links",
+        "button-text-color": "#000000",
+        "button-background": "#ffffff",
+        "description": "<p>add Description here</p>"
+      }
+    }
+  },
+  "order": [
+    "16647992412a39812d",
+    "blog-title",
+    "1664544225dd5b287a",
+    "1663868435f0c44a9a",
+    "f678c79b-ec93-4a64-972c-52d74d35fec3",
+    "471c4318-53de-41ab-822b-cb31dfa225b4",
+    "c014454a-2210-48e5-bfb6-7fad9c42f593",
+    "video_banner_KrhdFa"
+  ]
+}
