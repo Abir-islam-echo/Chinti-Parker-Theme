@@ -187,16 +187,6 @@
             "link": "shopify://collections/autumn-basics"
           }
         },
-        "e1a00210-39ba-4102-80c9-343dee1dbca5": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Valeriya_7.png",
-            "mobile_image": "shopify://shop_images/Valeriya_7_9fd5d500-52e5-4962-b3d2-7e825297f47a.png",
-            "heading": "",
-            "content": "",
-            "link": "shopify://collections/autumn-basics"
-          }
-        },
         "9b33da39-f9b3-48db-80af-60c4e147f263": {
           "type": "image",
           "disabled": true,
@@ -223,6 +213,16 @@
           "settings": {
             "image": "shopify://shop_images/Valeriya_15.png",
             "mobile_image": "shopify://shop_images/Valeriya_15_d05ed2c2-c118-409e-99f1-04ff783c8eaf.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/autumn-basics"
+          }
+        },
+        "e1a00210-39ba-4102-80c9-343dee1dbca5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_7.png",
+            "mobile_image": "shopify://shop_images/Valeriya_7_9fd5d500-52e5-4962-b3d2-7e825297f47a.png",
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
@@ -445,10 +445,10 @@
         "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45",
         "98dfe231-525c-44da-9342-a3ccdc523780",
         "8b31b1a3-aa8a-428d-98eb-1bca4a031d78",
-        "e1a00210-39ba-4102-80c9-343dee1dbca5",
         "9b33da39-f9b3-48db-80af-60c4e147f263",
         "544d5750-53d2-454b-939f-487bff2b5501",
         "0731ab4a-6c0b-48a5-98cd-12fd19664893",
+        "e1a00210-39ba-4102-80c9-343dee1dbca5",
         "861cc373-f6c0-4efd-893d-ddc5b77d9e97",
         "d65ba1d0-3afb-4f9a-b9fa-70d28cb2cdae",
         "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc",
