@@ -4321,6 +4321,23 @@
               "content_alignment": "left"
             }
           },
+          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/16_6_123ef202-fad1-468a-ac3c-a5d434bfc303.png",
+              "mobile_image": "shopify://shop_images/6_16.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-party",
+              "content_alignment": "left"
+            }
+          },
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
@@ -4354,30 +4371,13 @@
               "link": "shopify://collections/100-cashmere",
               "content_alignment": "left"
             }
-          },
-          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/homepage_banner_1920_x_600_px_3.png",
-              "mobile_image": "shopify://shop_images/8_9.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/aw24-collection",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
           "636aecdb-d284-4a9c-914a-b68d6b91b88a",
+          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
-          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1",
-          "40532ffb-a186-48c3-a0bb-e0f07d71d4b0"
+          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
         ],
         "settings": {
         }
@@ -4438,6 +4438,23 @@
               "content_alignment": "left"
             }
           },
+          "df52da60-b7e9-4296-8d76-9de7744c17f4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/16_6_02793261-c7ac-416e-8ca9-f9ee9c281c5a.png",
+              "mobile_image": "shopify://shop_images/6_16_a9de8269-232d-4255-b406-855bb7cb7724.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-party",
+              "content_alignment": "left"
+            }
+          },
           "1d527b93-fd40-4525-bfad-755c66a36343": {
             "type": "image",
             "settings": {
@@ -4452,23 +4469,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/chinti-meets-peanuts-24",
-              "content_alignment": "left"
-            }
-          },
-          "df52da60-b7e9-4296-8d76-9de7744c17f4": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/homepage_banner_1920_x_600_px_3_01ed9f92-01a1-479d-8ec3-d2096b7eb248.png",
-              "mobile_image": "shopify://shop_images/8_9_083fcd87-fad1-495d-bd14-015deac8a835.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/aw24-collection",
               "content_alignment": "left"
             }
           },
@@ -4492,8 +4492,8 @@
         },
         "block_order": [
           "83f31fb4-4be8-407d-9c3d-8c77231d3282",
-          "1d527b93-fd40-4525-bfad-755c66a36343",
           "df52da60-b7e9-4296-8d76-9de7744c17f4",
+          "1d527b93-fd40-4525-bfad-755c66a36343",
           "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
         ],
         "settings": {
@@ -4519,6 +4519,23 @@
               "content_alignment": "left"
             }
           },
+          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/16_6_006ebec9-d764-46cf-b889-609c56c92b6e.png",
+              "mobile_image": "shopify://shop_images/6_16_2ed462e6-4eb4-42ac-a5ad-510c31d9398a.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-party",
+              "content_alignment": "left"
+            }
+          },
           "image_hEk7gH": {
             "type": "image",
             "settings": {
@@ -4533,23 +4550,6 @@
               "button_text": "",
               "cta_font_size": 55,
               "link": "shopify://collections/chinti-meets-peanuts-24",
-              "content_alignment": "left"
-            }
-          },
-          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/homepage_banner_1920_x_600_px_3_719254df-7bb9-4840-a543-1706d864c423.png",
-              "mobile_image": "shopify://shop_images/8_9_2102f114-aeb3-48ba-8aba-45cbf852ad80.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/aw24-collection",
               "content_alignment": "left"
             }
           },
@@ -4573,8 +4573,8 @@
         },
         "block_order": [
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
-          "image_hEk7gH",
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
+          "image_hEk7gH",
           "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
         ],
         "settings": {
