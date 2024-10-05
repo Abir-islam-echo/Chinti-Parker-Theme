@@ -42,9 +42,9 @@
       "type": "blog-title",
       "settings": {
         "color": "",
-        "blog-title": "Sophie Ellis-Bextor x Save the Children Collection",
+        "blog-title": "SAVE THE CHILDREN’S CHRISTMAS JUMPER DAY COLLABORATION",
         "title_color": "",
-        "blog-title-font-size": 48,
+        "blog-title-font-size": 40,
         "mobile-font-size": 22,
         "alignment": "center"
       }
@@ -80,7 +80,7 @@
             "title_color": "#000000",
             "title_font_size": 0,
             "title_font_weight": 400,
-            "text": "<p>We are thrilled to announce the relaunch of our collaboration with the talented British singer-songwriter, Sophie Ellis-Bextor. This special collection features beautifully crafted sweaters, with all profits from every sale donated to Save the Children.</p><p>Our previous collection was a resounding success, selling out completely and raising more than £15,000. This amount purchased one complete emergency health kit in Somalia, capable of treating 10,000 children for three months.</p><p></p><p></p>",
+            "text": "<p>For a third year running, we are collaborating with Save the Children to create a limited-edition Peace jumper for Save the Children’s Christmas Jumper Day on Thursday 12th December. </p><p>Following the success of our most recent collaboration with British singer and songwriter Sophie Ellis-Bextor, we are thrilled to introduce our Peace Jumpers campaign, supported by singers and presenters Natalie and Nicole Appleton as well as radio DJ and TV host Edith Bowman. </p><p></p>",
             "content_color": "#000000",
             "text_font_size": 20,
             "margin_top": 0,
@@ -105,7 +105,7 @@
     "1663868435f0c44a9a": {
       "type": "blog-two-grid",
       "settings": {
-        "grid-title": "A Family-Centric Design",
+        "grid-title": "The Symbol of Peace",
         "grid-title-font-size": 25,
         "title-margin-bottom": 20,
         "grid-title-color": "#000000",
@@ -117,7 +117,7 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Sophie Ellis-Bextor, the mother of five, has been an ambassador for Save the Children for over five-years and has visited the charity’s programmes in both India and in the UK.  Sophie has collaborated with us to design a limited-edition jumper with recycled cashmere blend, that's available for both adults and children. This striking red, cream & black sweater, knitted from 70% recycled merino and 30% sustainable cashmere, showcases an intarsia pink & red heart bearing the word 'Love,' inspired by Sophie's own tattoo on her arm.</p>",
+        "grid-content": "<p>Made from 90% Merino wool and 10%cashmere, the sweater comes in two colour-ways, a classic cream and elf green showcasing a Dove bearing the word ‘<strong>Peace’</strong>. As with all our partnerships with Save the Children, we are donating 100% of the profits being donated to the charity. </p>",
         "text-color": "#080707",
         "grid-image-picker": "shopify://shop_images/CH1846455_Sophie_Ellis-Bextor_X_Save_the_Children_X_Chinti_Parker_Love_Christmas_Jumper_2023.jpg",
         "image-width": 50,
@@ -128,7 +128,7 @@
     "f678c79b-ec93-4a64-972c-52d74d35fec3": {
       "type": "blog-two-grid",
       "settings": {
-        "grid-title": "A Year-Round Statement Piece ",
+        "grid-title": "A Sustainable Choice",
         "grid-title-font-size": 25,
         "title-margin-bottom": 20,
         "grid-title-color": "#000000",
@@ -140,7 +140,7 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>During the design process, Sophie wanted to create a piece that could be worn during the cooler periods and all year-round too. Designed for a classic fit, the jumpers also feature Sophie’s signature and a disco ball embroidered on the back, in a nod to her career as a musician and as Queen of the Kitchen Disco.</p><p>This relaunch brings more exciting options with our beautifully crafted sweaters now available in black, cream, and the iconic red. Whether you prefer classic neutrals or a bold statement, there's a perfect sweater for everyone in this collection.</p><p></p><p></p>",
+        "grid-content": "<p>The limited-edition jumpers are made with natural, sustainable materials using planet-friendly methods, so will last well beyond the festive period.  They have been made using the goat-to-garment method. This means a much lower carbon footprint for producing the sweaters because the same supplier is responsible for everything - from twisting and dyeing the yarn, right through to knitting the final jumper.  </p>",
         "text-color": "#080707",
         "grid-image-picker": "shopify://shop_images/Untitled_design_20_4d4a2e42-d383-4165-bddb-097ff68d46f5.png",
         "image-width": 50,
@@ -175,7 +175,7 @@
     "471c4318-53de-41ab-822b-cb31dfa225b4": {
       "type": "blog-two-grid",
       "settings": {
-        "grid-title": "A Sustainable Choice ",
+        "grid-title": "A Note From Rachael",
         "grid-title-font-size": 25,
         "title-margin-bottom": 20,
         "grid-title-color": "#000000",
@@ -187,7 +187,7 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Rachael Wood, our Co-founder of Chinti & Parker, emphasises the sustainability aspect of these jumpers. She states, \"Working with Sophie to create such a beautiful, timeless jumper for Save the Children has been such an exciting and fun process. These jumpers are made with natural, sustainable materials, including recycled yarn using planet-friendly methods, so they will last well beyond the festive period.\"</p><p></p><p></p>",
+        "grid-content": "<p>Rachael Wood, our co-founder said: “It’s been brilliant to be able to work with Save the Children for a third consecutive year to raise funds for children all over the globe. </p><p>This past year has been an especially poignant one with so much conflict around the world, so it felt right to create a jumper which stood for something that I know so many of us are looking for - peace. We hope people will feel good in the jumpers knowing that they could not only helping change children’s lives - but also that they are choosing a well-made jumper that will stand the test of time instead<br/>in favour of fast, throw-away fashion this Christmas.”</p><p></p><p></p>",
         "text-color": "#080707",
         "grid-image-picker": "shopify://shop_images/CH1846467_Sophie_Ellis-Bextor_X_Save_the_Children_X_Chinti_Parker_Love_Christmas_Jumper_2023.jpg",
         "image-width": 50,
@@ -198,7 +198,7 @@
     "c014454a-2210-48e5-bfb6-7fad9c42f593": {
       "type": "blog-two-grid",
       "settings": {
-        "grid-title": "A Passionate Ambassador ",
+        "grid-title": "Christmas Jumper Day",
         "grid-title-font-size": 25,
         "title-margin-bottom": 20,
         "grid-title-color": "#000000",
@@ -210,7 +210,7 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Sophie Ellis-Bextor's commitment to Save The Children goes beyond the design of this exclusive jumper. By purchasing one of these jumpers, you're not only getting a stylish piece of clothing but also contributing to a noble cause that supports children in need around the world.</p><p>Available to purchase at <a href=\"https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.chintiandparker.com%2F&data=05%7C01%7CK.Reid%40savethechildren.org.uk%7C8acbe39c50884d18c5c608dbae25a50b%7C8ea28934d20d47eeaa20b96d5ea33f70%7C0%7C0%7C638295248937881121%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=PAm5NhQz9jDWUX8j1LbvA%2FZUpQmhdnY869mCClhtOUs%3D&reserved=0\" target=\"_blank\" title=\"https://www.chintiandparker.com/\">www.chintiandparker.com</a></p><p>The jumpers retail at<br/>£95 and £45 respectively for adults and children, with 100% of the profits being donated to Save the Children. </p><p>With every purchase, a complimentary tattoo sheet will be included, and these sheets will also be available for individual purchase at £5 each. The proceeds from these sales will support the treatment of children with pneumonia and the provision of birth kits for midwives.</p><p></p><p></p><p></p><p><a href=\"https://www.chintiandparker.com/collections/sophie-ellis-bextor-x-save-the-children-collection\" title=\"https://www.chintiandparker.com/collections/sophie-ellis-bextor-x-save-the-children-collection\">Shop the collection here.</a></p><p></p><p></p>",
+        "grid-content": "<p>Since launching in 2012, Christmas Jumper Day has raised a total of £37 million to help transform the lives of children around the globe. The money raised supports children in the UK and around the world to stay safe,<br/>healthy and learning. To take part, get together with friends, family, colleagues, or classmates, throw on your favourite sustainable sweater or second-hand jumpers on Thursday 12th<br/>December, and <strong>donate £2 </strong>(or £1 for kids) to Save the Children. </p><p></p><p>All funds raised will help some of the most disadvantaged children across the world, including the UK, get access to food, healthcare and education.   </p><p>To find out more and sign-up, visit <a href=\"http://save.tc/r22750C74Ou\" target=\"_blank\">www.christmasjumperday.org</a>.   </p><p>Available to purchase at <a href=\"https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.chintiandparker.com%2F&data=05%7C01%7CK.Reid%40savethechildren.org.uk%7C8acbe39c50884d18c5c608dbae25a50b%7C8ea28934d20d47eeaa20b96d5ea33f70%7C0%7C0%7C638295248937881121%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=PAm5NhQz9jDWUX8j1LbvA%2FZUpQmhdnY869mCClhtOUs%3D&reserved=0\" target=\"_blank\" title=\"https://www.chintiandparker.com/\">www.chintiandparker.com</a></p><p>The jumpers retail at<br/>£95, with 100% of the profits being donated to Save the Children.</p><p></p><p></p>",
         "text-color": "#080707",
         "grid-image-picker": "shopify://shop_images/Untitled_design_15.png",
         "image-width": 50,
