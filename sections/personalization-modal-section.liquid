@@ -32,7 +32,9 @@
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
                 <option for="placement" demo-value="right: 12%; top: 72%; text-align: left;" value="cuff">Cuff</option>
                 <option for="placement" demo-value="right: 27%; top: 59%; text-align: right;" value="hem">Hem</option>
-                <option for="placement" demo-value="right: 33%; top: 35%; text-align: center;" value="chest">Chest</option>
+                <option for="placement" demo-value="right: 33%; top: 35%; text-align: center;" value="chest">
+                  Chest
+                </option>
               </select>
             </div>
             <div class="single-field">
@@ -213,7 +215,7 @@
     width: 100%;
     height: 100%;
   }
-  #AddToCartForm #product-add .button-custom {
+  #personalise-button .fake-atc-button.button-custom {
     background-size: 400% 400%;
     animation: gradient 5s ease infinite !important;
   }
@@ -370,7 +372,7 @@
   {% comment %} #AddToCartForm #product-add .fake-atc-button + #ValidAddtoCart {
     display: none;
   } {% endcomment %}
-  #AddToCartForm #product-add .fake-atc-button {
+  #personalise-button .fake-atc-button {
     border: 1px solid #111;
     background-color: #111;
     color: #fff;
@@ -522,6 +524,19 @@
         personalisedAtcButton.classList.add("disable-atc");
       }
     }
+{% comment %} personalise button click event {% endcomment %}
+document
+.querySelector('#personalise-button .fake-atc-button')
+.addEventListener('click', () => {
+  var variantSizes = jQuery('.size label:not(.shop-the-look-modal-wrapper .size label)').data('size');
+  if (variantSizes == '') {
+    jQuery('.size-error').fadeIn();
+  } else {
+    jQuery('.size-error').fadeOut();
+    openModal();
+  }
+});
+{% comment %} personalise button click event {% endcomment %}
     {% comment %} event for size selectors {% endcomment %}
     document
       .querySelectorAll(
@@ -530,17 +545,14 @@
       .forEach((li) => {
         li.addEventListener('click', () => {
           const selected_variant_id = li.getAttribute('data-id');
-          document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input#atc-product-id").value = selected_variant_id;
-          if (!document.querySelector('#AddToCartForm #product-add .fake-atc-button')) {
+          document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section input#atc-product-id").forEach(input=>{
+            input.value = selected_variant_id;
+          })
+          {% comment %} if (!document.querySelector('#AddToCartForm #product-add .fake-atc-button')) {
             document
               .querySelector('#AddToCartForm #product-add #AddToCartWrapper')
               .insertAdjacentHTML('afterend', `<div class="fake-atc-button button-custom">Personalise</div>`);
-          }
-          document
-            .querySelector('#AddToCartForm #product-add .fake-atc-button')
-            .addEventListener('click', () => {
-              openModal();
-            });
+          } {% endcomment %}
         });
       });
       {% comment %} event for modal close {% endcomment %}

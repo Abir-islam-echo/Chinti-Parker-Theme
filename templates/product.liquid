@@ -227,6 +227,13 @@
       <!-- variant add -->
       {% render 'variant-atc-button', product: product %}
       <!-- variant add -->
+      {% comment %} personalisation button {% endcomment %}
+      {% if product.tags contains 'PERSONALISATION' %}
+        <div id="personalise-button">
+          <div class="fake-atc-button button-custom">Personalise</div>
+        </div>
+      {% endif %}
+      {% comment %} personalisation button {% endcomment %}
       {% if settings.show_klarna_logo %}
         {% assign US_domain = 'chinti-parker-usd.myshopify.com' %}
         {% assign UK_domain = 'chinti-parker.myshopify.com' %}
