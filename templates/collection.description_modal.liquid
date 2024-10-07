@@ -584,20 +584,28 @@ Example: the h2 element should have the same size and color in:
       <div class="product-grid clearfix">
         {% assign bannerLoopCounter = 1 %}
         {% for product in collection.products %}
-          {% if forloop.index == settings['block-1-position'] and settings['desktop-image'] %}
-            {% assign image_1 = settings['desktop-image'] | img_url: "master" %}
-            {% render 'PLP-image-card',
-              card_index: settings['block-1-position'],
-              image_src: image_1
-            %}
-          {% endif %}
-          {% if forloop.index == settings['block-2-position'] and settings['desktop-image-1'] %}
-            {% assign image_2 = settings['desktop-image-2'] | img_url: "master" %}
-            {% render 'PLP-image-card',
-              card_index: settings['block-2-position'],
-              image_src: image_2
-            %}
-          {% endif %}
+          <!-- image block  -->
+          {% assign parentLoop = forloop.index %}
+          {% for thisCollection in settings.collection_list_plp %}
+              {% if thisCollection.handle == collection.handle %}
+                {% if parentLoop == settings['block-1-position'] and settings['desktop-image'] %}
+                  {% assign image_1 = settings['desktop-image'] | img_url: "master" %}
+                  {% render 'PLP-image-card',
+                    card_index: settings['block-1-position'],
+                    image_src: image_1
+                  %}
+                {% endif %}
+                {% if parentLoop == settings['block-2-position'] and settings['desktop-image-1'] %}
+                  {% assign image_2 = settings['desktop-image-2'] | img_url: "master" %}
+                  {% render 'PLP-image-card',
+                    card_index: settings['block-2-position'],
+                    image_src: image_2
+                  %}
+                {% endif %}
+              {% break %}
+              {% endif %}
+          {% endfor %}
+          <!-- image block  -->
           {% if collection.tags == collection.all_tags %}
           {%comment%}only do this for unfiltered collections...{%endcomment%}
           {% if thisCollectionsBanners.size > 0 %}
