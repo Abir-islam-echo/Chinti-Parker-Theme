@@ -4660,8 +4660,8 @@
           "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/3_14_b154f6f5-0d5f-462f-829c-8310ccd40319.png",
-              "mobile_image1": "shopify://shop_images/3_15_89f6abb3-4758-4e64-97b3-40f986260c36.png",
+              "image1": "shopify://shop_images/Desktop_Sub-banner_636_x_700px.png",
+              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_668_x_500px.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4672,7 +4672,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/pure-merino",
+              "link1": "shopify://collections/chinti-party",
               "link_text1": "",
               "font_size_left_cta": 25
             }
