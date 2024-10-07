@@ -3719,7 +3719,7 @@
           "notification_item_JqtxgJ": {
             "type": "notification-item",
             "settings": {
-              "notification_text": "NEW SEASON: DISCOVER OUR WINTER '24 BASICS COLLECTION",
+              "notification_text": "NEW SEASON: DISCOVER OUR WINTER BASICS COLLECTION",
               "notification_text_us": "NEW SEASON: DISCOVER OUR WINTER '24 BASICS COLLECTION",
               "notification_text_eu": "NEW SEASON: DISCOVER OUR WINTER '24 BASICS COLLECTION",
               "notification_link": "shopify://collections/new-season",
@@ -3730,9 +3730,9 @@
           "notification_item_XzKVKd": {
             "type": "notification-item",
             "settings": {
-              "notification_text": "DISCOVER OUR AUTUMN '24 PEANUTS COLLECTION",
-              "notification_text_us": "DISCOVER OUR AUTUMN '24 PEANUTS COLLECTION",
-              "notification_text_eu": "DISCOVER OUR AUTUMN '24 PEANUTS COLLECTION",
+              "notification_text": "DISCOVER OUR WINTER PEANUTS COLLECTION",
+              "notification_text_us": "DISCOVER OUR WINTER PEANUTS COLLECTION",
+              "notification_text_eu": "DISCOVER OUR WINTER PEANUTS COLLECTION",
               "notification_link": "shopify://collections/chinti-meets-peanuts-24",
               "notification_link_us": "shopify://collections/chinti-meets-peanuts-24",
               "notification_link_eu": "shopify://collections/chinti-meets-peanuts-24"
@@ -3741,12 +3741,23 @@
           "notification_item_Rwiqyc": {
             "type": "notification-item",
             "settings": {
-              "notification_text": "DISCOVER OUR NEW AUTUMN '24 COLLECTION",
-              "notification_text_us": "DISCOVER OUR NEW AUTUMN '24 COLLECTION",
-              "notification_text_eu": "DISCOVER OUR NEW AUTUMN '24 COLLECTION",
-              "notification_link": "shopify://collections/new-season",
-              "notification_link_us": "shopify://collections/new-season",
-              "notification_link_eu": "shopify://collections/new-season"
+              "notification_text": "CHINTI & PARTY HAS ARRIVED - SHOP NOW",
+              "notification_text_us": "CHINTI & PARTY HAS ARRIVED - SHOP NOW",
+              "notification_text_eu": "CHINTI & PARTY HAS ARRIVED - SHOP NOW",
+              "notification_link": "shopify://collections/chinti-party",
+              "notification_link_us": "shopify://collections/chinti-party",
+              "notification_link_eu": "shopify://collections/chinti-party"
+            }
+          },
+          "notification_item_r6FThf": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "NEW IN PURE CASHMERE",
+              "notification_text_us": "NEW IN PURE CASHMERE",
+              "notification_text_eu": "NEW IN PURE CASHMERE",
+              "notification_link": "shopify://collections/100-cashmere",
+              "notification_link_us": "shopify://collections/100-cashmere",
+              "notification_link_eu": "shopify://collections/100-cashmere"
             }
           },
           "notification_item_LmDmEy": {
@@ -3787,6 +3798,7 @@
           "notification_item_JqtxgJ",
           "notification_item_XzKVKd",
           "notification_item_Rwiqyc",
+          "notification_item_r6FThf",
           "notification_item_LmDmEy",
           "c3b1e2c1-1799-4951-80ff-161e47c77ff7",
           "notification_item_JH6RhU"
