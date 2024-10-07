@@ -6,8 +6,8 @@
         <div class="image-caption">
           <p>{{ section.settings['image-caption'] }}</p>
         </div>
-        <div class="customized-text-demo" style="right: 12%; top: 72%; text-align: left;">
-          <p style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
+        <div id="customized-text-demo" class="placement-cuff">
+          <p class="size-small-1cm" style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
               <label for="text-size">Choose Your Size</label>
               <select name="text-size" id="text-size" class="text-size-option">
                 {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
-                <option for="size" value="samll-1cm" demo-value="14px">Small - 1cm</option>
+                <option for="size" value="small-1cm" demo-value="14px">Small - 1cm</option>
                 <option for="size" value="medium-2cm" demo-value="16px">Medium - 2cm</option>
               </select>
             </div>
@@ -160,21 +160,7 @@
     @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
-    {% comment %} .pt-serif-bold {
-        font-family: "PT Serif", serif;
-        font-weight: 700;
-        font-style: normal;
-    }
-    .ubuntu-bold {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    }
-    .pinyon-script-regular {
-      font-family: "Pinyon Script", cursive;
-      font-weight: 400;
-      font-style: normal;
-    } {% endcomment %}
+
   #personalisation-modal-wrapper *{
     box-sizing: border-box;
   }
@@ -236,7 +222,7 @@
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image{
     position: relative;
   }
-  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo{
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo{
     position: absolute;
     width: 60px;
   }
@@ -252,7 +238,7 @@
   padding: 15px;
   line-height: normal;
   }
-  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo p{
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo p{
     line-height: normal;
     font-weight: 700;
   }
@@ -363,8 +349,6 @@
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
-    object-position: top;
   }
   {% comment %} #AddToCartForm #product-add #AddToCartWrapper button.button:not(button.button.disabled) {
     display: none;
@@ -394,6 +378,28 @@
     visibility: hidden;
     opacity: 0;
   }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-cuff{
+    right: 12%;
+    top: 72%;
+    text-align: left;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-hem{
+    right: 27%;
+    top: 59%;
+    text-align: right;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-chest{
+    right: 33%;
+    top: 35%;
+    text-align: center;
+  }
+  @media only screen and (min-width: 375px) and (max-width: 460px){
+    {% comment %} #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-cuff{
+      right: 14.5%;
+      top: 72%;
+      text-align: left;
+    } {% endcomment %}
+  }
   @media only screen and (max-width: 768px){
     {% comment %} #AddToCartForm #product-add .fake-atc-button {
       margin-bottom: 0;
@@ -419,6 +425,12 @@
       flex: 100%;
       max-width: 100%;
     }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo p.size-small-1cm{
+      font-size: 10px !important;
+    }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo p.size-medium-2cm{
+      font-size: 12px !important;
+    }
   }
   @media only screen and (max-width: 900px){
     #personalisation-modal-wrapper .personalisation-modal .product-image{
@@ -434,6 +446,21 @@
     #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .heading .title h2{
       font-size: 1.5rem;
     }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-cuff{
+      right: 9%;
+      top: 72%;
+      text-align: left;
+    }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-chest{
+      right: 30%;
+      top: 35%;
+      text-align: center;
+    }
+  }
+  @media only screen and (max-width: 1150px){
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo{
+      width: 50px;
+    }
   }
 </style>
 
@@ -443,7 +470,7 @@
     const personalisedAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit']");
     const regularAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .atc-form button[type='submit']");
     const demoText = document.querySelector(
-      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .customized-text-demo p'
+      '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo p'
     );
     const color_pickers = document.querySelectorAll(
       '#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .customization-content .color-picker ul li.color-item'
@@ -505,12 +532,14 @@
       targetElement.value = selectedItemValue;
       if(selectedItemDestination == 'size'){
         demoText.style.fontSize = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
+        demoText.className = `${selectedItemDestination}-${selectedItemValue}`;
       }
       else if(selectedItemDestination == 'font'){
         demoText.style.fontFamily = `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`
       }
       else if(selectedItemDestination == 'placement'){
-        demoText.closest(".customized-text-demo").setAttribute("style", `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`)
+        {% comment %} demoText.closest("#customized-text-demo").setAttribute("style", `${select.options[select.options['selectedIndex']].getAttribute('demo-value')}`); {% endcomment %}
+        demoText.closest("#customized-text-demo").className = `${selectedItemDestination}-${selectedItemValue}`;
       }
     };
     const addPersonalisationCharge = () => {
