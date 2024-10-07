@@ -425,6 +425,11 @@
     "name": "Collection page video Card",
     "settings": [
       {
+        "type": "collection_list",
+        "id": "collection_list_plp",
+        "label": "Collections"
+      },
+      {
         "type": "number",
         "id": "block-1-position",
         "label": "Block 1 Position",
