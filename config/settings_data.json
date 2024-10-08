@@ -3716,6 +3716,17 @@
       "notification-ribbon-carousel": {
         "type": "notification-ribbon-carousel",
         "blocks": {
+          "notification_item_z66GbN": {
+            "type": "notification-item",
+            "settings": {
+              "notification_text": "",
+              "notification_text_us": "MID-SEASON SALE - SHOP UP TO 25% OFF NEW SEASON",
+              "notification_text_eu": "MID-SEASON SALE - SHOP UP TO 25% OFF NEW SEASON",
+              "notification_link": "",
+              "notification_link_us": "shopify://collections/midseason-sale",
+              "notification_link_eu": "shopify://collections/midseason-sale"
+            }
+          },
           "notification_item_JqtxgJ": {
             "type": "notification-item",
             "settings": {
@@ -3795,6 +3806,7 @@
           }
         },
         "block_order": [
+          "notification_item_z66GbN",
           "notification_item_JqtxgJ",
           "notification_item_XzKVKd",
           "notification_item_Rwiqyc",
@@ -4433,6 +4445,23 @@
       "7be8beb1-6481-482b-b469-24eb66d66078": {
         "type": "slideshow-eu",
         "blocks": {
+          "7be8beb1-6481-482b-b469-24eb66d66078-image-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2_b82d5839-8b33-4a3b-ab77-15e031a49cf9.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_2_faa6cf6e-5e2f-4a83-8f6e-fd6ecffe48f3.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/midseason-sale",
+              "content_alignment": "left"
+            }
+          },
           "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
             "type": "image",
             "settings": {
@@ -4483,30 +4512,13 @@
               "link": "shopify://collections/chinti-meets-peanuts-24",
               "content_alignment": "left"
             }
-          },
-          "7be8beb1-6481-482b-b469-24eb66d66078-image-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/homepage_banner_55_6c052a65-f100-4a01-88da-1424c178c7cd.png",
-              "mobile_image": "shopify://shop_images/MOBILE_homepage_banner_636_x_700px_41_e6fa5c22-9e57-424b-b968-62befe70ff3d.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/100-cashmere",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
+          "7be8beb1-6481-482b-b469-24eb66d66078-image-1",
           "83f31fb4-4be8-407d-9c3d-8c77231d3282",
           "df52da60-b7e9-4296-8d76-9de7744c17f4",
-          "1d527b93-fd40-4525-bfad-755c66a36343",
-          "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
+          "1d527b93-fd40-4525-bfad-755c66a36343"
         ],
         "settings": {
         }
@@ -4514,6 +4526,23 @@
       "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a": {
         "type": "slideshow-us",
         "blocks": {
+          "fbcccfe6-84f7-4e7c-b303-c90fb1430139": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2_961127b2-3a1b-4723-b4dc-71b07c685a3c.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_2_89d701ac-8dfc-4e97-bfc5-c09831c0ca78.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 0,
+              "link": "shopify://collections/midseason-sale",
+              "content_alignment": "left"
+            }
+          },
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
             "type": "image",
             "settings": {
@@ -4564,30 +4593,13 @@
               "link": "shopify://collections/chinti-meets-peanuts-24",
               "content_alignment": "left"
             }
-          },
-          "fbcccfe6-84f7-4e7c-b303-c90fb1430139": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/homepage_banner_55_2153ce25-36e0-4eef-a3ef-06d6451c5063.png",
-              "mobile_image": "shopify://shop_images/MOBILE_homepage_banner_636_x_700px_41_5e7898a7-9312-486c-bdf4-31c1bc723c2a.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/100-cashmere",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
+          "fbcccfe6-84f7-4e7c-b303-c90fb1430139",
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
-          "image_hEk7gH",
-          "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
+          "image_hEk7gH"
         ],
         "settings": {
         }
