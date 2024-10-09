@@ -2490,6 +2490,7 @@ theme.Product = (function() {
         if (variant.available) {
           $(this.selectors.addToCart).prop('disabled', false);
           $(this.selectors.addToCartText).text(theme.strings.addToCart);
+          console.log('theme.strings.addToCart');
         } else {
           // The variant doesn't exist, disable submit button and change the text.
           // This may be an error or notice that a specific variant is not available.

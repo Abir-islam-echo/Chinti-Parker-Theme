@@ -1,10 +1,14 @@
-{% assign add_to_cart = 'Add to Bag' %}
+  {% if product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+    {% assign add_to_cart = 'Pre-Order Now' %}
+  {% else %}
+    {% assign add_to_cart = 'Add to Bag' %}
+  {% endif %}
+
 {% assign adding_to_cart = 'Adding' %}
 {% assign added_to_cart = 'Added' %}
 {% assign go_to_checkout = 'Go to Checkout' %}
 {% assign sold_out = 'Sold Out' %}
 {% assign unavailable = 'Unavailable' %}
-{% assign styledWidthProductCount = 0 %}
 
 {%- capture back_in_stock_form -%}
 		{%- render 'back-in-stock-form' | product: product -%}
@@ -251,7 +255,10 @@
           {% assign selectClass = ' hidden' %}
         {% endif %}
 
-        <div class="selector size-selector {{selectClass}} {% if FoundAVariant != 'true' %}no-colour{%endif%}" data-wair-option-name="{{ option }}">
+        <div
+          class="selector size-selector {{selectClass}} {% if FoundAVariant != 'true' %}no-colour{%endif%}"
+          data-wair-option-name="{{ option }}"
+        >
           <div class="size">
             <label data-size="">
               <span>Select </span>{{ option }}
@@ -263,9 +270,25 @@
                 <a class="close-size" href="#"><i class="fal fa-times"></i></a>
               </li>
               {% for variant in product.variants %}
+                {% if variant.inventory_policy == 'continue'
+                  and variant.inventory_quantity <= 0
+                  and variant.inventory_management == 'shopify'
+                %}
+                  {% assign variantType = 'pre-order' %}
+                {% elsif variant.inventory_policy == 'deny'
+                  and variant.inventory_quantity <= 0
+                  and variant.inventory_management == 'shopify'
+                %}
+                  {% assign variantType = 'out-of-stock' %}
+                {% else %}
+                  {% assign variantType = 'basic' %}
+                {% endif %}
+                <script>
+                  console.log({{ product.options | json }})
+                </script>
                 {% if product.options.size == 1 %}
                   <li
-                    class="{{ variant.title }}{% if variant.inventory_quantity == 0 and variant.inventory_management == 'shopify' %} out-of-stock{% endif %} active"
+                    class="{{ variant.title }} {{ variantType }} active"
                     data-size="{{ variant.title }}"
                     data-wair-option-value="{{ variant.title }}"
                     data-id="{{ variant.id }}"
@@ -287,7 +310,7 @@
               {% endfor %}
             </ul>
           </div>
-          
+
           <p class="error size-error">Please select a size</p>
         </div>
 
@@ -462,10 +485,26 @@
     <div id="ce-widget"></div>
 
     <script>
-      (function (n,k,o){let w=window,d=document,s='script',i={key:k,opts:o},a='https://ceimpacts.com/widget.js';
-      w['CE-Widget']=n;w[n]=w[n]||function(){w[n].i=w[n].i??i;(w[n].q=w[n].q||[]).push(arguments)};
-      let j=d.createElement(s),p=d.getElementsByTagName(s)[0];j.id=n;j.src=a;j.async=1;p.parentNode.insertBefore(j,p);
-      }('_cew', '75131641db-a999fbcdfe'));
+      (function (n, k, o) {
+        let w = window,
+          d = document,
+          s = 'script',
+          i = { key: k, opts: o },
+          a = 'https://ceimpacts.com/widget.js';
+        w['CE-Widget'] = n;
+        w[n] =
+          w[n] ||
+          function () {
+            w[n].i = w[n].i ?? i;
+            (w[n].q = w[n].q || []).push(arguments);
+          };
+        let j = d.createElement(s),
+          p = d.getElementsByTagName(s)[0];
+        j.id = n;
+        j.src = a;
+        j.async = 1;
+        p.parentNode.insertBefore(j, p);
+      })('_cew', '75131641db-a999fbcdfe');
       _cew('{{ product.id }}', '#ce-widget');
     </script>
   </div>
