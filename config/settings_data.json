@@ -4365,8 +4365,8 @@
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2.png",
-              "mobile_image": "shopify://shop_images/Desktop_Sub-banner_3.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_13.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_3.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4479,6 +4479,23 @@
               "content_alignment": "left"
             }
           },
+          "1d527b93-fd40-4525-bfad-755c66a36343": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_13_0c30fa02-1abe-4aa4-8785-0e992c167171.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_3_8f93edaa-bc95-415d-a63e-a29dd9b33672.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
           "df52da60-b7e9-4296-8d76-9de7744c17f4": {
             "type": "image",
             "settings": {
@@ -4495,30 +4512,13 @@
               "link": "shopify://collections/chinti-party",
               "content_alignment": "left"
             }
-          },
-          "1d527b93-fd40-4525-bfad-755c66a36343": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2_dbc5e6a7-e9dd-44e3-804f-c2b6d6187799.png",
-              "mobile_image": "shopify://shop_images/Desktop_Sub-banner_3_32d510d1-2738-481d-b438-c910d32680b9.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/chinti-meets-peanuts-24",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
           "7be8beb1-6481-482b-b469-24eb66d66078-image-1",
           "83f31fb4-4be8-407d-9c3d-8c77231d3282",
-          "df52da60-b7e9-4296-8d76-9de7744c17f4",
-          "1d527b93-fd40-4525-bfad-755c66a36343"
+          "1d527b93-fd40-4525-bfad-755c66a36343",
+          "df52da60-b7e9-4296-8d76-9de7744c17f4"
         ],
         "settings": {
         }
@@ -4560,6 +4560,23 @@
               "content_alignment": "left"
             }
           },
+          "image_hEk7gH": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_13_83d46657-26b1-495a-91a8-af6d6d2278b1.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_3_353270df-767d-47bf-9942-d0ce614c9fd4.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "content_alignment": "left"
+            }
+          },
           "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1": {
             "type": "image",
             "settings": {
@@ -4576,30 +4593,13 @@
               "link": "shopify://collections/chinti-party",
               "content_alignment": "left"
             }
-          },
-          "image_hEk7gH": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2_bb5a23ce-d111-4e6c-b71a-8373352be81c.png",
-              "mobile_image": "shopify://shop_images/Desktop_Sub-banner_3_add0809d-42cb-415b-a696-365ef221b135.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/chinti-meets-peanuts-24",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
           "fbcccfe6-84f7-4e7c-b303-c90fb1430139",
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31",
-          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1",
-          "image_hEk7gH"
+          "image_hEk7gH",
+          "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a-image-1"
         ],
         "settings": {
         }
