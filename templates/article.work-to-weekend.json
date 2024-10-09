@@ -1,1 +1,324 @@
-{"wrapper":"div#look-book-template","sections":{"banner-01":{"type":"banner-01","settings":{"section_margin_top":10}},"51f50973-641f-4d06-b12b-27b53a8e4c6c":{"type":"custom-content-01","blocks":{"template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0":{"type":"text","settings":{"title":"CHINTI & PARKER","title_color":"#000000","title_font_size":32,"title_font_weight":900,"text":"<p>FROM WORK TO WEEKEND<\/p>","content_color":"#000000","text_font_size":20,"margin_top":0,"border_top":0,"border_color":"","padding_top":50,"padding_bottom":50,"width":"50%","alignment":"center","align_text":"center"}}},"block_order":["template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0"],"settings":{"title":""}},"166479270223b9a090":{"type":"bannergrid-four","blocks":{"166479270238728e96-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105806.576.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105806.576_8d6a812b-84c0-4647-8408-e83142efb7e3.png","heading":"","content":"","link":"shopify:\/\/products\/grey-merino-vest"}},"166479270238728e96-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105412.006.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105412.006_dd5e8e7a-3cb3-41e6-92db-27d8d6993a72.png","heading":"","content":"","link":"shopify:\/\/products\/grey-merino-cardigan"}},"166479270238728e96-3":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105355.379.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105355.379_6029a172-74ab-4472-b735-0a097a00e098.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/collections\/aw24-collection"}},"166479270238728e96-4":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T104559.012.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T104559.012_c71adf52-b233-4416-b66b-b3ce80f467ac.png","heading":"","content":"","link":"shopify:\/\/products\/grey-merino-rollneck-sweater"}},"172f626e-2740-4173-8000-4e35d9ec3451":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105845.321.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105845.321_cb67bb38-d24b-4bff-ab84-21730782757b.png","heading":"","content":"","link":"shopify:\/\/products\/black-wool-cashmere-belted-cardigan"}},"e1a00210-39ba-4102-80c9-343dee1dbca5":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105948.155.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T105948.155_49883680-6b51-49e0-a04a-884ecd7e68ed.png","heading":"","content":"","link":"shopify:\/\/products\/black-wool-cashmere-jeanne-sweater"}},"9b33da39-f9b3-48db-80af-60c4e147f263":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110106.175.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110106.175_9b8505fd-195f-43fb-8231-244c7eb07c54.png","heading":"","content":"","link":"shopify:\/\/products\/warm-beige-cashmere-funnel-tank"}},"fc7ea8f8-407d-4e89-bd43-8b96d3f430cc":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110322.647.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110322.647_44f1c6cc-14fd-4247-a52d-84d5b03c8e93.png","heading":"","content":"","link":"shopify:\/\/products\/camel-wool-cashmere-amelia-rollneck-dress"}},"861cc373-f6c0-4efd-893d-ddc5b77d9e97":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110502.421.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110502.421_b9f39267-3d75-4a04-bc88-8c85220146ab.png","heading":"","content":"","link":"shopify:\/\/products\/black-merino-jeanne-milano-skirt"}},"98dfe231-525c-44da-9342-a3ccdc523780":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110606.297.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110606.297_18c17ef8-444c-4db3-a0e3-9e86decca45d.png","heading":"","content":"","link":"shopify:\/\/products\/grey-merino-vest"}},"f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110903.875.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T110903.875_79b4ff16-645e-4668-acfe-f671be779d28.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/cream-cashmere-asymmetrical-sweater"}},"0731ab4a-6c0b-48a5-98cd-12fd19664893":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T111043.315.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T111043.315_86f34b57-3622-49a1-9cb3-cee059d1e707.png","heading":"","content":"","link":"shopify:\/\/collections\/aw24-collection"}},"image_JxkqW8":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112425.752.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112425.752_99d42d94-031b-4c54-8a51-c6aa29d5ea12.png","heading":"","content":"","link":"shopify:\/\/products\/cream-cashmere-hoodie-1"}},"image_UjnQaL":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112438.789.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112438.789_7c9a482c-387b-4d4f-862e-9cbad930281c.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/cream-wool-cashmere-freya-cardigan"}},"image_FEY8XY":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112452.958.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112452.958_53ec8aac-e5eb-431c-89a4-7af399d49d6e.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/pink-cashmere-rollneck-sweater"}},"image_MxMWc4":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112633.498.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112633.498_23a73926-461b-4b8e-b759-2fcbdb0a27e1.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/pink-breton-heart-wool-cashmere-sweater"}},"image_tNxmyP":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112649.770_94a303b2-f85c-4308-9b0e-690c0e75d3f5.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112649.770_5cea1a9d-28c2-49cb-9466-2750c2167e29.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/pink-breton-heart-wool-cashmere-sweater"}},"image_gAf4f4":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112703.464.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112703.464_fe7f0503-822d-4a49-9f32-3278ec9abe52.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/pink-cashmere-rollneck-sweater"}},"image_e6647C":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112717.520.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112717.520_7b892116-7e70-4b19-b878-0052d486407f.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/cream-wool-cashmere-rollneck-sweater"}},"image_J9Cf6m":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112730.855.png","mobile_image":"shopify:\/\/shop_images\/Untitled_design_-_2024-09-12T112730.855_6e6b313d-0cf8-43f3-bf69-5c911fb645d1.png","heading":"","content":"","link":"https:\/\/www.chintiandparker.com\/products\/cream-wool-cashmere-elbow-patch-sweater-1"}},"image_e4M4zm":{"type":"image","disabled":true,"settings":{"heading":"Heading...","content":"Lorem ipsum...","link":""}}},"block_order":["166479270238728e96-1","166479270238728e96-2","166479270238728e96-3","166479270238728e96-4","172f626e-2740-4173-8000-4e35d9ec3451","e1a00210-39ba-4102-80c9-343dee1dbca5","9b33da39-f9b3-48db-80af-60c4e147f263","fc7ea8f8-407d-4e89-bd43-8b96d3f430cc","861cc373-f6c0-4efd-893d-ddc5b77d9e97","98dfe231-525c-44da-9342-a3ccdc523780","f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45","0731ab4a-6c0b-48a5-98cd-12fd19664893","image_JxkqW8","image_UjnQaL","image_FEY8XY","image_MxMWc4","image_tNxmyP","image_gAf4f4","image_e6647C","image_J9Cf6m","image_e4M4zm"],"settings":{"width":"el-full-width","title-section":""}},"0732d93f-7334-4ae2-8aa1-56d11f73285c":{"type":"custom-content-01","blocks":{"715a9b1c-8697-40dc-ac0f-3f152829950a":{"type":"cta","settings":{"padding-top":50,"padding-bottom":0,"title":"Shop the Collection","url":"shopify:\/\/collections\/aw24-collection","title_color":"#000000","title_font_size":20,"cta_bg":"","cta_border_color":"","cta_border":2,"align_text":"center"}}},"block_order":["715a9b1c-8697-40dc-ac0f-3f152829950a"],"settings":{"title":""}}},"order":["banner-01","51f50973-641f-4d06-b12b-27b53a8e4c6c","166479270223b9a090","0732d93f-7334-4ae2-8aa1-56d11f73285c"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "wrapper": "div#look-book-template",
+  "sections": {
+    "banner-01": {
+      "type": "banner-01",
+      "settings": {
+        "section_margin_top": 10
+      }
+    },
+    "51f50973-641f-4d06-b12b-27b53a8e4c6c": {
+      "type": "custom-content-01",
+      "blocks": {
+        "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0": {
+          "type": "text",
+          "settings": {
+            "title": "WORK TO WEEKEND",
+            "title_color": "#000000",
+            "title_font_size": 41,
+            "title_font_weight": 866,
+            "text": "",
+            "content_color": "#000000",
+            "text_font_size": 20,
+            "margin_top": 0,
+            "border_top": 0,
+            "border_color": "",
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "width": "50%",
+            "alignment": "center",
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "166479270223b9a090": {
+      "type": "bannergrid-four",
+      "blocks": {
+        "166479270238728e96-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T105806.576.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T105806.576_8d6a812b-84c0-4647-8408-e83142efb7e3.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/grey-merino-vest"
+          }
+        },
+        "166479270238728e96-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T105412.006.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T105412.006_dd5e8e7a-3cb3-41e6-92db-27d8d6993a72.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/grey-merino-cardigan"
+          }
+        },
+        "166479270238728e96-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T105355.379.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T105355.379_6029a172-74ab-4472-b735-0a097a00e098.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/collections/aw24-collection"
+          }
+        },
+        "166479270238728e96-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T104559.012.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T104559.012_c71adf52-b233-4416-b66b-b3ce80f467ac.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/grey-merino-rollneck-sweater"
+          }
+        },
+        "172f626e-2740-4173-8000-4e35d9ec3451": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T105845.321.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T105845.321_cb67bb38-d24b-4bff-ab84-21730782757b.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/black-wool-cashmere-belted-cardigan"
+          }
+        },
+        "e1a00210-39ba-4102-80c9-343dee1dbca5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T105948.155.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T105948.155_49883680-6b51-49e0-a04a-884ecd7e68ed.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/black-wool-cashmere-jeanne-sweater"
+          }
+        },
+        "9b33da39-f9b3-48db-80af-60c4e147f263": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T110106.175.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T110106.175_9b8505fd-195f-43fb-8231-244c7eb07c54.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/warm-beige-cashmere-funnel-tank"
+          }
+        },
+        "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T110322.647.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T110322.647_44f1c6cc-14fd-4247-a52d-84d5b03c8e93.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/camel-wool-cashmere-amelia-rollneck-dress"
+          }
+        },
+        "861cc373-f6c0-4efd-893d-ddc5b77d9e97": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T110502.421.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T110502.421_b9f39267-3d75-4a04-bc88-8c85220146ab.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/black-merino-jeanne-milano-skirt"
+          }
+        },
+        "98dfe231-525c-44da-9342-a3ccdc523780": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T110606.297.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T110606.297_18c17ef8-444c-4db3-a0e3-9e86decca45d.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/grey-merino-vest"
+          }
+        },
+        "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T110903.875.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T110903.875_79b4ff16-645e-4668-acfe-f671be779d28.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/cream-cashmere-asymmetrical-sweater"
+          }
+        },
+        "0731ab4a-6c0b-48a5-98cd-12fd19664893": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T111043.315.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T111043.315_86f34b57-3622-49a1-9cb3-cee059d1e707.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://collections/aw24-collection"
+          }
+        },
+        "image_JxkqW8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112425.752.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112425.752_99d42d94-031b-4c54-8a51-c6aa29d5ea12.png",
+            "heading": "",
+            "content": "",
+            "link": "shopify://products/cream-cashmere-hoodie-1"
+          }
+        },
+        "image_UjnQaL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112438.789.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112438.789_7c9a482c-387b-4d4f-862e-9cbad930281c.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/cream-wool-cashmere-freya-cardigan"
+          }
+        },
+        "image_FEY8XY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112452.958.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112452.958_53ec8aac-e5eb-431c-89a4-7af399d49d6e.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/pink-cashmere-rollneck-sweater"
+          }
+        },
+        "image_MxMWc4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112633.498.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112633.498_23a73926-461b-4b8e-b759-2fcbdb0a27e1.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/pink-breton-heart-wool-cashmere-sweater"
+          }
+        },
+        "image_tNxmyP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112649.770_94a303b2-f85c-4308-9b0e-690c0e75d3f5.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112649.770_5cea1a9d-28c2-49cb-9466-2750c2167e29.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/pink-breton-heart-wool-cashmere-sweater"
+          }
+        },
+        "image_gAf4f4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112703.464.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112703.464_fe7f0503-822d-4a49-9f32-3278ec9abe52.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/pink-cashmere-rollneck-sweater"
+          }
+        },
+        "image_e6647C": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112717.520.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112717.520_7b892116-7e70-4b19-b878-0052d486407f.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/cream-wool-cashmere-rollneck-sweater"
+          }
+        },
+        "image_J9Cf6m": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-09-12T112730.855.png",
+            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-09-12T112730.855_6e6b313d-0cf8-43f3-bf69-5c911fb645d1.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/cream-wool-cashmere-elbow-patch-sweater-1"
+          }
+        },
+        "image_e4M4zm": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "heading": "Heading...",
+            "content": "Lorem ipsum...",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "166479270238728e96-1",
+        "166479270238728e96-2",
+        "166479270238728e96-3",
+        "166479270238728e96-4",
+        "172f626e-2740-4173-8000-4e35d9ec3451",
+        "e1a00210-39ba-4102-80c9-343dee1dbca5",
+        "9b33da39-f9b3-48db-80af-60c4e147f263",
+        "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc",
+        "861cc373-f6c0-4efd-893d-ddc5b77d9e97",
+        "98dfe231-525c-44da-9342-a3ccdc523780",
+        "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45",
+        "0731ab4a-6c0b-48a5-98cd-12fd19664893",
+        "image_JxkqW8",
+        "image_UjnQaL",
+        "image_FEY8XY",
+        "image_MxMWc4",
+        "image_tNxmyP",
+        "image_gAf4f4",
+        "image_e6647C",
+        "image_J9Cf6m",
+        "image_e4M4zm"
+      ],
+      "settings": {
+        "width": "el-full-width",
+        "title-section": ""
+      }
+    },
+    "0732d93f-7334-4ae2-8aa1-56d11f73285c": {
+      "type": "custom-content-01",
+      "blocks": {
+        "715a9b1c-8697-40dc-ac0f-3f152829950a": {
+          "type": "cta",
+          "settings": {
+            "padding-top": 50,
+            "padding-bottom": 0,
+            "title": "Shop the Collection",
+            "url": "shopify://collections/aw24-collection",
+            "title_color": "#000000",
+            "title_font_size": 20,
+            "cta_bg": "",
+            "cta_border_color": "",
+            "cta_border": 2,
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "715a9b1c-8697-40dc-ac0f-3f152829950a"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "banner-01",
+    "51f50973-641f-4d06-b12b-27b53a8e4c6c",
+    "166479270223b9a090",
+    "0732d93f-7334-4ae2-8aa1-56d11f73285c"
+  ]
+}
