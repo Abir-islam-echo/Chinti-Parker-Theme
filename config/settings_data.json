@@ -4610,8 +4610,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-3": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/3_23.png",
-              "mobile_image1": "shopify://shop_images/2_1_5.png",
+              "image1": "shopify://shop_images/WINTER_BASICS_636_x_700px.png",
+              "mobile_image1": "shopify://shop_images/WINTER_BASICS_Mobile_Sub-banner_668_x_500px_2.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4630,8 +4630,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Desktop_Sub-banner_3.png",
-              "mobile_image1": "shopify://shop_images/Mobile_Main_Banner_3.png",
+              "image1": "shopify://shop_images/Desktop_Sub-banner_636_x_700px_6.png",
+              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_668_x_500px_5.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4650,8 +4650,8 @@
           "35886c16-c230-4eca-89c3-1c811669cd0a-bannergrid-threecolumns-1": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Spring_Collection_21_5f48115d-f000-4884-b1ae-032ac20634e6.png",
-              "mobile_image1": "shopify://shop_images/SUBANNER_MOBILE_22_0f4b078c-b8da-441c-a477-3e15c76f8056.png",
+              "image1": "shopify://shop_images/Spring_Collection_22_db7ad495-2f2c-47f8-9bdd-ef39fee8d35f.png",
+              "mobile_image1": "shopify://shop_images/SUBANNER_MOBILE_25_d757d979-4587-46b3-9dbd-8d862450cb65.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4662,7 +4662,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/aw24-collection",
+              "link1": "shopify://collections/100-cashmere",
               "link_text1": "",
               "font_size_left_cta": 25
             }
