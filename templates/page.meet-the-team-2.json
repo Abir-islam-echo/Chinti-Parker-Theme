@@ -213,11 +213,78 @@
         "title-section": ""
       }
     },
+    "bannergrid_four_pWq3kC": {
+      "type": "bannergrid-four",
+      "blocks": {
+        "image_KYFtep": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_29_6256c311-9b54-4e38-942d-ec739bf2f3a3.png",
+            "mobile_image": "shopify://shop_images/Valeriya_29.png",
+            "heading": "",
+            "content": "",
+            "link": ""
+          }
+        },
+        "image_YNyPwX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_30.png",
+            "mobile_image": "shopify://shop_images/Valeriya_30_53550933-e4ad-4833-931d-d806f0cbfaad.png",
+            "heading": "",
+            "content": "",
+            "link": ""
+          }
+        },
+        "image_76Kmhe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_31_87c8e0cf-7266-4fcf-b7a9-e23165541a61.png",
+            "mobile_image": "shopify://shop_images/Valeriya_31.png",
+            "heading": "",
+            "content": "",
+            "link": ""
+          }
+        },
+        "image_Hbq6QM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_32.png",
+            "mobile_image": "shopify://shop_images/Valeriya_32_e3db4954-2d5b-4ee9-a9bb-c299a72431e5.png",
+            "heading": "",
+            "content": "",
+            "link": ""
+          }
+        },
+        "image_Xzgt4f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_33.png",
+            "mobile_image": "shopify://shop_images/Valeriya_33_453259ce-f750-468e-932d-37aa80c66f79.png",
+            "heading": "Heading...",
+            "content": "Lorem ipsum...",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_KYFtep",
+        "image_YNyPwX",
+        "image_76Kmhe",
+        "image_Hbq6QM",
+        "image_Xzgt4f"
+      ],
+      "settings": {
+        "width": "el-container",
+        "title-section": ""
+      }
+    },
     "0732d93f-7334-4ae2-8aa1-56d11f73285c": {
       "type": "custom-content-01",
       "blocks": {
         "715a9b1c-8697-40dc-ac0f-3f152829950a": {
           "type": "cta",
+          "disabled": true,
           "settings": {
             "padding-top": 50,
             "padding-bottom": 0,
@@ -244,6 +311,7 @@
     "banner-01",
     "51f50973-641f-4d06-b12b-27b53a8e4c6c",
     "166479270223b9a090",
+    "bannergrid_four_pWq3kC",
     "0732d93f-7334-4ae2-8aa1-56d11f73285c"
   ]
 }
