@@ -1,0 +1,247 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "wrapper": "div#look-book-template",
+  "sections": {
+    "banner-01": {
+      "type": "banner-01",
+      "blocks": {
+        "c405e267-4497-414b-b6ab-d5df52194cd0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BASICS_by_CHINT_PARKER.jpg",
+            "mobile_image": "shopify://shop_images/KPS2326_Wide_Leg_Pants_campaign_style___5.jpg",
+            "heading": "",
+            "font_size": 60,
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align_vertical": "center",
+            "text_align_horizontal": "center",
+            "link": "",
+            "button_text": "",
+            "font_size_button": 25
+          }
+        }
+      },
+      "block_order": [
+        "c405e267-4497-414b-b6ab-d5df52194cd0"
+      ],
+      "settings": {
+        "section_margin_top": 10
+      }
+    },
+    "51f50973-641f-4d06-b12b-27b53a8e4c6c": {
+      "type": "custom-content-01",
+      "blocks": {
+        "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0": {
+          "type": "text",
+          "settings": {
+            "title": "BASICS by CHINTI & PARKER",
+            "title_color": "#000000",
+            "title_font_size": 32,
+            "title_font_weight": 900,
+            "text": "<p>Home to the most notable names in fashion, and the birthplace of chic, residents of Paris dress nothing short of excellent. With a style that's equal parts elegant and simplistic, Parisians are firm believers that a wardrobe doesn't need to beoverflowing to make an impact. Holding quality above all else, only a few staple pieces are required to curate a look worthy for the Eiffel Tower. With this Chinti & Parker guide, you'll have everything you need to dress à la mode.</p>",
+            "content_color": "#000000",
+            "text_font_size": 20,
+            "margin_top": 0,
+            "border_top": 0,
+            "border_color": "",
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "width": "50%",
+            "alignment": "center",
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--14691294773326__51f50973-641f-4d06-b12b-27b53a8e4c6c-1665051769b4ac36cd-0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "166479270223b9a090": {
+      "type": "bannergrid-four",
+      "blocks": {
+        "166479270238728e96-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5_1.jpg",
+            "mobile_image": "shopify://shop_images/5_1.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/fuchsia-wool-cashmere-cropped-sweater"
+          }
+        },
+        "166479270238728e96-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1_86de9ac2-1ac3-4be3-a5a8-84f3ab6f41af.jpg",
+            "mobile_image": "shopify://shop_images/1_86de9ac2-1ac3-4be3-a5a8-84f3ab6f41af.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/blue-wool-cashmere-slouchy-sweater"
+          }
+        },
+        "166479270238728e96-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4_f00a83f4-ffa1-45e5-9ca8-27822b66a281.jpg",
+            "mobile_image": "shopify://shop_images/4_f00a83f4-ffa1-45e5-9ca8-27822b66a281.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/black-wool-cashmere-cropped-sweater"
+          }
+        },
+        "166479270238728e96-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/KPS2325_Cropped_Boxy_Cardi_Hot_Pink_F.jpg",
+            "mobile_image": "shopify://shop_images/KPS2325_Cropped_Boxy_Cardi_Hot_Pink_F.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/fuchsia-wool-cashmere-cropped-cardigan"
+          }
+        },
+        "172f626e-2740-4173-8000-4e35d9ec3451": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/9_063cabb9-1ebc-4448-8bd4-a557dee3ac58.jpg",
+            "mobile_image": "shopify://shop_images/9_063cabb9-1ebc-4448-8bd4-a557dee3ac58.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/black-wool-cashmere-snood"
+          }
+        },
+        "e1a00210-39ba-4102-80c9-343dee1dbca5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/10_4b1cb2b1-0034-4052-bea3-c7c2e4f50b17.jpg",
+            "mobile_image": "shopify://shop_images/10_4b1cb2b1-0034-4052-bea3-c7c2e4f50b17.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/fuchsia-wool-cashmere-snood"
+          }
+        },
+        "9b33da39-f9b3-48db-80af-60c4e147f263": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/11_99ef8231-f754-473e-9827-e13d1609b1a2.jpg",
+            "mobile_image": "shopify://shop_images/11_99ef8231-f754-473e-9827-e13d1609b1a2.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/black-wool-cashmere-relaxed-rollneck-sweater"
+          }
+        },
+        "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/8_10a480be-5ef7-4805-bdac-ad5fa7da24bb.jpg",
+            "mobile_image": "shopify://shop_images/8_10a480be-5ef7-4805-bdac-ad5fa7da24bb.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/fuchsia-wool-cashmere-relaxed-rollneck-sweater"
+          }
+        },
+        "861cc373-f6c0-4efd-893d-ddc5b77d9e97": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/13_211532b7-4196-4e95-bb27-9e2e3a178fa3.jpg",
+            "mobile_image": "shopify://shop_images/13_211532b7-4196-4e95-bb27-9e2e3a178fa3.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/black-wool-cashmere-slouchy-sweater"
+          }
+        },
+        "98dfe231-525c-44da-9342-a3ccdc523780": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/6_fc3f57d1-4cbd-4ebc-b6d6-a181a06437c6.jpg",
+            "mobile_image": "shopify://shop_images/6_fc3f57d1-4cbd-4ebc-b6d6-a181a06437c6.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/orange-wool-cashmere-cropped-sweater"
+          }
+        },
+        "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/7_59684264-f7d2-4135-9779-06cc9fb56bd1.jpg",
+            "mobile_image": "shopify://shop_images/7_59684264-f7d2-4135-9779-06cc9fb56bd1.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/blue-wool-cashmere-relaxed-rollneck-sweater"
+          }
+        },
+        "0731ab4a-6c0b-48a5-98cd-12fd19664893": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/15_fea00ec0-1b06-470a-a8e7-80b690fb209b.jpg",
+            "mobile_image": "shopify://shop_images/15_fea00ec0-1b06-470a-a8e7-80b690fb209b.jpg",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/black-wool-cashmere-cropped-cardigan"
+          }
+        }
+      },
+      "block_order": [
+        "166479270238728e96-1",
+        "166479270238728e96-2",
+        "166479270238728e96-3",
+        "166479270238728e96-4",
+        "172f626e-2740-4173-8000-4e35d9ec3451",
+        "e1a00210-39ba-4102-80c9-343dee1dbca5",
+        "9b33da39-f9b3-48db-80af-60c4e147f263",
+        "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc",
+        "861cc373-f6c0-4efd-893d-ddc5b77d9e97",
+        "98dfe231-525c-44da-9342-a3ccdc523780",
+        "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45",
+        "0731ab4a-6c0b-48a5-98cd-12fd19664893"
+      ],
+      "settings": {
+        "width": "el-full-width",
+        "title-section": ""
+      }
+    },
+    "0732d93f-7334-4ae2-8aa1-56d11f73285c": {
+      "type": "custom-content-01",
+      "blocks": {
+        "715a9b1c-8697-40dc-ac0f-3f152829950a": {
+          "type": "cta",
+          "settings": {
+            "padding-top": 50,
+            "padding-bottom": 0,
+            "title": "Shop the Collection",
+            "url": "shopify://collections/basics",
+            "title_color": "#000000",
+            "title_font_size": 20,
+            "cta_bg": "",
+            "cta_border_color": "",
+            "cta_border": 2,
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "715a9b1c-8697-40dc-ac0f-3f152829950a"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "banner-01",
+    "51f50973-641f-4d06-b12b-27b53a8e4c6c",
+    "166479270223b9a090",
+    "0732d93f-7334-4ae2-8aa1-56d11f73285c"
+  ]
+}
