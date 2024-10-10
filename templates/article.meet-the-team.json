@@ -147,6 +147,16 @@
             "link": "shopify://collections/autumn-basics"
           }
         },
+        "31072edc-8b99-4304-b5f7-1b35b200ba74": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Valeriya_17_47c6ae5f-cd25-4890-9366-1600421390ee.png",
+            "mobile_image": "shopify://shop_images/Valeriya_17.png",
+            "heading": "",
+            "content": "",
+            "link": "https://www.chintiandparker.com/products/pink-wool-cashmere-dip-dye-shorts"
+          }
+        },
         "166479270238728e96-4": {
           "type": "image",
           "settings": {
@@ -256,16 +266,6 @@
             "heading": "",
             "content": "",
             "link": "shopify://collections/autumn-basics"
-          }
-        },
-        "31072edc-8b99-4304-b5f7-1b35b200ba74": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Valeriya_17_47c6ae5f-cd25-4890-9366-1600421390ee.png",
-            "mobile_image": "shopify://shop_images/Valeriya_17.png",
-            "heading": "",
-            "content": "",
-            "link": "https://www.chintiandparker.com/products/pink-wool-cashmere-dip-dye-shorts"
           }
         },
         "74e543b4-06c8-43a6-a7d9-a510866d5867": {
@@ -440,6 +440,7 @@
         "172f626e-2740-4173-8000-4e35d9ec3451",
         "786c25af-103b-42c7-b29b-f59170750ac9",
         "166479270238728e96-3",
+        "31072edc-8b99-4304-b5f7-1b35b200ba74",
         "166479270238728e96-4",
         "f57f1a90-35fa-4de1-9ee3-2eb5cf2cad45",
         "98dfe231-525c-44da-9342-a3ccdc523780",
@@ -451,7 +452,6 @@
         "861cc373-f6c0-4efd-893d-ddc5b77d9e97",
         "d65ba1d0-3afb-4f9a-b9fa-70d28cb2cdae",
         "fc7ea8f8-407d-4e89-bd43-8b96d3f430cc",
-        "31072edc-8b99-4304-b5f7-1b35b200ba74",
         "74e543b4-06c8-43a6-a7d9-a510866d5867",
         "0dd3e530-ed8d-455c-b5a5-8c19d468f801",
         "784931a9-03b2-4bf8-9ae5-acf003e646c2",
