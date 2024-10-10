@@ -20,73 +20,91 @@
 </div>
 
 <style>
-  .template-cart #shopify-section-upsell-product .upsell-container .upsell-product-list{
-    display: flex;
-    gap: 20px;
-  }
-  .template-cart #shopify-section-upsell-product .upsell-container .upsell-heading {
-    padding-bottom: 20px;
-  }
-  .template-cart #shopify-section-upsell-product .overlayTag {
-    display: none;
-  }
-  .template-cart #shopify-section-upsell-product .upsell-product-section{
-    flex: 1;
-  }
-
-  .template-cart .bottom-section.inner-section{
-    margin-top: 20px;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item .product-caption{
-    padding-top: 15px;
-    display: flex;
-    gap: 5px;
-    text-align: start;
-    flex-direction: column;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item .overlayTag span{
-    font-size: 11px !important;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item .product-caption .product-name a{
-    color: #000;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item .product-image-wrap .quickBuyColourSwatch{
-    opacity: 1;
-    pointer-events: auto;
-    display: block !important;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item:not(.item.cream-sophie-ellis-bextor-sweater) .product-image-wrap .quickBuyColourSwatch :is(.swatchOptionBlocks button.quickBuy, .hoverHint){
-    line-height: 1;
-    font-weight: 600;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item.cream-sophie-ellis-bextor-sweater .product-image-wrap .quickBuyColourSwatch .hoverHint{
-    display: none;
-  }
-  .template-cart .upsell-product-section .content-wrapper .item.cream-sophie-ellis-bextor-sweater .product-image-wrap .quickBuyColourSwatch .swatchOptionBlocks{
-    opacity: 1;
-    pointer-events: auto;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  .template-cart .upsell-product-section:has(.item.cashmere-care-accessories-set){
-    padding-bottom: 16px;
-  }
-  @media only screen and (max-width: 700px){
-  .template-cart #shopify-section-upsell-product .swatchOptionBlocks .quickBuyOOS {
-    display: none;
-  }
-  }
-  @media only screen and (max-width: 500px){
-  .template-cart .shopping-bag .order-table .inner-section.upsell {
-    padding: 0;
-    border: none;
-  }
-  }
-  @media only screen and (min-width: 500px){
+    .template-cart #shopify-section-upsell-product .upsell-container .upsell-product-list{
+      display: flex;
+      gap: 20px;
+    }
     .template-cart #shopify-section-upsell-product .upsell-container .upsell-heading {
-    font-size: 28px;
-  }
-  }
+      padding-bottom: 20px;
+    }
+    .template-cart #shopify-section-upsell-product .overlayTag {
+      display: none;
+    }
+    .template-cart #shopify-section-upsell-product .upsell-product-section{
+      flex: 1;
+    }
+
+    .template-cart .bottom-section.inner-section{
+      margin-top: 20px;
+    }
+    .template-cart .upsell-product-section .content-wrapper .item .product-caption{
+      padding-top: 15px;
+      display: flex;
+      gap: 5px;
+      text-align: start;
+      flex-direction: column;
+    }
+    .template-cart .upsell-product-section .content-wrapper .item .overlayTag span{
+      font-size: 11px !important;
+    }
+    .template-cart .upsell-product-section .content-wrapper .item .product-caption .product-name a{
+      color: #000;
+    }
+    .template-cart .upsell-product-section .content-wrapper .item .product-image-wrap .quickBuyColourSwatch{
+      opacity: 1;
+      pointer-events: auto;
+      display: block !important;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  .template-cart
+      .upsell-product-section
+      .content-wrapper
+      div.item[class*='cashmere-care']
+      .product-image-wrap
+      .quickBuyColourSwatch
+      :is(.swatchOptionBlocks button.quickBuy, .hoverHint) {
+      line-height: 1;
+      font-weight: 600;
+    }
+    .template-cart
+      .upsell-product-section
+      .content-wrapper
+      .item:not(div.item[class*='cashmere-care'])
+      .product-image-wrap
+      .quickBuyColourSwatch
+      .hoverHint {
+      display: none;
+    }
+    .template-cart
+      .upsell-product-section
+      .content-wrapper
+      .item:not(div.item[class*='cashmere-care'])
+      .product-image-wrap
+      .quickBuyColourSwatch
+      .swatchOptionBlocks {
+      opacity: 1;
+      pointer-events: auto;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .template-cart .upsell-product-section:has(.item.cashmere-care-accessories-set){
+      padding-bottom: 16px;
+    }
+    @media only screen and (max-width: 700px){
+    .template-cart #shopify-section-upsell-product .swatchOptionBlocks .quickBuyOOS {
+      display: none;
+    }
+    }
+    @media only screen and (max-width: 500px){
+    .template-cart .shopping-bag .order-table .inner-section.upsell {
+      padding: 0;
+      border: none;
+    }
+    }
+    @media only screen and (min-width: 500px){
+      .template-cart #shopify-section-upsell-product .upsell-container .upsell-heading {
+      font-size: 28px;
+    }
+    }
 </style>
 
 {% schema %}
