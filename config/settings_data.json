@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "background_color": "#737373",
@@ -4328,11 +4328,11 @@
       "0e18de53-66e8-4e3f-a5cf-bef847a003b5": {
         "type": "slideshow",
         "blocks": {
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
+          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/27_2_6fc036e8-643e-445d-b405-a3981e8dae15.png",
-              "mobile_image": "shopify://shop_images/16_5.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_46.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_4.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4341,7 +4341,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/basics",
+              "link": "shopify://collections/accessories",
               "content_alignment": "left"
             }
           },
@@ -4362,6 +4362,23 @@
               "content_alignment": "left"
             }
           },
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/27_2_6fc036e8-643e-445d-b405-a3981e8dae15.png",
+              "mobile_image": "shopify://shop_images/16_5.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/basics",
+              "content_alignment": "left"
+            }
+          },
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
@@ -4378,30 +4395,13 @@
               "link": "shopify://collections/chinti-meets-peanuts-24",
               "content_alignment": "left"
             }
-          },
-          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/homepage_banner_55.png",
-              "mobile_image": "shopify://shop_images/MOBILE_homepage_banner_636_x_700px_41.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/100-cashmere",
-              "content_alignment": "left"
-            }
           }
         },
         "block_order": [
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
+          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1",
           "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
-          "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
-          "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
+          "a9dda6be-4531-4046-95b1-2497d8a5fcc2"
         ],
         "settings": {
         }
@@ -4465,8 +4465,8 @@
           "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/27_2_fe7bb2cf-f024-4bc8-9a32-8180b423effd.png",
-              "mobile_image": "shopify://shop_images/16_5_8ca60d33-547b-4d02-a92a-ad2cd26162d2.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_46_459173fa-42bf-4f42-a9ee-dc0c4b5d491f.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_4_fc26429d-dfaa-40a0-8124-c4af5c35fe49.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4475,7 +4475,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/basics",
+              "link": "shopify://collections/accessories",
               "content_alignment": "left"
             }
           },
@@ -4546,8 +4546,8 @@
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/27_2_7c7d900e-5b6d-41c0-958c-d50e98cb79aa.png",
-              "mobile_image": "shopify://shop_images/16_5_6f75d320-ae8a-477f-841b-8aa9ab04add9.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_46_bbd2a8f6-2663-4d35-b23a-73b92489d6ce.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_4_a6f2f654-2ae8-47d3-9c9c-e3d8994f2b8c.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4556,7 +4556,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/sets-shop",
+              "link": "shopify://collections/accessories",
               "content_alignment": "left"
             }
           },
