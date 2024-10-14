@@ -25379,3 +25379,7 @@ body .product-caption span.on-sale {
     position: relative;
   }
 }
+
+.product-list .trustpilot-widget {
+	display: none;
+}
