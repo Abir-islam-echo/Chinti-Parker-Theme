@@ -124,6 +124,15 @@
       "settings": {
       }
     },
+    "social_media_section_hPWHFD": {
+      "type": "social-media-section",
+      "settings": {
+        "facebook_url": "https://www.facebook.com/chintiandparker/",
+        "twitter_url": "",
+        "instagram_url": "https://www.instagram.com/chintiandparker/",
+        "pinterest_url": "https://uk.pinterest.com/chintiandparker/"
+      }
+    },
     "dc2d7919-6fb0-4d7a-8d95-abe799b3f97b": {
       "type": "gap",
       "settings": {
@@ -143,15 +152,6 @@
       "type": "blog-template-01",
       "settings": {
       }
-    },
-    "social_media_section_hPWHFD": {
-      "type": "social-media-section",
-      "settings": {
-        "facebook_url": "https://www.facebook.com/chintiandparker/",
-        "twitter_url": "",
-        "instagram_url": "https://www.instagram.com/chintiandparker/",
-        "pinterest_url": "https://uk.pinterest.com/chintiandparker/"
-      }
     }
   },
   "order": [
@@ -161,9 +161,9 @@
     "a095c0d3-b094-41be-96a6-65f249a70399",
     "a17d4eda-58ef-4673-b93d-d39c5cab98ef",
     "bannergrid_instagram_ndmQFG",
+    "social_media_section_hPWHFD",
     "dc2d7919-6fb0-4d7a-8d95-abe799b3f97b",
     "insta_feed_7dYUqQ",
-    "fb9550cc-4473-4174-b92a-f5bbcd7d339a",
-    "social_media_section_hPWHFD"
+    "fb9550cc-4473-4174-b92a-f5bbcd7d339a"
   ]
 }
