@@ -72,19 +72,22 @@
 </section>
 
 <style>
-        #loyaltylion .lion-referral-widget .lion-action-button{
-          transition: all .25s;
-          background-color: #000000;
-          color: #ffffff;
-          position: relative;
-          width: 90px;
-        }
-  .section-{{ section.id }} .instagram-section{
-    margin-top: {{ section.settings.instagram_margin_top }}px;
-  }
-  .section-{{ section.id }} .instagram-section .title{
-    text-align: left;
-  }
+    #loyaltylion .lion-referral-widget .lion-action-button{
+      transition: all .25s;
+      background-color: #000000;
+      color: #ffffff;
+      position: relative;
+      width: 90px;
+    }
+    .section-{{ section.id }} .instagram-section{
+      margin-top: {{ section.settings.instagram_margin_top }}px;
+    }
+    .section-{{ section.id }} .instagram-section .title{
+      text-align: left;
+    }
+    .section-{{ section.id }} .instagram-section .title a{
+      padding-left: 0;
+    }
   
     #loyaltylion .lion-referral-widget .lion-action-button:after {
       content: '»';
