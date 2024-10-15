@@ -1,6 +1,86 @@
+
+
+<div class="social-media-section">
+  <ul class="social-icons">
+    {% if section.settings.facebook_url %}
+      <li>
+        <a href="{{ section.settings.facebook_url }}" target="_blank">
+          <img src="{{ 'facebook-icon.png' | asset_url }}" alt="Facebook">
+        </a>
+      </li>
+    {% endif %}
+    {% if section.settings.twitter_url %}
+      <li>
+        <a href="{{ section.settings.twitter_url }}" target="_blank">
+          <img src="{{ 'twitter-icon.png' | asset_url }}" alt="Twitter">
+        </a>
+      </li>
+    {% endif %}
+    {% if section.settings.instagram_url %}
+      <li>
+        <a href="{{ section.settings.instagram_url }}" target="_blank">
+          <img src="{{ 'instagram-icon.png' | asset_url }}" alt="Instagram">
+        </a>
+      </li>
+    {% endif %}
+    {% if section.settings.linkedin_url %}
+      <li>
+        <a href="{{ section.settings.linkedin_url }}" target="_blank">
+          <img src="{{ 'linkedin-icon.png' | asset_url }}" alt="LinkedIn">
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+
+<style>
+  .social-media-section {
+    text-align: center;
+  }
+  .social-icons {
+    list-style: none;
+    padding: 0;
+  }
+  .social-icons li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .social-icons li a img {
+    width: 30px;
+    height: 30px;
+  }
+</style>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Social Media Section",
+    "settings": [
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "twitter_url",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "linkedin_url",
+        "label": "LinkedIn URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Social Media Section",
+        "category": "Custom"
+      }
+    ]
   }
 {% endschema %}
