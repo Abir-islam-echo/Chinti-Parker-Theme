@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "wrapper": "div#look-book-template",
   "sections": {
@@ -259,8 +259,8 @@
         "image_Xzgt4f": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Valeriya_33.png",
-            "mobile_image": "shopify://shop_images/Valeriya_33_453259ce-f750-468e-932d-37aa80c66f79.png",
+            "image": "shopify://shop_images/Valeriya_34.png",
+            "mobile_image": "shopify://shop_images/Valeriya_34_e18ec26f-6597-4a6c-a943-112bfb5d6178.png",
             "heading": "Heading...",
             "content": "Lorem ipsum...",
             "link": ""
