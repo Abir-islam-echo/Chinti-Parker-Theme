@@ -5,7 +5,7 @@
     {% if section.settings.facebook_url %}
       <li>
         <a href="{{ section.settings.facebook_url }}" target="_blank">
-          <img src="{{ 'facebook-icon.png' | asset_url }}" alt="Facebook">
+          <i class="fab fa-facebook"></i>
         </a>
       </li>
     {% endif %}
@@ -19,14 +19,14 @@
     {% if section.settings.instagram_url %}
       <li>
         <a href="{{ section.settings.instagram_url }}" target="_blank">
-          <img src="{{ 'instagram-icon.png' | asset_url }}" alt="Instagram">
+          <i class="fab fa-instagram"></i>
         </a>
       </li>
     {% endif %}
-    {% if section.settings.linkedin_url %}
+    {% if section.settings.pinterest_url %}
       <li>
-        <a href="{{ section.settings.linkedin_url }}" target="_blank">
-          <img src="{{ 'linkedin-icon.png' | asset_url }}" alt="LinkedIn">
+        <a href="{{ section.settings.pinterest_url }}" target="_blank">
+          <i class="fab fa-pinterest"></i>
         </a>
       </li>
     {% endif %}
@@ -72,8 +72,8 @@
       },
       {
         "type": "url",
-        "id": "linkedin_url",
-        "label": "LinkedIn URL"
+        "id": "pinterest_url",
+        "label": "Pinterest URL"
       }
     ],
     "presets": [
