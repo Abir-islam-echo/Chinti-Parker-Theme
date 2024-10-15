@@ -107,6 +107,7 @@
         "image-caption": "",
         "grid-swap": "grid-right",
         "show_block": "yes",
+        "instagram_margin_top": 70,
         "show_social": "yes"
       }
     },
