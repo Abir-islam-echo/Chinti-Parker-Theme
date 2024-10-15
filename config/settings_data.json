@@ -39,8 +39,14 @@
     "products_per_row": "6",
     "number_of_rows": "8",
     "collection_sidebar_filters": "groups",
+    "collection_list_plp": [
+      "aw24-collection"
+    ],
     "block-1-position": 1,
+    "desktop-image": "shopify://shop_images/D6A9971_1.jpg",
     "block-2-position": 12,
+    "desktop-image-2": "shopify://shop_images/D6A0563_1_0e9d4101-568c-4347-ba3a-66dcd1e3e739.jpg",
+    "desktop-image-3": "shopify://shop_images/D6A0470_1.jpg",
     "plus_enable_character_restrictions": true,
     "plus_input_allowed_characters": ".,#()",
     "plus_input_max_length": "",
