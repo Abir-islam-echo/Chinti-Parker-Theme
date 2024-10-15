@@ -1,1 +1,169 @@
-{"wrapper":"div#el-blog-template","sections":{"banner_DTkfEG":{"type":"banner","blocks":{"image_6Cgyr9":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/top_banner.png","mobile_image":"shopify:\/\/shop_images\/top_banner_96f9cb60-0e6d-4b74-88fc-c032f1314bd1.png","heading":"","text_color":"text-light","text_color_mobile":"text-light-mobile","text_align":"text-left","link":"","button_text":""}}},"block_order":["image_6Cgyr9"],"settings":{}},"blog-title":{"type":"blog-title","disabled":true,"settings":{"color":"","blog-title":"Chinti Meets Peanuts '24","title_color":"","blog-title-font-size":48,"mobile-font-size":22,"alignment":"center"}},"5d704d91-1a64-43f0-929f-9ce7d1af00b2":{"type":"custom-content-01","blocks":{"template--14750452973646__5d704d91-1a64-43f0-929f-9ce7d1af00b2-16699780588c4d029a-0":{"type":"text","settings":{"title":"Join Chinti & Parker's Weekly Live Shopping Experience","title_color":"#000000","title_font_size":30,"title_font_weight":400,"text":"<p>Join us for our weekly Instagram & Facebook Live sessions where we introduce new products, offer styling tips & gather your feedback. We’re often accompanied by special guests who showcase a variety of sizes and heights. Your input plays a key role in shaping our brand’s future. We also love seeing how and where you wear our pieces, so be sure to tag us in your posts with #chintiandfriends & join our community online!<\/p>","content_color":"#000000","text_font_size":21,"margin_top":30,"border_top":0,"border_color":"","padding_top":30,"padding_bottom":30,"width":"100%","alignment":"center","align_text":"center"}}},"block_order":["template--14750452973646__5d704d91-1a64-43f0-929f-9ce7d1af00b2-16699780588c4d029a-0"],"settings":{"title":""}},"a095c0d3-b094-41be-96a6-65f249a70399":{"type":"gap","settings":{"margin_top":90,"margin_bottom":0,"margin_top_mobile":0,"margin_bottom_mobile":0}},"a17d4eda-58ef-4673-b93d-d39c5cab98ef":{"type":"blog-two-grid","settings":{"grid-title":"What to expect?","grid-title-font-size":30,"title-margin-bottom":6,"grid-title-color":"","add-button":true,"button-text":"Follow us on Instagram","button-color":"#000000","button-text-color":"#ffffff","button-link":"https:\/\/www.instagram.com\/chintiandparker\/","button-width":"fit-content","content-alignment":"flex-start","content-horizontal-alignment":"start","grid-content":"<p><\/p><p><\/p><p><\/p><p>1. We’ll go live on @chintiandparker every Wednesday evening on Instagram or Facebook <\/p><p><\/p><p>2. During the event you will have an opportunity to ask questions, make comments and purchase items. We will provide styling and sizing recommendations <\/p><p><\/p><p>3. If you miss it, you can always watch back via Instagram and Facebook @chintiandparker<\/p>","text-color":"","grid-image-picker":"shopify:\/\/shop_images\/image_31.png","image-width":40,"image-caption":"","grid-swap":"grid-right"}},"dc2d7919-6fb0-4d7a-8d95-abe799b3f97b":{"type":"gap","settings":{"margin_top":90,"margin_bottom":0,"margin_top_mobile":0,"margin_bottom_mobile":0}},"insta_feed_7dYUqQ":{"type":"insta-feed","settings":{"copyright_text":""}},"fb9550cc-4473-4174-b92a-f5bbcd7d339a":{"type":"blog-template-01","settings":{}},"bannergrid_instagram_ndmQFG":{"type":"bannergrid-instagram","blocks":{"text_LNzDUN":{"type":"text","settings":{"show_block":"yes"}}},"block_order":["text_LNzDUN"],"settings":{}}},"order":["banner_DTkfEG","blog-title","5d704d91-1a64-43f0-929f-9ce7d1af00b2","a095c0d3-b094-41be-96a6-65f249a70399","a17d4eda-58ef-4673-b93d-d39c5cab98ef","bannergrid_instagram_ndmQFG","dc2d7919-6fb0-4d7a-8d95-abe799b3f97b","insta_feed_7dYUqQ","fb9550cc-4473-4174-b92a-f5bbcd7d339a"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#el-blog-template",
+  "sections": {
+    "banner_DTkfEG": {
+      "type": "banner",
+      "blocks": {
+        "image_6Cgyr9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/top_banner.png",
+            "mobile_image": "shopify://shop_images/top_banner_96f9cb60-0e6d-4b74-88fc-c032f1314bd1.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_6Cgyr9"
+      ],
+      "settings": {
+      }
+    },
+    "blog-title": {
+      "type": "blog-title",
+      "disabled": true,
+      "settings": {
+        "color": "",
+        "blog-title": "Chinti Meets Peanuts '24",
+        "title_color": "",
+        "blog-title-font-size": 48,
+        "mobile-font-size": 22,
+        "alignment": "center"
+      }
+    },
+    "5d704d91-1a64-43f0-929f-9ce7d1af00b2": {
+      "type": "custom-content-01",
+      "blocks": {
+        "template--14750452973646__5d704d91-1a64-43f0-929f-9ce7d1af00b2-16699780588c4d029a-0": {
+          "type": "text",
+          "settings": {
+            "title": "Join Chinti & Parker's Weekly Live Shopping Experience",
+            "title_color": "#000000",
+            "title_font_size": 30,
+            "title_font_weight": 400,
+            "text": "<p>Join us for our weekly Instagram & Facebook Live sessions where we introduce new products, offer styling tips & gather your feedback. We’re often accompanied by special guests who showcase a variety of sizes and heights. Your input plays a key role in shaping our brand’s future. We also love seeing how and where you wear our pieces, so be sure to tag us in your posts with #chintiandfriends & join our community online!</p>",
+            "content_color": "#000000",
+            "text_font_size": 21,
+            "margin_top": 30,
+            "border_top": 0,
+            "border_color": "",
+            "padding_top": 30,
+            "padding_bottom": 30,
+            "width": "100%",
+            "alignment": "center",
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--14750452973646__5d704d91-1a64-43f0-929f-9ce7d1af00b2-16699780588c4d029a-0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "a095c0d3-b094-41be-96a6-65f249a70399": {
+      "type": "gap",
+      "settings": {
+        "margin_top": 90,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "a17d4eda-58ef-4673-b93d-d39c5cab98ef": {
+      "type": "blog-two-grid",
+      "settings": {
+        "grid-title": "What to expect?",
+        "grid-title-font-size": 30,
+        "title-margin-bottom": 6,
+        "grid-title-color": "",
+        "add-button": true,
+        "button-text": "Follow us on Instagram",
+        "button-color": "#000000",
+        "button-text-color": "#ffffff",
+        "button-link": "https://www.instagram.com/chintiandparker/",
+        "button-width": "fit-content",
+        "content-alignment": "flex-start",
+        "content-horizontal-alignment": "start",
+        "grid-content": "<p></p><p></p><p></p><p>1. We’ll go live on @chintiandparker every Wednesday evening on Instagram or Facebook </p><p></p><p>2. During the event you will have an opportunity to ask questions, make comments and purchase items. We will provide styling and sizing recommendations </p><p></p><p>3. If you miss it, you can always watch back via Instagram and Facebook @chintiandparker</p>",
+        "text-color": "",
+        "grid-image-picker": "shopify://shop_images/image_31.png",
+        "image-width": 40,
+        "image-caption": "",
+        "grid-swap": "grid-right"
+      }
+    },
+    "bannergrid_instagram_ndmQFG": {
+      "type": "bannergrid-instagram",
+      "blocks": {
+        "text_LNzDUN": {
+          "type": "text",
+          "settings": {
+            "show_block": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "text_LNzDUN"
+      ],
+      "settings": {
+      }
+    },
+    "dc2d7919-6fb0-4d7a-8d95-abe799b3f97b": {
+      "type": "gap",
+      "settings": {
+        "margin_top": 90,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    },
+    "insta_feed_7dYUqQ": {
+      "type": "insta-feed",
+      "settings": {
+        "copyright_text": ""
+      }
+    },
+    "fb9550cc-4473-4174-b92a-f5bbcd7d339a": {
+      "type": "blog-template-01",
+      "settings": {
+      }
+    },
+    "social_media_section_hPWHFD": {
+      "type": "social-media-section",
+      "settings": {
+        "facebook_url": "https://www.facebook.com/chintiandparker/",
+        "twitter_url": "",
+        "instagram_url": "https://www.instagram.com/chintiandparker/",
+        "pinterest_url": "https://uk.pinterest.com/chintiandparker/"
+      }
+    }
+  },
+  "order": [
+    "banner_DTkfEG",
+    "blog-title",
+    "5d704d91-1a64-43f0-929f-9ce7d1af00b2",
+    "a095c0d3-b094-41be-96a6-65f249a70399",
+    "a17d4eda-58ef-4673-b93d-d39c5cab98ef",
+    "bannergrid_instagram_ndmQFG",
+    "dc2d7919-6fb0-4d7a-8d95-abe799b3f97b",
+    "insta_feed_7dYUqQ",
+    "fb9550cc-4473-4174-b92a-f5bbcd7d339a",
+    "social_media_section_hPWHFD"
+  ]
+}
