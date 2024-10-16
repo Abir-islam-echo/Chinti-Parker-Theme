@@ -3729,7 +3729,7 @@
               "notification_text": "MID-SEASON OFFERS - SHOP 25% OFF SELECTED STYLES",
               "notification_text_us": "MID-SEASON SALE - SHOP 25% OFF NEW SEASON",
               "notification_text_eu": "MID-SEASON SALE - SHOP 25% OFF NEW SEASON",
-              "notification_link": "shopify://collections/half-term-sale",
+              "notification_link": "shopify://collections/mid-season-offers",
               "notification_link_us": "shopify://collections/midseason-sale",
               "notification_link_eu": "shopify://collections/midseason-sale"
             }
@@ -4348,7 +4348,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/half-term-sale",
+              "link": "shopify://collections/mid-season-offers",
               "content_alignment": "left"
             }
           },
