@@ -25383,3 +25383,23 @@ body .product-caption span.on-sale {
 .product-list .trustpilot-widget {
 	display: none;
 }
+  .social-media-section {
+    text-align: center;
+  }
+  .social-icons {
+    list-style: none;
+    padding: 0;
+  }
+  .social-icons li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .social-icons li a {
+	color: #333;
+	font-size: 1.5rem;
+	line-height: 1;
+}
+  .social-icons li a img {
+    width: 23px;
+    height: 23px;
+  }
