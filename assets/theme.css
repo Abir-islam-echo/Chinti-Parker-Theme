@@ -25406,6 +25406,6 @@ body .product-caption span.on-sale {
   }
 
 #vitals-preorder-note {
-    margin-bottom: 0rem important;
+    margin-bottom: 0rem !important;
 }
 
