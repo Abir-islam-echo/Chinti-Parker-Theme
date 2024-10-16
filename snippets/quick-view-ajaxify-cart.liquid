@@ -110,7 +110,11 @@ _showFeedback('success','<i class="fa fa-check"></i> Pre-ordered. <a href="/cart
               $addToCartBtn.prop('disabled', false).removeClass('disabled').removeClass('inverted');
               if($addToCartBtn.hasClass('preOrderButton')) {
 _setText($addToCartBtn,'Pre-order');
-              } else {
+              } 
+              else if($('span#AddToCartText').hasClass('preOrderButton')){
+                  _setText($addToCartBtn,'Pre-order Now');
+                }
+              else {
               _setText($addToCartBtn,_config.addToCartBtnLabel);
             }
             }, _config.howLongTillBtnReturnsToNormal);
