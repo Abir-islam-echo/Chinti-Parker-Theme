@@ -4338,8 +4338,8 @@
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_46.png",
-              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_4.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_50.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_7.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4472,8 +4472,8 @@
           "83f31fb4-4be8-407d-9c3d-8c77231d3282": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_46_459173fa-42bf-4f42-a9ee-dc0c4b5d491f.png",
-              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_4_fc26429d-dfaa-40a0-8124-c4af5c35fe49.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_50_2f38edfb-8c6e-4163-bb06-9f870b5b9f41.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_7_ea66dd0a-dd14-4894-ac8e-900c08f4f4b0.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
@@ -4553,8 +4553,8 @@
           "5de1ebd2-42b3-4e25-acfa-8e77b22f1c31": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_46_bbd2a8f6-2663-4d35-b23a-73b92489d6ce.png",
-              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_4_a6f2f654-2ae8-47d3-9c9c-e3d8994f2b8c.png",
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_50_a1da6056-c55d-4e15-8220-cdadfde01efd.png",
+              "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_7_d1665323-ef64-40ae-a30d-36140a9f58c9.png",
               "text_color": "text-light",
               "title": "",
               "title_font_size": 55,
