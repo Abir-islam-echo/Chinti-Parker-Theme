@@ -44,12 +44,12 @@
         "bannergrid_twocolumns_QqxkEV": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Sets.png",
-            "mobile_image1": "shopify://shop_images/Sets_d0e13399-b784-4ed7-acc1-46b3b0c2435a.png",
+            "image1": "shopify://shop_images/1_31.png",
+            "mobile_image1": "shopify://shop_images/1_31_5d1f7622-0030-4f6d-8f81-bb2cb0badebd.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Accessories.png",
-            "mobile_image2": "shopify://shop_images/Accessories_3275b411-0656-40e5-b91f-17096d81289a.png",
+            "image2": "shopify://shop_images/2_30.png",
+            "mobile_image2": "shopify://shop_images/2_30_4de6c214-1bb1-45aa-b020-6bfb94a9fd82.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -81,8 +81,8 @@
         "bannergrid_threecolumns_3cBQT8": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/Socks.png",
-            "mobile_image1": "shopify://shop_images/Socks_437b33a9-f6ee-467e-aba5-94b86b7d5b26.png",
+            "image1": "shopify://shop_images/socks_1_b109c8c1-f4a6-4626-b777-75c587f6e04d.png",
+            "mobile_image1": "shopify://shop_images/socks_1.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -101,8 +101,8 @@
         "bannergrid_threecolumns_Um9JY4": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/Slippers.png",
-            "mobile_image1": "shopify://shop_images/Slippers_668edd88-722d-46a8-982f-41538209a6fa.png",
+            "image1": "shopify://shop_images/slipper.png",
+            "mobile_image1": "shopify://shop_images/slipper_5677f271-7744-404e-992b-ed6ff60ca02c.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -121,8 +121,8 @@
         "bannergrid_threecolumns_hKwg7h": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/Mr_Men.png",
-            "mobile_image1": "shopify://shop_images/Mr_Men_1ecc6ef5-f06c-4df3-b43a-778a149ee5c6.png",
+            "image1": "shopify://shop_images/Mr_Men_1.png",
+            "mobile_image1": "shopify://shop_images/Mr_Men_1_20847fd8-63c2-431c-b5ad-f19753ca1d21.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
