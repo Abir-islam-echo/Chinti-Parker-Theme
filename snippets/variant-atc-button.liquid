@@ -465,7 +465,7 @@
               });
             "
           >
-            <span id="AddToCartText" class="{{ add_to_cart | escape }}">{{ add_to_cart | escape }}</span>
+            <span id="AddToCartText" class="{% if product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity <= 0 %} pre-order-now{% endif %}">{{ add_to_cart | escape }}</span>
             <span id="AddingToCartText">{{ adding_to_cart | escape }}</span>
             <span id="AddedToCartText">{{ added_to_cart | escape }}</span>
           </button>
