@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "wrapper": "div#sustainability-template",
   "sections": {
@@ -267,6 +267,22 @@
         "review-font": "helvetica_n4",
         "font-size": 24
       }
+    },
+    "bannergrid_instagram_HQwpVe": {
+      "type": "bannergrid-instagram",
+      "blocks": {
+        "text_nB3DTF": {
+          "type": "text",
+          "settings": {
+            "show_block": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "text_nB3DTF"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -276,6 +292,7 @@
     "banner_three_column_01_fjbGmf",
     "banner_twocolumns_p3e7PA",
     "16648859269892d9e0",
-    "customer_reviews_section_xWiYhG"
+    "customer_reviews_section_xWiYhG",
+    "bannergrid_instagram_HQwpVe"
   ]
 }
