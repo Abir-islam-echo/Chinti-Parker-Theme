@@ -40,7 +40,9 @@
     "number_of_rows": "8",
     "collection_sidebar_filters": "groups",
     "collection_list_plp": [
-      "basics"
+      "basics",
+      "accessories",
+      "aw24-collection"
     ],
     "block-1-position": 4,
     "desktop-image": "shopify://shop_images/26_1_2a657223-a6b9-4ce0-9f04-a9df34759f5a.png",
