@@ -595,7 +595,7 @@ Example: the h2 element should have the same size and color in:
                     image_src: image_1
                   %}
                 {% endif %}
-                {% if parentLoop == settings['block-2-position'] and settings['desktop-image-1'] %}
+                {% if parentLoop == settings['block-2-position'] and settings['desktop-image-2'] %}
                   {% assign image_2 = settings['desktop-image-2'] | img_url: "master" %}
                   {% render 'PLP-image-card',
                     card_index: settings['block-2-position'],
