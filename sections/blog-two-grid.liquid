@@ -1,4 +1,4 @@
-<section class="blogs-details-content">
+<section class="blogs-details-content section-{{ section.id }}">
   <div class="el-container">
     <div
       class="blogs-details-content-wrapper {{ section.settings.grid-swap }}"
@@ -23,6 +23,42 @@
               </a>
             </div>
           {% endif %}
+          {% if section.settings.show_block == 'yes' %}
+            <div class="instagram-section">
+                    <div class="title"><a target="_blank" href="https://www.instagram.com/chintiandparker/"><i class="fab fa-instagram"></i>chintiandparker</a></div>
+            </div>
+          {%endif%}
+
+          {% if section.settings.show_block == 'yes' %}
+              <div class="socail-media-section">
+                <ul class="social-icons">
+                  <li>
+                    <a href="https://www.facebook.com/chintiandparker" target="_blank">
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/chintiandparker" target="_blank">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://uk.pinterest.com/chintiandparker/" target="_blank">
+                      <i class="fab fa-pinterest"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.tiktok.com/@chintiandparker" target="_blank">
+                      <i class="fab fa-tiktok"></i>
+                       <img src="https://cdn.shopify.com/s/files/1/0040/7057/2147/files/tiktok-icon.png?v=1727857494" style="scale: 2.2; height: 23px; width: 23px;" alt="tiktok"> 
+                    </a>
+                  </li>
+                </ul>
+              </div>
+          {%endif%}
+            
+          
+          
         </aside>
       </div>
       <figure class="special">
@@ -36,13 +72,29 @@
 </section>
 
 <style>
-        #loyaltylion .lion-referral-widget .lion-action-button{
-          transition: all .25s;
-          background-color: #000000;
-          color: #ffffff;
-          position: relative;
-          width: 90px;
-        }
+    #loyaltylion .lion-referral-widget .lion-action-button{
+      transition: all .25s;
+      background-color: #000000;
+      color: #ffffff;
+      position: relative;
+      width: 90px;
+    }
+    .section-{{ section.id }} .instagram-section{
+      margin-top: {{ section.settings.instagram_margin_top }}px;
+    }
+  .section-{{ section.id }} .instagram-section .title{
+    margin: 0;
+  }
+    .section-{{ section.id }} .instagram-section .title{
+      text-align: left;
+    }
+    .section-{{ section.id }} .instagram-section .title a{
+      padding-left: 0;
+    }
+     .section-{{ section.id }} .social-icons li:first-child {
+    	margin-left: 0;
+    }
+  
     #loyaltylion .lion-referral-widget .lion-action-button:after {
       content: '»';
       position: absolute;
@@ -206,62 +258,71 @@
       font-size:1rem !important;
     }
   }
-  @media screen and (min-width: 531px){
-    #loyaltylion .lion-referral-widget--guest{
-    min-width: 330px
+    @media screen and (min-width: 531px){
+      #loyaltylion .lion-referral-widget--guest{
+      min-width: 330px
+      }
     }
-  }
-             @media screen and (max-width: 768px) {
-                 .blogs-details-content-wrapper .text-content-wrapper .button-wrapper a{
-                   width:100%;
-                 }
-               .blogs-details-content-wrapper figure{
-                 width: 100%;
-               }
-               .blogs-details-content-wrapper .text-content-wrapper{
-                 width: 100%;
-                 padding: 40px 20px !important;
-               }
 
-               #el-blog-template .blogs-details-content h2 {
-                 font-size: 20px !important;
-                 margin-bottom:0px !important;
-               }
-               #el-blog-template .custom__item-inner h4 {
-                 font-size: 20px !important;
-               }
-               #el-blog-template .productCarousel-new h2{
-                 font-size:25px !important;
-               }
-               #el-blog-template .productCarousel-new {
-                 padding-top: 40px;
-                 padding-left: 50px;
-                 padding-right: 50px;
-               }
-               .blogs-details-content {
-                 margin-bottom: 10px;
-               }
-               .blogs-details-content-wrapper p{
-                 font-size:16px;
-                 margin-top:10px;
-               }
-               .blogs-details-content-wrapper p *{
-                 font-size:16px;
-               }
-               .rte-setting.text-content * {
-                 font-size: 16px !important;
-               }
+       @media screen and (max-width: 768px) {
 
-               .blogs-details-content-wrapper {
-                 flex-direction: column !important;
-                 justify-content: center;
-                 /* gap: 10px; */
-               }
+         .section-{{ section.id }} .instagram-section .title{
+            text-align: {{ section.settings.mobile_alignment }};
+          }
+        .section-{{ section.id }} .social-icons {
+          	 text-align: {{ section.settings.mobile_alignment }};
+          }
+         
+           .blogs-details-content-wrapper .text-content-wrapper .button-wrapper a{
+             width:100%;
+           }
+         .blogs-details-content-wrapper figure{
+           width: 100%;
+         }
+         .blogs-details-content-wrapper .text-content-wrapper{
+           width: 100%;
+           padding: 40px 20px !important;
+         }
 
-               .blogs-details-content-wrapper figure {
-                 order: -1;
-               }
-             }
+         #el-blog-template .blogs-details-content h2 {
+           font-size: 20px !important;
+           margin-bottom:0px !important;
+         }
+         #el-blog-template .custom__item-inner h4 {
+           font-size: 20px !important;
+         }
+         #el-blog-template .productCarousel-new h2{
+           font-size:25px !important;
+         }
+         #el-blog-template .productCarousel-new {
+           padding-top: 40px;
+           padding-left: 50px;
+           padding-right: 50px;
+         }
+         .blogs-details-content {
+           margin-bottom: 10px;
+         }
+         .blogs-details-content-wrapper p{
+           font-size:16px;
+           margin-top:10px;
+         }
+         .blogs-details-content-wrapper p *{
+           font-size:16px;
+         }
+         .rte-setting.text-content * {
+           font-size: 16px !important;
+         }
+
+         .blogs-details-content-wrapper {
+           flex-direction: column !important;
+           justify-content: center;
+           /* gap: 10px; */
+         }
+
+         .blogs-details-content-wrapper figure {
+           order: -1;
+         }
+       }
 </style>
 {% schema %}
 {
@@ -432,7 +493,47 @@
           ],
           "default": "grid-left"
 
-        }
+        },
+        {
+          "type": "select",
+          "id": "show_block",
+          "label": "Show instagram?",
+          "options": [
+            { "value": "yes", "label": "Yes" },
+            { "value": "no", "label": "No" }
+          ],
+          "default": "yes"
+        },
+        {
+          "type": "range",
+          "id": "instagram_margin_top",
+          "min": -50,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Instagram wrapper margin top",
+          "default": 30
+        },
+        {
+            "type": "select",
+            "id": "show_social",
+            "label": "Show Social Icon?",
+            "options": [
+              { "value": "yes", "label": "Yes" },
+              { "value": "no", "label": "No" }
+            ],
+            "default": "yes"
+          },
+        {
+            "type": "select",
+            "id": "mobile_alignment",
+            "label": "Mobile Allignment for Social Icons",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" }
+            ],
+            "default": "center"
+          }
   ],
   "presets": [
     {
