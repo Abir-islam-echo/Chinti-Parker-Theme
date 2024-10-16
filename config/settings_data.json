@@ -3726,10 +3726,10 @@
           "notification_item_z66GbN": {
             "type": "notification-item",
             "settings": {
-              "notification_text": "",
-              "notification_text_us": "MID-SEASON SALE - SHOP UP TO 25% OFF NEW SEASON",
-              "notification_text_eu": "MID-SEASON SALE - SHOP UP TO 25% OFF NEW SEASON",
-              "notification_link": "",
+              "notification_text": "MID-SEASON OFFERS - SHOP 25% OFF SELECTED STYLES",
+              "notification_text_us": "MID-SEASON SALE - SHOP 25% OFF NEW SEASON",
+              "notification_text_eu": "MID-SEASON SALE - SHOP 25% OFF NEW SEASON",
+              "notification_link": "shopify://collections/half-term-sale",
               "notification_link_us": "shopify://collections/midseason-sale",
               "notification_link_eu": "shopify://collections/midseason-sale"
             }
@@ -4335,6 +4335,23 @@
       "0e18de53-66e8-4e3f-a5cf-bef847a003b5": {
         "type": "slideshow",
         "blocks": {
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900px_2_1.png",
+              "mobile_image": "shopify://shop_images/Mobile_Main_Banner_1_1.png",
+              "text_color": "text-light",
+              "title": "",
+              "title_font_size": 55,
+              "title_line_height": 55,
+              "subheading": "",
+              "subheading_font_size": 24,
+              "button_text": "",
+              "cta_font_size": 55,
+              "link": "shopify://collections/half-term-sale",
+              "content_alignment": "left"
+            }
+          },
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1": {
             "type": "image",
             "settings": {
@@ -4369,23 +4386,6 @@
               "content_alignment": "left"
             }
           },
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/27_2_6fc036e8-643e-445d-b405-a3981e8dae15.png",
-              "mobile_image": "shopify://shop_images/16_5.png",
-              "text_color": "text-light",
-              "title": "",
-              "title_font_size": 55,
-              "title_line_height": 55,
-              "subheading": "",
-              "subheading_font_size": 24,
-              "button_text": "",
-              "cta_font_size": 55,
-              "link": "shopify://collections/basics",
-              "content_alignment": "left"
-            }
-          },
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2": {
             "type": "image",
             "settings": {
@@ -4405,9 +4405,9 @@
           }
         },
         "block_order": [
+          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1",
           "40532ffb-a186-48c3-a0bb-e0f07d71d4b0",
-          "636aecdb-d284-4a9c-914a-b68d6b91b88a",
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2"
         ],
         "settings": {
