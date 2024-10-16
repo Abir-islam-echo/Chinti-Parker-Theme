@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "wrapper": "div#el-blog-template",
   "sections": {
@@ -127,22 +127,6 @@
       "type": "blog-template-01",
       "settings": {
       }
-    },
-    "bannergrid_instagram_ndmQFG": {
-      "type": "bannergrid-instagram",
-      "blocks": {
-        "text_LNzDUN": {
-          "type": "text",
-          "settings": {
-            "show_block": "yes"
-          }
-        }
-      },
-      "block_order": [
-        "text_LNzDUN"
-      ],
-      "settings": {
-      }
     }
   },
   "order": [
@@ -151,7 +135,6 @@
     "5d704d91-1a64-43f0-929f-9ce7d1af00b2",
     "a095c0d3-b094-41be-96a6-65f249a70399",
     "a17d4eda-58ef-4673-b93d-d39c5cab98ef",
-    "bannergrid_instagram_ndmQFG",
     "dc2d7919-6fb0-4d7a-8d95-abe799b3f97b",
     "insta_feed_7dYUqQ",
     "fb9550cc-4473-4174-b92a-f5bbcd7d339a"
