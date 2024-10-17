@@ -4717,8 +4717,8 @@
           "1d47d13e-0e6c-4507-95ee-eb99c6e43fd3-bannergrid-threecolumns-2": {
             "type": "bannergrid-threecolumns",
             "settings": {
-              "image1": "shopify://shop_images/Desktop_sub-banner_0890a227-351b-4ec9-938f-cf9e688d47c2.png",
-              "mobile_image1": "shopify://shop_images/Mobile_sub-banner_d2ff25d9-fda3-4f9a-815b-27ea2ed91dab.png",
+              "image1": "shopify://shop_images/Desktop_Sub-banner_636_x_700px_8.png",
+              "mobile_image1": "shopify://shop_images/Mobile_Sub-banner_668_x_500px_7.png",
               "video-src1": "",
               "aspectRatio1": "690:750",
               "heading1": "",
@@ -4729,7 +4729,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/sets-shop",
+              "link1": "shopify://pages/the-sets-shop",
               "link_text1": "",
               "font_size_left_cta": 25
             }
