@@ -121,8 +121,8 @@
         "bannergrid_threecolumns_hKwg7h": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/Mr_Men_1.png",
-            "mobile_image1": "shopify://shop_images/Mr_Men_1_20847fd8-63c2-431c-b5ad-f19753ca1d21.png",
+            "image1": "shopify://shop_images/CARE.png",
+            "mobile_image1": "shopify://shop_images/CARE_78a42bbf-9d75-4c93-9820-f6c24a3d7c16.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -133,7 +133,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/mr-men-little-miss-sets",
+            "link1": "shopify://collections/cashmere-care-products",
             "link_text1": "",
             "font_size_left_cta": 25
           }
