@@ -16,8 +16,8 @@
         "image_8kX44C": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_49.png",
-            "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_6.png",
+            "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_65.png",
+            "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_12.png",
             "heading": "",
             "font_size": 60,
             "font_weight": 400,
