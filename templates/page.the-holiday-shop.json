@@ -37,9 +37,507 @@
       "settings": {
         "section_margin_top": 10
       }
+    },
+    "banner_FRy7AU": {
+      "type": "banner",
+      "blocks": {
+        "image_DA37z9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Desktop_Main_Banner_1920_x_900_px_64.png",
+            "mobile_image": "shopify://shop_images/Mobile_main_banner_636_x_700px_11.png",
+            "heading": "",
+            "text_color": "text-light",
+            "text_color_mobile": "text-light-mobile",
+            "text_align": "text-left",
+            "link": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_DA37z9"
+      ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "banner_three_column_01_WKTCBd": {
+      "type": "banner-three-column-01",
+      "blocks": {
+        "bannergrid_threecolumns_ETngjj": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Gifts_for_her_6757e409-7371-4443-ae25-b25711ed5581.png",
+            "mobile_image1": "shopify://shop_images/Gifts_for_her_3e7f02c5-b235-4e16-84a9-2ebbefd47d8f.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        },
+        "bannergrid_threecolumns_B8rtEU": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Mens.png",
+            "mobile_image1": "shopify://shop_images/Mens_935cabce-486d-44a8-83e9-6c406a0f3813.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        },
+        "bannergrid_threecolumns_9mjcCK": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Kids_8010a9ab-ddc6-4ff1-afb6-ce3a7f3e847b.png",
+            "mobile_image1": "shopify://shop_images/Kids_d4e67583-415d-4a87-8191-22bc11fe9981.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_threecolumns_ETngjj",
+        "bannergrid_threecolumns_B8rtEU",
+        "bannergrid_threecolumns_9mjcCK"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "collection_HHehGN": {
+      "type": "collection",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "collection": "",
+        "grid": "5",
+        "rows": "1",
+        "show_vendor": false,
+        "show_view_all": false
+      }
+    },
+    "banner_three_column_01_JjK7JB": {
+      "type": "banner-three-column-01",
+      "blocks": {
+        "bannergrid_threecolumns_ELWCy4": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Christmas_Jumpers_1.png",
+            "mobile_image1": "shopify://shop_images/Christmas_Jumpers_1_a660696a-a609-4145-a248-f3a915c5ae60.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        },
+        "bannergrid_threecolumns_yY8pdD": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Family_Sweaters_74c57cd5-d72a-487a-b3d7-08693bded9cf.png",
+            "mobile_image1": "shopify://shop_images/Family_Sweaters.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        },
+        "bannergrid_threecolumns_kfEygw": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Christmas_Party.png",
+            "mobile_image1": "shopify://shop_images/Christmas_Party_42831eca-8c91-4456-8f5f-d2ab7cff02a8.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_threecolumns_ELWCy4",
+        "bannergrid_threecolumns_yY8pdD",
+        "bannergrid_threecolumns_kfEygw"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_three_column_01_9mejhP": {
+      "type": "banner-three-column-01",
+      "blocks": {
+        "bannergrid_threecolumns_GDAfrL": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "Heading",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "Shop Now",
+            "font_size_left_cta": 25
+          }
+        },
+        "bannergrid_threecolumns_zYiaHL": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Personalisation_2.png",
+            "mobile_image1": "shopify://shop_images/Personalisation_2_fc4bdaba-5e3c-4a8a-bf85-575c8f7b4d79.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        },
+        "bannergrid_threecolumns_aLBk37": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Collabs_fe60b587-ff97-411f-94bc-00890035ce2a.png",
+            "mobile_image1": "shopify://shop_images/Collabs_62dc7ce5-d269-4542-ab44-084f997200df.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "paragraph_font_size_left": 18,
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "center",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_threecolumns_GDAfrL",
+        "bannergrid_threecolumns_zYiaHL",
+        "bannergrid_threecolumns_aLBk37"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_twocolumns_3CrgpK": {
+      "type": "banner-twocolumns",
+      "blocks": {
+        "bannergrid_twocolumns_HpjzpW": {
+          "type": "bannergrid-twocolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Sleepwear_161f661d-15aa-4661-b9d2-68b36431b1e9.png",
+            "mobile_image1": "shopify://shop_images/Sleepwear.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image2": "shopify://shop_images/Cashmere_765c19eb-0070-42fd-aaa7-e13ad4c95c54.png",
+            "mobile_image2": "shopify://shop_images/Cashmere_b13ce49b-55a8-4d1b-907f-e5607351f34c.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "text_align_left": "text-left",
+            "heading2": "",
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "text_align_right": "text-left",
+            "link1": "",
+            "link_text1": "",
+            "link2": "",
+            "link_text2": "",
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_twocolumns_HpjzpW"
+      ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "banner_three_column_TmGh7h": {
+      "type": "banner-three-column",
+      "blocks": {
+        "bannergrid_threecolumns_en4gpe": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Gives_8cedf206-0313-4641-aa94-00e8f5bce6bf.png",
+            "mobile_image1": "shopify://shop_images/Gives.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image3": "shopify://shop_images/Gifts_Under_c0cb29a4-ab5c-4627-ad5c-d70f1bd0217a.png",
+            "mobile_image3": "shopify://shop_images/Gifts_Under_4e98dfee-3846-4d36-8d03-6a197fa8b67d.png",
+            "video-src3": "",
+            "aspectRatio3": "690:750",
+            "image2": "shopify://shop_images/Gift_Card_0bfc6e69-a1ca-4e8f-84d8-ad756be28066.png",
+            "mobile_image2": "shopify://shop_images/Gift_Card_245262b7-ff96-455a-b3b5-09b5f4e91478.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading3": "",
+            "font_size_middle": 60,
+            "paragraph3": "",
+            "paragraph_font_size_middle": 18,
+            "text_color3": "text-light",
+            "text_color_mobile3": "text-light-mobile",
+            "middle_banner_conent_alignment": "end",
+            "middle_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 60,
+            "paragraph2": "",
+            "paragraph_font_size_right": 18,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "end",
+            "right_banner_content_alignment_horizontal": "end",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link3": "",
+            "link_text3": "",
+            "font_size_middle_cta": 25,
+            "link2": "",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_threecolumns_en4gpe"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_three_column_eu_Tk9AGF": {
+      "type": "banner-three-column-eu",
+      "blocks": {
+        "bannergrid_threecolumns_fzWCYn": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Gives_e4d9ea7e-9e57-44f9-ac3a-bfff02662ac6.png",
+            "mobile_image1": "shopify://shop_images/Gives_4d3224f8-528b-4891-b069-f6aa97c38a8c.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image3": "shopify://shop_images/Gifts_under_6eab71db-90f2-490f-b2ce-1303e0b23755.png",
+            "mobile_image3": "shopify://shop_images/Gifts_under_8fc6e861-01fb-497d-ae2f-b358aed3bb23.png",
+            "video-src3": "",
+            "aspectRatio3": "690:750",
+            "image2": "shopify://shop_images/Gift_Card_4e678520-0af3-450b-9b9a-05a72fd40a29.png",
+            "mobile_image2": "shopify://shop_images/Gift_Card_dc697f36-b761-4bee-afd6-e72dae13037f.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading3": "",
+            "font_size_middle": 60,
+            "paragraph3": "",
+            "paragraph_font_size_middle": 18,
+            "text_color3": "text-light",
+            "text_color_mobile3": "text-light-mobile",
+            "middle_banner_conent_alignment": "end",
+            "middle_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 60,
+            "paragraph2": "",
+            "paragraph_font_size_right": 18,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "end",
+            "right_banner_content_alignment_horizontal": "end",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link3": "",
+            "link_text3": "",
+            "font_size_middle_cta": 25,
+            "link2": "",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_threecolumns_fzWCYn"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
+    },
+    "banner_three_column_us_YjmidH": {
+      "type": "banner-three-column-us",
+      "blocks": {
+        "bannergrid_threecolumns_8GQVhF": {
+          "type": "bannergrid-threecolumns",
+          "settings": {
+            "image1": "shopify://shop_images/Gives_ee1f0b22-c661-4823-8661-4d84e95904c3.png",
+            "mobile_image1": "shopify://shop_images/Gives_1790252a-da3c-43e0-9ea0-3c8b8b1fb6a1.png",
+            "video-src1": "",
+            "aspectRatio1": "690:750",
+            "image3": "shopify://shop_images/Gifts_Under_0478f769-9379-46de-988e-a4d8b3082819.png",
+            "mobile_image3": "shopify://shop_images/Gifts_Under_4d79353a-b876-46b8-8a35-a5c8d14ed088.png",
+            "video-src3": "",
+            "aspectRatio3": "690:750",
+            "image2": "shopify://shop_images/Gift_Card_e830752a-489e-4ad2-95a2-b52fd166091b.png",
+            "mobile_image2": "shopify://shop_images/Gift_Card_74159224-fee7-457a-903e-a0552ab1c726.png",
+            "video-src2": "",
+            "aspectRatio2": "690:750",
+            "heading1": "",
+            "font_size_left": 60,
+            "paragraph1": "",
+            "text_color1": "text-light",
+            "text_color_mobile1": "text-light-mobile",
+            "left_banner_conent_alignment": "end",
+            "left_banner_content_alignment_horizontal": "end",
+            "heading3": "",
+            "font_size_middle": 60,
+            "paragraph3": "",
+            "paragraph_font_size_middle": 18,
+            "text_color3": "text-light",
+            "text_color_mobile3": "text-light-mobile",
+            "middle_banner_conent_alignment": "end",
+            "middle_banner_content_alignment_horizontal": "end",
+            "heading2": "",
+            "font_size_right": 60,
+            "paragraph2": "",
+            "paragraph_font_size_right": 18,
+            "text_color2": "text-light",
+            "text_color_mobile2": "text-light-mobile",
+            "right_banner_conent_alignment": "end",
+            "right_banner_content_alignment_horizontal": "end",
+            "link1": "",
+            "link_text1": "",
+            "font_size_left_cta": 25,
+            "link3": "",
+            "link_text3": "",
+            "font_size_middle_cta": 25,
+            "link2": "",
+            "link_text2": "",
+            "font_size_right_cta": 25,
+            "image_width": "image-half",
+            "column_hide": "hide-left"
+          }
+        }
+      },
+      "block_order": [
+        "bannergrid_threecolumns_8GQVhF"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top": 10,
+        "grid-gap": 0
+      }
     }
   },
   "order": [
-    "banner-01"
+    "banner-01",
+    "banner_FRy7AU",
+    "banner_three_column_01_WKTCBd",
+    "collection_HHehGN",
+    "banner_three_column_01_JjK7JB",
+    "banner_three_column_01_9mejhP",
+    "banner_twocolumns_3CrgpK",
+    "banner_three_column_TmGh7h",
+    "banner_three_column_eu_Tk9AGF",
+    "banner_three_column_us_YjmidH"
   ]
 }
