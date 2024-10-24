@@ -47,6 +47,7 @@ const changeButtonAction = (operation)=>{
   const isPersonalised = (targetElement) =>{
     const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalised']") || false;
     if(dataIsPersonalised && (targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--minus") || targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--plus"))){
+      console.log('isPersonalised:');
       return `${targetElement.dataset["operation"]}`;
     }
     return false;
@@ -57,7 +58,8 @@ const changeButtonAction = (operation)=>{
       changeButtonAction("disable")
       setTimeout(()=>{
         document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
-        changeButtonAction("enable")
+        changeButtonAction("enable"),
+          console.log("updateOperation")
       },5000)
     }
   })
