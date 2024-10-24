@@ -436,9 +436,21 @@ var ajaxCart = (function(module, $) {
           qty = parseInt($qtySelector.val().replace(/\D/g, ''));
 
       var qty = validateQty(qty);
-      var adjustmentType;
-      var gtmData = $qtySelector.closest('[data-product]').data('product');
-      gtmData.quantity = qty;
+var adjustmentType;
+var gtmData = $qtySelector.closest('[data-product]').data('product');
+
+// Trim any leading/trailing whitespace and parse the string as JSON
+if (typeof gtmData === 'string') {
+  try {
+    gtmData = JSON.parse(gtmData.trim());
+  } catch (error) {
+    console.error('Error parsing gtmData:', error);
+  }
+}
+
+// Now that gtmData is an object, you can safely assign the quantity
+gtmData.quantity = qty;
+
 
       // Add or subtract from the current quantity
       if ($el.hasClass('ajaxcart__qty--plus')) {
