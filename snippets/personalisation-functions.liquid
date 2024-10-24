@@ -26,6 +26,7 @@
       document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
         remove.addEventListener("click",()=>{
           removePersonalisationCharge(remove.getAttribute("data-total-items"));
+          console.log(remove.getAttribute("data-total-items"));
           })
       })
     }
