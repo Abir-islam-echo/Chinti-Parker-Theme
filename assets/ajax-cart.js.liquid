@@ -438,7 +438,6 @@ var ajaxCart = (function(module, $) {
       var qty = validateQty(qty);
       var adjustmentType;
       var gtmData = $qtySelector.closest('[data-product]').data('product');
-      console.log(gtmData);
       gtmData.quantity = qty;
 
       // Add or subtract from the current quantity
