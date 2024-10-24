@@ -1,7 +1,8 @@
 <script>
   {% if template == 'cart' %}
     const removePersonalisationCharge = (quantity) => {
-      const remainingChargeItem = document.querySelector("tr.personalisation-charge td.remove button.remove").getAttribute("data-total-items")
+      const remainingChargeItem = document.querySelector("tr.personalisation-charge td.remove button.remove").getAttribute("data-total-items");
+      console.log(remainingChargeItem);
       
       let formData = {
         "id": "53479059259771",
