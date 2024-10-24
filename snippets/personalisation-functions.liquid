@@ -15,7 +15,7 @@
         body: JSON.stringify(formData),
       })
         .then((response) => {
-          console.error('respnse:', respnse);
+          console.log('respnse:', respnse);
           return response.json();
         })
         .catch((error) => {
