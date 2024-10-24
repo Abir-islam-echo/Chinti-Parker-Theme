@@ -15,6 +15,7 @@
         body: JSON.stringify(formData),
       })
         .then((response) => {
+          cosnole.log("cart-change", response);
           return response.json();
         })
         .catch((error) => {
