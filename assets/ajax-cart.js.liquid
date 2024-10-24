@@ -437,6 +437,7 @@ var ajaxCart = (function(module, $) {
 
       var qty = validateQty(qty);
       var adjustmentType;
+      console.log("quantity", qty);
       var gtmData = $qtySelector.closest('[data-product]').data('product');
       gtmData.quantity = qty;
 
