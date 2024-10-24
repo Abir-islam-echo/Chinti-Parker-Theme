@@ -469,4 +469,6 @@ jQuery(document).ready(function () {
 </style>
 <!-- cart timer -->
 
-
+{% if loadPersonalisedJs %}
+  {% render 'personalisation-functions' %}
+{% endif %}
