@@ -6,7 +6,7 @@
       
       let formData = {
         "id": "53479059259771",
-        "quantity": (parseInt(remainingChargeItem) - parseInt(quantity))
+        "quantity": Math.abs(parseInt(remainingChargeItem) - parseInt(quantity));
       };
       fetch(window.Shopify.routes.root + 'cart/change.js', {
         method: 'POST',
