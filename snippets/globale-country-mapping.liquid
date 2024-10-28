@@ -197,7 +197,7 @@ var countryMappings = {
   window.gblCountryMappings = countryMappings;
   var selectedCountryCode = window.Shopify.country;
   var selectedCountryZone = window.gblCountryMappings[selectedCountryCode].Zone;
-  var shopifyTagVal = document.getElementById("shopify_tag").value;
+  var shopifyTagVal = document.getElementById("shopify_tag")?.value;
   var newsletterTagVal = document.getElementById("page-newsletter")?.value;
 
   if(document.getElementById("shopify_tag")){

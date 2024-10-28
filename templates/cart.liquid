@@ -83,7 +83,9 @@
                     {% comment %} personalisation {% endcomment %}
                     {% if item.product.tags contains 'PERSONALISATION' %}
                       {% for property in item.properties %}
-                        <span class="{{ property[0] }}">{{ property[0] | replace: "_", "" }}: {{ property[1] }}</span>
+                        <span class="{{ property[0] }}">
+                          {{- property[0] | replace: '_', '' | capitalize }}: {{ property[1] -}}
+                        </span>
                       {% endfor %}
                     {% endif %}
                     {% comment %} personalisation {% endcomment %}
@@ -163,31 +165,33 @@
                       {%endif%}
                     {% endcomment %}
                   </td>
-                  <td class="remove text-right">
-                    <button
-                      data-total-items="{{ item.quantity }}"
-                      class="remove"
-                      type="button"
-                      data-line="{{ forloop.index }}"
-                      onclick="
-                        dataLayer.push({ 'ecommerce': null });dataLayer.push({
-                        'event': 'remove_from_cart',
-                        'ecommerce': {
-                            'currency': '{{ shop.currency }}',
-                            'value': '{{ item.line_price | money_without_currency }}',
-                            'items': [{
-                            'item_id': '{{ item.product.id }}',
-                            'item_name': '{{ item.product.title | remove: "'" | remove: '"' }}',
-                            'item_brand': '{{ item. product.vendor | remove: "'" | remove: '"' }}',
-                            'item_price': '{{ item.line_price | money_without_currency }}'
-                            }]
-                          }
-                        });
-                      "
-                    >
-                      Remove
-                    </button>
-                  </td>
+                  {% unless item.product.handle == 'personalisation-charge' %}
+                    <td class="remove text-right">
+                      <button
+                        data-total-items="{{ item.quantity }}"
+                        class="remove"
+                        type="button"
+                        data-line="{{ forloop.index }}"
+                        onclick="
+                          dataLayer.push({ 'ecommerce': null });dataLayer.push({
+                          'event': 'remove_from_cart',
+                          'ecommerce': {
+                              'currency': '{{ shop.currency }}',
+                              'value': '{{ item.line_price | money_without_currency }}',
+                              'items': [{
+                              'item_id': '{{ item.product.id }}',
+                              'item_name': '{{ item.product.title | remove: "'" | remove: '"' }}',
+                              'item_brand': '{{ item. product.vendor | remove: "'" | remove: '"' }}',
+                              'item_price': '{{ item.line_price | money_without_currency }}'
+                              }]
+                            }
+                          });
+                        "
+                      >
+                        Remove
+                      </button>
+                    </td>
+                  {% endunless %}
                 </tr>
               {% endfor %}
             </tbody>
@@ -468,5 +472,3 @@ jQuery(document).ready(function () {
   }
 </style>
 <!-- cart timer -->
-
-

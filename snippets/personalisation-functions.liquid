@@ -1,51 +1,41 @@
 <script>
   {% if template == 'cart' %}
     const removePersonalisationCharge = (quantity) => {
-      const remainingChargeItem = document.querySelector("tr.personalisation-charge td.remove button.remove").getAttribute("data-total-items");
-      console.log(remainingChargeItem);
-      
-      let formData = {
-        "id": "53479059259771",
-        "quantity": Math.abs(parseInt(remainingChargeItem) - parseInt(quantity));
+      const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
+      let updates = {
+        53479059259771: Math.abs(parseInt(remainingChargeItem) - parseInt(quantity))
       };
-      fetch(window.Shopify.routes.root + 'cart/change.js', {
+      fetch(window.Shopify.routes.root + 'cart/update.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({updates})
       })
         .then((response) => {
-          console.log('respnse:', respnse);
           return response.json();
         })
         .catch((error) => {
           console.error('Error:', error);
         })
     };
+        
+        
     if(document.querySelectorAll("tr[data-personalisation='true']")){
       document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
         remove.addEventListener("click",()=>{
-          removePersonalisationCharge(remove.getAttribute("data-total-items"));
-          console.log(remove.getAttribute("data-total-items"));
+            if(document.querySelector("tr.personalisation-charge .bag-qty input")){
+              setTimeout(()=>{
+                removePersonalisationCharge(remove.getAttribute("data-total-items"));
+              },100)
+            }
           })
       })
     }
   {% endif %}
 
 {% comment %} cart drawer {% endcomment %}
-const changeButtonAction = (operation)=>{
-  if(operation == 'disable'){
-    document.querySelectorAll(":is(button, a)").forEach(button=>{
-      button.classList.add("pointer-event-none");
-    })
-  }
-  else{
-    document.querySelectorAll(":is(button, a)").forEach(button=>{
-      button.classList.remove("pointer-event-none");
-    })
-  }
-}
+
   const isPersonalised = (targetElement) =>{
     const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalised']") || false;
     if(dataIsPersonalised && (targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--minus") || targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--plus"))){
@@ -57,21 +47,20 @@ const changeButtonAction = (operation)=>{
   document.body.addEventListener("click",(e)=>{
     const updateOperation = isPersonalised(e.target);
     if(updateOperation){
-      changeButtonAction("disable")
+      document.body.classList.add("pointer-event-none")
       setTimeout(()=>{
         document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
-        changeButtonAction("enable"),
-          console.log("updateOperation")
       },5000)
+      setTimeout(()=>{
+        document.body.classList.remove("pointer-event-none")
+      },8000)
+      
     }
   })
   {% comment %} cart drawer {% endcomment %}
 </script>
 
 <style>
-  tr.personalisation-charge td.remove {
-    display: none;
-  }
   tr.personalisation-charge .qty.product .qty-total .js-qty button {
     display: none;
   }
@@ -93,10 +82,10 @@ const changeButtonAction = (operation)=>{
   .pointer-event-none {
     pointer-events: none;
   }
-  span.ajaxcart__product-meta.mid[data-is="personalised"]{
+  span.ajaxcart__product-meta.mid[data-is='personalised'] {
     display: block !important;
   }
-  tr .product :is(._MID_Name, ._MID_Address, ._MID_Code){
+  tr .product :is(._MID_Name, ._MID_Address, ._MID_Code) {
     display: none !important;
   }
 </style>

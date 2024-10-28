@@ -434,12 +434,11 @@ var ajaxCart = (function(module, $) {
           line = $el.data('line'),
           $qtySelector = $el.siblings('.ajaxcart__qty-num'),
           qty = parseInt($qtySelector.val().replace(/\D/g, ''));
-
       var qty = validateQty(qty);
       var adjustmentType;
-      console.log("quantity", qty);
-      var gtmData = $qtySelector.closest('[data-product]').data('product');
-      gtmData.quantity = qty;
+      
+      // var gtmData = $qtySelector.closest('[data-product]').data('product');
+      // gtmData.quantity = qty;
 
       // Add or subtract from the current quantity
       if ($el.hasClass('ajaxcart__qty--plus')) {
@@ -543,14 +542,14 @@ var ajaxCart = (function(module, $) {
         $qtySelector.val(qty);
       }
 
-      var gtmData = $qtySelector.closest('[data-product]').data('product');
-      gtmData.quantity = qty;
+      // var gtmData = $qtySelector.closest('[data-product]').data('product');
+      // gtmData.quantity = qty;
 
       //triggerGTMRemoveFromCart(gtmData);
 
       setTimeout(function() {
         location.reload();
-      }, 500);
+      }, 1500);
     });
   };
 
@@ -642,8 +641,8 @@ var ajaxCart = (function(module, $) {
           if (qty <= 1) qty = 1;
         }
 
-        var gtmData = $qtySelector.closest('[data-product]').data('product');
-        gtmData.quantity = qty;
+        // var gtmData = $qtySelector.closest('[data-product]').data('product');
+        // gtmData.quantity = qty;
 
         if (adjustmentType === 'plus') {
           //triggerGTMAddToCart(gtmData);
