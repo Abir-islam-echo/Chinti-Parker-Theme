@@ -103,44 +103,47 @@
 
     <div id="cart-container">
       <div id="CartContainer"></div>
+      <div id="p-charge-add-loading" class="hidden">
+        <p>Updating Personalisation Charge...</p>
+      </div>
     </div>
   </li>
 </ul>
 <style>
-  .header-telephone-icon a{
-    position:relative;
+  .header-telephone-icon a {
+    position: relative;
   }
-  .header-telephone-icon a .tooltip{
-   position: absolute;
-  top: 31px;
-  white-space: nowrap;
-  left: -63px;
-  background: #2f2f2f;
-  border-radius: 4px;
-  color: white;
-  visibility: hidden;
-  opacity: 0;
-  transition: all .25s ease-out;
-  padding: 5px 12px;
-  transform: translateY(-50px);
+  .header-telephone-icon a .tooltip {
+    position: absolute;
+    top: 31px;
+    white-space: nowrap;
+    left: -63px;
+    background: #2f2f2f;
+    border-radius: 4px;
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.25s ease-out;
+    padding: 5px 12px;
+    transform: translateY(-50px);
   }
-  .header-telephone-icon a .tooltip .arrow{
-  border-left: 2px solid #2f2f2f;
-  border-right: 2px solid #2f2f2f;
-  width: 10px;
-  display: inline-block;
-  position: absolute;
-  background: #2f2f2f;
-  top: 20px;
-  right: 68px;
-  height: 10px;
-  rotate: 45deg;
-  z-index: -5;
+  .header-telephone-icon a .tooltip .arrow {
+    border-left: 2px solid #2f2f2f;
+    border-right: 2px solid #2f2f2f;
+    width: 10px;
+    display: inline-block;
+    position: absolute;
+    background: #2f2f2f;
+    top: 20px;
+    right: 68px;
+    height: 10px;
+    rotate: 45deg;
+    z-index: -5;
   }
-  .header-telephone-icon a:hover .tooltip{
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(-60px);
+  .header-telephone-icon a:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-60px);
   }
 </style>
 {% comment %} redeye task start {% endcomment %}
@@ -162,56 +165,59 @@
 {%- endif -%}
 
 <script>
-
-  var isTrackingInProgress = false; 
+  var isTrackingInProgress = false;
   var oldXHR = window.XMLHttpRequest;
 
   function newXHR() {
-      var realXHR = new oldXHR();
-      realXHR.addEventListener("readystatechange", function() {
-        
-          if(realXHR.readyState==4 && realXHR.status==200 && (realXHR.responseURL.includes('cart/add.js')|| realXHR.responseURL.includes('/cart/change.js') )){        
-                if (!isTrackingInProgress) {
-                    isTrackingInProgress = true; 
-                    fetch(window.Shopify.routes.root + 'cart.js')
-                        .then(response => response.json())
-                        .then(data => redEyeEventTrack(data))
-                        .finally(() => {
-                            isTrackingInProgress = false; 
-                        });
-            }
-      
+    var realXHR = new oldXHR();
+    realXHR.addEventListener(
+      'readystatechange',
+      function () {
+        if (
+          realXHR.readyState == 4 &&
+          realXHR.status == 200 &&
+          (realXHR.responseURL.includes('cart/add.js') || realXHR.responseURL.includes('/cart/change.js'))
+        ) {
+          if (!isTrackingInProgress) {
+            isTrackingInProgress = true;
+            fetch(window.Shopify.routes.root + 'cart.js')
+              .then((response) => response.json())
+              .then((data) => redEyeEventTrack(data))
+              .finally(() => {
+                isTrackingInProgress = false;
+              });
           }
-      }, false);
-      return realXHR;
-  };
+        }
+      },
+      false
+    );
+    return realXHR;
+  }
 
   window.XMLHttpRequest = newXHR;
 
-  function redEyeEventTrack(data){
-      const priceCalcualtion = (price) =>{
-    if(price.slice(-2) == '00'){
-      return (price.slice(0,-2)+'.00');
-    }
-    else{
-      return (price.slice(0,-2)+'.'+price.slice(-2));
-    }
-  }
+  function redEyeEventTrack(data) {
+    const priceCalcualtion = (price) => {
+      if (price.slice(-2) == '00') {
+        return price.slice(0, -2) + '.00';
+      } else {
+        return price.slice(0, -2) + '.' + price.slice(-2);
+      }
+    };
     const cartItems = data;
     const prodItems = [];
-    cartItems.items.forEach((item,index) => {
+    cartItems.items.forEach((item, index) => {
       const newItem = {};
       newItem['bask_name' + (index + 1)] = item.title;
       newItem['bask_image' + (index + 1)] = item.image.split('https://')[1];
-      newItem['bask_url' + (index + 1)] = "www.chintiandparker.com" + item.url;
+      newItem['bask_url' + (index + 1)] = 'www.chintiandparker.com' + item.url;
       newItem['bask_size' + (index + 1)] = item.variant_options[0];
       newItem['bask_code' + (index + 1)] = item.id;
-      newItem['bask_each_val' + (index + 1)] = priceCalcualtion(item.price.toString()),
-      newItem['bask_items' + (index + 1)] = item.quantity;
+      (newItem['bask_each_val' + (index + 1)] = priceCalcualtion(item.price.toString())),
+        (newItem['bask_items' + (index + 1)] = item.quantity);
       newItem['bask_val' + (index + 1)] = priceCalcualtion(item.original_line_price.toString());
 
       prodItems.push(newItem);
-
     });
 
     let mainSource = 'https://reporting.chintiandparker.com/cgi-bin/rr/blank.gif?nourl=basket-event&bask_event=yes';
@@ -221,50 +227,50 @@
       }
     });
 
-    mainSource += `&bask_total_items=${cartItems.item_count}&bask_total_val=${priceCalcualtion(cartItems.total_price.toString())}&site={{ zoneValue }}&currency=${cartItems.currency}`;
+    mainSource += `&bask_total_items=${cartItems.item_count}&bask_total_val=${priceCalcualtion(
+      cartItems.total_price.toString()
+    )}&site={{ zoneValue }}&currency=${cartItems.currency}`;
     let abandonItemsStructure = `<img src="${mainSource}" width="1" height="1" class="updated_basket_tag"/>`;
-    if(document.querySelector('.updated_basket_tag')){
-        document.querySelector('.updated_basket_tag').remove();
+    if (document.querySelector('.updated_basket_tag')) {
+      document.querySelector('.updated_basket_tag').remove();
     }
 
     document.body.insertAdjacentHTML('beforeend', abandonItemsStructure);
+  }
 
-  };
-
-
-  document.body.addEventListener('click', (e)=> {
-    if(e.target.matches(`input[value="Create account"]`) || e.target.matches(`input[type="submit"][value="Create"]`)){
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches(`input[value="Create account"]`) || e.target.matches(`input[type="submit"][value="Create"]`)) {
       const customerSubscriber = document.querySelector('#CustomerSubscriber').checked;
-      if(customerSubscriber){
-          document.cookie = `customerSubscriber=true; Path=/`;
+      if (customerSubscriber) {
+        document.cookie = `customerSubscriber=true; Path=/`;
       }
 
       const genderValue = document.querySelector('#create_customer #CustomerFormGender')?.value;
       const fullBirthdayValue =
-                jQuery("#create_customer #birthdayDay").val() +
-                "/" +
-                jQuery("#create_customer #birthdayMonth").val() +
-                "/" +
-                jQuery("#create_customer #birthdayYear").val();
+        jQuery('#create_customer #birthdayDay').val() +
+        '/' +
+        jQuery('#create_customer #birthdayMonth').val() +
+        '/' +
+        jQuery('#create_customer #birthdayYear').val();
       const mobileNumberValue = document.querySelector('#create_customer #CustomerFormMobile')?.value;
 
-      console.log(genderValue,fullBirthdayValue,mobileNumberValue, 'check');
+      console.log(genderValue, fullBirthdayValue, mobileNumberValue, 'check');
 
-      if(genderValue){
+      if (genderValue) {
         document.cookie = `gender_value=${genderValue}; Path=/`;
       }
 
-      if(fullBirthdayValue){
+      if (fullBirthdayValue) {
         document.cookie = `birthday_value=${fullBirthdayValue}; Path=/`;
       }
 
-      if(mobileNumberValue){
-         document.cookie = `mobile_value=${mobileNumberValue}; Path=/`;
+      if (mobileNumberValue) {
+        document.cookie = `mobile_value=${mobileNumberValue}; Path=/`;
       }
- 
+
       document.cookie = `account_creation=true; Path=/`;
     }
-    if(e.target.matches(`input[value="Sign In"]`)){
+    if (e.target.matches(`input[value="Sign In"]`)) {
       document.cookie = `account_loggedin=true; Path=/`;
     }
   });

@@ -2,8 +2,10 @@
   {% if template == 'cart' %}
     const removePersonalisationCharge = (quantity) => {
       const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
+      const chargeQuantity = Math.abs(parseInt(remainingChargeItem) - parseInt(quantity));
+      console.log(chargeQuantity);
       let updates = {
-        53479059259771: Math.abs(parseInt(remainingChargeItem) - parseInt(quantity))
+        53479059259771: chargeQuantity
       };
       fetch(window.Shopify.routes.root + 'cart/update.js', {
         method: 'POST',
@@ -25,9 +27,7 @@
       document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
         remove.addEventListener("click",()=>{
             if(document.querySelector("tr.personalisation-charge .bag-qty input")){
-              setTimeout(()=>{
                 removePersonalisationCharge(remove.getAttribute("data-total-items"));
-              },100)
             }
           })
       })
@@ -48,10 +48,12 @@
     const updateOperation = isPersonalised(e.target);
     if(updateOperation){
       document.body.classList.add("pointer-event-none")
+      document.querySelector("#p-charge-add-loading").classList.remove("hidden")
       setTimeout(()=>{
         document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
       },5000)
       setTimeout(()=>{
+        document.querySelector("#p-charge-add-loading").classList.add("hidden")
         document.body.classList.remove("pointer-event-none")
       },8000)
       
@@ -61,6 +63,16 @@
 </script>
 
 <style>
+  #cart-container #p-charge-add-loading {
+    position: absolute;
+    top: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 0;
+    width: 100%;
+    text-align: center;
+    background: #f1f1f1;
+  }
   tr.personalisation-charge .qty.product .qty-total .js-qty button {
     display: none;
   }

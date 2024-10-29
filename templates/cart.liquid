@@ -74,7 +74,7 @@
                   </td>
                   <td class="product">
                     <a class="name" href="{{ collection_url }}{{ item.url }}">
-                      {{ item.title | replace: ' - ', ' ' }}
+                      {{ item.title }}
                     </a>
                     {% unless item.variant.barcode == blank -%}
                       <span>SKU: {{ item.variant.barcode }}</span>
@@ -108,8 +108,20 @@
                       {% unless item.variant.barcode == blank -%}
                         <span>SKU: {{ item.variant.barcode }}</span>
                       {%- endunless %}
-                      <span>Size: {{ item.variant.title }}</span>
-                      <button class="remove" type="button" data-line="{{ forloop.index }}">Remove</button>
+                      {% comment %} personalisation {% endcomment %}
+                      {% if item.product.tags contains 'PERSONALISATION' %}
+                        {% for property in item.properties %}
+                          <span class="{{ property[0] }}">
+                            {{- property[0] | replace: '_', '' | capitalize }}: {{ property[1] -}}
+                          </span>
+                        {% endfor %}
+                      {% endif %}
+                      {% comment %} personalisation {% endcomment %}
+                      {% unless item.product.handle == 'personalisation-charge' %}
+                        <span>Size: {{ item.variant.title }}</span>
+                        <button class="remove" type="button" data-line="{{ forloop.index }}">Remove</button>
+                      {% endunless %}
+
                       <div class="qty-total">
                         <div class="bag-qty">
                           <input

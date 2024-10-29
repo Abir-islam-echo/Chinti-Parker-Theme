@@ -32,7 +32,7 @@
                   {{#properties}}
                     {{#each this}}
                       {{#if this}}
-                        <span class="ajaxcart__product-meta mid" data-is="{{this}}">{{@key}}: {{this}}</span>
+                        <span class="ajaxcart__product-meta mid" data-is="{{this}}">{{formatKey @key}}: {{this}}</span>
                       {{/if}}
                     {{/each}}
                   {{/properties}}
@@ -168,3 +168,11 @@
     display: none !important;
   }
 </style>
+<script>
+  Handlebars.registerHelper('formatKey', function(key) {
+    if (key === '_type') {
+      return 'Type';
+    }
+    return key;
+  });  
+</script>
