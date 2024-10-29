@@ -1,9 +1,29 @@
 <script>
+  let removedProductQuantity;
+  function networkCallObserver(callback) {
+    const observer = new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
+            callback(entry.name);
+        });
+    });
+    observer.observe({
+        entryTypes: ['resource']
+    });
+}
+
+function requestCallback(requestURL) {
+    if (requestURL.includes('/cart/change.js') && localStorage.getItem("cartPage-updateCharge")) {
+        removePersonalisationCharge(removedProductQuantity);
+    }
+}
+networkCallObserver(requestCallback);
+
+
+
   {% if template == 'cart' %}
     const removePersonalisationCharge = (quantity) => {
       const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
       const chargeQuantity = Math.abs(parseInt(remainingChargeItem) - parseInt(quantity));
-      console.log(chargeQuantity);
       let updates = {
         53479059259771: chargeQuantity
       };
@@ -20,6 +40,7 @@
         .catch((error) => {
           console.error('Error:', error);
         })
+        localStorage.removeItem("cartPage-updateCharge");
     };
         
         
@@ -27,7 +48,8 @@
       document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
         remove.addEventListener("click",()=>{
             if(document.querySelector("tr.personalisation-charge .bag-qty input")){
-                removePersonalisationCharge(remove.getAttribute("data-total-items"));
+              localStorage.setItem('cartPage-updateCharge', true)
+                removedProductQuantity = remove.getAttribute("data-total-items");
             }
           })
       })
@@ -50,6 +72,7 @@
       document.body.classList.add("pointer-event-none")
       document.querySelector("#p-charge-add-loading").classList.remove("hidden")
       setTimeout(()=>{
+        
         document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
       },5000)
       setTimeout(()=>{
