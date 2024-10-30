@@ -7419,22 +7419,6 @@ jQuery(document).ready(function () {
         [line]: quantity,
         [line2]: quantity2,
       };
-
-      $.ajax({
-        url: "/cart/update.js",
-        method: "POST",
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify({ updates }),
-        success: function (response) {
-          console.log("Cart updated successfully:", response);
-          // Optionally, you could refresh the cart or redirect here
-          location.reload();
-        },
-        error: function (error) {
-          console.error("Error updating cart:", error);
-        },
-      });
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
