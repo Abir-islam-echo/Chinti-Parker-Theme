@@ -33,9 +33,9 @@
                     {{#each this}}
                       {{#if this}}
                         <span class="ajaxcart__product-meta mid" data-is="{{this}}">{{formatKey @key}}: {{this}}</span>
-                        <div class="personalisation-note ajaxcart__product-meta mid" data-is="{{this}}">
+                        <span class="personalisation-note ajaxcart__product-meta mid" data-is="{{this}}">
                           <p>additional charge will be applied at checkout.</p>
-                        </div>
+                        </span>
                       {{/if}}
                     {{/each}}
                   {{/properties}}
