@@ -7408,7 +7408,7 @@ jQuery(document).ready(function () {
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
       let remainingChargeItem =
         $("tr.personalisation-charge .bag-qty input").val() || null;
-      console.log(line, quantity, ++remainingChargeItem);
+      console.log(line, quantity, remainingChargeItem);
       // First line item update
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
       // After the first update completes, use setTimeout to delay the second request slightly
@@ -7416,8 +7416,8 @@ jQuery(document).ready(function () {
       line2 = parseInt(line2, 10);
       let quantity2 = remainingChargeItem + 1;
       setTimeout(() => {
-        // window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
-      }, 500);
+        window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
+      }, 1000);
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
@@ -7436,7 +7436,7 @@ jQuery(document).ready(function () {
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
       let remainingChargeItem =
         $("tr.personalisation-charge .bag-qty input").val() || null;
-      console.log(this, --remainingChargeItem);
+      console.log(this, remainingChargeItem);
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
