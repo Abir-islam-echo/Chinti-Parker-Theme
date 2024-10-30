@@ -1,5 +1,5 @@
 {{ 'gift-note-message.css' | asset_url | stylesheet_tag }}
-
+{% assign loadPersonalisedJs = false %}
 <script class="cartFlagX"></script>
 <div class="shopping-bag wrapper">
   <form action="/cart" method="post">
@@ -221,10 +221,12 @@
         {%- endif -%}
 
         <div class="bag-total order-table">
-          <div class="personalisation-note">
-            <p>Personalization charge will be applied at checkout for each personalized product.</p>
-          </div>
           <div class="top-section inner-section">
+            {% if loadPersonalisedJs %}
+              <div class="personalisation-note">
+                <p>Personalization charge will be applied at checkout for each personalized product.</p>
+              </div>
+            {% endif %}
             <table>
               <tfoot>
                 <tr>
