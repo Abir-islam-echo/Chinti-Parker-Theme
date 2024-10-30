@@ -7406,7 +7406,7 @@ jQuery(document).ready(function () {
     line = parseInt(line, 10);
     var quantity = jQuery(this).prev().val();
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      const remainingChargeItem =
+      let remainingChargeItem =
         $("tr.personalisation-charge .bag-qty input").val() || null;
       console.log(line, quantity, ++remainingChargeItem);
     } else {
@@ -7425,7 +7425,7 @@ jQuery(document).ready(function () {
       quantity = 0;
     }
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      const remainingChargeItem =
+      let remainingChargeItem =
         $("tr.personalisation-charge .bag-qty input").val() || null;
       console.log(this, --remainingChargeItem);
     } else {
