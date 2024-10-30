@@ -7419,6 +7419,28 @@ jQuery(document).ready(function () {
         [line]: quantity,
         [line2]: quantity2,
       };
+
+      fetch("/cart/update.js", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ updates }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Cart updated successfully:", data);
+          // Refresh the cart or redirect if needed
+          location.reload();
+        })
+        .catch((error) => {
+          console.error("Error updating cart:", error);
+        });
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
