@@ -7408,7 +7408,7 @@ jQuery(document).ready(function () {
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
       let remainingChargeItem = $(
         "tr.personalisation-charge .bag-qty input"
-      ).val();
+      ).value;
       remainingChargeItem = parseInt(remainingChargeItem) - 1;
       console.log(line, quantity, remainingChargeItem);
       // First line item update
@@ -7438,7 +7438,7 @@ jQuery(document).ready(function () {
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
       let remainingChargeItem = $(
         "tr.personalisation-charge .bag-qty input"
-      ).val();
+      ).value;
       remainingChargeItem = parseInt(remainingChargeItem) - 1;
       let line2 = $("tr.personalisation-charge").data("line");
       line2 = parseInt(line2, 10);
