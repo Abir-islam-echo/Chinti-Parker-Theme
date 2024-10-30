@@ -6311,8 +6311,8 @@ jQuery(document).ready(function () {
         var line = jQuery(this).parents('tr').find('button.remove').data('line');
         line = parseInt(line, 10);
         var quantity = jQuery(this).prev().val();
-      const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
-    console.log(remainingChargeItem)
+      const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input")?.value || null;
+    console.log(this)
         // window.location = "/cart/change?line="+line+"&amp;quantity="+quantity;
     });
     
@@ -6326,8 +6326,8 @@ jQuery(document).ready(function () {
         if (quantity < 0) {
             quantity = 0;
         }
-      const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
-        console.log("remainingChargeItem")
+      const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input")?.value || null;
+        console.log(remainingChargeItem)
         // window.location = "/cart/change?line="+line+"&amp;quantity="+quantity;
     });
     
