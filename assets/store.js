@@ -7411,13 +7411,12 @@ jQuery(document).ready(function () {
       console.log(line, quantity, ++remainingChargeItem);
       // First line item update
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
-
       // After the first update completes, use setTimeout to delay the second request slightly
       let line2 = $("tr.personalisation-charge").data("line");
       line2 = parseInt(line2, 10);
       let quantity2 = remainingChargeItem + 1;
       setTimeout(() => {
-        window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
+        // window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
       }, 500);
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
