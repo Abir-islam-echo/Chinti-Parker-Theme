@@ -7406,9 +7406,9 @@ jQuery(document).ready(function () {
     line = parseInt(line, 10);
     var quantity = jQuery(this).prev().val();
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      var personalisedProductkey = $(this).closest(
-        "tr.line-item[data-personalisation='true']"
-      ).dataset["key"];
+      var personalisedProductkey = $(this)
+        .closest("tr.line-item[data-personalisation='true']")
+        .get(0).dataset.key;
       let remainingChargeItem = document.querySelector(
         "tr.personalisation-charge .bag-qty input"
       ).value;
