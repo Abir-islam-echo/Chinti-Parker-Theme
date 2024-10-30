@@ -80,6 +80,11 @@
           </div>
         </div>
         <div class="ATC-section">
+          <!--
+            <div class="personalisation-note">
+              <p>Personalization charge will be applied at checkout for each personalized product.</p>
+            </div>
+          -->
           <div class="personalised-atc-form">
             <form action="/cart/add" method="post" enctype="multipart/form-data">
               <input
@@ -220,7 +225,7 @@
   text-align: center;
   padding: 0 15px;
   line-height: normal;
-  } 
+  }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo p{
     line-height: normal;
     font-weight: 700;
@@ -231,6 +236,11 @@
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section{
     padding: 40px 0 20px 0;
   }
+  /* #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalisation-note p{
+    font-style: italic;
+    text-align: center;
+    line-height: normal;
+  } */
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .atc-form button{
     margin: 0;
   }
@@ -605,19 +615,6 @@ document
           updateFormProperties(select);
         });
       });
-      const extraChargeDiv = `  <div id="personalisation-charge">
-      <form action="/cart/add" method="post" enctype="multipart/form-data">
-        <input
-          type="hidden"
-          name="id"
-          id="personalisation-charge"
-          value="53479059259771"
-        >
-        <input type="hidden" name="quantity" value="1">
-        <button type="submit" name="add" class=""></button>
-      </form>
-    </div>`;
-    document.body.insertAdjacentHTML('beforeend', extraChargeDiv);
     {% comment %} add 30 sec timer to the cart page and adding extra charge for personalization {% endcomment %}
     let count = new Date((new Date().getTime())+(30*60*1000));
     document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section [type='submit']").forEach(button=>{
@@ -630,7 +627,6 @@ document
       })
     })
 </script>
-{% render 'personalisation-functions', product: product %}
 {% schema %}
 {
   "name": "personalisation",
