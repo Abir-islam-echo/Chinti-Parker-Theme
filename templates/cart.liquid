@@ -340,27 +340,9 @@
   }
 </style>
 
-{% comment %} redeye task start {% endcomment %}
-
-{% assign euCountryList = 'yt,au,de,fi,ad,at,by,be,ba,hr,cy,ee,fr,gr,ie,it,lv,lt,lu,mk,mt,mc,nl,pt,ru,sm,sk,si,es,ua,va,me,gp,mq,bl,mf,re' %}
-{% assign usCountryList = 'ca,us' %}
-{% assign uKCountryList = 'gb' %}
-{% assign isoCode = localization.country.iso_code | downcase %}
-{% assign zoneValue = '' %}
-
-{%- if euCountryList contains isoCode -%}
-  {% assign zoneValue = 'EU' %}
-{% elsif usCountryList contains isoCode %}
-  {% assign zoneValue = 'US' %}
-{% elsif uKCountryList contains isoCode %}
-  {% assign zoneValue = 'UK' %}
-{% else %}
-  {% assign zoneValue = 'UK' %}
-{%- endif -%}
-
-{% comment %} redeye task finish {% endcomment %}
 
 <script>
+  console.log({{ cart | json }});
 jQuery(document).ready(function () {
     if (localStorage.getItem('storedDiscount')){
       var discountStored = localStorage.getItem('storedDiscount');
@@ -373,8 +355,6 @@ jQuery(document).ready(function () {
     });
 });
 
-
-console.log({{ cart | json }})
 </script>
 
 {{ 'gift-note-message.js' | asset_url | script_tag }}
