@@ -7420,7 +7420,7 @@ jQuery(document).ready(function () {
         [line2]: quantity2,
       };
 
-      fetch("/cart/update.js", {
+      fetch(window.Shopify.routes.root + "cart/update.js", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
