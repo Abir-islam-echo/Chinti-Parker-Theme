@@ -7409,17 +7409,30 @@ jQuery(document).ready(function () {
       let remainingChargeItem = $(
         "tr.personalisation-charge .bag-qty input"
       ).value;
-      remainingChargeItem = parseInt(remainingChargeItem) - 1;
-      console.log(line, quantity, remainingChargeItem);
-      // First line item update
-      window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
-      // After the first update completes, use setTimeout to delay the second request slightly
+      remainingChargeItem = parseInt(remainingChargeItem) + 1;
       let line2 = $("tr.personalisation-charge").data("line");
       line2 = parseInt(line2, 10);
       let quantity2 = remainingChargeItem;
-      setTimeout(() => {
-        window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
-      }, 1000);
+      const updates = {
+        [line]: quantity,
+        [line2]: quantity2,
+      };
+
+      $.ajax({
+        url: "/cart/update.js",
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({ updates }),
+        success: function (response) {
+          console.log("Cart updated successfully:", response);
+          // Optionally, you could refresh the cart or redirect here
+          location.reload();
+        },
+        error: function (error) {
+          console.error("Error updating cart:", error);
+        },
+      });
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
@@ -7463,9 +7476,6 @@ jQuery(document).ready(function () {
           console.error("Error updating cart:", error);
         },
       });
-      // setTimeout(() => {
-      //   window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
-      // }, 1000);
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
