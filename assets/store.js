@@ -7408,7 +7408,7 @@ jQuery(document).ready(function () {
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
       const remainingChargeItem =
         $("tr.personalisation-charge .bag-qty input").val() || null;
-      console.log(line, quantity);
+      console.log(line, quantity, ++remainingChargeItem);
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
@@ -7427,7 +7427,7 @@ jQuery(document).ready(function () {
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
       const remainingChargeItem =
         $("tr.personalisation-charge .bag-qty input").val() || null;
-      console.log(this, remainingChargeItem);
+      console.log(this, --remainingChargeItem);
     } else {
       window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
     }
