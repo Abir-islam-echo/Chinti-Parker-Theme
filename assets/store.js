@@ -7406,6 +7406,7 @@ jQuery(document).ready(function () {
     line = parseInt(line, 10);
     var quantity = jQuery(this).prev().val();
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
+      console.log(quantity);
       var personalisedProductkey = $(this)
         .closest("tr.line-item[data-personalisation='true']")
         .get(0).dataset.key;
