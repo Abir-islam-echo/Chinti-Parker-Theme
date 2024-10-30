@@ -153,7 +153,7 @@
         <span class="fallback-text hidden" aria-hidden="true">&minus;</span>
         <span class="hidden">{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}</span>
       </button>
-      <input type="text" class="js-qty__num" value="{{itemQty}}" min="1" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
+      <input disabled type="text" class="js-qty__num" value="{{itemQty}}" min="1" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
       <button type="button" class="js-qty__adjust js-qty__adjust--plus icon-fallback-text" data-id="{{key}}" data-qty="{{itemAdd}}">
         <span class="icon icon-plus-circle" aria-hidden="true"></span>
         <span class="fallback-text hidden" aria-hidden="true">+</span>
