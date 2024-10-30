@@ -7405,48 +7405,8 @@ jQuery(document).ready(function () {
     var line = jQuery(this).parents("tr").find("button.remove").data("line");
     line = parseInt(line, 10);
     var quantity = jQuery(this).prev().val();
-    if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      console.log(quantity);
-      var personalisedProductkey = $(this)
-        .closest("tr.line-item[data-personalisation='true']")
-        .get(0).dataset.key;
-      let remainingChargeItem = document.querySelector(
-        "tr.personalisation-charge .bag-qty input"
-      ).value;
-      remainingChargeItem = parseInt(remainingChargeItem) + 1;
-      let personalisedChargeKey = document.querySelector(
-        "tr.personalisation-charge"
-      ).dataset["key"];
-      let quantity2 = remainingChargeItem;
-      const updates = {
-        [personalisedProductkey]: quantity,
-        [personalisedChargeKey]: quantity2,
-      };
 
-      fetch(window.Shopify.routes.root + "cart/update.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ updates }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Cart updated successfully:", data);
-          // Refresh the cart or redirect if needed
-          location.reload();
-        })
-        .catch((error) => {
-          console.error("Error updating cart:", error);
-        });
-    } else {
-      window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
-    }
+    window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
   });
 
   jQuery("body").on("click", "button.js-qty__adjust--minus", function (e) {
@@ -7459,47 +7419,8 @@ jQuery(document).ready(function () {
     if (quantity < 0) {
       quantity = 0;
     }
-    if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      var personalisedProductkey = $(this)
-        .closest("tr.line-item[data-personalisation='true']")
-        .get(0).dataset.key;
-      let remainingChargeItem = document.querySelector(
-        "tr.personalisation-charge .bag-qty input"
-      ).value;
-      remainingChargeItem = parseInt(remainingChargeItem) - 1;
-      let personalisedChargeKey = document.querySelector(
-        "tr.personalisation-charge"
-      ).dataset["key"];
-      let quantity2 = remainingChargeItem;
-      const updates = {
-        [personalisedProductkey]: quantity,
-        [personalisedChargeKey]: quantity2,
-      };
 
-      fetch(window.Shopify.routes.root + "cart/update.js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ updates }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Cart updated successfully:", data);
-          // Refresh the cart or redirect if needed
-          location.reload();
-        })
-        .catch((error) => {
-          console.error("Error updating cart:", error);
-        });
-    } else {
-      window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
-    }
+    window.location.href = `/cart/change?line=${line}&quantity=${quantity}`;
   });
 
   function triggerFlourishAnimation() {
