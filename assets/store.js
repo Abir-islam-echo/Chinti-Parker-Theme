@@ -6311,8 +6311,8 @@ jQuery(document).ready(function () {
         var line = jQuery(this).parents('tr').find('button.remove').data('line');
         line = parseInt(line, 10);
         var quantity = jQuery(this).prev().val();
-    
-        window.location = "/cart/change?line="+line+"&amp;quantity="+quantity;
+    console.log("Plus")
+        // window.location = "/cart/change?line="+line+"&amp;quantity="+quantity;
     });
     
     jQuery('body').on("click", 'button.js-qty__adjust--minus', function(e) {
@@ -6325,8 +6325,8 @@ jQuery(document).ready(function () {
         if (quantity < 0) {
             quantity = 0;
         }
-        
-        window.location = "/cart/change?line="+line+"&amp;quantity="+quantity;
+        console.log("minus")
+        // window.location = "/cart/change?line="+line+"&amp;quantity="+quantity;
     });
     
     function triggerFlourishAnimation() {
