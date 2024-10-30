@@ -7406,18 +7406,20 @@ jQuery(document).ready(function () {
     line = parseInt(line, 10);
     var quantity = jQuery(this).prev().val();
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
+      var personalisedProductkey = $(this).closest(
+        "tr.line-item[data-personalisation='true']"
+      ).dataset["key"];
       let remainingChargeItem = document.querySelector(
         "tr.personalisation-charge .bag-qty input"
       ).value;
       remainingChargeItem = parseInt(remainingChargeItem) + 1;
-      let line2 = document.querySelector("tr.personalisation-charge").dataset[
-        "line"
-      ];
-      line2 = parseInt(line2, 10);
+      let personalisedChargeKey = document.querySelector(
+        "tr.personalisation-charge"
+      ).dataset["key"];
       let quantity2 = remainingChargeItem;
       const updates = {
-        [line]: quantity,
-        [line2]: quantity2,
+        [personalisedProductkey]: quantity,
+        [personalisedChargeKey]: quantity2,
       };
 
       fetch(window.Shopify.routes.root + "cart/update.js", {
