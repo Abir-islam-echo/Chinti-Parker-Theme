@@ -48,7 +48,7 @@
                         <span class="fallback-text hidden" aria-hidden="true">&minus;</span>
                         <span class="hidden">{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}</span>
                       </button>
-                      <input type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">
+                      <input disabled type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">
                       <button data-operation="plus" type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text" data-id="{{key}}" data-line="{{line}}" data-qty="{{itemAdd}}">
                         <span class="icon icon-plus-circle" aria-hidden="true"></span>
                         <span class="fallback-text hidden" aria-hidden="true">+</span>
@@ -136,7 +136,7 @@
         <span class="fallback-text hidden" aria-hidden="true">&minus;</span>
         <span class="hidden">{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}</span>
       </button>
-      <input type="text" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*">
+      <input disabled type="text" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*">
       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text" data-id="{{key}}" data-qty="{{itemAdd}}">
         <span class="icon icon-plus-circle" aria-hidden="true"></span>
         <span class="fallback-text hidden" aria-hidden="true">+</span>
