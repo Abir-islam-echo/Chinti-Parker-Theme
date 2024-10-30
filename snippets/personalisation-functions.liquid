@@ -1,103 +1,3 @@
-<script>
-  let removedProductQuantity;
-  function networkCallObserver(callback) {
-    const observer = new PerformanceObserver((list) => {
-        list.getEntries().forEach((entry) => {
-            callback(entry.name);
-        });
-    });
-    observer.observe({
-        entryTypes: ['resource']
-    });
-}
-
-function requestCallback(requestURL) {
-    if (requestURL.includes('/cart/change.js') && localStorage.getItem("cartPage-updateCharge")) {
-        updatePersonalisationCharge(removedProductQuantity);
-    }
-}
-networkCallObserver(requestCallback);
-
-
-
-  {% if template == 'cart' %}
-    const updatePersonalisationCharge = (quantity) => {
-      const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
-      const chargeQuantity = Math.abs(parseInt(remainingChargeItem) - parseInt(quantity));
-      let updates = {
-        53479059259771: chargeQuantity
-      };
-      fetch(window.Shopify.routes.root + 'cart/update.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({updates})
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        })
-        localStorage.removeItem("cartPage-updateCharge");
-    };
-        
-        
-    if(document.querySelectorAll("tr[data-personalisation='true']")){
-      document.querySelectorAll("tr[data-personalisation='true'] td.remove button.remove").forEach(remove=>{
-        remove.addEventListener("click",()=>{
-            if(document.querySelector("tr.personalisation-charge .bag-qty input")){
-              localStorage.setItem('cartPage-updateCharge', true)
-                removedProductQuantity = remove.getAttribute("data-total-items");
-            }
-          })
-      })
-    }
-  {% endif %}
-
-{% comment %} cart drawer {% endcomment %}
-
-  const isPersonalised = (targetElement) =>{
-    const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalised']") || false;
-    if(dataIsPersonalised && (targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--minus") || targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--plus"))){
-      return `${targetElement.dataset["operation"]}`;
-    }
-    return false;
-  }
-  document.body.addEventListener("click",(e)=>{
-    const updateOperation = isPersonalised(e.target);
-    if(updateOperation){
-      document.body.classList.add("pointer-event-none")
-      document.querySelector("#p-charge-add-loading").classList.remove("hidden")
-      setTimeout(()=>{
-        
-        document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
-      },5000)
-      setTimeout(()=>{
-        document.querySelector("#p-charge-add-loading").classList.add("hidden")
-        document.body.classList.remove("pointer-event-none")
-      },7000)
-      
-    }
-  })
-  {% comment %} cart drawer {% endcomment %}
-
-
-
-let personalizedQuantityCount = 0;
-let cart = {{ cart | json }};
-      cart.items.forEach(item => {
-        if (item.properties && item.properties._type === "personalised") {
-           personalizedQuantityCount += item.quantity;
-        }
-      });
-      console.log("passing qauntityyyy on change", personalizedQuantityCount);
-        setTimeout(function(){
-          personalizationCartUpdate(personalizedQuantityCount);
-        }, 200)
-</script>
-
 <style>
   #cart-container #p-charge-add-loading {
     position: absolute;
@@ -108,6 +8,9 @@ let cart = {{ cart | json }};
     width: 100%;
     text-align: center;
     background: #f1f1f1;
+  }
+  tr.personalisation-charge {
+    display: none;
   }
   tr.personalisation-charge .qty.product .qty-total .js-qty button {
     display: none;
@@ -121,10 +24,7 @@ let cart = {{ cart | json }};
   tr.personalisation-charge .product span.variant-title {
     display: none;
   }
-  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) a {
-    pointer-events: none;
-  }
-  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) .ajaxcart__qty button {
+  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) {
     display: none;
   }
   .pointer-event-none {
