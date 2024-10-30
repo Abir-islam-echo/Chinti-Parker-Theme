@@ -7406,11 +7406,13 @@ jQuery(document).ready(function () {
     line = parseInt(line, 10);
     var quantity = jQuery(this).prev().val();
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      let remainingChargeItem = $(
+      let remainingChargeItem = document.querySelector(
         "tr.personalisation-charge .bag-qty input"
       ).value;
       remainingChargeItem = parseInt(remainingChargeItem) + 1;
-      let line2 = $("tr.personalisation-charge").data("line");
+      let line2 = document
+        .querySelector("tr.personalisation-charge")
+        .data("line");
       line2 = parseInt(line2, 10);
       let quantity2 = remainingChargeItem;
       const updates = {
@@ -7449,11 +7451,13 @@ jQuery(document).ready(function () {
       quantity = 0;
     }
     if ($(this).closest("tr.line-item[data-personalisation='true']").length) {
-      let remainingChargeItem = $(
+      let remainingChargeItem = document.querySelector(
         "tr.personalisation-charge .bag-qty input"
       ).value;
       remainingChargeItem = parseInt(remainingChargeItem) - 1;
-      let line2 = $("tr.personalisation-charge").data("line");
+      let line2 = document
+        .querySelector("tr.personalisation-charge")
+        .data("line");
       line2 = parseInt(line2, 10);
       let quantity2 = remainingChargeItem;
       const updates = {
