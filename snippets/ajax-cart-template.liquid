@@ -39,7 +39,9 @@
                   {% endraw %}{% if settings.cart_vendor_enable %}{% raw %}
                     <span class="ajaxcart__product-meta">{{ vendor }}</span>
                   {% endraw %}{% endif %}{% raw %}
-
+                    <div class="personalisation-note">
+                      <p>Personalization charge will be applied at checkout for each personalized product.</p>
+                    </div>
               	  <div class="row">
                     <div class="ajaxcart__qty">
                     	<label>Qty:</label>
@@ -174,5 +176,5 @@
       return 'Type';
     }
     return key;
-  });  
+  });
 </script>
