@@ -62,6 +62,7 @@
                 <tr
                   class="line-item {{ item.product.handle }}"
                   data-personalisation="{{ isPersonalised }}"
+                  data-line="{{ forloop.index }}"
                 >
                   <td class="image">
                     <a href="{{ collection_url }}{{ item.url }}">
