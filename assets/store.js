@@ -7414,7 +7414,7 @@ jQuery(document).ready(function () {
       // After the first update completes, use setTimeout to delay the second request slightly
       let line2 = $("tr.personalisation-charge").data("line");
       line2 = parseInt(line2, 10);
-      let quantity2 = remainingChargeItem + 1;
+      let quantity2 = parseInt(remainingChargeItem) + 1;
       setTimeout(() => {
         window.location.href = `/cart/change?line=${line2}&quantity=${quantity2}`;
       }, 1000);
