@@ -13,7 +13,7 @@
 
 function requestCallback(requestURL) {
     if (requestURL.includes('/cart/change.js') && localStorage.getItem("cartPage-updateCharge")) {
-        removePersonalisationCharge(removedProductQuantity);
+        updatePersonalisationCharge(removedProductQuantity);
     }
 }
 networkCallObserver(requestCallback);
@@ -21,7 +21,7 @@ networkCallObserver(requestCallback);
 
 
   {% if template == 'cart' %}
-    const removePersonalisationCharge = (quantity) => {
+    const updatePersonalisationCharge = (quantity) => {
       const remainingChargeItem = document.querySelector("tr.personalisation-charge .bag-qty input").value;
       const chargeQuantity = Math.abs(parseInt(remainingChargeItem) - parseInt(quantity));
       let updates = {
@@ -82,6 +82,20 @@ networkCallObserver(requestCallback);
     }
   })
   {% comment %} cart drawer {% endcomment %}
+
+
+
+let personalizedQuantityCount = 0;
+let cart = {{ cart | json }};
+      cart.items.forEach(item => {
+        if (item.properties && item.properties._type === "personalised") {
+           personalizedQuantityCount += item.quantity;
+        }
+      });
+      console.log("passing qauntityyyy on change", personalizedQuantityCount);
+        setTimeout(function(){
+          personalizationCartUpdate(personalizedQuantityCount);
+        }, 200)
 </script>
 
 <style>
