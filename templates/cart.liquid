@@ -221,6 +221,9 @@
         {%- endif -%}
 
         <div class="bag-total order-table">
+          <div class="personalisation-note">
+            <p>Personalization charge will be applied at checkout for each personalized product.</p>
+          </div>
           <div class="top-section inner-section">
             <table>
               <tfoot>
@@ -273,6 +276,11 @@
 </div>
 
 <style>
+  .personalisation-note p{
+    font-style: italic;
+    text-align: center;
+    line-height: normal;
+  }
   .template-cart .shopping-bag .bag-table.order-table {
     width: 65%;
   }
@@ -342,20 +350,18 @@
   }
 </style>
 
-
 <script>
-jQuery(document).ready(function () {
-    if (localStorage.getItem('storedDiscount')){
-      var discountStored = localStorage.getItem('storedDiscount');
-      jQuery('input[name="discount"]').val(localStorage.getItem('storedDiscount'));
-    }
-    jQuery('form[action="/cart"]').on('submit', function(){
+  jQuery(document).ready(function () {
+      if (localStorage.getItem('storedDiscount')){
+        var discountStored = localStorage.getItem('storedDiscount');
+        jQuery('input[name="discount"]').val(localStorage.getItem('storedDiscount'));
+      }
+      jQuery('form[action="/cart"]').on('submit', function(){
 
-      var $discountCode = jQuery('input[name="discount"]').val();
-      localStorage.setItem('storedDiscount', $discountCode);
-    });
-});
-
+        var $discountCode = jQuery('input[name="discount"]').val();
+        localStorage.setItem('storedDiscount', $discountCode);
+      });
+  });
 </script>
 
 {{ 'gift-note-message.js' | asset_url | script_tag }}
