@@ -63,6 +63,7 @@
                   class="line-item {{ item.product.handle }}"
                   data-personalisation="{{ isPersonalised }}"
                   data-line="{{ forloop.index }}"
+                  data-key="{{ item.key }}"
                 >
                   <td class="image">
                     <a href="{{ collection_url }}{{ item.url }}">
@@ -342,8 +343,6 @@
 
 
 <script>
-  console.log("Cart");
-  console.log({{ cart | json }});
 jQuery(document).ready(function () {
     if (localStorage.getItem('storedDiscount')){
       var discountStored = localStorage.getItem('storedDiscount');
