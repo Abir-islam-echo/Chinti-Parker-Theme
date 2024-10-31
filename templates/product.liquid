@@ -757,12 +757,10 @@
 </style>
 
 <script>
-  const timeCount = new Date(new Date().getTime() + 30 * 60 * 1000);
-  document
-    .querySelector('.product-details #AddToCartForm #AddToCartWrapper #AddToCart')
-    .addEventListener('click', () => {
-      localStorage.setItem('cartTimer', JSON.stringify(timeCount));
-    });
+    const timeCount = new Date((new Date().getTime())+(30*60*1000));
+      document.querySelector(".product-details #AddToCartForm #AddToCartWrapper #AddToCart").addEventListener("click",()=>{
+      localStorage.setItem("cartTimer", JSON.stringify(timeCount));
+  })
 </script>
 
 {% if product.tags contains 'PERSONALISATION' %}
