@@ -49,20 +49,27 @@
       }
     '
   >
+    {% assign product_image = product %}
+    {% if collection.metafields.custom.collection_tags.value contains 'mens-collection' %}
+      {% if product.metafields.custom.men_featured_image %}
+        {% assign product_image = product.metafields.custom.men_featured_image.value %}
+      {% endif %}
+    {% endif %}
+
     <picture>
       <source
         media="(min-width: 740px)"
-        srcset="{{ product | img_url: '50x75', crop: 'center' }} 1x, {{ product | img_url: '50x75', crop: 'center', scale: 2 }} 2x"
-        data-srcset="{{ product | img_url: '438x657', crop: 'center' }} 1x, {{ product | img_url: '438x657', crop: 'center', scale: 2 }} 2x"
+        srcset="{{ product_image | img_url: '50x75', crop: 'center' }} 1x, {{ product_image | img_url: '50x75', crop: 'center', scale: 2 }} 2x"
+        data-srcset="{{ product_image | img_url: '438x657', crop: 'center' }} 1x, {{ product_image | img_url: '438x657', crop: 'center', scale: 2 }} 2x"
       >
       <source
-        srcset="{{ product | img_url: '50x75', crop: 'center' }} 1x, {{ product | img_url: '50x75', crop: 'center', scale: 2 }} 2x"
-        data-srcset="{{ product | img_url: '285x427', crop: 'center' }} 1x, {{ product | img_url: '285x427', crop: 'center', scale: 2 }} 2x"
+        srcset="{{ product_image | img_url: '50x75', crop: 'center' }} 1x, {{ product_image | img_url: '50x75', crop: 'center', scale: 2 }} 2x"
+        data-srcset="{{ product_image | img_url: '285x427', crop: 'center' }} 1x, {{ product_image | img_url: '285x427', crop: 'center', scale: 2 }} 2x"
       >
       <img
-        src="{{ product | img_url: '50x75', crop: 'center' }}"
-        data-src="{{ product | img_url: '438x657', crop: 'center' }}"
-        alt="{{ product.featured_image.alt | escape }}"
+        src="{{ product_image | img_url: '50x75', crop: 'center' }}"
+        data-src="{{ product_image | img_url: '438x657', crop: 'center' }}"
+        alt="{{ product_image.featured_image.alt | escape }}"
 
         class="lazyload"
       >
