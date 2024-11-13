@@ -224,7 +224,7 @@
           <div class="top-section inner-section">
             {% if loadPersonalisedJs %}
               <div class="personalisation-note">
-                <p>£15 Personalization charge will be applied at checkout for each personalized product.</p>
+                <p>Personalisation charge will be adjusted for personalised products.</p>
               </div>
             {% endif %}
             <table>
@@ -278,37 +278,6 @@
 </div>
 
 <style>
-    tr.personalisation-charge {
-    display: none;
-  }
-  tr.personalisation-charge .qty.product .qty-total .js-qty button {
-    display: none;
-  }
-  tr.personalisation-charge .product span {
-    display: none;
-  }
-  tr.personalisation-charge a {
-    pointer-events: none;
-  }
-  tr.personalisation-charge .product span.variant-title {
-    display: none;
-  }
-  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) {
-    display: none;
-  }
-  .pointer-event-none {
-    pointer-events: none;
-  }
-
-  tr .product :is(._MID_Name, ._MID_Address, ._MID_Code) {
-    display: none !important;
-  }
-  .bag-total.order-table .personalisation-note p{
-    font-style: italic;
-    text-align: center;
-    line-height: normal;
-    color: brown;
-  }
   .template-cart .shopping-bag .bag-table.order-table {
     width: 65%;
   }

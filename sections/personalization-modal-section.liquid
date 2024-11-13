@@ -480,6 +480,7 @@
 </style>
 
 <script>
+    const monogramErrorMessage = document.querySelector("#format-error");
     const modal_wrapper = document.querySelector('#personalisation-modal-wrapper');
     const personalisedButtonText = "{{ section.settings.personalised-atc-text }}"
     const personalisedAtcButton = document.querySelector("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form button[type='submit']");
@@ -516,6 +517,7 @@
       demoText.textContent = '';
       demoText.setAttribute("style", "color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;");
       checkValidation(textField.value);
+      monogramErrorMessage.classList.remove("show");
       setTimeout(()=>{  
         personalisedAtcButton.textContent = personalisedButtonText;
         regularAtcButton.textContent = "continue without personalisation";
@@ -561,17 +563,16 @@
         document.querySelector("#personalisation-charge button").click();
     };
     const checkValidation = (value)=>{
-      const errorMessage = document.querySelector("#format-error");
-        // Define a regex pattern for 'v.v.v.', '.v.v', 'v.v' formats
+      // Define a regex pattern for 'v.v.v.', '.v.v', 'v.v' formats
       const pattern = /^(?:[a-zA-Z]{1,3}|([a-zA-Z]{2}\.[a-zA-Z])|([a-zA-Z]\.[a-zA-Z])|([a-zA-Z]{2}\.[a-zA-Z]\.)|([a-zA-Z]\.[a-zA-Z]{2}\.?)|([a-zA-Z]\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]{1,3}\.?)|(\.[a-zA-Z]{1,2}\.[a-zA-Z]\.?)|(\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]\.[a-zA-Z]{1,2}\.?)|(\.[a-zA-Z]{1,3}\.))$/;
       {% comment %} const pattern = /^(?:[a-zA-Z](?:\.[a-zA-Z]){0,2}\.?|\.(?:[a-zA-Z]\.){0,2}[a-zA-Z]?)$/; {% endcomment %}
       if (pattern.test(value)) {
          // Hide error if format is valid
-        errorMessage.classList.remove("show");
+        monogramErrorMessage.classList.remove("show");
         personalisedAtcButton.classList.remove("disable-atc");
       } else {
           // Show error if format is invalid
-          errorMessage.classList.add("show");
+          monogramErrorMessage.classList.add("show");
           personalisedAtcButton.classList.add("disable-atc");
       }
       
@@ -646,6 +647,19 @@ document
           updateFormProperties(select);
         });
       });
+      const extraChargeDiv = `  <div id="personalisation-charge">
+        <form action="/cart/add" method="post" enctype="multipart/form-data">
+          <input
+            type="hidden"
+            name="id"
+            id="personalisation-charge"
+            value="53479059259771"
+          >
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" name="add" class=""></button>
+        </form>
+      </div>`;
+      document.body.insertAdjacentHTML('beforeend', extraChargeDiv);
     {% comment %} add 30 sec timer to the cart page and adding extra charge for personalization {% endcomment %}
     let count = new Date((new Date().getTime())+(30*60*1000));
     document.querySelectorAll("#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section [type='submit']").forEach(button=>{

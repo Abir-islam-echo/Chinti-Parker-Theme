@@ -1,6 +1,87 @@
+<script>
+  const updatePersonalisationCharge = (quantity) => {
+    let updates = {
+      53479059259771: quantity
+    };
+    fetch(window.Shopify.routes.root + 'cart/update.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({updates})
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
+      .finally(()=>{
+        setTimeout(()=>{
+          window.location.reload();
+          document.body.classList.remove("pointer-event-none")
+        },1500)
+      })
+  };
+
+  {% if template == 'cart' %}
+    document.body.classList.add("pointer-event-none")
+    let personalisedQuantityCount = 0;
+    let personalisationChargeCount = 0;
+    let cartt = {{ cart | json }};
+    cartt?.items.forEach(item => {
+      if (item.properties && item.properties._type === "personalised") {
+         personalisedQuantityCount += item.quantity;
+      }
+      if(item.handle == 'personalisation-charge' ){
+        personalisationChargeCount = item.quantity
+      }
+    }); 
+    if(personalisedQuantityCount != personalisationChargeCount){
+      document.body.classList.add("pointer-event-none")
+      updatePersonalisationCharge(personalisedQuantityCount);
+    }
+    else{
+      document.body.classList.remove("pointer-event-none")
+    }
+  {% endif %}
+
+
+{% comment %} cart drawer {% endcomment %}
+  const isPersonalised = (targetElement) =>{
+    const dataIsPersonalised = targetElement.closest(".ajaxcart__product")?.querySelector(".cart.ajaxcart [data-is='personalised']") || false;
+    if(dataIsPersonalised && (targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--minus") || targetElement == dataIsPersonalised.closest(".ajaxcart__product").querySelector(".cart.ajaxcart .ajaxcart__qty--plus"))){
+      return `${targetElement.dataset["operation"]}`;
+    }
+    return false;
+  }
+  document.body.addEventListener("click",(e)=>{
+    const updateOperation = isPersonalised(e.target);
+    if(updateOperation){
+      document.body.classList.add("pointer-event-none")
+      document.querySelector("#p-charge-add-loading").classList.remove("hidden")
+      setTimeout(()=>{
+        document.querySelector(".cart.ajaxcart a[href*='/products/personalisation']").closest(".ajaxcart__product").querySelector(`.cart.ajaxcart .ajaxcart__qty--${updateOperation}`).click();
+      },5000)
+      setTimeout(()=>{
+        document.querySelector("#p-charge-add-loading").classList.add("hidden")
+        document.body.classList.remove("pointer-event-none")
+      },7000)
+    }
+  })
+  {% comment %} cart drawer {% endcomment %}
+</script>
+
 <style>
-  tr.personalisation-charge {
-    display: none;
+  #cart-container #p-charge-add-loading {
+    position: absolute;
+    top: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 0;
+    width: 100%;
+    text-align: center;
+    background: #f1f1f1;
   }
   tr.personalisation-charge .qty.product .qty-total .js-qty button {
     display: none;
@@ -14,14 +95,28 @@
   tr.personalisation-charge .product span.variant-title {
     display: none;
   }
-  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) {
+  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) a {
+    pointer-events: none;
+  }
+  .cart.ajaxcart .ajaxcart__product:has(a[href*='/products/personalisation-charge']) .ajaxcart__qty button {
     display: none;
   }
   .pointer-event-none {
     pointer-events: none;
   }
-
+  span.ajaxcart__product-meta.mid[data-is='personalised'] {
+    display: block !important;
+  }
   tr .product :is(._MID_Name, ._MID_Address, ._MID_Code) {
+    display: none !important;
+  }
+  .bag-total.order-table .personalisation-note p{
+    font-style: italic;
+    text-align: center;
+    line-height: normal;
+    color: brown;
+  }
+  span.ajaxcart__product-meta.mid {
     display: none !important;
   }
 </style>

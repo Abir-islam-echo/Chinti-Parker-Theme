@@ -33,9 +33,6 @@
                     {{#each this}}
                       {{#if this}}
                         <span class="ajaxcart__product-meta mid" data-is="{{this}}">{{formatKey @key}}: {{this}}</span>
-                        <span class="personalisation-note ajaxcart__product-meta mid" data-is="{{this}}">
-                          <p>additional charge will be applied at checkout.</p>
-                        </span>
                       {{/if}}
                     {{/each}}
                   {{/properties}}
@@ -166,19 +163,7 @@
   {% endraw %}
 </script>
 
-<style>
-  span.ajaxcart__product-meta.mid {
-    display: none !important;
-  }
-    span.ajaxcart__product-meta.mid[data-is='personalised'] {
-    display: block !important;
-  }
-  .ajaxcart__product .item .personalisation-note p{
-    font-style: italic;
-    font-size: 12px;
-    color: #000;
-  }
-</style>
+
 <script>
   Handlebars.registerHelper('formatKey', function(key) {
     if (key === '_type') {
