@@ -3,7 +3,6 @@
     location.href = "/"
   {% endif %}
 </script>
-
 {% assign add_to_cart = 'Add to Bag' %}
 {% assign adding_to_cart = 'Adding' %}
 {% assign added_to_cart = 'Added' %}
@@ -758,12 +757,10 @@
 </style>
 
 <script>
-  const timeCount = new Date(new Date().getTime() + 30 * 60 * 1000);
-  document
-    .querySelector('.product-details #AddToCartForm #AddToCartWrapper #AddToCart')
-    .addEventListener('click', () => {
-      localStorage.setItem('cartTimer', JSON.stringify(timeCount));
-    });
+    const timeCount = new Date((new Date().getTime())+(30*60*1000));
+      document.querySelector(".product-details #AddToCartForm #AddToCartWrapper #AddToCart").addEventListener("click",()=>{
+      localStorage.setItem("cartTimer", JSON.stringify(timeCount));
+  })
 </script>
 
 {% if product.tags contains 'PERSONALISATION' %}
