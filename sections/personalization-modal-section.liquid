@@ -24,6 +24,9 @@
           <div class="personalised-text">
             <label>Add Your Monogram</label>
             <input maxlength="6" type="text" value="" placeholder="Your Monogram">
+            <span id="format-error"
+              >Invalid format! Start with a single letter or dot, then alternate (e.g., 'v.v.v.' or '.v.v')</span
+            >
           </div>
           <div class="selection-fields">
             <div class="single-field">
@@ -205,6 +208,26 @@
     position: relative;
     width: 100%;
     height: 100%;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .personalised-text{
+    position: relative;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .personalised-text #format-error {
+    color: black;
+    position: absolute;
+    top: -7px;
+    left: 0px;
+    background: rgb(255, 218, 73);
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .25s;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .personalised-text #format-error.show{
+    visibility: visible;
+    opacity: 1;
   }
 
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image{
@@ -538,12 +561,20 @@
         document.querySelector("#personalisation-charge button").click();
     };
     const checkValidation = (value)=>{
-      if(value.length != 0){
+      const errorMessage = document.querySelector("#format-error");
+        // Define a regex pattern for 'v.v.v.', '.v.v', 'v.v' formats
+      const pattern = /^(?:[a-zA-Z]{1,3}|([a-zA-Z]{2}\.[a-zA-Z])|([a-zA-Z]\.[a-zA-Z])|([a-zA-Z]{2}\.[a-zA-Z]\.)|([a-zA-Z]\.[a-zA-Z]{2}\.?)|([a-zA-Z]\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]{1,3}\.?)|(\.[a-zA-Z]{1,2}\.[a-zA-Z]\.?)|(\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]\.[a-zA-Z]{1,2}\.?)|(\.[a-zA-Z]{1,3}\.))$/;
+      {% comment %} const pattern = /^(?:[a-zA-Z](?:\.[a-zA-Z]){0,2}\.?|\.(?:[a-zA-Z]\.){0,2}[a-zA-Z]?)$/; {% endcomment %}
+      if (pattern.test(value)) {
+         // Hide error if format is valid
+        errorMessage.classList.remove("show");
         personalisedAtcButton.classList.remove("disable-atc");
+      } else {
+          // Show error if format is invalid
+          errorMessage.classList.add("show");
+          personalisedAtcButton.classList.add("disable-atc");
       }
-      else{
-        personalisedAtcButton.classList.add("disable-atc");
-      }
+      
     }
 {% comment %} personalise button click event {% endcomment %}
 document
@@ -601,7 +632,7 @@ document
     {% comment %} event for text input {% endcomment %}
     textField
       .addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^a-z0-9]/gi, '');
+        e.target.value = e.target.value.replace(/[^a-zA-Z0-9.]/g, '');
         checkValidation(e.target.value);
         document.querySelector(
           "#personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-customization .ATC-section .personalised-atc-form input[name='properties[_monogram]']"
