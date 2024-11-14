@@ -2,7 +2,7 @@
   <div class="personalisation-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
-        {{ section.settings['sample-image'] | img_url: '800x1000' | img_tag }}
+        {{ section.settings['product-sample-image'] | img_url: '800x1000' | img_tag }}
         <div class="image-caption">
           <p>{{ section.settings['image-caption'] }}</p>
         </div>
@@ -24,9 +24,7 @@
           <div class="personalised-text">
             <label>Add Your Monogram</label>
             <input maxlength="6" type="text" value="" placeholder="Your Monogram">
-            <span id="format-error"
-              >Invalid format! Start with a single letter or dot, then alternate (e.g., 'v.v.v.' or '.v.v')</span
-            >
+            <span id="format-error">Invalid format! Accepted formates (e.g., 's.v.v.' , 'v.s', JJ, ABC)</span>
           </div>
           <div class="selection-fields">
             <div class="single-field">
@@ -678,8 +676,38 @@ document
   "settings": [
     {
       "type": "image_picker",
-      "id": "sample-image",
-      "label": "Sample Image"
+      "id": "product-sample-image",
+      "label": "Product Sample Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "scarf-sample-image",
+      "label": "Scarf Sample Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "socks-sample-image",
+      "label": "Socks Sample Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "ribbed-socks-sample-image",
+        "label": "Ribbed Socks Sample Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "wool-cashmere-gloves-sample-image",
+        "label": "Wool Cashmere Gloves Sample Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "cashmere-gloves-sample-image",
+        "label": "Cashmere Gloves Sample Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "fingerless-gloves-sample-image",
+        "label": "Fingerless Gloves Sample Image"
     },
     {
       "type": "text",
