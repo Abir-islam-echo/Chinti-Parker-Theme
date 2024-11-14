@@ -1,21 +1,3 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "wrapper": "div#look-book-template",
   "sections": {
@@ -29,7 +11,7 @@
             "title_color": "#000000",
             "title_font_size": 32,
             "title_font_weight": 900,
-            "text": "<p>DROP 2 </p>",
+            "text": "<p>DROP 2 <\/p>",
             "content_color": "#000000",
             "text_font_size": 20,
             "margin_top": 0,
@@ -56,13 +38,13 @@
         "image_ajtM3g": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Chinti_Parker_15.png",
-            "mobile_image": "shopify://shop_images/Chinti_Parker_15_6c879228-dfc3-4c99-8f60-747cfe1d1b2c.png",
+            "image": "shopify:\/\/shop_images\/Chinti_Parker_15.png",
+            "mobile_image": "shopify:\/\/shop_images\/Chinti_Parker_15_6c879228-dfc3-4c99-8f60-747cfe1d1b2c.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "shopify://collections/autumn-basics",
+            "link": "shopify:\/\/collections\/autumn-basics",
             "button_text": ""
           }
         }
@@ -70,8 +52,7 @@
       "block_order": [
         "image_ajtM3g"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_two_column_01_igN8hR": {
       "type": "banner-two-column-01",
@@ -79,12 +60,12 @@
         "bannergrid_twocolumns_pCFqH3": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T154411.969_21102a63-809c-44cd-bd1b-3b350712ecf5.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T154411.969_1b7f3451-04b1-4bda-9b1a-bda5adf678f9.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T154411.969_21102a63-809c-44cd-bd1b-3b350712ecf5.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T154411.969_1b7f3451-04b1-4bda-9b1a-bda5adf678f9.png",
             "video-src1": "",
             "aspectRatio1": "4:3",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238_1ccc7d6b-fa79-41ff-8f49-e62afa7123d7.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T154312.238_1ccc7d6b-fa79-41ff-8f49-e62afa7123d7.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T154312.238.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -99,10 +80,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "shopify://collections/autumn-basics",
+            "link2": "shopify:\/\/collections\/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -124,12 +105,12 @@
         "bannergrid_twocolumns_FznUUP": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T155615.037.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T155615.037_04218918-a84f-4b2f-b74a-601ce2a284a6.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T155615.037.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T155615.037_04218918-a84f-4b2f-b74a-601ce2a284a6.png",
             "video-src1": "",
             "aspectRatio1": "4:3",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238_1ccc7d6b-fa79-41ff-8f49-e62afa7123d7.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T154312.238.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T154312.238_1ccc7d6b-fa79-41ff-8f49-e62afa7123d7.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T154312.238.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -144,10 +125,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "shopify://collections/autumn-basics",
+            "link2": "shopify:\/\/collections\/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -169,13 +150,13 @@
         "image_VBMag7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Chinti_Parker_16.png",
-            "mobile_image": "shopify://shop_images/Chinti_Parker_16_f31e6b55-d6f8-425e-a3ed-7d6b9aa86cc8.png",
+            "image": "shopify:\/\/shop_images\/Chinti_Parker_16.png",
+            "mobile_image": "shopify:\/\/shop_images\/Chinti_Parker_16_f31e6b55-d6f8-425e-a3ed-7d6b9aa86cc8.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "shopify://collections/autumn-basics",
+            "link": "shopify:\/\/collections\/autumn-basics",
             "button_text": ""
           }
         }
@@ -183,8 +164,7 @@
       "block_order": [
         "image_VBMag7"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_two_column_01_YpBbtn": {
       "type": "banner-two-column-01",
@@ -192,12 +172,12 @@
         "bannergrid_twocolumns_DUdBpK": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T160547.740.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T160547.740_5214d389-5990-4ddf-8612-56e14f17562c.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T160547.740.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T160547.740_5214d389-5990-4ddf-8612-56e14f17562c.png",
             "video-src1": "",
             "aspectRatio1": "4:3",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T160657.590.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T160657.590_860da19d-c3cf-4529-8668-46c56b7e76db.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T160657.590.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T160657.590_860da19d-c3cf-4529-8668-46c56b7e76db.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -212,10 +192,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "shopify://collections/autumn-basics",
+            "link2": "shopify:\/\/collections\/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -237,13 +217,13 @@
         "image_9p8mgR": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Chinti_Parker_17.png",
-            "mobile_image": "shopify://shop_images/Chinti_Parker_17_4a85529a-40f6-42e4-b5cc-3ba82daf9f0e.png",
+            "image": "shopify:\/\/shop_images\/Chinti_Parker_17.png",
+            "mobile_image": "shopify:\/\/shop_images\/Chinti_Parker_17_4a85529a-40f6-42e4-b5cc-3ba82daf9f0e.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "shopify://collections/autumn-basics",
+            "link": "shopify:\/\/collections\/autumn-basics",
             "button_text": ""
           }
         }
@@ -251,8 +231,7 @@
       "block_order": [
         "image_9p8mgR"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_two_column_01_YTR7LB": {
       "type": "banner-two-column-01",
@@ -260,12 +239,12 @@
         "bannergrid_twocolumns_zQAFbP": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-10-01T161046.686.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-10-01T161046.686_07627090-ffa2-4239-b710-270c62871681.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T161046.686.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T161046.686_07627090-ffa2-4239-b710-270c62871681.png",
             "video-src1": "",
             "aspectRatio1": "4:3",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-10-01T161215.929.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-10-01T161215.929_114ec449-d4c7-461e-8141-7614ee7db536.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T161215.929.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-10-01T161215.929_114ec449-d4c7-461e-8141-7614ee7db536.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -280,10 +259,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "center",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "",
             "font_size_left_cta": 25,
-            "link2": "shopify://collections/autumn-basics",
+            "link2": "shopify:\/\/collections\/autumn-basics",
             "link_text2": "",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -306,12 +285,12 @@
           "type": "bannergrid-twocolumns",
           "disabled": true,
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120636.993.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120636.993_03bafa70-e283-4eb8-91a8-397c5fe672d3.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120636.993.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120636.993_03bafa70-e283-4eb8-91a8-397c5fe672d3.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120658.645.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120658.645_7b85d727-c850-4de5-82cf-20b6ea9f73d1.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120658.645.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120658.645_7b85d727-c850-4de5-82cf-20b6ea9f73d1.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -322,9 +301,9 @@
             "text_color2": "text-light",
             "text_color_mobile2": "text-light-mobile",
             "text_align_right": "text-left",
-            "link1": "https://www.chintiandparker.com/products/navy-wool-cashmere-fringe-cardigan",
+            "link1": "https:\/\/www.chintiandparker.com\/products\/navy-wool-cashmere-fringe-cardigan",
             "link_text1": "",
-            "link2": "https://www.chintiandparker.com/products/navy-with-cream-striped-heart-wool-cashmere-sweater",
+            "link2": "https:\/\/www.chintiandparker.com\/products\/navy-with-cream-striped-heart-wool-cashmere-sweater",
             "link_text2": "",
             "image_width": "image-half",
             "column_hide": "show-both"
@@ -334,8 +313,7 @@
       "block_order": [
         "bannergrid_twocolumns_mhXcUh"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_rwDXiY": {
       "type": "banner",
@@ -343,13 +321,13 @@
         "image_eBBct9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Chinti_Parker_19.png",
-            "mobile_image": "shopify://shop_images/Chinti_Parker_19_104dae51-2013-4307-bb82-6ff94fac1b72.png",
+            "image": "shopify:\/\/shop_images\/Chinti_Parker_19.png",
+            "mobile_image": "shopify:\/\/shop_images\/Chinti_Parker_19_104dae51-2013-4307-bb82-6ff94fac1b72.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "shopify://collections/autumn-basics",
+            "link": "shopify:\/\/collections\/autumn-basics",
             "button_text": ""
           }
         }
@@ -357,8 +335,7 @@
       "block_order": [
         "image_eBBct9"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_Efb97P": {
       "type": "banner",
@@ -367,13 +344,13 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/C_P_26.01.2429934_1.jpg",
-            "mobile_image": "shopify://shop_images/C_P_26.01.2429934_1_9b17256c-c16d-4e43-abc8-1734f7fdbba3.jpg",
+            "image": "shopify:\/\/shop_images\/C_P_26.01.2429934_1.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/C_P_26.01.2429934_1_9b17256c-c16d-4e43-abc8-1734f7fdbba3.jpg",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/cream-wool-cashmere-striped-collar-sweater",
+            "link": "https:\/\/www.chintiandparker.com\/products\/cream-wool-cashmere-striped-collar-sweater",
             "button_text": ""
           }
         }
@@ -382,8 +359,7 @@
         "image_miHLX4"
       ],
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_two_column_01_aQhPiz": {
       "type": "banner-two-column-01",
@@ -391,12 +367,12 @@
         "bannergrid_twocolumns_jGKaEt": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120754.769.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T120754.769_ebbd92ea-4cce-4e8f-ab2b-720685b56a22.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120754.769.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120754.769_ebbd92ea-4cce-4e8f-ab2b-720685b56a22.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120829.583.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T120829.583_25a88ea1-8652-4ffb-84c1-c4b1b107239a.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120829.583.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T120829.583_25a88ea1-8652-4ffb-84c1-c4b1b107239a.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -411,10 +387,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "end",
             "right_banner_content_alignment_horizontal": "end",
-            "link1": "https://www.chintiandparker.com/products/mint-green-wool-cashmere-waistcoat",
+            "link1": "https:\/\/www.chintiandparker.com\/products\/mint-green-wool-cashmere-waistcoat",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25,
-            "link2": "https://www.chintiandparker.com/products/pink-lemonade-wool-cashmere-waistcoat",
+            "link2": "https:\/\/www.chintiandparker.com\/products\/pink-lemonade-wool-cashmere-waistcoat",
             "link_text2": "Shop Now",
             "font_size_right_cta": 25,
             "image_width": "image-half",
@@ -438,13 +414,13 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_-_2024-03-05T093705.483_a415b3d6-374d-46b0-aadc-5b94006cf293.png",
-            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-05T093705.483.png",
+            "image": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T093705.483_a415b3d6-374d-46b0-aadc-5b94006cf293.png",
+            "mobile_image": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T093705.483.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/powder-blue-wool-cashmere-cropped-sweater",
+            "link": "https:\/\/www.chintiandparker.com\/products\/powder-blue-wool-cashmere-cropped-sweater",
             "button_text": ""
           }
         }
@@ -452,8 +428,7 @@
       "block_order": [
         "image_dXDKCj"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_tQq8NF": {
       "type": "banner",
@@ -462,13 +437,13 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_-_2024-03-05T094846.641.png",
-            "mobile_image": "shopify://shop_images/Untitled_design_-_2024-03-05T094617.596_4643da91-60c3-4de1-8d30-c0cf54f9779e.png",
+            "image": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T094846.641.png",
+            "mobile_image": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T094617.596_4643da91-60c3-4de1-8d30-c0cf54f9779e.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/navy-wool-cashmere-fringe-cardigan",
+            "link": "https:\/\/www.chintiandparker.com\/products\/navy-wool-cashmere-fringe-cardigan",
             "button_text": ""
           }
         }
@@ -476,8 +451,7 @@
       "block_order": [
         "image_TJJTz3"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_twocolumns_iffxh6": {
       "type": "banner-twocolumns",
@@ -486,12 +460,12 @@
           "type": "bannergrid-twocolumns",
           "disabled": true,
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121004.129.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121004.129_c577368a-7c62-4f24-aea8-302f929cafd2.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121004.129.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121004.129_c577368a-7c62-4f24-aea8-302f929cafd2.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121046.519.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121046.519_f851c388-3362-4c14-87ab-c25cad7845ed.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121046.519.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121046.519_f851c388-3362-4c14-87ab-c25cad7845ed.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -502,9 +476,9 @@
             "text_color2": "text-light",
             "text_color_mobile2": "text-light-mobile",
             "text_align_right": "text-left",
-            "link1": "https://www.chintiandparker.com/products/navy-wool-cashmere-patchwork-jacket",
+            "link1": "https:\/\/www.chintiandparker.com\/products\/navy-wool-cashmere-patchwork-jacket",
             "link_text1": "",
-            "link2": "https://www.chintiandparker.com/products/navy-cotton-cashmere-ditsy-daisy-hoodie",
+            "link2": "https:\/\/www.chintiandparker.com\/products\/navy-cotton-cashmere-ditsy-daisy-hoodie",
             "link_text2": "",
             "image_width": "image-half",
             "column_hide": "show-both"
@@ -514,8 +488,7 @@
       "block_order": [
         "bannergrid_twocolumns_Ab73xp"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_twocolumns_dRAkW9": {
       "type": "banner-twocolumns",
@@ -524,12 +497,12 @@
           "type": "bannergrid-twocolumns",
           "disabled": true,
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121129.495.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121129.495_01729315-28d4-4054-827d-8db750539fe6.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121129.495.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121129.495_01729315-28d4-4054-827d-8db750539fe6.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121155.837_17469d3c-01b5-4806-b0e6-1d3a5729f449.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121155.837.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121155.837_17469d3c-01b5-4806-b0e6-1d3a5729f449.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121155.837.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -540,9 +513,9 @@
             "text_color2": "text-light",
             "text_color_mobile2": "text-light-mobile",
             "text_align_right": "text-left",
-            "link1": "https://www.chintiandparker.com/products/cream-cotton-alpaca-peanuts-gang-sweater",
+            "link1": "https:\/\/www.chintiandparker.com\/products\/cream-cotton-alpaca-peanuts-gang-sweater",
             "link_text1": "Shop Now",
-            "link2": "https://www.chintiandparker.com/products/multicoloured-stripe-wool-cashmere-snoopy-sweater",
+            "link2": "https:\/\/www.chintiandparker.com\/products\/multicoloured-stripe-wool-cashmere-snoopy-sweater",
             "link_text2": "Shop Now",
             "image_width": "image-half",
             "column_hide": "hide-left"
@@ -552,8 +525,7 @@
       "block_order": [
         "bannergrid_twocolumns_yNyar6"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_twocolumns_GmGeNj": {
       "type": "banner-twocolumns",
@@ -562,12 +534,12 @@
           "type": "bannergrid-twocolumns",
           "disabled": true,
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121803.075.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121803.075_4436f952-9758-46a9-8ea3-ef50b6137bf7.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121803.075.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121803.075_4436f952-9758-46a9-8ea3-ef50b6137bf7.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121839.432.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T121839.432_408ab884-0e04-4912-b086-e2add0a2dcf6.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121839.432.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121839.432_408ab884-0e04-4912-b086-e2add0a2dcf6.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -578,9 +550,9 @@
             "text_color2": "text-light",
             "text_color_mobile2": "text-light-mobile",
             "text_align_right": "text-left",
-            "link1": "https://www.chintiandparker.com/products/multicoloured-stripe-wool-cashmere-snoopy-sweater",
+            "link1": "https:\/\/www.chintiandparker.com\/products\/multicoloured-stripe-wool-cashmere-snoopy-sweater",
             "link_text1": "",
-            "link2": "https://www.chintiandparker.com/products/grey-wool-cashmere-woodstock-wide-leg-pants",
+            "link2": "https:\/\/www.chintiandparker.com\/products\/grey-wool-cashmere-woodstock-wide-leg-pants",
             "link_text2": "",
             "image_width": "image-half",
             "column_hide": "hide-left"
@@ -590,8 +562,7 @@
       "block_order": [
         "bannergrid_twocolumns_pQxD4U"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_twocolumns_p4RhPY": {
       "type": "banner-twocolumns",
@@ -599,12 +570,12 @@
         "bannergrid_twocolumns_jrrBRn": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121924.916.png",
-            "mobile_image1": "shopify://shop_images/Untitled_design_-_2024-03-05T121924.916_218939a3-656c-49b7-81a7-b22f6b9fbc11.png",
+            "image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121924.916.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T121924.916_218939a3-656c-49b7-81a7-b22f6b9fbc11.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Untitled_design_-_2024-03-05T122005.458.png",
-            "mobile_image2": "shopify://shop_images/Untitled_design_-_2024-03-05T122005.458_29faada8-8c72-47e9-b016-2afa9d91a9cf.png",
+            "image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T122005.458.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T122005.458_29faada8-8c72-47e9-b016-2afa9d91a9cf.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -615,9 +586,9 @@
             "text_color2": "text-light",
             "text_color_mobile2": "text-light-mobile",
             "text_align_right": "text-left",
-            "link1": "https://www.chintiandparker.com/products/pistachio-cashmere-cropped-sweater",
+            "link1": "https:\/\/www.chintiandparker.com\/products\/pistachio-cashmere-cropped-sweater",
             "link_text1": "",
-            "link2": "https://www.chintiandparker.com/products/cream-cashmere-slouchy-sweater-2",
+            "link2": "https:\/\/www.chintiandparker.com\/products\/cream-cashmere-slouchy-sweater-2",
             "link_text2": "",
             "image_width": "image-half",
             "column_hide": "hide-left"
@@ -628,8 +599,7 @@
         "bannergrid_twocolumns_jrrBRn"
       ],
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "banner_mwF9cy": {
       "type": "banner",
@@ -638,13 +608,13 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_-_2024-03-05T095452.596.png",
-            "mobile_image": "shopify://shop_images/C_P_26.01.2429588_1_b2b40866-45ab-4191-a3d2-c6ea08b29fca.jpg",
+            "image": "shopify:\/\/shop_images\/Untitled_design_-_2024-03-05T095452.596.png",
+            "mobile_image": "shopify:\/\/shop_images\/C_P_26.01.2429588_1_b2b40866-45ab-4191-a3d2-c6ea08b29fca.jpg",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
             "text_align": "text-left",
-            "link": "https://www.chintiandparker.com/products/coral-cashmere-tie-neck-sweater",
+            "link": "https:\/\/www.chintiandparker.com\/products\/coral-cashmere-tie-neck-sweater",
             "button_text": ""
           }
         }
@@ -653,8 +623,7 @@
         "image_VwKmh3"
       ],
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "0732d93f-7334-4ae2-8aa1-56d11f73285c": {
       "type": "custom-content-01",
@@ -665,7 +634,7 @@
             "padding-top": 50,
             "padding-bottom": 0,
             "title": "Shop the Collection",
-            "url": "shopify://collections/autumn-basics",
+            "url": "shopify:\/\/collections\/autumn-basics",
             "title_color": "#000000",
             "title_font_size": 20,
             "cta_bg": "",

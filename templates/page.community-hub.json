@@ -1,21 +1,3 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "wrapper": "div#sustainability-template",
   "sections": {
@@ -25,8 +7,8 @@
         "3af6fff4-7a05-4dc8-a62a-21294b7789b9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Community_Hub_02.png",
-            "mobile_image": "shopify://shop_images/Community_Hub_02_779fd0fd-40dd-48e5-8f7b-300227d84d36.png",
+            "image": "shopify:\/\/shop_images\/Community_Hub_02.png",
+            "mobile_image": "shopify:\/\/shop_images\/Community_Hub_02_779fd0fd-40dd-48e5-8f7b-300227d84d36.png",
             "heading": "",
             "font_size": 48,
             "font_weight": 400,
@@ -53,12 +35,12 @@
         "16648748700da2f146-0": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/About_us.png",
-            "mobile_image1": "shopify://shop_images/About_us_5b71238f-d4c1-479a-9f74-8369f783f987.png",
+            "image1": "shopify:\/\/shop_images\/About_us.png",
+            "mobile_image1": "shopify:\/\/shop_images\/About_us_5b71238f-d4c1-479a-9f74-8369f783f987.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/IG_Live.png",
-            "mobile_image2": "shopify://shop_images/IG_Live_af71636d-f92d-4f08-8823-8a74a89ac7ee.png",
+            "image2": "shopify:\/\/shop_images\/IG_Live.png",
+            "mobile_image2": "shopify:\/\/shop_images\/IG_Live_af71636d-f92d-4f08-8823-8a74a89ac7ee.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -73,10 +55,10 @@
             "text_color_mobile2": "text-light-mobile",
             "right_banner_conent_alignment": "end",
             "right_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://pages/about-us",
+            "link1": "shopify:\/\/pages\/about-us",
             "link_text1": "",
             "font_size_left_cta": 18,
-            "link2": "shopify://blogs/news/instagram-lives",
+            "link2": "shopify:\/\/blogs\/news\/instagram-lives",
             "link_text2": "",
             "font_size_right_cta": 20,
             "image_width": "image-half",
@@ -98,8 +80,8 @@
         "template--14693747720270__491406f2-6277-411f-b456-83369763acec-16657490959e9016d5-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Cashmere_club_banner_desktop.png",
-            "mobile_image": "shopify://shop_images/3_22.png",
+            "image": "shopify:\/\/shop_images\/Cashmere_club_banner_desktop.png",
+            "mobile_image": "shopify:\/\/shop_images\/3_22.png",
             "heading": "",
             "font_size": 32,
             "font_weight": 100,
@@ -107,7 +89,7 @@
             "text_color_mobile": "text-light-mobile",
             "text_align_vertical": "center",
             "text_align_horizontal": "center",
-            "link": "shopify://pages/rewards",
+            "link": "shopify:\/\/pages\/rewards",
             "button_text": "",
             "font_size_button": 20
           }
@@ -126,8 +108,8 @@
         "bannergrid_threecolumns_kY4bAH": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/OUR_COMMUNITY_2.png",
-            "mobile_image1": "shopify://shop_images/OUR_COMMUNITY_2_5837bea7-aeac-4dc8-870d-ab0b8f83ae42.png",
+            "image1": "shopify:\/\/shop_images\/OUR_COMMUNITY_2.png",
+            "mobile_image1": "shopify:\/\/shop_images\/OUR_COMMUNITY_2_5837bea7-aeac-4dc8-870d-ab0b8f83ae42.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -138,7 +120,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://blogs/news/chinti-and-friends",
+            "link1": "shopify:\/\/blogs\/news\/chinti-and-friends",
             "link_text1": "",
             "font_size_left_cta": 25
           }
@@ -146,8 +128,8 @@
         "bannergrid_threecolumns_XWJBGi": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/OUR_COMMUNITY.png",
-            "mobile_image1": "shopify://shop_images/OUR_COMMUNITY_c89a196a-75da-42b3-9936-e239ecf5390a.png",
+            "image1": "shopify:\/\/shop_images\/OUR_COMMUNITY.png",
+            "mobile_image1": "shopify:\/\/shop_images\/OUR_COMMUNITY_c89a196a-75da-42b3-9936-e239ecf5390a.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "=",
@@ -158,7 +140,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://pages/stylist-appointment",
+            "link1": "shopify:\/\/pages\/stylist-appointment",
             "link_text1": "",
             "font_size_left_cta": 25
           }
@@ -166,8 +148,8 @@
         "bannergrid_threecolumns_9jHziP": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/STORE.png",
-            "mobile_image1": "shopify://shop_images/STORE_3f04353e-5310-4a6c-80c5-21087c695de1.png",
+            "image1": "shopify:\/\/shop_images\/STORE.png",
+            "mobile_image1": "shopify:\/\/shop_images\/STORE_3f04353e-5310-4a6c-80c5-21087c695de1.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -178,7 +160,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://pages/king-s-road-store",
+            "link1": "shopify:\/\/pages\/king-s-road-store",
             "link_text1": "",
             "font_size_left_cta": 25
           }
@@ -200,12 +182,12 @@
         "bannergrid_twocolumns_LBwyFJ": {
           "type": "bannergrid-twocolumns",
           "settings": {
-            "image1": "shopify://shop_images/Meet_the_team.png",
-            "mobile_image1": "shopify://shop_images/Meet_the_team_84ed50de-e57f-4ad8-95af-656b7efb64cf.png",
+            "image1": "shopify:\/\/shop_images\/Meet_the_team.png",
+            "mobile_image1": "shopify:\/\/shop_images\/Meet_the_team_84ed50de-e57f-4ad8-95af-656b7efb64cf.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
-            "image2": "shopify://shop_images/Contact_us_1.png",
-            "mobile_image2": "shopify://shop_images/Contact_us_1_9255385f-c422-4492-81d8-8b2b8aa519d0.png",
+            "image2": "shopify:\/\/shop_images\/Contact_us_1.png",
+            "mobile_image2": "shopify:\/\/shop_images\/Contact_us_1_9255385f-c422-4492-81d8-8b2b8aa519d0.png",
             "video-src2": "",
             "aspectRatio2": "690:750",
             "heading1": "",
@@ -218,7 +200,7 @@
             "text_align_right": "text-left",
             "link1": "",
             "link_text1": "",
-            "link2": "shopify://pages/contact-us",
+            "link2": "shopify:\/\/pages\/contact-us",
             "link_text2": "",
             "image_width": "image-half",
             "column_hide": "hide-left"
@@ -228,8 +210,7 @@
       "block_order": [
         "bannergrid_twocolumns_LBwyFJ"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "16648859269892d9e0": {
       "type": "gap",

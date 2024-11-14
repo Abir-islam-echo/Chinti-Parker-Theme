@@ -1,21 +1,3 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "wrapper": "div#el-blog-template",
   "sections": {
@@ -25,8 +7,8 @@
         "image_6Cgyr9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/top_banner.png",
-            "mobile_image": "shopify://shop_images/top_banner_96f9cb60-0e6d-4b74-88fc-c032f1314bd1.png",
+            "image": "shopify:\/\/shop_images\/top_banner.png",
+            "mobile_image": "shopify:\/\/shop_images\/top_banner_96f9cb60-0e6d-4b74-88fc-c032f1314bd1.png",
             "heading": "",
             "text_color": "text-light",
             "text_color_mobile": "text-light-mobile",
@@ -39,8 +21,7 @@
       "block_order": [
         "image_6Cgyr9"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "blog-title": {
       "type": "blog-title",
@@ -64,7 +45,7 @@
             "title_color": "#000000",
             "title_font_size": 30,
             "title_font_weight": 400,
-            "text": "<p>Join us for our weekly Instagram & Facebook Live sessions where we introduce new products, offer styling tips & gather your feedback. We’re often accompanied by special guests who showcase a variety of sizes and heights. Your input plays a key role in shaping our brand’s future. We also love seeing how and where you wear our pieces, so be sure to tag us in your posts with #chintiandfriends & join our community online!</p>",
+            "text": "<p>Join us for our weekly Instagram & Facebook Live sessions where we introduce new products, offer styling tips & gather your feedback. We’re often accompanied by special guests who showcase a variety of sizes and heights. Your input plays a key role in shaping our brand’s future. We also love seeing how and where you wear our pieces, so be sure to tag us in your posts with #chintiandfriends & join our community online!<\/p>",
             "content_color": "#000000",
             "text_font_size": 21,
             "margin_top": 30,
@@ -105,13 +86,13 @@
         "button-text": "Follow us on Instagram",
         "button-color": "#000000",
         "button-text-color": "#ffffff",
-        "button-link": "https://www.instagram.com/chintiandparker/",
+        "button-link": "https:\/\/www.instagram.com\/chintiandparker\/",
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p></p><p></p><p></p><p>1. We’ll go live on @chintiandparker every Wednesday evening on Instagram or Facebook </p><p></p><p>2. During the event you will have an opportunity to ask questions, make comments and purchase items. We will provide styling and sizing recommendations </p><p></p><p>3. If you miss it, you can always watch back via Instagram and Facebook @chintiandparker</p>",
+        "grid-content": "<p><\/p><p><\/p><p><\/p><p>1. We’ll go live on @chintiandparker every Wednesday evening on Instagram or Facebook <\/p><p><\/p><p>2. During the event you will have an opportunity to ask questions, make comments and purchase items. We will provide styling and sizing recommendations <\/p><p><\/p><p>3. If you miss it, you can always watch back via Instagram and Facebook @chintiandparker<\/p>",
         "text-color": "",
-        "grid-image-picker": "shopify://shop_images/image_31.png",
+        "grid-image-picker": "shopify:\/\/shop_images\/image_31.png",
         "image-width": 40,
         "image-caption": "",
         "grid-swap": "grid-right"
@@ -134,8 +115,7 @@
     },
     "fb9550cc-4473-4174-b92a-f5bbcd7d339a": {
       "type": "blog-template-01",
-      "settings": {
-      }
+      "settings": {}
     },
     "bannergrid_instagram_ndmQFG": {
       "type": "bannergrid-instagram",
@@ -150,8 +130,7 @@
       "block_order": [
         "text_LNzDUN"
       ],
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

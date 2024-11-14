@@ -1,21 +1,3 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "wrapper": "div#el-blog-template",
   "sections": {
@@ -40,7 +22,7 @@
             "title_color": "#000000",
             "title_font_size": 30,
             "title_font_weight": 400,
-            "text": "<p><br/>Ready to infuse your wardrobe with a splash of laid-back luxury? Introducing the latest Autumn<br/>Basics Collection featuring an array of new, seasonal colours and novel styles.<br/>Stand-out highlights include our Midi Skirt, V-Neck Tank, Collared Sweater and<br/>more. Nearly all of our timeless staples are finely crafted from a 12-gauge<br/>wool and cashmere blend, ideal for year-round wear. </p>",
+            "text": "<p><br\/>Ready to infuse your wardrobe with a splash of laid-back luxury? Introducing the latest Autumn<br\/>Basics Collection featuring an array of new, seasonal colours and novel styles.<br\/>Stand-out highlights include our Midi Skirt, V-Neck Tank, Collared Sweater and<br\/>more. Nearly all of our timeless staples are finely crafted from a 12-gauge<br\/>wool and cashmere blend, ideal for year-round wear. <\/p>",
             "content_color": "#000000",
             "text_font_size": 21,
             "margin_top": 30,
@@ -85,9 +67,9 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>From Grape, Blue Violet and Moss, that all pop with panache, to our fresh and ageless neutrals,Cream and Hazel, you’ll be able to make a statement this Autumn with our new,bright colourways.  </p><p> </p><p></p>",
+        "grid-content": "<p>From Grape, Blue Violet and Moss, that all pop with panache, to our fresh and ageless neutrals,Cream and Hazel, you’ll be able to make a statement this Autumn with our new,bright colourways.  <\/p><p> <\/p><p><\/p>",
         "text-color": "",
-        "grid-image-picker": "shopify://shop_images/C_P_M_20.06.24_16018.jpg",
+        "grid-image-picker": "shopify:\/\/shop_images\/C_P_M_20.06.24_16018.jpg",
         "image-width": 50,
         "image-caption": "",
         "grid-swap": "grid-right"
@@ -117,9 +99,9 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Exuding a polished and sophisticated air, our Midi Skirt allows an effortless transition<br/>from Summer to Autumn; the perfect addition for your updated lookbook. Rib-knitted<br/>and detailed with delicate crochet trims in the waist, it gently flares out to<br/>an A-line hem, offering a highly flattering silhouette. Pair with a matching top for some chic colour coordination</p>",
+        "grid-content": "<p>Exuding a polished and sophisticated air, our Midi Skirt allows an effortless transition<br\/>from Summer to Autumn; the perfect addition for your updated lookbook. Rib-knitted<br\/>and detailed with delicate crochet trims in the waist, it gently flares out to<br\/>an A-line hem, offering a highly flattering silhouette. Pair with a matching top for some chic colour coordination<\/p>",
         "text-color": "#080707",
-        "grid-image-picker": "shopify://shop_images/C_P_M_20.06.24_17390.jpg",
+        "grid-image-picker": "shopify:\/\/shop_images\/C_P_M_20.06.24_17390.jpg",
         "image-width": 50,
         "image-caption": "",
         "grid-swap": "grid-left"
@@ -149,9 +131,9 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Our Collared Sweater<br/>breathes personality through its classic, cozy charm paired alongside a more modern<br/>twist in style. Its relaxed, lightweight fit offers an easy-to-wear style that<br/>you’ll reach for again and again to immerse yourself in irresistible comfort. </p>",
+        "grid-content": "<p>Our Collared Sweater<br\/>breathes personality through its classic, cozy charm paired alongside a more modern<br\/>twist in style. Its relaxed, lightweight fit offers an easy-to-wear style that<br\/>you’ll reach for again and again to immerse yourself in irresistible comfort. <\/p>",
         "text-color": "",
-        "grid-image-picker": "shopify://shop_images/C_P_M_20.06.24_16039_22a32394-9366-4dbb-bbad-8bc2bafa691e.jpg",
+        "grid-image-picker": "shopify:\/\/shop_images\/C_P_M_20.06.24_16039_22a32394-9366-4dbb-bbad-8bc2bafa691e.jpg",
         "image-width": 50,
         "image-caption": "",
         "grid-swap": "grid-left"
@@ -181,9 +163,9 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>Elevate any outfit with the versatile and very in-vogue V-Neck Tank. Flattering and feminine, this piece is easily dressed up or down, making it perfect for casual outings as well as more formal occasions. Wear over a long-sleeved t-shirt for a reliably stylish look. </p>",
+        "grid-content": "<p>Elevate any outfit with the versatile and very in-vogue V-Neck Tank. Flattering and feminine, this piece is easily dressed up or down, making it perfect for casual outings as well as more formal occasions. Wear over a long-sleeved t-shirt for a reliably stylish look. <\/p>",
         "text-color": "",
-        "grid-image-picker": "shopify://shop_images/C_P_M_20.06.24_16075.jpg",
+        "grid-image-picker": "shopify:\/\/shop_images\/C_P_M_20.06.24_16075.jpg",
         "image-width": 50,
         "image-caption": "",
         "grid-swap": "grid-left"
@@ -238,8 +220,8 @@
         "template--15221759017038__059a96f3-bfd3-42f3-8d75-a885a19c6843-bannergrid-threecolumns-1": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/C_P_M_20.06.24_17695.jpg",
-            "mobile_image1": "shopify://shop_images/C_P_M_20.06.24_17695_f72682bd-a4ca-445e-a7ea-036fa5390660.jpg",
+            "image1": "shopify:\/\/shop_images\/C_P_M_20.06.24_17695.jpg",
+            "mobile_image1": "shopify:\/\/shop_images\/C_P_M_20.06.24_17695_f72682bd-a4ca-445e-a7ea-036fa5390660.jpg",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -250,7 +232,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
@@ -258,8 +240,8 @@
         "template--15221759017038__059a96f3-bfd3-42f3-8d75-a885a19c6843-bannergrid-threecolumns-2": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/C_P_M_20.06.24_16812.jpg",
-            "mobile_image1": "shopify://shop_images/C_P_M_20.06.24_16812_ff717bce-a9f5-43ee-908c-f339ffe4d653.jpg",
+            "image1": "shopify:\/\/shop_images\/C_P_M_20.06.24_16812.jpg",
+            "mobile_image1": "shopify:\/\/shop_images\/C_P_M_20.06.24_16812_ff717bce-a9f5-43ee-908c-f339ffe4d653.jpg",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "AW24' BASICS",
@@ -270,7 +252,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
@@ -278,8 +260,8 @@
         "template--15221759017038__059a96f3-bfd3-42f3-8d75-a885a19c6843-bannergrid-threecolumns-3": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify://shop_images/C_P_M_20.06.24_15778.jpg",
-            "mobile_image1": "shopify://shop_images/C_P_M_20.06.24_15778_27abde20-f7ac-4de4-8071-0da2328db332.jpg",
+            "image1": "shopify:\/\/shop_images\/C_P_M_20.06.24_15778.jpg",
+            "mobile_image1": "shopify:\/\/shop_images\/C_P_M_20.06.24_15778_27abde20-f7ac-4de4-8071-0da2328db332.jpg",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -290,7 +272,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/autumn-basics",
+            "link1": "shopify:\/\/collections\/autumn-basics",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
@@ -309,8 +291,7 @@
     "fb9550cc-4473-4174-b92a-f5bbcd7d339a": {
       "type": "blog-template-01",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
