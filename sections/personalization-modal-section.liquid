@@ -2,7 +2,21 @@
   <div class="personalisation-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
-        {{ section.settings['product-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% if product.handle contains 'scarf' %}
+          {{ section.settings['scarf-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% elsif product.handle contains 'ribbed-socks' %}
+          {{ section.settings['ribbed-socks-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% elsif product.handle contains 'socks' %}
+          {{ section.settings['socks-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% elsif product.handle contains 'long-gloves' %}
+          {{ section.settings['long-gloves-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% elsif product.handle contains 'fingerless-gloves' %}
+          {{ section.settings['fingerless-gloves-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% elsif product.handle contains 'gloves' %}
+          {{ section.settings['gloves-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% else %}
+          {{ section.settings['product-sample-image'] | img_url: '800x1000' | img_tag }}
+        {% endif %}
         <div class="image-caption">
           <p>{{ section.settings['image-caption'] }}</p>
         </div>
@@ -692,22 +706,22 @@ document
     {
       "type": "image_picker",
       "id": "ribbed-socks-sample-image",
-        "label": "Ribbed Socks Sample Image"
+      "label": "Ribbed Socks Sample Image"
     },
     {
       "type": "image_picker",
-      "id": "wool-cashmere-gloves-sample-image",
-        "label": "Wool Cashmere Gloves Sample Image"
+      "id": "long-gloves-sample-image",
+      "label": "Long Gloves Sample Image"
     },
     {
       "type": "image_picker",
-      "id": "cashmere-gloves-sample-image",
-        "label": "Cashmere Gloves Sample Image"
+      "id": "gloves-sample-image",
+      "label": "Gloves Sample Image"
     },
     {
       "type": "image_picker",
       "id": "fingerless-gloves-sample-image",
-        "label": "Fingerless Gloves Sample Image"
+      "label": "Fingerless Gloves Sample Image"
     },
     {
       "type": "text",
@@ -734,3 +748,6 @@ document
 {% endschema %}
 
 {% comment %} products/the-cream-cashmere-boxy-sweater {% endcomment %}
+{% comment %} products/navy-wool-cashmere-scarf {% endcomment %}
+{% comment %} products/light-oatmeal-wool-cashmere-socks {% endcomment %}
+{% comment %} products/light-oatmeal-wool-cashmere-gloves {% endcomment %}
