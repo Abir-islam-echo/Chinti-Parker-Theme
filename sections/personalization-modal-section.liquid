@@ -1,26 +1,34 @@
+{% assign placementType = 'placement-cuff' %}
 <div class="personalisation-modal-wrapper" id="personalisation-modal-wrapper">
   <div class="personalisation-modal">
     <div class="content-wrapper">
       <div class="product-image half-width">
         {% if product.handle contains 'scarf' %}
+          {% assign placementType = 'placement-for-scarf' %}
           {{ section.settings['scarf-sample-image'] | img_url: '800x1000' | img_tag }}
         {% elsif product.handle contains 'ribbed-socks' %}
+          {% assign placementType = 'placement-for-ribbed-socks' %}
           {{ section.settings['ribbed-socks-sample-image'] | img_url: '800x1000' | img_tag }}
         {% elsif product.handle contains 'socks' %}
+          {% assign placementType = 'placement-for-socks' %}
           {{ section.settings['socks-sample-image'] | img_url: '800x1000' | img_tag }}
         {% elsif product.handle contains 'long-gloves' %}
+          {% assign placementType = 'placement-for-long-gloves' %}
           {{ section.settings['long-gloves-sample-image'] | img_url: '800x1000' | img_tag }}
         {% elsif product.handle contains 'fingerless-gloves' %}
+          {% assign placementType = 'placement-for-fingerless-gloves' %}
           {{ section.settings['fingerless-gloves-sample-image'] | img_url: '800x1000' | img_tag }}
         {% elsif product.handle contains 'gloves' %}
+          {% assign placementType = 'placement-for-gloves' %}
           {{ section.settings['gloves-sample-image'] | img_url: '800x1000' | img_tag }}
         {% else %}
+          {% assign placementType = 'placement-cuff' %}
           {{ section.settings['product-sample-image'] | img_url: '800x1000' | img_tag }}
         {% endif %}
-        <div class="image-caption">
+        <div class="image-caption {{ placementType }}">
           <p>{{ section.settings['image-caption'] }}</p>
         </div>
-        <div id="customized-text-demo" class="placement-cuff">
+        <div id="customized-text-demo" class="{{ placementType }}">
           <p class="size-small-1cm" style="color: #000; font-size: 14px; font-family: 'Ubuntu', sans-serif;"></p>
         </div>
       </div>
@@ -37,21 +45,30 @@
         <div class="customization-content">
           <div class="personalised-text">
             <label>Add Your Monogram</label>
-            <input maxlength="6" type="text" value="" placeholder="Your Monogram">
-            <span id="format-error">Invalid format! Accepted formates (e.g., 's.v.v.' , 'v.s', JJ, ABC)</span>
+            {% if placementType == 'placement-cuff' %}
+              <input maxlength="6" type="text" value="" placeholder="Your Monogram">
+              <span id="format-error">Invalid format! Some accepted formates (e.g., 's.v.v.' , 'v.s', JJ, ABC)</span>
+            {% else %}
+              <input maxlength="4" type="text" value="" placeholder="Your Monogram">
+              <span id="format-error">Invalid format! Some accepted formates (e.g., 's.v.' , 'v.s', JJ, L.LL  )</span>
+            {% endif %}
           </div>
           <div class="selection-fields">
-            <div class="single-field">
-              <label for="place">Choose Your Placement</label>
-              <select name="place" id="place" class="place-option">
-                {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
-                <option for="placement" demo-value="right: 12%; top: 72%; text-align: left;" value="cuff">Cuff</option>
-                <option for="placement" demo-value="right: 27%; top: 59%; text-align: right;" value="hem">Hem</option>
-                <option for="placement" demo-value="right: 33%; top: 35%; text-align: center;" value="chest">
-                  Chest
-                </option>
-              </select>
-            </div>
+            {% if placementType == 'placement-cuff' %}
+              <div class="single-field">
+                <label for="place">Choose Your Placement</label>
+                <select name="place" id="place" class="place-option">
+                  {% comment %} <option value="" selected disabled hidden>Choose an option</option> {% endcomment %}
+                  <option for="placement" demo-value="right: 12%; top: 72%; text-align: left;" value="cuff">
+                    Cuff
+                  </option>
+                  <option for="placement" demo-value="right: 27%; top: 59%; text-align: right;" value="hem">Hem</option>
+                  <option for="placement" demo-value="right: 33%; top: 35%; text-align: center;" value="chest">
+                    Chest
+                  </option>
+                </select>
+              </div>
+            {% endif %}
             <div class="single-field">
               <label for="fonts">Choose Your Font</label>
               <select name="fonts" id="fonts" class="font-option">
@@ -117,13 +134,15 @@
               >
               <input type="hidden" name="properties[_type]" value="personalised">
               <input type="hidden" name="properties[_monogram]" data-default="" data-value="monogram" value="">
-              <input
-                type="hidden"
-                name="properties[_placement]"
-                data-default="cuff"
-                data-value="placement"
-                value="cuff"
-              >
+              {% if placementType == 'placement-cuff' %}
+                <input
+                  type="hidden"
+                  name="properties[_placement]"
+                  data-default="cuff"
+                  data-value="placement"
+                  value="cuff"
+                >
+              {% endif %}
               <input type="hidden" name="properties[_font]" data-default="block" data-value="font" value="block">
               <input
                 type="hidden"
@@ -227,7 +246,7 @@
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .personalised-text #format-error {
     color: black;
     position: absolute;
-    top: -7px;
+    top: -10px;
     left: 0px;
     background: rgb(255, 218, 73);
     padding: 5px;
@@ -252,6 +271,10 @@
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption{
     position: absolute;
     top: 5.8%;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption.placement-for-long-gloves{
+    position: absolute;
+    top: 2.8%;
   }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption p{
     color: #777;
@@ -409,6 +432,36 @@
     top: 72%;
     text-align: right;
   }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-for-fingerless-gloves{
+    right: 25%;
+    top: 45%;
+    text-align: right;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-for-long-gloves{
+    right: 56%;
+    top: 40%;
+    text-align: right;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-for-gloves{
+    right: 58%;
+    top: 58%;
+    text-align: right;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-for-socks{
+    right: 51%;
+    top: 30%;
+    text-align: center;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-for-ribbed-socks{
+    right: 22.5%;
+    top: 34%;
+    text-align: center;
+  }
+  #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-for-scarf{
+    right: 14%;
+    top: 69%;
+    text-align: right;
+  }
   #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image #customized-text-demo.placement-hem{
     right: 27%;
     top: 59%;
@@ -461,6 +514,10 @@
   @media only screen and (max-width: 900px){
     #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption{
       bottom: 5.8%;
+      top: unset;
+    }
+    #personalisation-modal-wrapper .personalisation-modal .content-wrapper .product-image .image-caption.placement-for-long-gloves{
+      bottom: -2%;
       top: unset;
     }
     #personalisation-modal-wrapper .personalisation-modal .product-image{
@@ -576,8 +633,11 @@
     };
     const checkValidation = (value)=>{
       // Define a regex pattern for 'v.v.v.', '.v.v', 'v.v' formats
-      const pattern = /^(?:[a-zA-Z]{1,3}|([a-zA-Z]{2}\.[a-zA-Z])|([a-zA-Z]\.[a-zA-Z])|([a-zA-Z]{2}\.[a-zA-Z]\.)|([a-zA-Z]\.[a-zA-Z]{2}\.?)|([a-zA-Z]\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]{1,3}\.?)|(\.[a-zA-Z]{1,2}\.[a-zA-Z]\.?)|(\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]\.[a-zA-Z]{1,2}\.?)|(\.[a-zA-Z]{1,3}\.))$/;
-      {% comment %} const pattern = /^(?:[a-zA-Z](?:\.[a-zA-Z]){0,2}\.?|\.(?:[a-zA-Z]\.){0,2}[a-zA-Z]?)$/; {% endcomment %}
+      {% if placementType == 'placement-cuff' %}
+        const pattern = /^(?:[a-zA-Z]{1,3}|([a-zA-Z]{2}\.[a-zA-Z])|([a-zA-Z]\.[a-zA-Z])|([a-zA-Z]{2}\.[a-zA-Z]\.)|([a-zA-Z]\.[a-zA-Z]{2}\.?)|([a-zA-Z]\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]{1,3}\.?)|(\.[a-zA-Z]{1,2}\.[a-zA-Z]\.?)|(\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]\.[a-zA-Z]{1,2}\.?)|(\.[a-zA-Z]{1,3}\.))$/;
+      {% else %}
+        const pattern = /^(?:[a-zA-Z]{1,2}|([a-zA-Z]{2}\.[a-zA-Z])|([a-zA-Z]\.[a-zA-Z])|([a-zA-Z]{2}\.[a-zA-Z]\.)|([a-zA-Z]\.[a-zA-Z]{2}\.?)|([a-zA-Z]\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]{1,2}\.?)|(\.[a-zA-Z]{1,2}\.[a-zA-Z]\.?)|(\.[a-zA-Z]\.[a-zA-Z]\.?)|([a-zA-Z]\.[a-zA-Z]{1,2}\.?)|(\.[a-zA-Z]{1,2}\.))$/
+      {% endif %}
       if (pattern.test(value)) {
          // Hide error if format is valid
         monogramErrorMessage.classList.remove("show");
@@ -751,3 +811,5 @@ document
 {% comment %} products/navy-wool-cashmere-scarf {% endcomment %}
 {% comment %} products/light-oatmeal-wool-cashmere-socks {% endcomment %}
 {% comment %} products/light-oatmeal-wool-cashmere-gloves {% endcomment %}
+{% comment %} products/claret-cashmere-long-gloves {% endcomment %}
+{% comment %} products/light-oatmeal-wool-cashmere-fingerless-gloves {% endcomment %}
