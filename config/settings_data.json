@@ -5500,13 +5500,12 @@
       "personalization-modal-section": {
         "type": "personalization-modal-section",
         "settings": {
-          
           "product-sample-image": "shopify://shop_images/M_S_KPS2324_CROPPEDSPORTY_LIGHTOATMEAL_1_1.jpg",
           "scarf-sample-image": "shopify://shop_images/AW24_PURE_CASHMERE_AAW2428_CASHMERE_SCARF_SOFT_TRUFFLE_2.jpg",
           "socks-sample-image": "shopify://shop_images/AW24_BASICS_DROP_2_AAW2413_SOCKS_LIGHT_OATMEAL.jpg",
           "ribbed-socks-sample-image": "shopify://shop_images/AW24_PURE_CASHMERE_AAW2427_CASHMERE_SOCKS_SOFT_TRUFFLE_1.jpg",
-          "wool-cashmere-gloves-sample-image": "shopify://shop_images/AW24_BASICS_DROP_2_AAW2410_GLOVES_LIGHT_OATMEAL_1.jpg",
-          "cashmere-gloves-sample-image": "shopify://shop_images/AW24_PURE_CASHMERE_AAW2425_CASHMERE_GLOVES_SOFT_TRUFFLE_2.jpg",
+          "long-gloves-sample-image": "shopify://shop_images/AW24_PURE_CASHMERE_AAW2425_CASHMERE_GLOVES_SOFT_TRUFFLE_2.jpg",
+          "gloves-sample-image": "shopify://shop_images/AW24_BASICS_DROP_2_AAW2410_GLOVES_LIGHT_OATMEAL_1.jpg",
           "fingerless-gloves-sample-image": "shopify://shop_images/AW23_BASICS_DROP_2_AAW2312_FINGERLESS_GLOVES_LIGHT_OATMEAL.jpg",
           "image-caption": "The item featured is for reference only. Your personalisation will be applied to the selected item.",
           "title": "Personalisation- £15",
