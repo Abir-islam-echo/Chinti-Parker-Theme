@@ -133,8 +133,7 @@
         "block_order": [
           "1538071621026"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "register-section": {
         "type": "register-section",
@@ -150,8 +149,7 @@
         "block_order": [
           "1538081925267"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "account-section": {
         "type": "account-section",
@@ -167,8 +165,7 @@
         "block_order": [
           "1538244320992"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-faq": {
         "type": "cms-sections-faq",
@@ -355,8 +352,7 @@
           "faq_QyF6KH",
           "faq_YWTGMf"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections": {
         "type": "cms-sections",
@@ -448,8 +444,7 @@
           "1538382088828",
           "1538382236466"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "password-header": {
         "type": "password-header",
@@ -461,13 +456,11 @@
       },
       "password-content": {
         "type": "password-content",
-        "settings": {
-        }
+        "settings": {}
       },
       "password-footer": {
         "type": "password-footer",
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-404-sections": {
         "type": "cms-404-sections",
@@ -486,8 +479,7 @@
         "block_order": [
           "1539153319739"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cookie-message": {
         "type": "cookie-message",
@@ -543,8 +535,7 @@
           "1539602182866",
           "1539602205625"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-cashmere": {
         "type": "cms-sections-cashmere",
@@ -678,8 +669,7 @@
           "1539858861335",
           "1539858913836"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookAW18": {
         "type": "cms-sections-lookbookAW18",
@@ -827,8 +817,7 @@
           "1541010125699",
           "1541010198477"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookHelloKitty": {
         "type": "cms-sections-lookbookHelloKitty",
@@ -934,8 +923,7 @@
           "1541010812924",
           "1541010843723"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-sweater": {
         "type": "cms-sections-sweater",
@@ -1003,8 +991,7 @@
           "1540292625229",
           "1540292680246"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-empty-collection": {
         "type": "cms-sections-empty-collection",
@@ -1023,8 +1010,7 @@
         "block_order": [
           "1540565930721"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "giftcard-section": {
         "type": "giftcard-section",
@@ -1040,8 +1026,7 @@
         "block_order": [
           "1540806351334"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-store": {
         "type": "cms-sections-store",
@@ -1075,8 +1060,7 @@
           "1541083044676",
           "1541021884773"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookPrefall18": {
         "type": "cms-sections-lookbookPrefall18",
@@ -1182,8 +1166,7 @@
           "1540991012842",
           "1540991079644"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookResort19": {
         "type": "cms-sections-lookbookResort19",
@@ -1327,8 +1310,7 @@
           "1540992926983",
           "1540993186694"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookHoliday": {
         "type": "cms-sections-lookbookHoliday",
@@ -1434,8 +1416,7 @@
           "1541008270638",
           "1541008339286"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-newsletter-text": {
         "type": "cms-sections-newsletter-text",
@@ -1451,8 +1432,7 @@
         "block_order": [
           "1542376930572"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-newsletter-bespoke": {
         "type": "cms-sections-newsletter-bespoke",
@@ -1468,13 +1448,11 @@
         "block_order": [
           "1587365778322"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-newsletter": {
         "type": "cms-sections-newsletter",
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-newsletter-text-success": {
         "type": "cms-sections-newsletter-text-success",
@@ -1490,8 +1468,7 @@
         "block_order": [
           "1542377042564"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookSS19": {
         "type": "cms-sections-lookbookSS19",
@@ -1719,8 +1696,7 @@
           "1547748081278",
           "1547748118118"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "notification-ribbon": {
         "type": "notification-ribbon",
@@ -1985,8 +1961,7 @@
           "1567421153262",
           "1567421171915"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-404-banner": {
         "type": "cms-404-banner",
@@ -2001,8 +1976,7 @@
         "block_order": [
           "1556276239217"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-lookbookAW19": {
         "type": "cms-sections-lookbookAW19",
@@ -2216,8 +2190,7 @@
           "1571060968691",
           "1571061248904"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-newsletter-new": {
         "type": "cms-sections-newsletter-new",
@@ -2312,8 +2285,7 @@
           "1565775510184",
           "1565775526660"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-charleston-house": {
         "type": "cms-sections-charleston-house",
@@ -2330,8 +2302,7 @@
         "block_order": [
           "1565777857404"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-charleston-test": {
         "type": "cms-sections-charleston-test",
@@ -2458,8 +2429,7 @@
           "1565779416058",
           "1565783962335"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-popupstore": {
         "type": "cms-sections-popupstore",
@@ -2487,8 +2457,7 @@
         "block_order": [
           "1573121568722"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-cf-yulia-kovaleva": {
         "type": "cms-sections-cf-yulia-kovaleva",
@@ -2579,8 +2548,7 @@
           "1565869173068",
           "1574423841280"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-faq--concierge": {
         "type": "cms-sections-faq--concierge",
@@ -2692,8 +2660,7 @@
           "1575650670003",
           "1575650682431"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-founders-aw19": {
         "type": "cms-sections-founders-aw19",
@@ -2770,8 +2737,7 @@
           "1565870954122",
           "1565955900389"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-inside-charleston-house": {
         "type": "cms-sections-inside-charleston-house",
@@ -2898,8 +2864,7 @@
           "1565875642954",
           "1565875730987"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-charleston-event": {
         "type": "cms-sections-charleston-event",
@@ -2997,8 +2962,7 @@
           "1566228240638",
           "1566230810251"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "newsletter-sign-up": {
         "type": "newsletter-sign-up",
@@ -3108,8 +3072,7 @@
           "1567499552394",
           "1567499595285"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-contact-info": {
         "type": "cms-contact-info",
@@ -3135,11 +3098,8 @@
         "block_order": [
           "1567699951103"
         ],
-        "custom_css": [
-
-        ],
-        "settings": {
-        }
+        "custom_css": [],
+        "settings": {}
       },
       "cms-sections-chinti-friends-tara-lee": {
         "type": "cms-sections-chinti-friends-tara-lee",
@@ -3230,8 +3190,7 @@
           "1568194798785",
           "1568387735584"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-friday-club-draft": {
         "type": "cms-sections-friday-club-draft",
@@ -3289,8 +3248,7 @@
           "1569339067380",
           "1569339132106"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-chinti-friends-olivia-crighton": {
         "type": "cms-sections-chinti-friends-olivia-crighton",
@@ -3376,8 +3334,7 @@
           "1569489737117",
           "1569492880770"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-meet-our-design-director": {
         "type": "cms-sections-meet-our-design-director",
@@ -3486,8 +3443,7 @@
           "1570187522469",
           "1570187602269"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-newsletter-party": {
         "type": "cms-sections-newsletter-party",
@@ -3612,8 +3568,7 @@
           "1570784152940",
           "1570784592832"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "cms-sections-popupstore-new": {
         "type": "cms-sections-popupstore-new",
@@ -3653,13 +3608,11 @@
           "1583337211376",
           "1583338444177"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "dotmailer-connector": {
         "type": "dotmailer-connector",
-        "settings": {
-        }
+        "settings": {}
       },
       "outlet-sign-up": {
         "type": "outlet-sign-up",
@@ -3745,9 +3698,9 @@
               "notification_text": "DISCOVER OUR WINTER PEANUTS COLLECTION",
               "notification_text_us": "DISCOVER OUR WINTER PEANUTS COLLECTION",
               "notification_text_eu": "DISCOVER OUR WINTER PEANUTS COLLECTION",
-              "notification_link": "shopify://collections/chinti-meets-peanuts-24",
-              "notification_link_us": "shopify://collections/chinti-meets-peanuts-24",
-              "notification_link_eu": "shopify://collections/chinti-meets-peanuts-24"
+              "notification_link": "shopify://collections/chinti-meets-peanuts",
+              "notification_link_us": "shopify://collections/chinti-meets-peanuts",
+              "notification_link_eu": "shopify://collections/chinti-meets-peanuts"
             }
           },
           "notification_item_Rwiqyc": {
@@ -3848,7 +3801,7 @@
               "featured_content_image_1": "shopify://shop_images/1_29.png",
               "featured_content_mobile_image_1": "shopify://shop_images/1_29_6a21cf85-b440-4755-986b-997c9e7e85b7.png",
               "featured_content_mobile_1": false,
-              "featured_content_2": "shopify://collections/chinti-meets-peanuts-24",
+              "featured_content_2": "shopify://collections/chinti-meets-peanuts",
               "featured_content_title_2": "Chinti Meets Peanuts '24",
               "featured_content_image_2": "shopify://shop_images/2_27.png",
               "featured_content_mobile_image_2": "shopify://shop_images/2_27_fa3bf07d-75fd-4318-88ec-fe0f061ea5a8.png",
@@ -3885,7 +3838,7 @@
               "featured_content_image_2": "shopify://shop_images/Untitled_design_-_2024-09-13T111009.637.png",
               "featured_content_mobile_image_2": "shopify://shop_images/Untitled_design_-_2024-09-13T111009.637_bac1c667-7030-4da5-8670-de6771d37445.png",
               "featured_content_mobile_2": false,
-              "featured_content_3": "shopify://collections/chinti-meets-peanuts-24",
+              "featured_content_3": "shopify://collections/chinti-meets-peanuts",
               "featured_content_title_3": "Chinti Meets Peanuts '24",
               "featured_content_image_3": "shopify://shop_images/21_3.png",
               "featured_content_mobile_image_3": "shopify://shop_images/21_3_94c3f78e-6d12-466e-b4fe-264dc19b4a59.png",
@@ -3971,7 +3924,7 @@
               "background_colour": "",
               "featured_content_mobile": false,
               "featured_content_heading": "Shop by Collection",
-              "featured_content_1": "shopify://collections/chinti-meets-peanuts-24",
+              "featured_content_1": "shopify://collections/chinti-meets-peanuts",
               "featured_content_title_1": "Chinti Meets Peanuts '24",
               "featured_content_image_1": "shopify://shop_images/9_7_1aa79390-2060-4d1c-aaaf-453111859140.png",
               "featured_content_mobile_image_1": "shopify://shop_images/9_7_1aa79390-2060-4d1c-aaaf-453111859140.png",
@@ -4375,7 +4328,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "link": "shopify://collections/chinti-meets-peanuts",
               "content_alignment": "left"
             }
           },
@@ -4403,8 +4356,7 @@
           "a9dda6be-4531-4046-95b1-2497d8a5fcc2",
           "0e18de53-66e8-4e3f-a5cf-bef847a003b5-16651322902e42cb80-1"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "772a9656-b19b-4f44-bfd2-aedc59431359": {
         "type": "slideshow",
@@ -4430,8 +4382,7 @@
         "block_order": [
           "772a9656-b19b-4f44-bfd2-aedc59431359-16690212739abf9d88-0"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "7fa28d40-99ff-438d-8be0-430dc40b9560": {
         "type": "gap",
@@ -4492,7 +4443,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "link": "shopify://collections/chinti-meets-peanuts",
               "content_alignment": "left"
             }
           },
@@ -4520,8 +4471,7 @@
           "1d527b93-fd40-4525-bfad-755c66a36343",
           "7be8beb1-6481-482b-b469-24eb66d66078-image-1"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "77ec275b-9e95-4aa3-9f1e-9f0a8dce972a": {
         "type": "slideshow-us",
@@ -4573,7 +4523,7 @@
               "subheading_font_size": 24,
               "button_text": "",
               "cta_font_size": 55,
-              "link": "shopify://collections/chinti-meets-peanuts-24",
+              "link": "shopify://collections/chinti-meets-peanuts",
               "content_alignment": "left"
             }
           },
@@ -4601,8 +4551,7 @@
           "image_hEk7gH",
           "fbcccfe6-84f7-4e7c-b303-c90fb1430139"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "35886c16-c230-4eca-89c3-1c811669cd0a": {
         "type": "banner-three-column-01",
@@ -4642,7 +4591,7 @@
               "text_color_mobile1": "text-light-mobile",
               "left_banner_conent_alignment": "end",
               "left_banner_content_alignment_horizontal": "center",
-              "link1": "shopify://collections/chinti-meets-peanuts-24",
+              "link1": "shopify://collections/chinti-meets-peanuts",
               "link_text1": "",
               "font_size_left_cta": 25
             }
@@ -5080,8 +5029,7 @@
         "block_order": [
           "a25a3a0b-268d-4f9b-8e61-519985317c2d-image-1"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "88c40de4-3a04-41f2-aa4f-071ada4deb1a": {
         "type": "slideshow-eu",
@@ -5107,8 +5055,7 @@
         "block_order": [
           "88c40de4-3a04-41f2-aa4f-071ada4deb1a-image-1"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "custom_content_md9jCg": {
         "type": "custom-content",
@@ -5156,26 +5103,22 @@
       "855628211100114053": {
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "5134484470793087125": {
         "type": "shopify://apps/vitals/blocks/app-embed/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "16985609443196360602": {
         "type": "shopify://apps/wair-size-fit-recommendation/blocks/app-embed/68b6dfc9-7d29-46dc-8820-cbcd3543e806",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "14327677521557774844": {
         "type": "shopify://apps/simprosys-google-shopping-feed/blocks/core_settings_block/1f0b859e-9fa6-4007-97e8-4513aff5ff3b",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       }
     }
   },
@@ -5200,21 +5143,18 @@
           "blocks": {
             "slideshow-0": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             },
             "slideshow-1": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
             "slideshow-0",
             "slideshow-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "content_for_index": [
