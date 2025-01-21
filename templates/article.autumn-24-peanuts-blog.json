@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "wrapper": "div#el-blog-template",
   "sections": {
@@ -177,7 +177,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/chinti-meets-peanuts-24",
+            "link1": "shopify://collections/chinti-meets-peanuts",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
@@ -197,7 +197,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/chinti-meets-peanuts-24",
+            "link1": "shopify://collections/chinti-meets-peanuts",
             "link_text1": "",
             "font_size_left_cta": 25
           }
@@ -217,7 +217,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify://collections/chinti-meets-peanuts-24",
+            "link1": "shopify://collections/chinti-meets-peanuts",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
@@ -236,8 +236,7 @@
     "fb9550cc-4473-4174-b92a-f5bbcd7d339a": {
       "type": "blog-template-01",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
