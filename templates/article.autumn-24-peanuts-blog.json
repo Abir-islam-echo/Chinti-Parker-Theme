@@ -31,7 +31,7 @@
             "title_color": "#000000",
             "title_font_size": 30,
             "title_font_weight": 400,
-            "text": "<p><\/p><p>Conceived by Charles M. Schulz in 1950, Peanuts stands as arguably the most adored comic strip of all time. Narrating the escapades of Snoopy, Charlie Brown, and their circle of companions, these cheerful yet often profound tales persist in inspiring both children and adults. At Chinti & Parker, we recognize the significance of staying connected with our inner child – and Peanuts pledges to evoke the youthful spirit within each of us.<\/p>",
+            "text": "<p></p><p>Conceived by Charles M. Schulz in 1950, Peanuts stands as arguably the most adored comic strip of all time. Narrating the escapades of Snoopy, Charlie Brown, and their circle of companions, these cheerful yet often profound tales persist in inspiring both children and adults. At Chinti & Parker, we recognize the significance of staying connected with our inner child – and Peanuts pledges to evoke the youthful spirit within each of us.</p>",
             "content_color": "#000000",
             "text_font_size": 21,
             "margin_top": 30,
@@ -76,9 +76,9 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p><\/p><p>The newest, limited-edition collection is inviting you to join us at the whimsical world of Peanuts Records. This new collection takes inspiration from the timeless charm of Charles M. Schulz’s beloved characters, infused with a musical twist that brings joy and nostalgia to your wardrobe.<\/p><p>“Our Peanuts collaboration for Autumn 2024 is all about celebrating the joy and creativity of music through the lens of the iconic Peanuts characters,” said Rachael Wood, Co-Founder and CEO of Chinti & Parker. “We’ve designed this collection to bring smiles and comfort to our customers, combining timeless charm with contemporary style.”<\/p><p><\/p>",
+        "grid-content": "<p></p><p>The newest, limited-edition collection is inviting you to join us at the whimsical world of Peanuts Records. This new collection takes inspiration from the timeless charm of Charles M. Schulz’s beloved characters, infused with a musical twist that brings joy and nostalgia to your wardrobe.</p><p>“Our Peanuts collaboration for Autumn 2024 is all about celebrating the joy and creativity of music through the lens of the iconic Peanuts characters,” said Rachael Wood, Co-Founder and CEO of Chinti & Parker. “We’ve designed this collection to bring smiles and comfort to our customers, combining timeless charm with contemporary style.”</p><p></p>",
         "text-color": "",
-        "grid-image-picker": "shopify:\/\/shop_images\/KAW24109_BLACK.png",
+        "grid-image-picker": "shopify://shop_images/KAW24109_BLACK.png",
         "image-width": 40,
         "image-caption": "",
         "grid-swap": "grid-right"
@@ -108,9 +108,9 @@
         "button-width": "fit-content",
         "content-alignment": "flex-start",
         "content-horizontal-alignment": "start",
-        "grid-content": "<p>In this season’s collection, the Peanuts gang explores the magic of music, featuring standout pieces like the Saxophone Rollneck, which showcases Snoopy serenading with his saxophone. Snoopy and hiswalkman, captures the beloved beagle immersed in his tunes. These playful yet sophisticated designs are perfect for adding a touch of fun to your autumn wardrobe.<\/p><p>The collection is crafted with Chinti & Parker’s signature commitment to quality and sustainability, using premium materials and expert craftsmanship to ensure each piece is both stylish and durable.<\/p><p><\/p><p><\/p>",
+        "grid-content": "<p>In this season’s collection, the Peanuts gang explores the magic of music, featuring standout pieces like the Saxophone Rollneck, which showcases Snoopy serenading with his saxophone. Snoopy and hiswalkman, captures the beloved beagle immersed in his tunes. These playful yet sophisticated designs are perfect for adding a touch of fun to your autumn wardrobe.</p><p>The collection is crafted with Chinti & Parker’s signature commitment to quality and sustainability, using premium materials and expert craftsmanship to ensure each piece is both stylish and durable.</p><p></p><p></p>",
         "text-color": "#080707",
-        "grid-image-picker": "shopify:\/\/shop_images\/KAW24108_SOFT_TRUFFLE.png",
+        "grid-image-picker": "shopify://shop_images/KAW24108_SOFT_TRUFFLE.png",
         "image-width": 50,
         "image-caption": "",
         "grid-swap": "grid-left"
@@ -165,8 +165,8 @@
         "template--15221759017038__059a96f3-bfd3-42f3-8d75-a885a19c6843-bannergrid-threecolumns-1": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify:\/\/shop_images\/KAW24103_CREAM.png",
-            "mobile_image1": "shopify:\/\/shop_images\/AW24_PEANUTS_KAW24117_DREAMING_SNOOPY_ONESIE_BLACK_B_992331b0-2591-4d5e-b8f9-7e85212fcd40.jpg",
+            "image1": "shopify://shop_images/KAW24103_CREAM.png",
+            "mobile_image1": "shopify://shop_images/AW24_PEANUTS_KAW24117_DREAMING_SNOOPY_ONESIE_BLACK_B_992331b0-2591-4d5e-b8f9-7e85212fcd40.jpg",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -177,7 +177,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify:\/\/collections\/chinti-meets-peanuts-24",
+            "link1": "shopify://collections/chinti-meets-peanuts",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
@@ -185,8 +185,8 @@
         "template--15221759017038__059a96f3-bfd3-42f3-8d75-a885a19c6843-bannergrid-threecolumns-2": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify:\/\/shop_images\/AW24_PEANUTS_KAW24117_DREAMING_SNOOPY_ONESIE_BLACK_B.jpg",
-            "mobile_image1": "shopify:\/\/shop_images\/AW24_PEANUTS_KAW24117_DREAMING_SNOOPY_ONESIE_BLACK_B_0aac1aa6-5661-4bed-9879-e30d9e17ebfa.jpg",
+            "image1": "shopify://shop_images/AW24_PEANUTS_KAW24117_DREAMING_SNOOPY_ONESIE_BLACK_B.jpg",
+            "mobile_image1": "shopify://shop_images/AW24_PEANUTS_KAW24117_DREAMING_SNOOPY_ONESIE_BLACK_B_0aac1aa6-5661-4bed-9879-e30d9e17ebfa.jpg",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -197,7 +197,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify:\/\/collections\/chinti-meets-peanuts-24",
+            "link1": "shopify://collections/chinti-meets-peanuts",
             "link_text1": "",
             "font_size_left_cta": 25
           }
@@ -205,8 +205,8 @@
         "template--15221759017038__059a96f3-bfd3-42f3-8d75-a885a19c6843-bannergrid-threecolumns-3": {
           "type": "bannergrid-threecolumns",
           "settings": {
-            "image1": "shopify:\/\/shop_images\/KAW24104_CREAM.png",
-            "mobile_image1": "shopify:\/\/shop_images\/KAW24104_CREAM_89b520f1-3f99-495a-8c22-b162e3c215e0.png",
+            "image1": "shopify://shop_images/KAW24104_CREAM.png",
+            "mobile_image1": "shopify://shop_images/KAW24104_CREAM_89b520f1-3f99-495a-8c22-b162e3c215e0.png",
             "video-src1": "",
             "aspectRatio1": "690:750",
             "heading1": "",
@@ -217,7 +217,7 @@
             "text_color_mobile1": "text-light-mobile",
             "left_banner_conent_alignment": "end",
             "left_banner_content_alignment_horizontal": "center",
-            "link1": "shopify:\/\/collections\/chinti-meets-peanuts-24",
+            "link1": "shopify://collections/chinti-meets-peanuts",
             "link_text1": "Shop Now",
             "font_size_left_cta": 25
           }
