@@ -55,12 +55,7 @@
         aria-hidden="true"
     >
         <div class="meganav-menus" data-meganav-menus>
-            {%-
-                render 'meganav-menu' for links as column
-                | subheadings_colour: item.settings.subheadings_colour
-                | inner_text_colour: item.settings.inner_link_colour
-                | sale_colour: item.settings.sale_colour
-            -%}
+            {%- render 'meganav-menu' for links as column, subheadings_colour: item.settings.subheadings_colour, inner_text_colour: item.settings.inner_link_colour, sale_colour: item.settings.sale_colour -%}
         </div>
 
         <div
@@ -80,14 +75,35 @@
 
             <div class="meganav-featured__list">
                 {%- for i in (1..3) -%}
-                    {%-
-                        render 'meganav-feature'
-                        | meganav: item.settings
-                        | index: i
-                    -%}
+                    {%- render 'meganav-feature', meganav: item.settings, index: i -%}
                 {%- endfor -%}
             </div>
         </div>
     </div>
 </li>
-{% endif %}
+{% endif %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%-
+                    render 'meganav-menu' for links as column
+                    | subheadings_colour: item.settings.subheadings_colour
+                    | inner_text_colour: item.settings.inner_link_colour
+                    | sale_colour: item.settings.sale_colour
+                -%}
+  to: "{%- render 'meganav-menu' for links as column, subheadings_colour: item.settings.subheadings_colour,
+    inner_text_colour: item.settings.inner_link_colour, sale_colour: item.settings.sale_colour
+    -%}"
+  position: 2561..2756
+- from: |-
+    {%-
+                            render 'meganav-feature'
+                            | meganav: item.settings
+                            | index: i
+                        -%}
+  to: "{%- render 'meganav-feature', meganav: item.settings, index: i -%}"
+  position: 3381..3447
+{%- endcomment -%}

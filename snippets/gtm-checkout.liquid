@@ -38,7 +38,7 @@ products: [
     window.dataLayer.push({
       'page_type': 'purchase',
       'event': 'purchase', /* create a custom event in GTM */
-      'transaction_id': '{{ order.name || order.order_number }}',
+      'transaction_id': '{{ order.name | order }}',
       'totalValue': {{ total_price | money_without_currency | remove:',' }}, // Includes tax & shipping
       'subtotalValue': {{ subtotal_price | money_without_currency | remove:',' }},
       'tax': {{ tax_price | money_without_currency | remove:',' }},
@@ -55,7 +55,7 @@ products: [
           {% for line_item in line_items %}
           {
             'item_name': '{{ line_item.product.title | replace: "'","##@@singleinvertedcomma@@##" }}'.replace("##@@singleinvertedcomma@@##", "'"), 
-            'item_id': '{{ line_item.sku || line_item.product.id }}',
+            'item_id': '{{ line_item.sku | line_item }}',
             'price': {{ line_item.final_price | money_without_currency | remove:',' }},
             'item_brand': '{{ line_item.vendor }}',
             'quantity': {{ line_item.quantity }},
@@ -70,3 +70,16 @@ products: [
 
 
 {% endunless %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ order.name || order.order_number }}"
+  to: "{{ order.name | order }}"
+  position: 1072..1096
+- from: "{{ line_item.sku || line_item.product.id }}"
+  to: "{{ line_item.sku | line_item }}"
+  position: 2283..2314
+{% endcomment %}

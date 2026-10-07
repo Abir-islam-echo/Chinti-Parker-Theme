@@ -13,7 +13,7 @@
   {% assign styledWidthProductCount = forloop.index %}
 {% endfor %}
 {%- capture back_in_stock_form -%}
-		{%- render 'back-in-stock-form' | product: product -%}
+		{%- render 'back-in-stock-form', product: product -%}
 {%- endcapture -%}
 
 {% assign shouldShowSizeGuide = 'true' %}
@@ -436,7 +436,7 @@
           {% assign thisFitHandle = thisFit | downcase | replace: ' ', '-' %}
           {% assign thisFitHandle = 'size-guide-' | append: thisFitHandle %}
 
-          {% assign fitGuideImages = pages.[thisFitHandle].content %}
+          {% assign fitGuideImages = pages[thisFitHandle].content %}
 
           {% comment %}
             just get the images out, so we can ignore <p> and <br> etc.
@@ -533,12 +533,7 @@
 
 <div class="klevu-recs" id="k-bf4682ff-0caa-441e-9648-6c44d1124520"></div>
 
-{%-
-  render 'modal'
-  | title: 'NOTIFY WHEN AVAILABLE'
-  | id: 'back-in-stock'
-  | content: back_in_stock_form
--%}
+{%- render 'modal', title: 'NOTIFY WHEN AVAILABLE', id: 'back-in-stock', content: back_in_stock_form -%}
 
 <script>
   /*============================================================================
@@ -766,3 +761,26 @@
 {% if product.tags contains 'PERSONALISATION' %}
   {% section 'personalization-modal-section' %}
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'back-in-stock-form' | product: product -%}"
+  to: "{%- render 'back-in-stock-form', product: product -%}"
+  position: 517..570
+- from: "{% assign fitGuideImages = pages.[thisFitHandle].content %}"
+  to: "{% assign fitGuideImages = pages[thisFitHandle].content %}"
+  position: 19893..19951
+- from: |-
+    {%-
+      render 'modal'
+      | title: 'NOTIFY WHEN AVAILABLE'
+      | id: 'back-in-stock'
+      | content: back_in_stock_form
+    -%}
+  to: "{%- render 'modal', title: 'NOTIFY WHEN AVAILABLE', id: 'back-in-stock', content:
+    back_in_stock_form -%}"
+  position: 22880..22984
+{% endcomment %}

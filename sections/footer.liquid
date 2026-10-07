@@ -15,10 +15,7 @@
         </ul>
       {% endif %}
 
-      {%
-        render 'footer-newsletter-form'
-        | title: section.settings.footer_newsletter_title
-      %}
+      {% render 'footer-newsletter-form', title: section.settings.footer_newsletter_title %}
     </div>
 
     <div class="row">
@@ -258,3 +255,18 @@
   	margin-top: 5px;
   }
 </style>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+            render 'footer-newsletter-form'
+            | title: section.settings.footer_newsletter_title
+          %}
+  to: "{% render 'footer-newsletter-form', title: section.settings.footer_newsletter_title
+    %}"
+  position: 729..815
+{% endcomment %}
