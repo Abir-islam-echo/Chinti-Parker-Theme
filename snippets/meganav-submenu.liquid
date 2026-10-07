@@ -1,7 +1,19 @@
 <div class="meganav__item__menu meganav__item__menu__submenu u-z-highest" data-submenu>
     <div class="u-flex u-flex-1 meganav__item__submenu__row">
         <div class="meganav__item__submenu__linklists">
-            {% render 'meganav-linklist' | column: link | is_first_item: true | is_subitem: true %}
+            {% render 'meganav-linklist', column: link, is_first_item: true, is_subitem: true %}
         </div>
     </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'meganav-linklist' | column: link | is_first_item: true | is_subitem:
+    true %}"
+  to: "{% render 'meganav-linklist', column: link, is_first_item: true, is_subitem:
+    true %}"
+  position: 218..302
+{% endcomment %}

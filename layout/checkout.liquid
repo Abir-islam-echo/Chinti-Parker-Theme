@@ -332,7 +332,7 @@
             {{- line_item.product.url -}}
           </span>
           <span class="tsCheckoutProductImageUrl"
-            >http:{{ line_item.product.images | first | image.src | product_img_url: 'large' -}}
+            >http:{{ line_item.product.images | first | image | product_img_url: 'large' -}}
           </span>
           <span class="tsCheckoutProductName">{{ line_item.product.title }}</span>
           <span class="tsCheckoutProductSKU">{{ line_item.sku }}</span>
@@ -519,3 +519,14 @@
     {% comment %} {% include "globale-checkout-js" %} {% endcomment %}
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ line_item.product.images | first | image.src | product_img_url: 'large'
+    -}}"
+  to: "{{ line_item.product.images | first | image | product_img_url: 'large' -}}"
+  position: 16838..16912
+{% endcomment %}

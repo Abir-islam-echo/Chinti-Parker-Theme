@@ -15,7 +15,7 @@
 {% assign product_list = "" | split: "," %}
 
 {% assign product_count = 0 %}
-{% for product in collections[look_collection]products %}
+{% for product in collections[look_collection].products %}
   {% if product.handle != current_prod and product.available %}
     {% for tag in product.tags %}
       {% if tag contains look_group %}
@@ -34,7 +34,7 @@
 
 {% if look_group and product_count > 0 %}
   {% if products_to_add > 0 %}
-    {% for product in collections[essentials_collection]products %}
+    {% for product in collections[essentials_collection].products %}
       {% if product.handle != current_prod and product.available %}
         {% assign products_to_add = products_to_add | minus: 1 %}
         {% assign handle = product.handle | split: ',' %}
@@ -60,3 +60,16 @@
     </div>
   </div>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% for product in collections[look_collection]products %}"
+  to: "{% for product in collections[look_collection].products %}"
+  position: 544..602
+- from: "{% for product in collections[essentials_collection]products %}"
+  to: "{% for product in collections[essentials_collection].products %}"
+  position: 1199..1263
+{% endcomment %}

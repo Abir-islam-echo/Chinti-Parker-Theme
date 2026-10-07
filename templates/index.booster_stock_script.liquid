@@ -29,7 +29,7 @@
     {% assign collection_products_counter = 50 %}
     {% if collection_handles %}
       //Try first 10 collections
-      {% for collection_handle in collection_handles | limit: 10 %}
+      {% for collection_handle in collection_handles limit: 10 %}
       {% assign collection = collections[collection_handle] %}
         {% if collection and collection_products_counter > 0 %}
            {% paginate collection.products by collection_products_counter %}
@@ -54,7 +54,7 @@
     //Build productsInStock object with information about inventory for products and variants
     //Limit 20 needed because all_products method limitation
     window.booster.productsInStock = {
-    {% for handle in productHandlesArr | limit: 20 %}
+    {% for handle in productHandlesArr limit: 20 %}
       {% if handle == '' %}
         {% continue %} //skip empty handles
       {% endif %}
@@ -77,4 +77,16 @@
   {% endif %}
   //booster-check-products-stock-end = end flag for script evaluation
   //version:1663704560
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% for collection_handle in collection_handles | limit: 10 %}"
+  to: "{% for collection_handle in collection_handles limit: 10 %}"
+  position: 1530..1589
+- from: "{% for handle in productHandlesArr | limit: 20 %}"
+  to: "{% for handle in productHandlesArr limit: 20 %}"
+  position: 2792..2839
+{%- endcomment -%}
