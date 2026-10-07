@@ -125,7 +125,7 @@
                   </label>
                   <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
                     {%- assign optName = 'options' | append: forloop.index -%}
-                    {%- assign option_values = [optName] | default: option.values -%}
+                    {%- assign option_values = self[optName] | default: option.values -%}
                     {%- for value in option_values -%}
                       {% unless value contains "% off)" %}
                         <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
@@ -270,3 +270,13 @@ _cew('{{ product.id }}', '#ce-widget'); </script>
   }
 {% endschema %}
 {% include 'ZooomyShopTheLook' %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- assign option_values = [optName] | default: option.values -%}"
+  to: "{%- assign option_values = self[optName] | default: option.values -%}"
+  position: 8345..8414
+{% endcomment %}

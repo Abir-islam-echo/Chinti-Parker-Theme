@@ -57,14 +57,7 @@
                             {% continue %}
                         {% endif %}
 
-                        {%
-                            render 'meganav-featured-content'
-                            | link: item.settings[content_handle]
-                            | image: item.settings[image_handle]
-                            | mobile_image: item.settings[mobile_image_handle]
-                            | title: item.settings[title_handle]
-                            | mobile: item.settings[mobile_handle]
-                        %}
+                        {% render 'meganav-featured-content', link: item.settings[content_handle], image: item.settings[image_handle], mobile_image: item.settings[mobile_image_handle], title: item.settings[title_handle], mobile: item.settings[mobile_handle] %}
                     {% endfor %}
                 </div>
             </div>
@@ -72,3 +65,23 @@
     </div>
 
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+                                render 'meganav-featured-content'
+                                | link: item.settings[content_handle]
+                                | image: item.settings[image_handle]
+                                | mobile_image: item.settings[mobile_image_handle]
+                                | title: item.settings[title_handle]
+                                | mobile: item.settings[mobile_handle]
+                            %}
+  to: "{% render 'meganav-featured-content', link: item.settings[content_handle],
+    image: item.settings[image_handle], mobile_image: item.settings[mobile_image_handle],
+    title: item.settings[title_handle], mobile: item.settings[mobile_handle] %}"
+  position: 2664..2900
+{% endcomment %}

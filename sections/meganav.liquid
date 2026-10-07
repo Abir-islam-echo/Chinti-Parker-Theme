@@ -13,7 +13,7 @@
     <div class="meganav__hover-helper" data-meganav-hover-helper></div>
    
     {% for block in section.blocks %}
-        {% render 'meganav-item' | item: block %}
+        {% render 'meganav-item', item: block %}
     {% endfor %}
 
     <div class="meganav__mobile-items">
@@ -207,3 +207,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'meganav-item' | item: block %}"
+  to: "{% render 'meganav-item', item: block %}"
+  position: 654..694
+{% endcomment %}

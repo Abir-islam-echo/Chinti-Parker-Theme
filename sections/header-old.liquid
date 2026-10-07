@@ -13,17 +13,7 @@
             {%- render 'svg--menu' -%}
         </button>
 
-        {%-
-            render 'meganav'
-            | meganav: section.blocks
-            | classes: 'meganav--desktop'
-            | enable_mobile_background_colour: section.settings.enable_mobile_background_colour
-            | mobile_background_colour: section.settings.mobile_background_colour
-            | enable_mobile_item_colours: section.settings.enable_mobile_item_colours
-            | mobile_item_colour: section.settings.mobile_item_colour
-            | enable_mobile_action_colours: section.settings.enable_mobile_action_colours
-            | mobile_action_colour: section.settings.mobile_action_colour
-        -%}
+        {%- render 'meganav', meganav: section.blocks, classes: 'meganav--desktop', enable_mobile_background_colour: section.settings.enable_mobile_background_colour, mobile_background_colour: section.settings.mobile_background_colour, enable_mobile_item_colours: section.settings.enable_mobile_item_colours, mobile_item_colour: section.settings.mobile_item_colour, enable_mobile_action_colours: section.settings.enable_mobile_action_colours, mobile_action_colour: section.settings.mobile_action_colour -%}
     </div>
 
     <div class="page-header__actions">
@@ -247,3 +237,29 @@
     ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%-
+                render 'meganav'
+                | meganav: section.blocks
+                | classes: 'meganav--desktop'
+                | enable_mobile_background_colour: section.settings.enable_mobile_background_colour
+                | mobile_background_colour: section.settings.mobile_background_colour
+                | enable_mobile_item_colours: section.settings.enable_mobile_item_colours
+                | mobile_item_colour: section.settings.mobile_item_colour
+                | enable_mobile_action_colours: section.settings.enable_mobile_action_colours
+                | mobile_action_colour: section.settings.mobile_action_colour
+            -%}
+  to: "{%- render 'meganav', meganav: section.blocks, classes: 'meganav--desktop',
+    enable_mobile_background_colour: section.settings.enable_mobile_background_colour,
+    mobile_background_colour: section.settings.mobile_background_colour, enable_mobile_item_colours:
+    section.settings.enable_mobile_item_colours, mobile_item_colour: section.settings.mobile_item_colour,
+    enable_mobile_action_colours: section.settings.enable_mobile_action_colours, mobile_action_colour:
+    section.settings.mobile_action_colour -%}"
+  position: 378..876
+{% endcomment %}
