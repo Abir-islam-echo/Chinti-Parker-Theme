@@ -7,7 +7,7 @@
 {% assign styledWidthProductCount = 0 %}
 
 {%- capture back_in_stock_form -%}
-		{%- render 'back-in-stock-form' | product: product -%}
+		{%- render 'back-in-stock-form', product: product -%}
 {%- endcapture -%}
 
 {% assign shouldShowSizeGuide = 'true' %}
@@ -478,3 +478,13 @@
     }
   </style>
 -->
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'back-in-stock-form' | product: product -%}"
+  to: "{%- render 'back-in-stock-form', product: product -%}"
+  position: 318..371
+{% endcomment %}

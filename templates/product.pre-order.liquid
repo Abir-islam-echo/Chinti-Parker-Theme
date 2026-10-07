@@ -600,7 +600,7 @@ jQuery('.product-option-size li.active').click();
 {% assign thisFitHandle = 'size-guide-' | append: thisFitHandle %}
 
 
-{% assign fitGuideImages = pages.[thisFitHandle].content %}
+{% assign fitGuideImages = pages[thisFitHandle].content %}
 
 {%comment%}
 just get the images out, so we can ignore <p> and <br> etc.
@@ -774,4 +774,13 @@ var productOptions = [];
 {% include 'quick-view-ajaxify-cart' %}
 
 {% render 'gtm-product-detail', product: product %}
-{% render 'product_infox' %}
+{% render 'product_infox' %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% assign fitGuideImages = pages.[thisFitHandle].content %}"
+  to: "{% assign fitGuideImages = pages[thisFitHandle].content %}"
+  position: 22353..22411
+{%- endcomment -%}

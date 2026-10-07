@@ -38,7 +38,7 @@
                     ></span
                   >
                 {% endif %}
-                <span class="product-price {% if styled_product.compare_at_price>0 %}on-sale  on-sale-margin{% endif %}"
+                <span class="product-price {% if styled_product.compare_at_price['0'] %}on-sale  on-sale-margin{% endif %}"
                   ><span class="money">{{ styled_product.price | money }}</span></span
                 >
               </div>
@@ -131,3 +131,13 @@
 
     }
 </style>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if styled_product.compare_at_price>0 %}"
+  to: "{% if styled_product.compare_at_price['0'] %}"
+  position: 1761..1806
+{% endcomment %}

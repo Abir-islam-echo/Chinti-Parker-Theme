@@ -38,12 +38,23 @@
             </a>
 
             {% if link.links.size > 1 -%}
-                {%-
-                    render 'meganav-menu'
-                    | column: link
-                    | is_submenu: true
-                -%}
+                {%- render 'meganav-menu', column: link, is_submenu: true -%}
             {%- endif -%}
         </li>
     {% endfor %}
 </ul>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%-
+                        render 'meganav-menu'
+                        | column: link
+                        | is_submenu: true
+                    -%}
+  to: "{%- render 'meganav-menu', column: link, is_submenu: true -%}"
+  position: 1351..1412
+{% endcomment %}

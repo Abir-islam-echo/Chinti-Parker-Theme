@@ -47,7 +47,7 @@
                     {% for line_item in checkout.line_items %}
                       {
                           'item_name': '{{ line_item.product.title | replace: "'","##@@singleinvertedcomma @@##" }}'.replace("##@@singleinvertedcomma @@##", "'"),
-                          'item_id': '{{ line_item.sku || line_item.product.id }}',
+                          'item_id': '{{ line_item.sku | line_item }}',
                           'price': priceCalculation('{{ line_item.final_price }}'),
                           'item_brand': '{{ line_item.vendor }}',
                           'quantity': {{ line_item.quantity }},
@@ -105,7 +105,7 @@
             'items': [
               {% for line_item in checkout.line_items %}
                 {
-                  'item_id': '{{ line_item.sku || line_item.product.id }}',
+                  'item_id': '{{ line_item.sku | line_item }}',
                   'item_name': '{{ line_item.product.title | replace: "'","##@@singleinvertedcomma@@##" }}'.replace("##@@singleinvertedcomma@@##", "'"),
                   {% for discount_application in checkout.discount_applications %}
                   'coupon': '{{ discount_application.title }}',
@@ -127,3 +127,16 @@
       }
   });
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ line_item.sku || line_item.product.id }}"
+  to: "{{ line_item.sku | line_item }}"
+  position: 2161..2192
+- from: "{{ line_item.sku || line_item.product.id }}"
+  to: "{{ line_item.sku | line_item }}"
+  position: 4906..4937
+{% endcomment %}

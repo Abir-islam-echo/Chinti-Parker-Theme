@@ -112,7 +112,7 @@
 		{%- endif -%}
 	{%- endfor -%}
 
-	{%- assign obj_tags = [obj].tags -%}
+	{%- assign obj_tags = self[obj].tags -%}
 	{%- for objtag in obj_tags -%}
 		{%- capture mtag -%}{{ mtags }}, {{ objtag }}{%- endcapture -%}
 		{%- assign mtags = mtag -%}
@@ -120,37 +120,37 @@
 	{%- assign mtags = mtags | remove_first : ', ' -%}
 
     {%- assign pro_price = product.price | money -%}
-    {%- assign title = title_template | replace : "${title}", [obj].title -%}
-    {%- assign title = title | replace : "${description}", [obj].description -%}
+    {%- assign title = title_template | replace: "${title}", self[obj].title -%}
+    {%- assign title = title | replace: "${description}", self[obj].description -%}
     {%- assign title = title | replace : "${price}", pro_price -%}
-    {%- assign title = title | replace : "${vendor}", [obj].vendor -%}
+    {%- assign title = title | replace: "${vendor}", self[obj].vendor -%}
     {%- assign title = title | replace : "${tags}", mtags -%}
-    {%- assign title = title | replace : "${producttype}", [obj].type -%}
-	{%- assign title = title | replace : "${type}", [obj].type -%}
+    {%- assign title = title | replace: "${producttype}", self[obj].type -%}
+	{%- assign title = title | replace: "${type}", self[obj].type -%}
     {%- assign title = title | replace : "${shop}", shop.name -%}
-	{%- assign title = title | replace : "${content}", [obj].content | strip_html -%}
-	{%- assign title = title | replace : "${author}", [obj].author -%}
+	{%- assign title = title | replace: "${content}", self[obj].content | strip_html -%}
+	{%- assign title = title | replace: "${author}", self[obj].author -%}
 
-    {%- assign desc = desc_template | replace : "${title}", [obj].title -%}
-    {%- assign desc = desc | replace : "${description}", [obj].description | strip_html -%}
+    {%- assign desc = desc_template | replace: "${title}", self[obj].title -%}
+    {%- assign desc = desc | replace: "${description}", self[obj].description | strip_html -%}
     {%- assign desc = desc | replace : "${price}", pro_price -%}
-    {%- assign desc = desc | replace : "${vendor}", [obj].vendor -%}
+    {%- assign desc = desc | replace: "${vendor}", self[obj].vendor -%}
     {%- assign desc = desc | replace : "${tags}", mtags -%}
-    {%- assign desc = desc | replace : "${producttype}", [obj].type -%}
-	{%- assign desc = desc | replace : "${type}", [obj].type -%}
+    {%- assign desc = desc | replace: "${producttype}", self[obj].type -%}
+	{%- assign desc = desc | replace: "${type}", self[obj].type -%}
     {%- assign desc = desc | replace : "${shop}", shop.name -%}
-	{%- assign desc = desc | replace : "${content}", [obj].content | strip_html -%}
-	{%- assign desc = desc | replace : "${author}", [obj].author -%}
+	{%- assign desc = desc | replace: "${content}", self[obj].content | strip_html -%}
+	{%- assign desc = desc | replace: "${author}", self[obj].author -%}
 
-    {%- assign kw = kw_template | replace : "${title}", [obj].title -%}
-    {%- assign kw = kw | replace : "${description}", [obj].description -%}
+    {%- assign kw = kw_template | replace: "${title}", self[obj].title -%}
+    {%- assign kw = kw | replace: "${description}", self[obj].description -%}
     {%- assign kw = kw | replace : "${price}", pro_price -%}
-    {%- assign kw = kw | replace : "${vendor}", [obj].vendor -%}
+    {%- assign kw = kw | replace: "${vendor}", self[obj].vendor -%}
     {%- assign kw = kw | replace : "${tags}", mtags -%}
-    {%- assign kw = kw | replace : "${producttype}", [obj].type -%}
-	{%- assign kw = kw | replace : "${type}", [obj].type -%}
-	{%- assign kw = kw | replace : "${content}", [obj].content | strip_html -%}
-	{%- assign kw = kw | replace : "${author}", [obj].author -%}
+    {%- assign kw = kw | replace: "${producttype}", self[obj].type -%}
+	{%- assign kw = kw | replace: "${type}", self[obj].type -%}
+	{%- assign kw = kw | replace: "${content}", self[obj].content | strip_html -%}
+	{%- assign kw = kw | replace: "${author}", self[obj].author -%}
     {%- assign kw = kw | replace : "${shop}", shop.name -%}
 
 <!-- SEO - All in One -->
@@ -412,3 +412,85 @@
 {%- endif -%}
 {{ nl }}
 <!-- End - SEO - All in One -->
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- assign obj_tags = [obj].tags -%}"
+  to: "{%- assign obj_tags = self[obj].tags -%}"
+  position: 4078..4118
+- from: '{%- assign title = title_template | replace : "${title}", [obj].title -%}'
+  to: '{%- assign title = title_template | replace: "${title}", self[obj].title -%}'
+  position: 4373..4449
+- from: '{%- assign title = title | replace : "${description}", [obj].description
+    -%}'
+  to: '{%- assign title = title | replace: "${description}", self[obj].description
+    -%}'
+  position: 4454..4533
+- from: '{%- assign title = title | replace : "${vendor}", [obj].vendor -%}'
+  to: '{%- assign title = title | replace: "${vendor}", self[obj].vendor -%}'
+  position: 4605..4674
+- from: '{%- assign title = title | replace : "${producttype}", [obj].type -%}'
+  to: '{%- assign title = title | replace: "${producttype}", self[obj].type -%}'
+  position: 4741..4813
+- from: '{%- assign title = title | replace : "${type}", [obj].type -%}'
+  to: '{%- assign title = title | replace: "${type}", self[obj].type -%}'
+  position: 4815..4880
+- from: '{%- assign title = title | replace : "${content}", [obj].content | strip_html
+    -%}'
+  to: '{%- assign title = title | replace: "${content}", self[obj].content | strip_html
+    -%}'
+  position: 4948..5032
+- from: '{%- assign title = title | replace : "${author}", [obj].author -%}'
+  to: '{%- assign title = title | replace: "${author}", self[obj].author -%}'
+  position: 5034..5103
+- from: '{%- assign desc = desc_template | replace : "${title}", [obj].title -%}'
+  to: '{%- assign desc = desc_template | replace: "${title}", self[obj].title -%}'
+  position: 5109..5183
+- from: '{%- assign desc = desc | replace : "${description}", [obj].description |
+    strip_html -%}'
+  to: '{%- assign desc = desc | replace: "${description}", self[obj].description |
+    strip_html -%}'
+  position: 5188..5278
+- from: '{%- assign desc = desc | replace : "${vendor}", [obj].vendor -%}'
+  to: '{%- assign desc = desc | replace: "${vendor}", self[obj].vendor -%}'
+  position: 5348..5415
+- from: '{%- assign desc = desc | replace : "${producttype}", [obj].type -%}'
+  to: '{%- assign desc = desc | replace: "${producttype}", self[obj].type -%}'
+  position: 5480..5550
+- from: '{%- assign desc = desc | replace : "${type}", [obj].type -%}'
+  to: '{%- assign desc = desc | replace: "${type}", self[obj].type -%}'
+  position: 5552..5615
+- from: '{%- assign desc = desc | replace : "${content}", [obj].content | strip_html
+    -%}'
+  to: '{%- assign desc = desc | replace: "${content}", self[obj].content | strip_html
+    -%}'
+  position: 5681..5763
+- from: '{%- assign desc = desc | replace : "${author}", [obj].author -%}'
+  to: '{%- assign desc = desc | replace: "${author}", self[obj].author -%}'
+  position: 5765..5832
+- from: '{%- assign kw = kw_template | replace : "${title}", [obj].title -%}'
+  to: '{%- assign kw = kw_template | replace: "${title}", self[obj].title -%}'
+  position: 5838..5908
+- from: '{%- assign kw = kw | replace : "${description}", [obj].description -%}'
+  to: '{%- assign kw = kw | replace: "${description}", self[obj].description -%}'
+  position: 5913..5986
+- from: '{%- assign kw = kw | replace : "${vendor}", [obj].vendor -%}'
+  to: '{%- assign kw = kw | replace: "${vendor}", self[obj].vendor -%}'
+  position: 6052..6115
+- from: '{%- assign kw = kw | replace : "${producttype}", [obj].type -%}'
+  to: '{%- assign kw = kw | replace: "${producttype}", self[obj].type -%}'
+  position: 6176..6242
+- from: '{%- assign kw = kw | replace : "${type}", [obj].type -%}'
+  to: '{%- assign kw = kw | replace: "${type}", self[obj].type -%}'
+  position: 6244..6303
+- from: '{%- assign kw = kw | replace : "${content}", [obj].content | strip_html -%}'
+  to: '{%- assign kw = kw | replace: "${content}", self[obj].content | strip_html
+    -%}'
+  position: 6305..6383
+- from: '{%- assign kw = kw | replace : "${author}", [obj].author -%}'
+  to: '{%- assign kw = kw | replace: "${author}", self[obj].author -%}'
+  position: 6385..6448
+{% endcomment %}
